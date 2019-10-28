@@ -1,0 +1,215 @@
+/*
+ * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
+ * Copyright (C) 2019  AO Industries, Inc.
+ *     support@aoindustries.com
+ *     7262 Bull Pen Cir
+ *     Mobile, AL 36695
+ *
+ * This file is part of ao-fluent-html.
+ *
+ * ao-fluent-html is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ao-fluent-html is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package com.aoindustries.html;
+
+import com.aoindustries.util.StringUtility;
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * @author  AO Industries, Inc.
+ */
+public enum Serialization {
+	SGML {
+		@Override
+		public String getContentType() {
+			return Html.CONTENT_TYPE_HTML;
+		}
+
+		@Override
+		public String getSelfClose() {
+			return ">";
+		}
+
+		@Override
+		public Serialization selfClose(Appendable out) throws IOException {
+			out.append('>');
+			return this;
+		}
+	},
+	XML {
+		@Override
+		public String getContentType() {
+			return Html.CONTENT_TYPE_XHTML;
+		}
+
+		@Override
+		public String getSelfClose() {
+			return " />";
+		}
+	};
+
+	/**
+	 * Gets the content-type header to use for this serialization.
+	 */
+	abstract public String getContentType();
+
+	/**
+	 * Gets the self-closing tag characters.
+	 */
+	abstract public String getSelfClose();
+
+	/**
+	 * Appends the self-closing tag characters.
+	 */
+	public Serialization selfClose(Appendable out) throws IOException {
+		out.append(getSelfClose());
+		return this;
+	}
+
+	/**
+	 * Context init parameter that may be used to configure the use of XHTML within an application.
+	 * Must be one of "SGML", "XML", or "auto" (the default).
+	 */
+	public static final String DEFAULT_INIT_PARAM = Serialization.class.getName() + ".default";
+
+	/**
+	 * Determine if the content may be served as <code>application/xhtml+xml</code> by the
+	 * rules defined in <a href="http://www.w3.org/TR/xhtml-media-types/">http://www.w3.org/TR/xhtml-media-types/</a>
+	 * Default to <code>application/xhtml+xml</code> as discussed at
+	 * <a href="https://web.archive.org/web/20080913043830/http://www.smackthemouse.com/xhtmlxml">http://www.smackthemouse.com/xhtmlxml</a>
+	 */
+	public static Serialization getDefault(ServletContext servletContext, HttpServletRequest request) {
+		String initParam = servletContext.getInitParameter(DEFAULT_INIT_PARAM);
+		if(initParam != null) {
+			initParam = initParam.trim();
+			if(!initParam.isEmpty()) {
+				if("SGML".equalsIgnoreCase(initParam)) {
+					return SGML;
+				} else if("XML".equalsIgnoreCase(initParam)) {
+					return XML;
+				} else if(!"auto".equalsIgnoreCase(initParam)) {
+					throw new IllegalArgumentException("Unexpected value for " + DEFAULT_INIT_PARAM + ": Must be one of \"SGML\", \"XML\", or \"auto\": " + initParam);
+				}
+			}
+		}
+		// Some test accept headers:
+		//   Firefox: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+		//   IE 6: */*
+		//   IE 8: */*
+		//   IE 8 Compat: */*
+		@SuppressWarnings("unchecked")
+		Enumeration<String> acceptValues = request.getHeaders("Accept");
+
+		boolean hasAcceptHeader = false;
+		boolean hasAcceptApplicationXhtmlXml = false;
+		boolean hasAcceptTextHtml = false;
+		boolean hasAcceptStarStar = false;
+		if(acceptValues != null) {
+			while(acceptValues.hasMoreElements()) {
+				hasAcceptHeader = true;
+				for(String value : StringUtility.splitString(acceptValues.nextElement(), ',')) {
+					value = value.trim();
+					final List<String> params = StringUtility.splitString(value, ';');
+					final int paramsSize = params.size();
+					if(paramsSize > 0) {
+						String acceptType = params.get(0).trim();
+						if(acceptType.equals("*/*")) {
+							// No q parameter parsing for */*
+							hasAcceptStarStar = true;
+						} else if(
+							// Parse and check the q for these two types
+							acceptType.equalsIgnoreCase(Html.CONTENT_TYPE_XHTML)
+							|| acceptType.equalsIgnoreCase(Html.CONTENT_TYPE_HTML)
+						) {
+							// Find any q value
+							boolean hasNegativeQ = false;
+							for(int paramNum = 1; paramNum < paramsSize; paramNum++) {
+								String paramSet = params.get(paramNum).trim();
+								if(paramSet.startsWith("q=") || paramSet.startsWith("Q=")) {
+									try {
+										float q = Float.parseFloat(paramSet.substring(2).trim());
+										if(q < 0) {
+											hasNegativeQ = true;
+											break;
+										}
+									} catch(NumberFormatException err) {
+										// Intentionally ignored
+									}
+								}
+							}
+							if(!hasNegativeQ) {
+								if(acceptType.equalsIgnoreCase(Html.CONTENT_TYPE_XHTML)) hasAcceptApplicationXhtmlXml = true;
+								else if(acceptType.equalsIgnoreCase(Html.CONTENT_TYPE_HTML)) hasAcceptTextHtml = true;
+								else throw new AssertionError("Unexpected value for acceptType: " + acceptType);
+							}
+						}
+					}
+				}
+			}
+		}
+		// If the Accept header explicitly contains application/xhtml+xml  (with either no "q" parameter or a positive "q" value) deliver the document using that media type.
+		if(hasAcceptApplicationXhtmlXml) return XML;
+		// If the Accept header explicitly contains text/html  (with either no "q" parameter or a positive "q" value) deliver the document using that media type.
+		if(hasAcceptTextHtml) return SGML;
+		// If the accept header contains "*/*" (a convention some user agents use to indicate that they will accept anything), deliver the document using text/html.
+		if(hasAcceptStarStar) return SGML;
+		// If has no accept headers
+		if(!hasAcceptHeader) return XML;
+		// This choice is not clear from either of the cited documents.  If there is an accept line,
+		// and it doesn't have */* or application/xhtml+xml or text/html, we'll serve as text/html
+		// since it is a fairly broken client anyway and would be even less likely to know xhtml.
+		return SGML;
+	}
+
+	private static final String REQUEST_ATTRIBUTE_NAME = Serialization.class.getName();
+
+	/**
+	 * Registers the serialization in effect for the request.
+	 */
+	public static void set(ServletRequest request, Serialization serialization) {
+		request.setAttribute(REQUEST_ATTRIBUTE_NAME, serialization);
+	}
+
+	/**
+	 * Replaces the serialization in effect for the request.
+	 *
+	 * @return  The previous attribute value, if any
+	 */
+	public static Serialization replace(ServletRequest request, Serialization serialization) {
+		Serialization old = (Serialization)request.getAttribute(REQUEST_ATTRIBUTE_NAME);
+		request.setAttribute(REQUEST_ATTRIBUTE_NAME, serialization);
+		return old;
+	}
+
+	/**
+	 * Gets the serialization in effect for the request, or {@linkplain #getDefault(javax.servlet.ServletContext, javax.servlet.http.HttpServletRequest) the default}
+	 * when not yet {@linkplain #set(javax.servlet.ServletRequest, com.aoindustries.html.Serialization) set}.
+	 * <p>
+	 * Once the default is resolved,
+	 * {@linkplain #set(javax.servlet.ServletRequest, com.aoindustries.html.Serialization) sets the request attribute}.
+	 * </p>
+	 */
+	public static Serialization get(ServletContext servletContext, HttpServletRequest request) {
+		Serialization serialization = (Serialization)request.getAttribute(REQUEST_ATTRIBUTE_NAME);
+		if(serialization == null) {
+			serialization = getDefault(servletContext, request);
+			request.setAttribute(REQUEST_ATTRIBUTE_NAME, serialization);
+		}
+		return serialization;
+	}
+}

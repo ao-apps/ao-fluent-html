@@ -13,9 +13,6 @@
 	<a href="https://docs.oracle.com/javase/7/docs/api/">
 		<img src="https://aoindustries.com/ao-badges/java-7.svg" alt="java: &gt;= 7" />
 	</a>
-	<a href="https://docs.oracle.com/javaee/6/api/">
-		<img src="https://aoindustries.com/ao-badges/javaee-6.svg" alt="java ee: &gt;= 6" />
-	</a>
 	<a href="http://semver.org/spec/v2.0.0.html">
 		<img src="https://aoindustries.com/ao-badges/semver-2.0.0.svg" alt="semantic versioning: 2.0.0" />
 	</a>
@@ -33,6 +30,9 @@ Fluent Java DSL for high-performance HTML generation.
 * [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.aoindustries%22%20AND%20a:%22ao-fluent-html%22)
 * [GitHub](https://github.com/aoindustries/ao-fluent-html)
 
+## Modules
+* [AO Fluent HTML Servlet](https://github.com/aoindustries/ao-fluent-html-servlet)
+
 ## Motivation
 We have a lot of legacy servlet-based code that directly writes HTML as strings.
 This technique is both tedious and error-prone.  We've been refactoring code to
@@ -46,10 +46,7 @@ rewriting everything.
 * Integrates with AO in-context translation tools.
 * Streaming implementation, including attributes.
 * Stupid fast (TODO: benchmark).
-* TODO: Thread-local and lambdas to reduce "dot-chaining".
-** TODO: Interoperable with [SemanticCMS](https://github.com/aoindustries/semanticcms).
-** TODO: Interoperable with [AO Taglib](https://github.com/aoindustries/ao-taglib).
-* TODO: Separate module for use in a Servlet environment.
+* Separate module for use in a Servlet environment.
 
 ## Limitations
 Not all tags and attributes are implemented.  We are implementing

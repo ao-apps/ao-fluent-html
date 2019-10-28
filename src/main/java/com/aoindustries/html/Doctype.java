@@ -27,8 +27,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
 
 /**
  * @author  AO Industries, Inc.
@@ -221,62 +219,5 @@ public enum Doctype {
 	public Doctype styleType(Appendable out) throws IOException {
 		out.append(getStyleType());
 		return this;
-	}
-
-	/**
-	 * Context init parameter that may be used to configure the default doctype within an application.
-	 */
-	public static final String DEFAULT_INIT_PARAM = Doctype.class.getName() + ".default";
-
-	/**
-	 * Determines the default doctype by first checking for {@linkplain ServletContext#getInitParameter(java.lang.String) context-param}
-	 * of {@link #DEFAULT_INIT_PARAM}, the using {@link #HTML5} when unspecified or "default".
-	 */
-	public static Doctype getDefault(ServletContext servletContext) {
-		String initParam = servletContext.getInitParameter(DEFAULT_INIT_PARAM);
-		if(initParam != null) {
-			initParam = initParam.trim();
-			if(!initParam.isEmpty() && !"default".equalsIgnoreCase(initParam)) {
-				return Doctype.valueOf(initParam.toUpperCase(Locale.ROOT));
-			}
-		}
-		return HTML5;
-	}
-
-	private static final String REQUEST_ATTRIBUTE_NAME = Doctype.class.getName();
-
-	/**
-	 * Registers the doctype in effect for the request.
-	 */
-	public static void set(ServletRequest request, Doctype doctype) {
-		request.setAttribute(REQUEST_ATTRIBUTE_NAME, doctype);
-	}
-
-	/**
-	 * Replaces the doctype in effect for the request.
-	 *
-	 * @return  The previous attribute value, if any
-	 */
-	public static Doctype replace(ServletRequest request, Doctype doctype) {
-		Doctype old = (Doctype)request.getAttribute(REQUEST_ATTRIBUTE_NAME);
-		request.setAttribute(REQUEST_ATTRIBUTE_NAME, doctype);
-		return old;
-	}
-
-	/**
-	 * Gets the doctype in effect for the request, or {@linkplain #getDefault(javax.servlet.ServletContext) the default}
-	 * when not yet {@linkplain #set(javax.servlet.ServletRequest, com.aoindustries.html.Doctype) set}.
-	 * <p>
-	 * Once the default is resolved,
-	 * {@linkplain #set(javax.servlet.ServletRequest, com.aoindustries.html.Doctype) sets the request attribute}.
-	 * </p>
-	 */
-	public static Doctype get(ServletContext servletContext, ServletRequest request) {
-		Doctype doctype = (Doctype)request.getAttribute(REQUEST_ATTRIBUTE_NAME);
-		if(doctype == null) {
-			doctype = getDefault(servletContext);
-			request.setAttribute(REQUEST_ATTRIBUTE_NAME, doctype);
-		}
-		return doctype;
 	}
 }

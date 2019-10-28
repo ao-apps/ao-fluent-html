@@ -33,6 +33,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2019-10-27T16:59:13-0500"
+		dateModified="2019-10-28T07:26:00-0500"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -43,7 +44,6 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				arg.managementStatus="preview"
 				arg.packagingStatus="developmental"
 				arg.javaVersion="@{documented.javaVersion}"
-				arg.javaeeVersion="6"
 				arg.semanticVersioning="2.0.0"
 				arg.license="lgpl-3.0"
 			/>
@@ -60,6 +60,11 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				<li><ao:a href="@{documented.scm.url}">GitHub</ao:a></li>
 			</ul>
 		</section:nav>
+		<section:section label="Modules">
+			<ul>
+				<li><core:link book="/ao-fluent-html/servlet" page="/index.jspx" /></li>
+			</ul>
+		</section:section>
 		<section:section label="Motivation">
 			We have a lot of legacy servlet-based code that directly writes HTML as strings.
 			This technique is both tedious and error-prone.  We've been refactoring code to
@@ -74,13 +79,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				<li>Integrates with AO in-context translation tools.</li>
 				<li>Streaming implementation, including attributes.</li>
 				<li>Stupid fast (TODO: benchmark).</li>
-				<li>TODO: Thread-local and lambdas to reduce "dot-chaining".
-					<ul>
-						<li>TODO: Interoperable with <ao:a href="https://github.com/aoindustries/semanticcms">SemanticCMS</ao:a>.</li>
-						<li>TODO: Interoperable with <ao:a href="https://github.com/aoindustries/ao-taglib">AO Taglib</ao:a>.</li>
-					</ul>
-				</li>
-				<li>TODO: Separate module for use in a Servlet environment.</li>
+				<li>Separate module for use in a Servlet environment.</li>
 			</ul>
 		</section:section>
 		<section:section label="Limitations">

@@ -25,10 +25,8 @@ package com.aoindustries.html;
 import com.aoindustries.util.StringUtility;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author  AO Industries, Inc.
@@ -82,47 +80,26 @@ public enum Serialization {
 	}
 
 	/**
-	 * Context init parameter that may be used to configure the use of XHTML within an application.
-	 * Must be one of "SGML", "XML", or "auto" (the default).
-	 */
-	public static final String DEFAULT_INIT_PARAM = Serialization.class.getName() + ".default";
-
-	/**
 	 * Determine if the content may be served as <code>application/xhtml+xml</code> by the
 	 * rules defined in <a href="http://www.w3.org/TR/xhtml-media-types/">http://www.w3.org/TR/xhtml-media-types/</a>
 	 * Default to <code>application/xhtml+xml</code> as discussed at
 	 * <a href="https://web.archive.org/web/20080913043830/http://www.smackthemouse.com/xhtmlxml">http://www.smackthemouse.com/xhtmlxml</a>
 	 */
-	public static Serialization getDefault(ServletContext servletContext, HttpServletRequest request) {
-		String initParam = servletContext.getInitParameter(DEFAULT_INIT_PARAM);
-		if(initParam != null) {
-			initParam = initParam.trim();
-			if(!initParam.isEmpty()) {
-				if("SGML".equalsIgnoreCase(initParam)) {
-					return SGML;
-				} else if("XML".equalsIgnoreCase(initParam)) {
-					return XML;
-				} else if(!"auto".equalsIgnoreCase(initParam)) {
-					throw new IllegalArgumentException("Unexpected value for " + DEFAULT_INIT_PARAM + ": Must be one of \"SGML\", \"XML\", or \"auto\": " + initParam);
-				}
-			}
-		}
+	public static Serialization select(Iterator<? extends String> acceptHeaderValues) {
 		// Some test accept headers:
 		//   Firefox: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 		//   IE 6: */*
 		//   IE 8: */*
 		//   IE 8 Compat: */*
-		@SuppressWarnings("unchecked")
-		Enumeration<String> acceptValues = request.getHeaders("Accept");
 
 		boolean hasAcceptHeader = false;
 		boolean hasAcceptApplicationXhtmlXml = false;
 		boolean hasAcceptTextHtml = false;
 		boolean hasAcceptStarStar = false;
-		if(acceptValues != null) {
-			while(acceptValues.hasMoreElements()) {
+		if(acceptHeaderValues != null) {
+			while(acceptHeaderValues.hasNext()) {
 				hasAcceptHeader = true;
-				for(String value : StringUtility.splitString(acceptValues.nextElement(), ',')) {
+				for(String value : StringUtility.splitString(acceptHeaderValues.next(), ',')) {
 					value = value.trim();
 					final List<String> params = StringUtility.splitString(value, ';');
 					final int paramsSize = params.size();
@@ -176,40 +153,27 @@ public enum Serialization {
 		return SGML;
 	}
 
-	private static final String REQUEST_ATTRIBUTE_NAME = Serialization.class.getName();
-
-	/**
-	 * Registers the serialization in effect for the request.
-	 */
-	public static void set(ServletRequest request, Serialization serialization) {
-		request.setAttribute(REQUEST_ATTRIBUTE_NAME, serialization);
+	public static Serialization select(Iterable<? extends String> acceptHeaderValues) {
+		return select(acceptHeaderValues.iterator());
 	}
 
-	/**
-	 * Replaces the serialization in effect for the request.
-	 *
-	 * @return  The previous attribute value, if any
-	 */
-	public static Serialization replace(ServletRequest request, Serialization serialization) {
-		Serialization old = (Serialization)request.getAttribute(REQUEST_ATTRIBUTE_NAME);
-		request.setAttribute(REQUEST_ATTRIBUTE_NAME, serialization);
-		return old;
-	}
-
-	/**
-	 * Gets the serialization in effect for the request, or {@linkplain #getDefault(javax.servlet.ServletContext, javax.servlet.http.HttpServletRequest) the default}
-	 * when not yet {@linkplain #set(javax.servlet.ServletRequest, com.aoindustries.html.Serialization) set}.
-	 * <p>
-	 * Once the default is resolved,
-	 * {@linkplain #set(javax.servlet.ServletRequest, com.aoindustries.html.Serialization) sets the request attribute}.
-	 * </p>
-	 */
-	public static Serialization get(ServletContext servletContext, HttpServletRequest request) {
-		Serialization serialization = (Serialization)request.getAttribute(REQUEST_ATTRIBUTE_NAME);
-		if(serialization == null) {
-			serialization = getDefault(servletContext, request);
-			request.setAttribute(REQUEST_ATTRIBUTE_NAME, serialization);
-		}
-		return serialization;
+	public static Serialization select(final Enumeration<? extends String> acceptHeaderValues) {
+		// TODO: commons-collections EnumerationIterator?
+		return select(
+			new Iterator<String>() {
+				@Override
+				public boolean hasNext() {
+					return acceptHeaderValues.hasMoreElements();
+				}
+				@Override
+				public String next() {
+					return acceptHeaderValues.nextElement();
+				}
+				@Override
+				public void remove() {
+					throw new UnsupportedOperationException();
+				}
+			}
+		);
 	}
 }

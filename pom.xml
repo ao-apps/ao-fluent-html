@@ -32,6 +32,15 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId><version>0.1.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
+	<properties>
+		<javadoc.modules><![CDATA[<div style="float:left; margin: 0 1em">
+			<h2 style="margin-top: 0em">Modules</h2>
+			<ul>
+				<li><a target="_top" href="https://aoindustries.com/ao-fluent-html/servlet/">AO Fluent hTML Servlet</a></li>
+			</ul>
+		</div>]]></javadoc.modules>
+	</properties>
+
 	<name>AO Fluent HTML</name>
 	<url>https://aoindustries.com/${project.artifactId}/</url>
 	<description>Fluent Java DSL for high-performance HTML generation.</description>
@@ -55,8 +64,6 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 						<configuration>
 							<links>
 								<link>${javac.link.javaApi}</link>
-								<!-- Java EE -->
-								<link>${javac.link.javaeeApi.6}</link>
 								<!-- Direct -->
 								<link>https://aoindustries.com/ao-encoding/apidocs/</link>
 								<link>https://aoindustries.com/ao-lang/apidocs/</link>
@@ -71,12 +78,6 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- Java EE -->
-			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>javaee-web-api-bom</artifactId><version>6.0.0-POST-SNAPSHOT</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 			<!-- Direct -->
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId><version>2.2.0-SNAPSHOT</version>
@@ -91,12 +92,6 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- Java EE -->
-		<dependency>
-			<groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
 		<!-- Direct -->
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId>

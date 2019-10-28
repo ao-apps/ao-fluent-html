@@ -22,14 +22,11 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.ChainWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.EnumMap;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -55,25 +52,6 @@ public class Html {
 	 * The default, and recommended, encoding for (X)HTML.
 	 */
 	public static final Charset ENCODING = StandardCharsets.UTF_8;
-
-	public static Html get(ServletContext servletContext, HttpServletRequest request, Writer out) {
-		return new Html(
-			Serialization.get(servletContext, request),
-			Doctype.get(servletContext, request),
-			out
-		);
-	}
-
-	/**
-	 * Unwraps the given chain writer.
-	 */
-	public static Html get(ServletContext servletContext, HttpServletRequest request, ChainWriter out) {
-		return new Html(
-			Serialization.get(servletContext, request),
-			Doctype.get(servletContext, request),
-			out.getPrintWriter()
-		);
-	}
 
 	public final Serialization serialization;
 	public final Doctype doctype;

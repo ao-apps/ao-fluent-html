@@ -42,9 +42,9 @@ public class GoogleAnalytics {
 	private GoogleAnalytics() {}
 
 	/**
-	 * Writes the Google Analytics <a href="https://support.google.com/analytics/answer/1008080?hl=en&ref_topic=1008079#GA">Global Site Tag</a>.
+	 * Writes the modern Google Analytics <a href="https://support.google.com/analytics/answer/1008080?hl=en&ref_topic=1008079#GA">Global Site Tag</a>.
 	 * This is best used with {@link Doctype#HTML5}.
-	 * This should be added first, or very high up, in the <code>&lt;head&gt;</code>.
+	 * This should be added first, or very hig	h up, in the <code>&lt;head&gt;</code>.
 	 *
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
@@ -73,12 +73,13 @@ public class GoogleAnalytics {
 	}
 
 	/**
-	 * Writes an older-style <code>analytics.js</code> Google Analytics tracking script.
+	 * Writes an older-style Google Analytics <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs">analytics.js tracking script</a>.
 	 * This is best used for compatibility with doctypes prior to {@link Doctype#HTML5}.
-	 * This should be added near the end of the <code>&lt;head&gt;</code>.
+	 * This should be added first, or very high up, in the <code>&lt;head&gt;</code>.
 	 *
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
+	// TODO: Support hitType exception? https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
 	public static void writeAnalyticsJs(Html html, String trackingId) throws IOException {
 		if(trackingId != null) {
 			trackingId = trackingId.trim();

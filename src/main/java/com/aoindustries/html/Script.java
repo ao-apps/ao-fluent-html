@@ -197,7 +197,7 @@ public class Script extends Element<Script> {
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
-			html.out.write(">\n");
+			html.out.write('>');
 			cdata.start();
 			didBody = true;
 		}
@@ -271,23 +271,7 @@ public class Script extends Element<Script> {
 
 	// TODO: Hide cdata?
 	public class Cdata {
-		public Script start(String indent) throws IOException {
-			if(
-				html.serialization == Serialization.XML
-				&& (
-					Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
-					|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
-				)
-			) {
-				if(indent != null) html.out.write(indent);
-				html.out.write("// <![CDATA[\n");
-			}
-			return Script.this;
-		}
 		public Script start() throws IOException {
-			return start(null);
-		}
-		public Script end(String indent) throws IOException {
 			if(
 				html.serialization == Serialization.XML
 				&& (
@@ -295,13 +279,21 @@ public class Script extends Element<Script> {
 					|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
 				)
 			) {
-				if(indent != null) html.out.write(indent);
-				html.out.write("// ]]>\n");
+				html.out.write("//<![CDATA[\n");
 			}
 			return Script.this;
 		}
 		public Script end() throws IOException {
-			return end(null);
+			if(
+				html.serialization == Serialization.XML
+				&& (
+					Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
+					|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
+				)
+			) {
+				html.out.write("//]]>");
+			}
+			return Script.this;
 		}
 	}
 	public final Cdata cdata = new Cdata();

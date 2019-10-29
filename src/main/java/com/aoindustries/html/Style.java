@@ -145,7 +145,7 @@ public class Style extends Element<Style> {
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
-			html.out.write(">\n");
+			html.out.write('>');
 			cdata.start();
 			didBody = true;
 		}
@@ -228,25 +228,17 @@ public class Style extends Element<Style> {
 
 	// TODO: Hide cdata?
 	public class Cdata {
-		public Style start(String indent) throws IOException {
-			if(html.serialization == Serialization.XML) {
-				if(indent != null) html.out.write(indent);
-				html.out.write("/* <![CDATA[ */\n");
-			}
-			return Style.this;
-		}
 		public Style start() throws IOException {
-			return start(null);
-		}
-		public Style end(String indent) throws IOException {
 			if(html.serialization == Serialization.XML) {
-				if(indent != null) html.out.write(indent);
-				html.out.write("/* ]]> */\n");
+				html.out.write("/*<![CDATA[*/\n");
 			}
 			return Style.this;
 		}
 		public Style end() throws IOException {
-			return end(null);
+			if(html.serialization == Serialization.XML) {
+				html.out.write("/*]]>*/");
+			}
+			return Style.this;
 		}
 	}
 	public final Cdata cdata = new Cdata();

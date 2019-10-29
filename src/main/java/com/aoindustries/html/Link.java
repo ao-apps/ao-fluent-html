@@ -28,6 +28,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlA
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.html.Style.Type;
 import com.aoindustries.lang.LocalizedIllegalStateException;
+import com.aoindustries.util.StringUtility;
 import java.io.IOException;
 
 /**
@@ -241,7 +242,7 @@ public class Link extends EmptyElement<Link> {
 	 * See <a href="https://www.w3schools.com/tags/att_link_type.asp">HTML link type Attribute</a>.
 	 */
 	public Link type(String type) throws IOException {
-		// TODO: type = trimNullIfEmpty(type);
+		type = StringUtility.trimNullIfEmpty(type);
 		this.type = type;
 		if(
 			type != null

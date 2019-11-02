@@ -25,22 +25,10 @@ package com.aoindustries.html;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
- *
  * @author  AO Industries, Inc.
  */
-public class Br extends EmptyElement<Br>
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: Attributes.Event.Mouse.Events<Br>
-{
-
-	public Br(Html html) {
-		super(html);
-	}
-
+// Java 1.8: @FunctionalInterface
+public interface AttributeSupplier<V> extends AttributeSupplierE<V,RuntimeException> {
 	@Override
-	protected Br open() throws IOException {
-		html.out.write("<br");
-		return this;
-	}
+	V get() throws IOException;
 }

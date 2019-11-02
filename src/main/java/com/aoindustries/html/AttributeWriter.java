@@ -22,25 +22,21 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Coercion;
+import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
+import com.aoindustries.encoding.MediaWriter;
+import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
+import static com.aoindustries.html.ApplicationResources.accessor;
+import com.aoindustries.lang.LocalizedIllegalArgumentException;
+import com.aoindustries.util.WrappedException;
+import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
- *
  * @author  AO Industries, Inc.
  */
-public class Br extends EmptyElement<Br>
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: Attributes.Event.Mouse.Events<Br>
-{
-
-	public Br(Html html) {
-		super(html);
-	}
-
+// Java 1.8: @FunctionalInterface
+public interface AttributeWriter extends AttributeWriterE<RuntimeException> {
 	@Override
-	protected Br open() throws IOException {
-		html.out.write("<br");
-		return this;
-	}
+	void writeAttribute(MediaWriter value) throws IOException;
 }

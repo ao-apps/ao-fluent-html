@@ -29,7 +29,10 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Hr extends EmptyElement<Hr> {
+public class Hr extends EmptyElement<Hr> implements 
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Mouse.Events<Hr>
+{
 
 	public Hr(Html html) {
 		super(html);

@@ -39,7 +39,18 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-public class Script extends Element<Script> {
+public class Script extends Element<Script> implements
+	Attributes.Boolean.Async<Script>,
+	Attributes.Boolean.Defer<Script>,
+	Attributes.Url.Src<Script>,
+	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
+	Attributes.Text.ClassNoHtml4<Script>,
+	Attributes.Text.IdNoHtml4<Script>,
+	Attributes.Text.StyleNoHtml4<Script>,
+	Attributes.Text.TitleNoHtml4<Script>
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	// Not on <script>: Attributes.Event.Mouse.Events<Script>
+{
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
@@ -114,47 +125,6 @@ public class Script extends Element<Script> {
 	protected Script open() throws IOException {
 		html.out.write("<script");
 		return type();
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_script_async.asp">HTML script async Attribute</a>.
-	 */
-	public Script async(boolean async) throws IOException {
-		if(async) {
-			if(html.serialization == Serialization.XML) {
-				html.out.write(" async=\"async\"");
-			} else {
-				html.out.write(" async");
-			}
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_script_defer.asp">HTML script defer Attribute</a>.
-	 */
-	public Script defer(boolean defer) throws IOException {
-		if(defer) {
-			if(html.serialization == Serialization.XML) {
-				html.out.write(" defer=\"defer\"");
-			} else {
-				html.out.write(" defer");
-			}
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_script_src.asp">HTML script src Attribute</a>.
-	 */
-	public Script src(Object src) throws IOException {
-		if(src != null) {
-			html.out.write(" src=\"");
-			// TODO: UrlInXhtmlAttributeEncoder once RFC 3987 supported
-			Coercion.write(src, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return this;
 	}
 
 	/**
@@ -240,7 +210,7 @@ public class Script extends Element<Script> {
 		};
 	}
 
-	// Java 1.8: @Functional
+	// Java 1.8: @FunctionalInterface
 	public static interface ScriptWriterE<Ex extends Throwable> {
 		void writeScript(MediaWriter script) throws IOException, Ex;
 	}
@@ -259,7 +229,7 @@ public class Script extends Element<Script> {
 		return this;
 	}
 
-	// Java 1.8: @Functional
+	// Java 1.8: @FunctionalInterface
 	public static interface ScriptWriter extends ScriptWriterE<RuntimeException> {
 		@Override
 		void writeScript(MediaWriter script) throws IOException;

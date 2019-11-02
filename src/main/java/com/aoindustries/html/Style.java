@@ -40,7 +40,16 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-public class Style extends Element<Style> {
+public class Style extends Element<Style> implements
+	Attributes.Text.Media<Style>,
+	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
+	Attributes.Text.ClassNoHtml4<Style>,
+	Attributes.Text.IdNoHtml4<Style>,
+	Attributes.Text.StyleNoHtml4<Style>,
+	Attributes.Text.TitleNoHtml4<Style>
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	// Not on <style>: Attributes.Event.Mouse.Events<Style>
+{
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
@@ -98,19 +107,6 @@ public class Style extends Element<Style> {
 	protected Style open() throws IOException {
 		html.out.write("<style");
 		return type();
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_style_media.asp">HTML style media Attribute</a>.
-	 */
-	public Style media(Object media) throws IOException {
-		media = Coercion.trimNullIfEmpty(media); // TODO: Review which attributes should be trimmed
-		if(media != null) {
-			html.out.write(" media=\"");
-			Coercion.write(media, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return this;
 	}
 
 	/**
@@ -197,7 +193,7 @@ public class Style extends Element<Style> {
 		};
 	}
 
-	// Java 1.8: @Functional
+	// Java 1.8: @FunctionalInterface
 	public static interface StyleWriterE<Ex extends Throwable> {
 		void writeStyle(MediaWriter style) throws IOException, Ex;
 	}
@@ -216,7 +212,7 @@ public class Style extends Element<Style> {
 		return this;
 	}
 
-	// Java 1.8: @Functional
+	// Java 1.8: @FunctionalInterface
 	public static interface StyleWriter extends StyleWriterE<RuntimeException> {
 		@Override
 		void writeStyle(MediaWriter style) throws IOException;

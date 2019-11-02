@@ -27,7 +27,6 @@ import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaException;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
@@ -37,7 +36,14 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Option extends Element<Option> {
+public class Option extends Element<Option> implements
+	Attributes.Boolean.Disabled<Option>,
+	Attributes.Text.Label<Option>,
+	Attributes.Boolean.Selected<Option>,
+	Attributes.Text.Value<Option>,
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Mouse.Events<Option>
+{
 
 	public Option(Html html) {
 		super(html);
@@ -46,21 +52,6 @@ public class Option extends Element<Option> {
 	@Override
 	protected Option open() throws IOException {
 		html.out.write("<option");
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_option_disabled.asp">HTML option disabled Attribute</a>.
-	 */
-	public Option disabled(boolean disabled) throws IOException {
-		if(disabled) {
-			if(html.serialization == Serialization.SGML) {
-				html.out.write(" disabled");
-			} else {
-				assert html.serialization == Serialization.XML;
-				html.out.write(" disabled=\"disabled\"");
-			}
-		}
 		return this;
 	}
 
@@ -75,40 +66,89 @@ public class Option extends Element<Option> {
 	 *              tag body anyway.
 	 */
 	@Deprecated
+	@Override
 	public Option label(Object label) throws IOException {
-		if(label != null) {
-			html.out.write(" label=\"");
-			Coercion.write(label, MarkupType.TEXT, textInXhtmlAttributeEncoder, false, html.out);
-			html.out.write('"');
-		}
-		return this;
+		return Attributes.Text.Label.super.label(label);
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_option_selected.asp">HTML option selected Attribute</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @deprecated  Although still part of the HTML specification, there is a
+	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
+	 *              that the label attribute is not supported.  We are deprecating
+	 *              this method to make it clear it should probably not be used, as the
+	 *              effect of label can be attained through the value attribute and
+	 *              tag body anyway.
 	 */
-	public Option selected(boolean selected) throws IOException {
-		if(selected) {
-			if(html.serialization == Serialization.SGML) {
-				html.out.write(" selected");
-			} else {
-				assert html.serialization == Serialization.XML;
-				html.out.write(" selected=\"selected\"");
-			}
-		}
-		return this;
+	@Deprecated
+	@Override
+	public <Ex extends Throwable> Option labelE(AttributeSupplierE<?,Ex> label) throws IOException, Ex {
+		return Attributes.Text.Label.super.labelE(label);
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_option_value.asp">HTML option value Attribute</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @deprecated  Although still part of the HTML specification, there is a
+	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
+	 *              that the label attribute is not supported.  We are deprecating
+	 *              this method to make it clear it should probably not be used, as the
+	 *              effect of label can be attained through the value attribute and
+	 *              tag body anyway.
 	 */
-	public Option value(Object value) throws IOException {
-		if(value != null) {
-			html.out.write(" value=\"");
-			Coercion.write(value, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return this;
+	@Deprecated
+	@Override
+	public Option label(AttributeSupplier<?> label) throws IOException {
+		return Attributes.Text.Label.super.label(label);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @deprecated  Although still part of the HTML specification, there is a
+	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
+	 *              that the label attribute is not supported.  We are deprecating
+	 *              this method to make it clear it should probably not be used, as the
+	 *              effect of label can be attained through the value attribute and
+	 *              tag body anyway.
+	 */
+	@Deprecated
+	@Override
+	public MediaWriter label() throws IOException {
+		return Attributes.Text.Label.super.label();
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @deprecated  Although still part of the HTML specification, there is a
+	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
+	 *              that the label attribute is not supported.  We are deprecating
+	 *              this method to make it clear it should probably not be used, as the
+	 *              effect of label can be attained through the value attribute and
+	 *              tag body anyway.
+	 */
+	@Deprecated
+	@Override
+	public <Ex extends Throwable> Option labelE(AttributeWriterE<Ex> label) throws IOException, Ex {
+		return Attributes.Text.Label.super.labelE(label);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @deprecated  Although still part of the HTML specification, there is a
+	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
+	 *              that the label attribute is not supported.  We are deprecating
+	 *              this method to make it clear it should probably not be used, as the
+	 *              effect of label can be attained through the value attribute and
+	 *              tag body anyway.
+	 */
+	@Deprecated
+	@Override
+	public Option label(AttributeWriter label) throws IOException {
+		return Attributes.Text.Label.super.label(label);
 	}
 
 	/**

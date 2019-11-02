@@ -29,6 +29,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * The type of serialization ({@link #SGML} or {@link #XML}).
+ *
  * @author  AO Industries, Inc.
  */
 public enum Serialization {

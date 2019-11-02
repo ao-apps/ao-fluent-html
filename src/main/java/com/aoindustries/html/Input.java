@@ -22,8 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.util.i18n.MarkupType;
@@ -37,7 +35,20 @@ import java.util.Map;
  *
  * @author  AO Industries, Inc.
  */
-public class Input extends EmptyElement<Input> {
+public class Input extends EmptyElement<Input> implements
+	Attributes.Boolean.Checked<Input>,
+	Attributes.Boolean.Disabled<Input>,
+	Attributes.Integer.Maxlength<Input>,
+	Attributes.Text.Name<Input>,
+	Attributes.Boolean.Readonly<Input>,
+	Attributes.Integer.Size<Input>,
+	Attributes.Url.Src<Script>,
+	Attributes.Text.Value<Input>,
+	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
+	Attributes.Integer.TabindexHtml4<Input>,
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Mouse.Events<Input>
+{
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
@@ -150,105 +161,11 @@ public class Input extends EmptyElement<Input> {
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_checked.asp">HTML input checked Attribute</a>.
-	 */
-	public Input checked(boolean checked) throws IOException {
-		if(checked) {
-			if(html.serialization == Serialization.SGML) {
-				html.out.write(" checked");
-			} else {
-				assert html.serialization == Serialization.XML;
-				html.out.write(" checked=\"checked\"");
-			}
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_disabled.asp">HTML input disabled Attribute</a>.
-	 */
-	public Input disabled(boolean disabled) throws IOException {
-		if(disabled) {
-			if(html.serialization == Serialization.SGML) {
-				html.out.write(" disabled");
-			} else {
-				assert html.serialization == Serialization.XML;
-				html.out.write(" disabled=\"disabled\"");
-			}
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_maxlength.asp">HTML input maxlength Attribute</a>.
-	 */
-	public Input maxlength(Integer maxlength) throws IOException {
-		if(maxlength != null) {
-			html.out.write(" maxlength=\"");
-			html.out.write(maxlength.toString());
-			html.out.write('"');
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_name.asp">HTML input name Attribute</a>.
-	 */
-	public Input name(Object name) throws IOException {
-		if(name != null) {
-			html.out.write(" name=\"");
-			Coercion.write(name, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_readonly.asp">HTML input readonly Attribute</a>.
-	 */
-	public Input readonly(boolean readonly) throws IOException {
-		if(readonly) {
-			if(html.serialization == Serialization.SGML) {
-				html.out.write(" readonly");
-			} else {
-				assert html.serialization == Serialization.XML;
-				html.out.write(" readonly=\"readonly\"");
-			}
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_size.asp">HTML input size Attribute</a>.
-	 */
-	public Input size(Integer size) throws IOException {
-		if(size != null) {
-			html.out.write(" size=\"");
-			html.out.write(size.toString());
-			html.out.write('"');
-		}
-		return this;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * When in input element, valid in all doctypes.
-	 */
-	@Override
-	public Input tabindex(Integer tabindex) throws IOException {
-		if(tabindex != null) {
-			html.out.write(" tabindex=\"");
-			html.out.write(tabindex.toString());
-			html.out.write('"');
-		}
-		return this;
-	}
-
-	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 *
 	 * @return  {@code this} when type unchanged, or an instance of {@link Input} for the given type.
 	 */
+	// TODO: Have enum-type in Attributes
 	public Input type(Type type) throws IOException {
 		if(type != null) {
 			Doctype requiredDoctype = type.getRequiredDoctype();
@@ -273,6 +190,7 @@ public class Input extends EmptyElement<Input> {
 	 *
 	 * @return  {@code this} when type unchanged, or an instance of {@link Input} for the given type.
 	 */
+	// TODO: Invert: Have enum call String version, to allow type extension by String
 	public Input type(String type) throws IOException {
 		if(type != null) {
 			type(Type.valueOfWithLower(type));
@@ -283,19 +201,48 @@ public class Input extends EmptyElement<Input> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 	 */
+	@Override
 	public Input value(Object value) throws IOException {
-		if(value != null) {
-			html.out.write(" value=\"");
+		return Attributes.Text.attribute(
+			this,
+			"value",
 			// Allow text markup from translations
-			Coercion.write(
-				value,
-				(type == null) ? null : type.getMarkupType(),
-				textInXhtmlAttributeEncoder,
-				false,
-				html.out
-			);
-			html.out.write('"');
-		}
-		return this;
+			(type == null) ? null : type.getMarkupType(),
+			value,
+			false,
+			true
+		);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+	 */
+	@Override
+	public <Ex extends Throwable> Input valueE(AttributeSupplierE<?,Ex> value) throws IOException, Ex {
+		return Attributes.Text.attributeE(
+			this,
+			"value",
+			// Allow text markup from translations
+			(type == null) ? null : type.getMarkupType(),
+			value,
+			false,
+			true
+		);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+	 */
+	@Override
+	public Input value(AttributeSupplier<?> value) throws IOException {
+		return Attributes.Text.attribute(
+			this,
+			"value",
+			// Allow text markup from translations
+			(type == null) ? null : type.getMarkupType(),
+			value,
+			false,
+			true
+		);
 	}
 }

@@ -36,7 +36,12 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Link extends EmptyElement<Link> {
+public class Link extends EmptyElement<Link> implements
+	Attributes.Url.Href<Link>,
+	Attributes.Text.Media<Link>,
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Mouse.Events<Link>
+{
 
 	public Link(Html html) {
 		super(html);
@@ -71,6 +76,7 @@ public class Link extends EmptyElement<Link> {
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 	 */
+	// TODO: Enum-based Attributes
 	public Link crossorigin(Crossorigin crossorigin) throws IOException {
 		if(crossorigin != null) {
 			if(html.serialization == Serialization.SGML) {
@@ -84,19 +90,6 @@ public class Link extends EmptyElement<Link> {
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_link_href.asp">HTML link href Attribute</a>.
-	 */
-	public Link href(Object href) throws IOException {
-		if(href != null) {
-			html.out.write(" href=\"");
-			// TODO: UrlInXhtmlAttributeEncoder once RFC 3987 supported
-			Coercion.write(href, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return this;
-	}
-
-	/**
 	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
 	 * <blockquote>
 	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
@@ -105,6 +98,7 @@ public class Link extends EmptyElement<Link> {
 	private Object itemprop;
 
 	// TODO: Is global property, move there and add See comment, still checking for link-specific rules here
+	// TODO: Attributes...itemprop
 	public Link itemprop(Object itemprop) throws IOException {
 		itemprop = Coercion.trimNullIfEmpty(itemprop);
 		if(itemprop != null) {
@@ -127,19 +121,6 @@ public class Link extends EmptyElement<Link> {
 			}
 			html.out.write(" itemprop=\"");
 			Coercion.write(itemprop, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_link_media.asp">HTML link media Attribute</a>.
-	 */
-	public Link media(Object media) throws IOException {
-		media = Coercion.trimNullIfEmpty(media);
-		if(media != null) {
-			html.out.write(" media=\"");
-			Coercion.write(media, textInXhtmlAttributeEncoder, html.out);
 			html.out.write('"');
 		}
 		return this;
@@ -192,6 +173,7 @@ public class Link extends EmptyElement<Link> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
+	// TODO: Attributes...rel
 	public Link rel(Object rel) throws IOException {
 		rel = Coercion.trimNullIfEmpty(rel);
 		if(rel != null) {
@@ -241,6 +223,7 @@ public class Link extends EmptyElement<Link> {
 	 *
 	 * See <a href="https://www.w3schools.com/tags/att_link_type.asp">HTML link type Attribute</a>.
 	 */
+	// TODO: Attributes...type
 	public Link type(String type) throws IOException {
 		type = StringUtility.trimNullIfEmpty(type);
 		this.type = type;

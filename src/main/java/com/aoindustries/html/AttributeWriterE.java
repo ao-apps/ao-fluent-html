@@ -22,25 +22,13 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.MediaWriter;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
- *
  * @author  AO Industries, Inc.
  */
-public class Br extends EmptyElement<Br>
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: Attributes.Event.Mouse.Events<Br>
-{
-
-	public Br(Html html) {
-		super(html);
-	}
-
-	@Override
-	protected Br open() throws IOException {
-		html.out.write("<br");
-		return this;
-	}
+// Java 1.8: @FunctionalInterface
+public interface AttributeWriterE<Ex extends Throwable> {
+	void writeAttribute(MediaWriter value) throws IOException, Ex;
 }

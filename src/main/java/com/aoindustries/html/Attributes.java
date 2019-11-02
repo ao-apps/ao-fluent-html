@@ -566,15 +566,6 @@ public class Attributes {
 
 		static <E extends Element<E>> E attribute(E element, String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
-				if(trim) {
-					if(nullIfEmpty) {
-						value = Coercion.trimNullIfEmpty(value);
-					} else {
-						value = Coercion.trim(value);
-					}
-				} else if(nullIfEmpty) {
-					value = Coercion.nullIfEmpty(value);
-				}
 				if(value instanceof AttributeSupplier<?>) return attribute(element, name, markupType, (AttributeSupplier<?>)value, trim, nullIfEmpty);
 				if(value instanceof AttributeSupplierE<?,?>) {
 					try {
@@ -599,6 +590,15 @@ public class Attributes {
 				element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
 				element.html.out.write(name);
 				element.html.out.write("=\"");
+				if(trim) {
+					if(nullIfEmpty) {
+						value = Coercion.trimNullIfEmpty(value);
+					} else {
+						value = Coercion.trim(value);
+					}
+				} else if(nullIfEmpty) {
+					value = Coercion.nullIfEmpty(value);
+				}
 				Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
 				element.html.out.write('"');
 			}

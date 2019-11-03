@@ -22,20 +22,13 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
-import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
 import com.aoindustries.encoding.MediaWriter;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import static com.aoindustries.html.ApplicationResources.accessor;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
-import com.aoindustries.util.WrappedException;
-import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
 /**
  * @author  AO Industries, Inc.
  */
-// Java 1.8: @FunctionalInterface
+@FunctionalInterface
 public interface AttributeWriter extends AttributeWriterE<RuntimeException> {
 	@Override
 	void writeAttribute(MediaWriter value) throws IOException;

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * @author  AO Industries, Inc.
  */
-// Java 1.8: @FunctionalInterface
+@FunctionalInterface
 public interface AttributeSupplierE<V,Ex extends Throwable> {
 	V get() throws IOException, Ex;
 }

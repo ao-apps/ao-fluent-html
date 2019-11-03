@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * @author  AO Industries, Inc.
  */
-// Java 1.8: @FunctionalInterface
+@FunctionalInterface
 public interface AttributeWriterE<Ex extends Throwable> {
 	void writeAttribute(MediaWriter value) throws IOException, Ex;
 }

@@ -27,7 +27,6 @@ import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.WrappedException;
@@ -193,7 +192,7 @@ public class Style extends Element<Style> implements
 		};
 	}
 
-	// Java 1.8: @FunctionalInterface
+	@FunctionalInterface
 	public static interface StyleWriterE<Ex extends Throwable> {
 		void writeStyle(MediaWriter style) throws IOException, Ex;
 	}
@@ -212,7 +211,7 @@ public class Style extends Element<Style> implements
 		return this;
 	}
 
-	// Java 1.8: @FunctionalInterface
+	@FunctionalInterface
 	public static interface StyleWriter extends StyleWriterE<RuntimeException> {
 		@Override
 		void writeStyle(MediaWriter style) throws IOException;

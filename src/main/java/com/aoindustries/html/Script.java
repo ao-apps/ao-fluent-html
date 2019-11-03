@@ -28,7 +28,6 @@ import com.aoindustries.encoding.MediaException;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.WrappedException;
 import java.io.IOException;
@@ -210,7 +209,7 @@ public class Script extends Element<Script> implements
 		};
 	}
 
-	// Java 1.8: @FunctionalInterface
+	@FunctionalInterface
 	public static interface ScriptWriterE<Ex extends Throwable> {
 		void writeScript(MediaWriter script) throws IOException, Ex;
 	}
@@ -229,7 +228,7 @@ public class Script extends Element<Script> implements
 		return this;
 	}
 
-	// Java 1.8: @FunctionalInterface
+	@FunctionalInterface
 	public static interface ScriptWriter extends ScriptWriterE<RuntimeException> {
 		@Override
 		void writeScript(MediaWriter script) throws IOException;

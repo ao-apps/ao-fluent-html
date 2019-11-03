@@ -29,6 +29,7 @@ import com.aoindustries.html.Doctype;
 import com.aoindustries.html.Html;
 import com.aoindustries.html.Link;
 import com.aoindustries.net.URIEncoder;
+import com.aoindustries.util.StringUtility;
 import java.io.IOException;
 
 /**
@@ -49,26 +50,24 @@ public class GoogleAnalytics {
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
 	public static void writeGlobalSiteTag(Html html, String trackingId) throws IOException {
+		trackingId = StringUtility.trimNullIfEmpty(trackingId);
 		if(trackingId != null) {
-			trackingId = trackingId.trim();
-			if(!trackingId.isEmpty()) {
-				// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
-				html.link().href("https://www.google-analytics.com").rel(Link.Rel.DNS_PREFETCH).__().nl();
-				html.link().href("https://www.google-analytics.com").rel(Link.Rel.PRECONNECT).crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
-				// + "<!-- Global site tag (gtag.js) - Google Analytics -->\n"
-				// TODO: Attribute streaming src
-				html.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trackingId)).__().nl();
-				try (MediaWriter script = html.script().out()) {
-					script.write("  window.dataLayer = window.dataLayer || [];\n"
-						+ "  function gtag(){dataLayer.push(arguments);}\n"
-						+ "  gtag(\"js\", new Date());\n"
-						// + "\n"
-						+ "  gtag(\"config\", \"");
-					encodeTextInJavaScript(trackingId, script);
-					script.write("\");\n");
-				}
-				html.nl();
+			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
+			html.link().href("https://www.google-analytics.com").rel(Link.Rel.DNS_PREFETCH).__().nl();
+			html.link().href("https://www.google-analytics.com").rel(Link.Rel.PRECONNECT).crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
+			// + "<!-- Global site tag (gtag.js) - Google Analytics -->\n"
+			// TODO: Attribute streaming src
+			html.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trackingId)).__().nl();
+			try (MediaWriter script = html.script().out()) {
+				script.write("  window.dataLayer = window.dataLayer || [];\n"
+					+ "  function gtag(){dataLayer.push(arguments);}\n"
+					+ "  gtag(\"js\", new Date());\n"
+					// + "\n"
+					+ "  gtag(\"config\", \"");
+				encodeTextInJavaScript(trackingId, script);
+				script.write("\");\n");
 			}
+			html.nl();
 		}
 	}
 
@@ -81,21 +80,19 @@ public class GoogleAnalytics {
 	 */
 	// TODO: Support hitType exception? https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
 	public static void writeAnalyticsJs(Html html, String trackingId) throws IOException {
+		trackingId = StringUtility.trimNullIfEmpty(trackingId);
 		if(trackingId != null) {
-			trackingId = trackingId.trim();
-			if(!trackingId.isEmpty()) {
-				try (MediaWriter script = html.script().out()) {
-					script.write("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){\n"
-						+ "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n"
-						+ "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n"
-						+ "})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");\n"
-						+ "ga(\"create\",\"");
-					encodeTextInJavaScript(trackingId, script);
-					script.write("\",\"auto\");\n"
-						+ "ga(\"send\",\"pageview\");\n");
-				}
-				html.nl();
+			try (MediaWriter script = html.script().out()) {
+				script.write("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){\n"
+					+ "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n"
+					+ "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n"
+					+ "})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");\n"
+					+ "ga(\"create\",\"");
+				encodeTextInJavaScript(trackingId, script);
+				script.write("\",\"auto\");\n"
+					+ "ga(\"send\",\"pageview\");\n");
 			}
+			html.nl();
 		}
 	}
 }

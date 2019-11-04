@@ -1141,11 +1141,23 @@ public class Attributes {
 		private String() {}
 
 		/**
-		 * @param value  If is {@link StringSupplier#NO_VALUE} (by identity), will write empty attribute.
+		 * Special value used in-place of return values that should result in an empty
+		 * attribute (expected on {@link Serialization#SGML} only).
+		 * This distinguishes from a return value of {@code null}, which causes the
+		 * attribute to not be added at all.
+		 * <p>
+		 * In order to never conflict with an actual attribute value, this string is
+		 * compared by identity, not by value.
+		 * </p>
+		 */
+		public static final java.lang.String NO_VALUE = new java.lang.String("<<<NO_VALUE>>>"); // Use string constructor to ensure unique instance for identity comparisons
+
+		/**
+		 * @param value  If is {@link #NO_VALUE} (by identity), will write empty attribute.
 		 */
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
-				if(value == StringSupplier.NO_VALUE) { // Identity comparison for marker value
+				if(value == NO_VALUE) { // Identity comparison for marker value
 					// Empty attribute
 					element.html.out.write(' ');
 					element.html.out.write(name);

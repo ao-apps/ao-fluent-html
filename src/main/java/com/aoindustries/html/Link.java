@@ -60,7 +60,7 @@ public class Link extends EmptyElement<Link> implements
 	 */
 	public enum Crossorigin implements StringSupplier<RuntimeException> {
 		ANONYMOUS(
-			NO_VALUE,
+			Attributes.String.NO_VALUE,
 			"anonymous"
 		),
 		USE_CREDENTIALS(

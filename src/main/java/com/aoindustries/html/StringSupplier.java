@@ -33,19 +33,7 @@ import java.io.IOException;
 public interface StringSupplier<Ex extends Throwable> extends Supplier<String,Ex> {
 
 	/**
-	 * Special value used in-place of return values that should result in an empty
-	 * attribute (expected on {@link Serialization#SGML} only).
-	 * This distinguishes from a return value of {@code null}, which causes the
-	 * attribute to not be added at all.
-	 * <p>
-	 * In order to never conflict with an actual attribute value, this string is
-	 * compared by identity, not by value.
-	 * </p>
-	 */
-	String NO_VALUE = new String("<<<NO_VALUE>>>"); // Use string constructor to ensure unique instance for identity comparisons
-
-	/**
-	 * @return  The value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+	 * @return  The value, {@link Attributes.String#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 	 */
 	@Override
 	String get(Serialization serialization, Doctype doctype) throws IOException, Ex;

@@ -33,6 +33,10 @@ import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * See <a href="https://www.w3schools.com/tags/ref_attributes.asp">HTML Attributes</a>.
@@ -44,6 +48,21 @@ public class Attributes {
 
 	/** Make no instances. */
 	private Attributes() {}
+
+	/**
+	 * Marks a method as being an attribute funnel to aid in implementation.
+	 * A funnel is one of the methods that directly implements the attribute.
+	 * Non-funnel methods must call directly, or indirectly, funnel methods.
+	 * All funnel methods must be marked with this annotation.
+	 * <p>
+	 * When implementations need to override behavior, such as recording values
+	 * or checking preconditions, only the funnel methods need to be overridden.
+	 * </p>
+	 */
+	@Retention(RetentionPolicy.SOURCE)
+	@Target(ElementType.METHOD)
+	static @interface Funnel {
+	}
 
 	/**
 	 * See <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes">2.4.2 Boolean attributes</a>.
@@ -68,22 +87,6 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.Boolean value) throws IOException {
-			if(value) {
-				return attribute(element, name, value.booleanValue());
-			} else {
-				return element;
-			}
-		}
-
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, BooleanSupplierE<Ex> value) throws IOException, Ex {
-			return attribute(element, name, (value == null) ? null : value.get(element.html.serialization, element.html.doctype));
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, BooleanSupplier value) throws IOException {
-			return attributeE(element, name, value);
-		}
-
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 		 */
@@ -92,6 +95,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
+			@Funnel
 			default E async(boolean async) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "async", async);
@@ -101,8 +105,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
 			default E async(java.lang.Boolean async) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "async", async);
+				return async(async != null && async);
 			}
 
 			/**
@@ -110,15 +113,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E asyncE(BooleanSupplierE<Ex> async) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "async", async);
+				return async((async == null) ? null : async.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
 			default E async(BooleanSupplier async) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "async", async);
+				return asyncE(async);
 			}
 		}
 
@@ -130,6 +132,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
+			@Funnel
 			default E checked(boolean checked) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "checked", checked);
@@ -139,8 +142,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
 			default E checked(java.lang.Boolean checked) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "checked", checked);
+				return checked(checked != null && checked);
 			}
 
 			/**
@@ -148,15 +150,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E checkedE(BooleanSupplierE<Ex> checked) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "checked", checked);
+				return checked((checked == null) ? null : checked.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
 			default E checked(BooleanSupplier checked) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "checked", checked);
+				return checkedE(checked);
 			}
 		}
 
@@ -168,6 +169,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
+			@Funnel
 			default E defer(boolean defer) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "defer", defer);
@@ -177,8 +179,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
 			default E defer(java.lang.Boolean defer) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "defer", defer);
+				return defer(defer != null && defer);
 			}
 
 			/**
@@ -186,15 +187,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E deferE(BooleanSupplierE<Ex> defer) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "defer", defer);
+				return defer((defer == null) ? null : defer.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
 			default E defer(BooleanSupplier defer) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "defer", defer);
+				return deferE(defer);
 			}
 		}
 
@@ -206,6 +206,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
+			@Funnel
 			default E disabled(boolean disabled) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "disabled", disabled);
@@ -215,8 +216,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
 			default E disabled(java.lang.Boolean disabled) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "disabled", disabled);
+				return disabled(disabled != null && disabled);
 			}
 
 			/**
@@ -224,15 +224,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E disabledE(BooleanSupplierE<Ex> disabled) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "disabled", disabled);
+				return disabled((disabled == null) ? null : disabled.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
 			default E disabled(BooleanSupplier disabled) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "disabled", disabled);
+				return disabledE(disabled);
 			}
 		}
 
@@ -250,6 +249,7 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
+			@Funnel
 			default E noshade(boolean noshade) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
@@ -269,15 +269,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			default E noshade(java.lang.Boolean noshade) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.notSupportedInHtml5",
-						"noshade"
-					);
-				}
-				return attribute(element, "noshade", noshade);
+				return noshade(noshade != null && noshade);
 			}
 
 			/**
@@ -288,14 +280,7 @@ public class Attributes {
 			@Deprecated
 			default <Ex extends Throwable> E noshadeE(BooleanSupplierE<Ex> noshade) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.notSupportedInHtml5",
-						"noshade"
-					);
-				}
-				return attributeE(element, "noshade", noshade);
+				return noshade((noshade == null) ? null : noshade.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -305,15 +290,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			default E noshade(BooleanSupplier noshade) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.notSupportedInHtml5",
-						"noshade"
-					);
-				}
-				return attribute(element, "noshade", noshade);
+				return noshadeE(noshade);
 			}
 		}
 
@@ -325,6 +302,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
+			@Funnel
 			default E readonly(boolean readonly) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "readonly", readonly);
@@ -334,8 +312,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
 			default E readonly(java.lang.Boolean readonly) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "readonly", readonly);
+				return readonly(readonly != null && readonly);
 			}
 
 			/**
@@ -343,15 +320,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E readonlyE(BooleanSupplierE<Ex> readonly) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "readonly", readonly);
+				return readonly((readonly == null) ? null : readonly.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
 			default E readonly(BooleanSupplier readonly) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "readonly", readonly);
+				return readonlyE(readonly);
 			}
 		}
 
@@ -363,6 +339,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
+			@Funnel
 			default E selected(boolean selected) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "selected", selected);
@@ -372,8 +349,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
 			default E selected(java.lang.Boolean selected) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "selected", selected);
+				return selected(selected != null && selected);
 			}
 
 			/**
@@ -381,15 +357,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E selectedE(BooleanSupplierE<Ex> selected) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "selected", selected);
+				return selected((selected == null) ? null : selected.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
 			default E selected(BooleanSupplier selected) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "selected", selected);
+				return selectedE(selected);
 			}
 		}
 	}
@@ -414,14 +389,6 @@ public class Attributes {
 			return Integer.attribute(element, name, pixels);
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, IntegerSupplierE<Ex> pixels) throws IOException, Ex {
-			return Integer.attributeE(element, name, pixels);
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, IntegerSupplier pixels) throws IOException {
-			return Integer.attribute(element, name, pixels);
-		}
-
 		/**
 		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 		 */
@@ -439,22 +406,6 @@ public class Attributes {
 		}
 
 		/**
-		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
-		 */
-		@Deprecated
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, StringSupplierE<Ex> pixelsOrPercent) throws IOException, Ex {
-			return attribute(element, name, (pixelsOrPercent == null) ? null : pixelsOrPercent.get(element.html.serialization, element.html.doctype));
-		}
-
-		/**
-		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
-		 */
-		@Deprecated
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, StringSupplier pixelsOrPercent) throws IOException {
-			return attributeE(element, name, pixelsOrPercent);
-		}
-
-		/**
 		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 		 */
 		public static interface Width<E extends Element<E> & Width<E>> {
@@ -462,6 +413,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
+			@Funnel
 			default E width(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "width", pixels);
@@ -470,6 +422,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
+			@Funnel
 			default E width(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "width", pixels);
@@ -480,15 +433,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E widthE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "width", pixels);
+				return width((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
 			default E width(IntegerSupplier pixels) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "width", pixels);
+				return widthE(pixels);
 			}
 
 			/**
@@ -497,6 +449,7 @@ public class Attributes {
 			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 			 */
 			@Deprecated
+			@Funnel
 			default E width(java.lang.String pixelsOrPercent) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "width", pixelsOrPercent);
@@ -510,7 +463,7 @@ public class Attributes {
 			@Deprecated
 			default <Ex extends Throwable> E widthE(StringSupplierE<Ex> pixelsOrPercent) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "width", pixelsOrPercent);
+				return width((pixelsOrPercent == null) ? null : pixelsOrPercent.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -520,11 +473,12 @@ public class Attributes {
 			 */
 			@Deprecated
 			default E width(StringSupplier pixelsOrPercent) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "width", pixelsOrPercent);
+				return widthE(pixelsOrPercent);
 			}
 		}
 	}
+
+	// TODO: Funnel from here
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">HTML Event Attributes</a>.
@@ -826,14 +780,6 @@ public class Attributes {
 			}
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, IntegerSupplierE<Ex> value) throws IOException, Ex {
-			return attribute(element, name, (value == null) ? (java.lang.Integer)null : value.get(element.html.serialization, element.html.doctype));
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, IntegerSupplier value) throws IOException {
-			return attributeE(element, name, value);
-		}
-
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 		 */
@@ -860,15 +806,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E heightE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "height", pixels);
+				return height((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
 			default E height(IntegerSupplier pixels) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "height", pixels);
+				return heightE(pixels);
 			}
 		}
 
@@ -984,15 +929,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E maxlengthE(IntegerSupplierE<Ex> maxlength) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "maxlength", maxlength);
+				return maxlength((maxlength == null) ? null : maxlength.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
 			default E maxlength(IntegerSupplier maxlength) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "maxlength", maxlength);
+				return maxlengthE(maxlength);
 			}
 		}
 
@@ -1022,15 +966,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E sizeE(IntegerSupplierE<Ex> size) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "size", size);
+				return size((size == null) ? null : size.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
 			default E size(IntegerSupplier size) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "size", size);
+				return sizeE(size);
 			}
 		}
 
@@ -1173,15 +1116,7 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E tabindexE(IntegerSupplierE<Ex> tabindex) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.invalidGlobalAttributeForDoctype",
-						element.html.doctype,
-						"tabindex"
-					);
-				}
-				return attributeE(element, "tabindex", tabindex);
+				return tabindex((tabindex == null) ? null : tabindex.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -1191,16 +1126,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E tabindex(IntegerSupplier tabindex) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.invalidGlobalAttributeForDoctype",
-						element.html.doctype,
-						"tabindex"
-					);
-				}
-				return attribute(element, "tabindex", tabindex);
+				return tabindexE(tabindex);
 			}
 		}
 
@@ -1245,7 +1171,7 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E tabindexE(IntegerSupplierE<Ex> tabindex) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "tabindex", tabindex);
+				return tabindex((tabindex == null) ? null : tabindex.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -1256,8 +1182,7 @@ public class Attributes {
 			 */
 			@Override
 			default E tabindex(IntegerSupplier tabindex) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "tabindex", tabindex);
+				return tabindexE(tabindex);
 			}
 		}
 
@@ -1287,15 +1212,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E widthE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "width", pixels);
+				return width((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
 			default E width(IntegerSupplier pixels) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "width", pixels);
+				return widthE(pixels);
 			}
 		}
 

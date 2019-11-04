@@ -33,7 +33,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2019-10-28T22:31:34-0500"
+		dateModified="2019-11-04T09:31:29-0600"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -74,7 +74,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		</section:section>
 		<section:section label="Features">
 			<ul>
-				<li>Supports both HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.</li>
+				<li>Supports HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.</li>
 				<li>Supports both SGML and XML serializations.</li>
 				<li>Fluent API.</li>
 				<li>Integrates with AO in-context translation tools.</li>

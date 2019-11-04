@@ -40,7 +40,7 @@ support HTML 5, and now is a good time to clean this up without radically
 rewriting everything.
 
 ## Features
-* Supports both HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.
+* Supports HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.
 * Supports both SGML and XML serializations.
 * Fluent API.
 * Integrates with AO in-context translation tools.

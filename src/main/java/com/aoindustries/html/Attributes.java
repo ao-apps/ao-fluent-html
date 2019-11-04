@@ -24,13 +24,12 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
 import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
+import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
-import com.aoindustries.util.StringUtility;
-import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.lang.annotation.ElementType;
@@ -316,7 +315,6 @@ public class Attributes {
 	 * Supports Integer length or percentage of parent (HTML 4-only).
 	 * </p>
 	 */
-	// TODO: Extend both Integer and String types?
 	public static class Dimension {
 
 		/** Make no instances. */
@@ -335,15 +333,7 @@ public class Attributes {
 		 */
 		@Deprecated
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.String pixelsOrPercent) throws IOException {
-			pixelsOrPercent = StringUtility.trimNullIfEmpty(pixelsOrPercent);
-			if(pixelsOrPercent != null) {
-				element.html.out.write(' ');
-				element.html.out.write(name);
-				element.html.out.write("=\"");
-				encodeTextInXhtmlAttribute(pixelsOrPercent, element.html.out);
-				element.html.out.write('"');
-			}
-			return element;
+			return String.attribute(element, name, MarkupType.NONE, pixelsOrPercent, true, true);
 		}
 
 		/**
@@ -411,33 +401,7 @@ public class Attributes {
 		private Event() {}
 
 		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
-			while(script instanceof Supplier<?,?>) {
-				@SuppressWarnings("unchecked")
-				Supplier<?,Ex> supplier = (Supplier<?,Ex>)script;
-				script = supplier.get();
-			}
-			if(script != null) {
-				element.html.out.write(' ');
-				element.html.out.write(name);
-				element.html.out.write("=\"");
-				if(script instanceof AttributeWriter<?>) {
-					@SuppressWarnings("unchecked")
-					AttributeWriter<Ex> writer = (AttributeWriter<Ex>)script;
-					writer.writeAttribute(
-						new MediaWriter(javaScriptInXhtmlAttributeEncoder, element.html.out) {
-							@Override
-							public void close() throws IOException {
-								// Do not close underlying writer
-							}
-						}
-					);
-				} else {
-					// TODO: Find more places where we can do javascript markups (ao-taglib...)
-					Coercion.write(script, MarkupType.JAVASCRIPT, javaScriptInXhtmlAttributeEncoder, false, element.html.out);
-				}
-				element.html.out.write('"');
-			}
-			return element;
+			return Text.attribute(element, name, MarkupType.JAVASCRIPT, script, true, true, javaScriptInXhtmlAttributeEncoder);
 		}
 
 		public static class Mouse {
@@ -1180,7 +1144,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Text() {}
 
-		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
+		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			while(value instanceof Supplier<?,?>) {
 				@SuppressWarnings("unchecked")
 				Supplier<?,Ex> supplier = (Supplier<?,Ex>)value;
@@ -1194,7 +1158,7 @@ public class Attributes {
 					element.html.out.write(name);
 					element.html.out.write("=\"");
 					writer.writeAttribute(
-						new MediaWriter(textInXhtmlAttributeEncoder, element.html.out) {
+						new MediaWriter(encoder, element.html.out) {
 							@Override
 							public void close() throws IOException {
 								// Do not close underlying writer
@@ -1216,7 +1180,7 @@ public class Attributes {
 						element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
 						element.html.out.write(name);
 						element.html.out.write("=\"");
-						Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+						Coercion.write(value, markupType, encoder, false, element.html.out);
 						element.html.out.write('"');
 					}
 				}
@@ -1241,7 +1205,7 @@ public class Attributes {
 			@Funnel
 			default E clazz(Object clazz) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "class", MarkupType.NONE, clazz, true, true);
+				return attribute(element, "class", MarkupType.NONE, clazz, true, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1352,7 +1316,7 @@ public class Attributes {
 			@Funnel
 			default E id(Object id) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "id", MarkupType.NONE, id, true, true);
+				return attribute(element, "id", MarkupType.NONE, id, true, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1457,7 +1421,7 @@ public class Attributes {
 			@Funnel
 			default E label(Object label) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "label", MarkupType.TEXT, label, false, false);
+				return attribute(element, "label", MarkupType.TEXT, label, false, false, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1487,7 +1451,7 @@ public class Attributes {
 			@Funnel
 			default E media(Object media) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "media", MarkupType.NONE, media, true, true);
+				return attribute(element, "media", MarkupType.NONE, media, true, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1516,7 +1480,7 @@ public class Attributes {
 			@Funnel
 			default E name(Object name) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "name", MarkupType.NONE, name, false, true);
+				return attribute(element, "name", MarkupType.NONE, name, false, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1553,7 +1517,7 @@ public class Attributes {
 			default E style(Object style) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				// TODO: MarkupType.CSS
-				return attribute(element, "style", MarkupType.JAVASCRIPT, style, true, true);
+				return attribute(element, "style", MarkupType.JAVASCRIPT, style, true, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1664,7 +1628,7 @@ public class Attributes {
 			@Funnel
 			default E title(Object title) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "title", MarkupType.TEXT, title, true, true);
+				return attribute(element, "title", MarkupType.TEXT, title, true, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**
@@ -1769,7 +1733,7 @@ public class Attributes {
 			@Funnel
 			default E value(Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value", MarkupType.NONE, value, false, true);
+				return attribute(element, "value", MarkupType.NONE, value, false, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**

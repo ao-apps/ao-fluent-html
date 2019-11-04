@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.util.i18n.MarkupType;
@@ -264,7 +265,8 @@ public class Input extends EmptyElement<Input> implements
 			(type == null) ? null : type.getMarkupType(),
 			value,
 			false,
-			true
+			true,
+			textInXhtmlAttributeEncoder
 		);
 	}
 }

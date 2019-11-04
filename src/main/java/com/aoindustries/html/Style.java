@@ -136,12 +136,16 @@ public class Style extends Element<Style> implements
 		return textInXhtmlEncoder;
 	}
 
+	protected boolean doCdata() {
+		return html.serialization == Serialization.XML;
+	}
+
 	private boolean didBody;
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
 			html.out.write('>');
-			cdata.start();
+			if(doCdata()) html.out.write("/*<![CDATA[*/\n");
 			didBody = true;
 		}
 	}
@@ -210,30 +214,13 @@ public class Style extends Element<Style> implements
 		return this;
 	}
 
-	// TODO: Hide cdata?
-	public class Cdata {
-		public Style start() throws IOException {
-			if(html.serialization == Serialization.XML) {
-				html.out.write("/*<![CDATA[*/\n");
-			}
-			return Style.this;
-		}
-		public Style end() throws IOException {
-			if(html.serialization == Serialization.XML) {
-				html.out.write("/*]]>*/");
-			}
-			return Style.this;
-		}
-	}
-	public final Cdata cdata = new Cdata();
-
 	public Html __() throws IOException {
 		if(!didBody) {
 			html.out.write("></style>");
 		} else {
 			// TODO: Track what was written and avoid unnecessary newline?
 			html.nl();
-			cdata.end();
+			if(doCdata()) html.out.write("/*]]>*/");
 			html.out.write("</style>");
 		}
 		return html;

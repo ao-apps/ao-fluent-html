@@ -162,12 +162,21 @@ public class Script extends Element<Script> implements
 		}
 	}
 
+	protected boolean doCdata() {
+		return
+			html.serialization == Serialization.XML
+			&& (
+				Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
+				|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
+			);
+	}
+
 	private boolean didBody;
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
 			html.out.write('>');
-			cdata.start();
+			if(doCdata()) html.out.write("//<![CDATA[\n");
 			didBody = true;
 		}
 	}
@@ -227,42 +236,13 @@ public class Script extends Element<Script> implements
 		return this;
 	}
 
-	// TODO: Hide cdata?
-	public class Cdata {
-		public Script start() throws IOException {
-			if(
-				html.serialization == Serialization.XML
-				&& (
-					Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
-					|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
-				)
-			) {
-				html.out.write("//<![CDATA[\n");
-			}
-			return Script.this;
-		}
-		public Script end() throws IOException {
-			if(
-				html.serialization == Serialization.XML
-				&& (
-					Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
-					|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
-				)
-			) {
-				html.out.write("//]]>");
-			}
-			return Script.this;
-		}
-	}
-	public final Cdata cdata = new Cdata();
-
 	public Html __() throws IOException {
 		if(!didBody) {
 			html.out.write("></script>");
 		} else {
 			// TODO: Track what was written and avoid unnecessary newline?
 			html.nl();
-			cdata.end();
+			if(doCdata()) html.out.write("//]]>");
 			html.out.write("</script>");
 		}
 		return html;

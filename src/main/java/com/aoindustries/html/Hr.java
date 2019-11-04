@@ -56,8 +56,20 @@ public class Hr extends EmptyElement<Hr> implements
 	 */
 	@Deprecated
 	public enum Align implements StringSupplier<RuntimeException> {
+
+		/**
+		 * Left-aligns the horizontal line
+		 */
 		LEFT("left"),
+
+		/**
+		 * Center-aligns the horizontal line (this is default)
+		 */
 		CENTER("center"),
+
+		/**
+		 * Right-aligns the horizontal line
+		 */
 		RIGHT("right");
 
 		private final java.lang.String value;

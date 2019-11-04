@@ -171,10 +171,30 @@ public class Input extends EmptyElement<Input> implements
 	 */
 	@Deprecated
 	public enum Align implements StringSupplier<RuntimeException> {
+
+		/**
+		 * Left-aligns the image (this is default)
+		 */
 		LEFT("left"),
+
+		/**
+		 * Right-aligns the image
+		 */
 		RIGHT("right"),
+
+		/**
+		 * Top-aligns the image
+		 */
 		TOP("top"),
+
+		/**
+		 * Middle-aligns the image
+		 */
 		MIDDLE("middle"),
+
+		/**
+		 * Bottom-aligns the image
+		 */
 		BOTTOM("bottom");
 
 		private final java.lang.String value;

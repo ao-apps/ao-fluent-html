@@ -726,6 +726,134 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+		 */
+		public static interface Height<E extends Element<E> & Height<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E height(int pixels) throws IOException {
+				return attribute((E)this, "height", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E height(java.lang.Integer pixels) throws IOException {
+				return attribute((E)this, "height", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E heightE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+				return attributeE((E)this, "height", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E height(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+				return attribute((E)this, "height", pixels);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+		 */
+		public static interface HeightHtml5Only<E extends Element<E> & HeightHtml5Only<E>> extends Height<E> {
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The height attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default E height(int pixels) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"height"
+					);
+				}
+				return Height.super.height(pixels);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The height attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default E height(java.lang.Integer pixels) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"height"
+					);
+				}
+				return Height.super.height(pixels);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The height attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E heightE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"height"
+					);
+				}
+				return Height.super.heightE(pixels);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The height attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default E height(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"height"
+					);
+				}
+				return Height.super.height(pixels);
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 		 */
 		public static interface Maxlength<E extends Element<E> & Maxlength<E>> {
@@ -1033,6 +1161,135 @@ public class Attributes {
 			@SuppressWarnings("unchecked")
 			default E tabindex(AttributeSupplier<? extends java.lang.Integer> tabindex) throws IOException {
 				return attribute((E)this, "tabindex", tabindex);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+		 */
+		public static interface Width<E extends Element<E> & Width<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E width(int pixels) throws IOException {
+				return attribute((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E width(java.lang.Integer pixels) throws IOException {
+				return attribute((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E widthE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+				return attributeE((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E width(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+				return attribute((E)this, "width", pixels);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+		 */
+		// TODO: inheritDoc works here?  Use here and other if so
+		public static interface WidthHtml5Only<E extends Element<E> & WidthHtml5Only<E>> extends Width<E> {
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The width attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default E width(int pixels) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"width"
+					);
+				}
+				return Width.super.width(pixels);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The width attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default E width(java.lang.Integer pixels) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"width"
+					);
+				}
+				return Width.super.width(pixels);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The width attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E widthE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"width"
+					);
+				}
+				return Width.super.widthE(pixels);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 * <p>
+			 * The width attribute is new in HTML5.
+			 * </p>
+			 */
+			@Override
+			@SuppressWarnings("unchecked")
+			default E width(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"width"
+					);
+				}
+				return Width.super.width(pixels);
 			}
 		}
 	}

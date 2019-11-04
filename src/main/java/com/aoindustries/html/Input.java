@@ -38,12 +38,14 @@ import java.util.Map;
 public class Input extends EmptyElement<Input> implements
 	Attributes.Boolean.Checked<Input>,
 	Attributes.Boolean.Disabled<Input>,
+	Attributes.Integer.HeightHtml5Only<Input>,
 	Attributes.Integer.Maxlength<Input>,
 	Attributes.Text.Name<Input>,
 	Attributes.Boolean.Readonly<Input>,
 	Attributes.Integer.Size<Input>,
 	Attributes.Url.Src<Script>,
 	Attributes.Text.Value<Input>,
+	Attributes.Integer.WidthHtml5Only<Input>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Integer.TabindexHtml4<Input>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp

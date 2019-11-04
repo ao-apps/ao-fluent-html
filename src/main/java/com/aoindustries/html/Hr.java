@@ -29,7 +29,12 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Hr extends EmptyElement<Hr> implements 
+@SuppressWarnings("deprecation")
+public class Hr extends EmptyElement<Hr> implements
+	// TODO: align
+	Attributes.Boolean.Noshade<Hr>,
+	Attributes.Integer.SizeHtml4Only<Hr>,
+	Attributes.Dimension.Width<Hr>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.Mouse.Events<Hr>
 {

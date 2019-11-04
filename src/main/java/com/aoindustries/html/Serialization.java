@@ -45,6 +45,7 @@ public enum Serialization {
 			return ">";
 		}
 
+		// Override to write single character instead of string
 		@Override
 		public Serialization selfClose(Appendable out) throws IOException {
 			out.append('>');
@@ -103,8 +104,8 @@ public enum Serialization {
 				hasAcceptHeader = true;
 				for(String value : StringUtility.splitString(acceptHeaderValues.next(), ',')) {
 					value = value.trim();
-					final List<String> params = StringUtility.splitString(value, ';');
-					final int paramsSize = params.size();
+					List<String> params = StringUtility.splitString(value, ';');
+					int paramsSize = params.size();
 					if(paramsSize > 0) {
 						String acceptType = params.get(0).trim();
 						if(acceptType.equals("*/*")) {
@@ -159,8 +160,8 @@ public enum Serialization {
 		return select(acceptHeaderValues.iterator());
 	}
 
-	public static Serialization select(final Enumeration<? extends String> acceptHeaderValues) {
-		// TODO: commons-collections EnumerationIterator?
+	public static Serialization select(Enumeration<? extends String> acceptHeaderValues) {
+		// TODO: commons-collections EnumerationIterator?  Worth adding dependency for one method?
 		return select(
 			new Iterator<String>() {
 				@Override

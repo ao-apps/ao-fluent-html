@@ -89,21 +89,33 @@ public class Attributes {
 		 */
 		public static interface Async<E extends Element<E> & Async<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E async(boolean async) throws IOException {
 				return attribute((E)this, "async", async);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E async(java.lang.Boolean async) throws IOException {
 				return attribute((E)this, "async", async);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E asyncE(AttributeSupplierE<? extends java.lang.Boolean,Ex> async) throws IOException, Ex {
 				return attributeE((E)this, "async", async);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E async(AttributeSupplier<? extends java.lang.Boolean> async) throws IOException {
 				return attribute((E)this, "async", async);
@@ -115,21 +127,33 @@ public class Attributes {
 		 */
 		public static interface Checked<E extends Element<E> & Checked<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E checked(boolean checked) throws IOException {
 				return attribute((E)this, "checked", checked);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E checked(java.lang.Boolean checked) throws IOException {
 				return attribute((E)this, "checked", checked);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E checkedE(AttributeSupplierE<? extends java.lang.Boolean,Ex> checked) throws IOException, Ex {
 				return attributeE((E)this, "checked", checked);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E checked(AttributeSupplier<? extends java.lang.Boolean> checked) throws IOException {
 				return attribute((E)this, "checked", checked);
@@ -141,21 +165,33 @@ public class Attributes {
 		 */
 		public static interface Defer<E extends Element<E> & Defer<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E defer(boolean defer) throws IOException {
 				return attribute((E)this, "defer", defer);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E defer(java.lang.Boolean defer) throws IOException {
 				return attribute((E)this, "defer", defer);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E deferE(AttributeSupplierE<? extends java.lang.Boolean,Ex> defer) throws IOException, Ex {
 				return attributeE((E)this, "defer", defer);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E defer(AttributeSupplier<? extends java.lang.Boolean> defer) throws IOException {
 				return attribute((E)this, "defer", defer);
@@ -167,24 +203,121 @@ public class Attributes {
 		 */
 		public static interface Disabled<E extends Element<E> & Disabled<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E disabled(boolean disabled) throws IOException {
 				return attribute((E)this, "disabled", disabled);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E disabled(java.lang.Boolean disabled) throws IOException {
 				return attribute((E)this, "disabled", disabled);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E disabledE(AttributeSupplierE<? extends java.lang.Boolean,Ex> disabled) throws IOException, Ex {
 				return attributeE((E)this, "disabled", disabled);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E disabled(AttributeSupplier<? extends java.lang.Boolean> disabled) throws IOException {
 				return attribute((E)this, "disabled", disabled);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+		 *
+		 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
+		 */
+		@Deprecated
+		public static interface Noshade<E extends Element<E> & Noshade<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+			 *
+			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default E noshade(boolean noshade) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"noshade"
+					);
+				}
+				return attribute(element, "noshade", noshade);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+			 *
+			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default E noshade(java.lang.Boolean noshade) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"noshade"
+					);
+				}
+				return attribute(element, "noshade", noshade);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+			 *
+			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E noshadeE(AttributeSupplierE<? extends java.lang.Boolean,Ex> noshade) throws IOException, Ex {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"noshade"
+					);
+				}
+				return attributeE(element, "noshade", noshade);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+			 *
+			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default E noshade(AttributeSupplier<? extends java.lang.Boolean> noshade) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"noshade"
+					);
+				}
+				return attribute(element, "noshade", noshade);
 			}
 		}
 
@@ -193,21 +326,33 @@ public class Attributes {
 		 */
 		public static interface Readonly<E extends Element<E> & Readonly<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E readonly(boolean readonly) throws IOException {
 				return attribute((E)this, "readonly", readonly);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E readonly(java.lang.Boolean readonly) throws IOException {
 				return attribute((E)this, "readonly", readonly);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E readonlyE(AttributeSupplierE<? extends java.lang.Boolean,Ex> readonly) throws IOException, Ex {
 				return attributeE((E)this, "readonly", readonly);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E readonly(AttributeSupplier<? extends java.lang.Boolean> readonly) throws IOException {
 				return attribute((E)this, "readonly", readonly);
@@ -219,24 +364,181 @@ public class Attributes {
 		 */
 		public static interface Selected<E extends Element<E> & Selected<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E selected(boolean selected) throws IOException {
 				return attribute((E)this, "selected", selected);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E selected(java.lang.Boolean selected) throws IOException {
 				return attribute((E)this, "selected", selected);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E selectedE(AttributeSupplierE<? extends java.lang.Boolean,Ex> selected) throws IOException, Ex {
 				return attributeE((E)this, "selected", selected);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E selected(AttributeSupplier<? extends java.lang.Boolean> selected) throws IOException {
 				return attribute((E)this, "selected", selected);
+			}
+		}
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#percentages-and-dimensions">2.4.4.4 Percentages and lengths</a>.
+	 * <p>
+	 * Supports Integer length or percentage of parent (HTML 4-only).
+	 * </p>
+	 */
+	public static class Dimension {
+
+		/** Make no instances. */
+		private Dimension() {}
+
+		static <E extends Element<E>> E attribute(E element, String name, int pixels) throws IOException {
+			return Integer.attribute(element, name, pixels);
+		}
+
+		static <E extends Element<E>> E attribute(E element, String name, java.lang.Integer pixels) throws IOException {
+			return Integer.attribute(element, name, pixels);
+		}
+
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			return Integer.attributeE(element, name, pixels);
+		}
+
+		static <E extends Element<E>> E attribute(E element, String name, AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+			return Integer.attribute(element, name, pixels);
+		}
+
+		/**
+		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+		 */
+		@Deprecated
+		static <E extends Element<E>> E attributePP(E element, String name, Object pixelsOrPercent) throws IOException {
+			if(pixelsOrPercent != null) {
+				if(pixelsOrPercent instanceof java.lang.Integer) return attribute(element, name, (java.lang.Integer)pixelsOrPercent);
+				if(pixelsOrPercent instanceof AttributeSupplier<?>) return attributePP(element, name, (AttributeSupplier<?>)pixelsOrPercent);
+				if(pixelsOrPercent instanceof AttributeSupplierE<?,?>) {
+					try {
+						return attributePPE(element, name, (AttributeSupplierE<?,?>)pixelsOrPercent);
+					} catch(Error|RuntimeException|IOException e) {
+						throw e;
+					} catch(Throwable t) {
+						throw new WrappedException(t);
+					}
+				}
+				pixelsOrPercent = Coercion.trimNullIfEmpty(pixelsOrPercent);
+				if(pixelsOrPercent != null) {
+					// TODO: Validate attribute name?
+					element.html.out.write(' ');
+					element.html.out.write(name);
+					element.html.out.write("=\"");
+					Coercion.write(pixelsOrPercent, textInXhtmlAttributeEncoder, element.html.out);
+					element.html.out.write('"');
+				}
+			}
+			return element;
+		}
+
+		/**
+		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+		 */
+		@Deprecated
+		static <E extends Element<E>,Ex extends Throwable> E attributePPE(E element, String name, AttributeSupplierE<?,Ex> pixelsOrPercent) throws IOException, Ex {
+			return attributePP(element, name, (pixelsOrPercent == null) ? null : pixelsOrPercent.get());
+		}
+
+		/**
+		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+		 */
+		@Deprecated
+		static <E extends Element<E>> E attributePP(E element, String name, AttributeSupplier<?> pixelsOrPercent) throws IOException {
+			return attributePPE(element, name, pixelsOrPercent);
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+		 */
+		public static interface Width<E extends Element<E> & Width<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E width(int pixels) throws IOException {
+				return attribute((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E width(java.lang.Integer pixels) throws IOException {
+				return attribute((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E widthE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+				return attributeE((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 */
+			@SuppressWarnings("unchecked")
+			default E width(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+				return attribute((E)this, "width", pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default E widthPP(Object pixelsOrPercent) throws IOException {
+				return attributePP((E)this, "width", pixelsOrPercent);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default <Ex extends Throwable> E widthPPE(AttributeSupplierE<?,Ex> pixelsOrPercent) throws IOException, Ex {
+				return attributePPE((E)this, "width", pixelsOrPercent);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+			 */
+			@Deprecated
+			@SuppressWarnings("unchecked")
+			default E widthPP(AttributeSupplier<?> pixelsOrPercent) throws IOException {
+				return attributePP((E)this, "width", pixelsOrPercent);
 			}
 		}
 	}
@@ -337,31 +639,49 @@ public class Attributes {
 			 */
 			public static interface Onclick<E extends Element<E> & Onclick<E>> {
 
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 */
 				@SuppressWarnings("unchecked")
 				default E onclick(Object onclick) throws IOException {
 					return attribute((E)this, "onclick", onclick);
 				}
 
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 */
 				@SuppressWarnings("unchecked")
 				default <Ex extends Throwable> E onclickE(AttributeSupplierE<?,Ex> onclick) throws IOException, Ex {
 					return attributeE((E)this, "onclick", onclick);
 				}
 
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 */
 				@SuppressWarnings("unchecked")
 				default E onclick(AttributeSupplier<?> onclick) throws IOException {
 					return attribute((E)this, "onclick", onclick);
 				}
 
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 */
 				@SuppressWarnings("unchecked")
 				default MediaWriter onclick() throws IOException {
 					return attribute((E)this, "onclick");
 				}
 
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 */
 				@SuppressWarnings("unchecked")
 				default <Ex extends Throwable> E onclickE(AttributeWriterE<Ex> onclick) throws IOException, Ex {
 					return attributeE((E)this, "onclick", onclick);
 				}
 
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 */
 				@SuppressWarnings("unchecked")
 				default E onclick(AttributeWriter onclick) throws IOException {
 					return attribute((E)this, "onclick", onclick);
@@ -410,21 +730,33 @@ public class Attributes {
 		 */
 		public static interface Maxlength<E extends Element<E> & Maxlength<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E maxlength(int maxlength) throws IOException {
 				return attribute((E)this, "maxlength", maxlength);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E maxlength(java.lang.Integer maxlength) throws IOException {
 				return attribute((E)this, "maxlength", maxlength);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E maxlengthE(AttributeSupplierE<? extends java.lang.Integer,Ex> maxlength) throws IOException, Ex {
 				return attributeE((E)this, "maxlength", maxlength);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E maxlength(AttributeSupplier<? extends java.lang.Integer> maxlength) throws IOException {
 				return attribute((E)this, "maxlength", maxlength);
@@ -436,24 +768,89 @@ public class Attributes {
 		 */
 		public static interface Size<E extends Element<E> & Size<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E size(int size) throws IOException {
 				return attribute((E)this, "size", size);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E size(java.lang.Integer size) throws IOException {
 				return attribute((E)this, "size", size);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E sizeE(AttributeSupplierE<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
 				return attributeE((E)this, "size", size);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E size(AttributeSupplier<? extends java.lang.Integer> size) throws IOException {
 				return attribute((E)this, "size", size);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+		 *
+		 * @deprecated  Not supported in HTML5.
+		 */
+		@Deprecated
+		public static interface SizeHtml4Only<E extends Element<E> & SizeHtml4Only<E>> extends Size<E> {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @deprecated  Not supported in HTML5.
+			 */
+			@Deprecated
+			@Override
+			default E size(int size) throws IOException {
+				return Size.super.size(size);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @deprecated  Not supported in HTML5.
+			 */
+			@Deprecated
+			@Override
+			default E size(java.lang.Integer size) throws IOException {
+				return Size.super.size(size);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @deprecated  Not supported in HTML5.
+			 */
+			@Deprecated
+			@Override
+			default <Ex extends Throwable> E sizeE(AttributeSupplierE<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
+				return Size.super.sizeE(size);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @deprecated  Not supported in HTML5.
+			 */
+			@Deprecated
+			@Override
+			default E size(AttributeSupplier<? extends java.lang.Integer> size) throws IOException {
+				return Size.super.size(size);
 			}
 		}
 
@@ -465,6 +862,12 @@ public class Attributes {
 		 */
 		public static interface Tabindex<E extends Element<E> & Tabindex<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E tabindex(int tabindex) throws IOException {
 				E element = (E)this;
@@ -479,6 +882,12 @@ public class Attributes {
 				return attribute(element, "tabindex", tabindex);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
 				E element = (E)this;
@@ -493,6 +902,12 @@ public class Attributes {
 				return attribute(element, "tabindex", tabindex);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E tabindexE(AttributeSupplierE<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
 				E element = (E)this;
@@ -507,6 +922,12 @@ public class Attributes {
 				return attributeE(element, "tabindex", tabindex);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E tabindex(AttributeSupplier<? extends java.lang.Integer> tabindex) throws IOException {
 				E element = (E)this;
@@ -530,24 +951,48 @@ public class Attributes {
 		 */
 		public static interface TabindexHtml4<E extends Element<E> & TabindexHtml4<E>> extends Tabindex<E> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E tabindex(int tabindex) throws IOException {
 				return attribute((E)this, "tabindex", tabindex);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
 				return attribute((E)this, "tabindex", tabindex);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E tabindexE(AttributeSupplierE<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
 				return attributeE((E)this, "tabindex", tabindex);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E tabindex(AttributeSupplier<? extends java.lang.Integer> tabindex) throws IOException {
@@ -586,10 +1031,6 @@ public class Attributes {
 						throw new WrappedException(t);
 					}
 				}
-				// TODO: Validate attribute name?
-				element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
-				element.html.out.write(name);
-				element.html.out.write("=\"");
 				if(trim) {
 					if(nullIfEmpty) {
 						value = Coercion.trimNullIfEmpty(value);
@@ -599,8 +1040,14 @@ public class Attributes {
 				} else if(nullIfEmpty) {
 					value = Coercion.nullIfEmpty(value);
 				}
-				Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
-				element.html.out.write('"');
+				if(value != null) {
+					// TODO: Validate attribute name?
+					element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
+					element.html.out.write(name);
+					element.html.out.write("=\"");
+					Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+					element.html.out.write('"');
+				}
 			}
 			return element;
 		}
@@ -647,31 +1094,67 @@ public class Attributes {
 		 */
 		public static interface Class<E extends Element<E> & Class<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E clazz(Object clazz) throws IOException {
 				return attribute((E)this, "class", MarkupType.NONE, clazz, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E clazzE(AttributeSupplierE<?,Ex> clazz) throws IOException, Ex {
 				return attributeE((E)this, "class", MarkupType.NONE, clazz, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E clazz(AttributeSupplier<?> clazz) throws IOException {
 				return attribute((E)this, "class", MarkupType.NONE, clazz, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter clazz() throws IOException {
 				return attribute((E)this, "class");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E clazzE(AttributeWriterE<Ex> clazz) throws IOException, Ex {
 				return attributeE((E)this, "class", clazz);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E clazz(AttributeWriter clazz) throws IOException {
 				return attribute((E)this, "class", clazz);
@@ -686,6 +1169,12 @@ public class Attributes {
 		 */
 		public static interface ClassNoHtml4<E extends Element<E> & ClassNoHtml4<E>> extends Class<E> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E clazz(Object clazz) throws IOException {
@@ -701,6 +1190,12 @@ public class Attributes {
 				return Class.super.clazz(clazz);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E clazzE(AttributeSupplierE<?,Ex> clazz) throws IOException, Ex {
@@ -716,6 +1211,12 @@ public class Attributes {
 				return Class.super.clazzE(clazz);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E clazz(AttributeSupplier<?> clazz) throws IOException {
@@ -731,6 +1232,12 @@ public class Attributes {
 				return Class.super.clazz(clazz);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default MediaWriter clazz() throws IOException {
@@ -746,6 +1253,12 @@ public class Attributes {
 				return Class.super.clazz();
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E clazzE(AttributeWriterE<Ex> clazz) throws IOException, Ex {
@@ -761,6 +1274,12 @@ public class Attributes {
 				return Class.super.clazzE(clazz);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E clazz(AttributeWriter clazz) throws IOException {
@@ -785,31 +1304,67 @@ public class Attributes {
 		 */
 		public static interface Id<E extends Element<E> & Id<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E id(Object id) throws IOException {
 				return attribute((E)this, "id", MarkupType.NONE, id, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E idE(AttributeSupplierE<?,Ex> id) throws IOException, Ex {
 				return attributeE((E)this, "id", MarkupType.NONE, id, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E id(AttributeSupplier<?> id) throws IOException {
 				return attribute((E)this, "id", MarkupType.NONE, id, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter id() throws IOException {
 				return attribute((E)this, "id");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E idE(AttributeWriterE<Ex> id) throws IOException, Ex {
 				return attributeE((E)this, "id", id);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E id(AttributeWriter id) throws IOException {
 				return attribute((E)this, "id", id);
@@ -824,6 +1379,12 @@ public class Attributes {
 		 */
 		public static interface IdNoHtml4<E extends Element<E> & IdNoHtml4<E>> extends Id<E> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E id(Object id) throws IOException {
@@ -839,6 +1400,12 @@ public class Attributes {
 				return Id.super.id(id);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E idE(AttributeSupplierE<?,Ex> id) throws IOException, Ex {
@@ -854,6 +1421,12 @@ public class Attributes {
 				return Id.super.idE(id);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E id(AttributeSupplier<?> id) throws IOException {
@@ -869,6 +1442,12 @@ public class Attributes {
 				return Id.super.id(id);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default MediaWriter id() throws IOException {
@@ -884,6 +1463,12 @@ public class Attributes {
 				return Id.super.id();
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E idE(AttributeWriterE<Ex> id) throws IOException, Ex {
@@ -899,6 +1484,12 @@ public class Attributes {
 				return Id.super.idE(id);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E id(AttributeWriter id) throws IOException {
@@ -920,31 +1511,49 @@ public class Attributes {
 		 */
 		public static interface Label<E extends Element<E> & Label<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E label(Object label) throws IOException {
 				return attribute((E)this, "label", MarkupType.TEXT, label, false, false);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E labelE(AttributeSupplierE<?,Ex> label) throws IOException, Ex {
 				return attributeE((E)this, "label", MarkupType.TEXT, label, false, false);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E label(AttributeSupplier<?> label) throws IOException {
 				return attribute((E)this, "label", MarkupType.TEXT, label, false, false);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter label() throws IOException {
 				return attribute((E)this, "label");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E labelE(AttributeWriterE<Ex> label) throws IOException, Ex {
 				return attributeE((E)this, "label", label);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E label(AttributeWriter label) throws IOException {
 				return attribute((E)this, "label", label);
@@ -957,31 +1566,49 @@ public class Attributes {
 		// TODO: Any sort of comments allowed in media queries?  MarkupType?
 		public static interface Media<E extends Element<E> & Media<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E media(Object media) throws IOException {
 				return attribute((E)this, "media", MarkupType.NONE, media, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E mediaE(AttributeSupplierE<?,Ex> media) throws IOException, Ex {
 				return attributeE((E)this, "media", MarkupType.NONE, media, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E media(AttributeSupplier<?> media) throws IOException {
 				return attribute((E)this, "media", MarkupType.NONE, media, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter media() throws IOException {
 				return attribute((E)this, "media");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E mediaE(AttributeWriterE<Ex> media) throws IOException, Ex {
 				return attributeE((E)this, "media", media);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E media(AttributeWriter media) throws IOException {
 				return attribute((E)this, "media", media);
@@ -993,31 +1620,49 @@ public class Attributes {
 		 */
 		public static interface Name<E extends Element<E> & Name<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E name(Object name) throws IOException {
 				return attribute((E)this, "name", MarkupType.NONE, name, false, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E nameE(AttributeSupplierE<?,Ex> name) throws IOException, Ex {
 				return attributeE((E)this, "name", MarkupType.NONE, name, false, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E name(AttributeSupplier<?> name) throws IOException {
 				return attribute((E)this, "name", MarkupType.NONE, name, false, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter name() throws IOException {
 				return attribute((E)this, "name");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E nameE(AttributeWriterE<Ex> name) throws IOException, Ex {
 				return attributeE((E)this, "name", name);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E name(AttributeWriter name) throws IOException {
 				return attribute((E)this, "name", name);
@@ -1033,34 +1678,70 @@ public class Attributes {
 		// TODO: cssInXmlAttributeEncoder
 		public static interface Style<E extends Element<E> & Style<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E style(Object style) throws IOException {
 				// TODO: MarkupType.CSS
 				return attribute((E)this, "style", MarkupType.JAVASCRIPT, style, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E styleE(AttributeSupplierE<?,Ex> style) throws IOException, Ex {
 				// TODO: MarkupType.CSS
 				return attributeE((E)this, "style", MarkupType.JAVASCRIPT, style, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E style(AttributeSupplier<?> style) throws IOException {
 				// TODO: MarkupType.CSS
 				return attribute((E)this, "style", MarkupType.JAVASCRIPT, style, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter style() throws IOException {
 				return attribute((E)this, "style");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E styleE(AttributeWriterE<Ex> style) throws IOException, Ex {
 				return attributeE((E)this, "style", style);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E style(AttributeWriter style) throws IOException {
 				return attribute((E)this, "style", style);
@@ -1075,6 +1756,12 @@ public class Attributes {
 		 */
 		public static interface StyleNoHtml4<E extends Element<E> & StyleNoHtml4<E>> extends Style<E> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E style(Object style) throws IOException {
@@ -1090,6 +1777,12 @@ public class Attributes {
 				return Style.super.style(style);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E styleE(AttributeSupplierE<?,Ex> style) throws IOException, Ex {
@@ -1105,6 +1798,12 @@ public class Attributes {
 				return Style.super.styleE(style);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E style(AttributeSupplier<?> style) throws IOException {
@@ -1120,6 +1819,12 @@ public class Attributes {
 				return Style.super.style(style);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default MediaWriter style() throws IOException {
@@ -1135,6 +1840,12 @@ public class Attributes {
 				return Style.super.style();
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E styleE(AttributeWriterE<Ex> style) throws IOException, Ex {
@@ -1150,6 +1861,12 @@ public class Attributes {
 				return Style.super.styleE(style);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E style(AttributeWriter style) throws IOException {
@@ -1174,31 +1891,67 @@ public class Attributes {
 		 */
 		public static interface Title<E extends Element<E> & Title<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E title(Object title) throws IOException {
 				return attribute((E)this, "title", MarkupType.TEXT, title, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E titleE(AttributeSupplierE<?,Ex> title) throws IOException, Ex {
 				return attributeE((E)this, "title", MarkupType.TEXT, title, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E title(AttributeSupplier<?> title) throws IOException {
 				return attribute((E)this, "title", MarkupType.TEXT, title, true, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter title() throws IOException {
 				return attribute((E)this, "title");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E titleE(AttributeWriterE<Ex> title) throws IOException, Ex {
 				return attributeE((E)this, "title", title);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+			 * </blockquote>
+			 */
 			@SuppressWarnings("unchecked")
 			default E title(AttributeWriter title) throws IOException {
 				return attribute((E)this, "title", title);
@@ -1213,6 +1966,12 @@ public class Attributes {
 		 */
 		public static interface TitleNoHtml4<E extends Element<E> & TitleNoHtml4<E>> extends Title<E> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E title(Object title) throws IOException {
@@ -1228,6 +1987,12 @@ public class Attributes {
 				return Title.super.title(title);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E titleE(AttributeSupplierE<?,Ex> title) throws IOException, Ex {
@@ -1243,6 +2008,12 @@ public class Attributes {
 				return Title.super.titleE(title);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E title(AttributeSupplier<?> title) throws IOException {
@@ -1258,6 +2029,12 @@ public class Attributes {
 				return Title.super.title(title);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default MediaWriter title() throws IOException {
@@ -1273,6 +2050,12 @@ public class Attributes {
 				return Title.super.title();
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E titleE(AttributeWriterE<Ex> title) throws IOException, Ex {
@@ -1288,6 +2071,12 @@ public class Attributes {
 				return Title.super.titleE(title);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
+			 * <blockquote>
+			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+			 * </blockquote>
+			 */
 			@Override
 			@SuppressWarnings("unchecked")
 			default E title(AttributeWriter title) throws IOException {
@@ -1309,31 +2098,49 @@ public class Attributes {
 		 */
 		public static interface Value<E extends Element<E> & Value<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E value(Object value) throws IOException {
 				return attribute((E)this, "value", MarkupType.NONE, value, false, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E valueE(AttributeSupplierE<?,Ex> value) throws IOException, Ex {
 				return attributeE((E)this, "value", MarkupType.NONE, value, false, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E value(AttributeSupplier<?> value) throws IOException {
 				return attribute((E)this, "value", MarkupType.NONE, value, false, true);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default MediaWriter value() throws IOException {
 				return attribute((E)this, "value");
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E valueE(AttributeWriterE<Ex> value) throws IOException, Ex {
 				return attributeE((E)this, "value", value);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E value(AttributeWriter value) throws IOException {
 				return attribute((E)this, "value", value);
@@ -1393,21 +2200,33 @@ public class Attributes {
 		 */
 		public static interface Href<E extends Element<E> & Href<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E href(String href) throws IOException {
 				return attribute((E)this, "href", href);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E href(Object href) throws IOException {
 				return attribute((E)this, "href", href);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E hrefE(AttributeSupplierE<?,Ex> href) throws IOException, Ex {
 				return attributeE((E)this, "href", href);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E href(AttributeSupplier<?> href) throws IOException {
 				return attribute((E)this, "href", href);
@@ -1419,21 +2238,33 @@ public class Attributes {
 		 */
 		public static interface Src<E extends Element<E> & Src<E>> {
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E src(String src) throws IOException {
 				return attribute((E)this, "src", src);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E src(Object src) throws IOException {
 				return attribute((E)this, "src", src);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E srcE(AttributeSupplierE<?,Ex> src) throws IOException, Ex {
 				return attributeE((E)this, "src", src);
 			}
 
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
+			 */
 			@SuppressWarnings("unchecked")
 			default E src(AttributeSupplier<?> src) throws IOException {
 				return attribute((E)this, "src", src);

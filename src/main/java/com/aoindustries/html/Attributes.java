@@ -725,8 +725,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
 			default E rel(V rel) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return rel((rel == null) ? (java.lang.String)null : rel.get(element.html.serialization, element.html.doctype));
+				return rel((StringSupplier)rel);
 			}
 
 			/**
@@ -734,15 +733,69 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E relE(EnumSupplierE<V,Ex> rel) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return rel((rel== null) ? (StringSupplier)null : rel.get(element.html.serialization, element.html.doctype));
+				return rel((rel== null) ? (V)null : rel.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
 			default E rel(EnumSupplier<V> rel) throws IOException {
+				return relE(rel);
+			}
+		}
+
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+		 */
+		public static interface Crossorigin<
+			E extends Element<E> & Crossorigin<E,V>,
+			V extends java.lang.Enum<V> & StringSupplier
+		> {
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			// All other crossorigin(...) methods call this one
+			default E crossorigin(java.lang.String crossorigin) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return rel((rel == null) ? (StringSupplier)null : rel.get(element.html.serialization, element.html.doctype));
+				return String.attribute(element, "crossorigin", MarkupType.NONE, crossorigin, true, true);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default <Ex extends Throwable> E crossoriginE(StringSupplierE<Ex> crossorigin) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default E crossorigin(StringSupplier crossorigin) throws IOException {
+				return crossoriginE(crossorigin);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default E crossorigin(V crossorigin) throws IOException {
+				return crossorigin((StringSupplier)crossorigin);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default <Ex extends Throwable> E crossoriginE(EnumSupplierE<V,Ex> crossorigin) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default E crossorigin(EnumSupplier<V> crossorigin) throws IOException {
+				return crossoriginE(crossorigin);
 			}
 		}
 	}
@@ -1342,21 +1395,29 @@ public class Attributes {
 		/** Make no instances. */
 		private String() {}
 
-		// TODO: MarkupType?
+		/**
+		 * @param value  If is {@link StringSupplierE#NO_VALUE} (by identity), will write empty attribute.
+		 */
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
-				if(trim) value = value.trim();
-				if(!nullIfEmpty || !value.isEmpty()) {
+				if(value == StringSupplierE.NO_VALUE) { // Identity comparison for marker value
+					// Empty attribute
 					element.html.out.write(' ');
 					element.html.out.write(name);
-					element.html.out.write("=\"");
-					if(markupType == null || markupType == MarkupType.NONE) {
-						// Short-cut additional type checks done by Coercion, since we already have a String
-						encodeTextInXhtmlAttribute(value, element.html.out);
-					} else {
-						Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+				} else {
+					if(trim) value = value.trim();
+					if(!nullIfEmpty || !value.isEmpty()) {
+						element.html.out.write(' ');
+						element.html.out.write(name);
+						element.html.out.write("=\"");
+						if(markupType == null || markupType == MarkupType.NONE) {
+							// Short-cut additional type checks done by Coercion, since we already have a String
+							encodeTextInXhtmlAttribute(value, element.html.out);
+						} else {
+							Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+						}
+						element.html.out.write('"');
 					}
-					element.html.out.write('"');
 				}
 			}
 			return element;

@@ -37,6 +37,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class Link extends EmptyElement<Link> implements
+	Attributes.Enum.Crossorigin<Link,Link.Crossorigin>,
 	Attributes.Url.Href<Link>,
 	Attributes.Text.Media<Link>,
 	Attributes.Enum.Rel<Link,Link.Rel>,
@@ -57,37 +58,38 @@ public class Link extends EmptyElement<Link> implements
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 	 */
-	public enum Crossorigin {
+	public enum Crossorigin implements StringSupplier {
 		ANONYMOUS(
-			" crossorigin",
-			" crossorigin=\"anonymous\""
+			NO_VALUE,
+			"anonymous"
 		),
 		USE_CREDENTIALS(
-			" crossorigin=\"use-credentials\"",
-			" crossorigin=\"use-credentials\""
+			"use-credentials",
+			"use-credentials"
 		);
+
 		private final String sgml;
 		private final String xml;
+
 		private Crossorigin(String sgml, String xml) {
 			this.sgml = sgml;
 			this.xml = xml;
 		}
-	}
 
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
-	 */
-	// TODO: Enum-based Attributes
-	public Link crossorigin(Crossorigin crossorigin) throws IOException {
-		if(crossorigin != null) {
-			if(html.serialization == Serialization.SGML) {
-				html.out.write(crossorigin.sgml);
+		@Override
+		public String toString() {
+			return xml;
+		}
+
+		@Override
+		public String get(Serialization serialization, Doctype doctype) {
+			if(serialization == Serialization.SGML) {
+				return sgml;
 			} else {
-				assert html.serialization == Serialization.XML;
-				html.out.write(crossorigin.xml);
+				assert serialization == Serialization.XML;
+				return xml;
 			}
 		}
-		return this;
 	}
 
 	/**

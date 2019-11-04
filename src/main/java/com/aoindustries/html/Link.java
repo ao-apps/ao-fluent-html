@@ -60,7 +60,7 @@ public class Link extends EmptyElement<Link> implements
 	 */
 	public enum Crossorigin implements Attributes.Enum.EnumSupplier {
 		ANONYMOUS(
-			Attributes.String.NO_VALUE,
+			Attributes.NO_VALUE,
 			"anonymous"
 		),
 		USE_CREDENTIALS(

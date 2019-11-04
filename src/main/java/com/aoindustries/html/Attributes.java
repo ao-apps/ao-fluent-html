@@ -49,6 +49,18 @@ public class Attributes {
 	private Attributes() {}
 
 	/**
+	 * Special value used in-place of return values that should result in an empty
+	 * attribute (expected on {@link Serialization#SGML} only).
+	 * This distinguishes from a return value of {@code null}, which causes the
+	 * attribute to not be added at all.
+	 * <p>
+	 * In order to never conflict with an actual attribute value, this string is
+	 * compared by identity, not by value.
+	 * </p>
+	 */
+	public static final java.lang.String NO_VALUE = new java.lang.String("<<<NO_VALUE>>>"); // Use string constructor to ensure unique instance for identity comparisons
+
+	/**
 	 * Marks a method as being an attribute funnel to aid in implementation.
 	 * A funnel is one of the methods that directly implements the attribute.
 	 * Non-funnel methods must call directly, or indirectly, funnel methods.
@@ -459,7 +471,7 @@ public class Attributes {
 	 * value is allowed for values that are not part of the enumeration.
 	 * </p>
 	 * <p>
-	 * When converting from {@link java.lang.Enum}, uses {@link StringSupplier#get(com.aoindustries.html.Serialization, com.aoindustries.html.Doctype)}.
+	 * When converting from {@link java.lang.Enum}, uses {@link EnumSupplier#get(com.aoindustries.html.Serialization, com.aoindustries.html.Doctype)}.
 	 * </p>
 	 */
 	public static class Enum {
@@ -470,7 +482,7 @@ public class Attributes {
 		@FunctionalInterface
 		public static interface EnumSupplier {
 			/**
-			 * @return  The value, {@link Attributes.String#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+			 * @return  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 			 */
 			java.lang.String get(Serialization serialization, Doctype doctype);
 		}
@@ -636,7 +648,6 @@ public class Attributes {
 			element.html.out.write(' ');
 			element.html.out.write(name);
 			element.html.out.write("=\"");
-			// TODO: Encode attribute value?
 			element.html.out.write(java.lang.Integer.toString(value));
 			element.html.out.write('"');
 			return element;
@@ -1017,8 +1028,10 @@ public class Attributes {
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+		 * <p>
+		 * The width attribute is new in HTML5.
+		 * </p>
 		 */
-		// TODO: inheritDoc works here?  Use here and other if so
 		public static interface WidthHtml5Only<E extends Element<E> & WidthHtml5Only<E>> extends Width<E> {
 
 			/**
@@ -1094,18 +1107,6 @@ public class Attributes {
 		private String() {}
 
 		/**
-		 * Special value used in-place of return values that should result in an empty
-		 * attribute (expected on {@link Serialization#SGML} only).
-		 * This distinguishes from a return value of {@code null}, which causes the
-		 * attribute to not be added at all.
-		 * <p>
-		 * In order to never conflict with an actual attribute value, this string is
-		 * compared by identity, not by value.
-		 * </p>
-		 */
-		public static final java.lang.String NO_VALUE = new java.lang.String("<<<NO_VALUE>>>"); // Use string constructor to ensure unique instance for identity comparisons
-
-		/**
 		 * @param value  If is {@link #NO_VALUE} (by identity), will write empty attribute.
 		 */
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
@@ -1133,7 +1134,7 @@ public class Attributes {
 			return element;
 		}
 
-		// TODO: Some non-streamable from Text to here?
+		// TODO: Move some non-streamable attributes from Text to here?
 	}
 
 	/**
@@ -1144,6 +1145,9 @@ public class Attributes {
 		/** Make no instances. */
 		private Text() {}
 
+		/**
+		 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+		 */
 		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			while(value instanceof Supplier<?,?>) {
 				@SuppressWarnings("unchecked")
@@ -1154,7 +1158,7 @@ public class Attributes {
 				if(value instanceof AttributeWriter<?>) {
 					@SuppressWarnings("unchecked")
 					AttributeWriter<Ex> writer = (AttributeWriter<Ex>)value;
-					element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
+					element.html.out.write(' ');
 					element.html.out.write(name);
 					element.html.out.write("=\"");
 					writer.writeAttribute(
@@ -1167,25 +1171,65 @@ public class Attributes {
 					);
 					element.html.out.write('"');
 				} else {
-					if(trim) {
-						if(nullIfEmpty) {
-							value = Coercion.trimNullIfEmpty(value);
-						} else {
-							value = Coercion.trim(value);
-						}
-					} else if(nullIfEmpty) {
-						value = Coercion.nullIfEmpty(value);
-					}
-					if(value != null) {
-						element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
+					if(value == NO_VALUE) { // Identity comparison for marker value
+						// Empty attribute
+						element.html.out.write(' ');
 						element.html.out.write(name);
-						element.html.out.write("=\"");
-						Coercion.write(value, markupType, encoder, false, element.html.out);
-						element.html.out.write('"');
+					} else {
+						if(trim) {
+							if(nullIfEmpty) {
+								value = Coercion.trimNullIfEmpty(value);
+							} else {
+								value = Coercion.trim(value);
+							}
+						} else if(nullIfEmpty) {
+							value = Coercion.nullIfEmpty(value);
+						}
+						if(value != null) {
+							element.html.out.write(' ');
+							element.html.out.write(name);
+							element.html.out.write("=\"");
+							Coercion.write(value, markupType, encoder, false, element.html.out);
+							element.html.out.write('"');
+						}
 					}
 				}
 			}
 			return element;
+		}
+
+		/**
+		 * An arbitrary attribute.
+		 */
+		public static interface Attribute<E extends Element<E> & Attribute<E>> {
+
+			/**
+			 * An arbitrary attribute.
+			 *
+			 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+			 */
+			@Funnel
+			default E attribute(java.lang.String name, Object value) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				// TODO: Validate attribute name? https://dev.w3.org/html5/html-author/#attributes
+				return Text.attribute(element, name, MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
+			}
+
+			/**
+			 * An arbitrary attribute.
+			 *
+			 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+			 */
+			default <Ex extends Throwable> E attribute(java.lang.String name, Supplier<?,Ex> value) throws IOException, Ex {
+				return attribute(name, (value == null) ? null : value.get());
+			}
+
+			/**
+			 * An arbitrary attribute.
+			 */
+			default <Ex extends Throwable> E attribute(java.lang.String name, AttributeWriter<Ex> value) throws IOException, Ex {
+				return attribute(name, (Object)value);
+			}
 		}
 
 		/**
@@ -1812,7 +1856,6 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
-			// TODO: More bounds like this when disambiguation between multiple types unnecessary?
 			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String,Ex> src) throws IOException, Ex {
 				return src((src == null) ? null : src.get());
 			}

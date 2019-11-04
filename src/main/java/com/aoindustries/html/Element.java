@@ -22,10 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
-import com.aoindustries.encoding.MediaWriter;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import com.aoindustries.util.WrappedException;
 import java.io.IOException;
 
 /**
@@ -33,6 +29,8 @@ import java.io.IOException;
  */
 // TODO: Rename Html to Document, and make an element <html>?
 abstract public class Element<E extends Element<E>> implements
+	// Allow any arbitrary attributes
+	Attributes.Text.Attribute<E>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Global<E>
 {
@@ -44,54 +42,4 @@ abstract public class Element<E extends Element<E>> implements
 	}
 
 	abstract protected E open() throws IOException;
-
-	// TODO: Make shared attributeImpl methods, with things like a given value encoder and boolean if skip when null
-	@SuppressWarnings("unchecked")
-	public E attribute(String name, Object value) throws IOException {
-		if(value != null) {
-			if(value instanceof AttributeWriter) {
-				try {
-					return (E)attribute(name, (AttributeWriter)value);
-				} catch(Error|RuntimeException|IOException e) {
-					throw e;
-				} catch(Throwable t) {
-					throw new WrappedException(t);
-				}
-			}
-			// TODO: Validate attribute name? https://dev.w3.org/html5/html-author/#attributes
-			html.out.write(' ');
-			html.out.write(name);
-			html.out.write("=\"");
-			Coercion.write(value, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
-		}
-		return (E)this;
-	}
-
-	public MediaWriter attribute(String name) throws IOException {
-		// TODO: Validate attribute name?
-		html.out.write(' ');
-		html.out.write(name);
-		html.out.write("=\"");
-		return new MediaWriter(textInXhtmlAttributeEncoder, html.out) {
-			@Override
-			public void close() throws IOException {
-				html.out.write('"');
-			}
-		};
-	}
-
-	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable> E attribute(String name, AttributeWriter<Ex> value) throws IOException, Ex {
-		if(value == null) {
-			return attribute(name, null);
-		} else {
-			try (MediaWriter out = attribute(name)) {
-				value.writeAttribute(out);
-			}
-		}
-		return (E)this;
-	}
-
-	// TODO: Auto-closeable attribute writers for streaming implementations
 }

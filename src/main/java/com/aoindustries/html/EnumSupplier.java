@@ -29,6 +29,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: Still used?
 @FunctionalInterface
 public interface EnumSupplier<E extends Enum<E> & StringSupplier<RuntimeException>,Ex extends Throwable> extends Supplier<E,Ex> {
 	@Override

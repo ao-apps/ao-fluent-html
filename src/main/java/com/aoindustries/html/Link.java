@@ -245,7 +245,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
 	@Override
-	public <Ex extends Throwable> Link rel(EnumSupplier<Rel,Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> Link rel(Supplier<? extends Rel,Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 

@@ -29,6 +29,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: Still used?
 @FunctionalInterface
 public interface IntegerSupplier<Ex extends Throwable> extends Supplier<Integer,Ex> {
 	@Override

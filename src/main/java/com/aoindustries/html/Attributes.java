@@ -1997,7 +1997,109 @@ public class Attributes {
 			}
 		}
 
-		// TODO: Clipboard
+		public static class Clipboard {
+
+			/** Make no instances. */
+			private Clipboard() {}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+			 */
+			public static interface Oncopy<E extends Element<E> & Oncopy<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+				 */
+				@Funnel
+				default E oncopy(Object oncopy) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "oncopy", oncopy);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oncopy(Supplier<?,Ex> oncopy) throws IOException, Ex {
+					return oncopy((oncopy == null) ? null : oncopy.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oncopy(AttributeWriter<Ex> oncopy) throws IOException, Ex {
+					return oncopy((Object)oncopy);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+			 */
+			public static interface Oncut<E extends Element<E> & Oncut<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+				 */
+				@Funnel
+				default E oncut(Object oncut) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "oncut", oncut);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oncut(Supplier<?,Ex> oncut) throws IOException, Ex {
+					return oncut((oncut == null) ? null : oncut.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oncut(AttributeWriter<Ex> oncut) throws IOException, Ex {
+					return oncut((Object)oncut);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
+			 */
+			public static interface Onpaste<E extends Element<E> & Onpaste<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
+				 */
+				@Funnel
+				default E onpaste(Object onpaste) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onpaste", onpaste);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpaste(Supplier<?,Ex> onpaste) throws IOException, Ex {
+					return onpaste((onpaste == null) ? null : onpaste.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpaste(AttributeWriter<Ex> onpaste) throws IOException, Ex {
+					return onpaste((Object)onpaste);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Drag Events</a>.
+			 */
+			public static interface Global<E extends Element<E> & Global<E>> extends
+				Oncopy<E>,
+				Oncut<E>,
+				Onpaste<E>
+			{
+				// No methods, just adding mouse event types
+			}
+		}
 
 		// TODO: Media
 
@@ -3430,7 +3532,8 @@ public class Attributes {
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 		Event.Form.Global<E>,
 		Event.Mouse.Global<E>,
-		Event.Drag.Global<E>
+		Event.Drag.Global<E>,
+		Event.Clipboard.Global<E>
 	{
 		// No methods, just adding attributes
 	}

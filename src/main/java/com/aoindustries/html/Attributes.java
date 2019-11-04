@@ -816,7 +816,16 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
+			@SuppressWarnings("unchecked")
 			default E size(int size) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"size"
+					);
+				}
 				return Size.super.size(size);
 			}
 
@@ -827,7 +836,16 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
+			@SuppressWarnings("unchecked")
 			default E size(java.lang.Integer size) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"size"
+					);
+				}
 				return Size.super.size(size);
 			}
 
@@ -838,7 +856,16 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
+			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E sizeE(AttributeSupplierE<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"size"
+					);
+				}
 				return Size.super.sizeE(size);
 			}
 
@@ -849,7 +876,16 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
+			@SuppressWarnings("unchecked")
 			default E size(AttributeSupplier<? extends java.lang.Integer> size) throws IOException {
+				E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"size"
+					);
+				}
 				return Size.super.size(size);
 			}
 		}

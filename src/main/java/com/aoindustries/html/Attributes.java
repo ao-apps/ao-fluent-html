@@ -488,53 +488,32 @@ public class Attributes {
 		/** Make no instances. */
 		private Event() {}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, Object script) throws IOException {
+		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
 			while(script instanceof SupplierE<?,?>) {
-				try {
-					script = ((SupplierE<?,?>)script).get(element.html.serialization, element.html.doctype);
-				} catch(Error|RuntimeException|IOException e) {
-					throw e;
-				} catch(Throwable t) {
-					throw new WrappedException(t);
-				}
+				@SuppressWarnings("unchecked")
+				SupplierE<?,Ex> supplier = (SupplierE<?,Ex>)script;
+				script = supplier.get(element.html.serialization, element.html.doctype);
 			}
 			if(script != null) {
-				if(script instanceof AttributeWriterE<?>) {
-					try {
-						return attributeE(element, name, (AttributeWriterE<?>)script);
-					} catch(Error|RuntimeException|IOException e) {
-						throw e;
-					} catch(Throwable t) {
-						throw new WrappedException(t);
-					}
-				}
 				element.html.out.write(' ');
 				element.html.out.write(name);
 				element.html.out.write("=\"");
-				// TODO: Find more places where we can do javascript markups (ao-taglib...)
-				Coercion.write(script, MarkupType.JAVASCRIPT, javaScriptInXhtmlAttributeEncoder, false, element.html.out);
+				if(script instanceof AttributeWriterE<?>) {
+					@SuppressWarnings("unchecked")
+					AttributeWriterE<Ex> writer = (AttributeWriterE<Ex>)script;
+					writer.writeAttribute(
+						new MediaWriter(javaScriptInXhtmlAttributeEncoder, element.html.out) {
+							@Override
+							public void close() throws IOException {
+								// Do not close underlying writer
+							}
+						}
+					);
+				} else {
+					// TODO: Find more places where we can do javascript markups (ao-taglib...)
+					Coercion.write(script, MarkupType.JAVASCRIPT, javaScriptInXhtmlAttributeEncoder, false, element.html.out);
+				}
 				element.html.out.write('"');
-			}
-			return element;
-		}
-
-		static <E extends Element<E>> MediaWriter attribute(E element, java.lang.String name) throws IOException {
-			element.html.out.write(' ');
-			element.html.out.write(name);
-			element.html.out.write("=\"");
-			return new MediaWriter(javaScriptInXhtmlAttributeEncoder, element.html.out) {
-				@Override
-				public void close() throws IOException {
-					element.html.out.write('"');
-				}
-			};
-		}
-
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, AttributeWriterE<Ex> script) throws IOException, Ex {
-			if(script != null) {
-				try (MediaWriter out = attribute(element, name)) {
-					script.writeAttribute(out);
-				}
 			}
 			return element;
 		}
@@ -563,9 +542,10 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
+				@Funnel
 				default E onclick(Object onclick) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					return attribute(element, "onclick", onclick);
+					return Event.attribute(element, "onclick", onclick); // TODO:? .<E,RuntimeException>
 				}
 
 				/**
@@ -586,17 +566,10 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				default MediaWriter onclick() throws IOException {
-					@SuppressWarnings("unchecked") E element = (E)this;
-					return attribute(element, "onclick");
-				}
-
-				/**
-				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
-				 */
 				default <Ex extends Throwable> E onclickE(AttributeWriterE<Ex> onclick) throws IOException, Ex {
-					@SuppressWarnings("unchecked") E element = (E)this;
-					return attributeE(element, "onclick", onclick);
+					//@SuppressWarnings("unchecked") E element = (E)this;
+					// TODO:? return Event.<E,Ex>attribute(element, "onclick", onclick);
+					return onclick((Object)onclick);
 				}
 
 				/**

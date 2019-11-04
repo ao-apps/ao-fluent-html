@@ -31,6 +31,7 @@ import java.io.IOException;
  */
 public class Br extends EmptyElement<Br>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	// Not on <br>: Attributes.Event.Form.AlmostGlobal<Br>
 	// Not on <br>: Attributes.Event.Mouse.AlmostGlobal<Br>
 {
 

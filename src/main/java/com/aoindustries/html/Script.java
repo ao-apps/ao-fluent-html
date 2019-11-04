@@ -50,6 +50,7 @@ public class Script extends Element<Script> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.Window.Onerror<Script>,
 	Attributes.Event.Window.Onload<Script>
+	// Not on <script>: Attributes.Event.Form.AlmostGlobal<Script>
 	// Not on <script>: Attributes.Event.Mouse.AlmostGlobal<Script>
 {
 

@@ -913,6 +913,349 @@ public class Attributes {
 			}
 		}
 
+		public static class Form {
+
+			/** Make no instances. */
+			private Form() {}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+			 */
+			public static interface Onblur<E extends Element<E> & Onblur<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+				 */
+				@Funnel
+				default E onblur(Object onblur) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onblur", onblur);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onblur(Supplier<?,Ex> onblur) throws IOException, Ex {
+					return onblur((onblur == null) ? null : onblur.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onblur(AttributeWriter<Ex> onblur) throws IOException, Ex {
+					return onblur((Object)onblur);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+			 */
+			public static interface Onchange<E extends Element<E> & Onchange<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+				 */
+				@Funnel
+				default E onchange(Object onchange) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onchange", onchange);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onchange(Supplier<?,Ex> onchange) throws IOException, Ex {
+					return onchange((onchange == null) ? null : onchange.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onchange(AttributeWriter<Ex> onchange) throws IOException, Ex {
+					return onchange((Object)onchange);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
+			 */
+			public static interface Oncontextmenu<E extends Element<E> & Oncontextmenu<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
+				 */
+				@Funnel
+				default E oncontextmenu(Object oncontextmenu) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"oncontextmenu"
+						);
+					}
+					return Event.attribute(element, "oncontextmenu", oncontextmenu);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oncontextmenu(Supplier<?,Ex> oncontextmenu) throws IOException, Ex {
+					return oncontextmenu((oncontextmenu == null) ? null : oncontextmenu.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oncontextmenu(AttributeWriter<Ex> oncontextmenu) throws IOException, Ex {
+					return oncontextmenu((Object)oncontextmenu);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
+			 */
+			public static interface Onfocus<E extends Element<E> & Onfocus<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
+				 */
+				@Funnel
+				default E onfocus(Object onfocus) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onfocus", onfocus);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onfocus(Supplier<?,Ex> onfocus) throws IOException, Ex {
+					return onfocus((onfocus == null) ? null : onfocus.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onfocus(AttributeWriter<Ex> onfocus) throws IOException, Ex {
+					return onfocus((Object)onfocus);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+			 */
+			public static interface Oninput<E extends Element<E> & Oninput<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+				 */
+				@Funnel
+				default E oninput(Object oninput) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"oninput"
+						);
+					}
+					return Event.attribute(element, "oninput", oninput);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oninput(Supplier<?,Ex> oninput) throws IOException, Ex {
+					return oninput((oninput == null) ? null : oninput.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oninput(AttributeWriter<Ex> oninput) throws IOException, Ex {
+					return oninput((Object)oninput);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+			 */
+			public static interface Oninvalid<E extends Element<E> & Oninvalid<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+				 */
+				@Funnel
+				default E oninvalid(Object oninvalid) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "oninvalid", oninvalid);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oninvalid(Supplier<?,Ex> oninvalid) throws IOException, Ex {
+					return oninvalid((oninvalid == null) ? null : oninvalid.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E oninvalid(AttributeWriter<Ex> oninvalid) throws IOException, Ex {
+					return oninvalid((Object)oninvalid);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+			 */
+			public static interface Onreset<E extends Element<E> & Onreset<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+				 */
+				@Funnel
+				default E onreset(Object onreset) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onreset"
+						);
+					}
+					return Event.attribute(element, "onreset", onreset);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onreset(Supplier<?,Ex> onreset) throws IOException, Ex {
+					return onreset((onreset == null) ? null : onreset.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onreset(AttributeWriter<Ex> onreset) throws IOException, Ex {
+					return onreset((Object)onreset);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+			 */
+			public static interface Onsearch<E extends Element<E> & Onsearch<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+				 */
+				@Funnel
+				default E onsearch(Object onsearch) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onsearch", onsearch);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onsearch(Supplier<?,Ex> onsearch) throws IOException, Ex {
+					return onsearch((onsearch == null) ? null : onsearch.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onsearch(AttributeWriter<Ex> onsearch) throws IOException, Ex {
+					return onsearch((Object)onsearch);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+			 */
+			public static interface Onselect<E extends Element<E> & Onselect<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+				 */
+				@Funnel
+				default E onselect(Object onselect) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onselect", onselect);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onselect(Supplier<?,Ex> onselect) throws IOException, Ex {
+					return onselect((onselect == null) ? null : onselect.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onselect(AttributeWriter<Ex> onselect) throws IOException, Ex {
+					return onselect((Object)onselect);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+			 */
+			public static interface Onsubmit<E extends Element<E> & Onsubmit<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+				 */
+				@Funnel
+				default E onsubmit(Object onsubmit) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onsubmit", onsubmit);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onsubmit(Supplier<?,Ex> onsubmit) throws IOException, Ex {
+					return onsubmit((onsubmit == null) ? null : onsubmit.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onsubmit(AttributeWriter<Ex> onsubmit) throws IOException, Ex {
+					return onsubmit((Object)onsubmit);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Form Events</a>.
+			 * Supported HTML tags:
+			 * <blockquote>
+			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
+			 * </blockquote>
+			 */
+			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+				Onblur<E>,
+				Onfocus<E>
+			{
+				// No methods, just adding form event types
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Form Events</a>.
+			 */
+			public static interface Global<E extends Element<E> & Global<E>> extends
+				Oncontextmenu<E>
+			{
+				// No methods, just adding form event types
+			}
+		}
+
 		public static class Mouse {
 
 			/** Make no instances. */
@@ -1215,7 +1558,7 @@ public class Attributes {
 				Onmouseover<E>,
 				Onmouseup<E>
 			{
-				// No methods, just adding defaults for all mouse event types
+				// No methods, just adding mouse event types
 			}
 
 			/**
@@ -1225,7 +1568,7 @@ public class Attributes {
 				Onmousewheel<E>,
 				Onwheel<E>
 			{
-				// No methods, just adding defaults for all mouse event types
+				// No methods, just adding mouse event types
 			}
 		}
 	}
@@ -2639,8 +2982,9 @@ public class Attributes {
 		Integer.Tabindex<E>,
 		Text.Title<E>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Event.Form.Global<E>,
 		Event.Mouse.Global<E>
 	{
-		// No methods, just adding defaults for all mouse event types
+		// No methods, just adding attributes
 	}
 }

@@ -44,6 +44,7 @@ public class Link extends EmptyElement<Link> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.Window.Onerror<Link>,
 	Attributes.Event.Window.Onload<Link>,
+	Attributes.Event.Form.AlmostGlobal<Link>,
 	Attributes.Event.Mouse.AlmostGlobal<Link>
 {
 

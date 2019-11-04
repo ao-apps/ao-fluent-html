@@ -54,6 +54,12 @@ public class Input extends EmptyElement<Input> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.Window.Onerror<Input>, // TODO: Check type="image"?
 	Attributes.Event.Window.Onload<Input>, // TODO: Check type="image"?
+	Attributes.Event.Form.Onchange<Input>, // TODO: Check type?
+	Attributes.Event.Form.Oninput<Input>, // TODO: Check type?
+	Attributes.Event.Form.Oninvalid<Input>,
+	Attributes.Event.Form.Onsearch<Input>, // TODO: Check type="search"?
+	Attributes.Event.Form.Onselect<Input>, // TODO: Check type?
+	Attributes.Event.Form.AlmostGlobal<Input>,
 	Attributes.Event.Mouse.AlmostGlobal<Input>
 {
 

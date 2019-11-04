@@ -36,6 +36,7 @@ public class Hr extends EmptyElement<Hr> implements
 	Attributes.Integer.SizeHtml4Only<Hr>,
 	Attributes.Dimension.Width<Hr>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Form.AlmostGlobal<Hr>,
 	Attributes.Event.Mouse.AlmostGlobal<Hr>
 {
 

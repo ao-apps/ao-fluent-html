@@ -25,10 +25,12 @@ package com.aoindustries.html;
 import java.io.IOException;
 
 /**
+ * Variant bounded by {@link Integer}, since can't have multiple methods with different bounds due to erasure.
+ *
  * @author  AO Industries, Inc.
  */
 @FunctionalInterface
-public interface AttributeSupplier<V> extends AttributeSupplierE<V,RuntimeException> {
+public interface IntegerSupplier extends Supplier<Integer>, IntegerSupplierE<RuntimeException> {
 	@Override
-	V get() throws IOException;
+	Integer get(Serialization serialization, Doctype doctype) throws IOException;
 }

@@ -39,6 +39,7 @@ import java.io.IOException;
 public class Link extends EmptyElement<Link> implements
 	Attributes.Url.Href<Link>,
 	Attributes.Text.Media<Link>,
+	Attributes.Enum.Rel<Link,Link.Rel>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.Mouse.Events<Link>
 {
@@ -130,7 +131,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
-	public enum Rel {
+	public enum Rel implements StringSupplier {
 		ALTERNATE("alternate"),
 		AUTHOR("author"), // w3schools only
 		CANONICAL("canonical"), // TODO: This is not in the last.  Should we support arbitrary String values, like Script.type?
@@ -149,20 +150,25 @@ public class Link extends EmptyElement<Link> implements
 		SEARCH("search"),
 		STYLESHEET("stylesheet");
 
-		private final String value;
+		private final java.lang.String value;
 		// TODO: Verify values by doctype
 
-		private Rel(String value) {
+		private Rel(java.lang.String value) {
 			this.value = value;
 		}
 
 		@Override
-		public String toString() {
+		public java.lang.String toString() {
+			return value;
+		}
+
+		@Override
+		public java.lang.String get(Serialization serialization, Doctype doctype) {
 			return value;
 		}
 	}
 
-	private Object rel;
+	private String rel;
 
 	/**
 	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
@@ -173,9 +179,9 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
-	// TODO: Attributes...rel
-	public Link rel(Object rel) throws IOException {
-		rel = Coercion.trimNullIfEmpty(rel);
+	@Override
+	public Link rel(String rel) throws IOException {
+		rel = StringUtility.trimNullIfEmpty(rel);
 		if(rel != null) {
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
@@ -194,9 +200,7 @@ public class Link extends EmptyElement<Link> implements
 					"Item.relOrItemprop"
 				);
 			}
-			html.out.write(" rel=\"");
-			Coercion.write(rel, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
+			Attributes.Enum.Rel.super.rel(rel);
 		}
 		return this;
 	}
@@ -210,8 +214,65 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
+	@Override
+	public <Ex extends Throwable> Link relE(StringSupplierE<Ex> rel) throws IOException, Ex {
+		return Attributes.Enum.Rel.super.relE(rel);
+	}
+
+	/**
+	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
+	 * <blockquote>
+	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
+	 * </blockquote>
+	 *
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 */
+	@Override
+	public Link rel(StringSupplier rel) throws IOException {
+		return Attributes.Enum.Rel.super.rel(rel);
+	}
+
+	/**
+	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
+	 * <blockquote>
+	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
+	 * </blockquote>
+	 *
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 */
+	@Override
 	public Link rel(Rel rel) throws IOException {
-		return rel((rel == null) ? (Object)null : rel.toString());
+		return Attributes.Enum.Rel.super.rel(rel);
+	}
+
+	/**
+	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
+	 * <blockquote>
+	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
+	 * </blockquote>
+	 *
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 */
+	@Override
+	public <Ex extends Throwable> Link relE(EnumSupplierE<Rel,Ex> rel) throws IOException, Ex {
+		return Attributes.Enum.Rel.super.relE(rel);
+	}
+
+	/**
+	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
+	 * <blockquote>
+	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
+	 * </blockquote>
+	 *
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 */
+	@Override
+	public Link rel(EnumSupplier<Rel> rel) throws IOException {
+		return Attributes.Enum.Rel.super.rel(rel);
 	}
 
 	private String type;
@@ -232,7 +293,7 @@ public class Link extends EmptyElement<Link> implements
 			&& !(
 				html.doctype == Doctype.HTML5
 				&& rel != null
-				&& rel.toString().equals(Rel.STYLESHEET.toString())
+				&& rel.equals(Rel.STYLESHEET.toString())
 				&& Type.TEXT_CSS.getContentType().equalsIgnoreCase(type)
 			)
 		) {
@@ -260,7 +321,7 @@ public class Link extends EmptyElement<Link> implements
 			type == null
 			&& html.doctype != Doctype.HTML5
 			&& rel != null
-			&& rel.toString().equals(Rel.STYLESHEET.toString())
+			&& rel.equals(Rel.STYLESHEET.toString())
 		) {
 			html.out.write(" type=\"");
 			html.out.write(Type.TEXT_CSS.getContentType());

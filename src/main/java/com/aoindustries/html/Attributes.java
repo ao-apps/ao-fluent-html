@@ -25,9 +25,11 @@ package com.aoindustries.html;
 import com.aoindustries.encoding.Coercion;
 import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
 import com.aoindustries.encoding.MediaWriter;
+import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
+import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
@@ -51,14 +53,12 @@ public class Attributes {
 		/** Make no instances. */
 		private Boolean() {}
 
-		static <E extends Element<E>> E attribute(E element, String name, boolean value) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
 			if(value) {
-				// TODO: Validate attribute name?
 				element.html.out.write(' ');
 				element.html.out.write(name);
 				if(element.html.serialization == Serialization.XML) {
 					element.html.out.write("=\"");
-					// TODO: Encode attribute value?
 					element.html.out.write(name);
 					element.html.out.write('"');
 				} else {
@@ -68,7 +68,7 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, java.lang.Boolean value) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.Boolean value) throws IOException {
 			if(value) {
 				return attribute(element, name, value.booleanValue());
 			} else {
@@ -76,11 +76,11 @@ public class Attributes {
 			}
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeSupplierE<? extends java.lang.Boolean,Ex> value) throws IOException, Ex {
-			return attribute(element, name, (value == null) ? null : value.get());
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, BooleanSupplierE<Ex> value) throws IOException, Ex {
+			return attribute(element, name, (value == null) ? null : value.get(element.html.serialization, element.html.doctype));
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, AttributeSupplier<? extends java.lang.Boolean> value) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, BooleanSupplier value) throws IOException {
 			return attributeE(element, name, value);
 		}
 
@@ -92,33 +92,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E async(boolean async) throws IOException {
-				return attribute((E)this, "async", async);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "async", async);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E async(java.lang.Boolean async) throws IOException {
-				return attribute((E)this, "async", async);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "async", async);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E asyncE(AttributeSupplierE<? extends java.lang.Boolean,Ex> async) throws IOException, Ex {
-				return attributeE((E)this, "async", async);
+			default <Ex extends Throwable> E asyncE(BooleanSupplierE<Ex> async) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "async", async);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E async(AttributeSupplier<? extends java.lang.Boolean> async) throws IOException {
-				return attribute((E)this, "async", async);
+			default E async(BooleanSupplier async) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "async", async);
 			}
 		}
 
@@ -130,33 +130,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E checked(boolean checked) throws IOException {
-				return attribute((E)this, "checked", checked);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "checked", checked);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E checked(java.lang.Boolean checked) throws IOException {
-				return attribute((E)this, "checked", checked);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "checked", checked);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E checkedE(AttributeSupplierE<? extends java.lang.Boolean,Ex> checked) throws IOException, Ex {
-				return attributeE((E)this, "checked", checked);
+			default <Ex extends Throwable> E checkedE(BooleanSupplierE<Ex> checked) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "checked", checked);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E checked(AttributeSupplier<? extends java.lang.Boolean> checked) throws IOException {
-				return attribute((E)this, "checked", checked);
+			default E checked(BooleanSupplier checked) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "checked", checked);
 			}
 		}
 
@@ -168,33 +168,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E defer(boolean defer) throws IOException {
-				return attribute((E)this, "defer", defer);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "defer", defer);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E defer(java.lang.Boolean defer) throws IOException {
-				return attribute((E)this, "defer", defer);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "defer", defer);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E deferE(AttributeSupplierE<? extends java.lang.Boolean,Ex> defer) throws IOException, Ex {
-				return attributeE((E)this, "defer", defer);
+			default <Ex extends Throwable> E deferE(BooleanSupplierE<Ex> defer) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "defer", defer);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E defer(AttributeSupplier<? extends java.lang.Boolean> defer) throws IOException {
-				return attribute((E)this, "defer", defer);
+			default E defer(BooleanSupplier defer) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "defer", defer);
 			}
 		}
 
@@ -206,33 +206,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E disabled(boolean disabled) throws IOException {
-				return attribute((E)this, "disabled", disabled);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "disabled", disabled);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E disabled(java.lang.Boolean disabled) throws IOException {
-				return attribute((E)this, "disabled", disabled);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "disabled", disabled);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E disabledE(AttributeSupplierE<? extends java.lang.Boolean,Ex> disabled) throws IOException, Ex {
-				return attributeE((E)this, "disabled", disabled);
+			default <Ex extends Throwable> E disabledE(BooleanSupplierE<Ex> disabled) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "disabled", disabled);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E disabled(AttributeSupplier<? extends java.lang.Boolean> disabled) throws IOException {
-				return attribute((E)this, "disabled", disabled);
+			default E disabled(BooleanSupplier disabled) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "disabled", disabled);
 			}
 		}
 
@@ -250,9 +250,8 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			@SuppressWarnings("unchecked")
 			default E noshade(boolean noshade) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -269,9 +268,8 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			@SuppressWarnings("unchecked")
 			default E noshade(java.lang.Boolean noshade) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -288,9 +286,8 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E noshadeE(AttributeSupplierE<? extends java.lang.Boolean,Ex> noshade) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E noshadeE(BooleanSupplierE<Ex> noshade) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -307,9 +304,8 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			@SuppressWarnings("unchecked")
-			default E noshade(AttributeSupplier<? extends java.lang.Boolean> noshade) throws IOException {
-				E element = (E)this;
+			default E noshade(BooleanSupplier noshade) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -329,33 +325,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E readonly(boolean readonly) throws IOException {
-				return attribute((E)this, "readonly", readonly);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "readonly", readonly);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E readonly(java.lang.Boolean readonly) throws IOException {
-				return attribute((E)this, "readonly", readonly);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "readonly", readonly);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E readonlyE(AttributeSupplierE<? extends java.lang.Boolean,Ex> readonly) throws IOException, Ex {
-				return attributeE((E)this, "readonly", readonly);
+			default <Ex extends Throwable> E readonlyE(BooleanSupplierE<Ex> readonly) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "readonly", readonly);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E readonly(AttributeSupplier<? extends java.lang.Boolean> readonly) throws IOException {
-				return attribute((E)this, "readonly", readonly);
+			default E readonly(BooleanSupplier readonly) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "readonly", readonly);
 			}
 		}
 
@@ -367,33 +363,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E selected(boolean selected) throws IOException {
-				return attribute((E)this, "selected", selected);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "selected", selected);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E selected(java.lang.Boolean selected) throws IOException {
-				return attribute((E)this, "selected", selected);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "selected", selected);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E selectedE(AttributeSupplierE<? extends java.lang.Boolean,Ex> selected) throws IOException, Ex {
-				return attributeE((E)this, "selected", selected);
+			default <Ex extends Throwable> E selectedE(BooleanSupplierE<Ex> selected) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "selected", selected);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E selected(AttributeSupplier<? extends java.lang.Boolean> selected) throws IOException {
-				return attribute((E)this, "selected", selected);
+			default E selected(BooleanSupplier selected) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "selected", selected);
 			}
 		}
 	}
@@ -404,24 +400,25 @@ public class Attributes {
 	 * Supports Integer length or percentage of parent (HTML 4-only).
 	 * </p>
 	 */
+	// TODO: Extend both Integer and String types?
 	public static class Dimension {
 
 		/** Make no instances. */
 		private Dimension() {}
 
-		static <E extends Element<E>> E attribute(E element, String name, int pixels) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, int pixels) throws IOException {
 			return Integer.attribute(element, name, pixels);
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, java.lang.Integer pixels) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.Integer pixels) throws IOException {
 			return Integer.attribute(element, name, pixels);
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, IntegerSupplierE<Ex> pixels) throws IOException, Ex {
 			return Integer.attributeE(element, name, pixels);
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, IntegerSupplier pixels) throws IOException {
 			return Integer.attribute(element, name, pixels);
 		}
 
@@ -429,28 +426,14 @@ public class Attributes {
 		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 		 */
 		@Deprecated
-		static <E extends Element<E>> E attributePP(E element, String name, Object pixelsOrPercent) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.String pixelsOrPercent) throws IOException {
+			pixelsOrPercent = StringUtility.trimNullIfEmpty(pixelsOrPercent);
 			if(pixelsOrPercent != null) {
-				if(pixelsOrPercent instanceof java.lang.Integer) return attribute(element, name, (java.lang.Integer)pixelsOrPercent);
-				if(pixelsOrPercent instanceof AttributeSupplier<?>) return attributePP(element, name, (AttributeSupplier<?>)pixelsOrPercent);
-				if(pixelsOrPercent instanceof AttributeSupplierE<?,?>) {
-					try {
-						return attributePPE(element, name, (AttributeSupplierE<?,?>)pixelsOrPercent);
-					} catch(Error|RuntimeException|IOException e) {
-						throw e;
-					} catch(Throwable t) {
-						throw new WrappedException(t);
-					}
-				}
-				pixelsOrPercent = Coercion.trimNullIfEmpty(pixelsOrPercent);
-				if(pixelsOrPercent != null) {
-					// TODO: Validate attribute name?
-					element.html.out.write(' ');
-					element.html.out.write(name);
-					element.html.out.write("=\"");
-					Coercion.write(pixelsOrPercent, textInXhtmlAttributeEncoder, element.html.out);
-					element.html.out.write('"');
-				}
+				element.html.out.write(' ');
+				element.html.out.write(name);
+				element.html.out.write("=\"");
+				encodeTextInXhtmlAttribute(pixelsOrPercent, element.html.out);
+				element.html.out.write('"');
 			}
 			return element;
 		}
@@ -459,16 +442,16 @@ public class Attributes {
 		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 		 */
 		@Deprecated
-		static <E extends Element<E>,Ex extends Throwable> E attributePPE(E element, String name, AttributeSupplierE<?,Ex> pixelsOrPercent) throws IOException, Ex {
-			return attributePP(element, name, (pixelsOrPercent == null) ? null : pixelsOrPercent.get());
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, StringSupplierE<Ex> pixelsOrPercent) throws IOException, Ex {
+			return attribute(element, name, (pixelsOrPercent == null) ? null : pixelsOrPercent.get(element.html.serialization, element.html.doctype));
 		}
 
 		/**
 		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 		 */
 		@Deprecated
-		static <E extends Element<E>> E attributePP(E element, String name, AttributeSupplier<?> pixelsOrPercent) throws IOException {
-			return attributePPE(element, name, pixelsOrPercent);
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, StringSupplier pixelsOrPercent) throws IOException {
+			return attributeE(element, name, pixelsOrPercent);
 		}
 
 		/**
@@ -479,44 +462,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E width(int pixels) throws IOException {
-				return attribute((E)this, "width", pixels);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E width(java.lang.Integer pixels) throws IOException {
-				return attribute((E)this, "width", pixels);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E widthE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				return attributeE((E)this, "width", pixels);
+			default <Ex extends Throwable> E widthE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "width", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E width(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
-				return attribute((E)this, "width", pixels);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
-			 *
-			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
-			 */
-			@Deprecated
-			@SuppressWarnings("unchecked")
-			default E widthPP(Object pixelsOrPercent) throws IOException {
-				return attributePP((E)this, "width", pixelsOrPercent);
+			default E width(IntegerSupplier pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixels);
 			}
 
 			/**
@@ -525,9 +497,9 @@ public class Attributes {
 			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 			 */
 			@Deprecated
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E widthPPE(AttributeSupplierE<?,Ex> pixelsOrPercent) throws IOException, Ex {
-				return attributePPE((E)this, "width", pixelsOrPercent);
+			default E width(java.lang.String pixelsOrPercent) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixelsOrPercent);
 			}
 
 			/**
@@ -536,9 +508,20 @@ public class Attributes {
 			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 			 */
 			@Deprecated
-			@SuppressWarnings("unchecked")
-			default E widthPP(AttributeSupplier<?> pixelsOrPercent) throws IOException {
-				return attributePP((E)this, "width", pixelsOrPercent);
+			default <Ex extends Throwable> E widthE(StringSupplierE<Ex> pixelsOrPercent) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "width", pixelsOrPercent);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
+			 */
+			@Deprecated
+			default E width(StringSupplier pixelsOrPercent) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixelsOrPercent);
 			}
 		}
 	}
@@ -551,12 +534,12 @@ public class Attributes {
 		/** Make no instances. */
 		private Event() {}
 
-		static <E extends Element<E>> E attribute(E element, String name, Object script) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, Object script) throws IOException {
 			if(script != null) {
-				if(script instanceof AttributeSupplier<?>) return attribute(element, name, (AttributeSupplier<?>)script);
-				if(script instanceof AttributeSupplierE<?,?>) {
+				if(script instanceof Supplier<?>) return attribute(element, name, (Supplier<?>)script);
+				if(script instanceof SupplierE<?,?>) {
 					try {
-						return attributeE(element, name, (AttributeSupplierE<?,?>)script);
+						return attributeE(element, name, (SupplierE<?,?>)script);
 					} catch(Error|RuntimeException|IOException e) {
 						throw e;
 					} catch(Throwable t) {
@@ -573,7 +556,6 @@ public class Attributes {
 						throw new WrappedException(t);
 					}
 				}
-				// TODO: Validate attribute name?
 				element.html.out.write(' ');
 				element.html.out.write(name);
 				element.html.out.write("=\"");
@@ -584,16 +566,15 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeSupplierE<?,Ex> script) throws IOException, Ex {
-			return attribute(element, name, (script == null) ? null : script.get());
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, SupplierE<?,Ex> script) throws IOException, Ex {
+			return attribute(element, name, (script == null) ? null : script.get(element.html.serialization, element.html.doctype));
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, AttributeSupplier<?> script) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, Supplier<?> script) throws IOException {
 			return attributeE(element, name, script);
 		}
 
-		static <E extends Element<E>> MediaWriter attribute(E element, String name) throws IOException {
-			// TODO: Validate attribute name?
+		static <E extends Element<E>> MediaWriter attribute(E element, java.lang.String name) throws IOException {
 			element.html.out.write(' ');
 			element.html.out.write(name);
 			element.html.out.write("=\"");
@@ -605,7 +586,7 @@ public class Attributes {
 			};
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeWriterE<Ex> script) throws IOException, Ex {
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, AttributeWriterE<Ex> script) throws IOException, Ex {
 			if(script != null) {
 				try (MediaWriter out = attribute(element, name)) {
 					script.writeAttribute(out);
@@ -614,7 +595,7 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, AttributeWriter script) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, AttributeWriter script) throws IOException {
 			return attributeE(element, name, script);
 		}
 
@@ -642,50 +623,126 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				@SuppressWarnings("unchecked")
 				default E onclick(Object onclick) throws IOException {
-					return attribute((E)this, "onclick", onclick);
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return attribute(element, "onclick", onclick);
 				}
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				@SuppressWarnings("unchecked")
-				default <Ex extends Throwable> E onclickE(AttributeSupplierE<?,Ex> onclick) throws IOException, Ex {
-					return attributeE((E)this, "onclick", onclick);
+				default <Ex extends Throwable> E onclickE(SupplierE<?,Ex> onclick) throws IOException, Ex {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return attributeE(element, "onclick", onclick);
 				}
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				@SuppressWarnings("unchecked")
-				default E onclick(AttributeSupplier<?> onclick) throws IOException {
-					return attribute((E)this, "onclick", onclick);
+				default E onclick(Supplier<?> onclick) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return attribute(element, "onclick", onclick);
 				}
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				@SuppressWarnings("unchecked")
 				default MediaWriter onclick() throws IOException {
-					return attribute((E)this, "onclick");
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return attribute(element, "onclick");
 				}
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				@SuppressWarnings("unchecked")
 				default <Ex extends Throwable> E onclickE(AttributeWriterE<Ex> onclick) throws IOException, Ex {
-					return attributeE((E)this, "onclick", onclick);
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return attributeE(element, "onclick", onclick);
 				}
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
-				@SuppressWarnings("unchecked")
 				default E onclick(AttributeWriter onclick) throws IOException {
-					return attribute((E)this, "onclick", onclick);
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return attribute(element, "onclick", onclick);
 				}
+			}
+		}
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#keywords-and-enumerated-attributes">2.4.3 Keywords and enumerated attributes</a>.
+	 * <p>
+	 * Values may be provided either as a {@link java.lang.String} or an {@link java.lang.Enum},
+	 * with the {@link java.lang.Enum} representation preferred.  The {@link java.lang.String}
+	 * value is allowed for values that are not part of the enumeration.
+	 * </p>
+	 * <p>
+	 * When converting from {@link java.lang.Enum}, uses {@link StringSupplier#get(com.aoindustries.html.Serialization, com.aoindustries.html.Doctype)}.
+	 * </p>
+	 */
+	public static class Enum {
+
+		/** Make no instances. */
+		private Enum() {}
+
+		// TODO: Test if attributeE, onclickE required in naming, or if java 8+ compiler can not-too-verbosely figure it out without the special names
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+		 */
+		public static interface Rel<
+			E extends Element<E> & Rel<E,V>,
+			V extends java.lang.Enum<V> & StringSupplier
+		> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			// All other rel(...) methods call this one
+			default E rel(java.lang.String rel) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return String.attribute(element, "rel", MarkupType.NONE, rel, true, true);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			default <Ex extends Throwable> E relE(StringSupplierE<Ex> rel) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return rel((rel == null) ? null : rel.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			default E rel(StringSupplier rel) throws IOException {
+				return relE(rel);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			default E rel(V rel) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return rel((rel == null) ? (java.lang.String)null : rel.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			default <Ex extends Throwable> E relE(EnumSupplierE<V,Ex> rel) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return rel((rel== null) ? (StringSupplier)null : rel.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			default E rel(EnumSupplier<V> rel) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return rel((rel == null) ? (StringSupplier)null : rel.get(element.html.serialization, element.html.doctype));
 			}
 		}
 	}
@@ -698,8 +755,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Integer() {}
 
-		static <E extends Element<E>> E attribute(E element, String name, int value) throws IOException {
-			// TODO: Validate attribute name?
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, int value) throws IOException {
 			element.html.out.write(' ');
 			element.html.out.write(name);
 			element.html.out.write("=\"");
@@ -709,7 +765,7 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, java.lang.Integer value) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.Integer value) throws IOException {
 			if(value != null) {
 				return attribute(element, name, value.intValue());
 			} else {
@@ -717,11 +773,11 @@ public class Attributes {
 			}
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeSupplierE<? extends java.lang.Integer,Ex> value) throws IOException, Ex {
-			return attribute(element, name, (value == null) ? null : value.get());
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, IntegerSupplierE<Ex> value) throws IOException, Ex {
+			return attribute(element, name, (value == null) ? (java.lang.Integer)null : value.get(element.html.serialization, element.html.doctype));
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, AttributeSupplier<? extends java.lang.Integer> value) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, IntegerSupplier value) throws IOException {
 			return attributeE(element, name, value);
 		}
 
@@ -733,33 +789,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E height(int pixels) throws IOException {
-				return attribute((E)this, "height", pixels);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "height", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E height(java.lang.Integer pixels) throws IOException {
-				return attribute((E)this, "height", pixels);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "height", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E heightE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				return attributeE((E)this, "height", pixels);
+			default <Ex extends Throwable> E heightE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "height", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E height(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
-				return attribute((E)this, "height", pixels);
+			default E height(IntegerSupplier pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "height", pixels);
 			}
 		}
 
@@ -775,9 +831,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E height(int pixels) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -796,9 +851,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E height(java.lang.Integer pixels) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -817,9 +871,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E heightE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E heightE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -838,9 +891,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E height(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
-				E element = (E)this;
+			default E height(IntegerSupplier pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -861,33 +913,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E maxlength(int maxlength) throws IOException {
-				return attribute((E)this, "maxlength", maxlength);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "maxlength", maxlength);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E maxlength(java.lang.Integer maxlength) throws IOException {
-				return attribute((E)this, "maxlength", maxlength);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "maxlength", maxlength);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E maxlengthE(AttributeSupplierE<? extends java.lang.Integer,Ex> maxlength) throws IOException, Ex {
-				return attributeE((E)this, "maxlength", maxlength);
+			default <Ex extends Throwable> E maxlengthE(IntegerSupplierE<Ex> maxlength) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "maxlength", maxlength);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E maxlength(AttributeSupplier<? extends java.lang.Integer> maxlength) throws IOException {
-				return attribute((E)this, "maxlength", maxlength);
+			default E maxlength(IntegerSupplier maxlength) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "maxlength", maxlength);
 			}
 		}
 
@@ -899,33 +951,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E size(int size) throws IOException {
-				return attribute((E)this, "size", size);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "size", size);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E size(java.lang.Integer size) throws IOException {
-				return attribute((E)this, "size", size);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "size", size);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E sizeE(AttributeSupplierE<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
-				return attributeE((E)this, "size", size);
+			default <Ex extends Throwable> E sizeE(IntegerSupplierE<Ex> size) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "size", size);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E size(AttributeSupplier<? extends java.lang.Integer> size) throws IOException {
-				return attribute((E)this, "size", size);
+			default E size(IntegerSupplier size) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "size", size);
 			}
 		}
 
@@ -944,9 +996,8 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
-			@SuppressWarnings("unchecked")
 			default E size(int size) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -964,9 +1015,8 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
-			@SuppressWarnings("unchecked")
 			default E size(java.lang.Integer size) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -984,9 +1034,8 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E sizeE(AttributeSupplierE<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E sizeE(IntegerSupplierE<Ex> size) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1004,9 +1053,8 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
-			@SuppressWarnings("unchecked")
-			default E size(AttributeSupplier<? extends java.lang.Integer> size) throws IOException {
-				E element = (E)this;
+			default E size(IntegerSupplier size) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1032,9 +1080,8 @@ public class Attributes {
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E tabindex(int tabindex) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1052,9 +1099,8 @@ public class Attributes {
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1072,9 +1118,8 @@ public class Attributes {
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E tabindexE(AttributeSupplierE<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E tabindexE(IntegerSupplierE<Ex> tabindex) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1092,9 +1137,8 @@ public class Attributes {
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default E tabindex(AttributeSupplier<? extends java.lang.Integer> tabindex) throws IOException {
-				E element = (E)this;
+			default E tabindex(IntegerSupplier tabindex) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1122,9 +1166,9 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E tabindex(int tabindex) throws IOException {
-				return attribute((E)this, "tabindex", tabindex);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "tabindex", tabindex);
 			}
 
 			/**
@@ -1134,9 +1178,9 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
-				return attribute((E)this, "tabindex", tabindex);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "tabindex", tabindex);
 			}
 
 			/**
@@ -1146,9 +1190,9 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E tabindexE(AttributeSupplierE<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
-				return attributeE((E)this, "tabindex", tabindex);
+			default <Ex extends Throwable> E tabindexE(IntegerSupplierE<Ex> tabindex) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "tabindex", tabindex);
 			}
 
 			/**
@@ -1158,9 +1202,9 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E tabindex(AttributeSupplier<? extends java.lang.Integer> tabindex) throws IOException {
-				return attribute((E)this, "tabindex", tabindex);
+			default E tabindex(IntegerSupplier tabindex) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "tabindex", tabindex);
 			}
 		}
 
@@ -1172,33 +1216,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E width(int pixels) throws IOException {
-				return attribute((E)this, "width", pixels);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E width(java.lang.Integer pixels) throws IOException {
-				return attribute((E)this, "width", pixels);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E widthE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				return attributeE((E)this, "width", pixels);
+			default <Ex extends Throwable> E widthE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "width", pixels);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E width(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
-				return attribute((E)this, "width", pixels);
+			default E width(IntegerSupplier pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "width", pixels);
 			}
 		}
 
@@ -1215,9 +1259,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E width(int pixels) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1236,9 +1279,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E width(java.lang.Integer pixels) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1257,9 +1299,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E widthE(AttributeSupplierE<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E widthE(IntegerSupplierE<Ex> pixels) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1278,9 +1319,8 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E width(AttributeSupplier<? extends java.lang.Integer> pixels) throws IOException {
-				E element = (E)this;
+			default E width(IntegerSupplier pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1295,19 +1335,56 @@ public class Attributes {
 	}
 
 	/**
-	 * Text attributes.
+	 * Non-streamable text attributes (expected to be short, relatively fixed values)
+	 */
+	public static class String {
+
+		/** Make no instances. */
+		private String() {}
+
+		// TODO: MarkupType?
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
+			if(value != null) {
+				if(trim) value = value.trim();
+				if(!nullIfEmpty || !value.isEmpty()) {
+					element.html.out.write(' ');
+					element.html.out.write(name);
+					element.html.out.write("=\"");
+					if(markupType == null || markupType == MarkupType.NONE) {
+						// Short-cut additional type checks done by Coercion, since we already have a String
+						encodeTextInXhtmlAttribute(value, element.html.out);
+					} else {
+						Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+					}
+					element.html.out.write('"');
+				}
+			}
+			return element;
+		}
+
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, MarkupType markupType, StringSupplierE<Ex> value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
+			return attribute(element, name, markupType, (value == null) ? null : value.get(element.html.serialization, element.html.doctype), trim, nullIfEmpty);
+		}
+
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, StringSupplier value, boolean trim, boolean nullIfEmpty) throws IOException {
+			return attributeE(element, name, markupType, value, trim, nullIfEmpty);
+		}
+	}
+
+	/**
+	 * Streamable text attributes.
 	 */
 	public static class Text {
 
 		/** Make no instances. */
 		private Text() {}
 
-		static <E extends Element<E>> E attribute(E element, String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
-				if(value instanceof AttributeSupplier<?>) return attribute(element, name, markupType, (AttributeSupplier<?>)value, trim, nullIfEmpty);
-				if(value instanceof AttributeSupplierE<?,?>) {
+				if(value instanceof Supplier<?>) return attribute(element, name, markupType, (Supplier<?>)value, trim, nullIfEmpty);
+				if(value instanceof SupplierE<?,?>) {
 					try {
-						return attributeE(element, name, markupType, (AttributeSupplierE<?,?>)value, trim, nullIfEmpty);
+						return attributeE(element, name, markupType, (SupplierE<?,?>)value, trim, nullIfEmpty);
 					} catch(Error|RuntimeException|IOException e) {
 						throw e;
 					} catch(Throwable t) {
@@ -1334,7 +1411,6 @@ public class Attributes {
 					value = Coercion.nullIfEmpty(value);
 				}
 				if(value != null) {
-					// TODO: Validate attribute name?
 					element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
 					element.html.out.write(name);
 					element.html.out.write("=\"");
@@ -1345,16 +1421,15 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, MarkupType markupType, AttributeSupplierE<?,Ex> value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
-			return attribute(element, name, markupType, (value == null) ? null : value.get(), trim, nullIfEmpty);
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, MarkupType markupType, SupplierE<?,Ex> value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
+			return attribute(element, name, markupType, (value == null) ? null : value.get(element.html.serialization, element.html.doctype), trim, nullIfEmpty);
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, MarkupType markupType, AttributeSupplier<?> value, boolean trim, boolean nullIfEmpty) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Supplier<?> value, boolean trim, boolean nullIfEmpty) throws IOException {
 			return attributeE(element, name, markupType, value, trim, nullIfEmpty);
 		}
 
-		static <E extends Element<E>> MediaWriter attribute(E element, String name) throws IOException {
-			// TODO: Validate attribute name?
+		static <E extends Element<E>> MediaWriter attribute(E element, java.lang.String name) throws IOException {
 			element.html.out.write(' ');
 			element.html.out.write(name);
 			element.html.out.write("=\"");
@@ -1366,7 +1441,7 @@ public class Attributes {
 			};
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeWriterE<Ex> value) throws IOException, Ex {
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, AttributeWriterE<Ex> value) throws IOException, Ex {
 			if(value != null) {
 				try (MediaWriter out = attribute(element, name)) {
 					value.writeAttribute(out);
@@ -1375,7 +1450,7 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, AttributeWriter value) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, AttributeWriter value) throws IOException {
 			return attributeE(element, name, value);
 		}
 
@@ -1393,9 +1468,9 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E clazz(Object clazz) throws IOException {
-				return attribute((E)this, "class", MarkupType.NONE, clazz, true, true);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "class", MarkupType.NONE, clazz, true, true);
 			}
 
 			/**
@@ -1404,9 +1479,9 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E clazzE(AttributeSupplierE<?,Ex> clazz) throws IOException, Ex {
-				return attributeE((E)this, "class", MarkupType.NONE, clazz, true, true);
+			default <Ex extends Throwable> E clazzE(SupplierE<?,Ex> clazz) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "class", MarkupType.NONE, clazz, true, true);
 			}
 
 			/**
@@ -1415,9 +1490,9 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default E clazz(AttributeSupplier<?> clazz) throws IOException {
-				return attribute((E)this, "class", MarkupType.NONE, clazz, true, true);
+			default E clazz(Supplier<?> clazz) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "class", MarkupType.NONE, clazz, true, true);
 			}
 
 			/**
@@ -1426,9 +1501,9 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter clazz() throws IOException {
-				return attribute((E)this, "class");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "class");
 			}
 
 			/**
@@ -1437,9 +1512,9 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E clazzE(AttributeWriterE<Ex> clazz) throws IOException, Ex {
-				return attributeE((E)this, "class", clazz);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "class", clazz);
 			}
 
 			/**
@@ -1448,9 +1523,9 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E clazz(AttributeWriter clazz) throws IOException {
-				return attribute((E)this, "class", clazz);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "class", clazz);
 			}
 		}
 
@@ -1469,9 +1544,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E clazz(Object clazz) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1490,9 +1564,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E clazzE(AttributeSupplierE<?,Ex> clazz) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E clazzE(SupplierE<?,Ex> clazz) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1511,9 +1584,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E clazz(AttributeSupplier<?> clazz) throws IOException {
-				E element = (E)this;
+			default E clazz(Supplier<?> clazz) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1532,9 +1604,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default MediaWriter clazz() throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1553,9 +1624,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E clazzE(AttributeWriterE<Ex> clazz) throws IOException, Ex {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1574,9 +1644,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E clazz(AttributeWriter clazz) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1603,9 +1672,9 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E id(Object id) throws IOException {
-				return attribute((E)this, "id", MarkupType.NONE, id, true, true);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "id", MarkupType.NONE, id, true, true);
 			}
 
 			/**
@@ -1614,9 +1683,9 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E idE(AttributeSupplierE<?,Ex> id) throws IOException, Ex {
-				return attributeE((E)this, "id", MarkupType.NONE, id, true, true);
+			default <Ex extends Throwable> E idE(SupplierE<?,Ex> id) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "id", MarkupType.NONE, id, true, true);
 			}
 
 			/**
@@ -1625,9 +1694,9 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default E id(AttributeSupplier<?> id) throws IOException {
-				return attribute((E)this, "id", MarkupType.NONE, id, true, true);
+			default E id(Supplier<?> id) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "id", MarkupType.NONE, id, true, true);
 			}
 
 			/**
@@ -1636,9 +1705,9 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter id() throws IOException {
-				return attribute((E)this, "id");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "id");
 			}
 
 			/**
@@ -1647,9 +1716,9 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E idE(AttributeWriterE<Ex> id) throws IOException, Ex {
-				return attributeE((E)this, "id", id);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "id", id);
 			}
 
 			/**
@@ -1658,9 +1727,9 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E id(AttributeWriter id) throws IOException {
-				return attribute((E)this, "id", id);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "id", id);
 			}
 		}
 
@@ -1679,9 +1748,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E id(Object id) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1700,9 +1768,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E idE(AttributeSupplierE<?,Ex> id) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E idE(SupplierE<?,Ex> id) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1721,9 +1788,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E id(AttributeSupplier<?> id) throws IOException {
-				E element = (E)this;
+			default E id(Supplier<?> id) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1742,9 +1808,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default MediaWriter id() throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1763,9 +1828,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E idE(AttributeWriterE<Ex> id) throws IOException, Ex {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1784,9 +1848,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E id(AttributeWriter id) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -1807,49 +1870,49 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E label(Object label) throws IOException {
-				return attribute((E)this, "label", MarkupType.TEXT, label, false, false);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "label", MarkupType.TEXT, label, false, false);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E labelE(AttributeSupplierE<?,Ex> label) throws IOException, Ex {
-				return attributeE((E)this, "label", MarkupType.TEXT, label, false, false);
+			default <Ex extends Throwable> E labelE(SupplierE<?,Ex> label) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "label", MarkupType.TEXT, label, false, false);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E label(AttributeSupplier<?> label) throws IOException {
-				return attribute((E)this, "label", MarkupType.TEXT, label, false, false);
+			default E label(Supplier<?> label) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "label", MarkupType.TEXT, label, false, false);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter label() throws IOException {
-				return attribute((E)this, "label");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "label");
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E labelE(AttributeWriterE<Ex> label) throws IOException, Ex {
-				return attributeE((E)this, "label", label);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "label", label);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E label(AttributeWriter label) throws IOException {
-				return attribute((E)this, "label", label);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "label", label);
 			}
 		}
 
@@ -1862,49 +1925,49 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E media(Object media) throws IOException {
-				return attribute((E)this, "media", MarkupType.NONE, media, true, true);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "media", MarkupType.NONE, media, true, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E mediaE(AttributeSupplierE<?,Ex> media) throws IOException, Ex {
-				return attributeE((E)this, "media", MarkupType.NONE, media, true, true);
+			default <Ex extends Throwable> E mediaE(SupplierE<?,Ex> media) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "media", MarkupType.NONE, media, true, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E media(AttributeSupplier<?> media) throws IOException {
-				return attribute((E)this, "media", MarkupType.NONE, media, true, true);
+			default E media(Supplier<?> media) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "media", MarkupType.NONE, media, true, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter media() throws IOException {
-				return attribute((E)this, "media");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "media");
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E mediaE(AttributeWriterE<Ex> media) throws IOException, Ex {
-				return attributeE((E)this, "media", media);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "media", media);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E media(AttributeWriter media) throws IOException {
-				return attribute((E)this, "media", media);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "media", media);
 			}
 		}
 
@@ -1916,49 +1979,49 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E name(Object name) throws IOException {
-				return attribute((E)this, "name", MarkupType.NONE, name, false, true);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "name", MarkupType.NONE, name, false, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E nameE(AttributeSupplierE<?,Ex> name) throws IOException, Ex {
-				return attributeE((E)this, "name", MarkupType.NONE, name, false, true);
+			default <Ex extends Throwable> E nameE(SupplierE<?,Ex> name) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "name", MarkupType.NONE, name, false, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E name(AttributeSupplier<?> name) throws IOException {
-				return attribute((E)this, "name", MarkupType.NONE, name, false, true);
+			default E name(Supplier<?> name) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "name", MarkupType.NONE, name, false, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter name() throws IOException {
-				return attribute((E)this, "name");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "name");
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E nameE(AttributeWriterE<Ex> name) throws IOException, Ex {
-				return attributeE((E)this, "name", name);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "name", name);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E name(AttributeWriter name) throws IOException {
-				return attribute((E)this, "name", name);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "name", name);
 			}
 		}
 
@@ -1977,10 +2040,10 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E style(Object style) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				// TODO: MarkupType.CSS
-				return attribute((E)this, "style", MarkupType.JAVASCRIPT, style, true, true);
+				return attribute(element, "style", MarkupType.JAVASCRIPT, style, true, true);
 			}
 
 			/**
@@ -1989,10 +2052,10 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E styleE(AttributeSupplierE<?,Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E styleE(SupplierE<?,Ex> style) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				// TODO: MarkupType.CSS
-				return attributeE((E)this, "style", MarkupType.JAVASCRIPT, style, true, true);
+				return attributeE(element, "style", MarkupType.JAVASCRIPT, style, true, true);
 			}
 
 			/**
@@ -2001,10 +2064,10 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default E style(AttributeSupplier<?> style) throws IOException {
+			default E style(Supplier<?> style) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				// TODO: MarkupType.CSS
-				return attribute((E)this, "style", MarkupType.JAVASCRIPT, style, true, true);
+				return attribute(element, "style", MarkupType.JAVASCRIPT, style, true, true);
 			}
 
 			/**
@@ -2013,9 +2076,9 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter style() throws IOException {
-				return attribute((E)this, "style");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "style");
 			}
 
 			/**
@@ -2024,9 +2087,9 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E styleE(AttributeWriterE<Ex> style) throws IOException, Ex {
-				return attributeE((E)this, "style", style);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "style", style);
 			}
 
 			/**
@@ -2035,9 +2098,9 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E style(AttributeWriter style) throws IOException {
-				return attribute((E)this, "style", style);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "style", style);
 			}
 		}
 
@@ -2056,9 +2119,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E style(Object style) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2077,9 +2139,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E styleE(AttributeSupplierE<?,Ex> style) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E styleE(SupplierE<?,Ex> style) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2098,9 +2159,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E style(AttributeSupplier<?> style) throws IOException {
-				E element = (E)this;
+			default E style(Supplier<?> style) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2119,9 +2179,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default MediaWriter style() throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2140,9 +2199,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E styleE(AttributeWriterE<Ex> style) throws IOException, Ex {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2161,9 +2219,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E style(AttributeWriter style) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2190,9 +2247,9 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E title(Object title) throws IOException {
-				return attribute((E)this, "title", MarkupType.TEXT, title, true, true);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "title", MarkupType.TEXT, title, true, true);
 			}
 
 			/**
@@ -2201,9 +2258,9 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E titleE(AttributeSupplierE<?,Ex> title) throws IOException, Ex {
-				return attributeE((E)this, "title", MarkupType.TEXT, title, true, true);
+			default <Ex extends Throwable> E titleE(SupplierE<?,Ex> title) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "title", MarkupType.TEXT, title, true, true);
 			}
 
 			/**
@@ -2212,9 +2269,9 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
-			default E title(AttributeSupplier<?> title) throws IOException {
-				return attribute((E)this, "title", MarkupType.TEXT, title, true, true);
+			default E title(Supplier<?> title) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "title", MarkupType.TEXT, title, true, true);
 			}
 
 			/**
@@ -2223,9 +2280,9 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter title() throws IOException {
-				return attribute((E)this, "title");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "title");
 			}
 
 			/**
@@ -2234,9 +2291,9 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E titleE(AttributeWriterE<Ex> title) throws IOException, Ex {
-				return attributeE((E)this, "title", title);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "title", title);
 			}
 
 			/**
@@ -2245,9 +2302,9 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			@SuppressWarnings("unchecked")
 			default E title(AttributeWriter title) throws IOException {
-				return attribute((E)this, "title", title);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "title", title);
 			}
 		}
 
@@ -2266,9 +2323,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E title(Object title) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2287,9 +2343,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E titleE(AttributeSupplierE<?,Ex> title) throws IOException, Ex {
-				E element = (E)this;
+			default <Ex extends Throwable> E titleE(SupplierE<?,Ex> title) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2308,9 +2363,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
-			default E title(AttributeSupplier<?> title) throws IOException {
-				E element = (E)this;
+			default E title(Supplier<?> title) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2329,9 +2383,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default MediaWriter title() throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2350,9 +2403,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E titleE(AttributeWriterE<Ex> title) throws IOException, Ex {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2371,9 +2423,8 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
-			@SuppressWarnings("unchecked")
 			default E title(AttributeWriter title) throws IOException {
-				E element = (E)this;
+				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
@@ -2394,49 +2445,49 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E value(Object value) throws IOException {
-				return attribute((E)this, "value", MarkupType.NONE, value, false, true);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "value", MarkupType.NONE, value, false, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E valueE(AttributeSupplierE<?,Ex> value) throws IOException, Ex {
-				return attributeE((E)this, "value", MarkupType.NONE, value, false, true);
+			default <Ex extends Throwable> E valueE(SupplierE<?,Ex> value) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "value", MarkupType.NONE, value, false, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E value(AttributeSupplier<?> value) throws IOException {
-				return attribute((E)this, "value", MarkupType.NONE, value, false, true);
+			default E value(Supplier<?> value) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "value", MarkupType.NONE, value, false, true);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default MediaWriter value() throws IOException {
-				return attribute((E)this, "value");
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "value");
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default <Ex extends Throwable> E valueE(AttributeWriterE<Ex> value) throws IOException, Ex {
-				return attributeE((E)this, "value", value);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "value", value);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E value(AttributeWriter value) throws IOException {
-				return attribute((E)this, "value", value);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "value", value);
 			}
 		}
 	}
@@ -2450,9 +2501,8 @@ public class Attributes {
 		/** Make no instances. */
 		private Url() {}
 
-		static <E extends Element<E>> E attribute(E element, String name, String url) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
 			if(url != null) {
-				// TODO: Validate attribute name?
 				element.html.out.write(' ');
 				element.html.out.write(name);
 				element.html.out.write("=\"");
@@ -2463,12 +2513,12 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, Object url) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, Object url) throws IOException {
 			if(url != null) {
-				if(url instanceof AttributeSupplier<?>) return attribute(element, name, (AttributeSupplier<?>)url);
-				if(url instanceof AttributeSupplierE<?,?>) {
+				if(url instanceof Supplier<?>) return attribute(element, name, (Supplier<?>)url);
+				if(url instanceof SupplierE<?,?>) {
 					try {
-						return attributeE(element, name, (AttributeSupplierE<?,?>)url);
+						return attributeE(element, name, (SupplierE<?,?>)url);
 					} catch(Error|RuntimeException|IOException e) {
 						throw e;
 					} catch(Throwable t) {
@@ -2480,11 +2530,11 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, String name, AttributeSupplierE<?,Ex> url) throws IOException, Ex {
-			return attribute(element, name, (url == null) ? null : url.get());
+		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, SupplierE<?,Ex> url) throws IOException, Ex {
+			return attribute(element, name, (url == null) ? null : url.get(element.html.serialization, element.html.doctype));
 		}
 
-		static <E extends Element<E>> E attribute(E element, String name, MarkupType markupType, AttributeSupplier<?> url) throws IOException {
+		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Supplier<?> url) throws IOException {
 			return attributeE(element, name, url);
 		}
 
@@ -2496,33 +2546,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E href(String href) throws IOException {
-				return attribute((E)this, "href", href);
+			default E href(java.lang.String href) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "href", href);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E href(Object href) throws IOException {
-				return attribute((E)this, "href", href);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "href", href);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E hrefE(AttributeSupplierE<?,Ex> href) throws IOException, Ex {
-				return attributeE((E)this, "href", href);
+			default <Ex extends Throwable> E hrefE(SupplierE<?,Ex> href) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "href", href);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E href(AttributeSupplier<?> href) throws IOException {
-				return attribute((E)this, "href", href);
+			default E href(Supplier<?> href) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "href", href);
 			}
 		}
 
@@ -2534,33 +2584,33 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E src(String src) throws IOException {
-				return attribute((E)this, "src", src);
+			default E src(java.lang.String src) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "src", src);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
 			default E src(Object src) throws IOException {
-				return attribute((E)this, "src", src);
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "src", src);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default <Ex extends Throwable> E srcE(AttributeSupplierE<?,Ex> src) throws IOException, Ex {
-				return attributeE((E)this, "src", src);
+			default <Ex extends Throwable> E srcE(SupplierE<?,Ex> src) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attributeE(element, "src", src);
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
-			@SuppressWarnings("unchecked")
-			default E src(AttributeSupplier<?> src) throws IOException {
-				return attribute((E)this, "src", src);
+			default E src(Supplier<?> src) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "src", src);
 			}
 		}
 	}

@@ -220,7 +220,7 @@ public class Input extends EmptyElement<Input> implements
 	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 	 */
 	@Override
-	public <Ex extends Throwable> Input valueE(AttributeSupplierE<?,Ex> value) throws IOException, Ex {
+	public <Ex extends Throwable> Input valueE(SupplierE<?,Ex> value) throws IOException, Ex {
 		return Attributes.Text.attributeE(
 			this,
 			"value",
@@ -236,7 +236,7 @@ public class Input extends EmptyElement<Input> implements
 	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 	 */
 	@Override
-	public Input value(AttributeSupplier<?> value) throws IOException {
+	public Input value(Supplier<?> value) throws IOException {
 		return Attributes.Text.attribute(
 			this,
 			"value",

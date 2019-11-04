@@ -83,7 +83,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option labelE(AttributeSupplierE<?,Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> Option labelE(SupplierE<?,Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.labelE(label);
 	}
 
@@ -99,7 +99,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public Option label(AttributeSupplier<?> label) throws IOException {
+	public Option label(Supplier<?> label) throws IOException {
 		return Attributes.Text.Label.super.label(label);
 	}
 

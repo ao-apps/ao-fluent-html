@@ -174,10 +174,9 @@ public class Script extends Element<Script> implements
 
 	public Script out(Object script) throws IOException {
 		if(script != null) {
-			if(script instanceof ScriptWriter) return out((ScriptWriter)script);
 			if(script instanceof ScriptWriterE) {
 				try {
-					return outE((ScriptWriterE<?>)script);
+					return out((ScriptWriterE<?>)script);
 				} catch(Error|RuntimeException|IOException e) {
 					throw e;
 				} catch(Throwable t) {
@@ -214,7 +213,7 @@ public class Script extends Element<Script> implements
 		void writeScript(MediaWriter script) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> Script outE(ScriptWriterE<Ex> script) throws IOException, Ex {
+	public <Ex extends Throwable> Script out(ScriptWriterE<Ex> script) throws IOException, Ex {
 		if(script != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();
@@ -226,16 +225,6 @@ public class Script extends Element<Script> implements
 			);
 		}
 		return this;
-	}
-
-	@FunctionalInterface
-	public static interface ScriptWriter extends ScriptWriterE<RuntimeException> {
-		@Override
-		void writeScript(MediaWriter script) throws IOException;
-	}
-
-	public Script out(ScriptWriter script) throws IOException {
-		return outE(script);
 	}
 
 	// TODO: Hide cdata?

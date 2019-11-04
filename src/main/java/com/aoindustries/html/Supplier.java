@@ -28,7 +28,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @FunctionalInterface
-public interface Supplier<V> extends SupplierE<V,RuntimeException> {
-	@Override
-	V get(Serialization serialization, Doctype doctype) throws IOException;
+public interface Supplier<V,Ex extends Throwable> {
+	// TODO: Are serialization and doctype appropriate here?
+	V get(Serialization serialization, Doctype doctype) throws IOException, Ex;
 }

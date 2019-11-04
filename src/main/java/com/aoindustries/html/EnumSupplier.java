@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @FunctionalInterface
-public interface EnumSupplier<E extends Enum<E> & StringSupplier> extends Supplier<E>, EnumSupplierE<E,RuntimeException> {
+public interface EnumSupplier<E extends Enum<E> & StringSupplier<RuntimeException>,Ex extends Throwable> extends Supplier<E,Ex> {
 	@Override
-	E get(Serialization serialization, Doctype doctype) throws IOException;
+	E get(Serialization serialization, Doctype doctype) throws IOException, Ex;
 }

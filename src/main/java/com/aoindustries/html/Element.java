@@ -49,10 +49,9 @@ abstract public class Element<E extends Element<E>> implements
 	@SuppressWarnings("unchecked")
 	public E attribute(String name, Object value) throws IOException {
 		if(value != null) {
-			if(value instanceof AttributeWriter) return attribute(name, (AttributeWriter)value);
-			if(value instanceof AttributeWriterE) {
+			if(value instanceof AttributeWriter) {
 				try {
-					return (E)attributeE(name, (AttributeWriterE)value);
+					return (E)attribute(name, (AttributeWriter)value);
 				} catch(Error|RuntimeException|IOException e) {
 					throw e;
 				} catch(Throwable t) {
@@ -83,7 +82,7 @@ abstract public class Element<E extends Element<E>> implements
 	}
 
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable> E attributeE(String name, AttributeWriterE<Ex> value) throws IOException, Ex {
+	public <Ex extends Throwable> E attribute(String name, AttributeWriter<Ex> value) throws IOException, Ex {
 		if(value == null) {
 			return attribute(name, null);
 		} else {
@@ -92,10 +91,6 @@ abstract public class Element<E extends Element<E>> implements
 			}
 		}
 		return (E)this;
-	}
-
-	public E attribute(String name, AttributeWriter value) throws IOException {
-		return attributeE(name, value);
 	}
 
 	// TODO: Auto-closeable attribute writers for streaming implementations

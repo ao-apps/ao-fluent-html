@@ -29,7 +29,6 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @FunctionalInterface
-public interface AttributeWriter extends AttributeWriterE<RuntimeException> {
-	@Override
-	void writeAttribute(MediaWriter value) throws IOException;
+public interface AttributeWriter<Ex extends Throwable> {
+	void writeAttribute(MediaWriter value) throws IOException, Ex;
 }

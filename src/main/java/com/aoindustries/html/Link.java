@@ -58,7 +58,7 @@ public class Link extends EmptyElement<Link> implements
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 	 */
-	public enum Crossorigin implements StringSupplier {
+	public enum Crossorigin implements StringSupplier<RuntimeException> {
 		ANONYMOUS(
 			NO_VALUE,
 			"anonymous"
@@ -133,7 +133,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
-	public enum Rel implements StringSupplier {
+	public enum Rel implements StringSupplier<RuntimeException> {
 		ALTERNATE("alternate"),
 		AUTHOR("author"), // w3schools only
 		CANONICAL("canonical"), // TODO: This is not in the last.  Should we support arbitrary String values, like Script.type?
@@ -217,21 +217,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
 	@Override
-	public <Ex extends Throwable> Link relE(StringSupplierE<Ex> rel) throws IOException, Ex {
-		return Attributes.Enum.Rel.super.relE(rel);
-	}
-
-	/**
-	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
-	 * <blockquote>
-	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
-	 * </blockquote>
-	 *
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
-	 */
-	@Override
-	public Link rel(StringSupplier rel) throws IOException {
+	public <Ex extends Throwable> Link rel(StringSupplier<Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -259,21 +245,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
 	@Override
-	public <Ex extends Throwable> Link relE(EnumSupplierE<Rel,Ex> rel) throws IOException, Ex {
-		return Attributes.Enum.Rel.super.relE(rel);
-	}
-
-	/**
-	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
-	 * <blockquote>
-	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
-	 * </blockquote>
-	 *
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
-	 */
-	@Override
-	public Link rel(EnumSupplier<Rel> rel) throws IOException {
+	public <Ex extends Throwable> Link rel(EnumSupplier<Rel,Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 

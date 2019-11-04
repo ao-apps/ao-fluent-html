@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @FunctionalInterface
-public interface BooleanSupplier extends Supplier<Boolean>, BooleanSupplierE<RuntimeException> {
+public interface BooleanSupplier<Ex extends Throwable> extends Supplier<Boolean,Ex> {
 	@Override
-	Boolean get(Serialization serialization, Doctype doctype) throws IOException;
+	Boolean get(Serialization serialization, Doctype doctype) throws IOException, Ex;
 }

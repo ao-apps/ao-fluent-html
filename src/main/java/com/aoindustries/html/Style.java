@@ -151,10 +151,9 @@ public class Style extends Element<Style> implements
 	// TODO: FUnctional versions for Java 1.8
 	public Style out(Object style) throws IOException {
 		if(style != null) {
-			if(style instanceof StyleWriter) return out((StyleWriter)style);
 			if(style instanceof StyleWriterE) {
 				try {
-					return outE((StyleWriterE<?>)style);
+					return out((StyleWriterE<?>)style);
 				} catch(Error|RuntimeException|IOException e) {
 					throw e;
 				} catch(Throwable t) {
@@ -197,7 +196,7 @@ public class Style extends Element<Style> implements
 		void writeStyle(MediaWriter style) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> Style outE(StyleWriterE<Ex> style) throws IOException, Ex {
+	public <Ex extends Throwable> Style out(StyleWriterE<Ex> style) throws IOException, Ex {
 		if(style != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();
@@ -209,16 +208,6 @@ public class Style extends Element<Style> implements
 			);
 		}
 		return this;
-	}
-
-	@FunctionalInterface
-	public static interface StyleWriter extends StyleWriterE<RuntimeException> {
-		@Override
-		void writeStyle(MediaWriter style) throws IOException;
-	}
-
-	public Style out(StyleWriter style) throws IOException {
-		return outE(style);
 	}
 
 	// TODO: Hide cdata?

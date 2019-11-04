@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @FunctionalInterface
-public interface IntegerSupplier extends Supplier<Integer>, IntegerSupplierE<RuntimeException> {
+public interface IntegerSupplier<Ex extends Throwable> extends Supplier<Integer,Ex> {
 	@Override
-	Integer get(Serialization serialization, Doctype doctype) throws IOException;
+	Integer get(Serialization serialization, Doctype doctype) throws IOException, Ex;
 }

@@ -221,16 +221,7 @@ public class Input extends EmptyElement<Input> implements
 	 */
 	@Override
 	// TODO: Still necessary, @Funnel'ed?
-	public <Ex extends Throwable> Input valueE(SupplierE<?,Ex> value) throws IOException, Ex {
+	public <Ex extends Throwable> Input value(Supplier<?,Ex> value) throws IOException, Ex {
 		return value((value == null) ? null : value.get(html.serialization, html.doctype));
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
-	 */
-	@Override
-	// TODO: Still necessary, @Funnel'ed?
-	public Input value(Supplier<?> value) throws IOException {
-		return valueE(value);
 	}
 }

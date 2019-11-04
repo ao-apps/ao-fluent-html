@@ -83,23 +83,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option labelE(SupplierE<?,Ex> label) throws IOException, Ex {
-		return Attributes.Text.Label.super.labelE(label);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
-	 *
-	 * @deprecated  Although still part of the HTML specification, there is a
-	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
-	 *              that the label attribute is not supported.  We are deprecating
-	 *              this method to make it clear it should probably not be used, as the
-	 *              effect of label can be attained through the value attribute and
-	 *              tag body anyway.
-	 */
-	@Deprecated
-	@Override
-	public Option label(Supplier<?> label) throws IOException {
+	public <Ex extends Throwable> Option label(Supplier<?,Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
 	}
 
@@ -131,23 +115,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option labelE(AttributeWriterE<Ex> label) throws IOException, Ex {
-		return Attributes.Text.Label.super.labelE(label);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
-	 *
-	 * @deprecated  Although still part of the HTML specification, there is a
-	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
-	 *              that the label attribute is not supported.  We are deprecating
-	 *              this method to make it clear it should probably not be used, as the
-	 *              effect of label can be attained through the value attribute and
-	 *              tag body anyway.
-	 */
-	@Deprecated
-	@Override
-	public Option label(AttributeWriter label) throws IOException {
+	public <Ex extends Throwable> Option label(AttributeWriter<Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
 	}
 

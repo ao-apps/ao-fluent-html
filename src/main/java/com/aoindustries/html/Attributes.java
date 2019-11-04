@@ -379,6 +379,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
+			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return width((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
@@ -402,6 +403,7 @@ public class Attributes {
 			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 			 */
 			@Deprecated
+			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(StringSupplier<Ex> pixelsOrPercent) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return width((pixelsOrPercent == null) ? null : pixelsOrPercent.get(element.html.serialization, element.html.doctype));
@@ -511,7 +513,70 @@ public class Attributes {
 		/** Make no instances. */
 		private Enum() {}
 
-		// TODO: Test if attributeE, onclickE required in naming, or if java 8+ compiler can not-too-verbosely figure it out without the special names
+		/**
+		 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+		 *
+		 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
+		 */
+		@Deprecated
+		public static interface Align<
+			E extends Element<E> & Align<E,V>,
+			V extends java.lang.Enum<V> & StringSupplier<? extends RuntimeException>
+		> {
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+			 *
+			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@Funnel
+			default E align(java.lang.String align) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"align"
+					);
+				}
+				return String.attribute(element, "align", MarkupType.NONE, align, true, true);
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+			 *
+			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E align(StringSupplier<Ex> align) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return align((align == null) ? null : align.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+			 *
+			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			default E align(V align) throws IOException {
+				return align((StringSupplier<? extends RuntimeException>)align);
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+			 *
+			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E align(Supplier<? extends V,Ex> align) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return align((align== null) ? (V)null : align.get(element.html.serialization, element.html.doctype));
+			}
+		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
@@ -533,6 +598,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
+			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(StringSupplier<Ex> rel) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return rel((rel == null) ? null : rel.get(element.html.serialization, element.html.doctype));
@@ -548,6 +614,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
+			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(Supplier<? extends V,Ex> rel) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return rel((rel== null) ? (V)null : rel.get(element.html.serialization, element.html.doctype));
@@ -574,6 +641,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 			 */
+			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(StringSupplier<Ex> crossorigin) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.html.serialization, element.html.doctype));
@@ -589,6 +657,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 			 */
+			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get(element.html.serialization, element.html.doctype));

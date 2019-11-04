@@ -35,7 +35,9 @@ import java.util.Map;
  *
  * @author  AO Industries, Inc.
  */
+@SuppressWarnings("deprecation")
 public class Input extends EmptyElement<Input> implements
+	Attributes.Enum.Align<Input,Input.Align>,
 	Attributes.Boolean.Checked<Input>,
 	Attributes.Boolean.Disabled<Input>,
 	Attributes.Integer.HeightHtml5Only<Input>,
@@ -160,6 +162,33 @@ public class Input extends EmptyElement<Input> implements
 		Input i = type(type);
 		assert i == this;
 		return this;
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_align.asp">HTML input align Attribute</a>.
+	 */
+	public enum Align implements StringSupplier<RuntimeException> {
+		LEFT("left"),
+		RIGHT("right"),
+		TOP("top"),
+		MIDDLE("middle"),
+		BOTTOM("bottom");
+
+		private final java.lang.String value;
+
+		private Align(java.lang.String value) {
+			this.value = value;
+		}
+
+		@Override
+		public java.lang.String toString() {
+			return value;
+		}
+
+		@Override
+		public java.lang.String get(Serialization serialization, Doctype doctype) {
+			return value;
+		}
 	}
 
 	/**

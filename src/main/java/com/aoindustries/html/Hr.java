@@ -31,7 +31,7 @@ import java.io.IOException;
  */
 @SuppressWarnings("deprecation")
 public class Hr extends EmptyElement<Hr> implements
-	// TODO: align
+	Attributes.Enum.Align<Hr,Hr.Align>,
 	Attributes.Boolean.Noshade<Hr>,
 	Attributes.Integer.SizeHtml4Only<Hr>,
 	Attributes.Dimension.Width<Hr>,
@@ -47,5 +47,30 @@ public class Hr extends EmptyElement<Hr> implements
 	protected Hr open() throws IOException {
 		html.out.write("<hr");
 		return this;
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_hr_align.asp">HTML hr align Attribute</a>.
+	 */
+	public enum Align implements StringSupplier<RuntimeException> {
+		LEFT("left"),
+		CENTER("center"),
+		RIGHT("right");
+
+		private final java.lang.String value;
+
+		private Align(java.lang.String value) {
+			this.value = value;
+		}
+
+		@Override
+		public java.lang.String toString() {
+			return value;
+		}
+
+		@Override
+		public java.lang.String get(Serialization serialization, Doctype doctype) {
+			return value;
+		}
 	}
 }

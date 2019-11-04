@@ -654,7 +654,7 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
 				 *
-				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(java.lang.Object) onwheel} attribute instead.
 				 */
 				@Deprecated
 				@Funnel
@@ -666,7 +666,7 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
 				 *
-				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.Supplier) onwheel} attribute instead.
 				 */
 				@Deprecated
 				default <Ex extends Throwable> E onmousewheel(Supplier<?,Ex> onmousewheel) throws IOException, Ex {
@@ -676,7 +676,7 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
 				 *
-				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.AttributeWriter) onwheel} attribute instead.
 				 */
 				@Deprecated
 				default <Ex extends Throwable> E onmousewheel(AttributeWriter<Ex> onmousewheel) throws IOException, Ex {

@@ -52,6 +52,8 @@ public class Input extends EmptyElement<Input> implements
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Integer.TabindexHtml4<Input>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Window.Onerror<Input>, // TODO: Check type="image"?
+	Attributes.Event.Window.Onload<Input>, // TODO: Check type="image"?
 	Attributes.Event.Mouse.AlmostGlobal<Input>
 {
 

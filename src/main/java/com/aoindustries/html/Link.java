@@ -42,6 +42,8 @@ public class Link extends EmptyElement<Link> implements
 	Attributes.Text.Media<Link>,
 	Attributes.Enum.Rel<Link,Link.Rel>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Window.Onerror<Link>,
+	Attributes.Event.Window.Onload<Link>,
 	Attributes.Event.Mouse.AlmostGlobal<Link>
 {
 

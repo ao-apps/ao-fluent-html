@@ -416,6 +416,503 @@ public class Attributes {
 			return Text.attribute(element, name, MarkupType.JAVASCRIPT, script, true, true, javaScriptInXhtmlAttributeEncoder);
 		}
 
+		public static class Window {
+
+			/** Make no instances. */
+			private Window() {}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
+			 */
+			public static interface Onafterprint<E extends Element<E> & Onafterprint<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
+				 */
+				@Funnel
+				default E onafterprint(Object onafterprint) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onafterprint"
+						);
+					}
+					return Event.attribute(element, "onafterprint", onafterprint);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onafterprint(Supplier<?,Ex> onafterprint) throws IOException, Ex {
+					return onafterprint((onafterprint == null) ? null : onafterprint.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onafterprint(AttributeWriter<Ex> onafterprint) throws IOException, Ex {
+					return onafterprint((Object)onafterprint);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+			 */
+			public static interface Onbeforeprint<E extends Element<E> & Onbeforeprint<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+				 */
+				@Funnel
+				default E onbeforeprint(Object onbeforeprint) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onbeforeprint"
+						);
+					}
+					return Event.attribute(element, "onbeforeprint", onbeforeprint);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onbeforeprint(Supplier<?,Ex> onbeforeprint) throws IOException, Ex {
+					return onbeforeprint((onbeforeprint == null) ? null : onbeforeprint.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onbeforeprint(AttributeWriter<Ex> onbeforeprint) throws IOException, Ex {
+					return onbeforeprint((Object)onbeforeprint);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+			 */
+			public static interface Onbeforeunload<E extends Element<E> & Onbeforeunload<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+				 */
+				@Funnel
+				default E onbeforeunload(Object onbeforeunload) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onbeforeunload", onbeforeunload);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onbeforeunload(Supplier<?,Ex> onbeforeunload) throws IOException, Ex {
+					return onbeforeunload((onbeforeunload == null) ? null : onbeforeunload.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onbeforeunload(AttributeWriter<Ex> onbeforeunload) throws IOException, Ex {
+					return onbeforeunload((Object)onbeforeunload);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+			 */
+			public static interface Onerror<E extends Element<E> & Onerror<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+				 */
+				@Funnel
+				default E onerror(Object onerror) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onerror", onerror);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onerror(Supplier<?,Ex> onerror) throws IOException, Ex {
+					return onerror((onerror == null) ? null : onerror.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onerror(AttributeWriter<Ex> onerror) throws IOException, Ex {
+					return onerror((Object)onerror);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
+			 */
+			public static interface Onhashchange<E extends Element<E> & Onhashchange<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
+				 */
+				@Funnel
+				default E onhashchange(Object onhashchange) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onhashchange"
+						);
+					}
+					return Event.attribute(element, "onhashchange", onhashchange);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onhashchange(Supplier<?,Ex> onhashchange) throws IOException, Ex {
+					return onhashchange((onhashchange == null) ? null : onhashchange.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onhashchange(AttributeWriter<Ex> onhashchange) throws IOException, Ex {
+					return onhashchange((Object)onhashchange);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
+			 */
+			public static interface Onload<E extends Element<E> & Onload<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
+				 */
+				@Funnel
+				default E onload(Object onload) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onload", onload);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onload(Supplier<?,Ex> onload) throws IOException, Ex {
+					return onload((onload == null) ? null : onload.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onload(AttributeWriter<Ex> onload) throws IOException, Ex {
+					return onload((Object)onload);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
+			 */
+			public static interface Onmessage<E extends Element<E> & Onmessage<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
+				 */
+				@Funnel
+				default E onmessage(Object onmessage) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onmessage"
+						);
+					}
+					return Event.attribute(element, "onmessage", onmessage);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmessage(Supplier<?,Ex> onmessage) throws IOException, Ex {
+					return onmessage((onmessage == null) ? null : onmessage.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmessage(AttributeWriter<Ex> onmessage) throws IOException, Ex {
+					return onmessage((Object)onmessage);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+			 */
+			public static interface Onoffline<E extends Element<E> & Onoffline<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+				 */
+				@Funnel
+				default E onoffline(Object onoffline) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onoffline"
+						);
+					}
+					return Event.attribute(element, "onoffline", onoffline);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onoffline(Supplier<?,Ex> onoffline) throws IOException, Ex {
+					return onoffline((onoffline == null) ? null : onoffline.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onoffline(AttributeWriter<Ex> onoffline) throws IOException, Ex {
+					return onoffline((Object)onoffline);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+			 */
+			public static interface Ononline<E extends Element<E> & Ononline<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+				 */
+				@Funnel
+				default E ononline(Object ononline) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ononline"
+						);
+					}
+					return Event.attribute(element, "ononline", ononline);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ononline(Supplier<?,Ex> ononline) throws IOException, Ex {
+					return ononline((ononline == null) ? null : ononline.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ononline(AttributeWriter<Ex> ononline) throws IOException, Ex {
+					return ononline((Object)ononline);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+			 */
+			public static interface Onpagehide<E extends Element<E> & Onpagehide<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+				 */
+				@Funnel
+				default E onpagehide(Object onpagehide) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onpagehide", onpagehide);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpagehide(Supplier<?,Ex> onpagehide) throws IOException, Ex {
+					return onpagehide((onpagehide == null) ? null : onpagehide.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpagehide(AttributeWriter<Ex> onpagehide) throws IOException, Ex {
+					return onpagehide((Object)onpagehide);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+			 */
+			public static interface Onpageshow<E extends Element<E> & Onpageshow<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+				 */
+				@Funnel
+				default E onpageshow(Object onpageshow) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onpageshow", onpageshow);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpageshow(Supplier<?,Ex> onpageshow) throws IOException, Ex {
+					return onpageshow((onpageshow == null) ? null : onpageshow.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpageshow(AttributeWriter<Ex> onpageshow) throws IOException, Ex {
+					return onpageshow((Object)onpageshow);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+			 */
+			public static interface Onpopstate<E extends Element<E> & Onpopstate<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+				 */
+				@Funnel
+				default E onpopstate(Object onpopstate) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onpopstate", onpopstate);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpopstate(Supplier<?,Ex> onpopstate) throws IOException, Ex {
+					return onpopstate((onpopstate == null) ? null : onpopstate.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onpopstate(AttributeWriter<Ex> onpopstate) throws IOException, Ex {
+					return onpopstate((Object)onpopstate);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
+			 */
+			public static interface Onresize<E extends Element<E> & Onresize<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
+				 */
+				@Funnel
+				default E onresize(Object onresize) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onresize"
+						);
+					}
+					return Event.attribute(element, "onresize", onresize);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onresize(Supplier<?,Ex> onresize) throws IOException, Ex {
+					return onresize((onresize == null) ? null : onresize.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onresize(AttributeWriter<Ex> onresize) throws IOException, Ex {
+					return onresize((Object)onresize);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+			 */
+			public static interface Onstorage<E extends Element<E> & Onstorage<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+				 */
+				@Funnel
+				default E onstorage(Object onstorage) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onstorage", onstorage);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onstorage(Supplier<?,Ex> onstorage) throws IOException, Ex {
+					return onstorage((onstorage == null) ? null : onstorage.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onstorage(AttributeWriter<Ex> onstorage) throws IOException, Ex {
+					return onstorage((Object)onstorage);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+			 */
+			public static interface Onunload<E extends Element<E> & Onunload<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+				 */
+				@Funnel
+				default E onunload(Object onunload) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onunload", onunload);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onunload(Supplier<?,Ex> onunload) throws IOException, Ex {
+					return onunload((onunload == null) ? null : onunload.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onunload(AttributeWriter<Ex> onunload) throws IOException, Ex {
+					return onunload((Object)onunload);
+				}
+			}
+		}
+
 		public static class Mouse {
 
 			/** Make no instances. */
@@ -625,25 +1122,6 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Mouse Events</a>.
-			 * Supported HTML tags:
-			 * <blockquote>
-			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
-			 * </blockquote>
-			 */
-			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
-				Onclick<E>,
-				Ondblclick<E>,
-				Onmousedown<E>,
-				Onmousemove<E>,
-				Onmouseout<E>,
-				Onmouseover<E>,
-				Onmouseup<E>
-			{
-				// No methods, just adding defaults for all mouse event types
-			}
-
-			/**
 			 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
 			 *
 			 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
@@ -719,6 +1197,25 @@ public class Attributes {
 				default <Ex extends Throwable> E onwheel(AttributeWriter<Ex> onwheel) throws IOException, Ex {
 					return onwheel((Object)onwheel);
 				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Mouse Events</a>.
+			 * Supported HTML tags:
+			 * <blockquote>
+			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
+			 * </blockquote>
+			 */
+			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+				Onclick<E>,
+				Ondblclick<E>,
+				Onmousedown<E>,
+				Onmousemove<E>,
+				Onmouseout<E>,
+				Onmouseover<E>,
+				Onmouseup<E>
+			{
+				// No methods, just adding defaults for all mouse event types
 			}
 
 			/**

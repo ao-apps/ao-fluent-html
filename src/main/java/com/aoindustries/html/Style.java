@@ -45,8 +45,9 @@ public class Style extends Element<Style> implements
 	Attributes.Text.ClassNoHtml4<Style>,
 	Attributes.Text.IdNoHtml4<Style>,
 	Attributes.Text.StyleNoHtml4<Style>,
-	Attributes.Text.TitleNoHtml4<Style>
+	Attributes.Text.TitleNoHtml4<Style>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	Attributes.Event.Window.Onload<Link>
 	// Not on <style>: Attributes.Event.Mouse.AlmostGlobal<Style>
 {
 

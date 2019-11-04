@@ -51,7 +51,10 @@ public class Hr extends EmptyElement<Hr> implements
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_hr_align.asp">HTML hr align Attribute</a>.
+	 *
+	 * @deprecated  The align attribute of &lt;hr&gt; is not supported in HTML5. Use CSS instead.
 	 */
+	@Deprecated
 	public enum Align implements StringSupplier<RuntimeException> {
 		LEFT("left"),
 		CENTER("center"),

@@ -166,7 +166,10 @@ public class Input extends EmptyElement<Input> implements
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_align.asp">HTML input align Attribute</a>.
+	 *
+	 * @deprecated  The align attribute of &lt;input&gt; is not supported in HTML5. Use CSS instead.
 	 */
+	@Deprecated
 	public enum Align implements StringSupplier<RuntimeException> {
 		LEFT("left"),
 		RIGHT("right"),

@@ -489,18 +489,16 @@ public class Attributes {
 		private Event() {}
 
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, Object script) throws IOException {
-			if(script != null) {
-				if(script instanceof Supplier<?>) return attribute(element, name, (Supplier<?>)script);
-				if(script instanceof SupplierE<?,?>) {
-					try {
-						return attributeE(element, name, (SupplierE<?,?>)script);
-					} catch(Error|RuntimeException|IOException e) {
-						throw e;
-					} catch(Throwable t) {
-						throw new WrappedException(t);
-					}
+			while(script instanceof SupplierE<?,?>) {
+				try {
+					script = ((SupplierE<?,?>)script).get(element.html.serialization, element.html.doctype);
+				} catch(Error|RuntimeException|IOException e) {
+					throw e;
+				} catch(Throwable t) {
+					throw new WrappedException(t);
 				}
-				if(script instanceof AttributeWriter) return attribute(element, name, (AttributeWriter)script);
+			}
+			if(script != null) {
 				if(script instanceof AttributeWriterE<?>) {
 					try {
 						return attributeE(element, name, (AttributeWriterE<?>)script);
@@ -518,14 +516,6 @@ public class Attributes {
 				element.html.out.write('"');
 			}
 			return element;
-		}
-
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, SupplierE<?,Ex> script) throws IOException, Ex {
-			return attribute(element, name, (script == null) ? null : script.get(element.html.serialization, element.html.doctype));
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, Supplier<?> script) throws IOException {
-			return attributeE(element, name, script);
 		}
 
 		static <E extends Element<E>> MediaWriter attribute(E element, java.lang.String name) throws IOException {
@@ -547,10 +537,6 @@ public class Attributes {
 				}
 			}
 			return element;
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, AttributeWriter script) throws IOException {
-			return attributeE(element, name, script);
 		}
 
 		public static class Mouse {
@@ -587,15 +573,14 @@ public class Attributes {
 				 */
 				default <Ex extends Throwable> E onclickE(SupplierE<?,Ex> onclick) throws IOException, Ex {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					return attributeE(element, "onclick", onclick);
+					return onclick((onclick == null) ? null : onclick.get(element.html.serialization, element.html.doctype));
 				}
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
 				default E onclick(Supplier<?> onclick) throws IOException {
-					@SuppressWarnings("unchecked") E element = (E)this;
-					return attribute(element, "onclick", onclick);
+					return onclickE(onclick);
 				}
 
 				/**
@@ -618,8 +603,7 @@ public class Attributes {
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
 				default E onclick(AttributeWriter onclick) throws IOException {
-					@SuppressWarnings("unchecked") E element = (E)this;
-					return attribute(element, "onclick", onclick);
+					return onclickE(onclick);
 				}
 			}
 		}
@@ -1365,18 +1349,16 @@ public class Attributes {
 		private Text() {}
 
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException {
-			if(value != null) {
-				if(value instanceof Supplier<?>) return attribute(element, name, markupType, (Supplier<?>)value, trim, nullIfEmpty);
-				if(value instanceof SupplierE<?,?>) {
-					try {
-						return attributeE(element, name, markupType, (SupplierE<?,?>)value, trim, nullIfEmpty);
-					} catch(Error|RuntimeException|IOException e) {
-						throw e;
-					} catch(Throwable t) {
-						throw new WrappedException(t);
-					}
+			while(value instanceof SupplierE<?,?>) {
+				try {
+					value = ((SupplierE<?,?>)value).get(element.html.serialization, element.html.doctype);
+				} catch(Error|RuntimeException|IOException e) {
+					throw e;
+				} catch(Throwable t) {
+					throw new WrappedException(t);
 				}
-				if(value instanceof AttributeWriter) return attribute(element, name, (AttributeWriter)value);
+			}
+			if(value != null) {
 				if(value instanceof AttributeWriterE<?>) {
 					try {
 						return attributeE(element, name, (AttributeWriterE<?>)value);
@@ -1406,14 +1388,6 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, MarkupType markupType, SupplierE<?,Ex> value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
-			return attribute(element, name, markupType, (value == null) ? null : value.get(element.html.serialization, element.html.doctype), trim, nullIfEmpty);
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Supplier<?> value, boolean trim, boolean nullIfEmpty) throws IOException {
-			return attributeE(element, name, markupType, value, trim, nullIfEmpty);
-		}
-
 		static <E extends Element<E>> MediaWriter attribute(E element, java.lang.String name) throws IOException {
 			element.html.out.write(' ');
 			element.html.out.write(name);
@@ -1433,10 +1407,6 @@ public class Attributes {
 				}
 			}
 			return element;
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, AttributeWriter value) throws IOException {
-			return attributeE(element, name, value);
 		}
 
 		/**
@@ -1466,7 +1436,7 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E clazzE(SupplierE<?,Ex> clazz) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "class", MarkupType.NONE, clazz, true, true);
+				return clazz((clazz == null) ? null : clazz.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -1476,8 +1446,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E clazz(Supplier<?> clazz) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "class", MarkupType.NONE, clazz, true, true);
+				return clazzE(clazz);
 			}
 
 			/**
@@ -1509,8 +1478,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E clazz(AttributeWriter clazz) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "class", clazz);
+				return clazzE(clazz);
 			}
 		}
 
@@ -1670,7 +1638,7 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E idE(SupplierE<?,Ex> id) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "id", MarkupType.NONE, id, true, true);
+				return id((id == null) ? null : id.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -1680,8 +1648,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E id(Supplier<?> id) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "id", MarkupType.NONE, id, true, true);
+				return idE(id);
 			}
 
 			/**
@@ -1713,8 +1680,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E id(AttributeWriter id) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "id", id);
+				return idE(id);
 			}
 		}
 
@@ -1865,15 +1831,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E labelE(SupplierE<?,Ex> label) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "label", MarkupType.TEXT, label, false, false);
+				return label((label == null) ? null : label.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
 			default E label(Supplier<?> label) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "label", MarkupType.TEXT, label, false, false);
+				return labelE(label);
 			}
 
 			/**
@@ -1896,8 +1861,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
 			default E label(AttributeWriter label) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "label", label);
+				return labelE(label);
 			}
 		}
 
@@ -1920,15 +1884,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E mediaE(SupplierE<?,Ex> media) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "media", MarkupType.NONE, media, true, true);
+				return media((media == null) ? null : media.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
 			default E media(Supplier<?> media) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "media", MarkupType.NONE, media, true, true);
+				return mediaE(media);
 			}
 
 			/**
@@ -1951,8 +1914,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
 			default E media(AttributeWriter media) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "media", media);
+				return mediaE(media);
 			}
 		}
 
@@ -1974,15 +1936,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E nameE(SupplierE<?,Ex> name) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "name", MarkupType.NONE, name, false, true);
+				return name((name == null) ? null : name.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
 			default E name(Supplier<?> name) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "name", MarkupType.NONE, name, false, true);
+				return nameE(name);
 			}
 
 			/**
@@ -2005,8 +1966,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
 			default E name(AttributeWriter name) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "name", name);
+				return nameE(name);
 			}
 		}
 
@@ -2039,8 +1999,7 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E styleE(SupplierE<?,Ex> style) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				// TODO: MarkupType.CSS
-				return attributeE(element, "style", MarkupType.JAVASCRIPT, style, true, true);
+				return style((style == null) ? null : style.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -2050,9 +2009,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E style(Supplier<?> style) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				// TODO: MarkupType.CSS
-				return attribute(element, "style", MarkupType.JAVASCRIPT, style, true, true);
+				return styleE(style);
 			}
 
 			/**
@@ -2084,8 +2041,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E style(AttributeWriter style) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "style", style);
+				return styleE(style);
 			}
 		}
 
@@ -2245,7 +2201,7 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E titleE(SupplierE<?,Ex> title) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "title", MarkupType.TEXT, title, true, true);
+				return title((title == null) ? null : title.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
@@ -2255,8 +2211,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E title(Supplier<?> title) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "title", MarkupType.TEXT, title, true, true);
+				return titleE(title);
 			}
 
 			/**
@@ -2288,8 +2243,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default E title(AttributeWriter title) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "title", title);
+				return titleE(title);
 			}
 		}
 
@@ -2440,15 +2394,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E valueE(SupplierE<?,Ex> value) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "value", MarkupType.NONE, value, false, true);
+				return value((value == null) ? null : value.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
 			default E value(Supplier<?> value) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value", MarkupType.NONE, value, false, true);
+				return valueE(value);
 			}
 
 			/**
@@ -2471,8 +2424,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
 			default E value(AttributeWriter value) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value", value);
+				return valueE(value);
 			}
 		}
 	}
@@ -2499,28 +2451,19 @@ public class Attributes {
 		}
 
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, Object url) throws IOException {
-			if(url != null) {
-				if(url instanceof Supplier<?>) return attribute(element, name, (Supplier<?>)url);
-				if(url instanceof SupplierE<?,?>) {
-					try {
-						return attributeE(element, name, (SupplierE<?,?>)url);
-					} catch(Error|RuntimeException|IOException e) {
-						throw e;
-					} catch(Throwable t) {
-						throw new WrappedException(t);
-					}
+			while(url instanceof SupplierE<?,?>) {
+				try {
+					url = ((SupplierE<?,?>)url).get(element.html.serialization, element.html.doctype);
+				} catch(Error|RuntimeException|IOException e) {
+					throw e;
+				} catch(Throwable t) {
+					throw new WrappedException(t);
 				}
+			}
+			if(url != null) {
 				return attribute(element, name, Coercion.toString(url));
 			}
 			return element;
-		}
-
-		static <E extends Element<E>,Ex extends Throwable> E attributeE(E element, java.lang.String name, SupplierE<?,Ex> url) throws IOException, Ex {
-			return attribute(element, name, (url == null) ? null : url.get(element.html.serialization, element.html.doctype));
-		}
-
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Supplier<?> url) throws IOException {
-			return attributeE(element, name, url);
 		}
 
 		/**
@@ -2549,15 +2492,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E hrefE(SupplierE<?,Ex> href) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "href", href);
+				return href((href == null) ? null : href.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
 			default E href(Supplier<?> href) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "href", href);
+				return hrefE(href);
 			}
 		}
 
@@ -2587,15 +2529,14 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E srcE(SupplierE<?,Ex> src) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attributeE(element, "src", src);
+				return src((src == null) ? null : src.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
 			default E src(Supplier<?> src) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "src", src);
+				return srcE(src);
 			}
 		}
 	}

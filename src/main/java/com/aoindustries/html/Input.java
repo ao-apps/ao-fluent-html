@@ -220,31 +220,17 @@ public class Input extends EmptyElement<Input> implements
 	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 	 */
 	@Override
+	// TODO: Still necessary, @Funnel'ed?
 	public <Ex extends Throwable> Input valueE(SupplierE<?,Ex> value) throws IOException, Ex {
-		return Attributes.Text.attributeE(
-			this,
-			"value",
-			// Allow text markup from translations
-			(type == null) ? null : type.getMarkupType(),
-			value,
-			false,
-			true
-		);
+		return value((value == null) ? null : value.get(html.serialization, html.doctype));
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 	 */
 	@Override
+	// TODO: Still necessary, @Funnel'ed?
 	public Input value(Supplier<?> value) throws IOException {
-		return Attributes.Text.attribute(
-			this,
-			"value",
-			// Allow text markup from translations
-			(type == null) ? null : type.getMarkupType(),
-			value,
-			false,
-			true
-		);
+		return valueE(value);
 	}
 }

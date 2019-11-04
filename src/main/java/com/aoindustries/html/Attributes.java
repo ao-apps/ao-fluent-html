@@ -409,8 +409,6 @@ public class Attributes {
 		}
 	}
 
-	// TODO: Funnel from here
-
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">HTML Event Attributes</a>.
 	 */
@@ -476,7 +474,7 @@ public class Attributes {
 				@Funnel
 				default E onclick(Object onclick) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					return Event.attribute(element, "onclick", onclick); // TODO:? .<E,RuntimeException>
+					return Event.attribute(element, "onclick", onclick);
 				}
 
 				/**
@@ -491,8 +489,6 @@ public class Attributes {
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
 				default <Ex extends Throwable> E onclick(AttributeWriter<Ex> onclick) throws IOException, Ex {
-					//@SuppressWarnings("unchecked") E element = (E)this;
-					// TODO:? return Event.<E,Ex>attribute(element, "onclick", onclick);
 					return onclick((Object)onclick);
 				}
 			}
@@ -528,7 +524,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
-			// All other rel(...) methods call this one
+			@Funnel
 			default E rel(java.lang.String rel) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return String.attribute(element, "rel", MarkupType.NONE, rel, true, true);
@@ -569,7 +565,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 			 */
-			// All other crossorigin(...) methods call this one
+			@Funnel
 			default E crossorigin(java.lang.String crossorigin) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return String.attribute(element, "crossorigin", MarkupType.NONE, crossorigin, true, true);
@@ -634,6 +630,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
+			@Funnel
 			default E height(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "height", pixels);
@@ -642,6 +639,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
+			@Funnel
 			default E height(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "height", pixels);
@@ -668,6 +666,7 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
+			@Funnel
 			default E height(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -688,6 +687,7 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
+			@Funnel
 			default E height(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -730,6 +730,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
+			@Funnel
 			default E maxlength(int maxlength) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "maxlength", maxlength);
@@ -738,6 +739,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
+			@Funnel
 			default E maxlength(java.lang.Integer maxlength) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "maxlength", maxlength);
@@ -760,6 +762,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
+			@Funnel
 			default E size(int size) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "size", size);
@@ -768,6 +771,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
+			@Funnel
 			default E size(java.lang.Integer size) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "size", size);
@@ -797,6 +801,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
+			@Funnel
 			default E size(int size) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
@@ -816,6 +821,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
+			@Funnel
 			default E size(java.lang.Integer size) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
@@ -862,6 +868,7 @@ public class Attributes {
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
+			@Funnel
 			default E tabindex(int tabindex) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -881,6 +888,7 @@ public class Attributes {
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
+			@Funnel
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -921,6 +929,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
+			@Funnel
 			default E tabindex(int tabindex) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "tabindex", tabindex);
@@ -933,6 +942,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
+			@Funnel
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "tabindex", tabindex);
@@ -959,6 +969,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
+			@Funnel
 			default E width(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "width", pixels);
@@ -967,6 +978,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
+			@Funnel
 			default E width(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "width", pixels);
@@ -994,6 +1006,7 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
+			@Funnel
 			default E width(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -1014,6 +1027,7 @@ public class Attributes {
 			 * </p>
 			 */
 			@Override
+			@Funnel
 			default E width(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -1085,9 +1099,7 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, StringSupplier<Ex> value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
-			return String.attribute(element, name, markupType, (value == null) ? null : value.get(element.html.serialization, element.html.doctype), trim, nullIfEmpty);
-		}
+		// TODO: Some non-streamable from Text to here?
 	}
 
 	/**
@@ -1098,62 +1110,45 @@ public class Attributes {
 		/** Make no instances. */
 		private Text() {}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException {
+		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty) throws IOException, Ex {
 			while(value instanceof Supplier<?,?>) {
-				try {
-					value = ((Supplier<?,?>)value).get(element.html.serialization, element.html.doctype);
-				} catch(Error|RuntimeException|IOException e) {
-					throw e;
-				} catch(Throwable t) {
-					throw new WrappedException(t);
-				}
+				@SuppressWarnings("unchecked")
+				Supplier<?,Ex> supplier = (Supplier<?,Ex>)value;
+				value = supplier.get(element.html.serialization, element.html.doctype);
 			}
 			if(value != null) {
 				if(value instanceof AttributeWriter<?>) {
-					try {
-						return attribute(element, name, (AttributeWriter<?>)value);
-					} catch(Error|RuntimeException|IOException e) {
-						throw e;
-					} catch(Throwable t) {
-						throw new WrappedException(t);
-					}
-				}
-				if(trim) {
-					if(nullIfEmpty) {
-						value = Coercion.trimNullIfEmpty(value);
-					} else {
-						value = Coercion.trim(value);
-					}
-				} else if(nullIfEmpty) {
-					value = Coercion.nullIfEmpty(value);
-				}
-				if(value != null) {
+					@SuppressWarnings("unchecked")
+					AttributeWriter<Ex> writer = (AttributeWriter<Ex>)value;
 					element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
 					element.html.out.write(name);
 					element.html.out.write("=\"");
-					Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+					writer.writeAttribute(
+						new MediaWriter(textInXhtmlAttributeEncoder, element.html.out) {
+							@Override
+							public void close() throws IOException {
+								// Do not close underlying writer
+							}
+						}
+					);
 					element.html.out.write('"');
-				}
-			}
-			return element;
-		}
-
-		static <E extends Element<E>> MediaWriter attribute(E element, java.lang.String name) throws IOException {
-			element.html.out.write(' ');
-			element.html.out.write(name);
-			element.html.out.write("=\"");
-			return new MediaWriter(textInXhtmlAttributeEncoder, element.html.out) {
-				@Override
-				public void close() throws IOException {
-					element.html.out.write('"');
-				}
-			};
-		}
-
-		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, AttributeWriter<Ex> value) throws IOException, Ex {
-			if(value != null) {
-				try (MediaWriter out = attribute(element, name)) {
-					value.writeAttribute(out);
+				} else {
+					if(trim) {
+						if(nullIfEmpty) {
+							value = Coercion.trimNullIfEmpty(value);
+						} else {
+							value = Coercion.trim(value);
+						}
+					} else if(nullIfEmpty) {
+						value = Coercion.nullIfEmpty(value);
+					}
+					if(value != null) {
+						element.html.out.write(' '); // TODO: Combine these three writes by passing-in a single combined String?
+						element.html.out.write(name);
+						element.html.out.write("=\"");
+						Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+						element.html.out.write('"');
+					}
 				}
 			}
 			return element;
@@ -1173,6 +1168,7 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
+			@Funnel
 			default E clazz(Object clazz) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "class", MarkupType.NONE, clazz, true, true);
@@ -1195,20 +1191,8 @@ public class Attributes {
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			default MediaWriter clazz() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "class");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
-			 * <blockquote>
-			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
-			 * </blockquote>
-			 */
 			default <Ex extends Throwable> E clazz(AttributeWriter<Ex> clazz) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "class", clazz);
+				return clazz((Object)clazz);
 			}
 		}
 
@@ -1227,6 +1211,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
+			@Funnel
 			default E clazz(Object clazz) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -1258,26 +1243,6 @@ public class Attributes {
 					);
 				}
 				return Class.super.clazz(clazz);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
-			 * <blockquote>
-			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
-			 * </blockquote>
-			 */
-			@Override
-			default MediaWriter clazz() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.invalidGlobalAttributeForDoctype",
-						element.html.doctype,
-						"class"
-					);
-				}
-				return Class.super.clazz();
 			}
 
 			/**
@@ -1315,6 +1280,7 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
+			@Funnel
 			default E id(Object id) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "id", MarkupType.NONE, id, true, true);
@@ -1337,20 +1303,8 @@ public class Attributes {
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			default MediaWriter id() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "id");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
-			 * <blockquote>
-			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
-			 * </blockquote>
-			 */
 			default <Ex extends Throwable> E id(AttributeWriter<Ex> id) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "id", id);
+				return id((Object)id);
 			}
 		}
 
@@ -1369,6 +1323,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
+			@Funnel
 			default E id(Object id) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -1400,26 +1355,6 @@ public class Attributes {
 					);
 				}
 				return Id.super.id(id);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
-			 * <blockquote>
-			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
-			 * </blockquote>
-			 */
-			@Override
-			default MediaWriter id() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.invalidGlobalAttributeForDoctype",
-						element.html.doctype,
-						"id"
-					);
-				}
-				return Id.super.id();
 			}
 
 			/**
@@ -1451,6 +1386,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
+			@Funnel
 			default E label(Object label) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "label", MarkupType.TEXT, label, false, false);
@@ -1467,17 +1403,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
-			default MediaWriter label() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "label");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
-			 */
 			default <Ex extends Throwable> E label(AttributeWriter<Ex> label) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "label", label);
+				return label((Object)label);
 			}
 		}
 
@@ -1490,6 +1417,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
+			@Funnel
 			default E media(Object media) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "media", MarkupType.NONE, media, true, true);
@@ -1506,17 +1434,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
-			default MediaWriter media() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "media");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
-			 */
 			default <Ex extends Throwable> E media(AttributeWriter<Ex> media) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "media", media);
+				return media((Object)media);
 			}
 		}
 
@@ -1528,6 +1447,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
+			@Funnel
 			default E name(Object name) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "name", MarkupType.NONE, name, false, true);
@@ -1544,17 +1464,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
-			default MediaWriter name() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "name");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
-			 */
 			default <Ex extends Throwable> E name(AttributeWriter<Ex> name) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "name", name);
+				return name((Object)name);
 			}
 		}
 
@@ -1573,6 +1484,7 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
+			@Funnel
 			default E style(Object style) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				// TODO: MarkupType.CSS
@@ -1596,20 +1508,8 @@ public class Attributes {
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			default MediaWriter style() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "style");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
-			 * <blockquote>
-			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
-			 * </blockquote>
-			 */
 			default <Ex extends Throwable> E style(AttributeWriter<Ex> style) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "style", style);
+				return style((Object)style);
 			}
 		}
 
@@ -1628,6 +1528,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
+			@Funnel
 			default E style(Object style) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -1659,26 +1560,6 @@ public class Attributes {
 					);
 				}
 				return Style.super.style(style);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
-			 * <blockquote>
-			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
-			 * </blockquote>
-			 */
-			@Override
-			default MediaWriter style() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.invalidGlobalAttributeForDoctype",
-						element.html.doctype,
-						"style"
-					);
-				}
-				return Style.super.style();
 			}
 
 			/**
@@ -1716,6 +1597,7 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
+			@Funnel
 			default E title(Object title) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "title", MarkupType.TEXT, title, true, true);
@@ -1738,20 +1620,8 @@ public class Attributes {
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
 			 */
-			default MediaWriter title() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "title");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
-			 * <blockquote>
-			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
-			 * </blockquote>
-			 */
 			default <Ex extends Throwable> E title(AttributeWriter<Ex> title) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "title", title);
+				return title((Object)title);
 			}
 		}
 
@@ -1770,6 +1640,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			@Override
+			@Funnel
 			default E title(Object title) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
@@ -1801,26 +1672,6 @@ public class Attributes {
 					);
 				}
 				return Title.super.title(title);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
-			 * <blockquote>
-			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
-			 * </blockquote>
-			 */
-			@Override
-			default MediaWriter title() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
-					throw new LocalizedIllegalArgumentException(
-						accessor,
-						"Attributes.invalidGlobalAttributeForDoctype",
-						element.html.doctype,
-						"title"
-					);
-				}
-				return Title.super.title();
 			}
 
 			/**
@@ -1852,6 +1703,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
+			@Funnel
 			default E value(Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "value", MarkupType.NONE, value, false, true);
@@ -1868,17 +1720,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
-			default MediaWriter value() throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value");
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
-			 */
 			default <Ex extends Throwable> E value(AttributeWriter<Ex> value) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value", value);
+				return value((Object)value);
 			}
 		}
 	}
@@ -1904,22 +1747,6 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, Object url) throws IOException {
-			while(url instanceof Supplier<?,?>) {
-				try {
-					url = ((Supplier<?,?>)url).get(element.html.serialization, element.html.doctype);
-				} catch(Error|RuntimeException|IOException e) {
-					throw e;
-				} catch(Throwable t) {
-					throw new WrappedException(t);
-				}
-			}
-			if(url != null) {
-				return attribute(element, name, Coercion.toString(url));
-			}
-			return element;
-		}
-
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 		 */
@@ -1928,6 +1755,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
+			@Funnel
 			default E href(java.lang.String href) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "href", href);
@@ -1936,15 +1764,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
-			default E href(Object href) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "href", href);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
-			 */
-			default <Ex extends Throwable> E href(Supplier<?,Ex> href) throws IOException, Ex {
+			default <Ex extends Throwable> E href(StringSupplier<Ex> href) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return href((href == null) ? null : href.get(element.html.serialization, element.html.doctype));
 			}
@@ -1958,6 +1778,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
+			@Funnel
 			default E src(java.lang.String src) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return attribute(element, "src", src);
@@ -1966,15 +1787,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 			 */
-			default E src(Object src) throws IOException {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "src", src);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
-			 */
-			default <Ex extends Throwable> E src(Supplier<?,Ex> src) throws IOException, Ex {
+			// TODO: More bounds like this when disambiguation between multiple types unnecessary?
+			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String,Ex> src) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return src((src == null) ? null : src.get(element.html.serialization, element.html.doctype));
 			}

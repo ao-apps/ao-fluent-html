@@ -1680,7 +1680,322 @@ public class Attributes {
 			}
 		}
 
-		// TODO: Drag
+		public static class Drag {
+
+			/** Make no instances. */
+			private Drag() {}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+			 */
+			public static interface Ondrag<E extends Element<E> & Ondrag<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondrag(Object ondrag) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondrag"
+						);
+					}
+					return Event.attribute(element, "ondrag", ondrag);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondrag(Supplier<?,Ex> ondrag) throws IOException, Ex {
+					return ondrag((ondrag == null) ? null : ondrag.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondrag(AttributeWriter<Ex> ondrag) throws IOException, Ex {
+					return ondrag((Object)ondrag);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+			 */
+			public static interface Ondragend<E extends Element<E> & Ondragend<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondragend(Object ondragend) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondragend"
+						);
+					}
+					return Event.attribute(element, "ondragend", ondragend);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragend(Supplier<?,Ex> ondragend) throws IOException, Ex {
+					return ondragend((ondragend == null) ? null : ondragend.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragend(AttributeWriter<Ex> ondragend) throws IOException, Ex {
+					return ondragend((Object)ondragend);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+			 */
+			public static interface Ondragenter<E extends Element<E> & Ondragenter<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondragenter(Object ondragenter) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondragenter"
+						);
+					}
+					return Event.attribute(element, "ondragenter", ondragenter);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragenter(Supplier<?,Ex> ondragenter) throws IOException, Ex {
+					return ondragenter((ondragenter == null) ? null : ondragenter.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragenter(AttributeWriter<Ex> ondragenter) throws IOException, Ex {
+					return ondragenter((Object)ondragenter);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+			 */
+			public static interface Ondragleave<E extends Element<E> & Ondragleave<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondragleave(Object ondragleave) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondragleave"
+						);
+					}
+					return Event.attribute(element, "ondragleave", ondragleave);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragleave(Supplier<?,Ex> ondragleave) throws IOException, Ex {
+					return ondragleave((ondragleave == null) ? null : ondragleave.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragleave(AttributeWriter<Ex> ondragleave) throws IOException, Ex {
+					return ondragleave((Object)ondragleave);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
+			 */
+			public static interface Ondragover<E extends Element<E> & Ondragover<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondragover(Object ondragover) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondragover"
+						);
+					}
+					return Event.attribute(element, "ondragover", ondragover);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragover(Supplier<?,Ex> ondragover) throws IOException, Ex {
+					return ondragover((ondragover == null) ? null : ondragover.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragover(AttributeWriter<Ex> ondragover) throws IOException, Ex {
+					return ondragover((Object)ondragover);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+			 */
+			public static interface Ondragstart<E extends Element<E> & Ondragstart<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondragstart(Object ondragstart) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondragstart"
+						);
+					}
+					return Event.attribute(element, "ondragstart", ondragstart);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragstart(Supplier<?,Ex> ondragstart) throws IOException, Ex {
+					return ondragstart((ondragstart == null) ? null : ondragstart.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondragstart(AttributeWriter<Ex> ondragstart) throws IOException, Ex {
+					return ondragstart((Object)ondragstart);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
+			 */
+			public static interface Ondrop<E extends Element<E> & Ondrop<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondrop(Object ondrop) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"ondrop"
+						);
+					}
+					return Event.attribute(element, "ondrop", ondrop);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondrop(Supplier<?,Ex> ondrop) throws IOException, Ex {
+					return ondrop((ondrop == null) ? null : ondrop.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondrop(AttributeWriter<Ex> ondrop) throws IOException, Ex {
+					return ondrop((Object)ondrop);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+			 */
+			public static interface Onscroll<E extends Element<E> & Onscroll<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+				 */
+				@Funnel
+				default E onscroll(Object onscroll) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onscroll"
+						);
+					}
+					return Event.attribute(element, "onscroll", onscroll);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onscroll(Supplier<?,Ex> onscroll) throws IOException, Ex {
+					return onscroll((onscroll == null) ? null : onscroll.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onscroll(AttributeWriter<Ex> onscroll) throws IOException, Ex {
+					return onscroll((Object)onscroll);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Drag Events</a>.
+			 */
+			public static interface Global<E extends Element<E> & Global<E>> extends
+				Ondrag<E>,
+				Ondragend<E>,
+				Ondragenter<E>,
+				Ondragleave<E>,
+				Ondragover<E>,
+				Ondragstart<E>,
+				Ondrop<E>
+			{
+				// No methods, just adding mouse event types
+			}
+		}
 
 		// TODO: Clipboard
 
@@ -3114,7 +3429,8 @@ public class Attributes {
 		Text.Title<E>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 		Event.Form.Global<E>,
-		Event.Mouse.Global<E>
+		Event.Mouse.Global<E>,
+		Event.Drag.Global<E>
 	{
 		// No methods, just adding attributes
 	}

@@ -518,7 +518,7 @@ public class Attributes {
 		 */
 		public static interface Rel<
 			E extends Element<E> & Rel<E,V>,
-			V extends java.lang.Enum<V> & StringSupplier<RuntimeException>
+			V extends java.lang.Enum<V> & StringSupplier<? extends RuntimeException>
 		> {
 
 			/**
@@ -542,7 +542,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
 			default E rel(V rel) throws IOException {
-				return rel((StringSupplier<RuntimeException>)rel);
+				return rel((StringSupplier<? extends RuntimeException>)rel);
 			}
 
 			/**
@@ -559,7 +559,7 @@ public class Attributes {
 		 */
 		public static interface Crossorigin<
 			E extends Element<E> & Crossorigin<E,V>,
-			V extends java.lang.Enum<V> & StringSupplier<RuntimeException>
+			V extends java.lang.Enum<V> & StringSupplier<? extends RuntimeException>
 		> {
 
 			/**
@@ -583,7 +583,7 @@ public class Attributes {
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 			 */
 			default E crossorigin(V crossorigin) throws IOException {
-				return crossorigin((StringSupplier<RuntimeException>)crossorigin);
+				return crossorigin((StringSupplier<? extends RuntimeException>)crossorigin);
 			}
 
 			/**

@@ -31,7 +31,7 @@ import java.io.IOException;
  */
 public class Br extends EmptyElement<Br>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: Attributes.Event.Mouse.Events<Br>
+	// Not on <br>: Attributes.Event.Mouse.AlmostGlobal<Br>
 {
 
 	public Br(Html html) {

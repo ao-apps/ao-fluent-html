@@ -52,7 +52,7 @@ public class Input extends EmptyElement<Input> implements
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Integer.TabindexHtml4<Input>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.Mouse.Events<Input>
+	Attributes.Event.Mouse.AlmostGlobal<Input>
 {
 
 	/**

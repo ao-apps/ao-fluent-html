@@ -422,17 +422,6 @@ public class Attributes {
 			private Mouse() {}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Mouse Events</a>.
-			 * Supported HTML tags:
-			 * <blockquote>
-			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
-			 * </blockquote>
-			 */
-			public static interface Events<E extends Element<E> & Onclick<E>> extends Onclick<E> {
-				// No methods, just adding defaults for all mouse event types
-			}
-
-			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 			 */
 			public static interface Onclick<E extends Element<E> & Onclick<E>> {
@@ -459,6 +448,287 @@ public class Attributes {
 				default <Ex extends Throwable> E onclick(AttributeWriter<Ex> onclick) throws IOException, Ex {
 					return onclick((Object)onclick);
 				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+			 */
+			public static interface Ondblclick<E extends Element<E> & Ondblclick<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+				 */
+				@Funnel
+				default E ondblclick(Object ondblclick) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "ondblclick", ondblclick);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondblclick(Supplier<?,Ex> ondblclick) throws IOException, Ex {
+					return ondblclick((ondblclick == null) ? null : ondblclick.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E ondblclick(AttributeWriter<Ex> ondblclick) throws IOException, Ex {
+					return ondblclick((Object)ondblclick);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+			 */
+			public static interface Onmousedown<E extends Element<E> & Onmousedown<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+				 */
+				@Funnel
+				default E onmousedown(Object onmousedown) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onmousedown", onmousedown);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmousedown(Supplier<?,Ex> onmousedown) throws IOException, Ex {
+					return onmousedown((onmousedown == null) ? null : onmousedown.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmousedown(AttributeWriter<Ex> onmousedown) throws IOException, Ex {
+					return onmousedown((Object)onmousedown);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+			 */
+			public static interface Onmousemove<E extends Element<E> & Onmousemove<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+				 */
+				@Funnel
+				default E onmousemove(Object onmousemove) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onmousemove", onmousemove);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmousemove(Supplier<?,Ex> onmousemove) throws IOException, Ex {
+					return onmousemove((onmousemove == null) ? null : onmousemove.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmousemove(AttributeWriter<Ex> onmousemove) throws IOException, Ex {
+					return onmousemove((Object)onmousemove);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+			 */
+			public static interface Onmouseout<E extends Element<E> & Onmouseout<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+				 */
+				@Funnel
+				default E onmouseout(Object onmouseout) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onmouseout", onmouseout);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmouseout(Supplier<?,Ex> onmouseout) throws IOException, Ex {
+					return onmouseout((onmouseout == null) ? null : onmouseout.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmouseout(AttributeWriter<Ex> onmouseout) throws IOException, Ex {
+					return onmouseout((Object)onmouseout);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+			 */
+			public static interface Onmouseover<E extends Element<E> & Onmouseover<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+				 */
+				@Funnel
+				default E onmouseover(Object onmouseover) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onmouseover", onmouseover);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmouseover(Supplier<?,Ex> onmouseover) throws IOException, Ex {
+					return onmouseover((onmouseover == null) ? null : onmouseover.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmouseover(AttributeWriter<Ex> onmouseover) throws IOException, Ex {
+					return onmouseover((Object)onmouseover);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
+			 */
+			public static interface Onmouseup<E extends Element<E> & Onmouseup<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
+				 */
+				@Funnel
+				default E onmouseup(Object onmouseup) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onmouseup", onmouseup);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmouseup(Supplier<?,Ex> onmouseup) throws IOException, Ex {
+					return onmouseup((onmouseup == null) ? null : onmouseup.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onmouseup(AttributeWriter<Ex> onmouseup) throws IOException, Ex {
+					return onmouseup((Object)onmouseup);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Mouse Events</a>.
+			 * Supported HTML tags:
+			 * <blockquote>
+			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
+			 * </blockquote>
+			 */
+			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+				Onclick<E>,
+				Ondblclick<E>,
+				Onmousedown<E>,
+				Onmousemove<E>,
+				Onmouseout<E>,
+				Onmouseover<E>,
+				Onmouseup<E>
+			{
+				// No methods, just adding defaults for all mouse event types
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
+			 *
+			 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+			 */
+			@Deprecated
+			public static interface Onmousewheel<E extends Element<E> & Onmousewheel<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
+				 *
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+				 */
+				@Deprecated
+				@Funnel
+				default E onmousewheel(Object onmousewheel) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onmousewheel", onmousewheel);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
+				 *
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+				 */
+				@Deprecated
+				default <Ex extends Throwable> E onmousewheel(Supplier<?,Ex> onmousewheel) throws IOException, Ex {
+					return onmousewheel((onmousewheel == null) ? null : onmousewheel.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
+				 *
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
+				 */
+				@Deprecated
+				default <Ex extends Throwable> E onmousewheel(AttributeWriter<Ex> onmousewheel) throws IOException, Ex {
+					return onmousewheel((Object)onmousewheel);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+			 */
+			public static interface Onwheel<E extends Element<E> & Onwheel<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+				 */
+				@Funnel
+				default E onwheel(Object onwheel) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					if(element.html.doctype != Doctype.HTML5) {
+						throw new LocalizedIllegalArgumentException(
+							accessor,
+							"Attributes.onlySupportedInHtml5",
+							element.html.doctype,
+							"onwheel"
+						);
+					}
+					return Event.attribute(element, "onwheel", onwheel);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onwheel(Supplier<?,Ex> onwheel) throws IOException, Ex {
+					return onwheel((onwheel == null) ? null : onwheel.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onwheel(AttributeWriter<Ex> onwheel) throws IOException, Ex {
+					return onwheel((Object)onwheel);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Mouse Events</a>.
+			 */
+			public static interface Global<E extends Element<E> & Global<E>> extends
+				Onmousewheel<E>,
+				Onwheel<E>
+			{
+				// No methods, just adding defaults for all mouse event types
 			}
 		}
 	}
@@ -1870,7 +2140,9 @@ public class Attributes {
 		Text.Id<E>,
 		Text.Style<E>,
 		Integer.Tabindex<E>,
-		Text.Title<E>
+		Text.Title<E>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Event.Mouse.Global<E>
 	{
 		// No methods, just adding defaults for all mouse event types
 	}

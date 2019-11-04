@@ -42,7 +42,7 @@ public class Link extends EmptyElement<Link> implements
 	Attributes.Text.Media<Link>,
 	Attributes.Enum.Rel<Link,Link.Rel>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.Mouse.Events<Link>
+	Attributes.Event.Mouse.AlmostGlobal<Link>
 {
 
 	public Link(Html html) {

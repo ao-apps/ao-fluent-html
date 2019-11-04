@@ -42,8 +42,7 @@ public class Option extends Element<Option> implements
 	Attributes.Boolean.Selected<Option>,
 	Attributes.Text.Value<Option>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.Form.AlmostGlobal<Option>,
-	Attributes.Event.Mouse.AlmostGlobal<Option>
+	Attributes.Event.AlmostGlobal<Option>
 {
 
 	public Option(Html html) {

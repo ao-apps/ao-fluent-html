@@ -48,10 +48,9 @@ public class Script extends Element<Script> implements
 	Attributes.Text.StyleNoHtml4<Script>,
 	Attributes.Text.TitleNoHtml4<Script>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	// Not on <script>: Attributes.Event.AlmostGlobal<Script>
 	Attributes.Event.Window.Onerror<Script>,
 	Attributes.Event.Window.Onload<Script>
-	// Not on <script>: Attributes.Event.Form.AlmostGlobal<Script>
-	// Not on <script>: Attributes.Event.Mouse.AlmostGlobal<Script>
 {
 
 	/**

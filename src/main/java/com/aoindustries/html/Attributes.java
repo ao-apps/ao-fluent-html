@@ -1256,6 +1256,114 @@ public class Attributes {
 			}
 		}
 
+		public static class Keyboard {
+
+			/** Make no instances. */
+			private Keyboard() {}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
+			 */
+			public static interface Onkeydown<E extends Element<E> & Onkeydown<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
+				 */
+				@Funnel
+				default E onkeydown(Object onkeydown) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onkeydown", onkeydown);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onkeydown(Supplier<?,Ex> onkeydown) throws IOException, Ex {
+					return onkeydown((onkeydown == null) ? null : onkeydown.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onkeydown(AttributeWriter<Ex> onkeydown) throws IOException, Ex {
+					return onkeydown((Object)onkeydown);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+			 */
+			public static interface Onkeypress<E extends Element<E> & Onkeypress<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+				 */
+				@Funnel
+				default E onkeypress(Object onkeypress) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onkeypress", onkeypress);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onkeypress(Supplier<?,Ex> onkeypress) throws IOException, Ex {
+					return onkeypress((onkeypress == null) ? null : onkeypress.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onkeypress(AttributeWriter<Ex> onkeypress) throws IOException, Ex {
+					return onkeypress((Object)onkeypress);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+			 */
+			public static interface Onkeyup<E extends Element<E> & Onkeyup<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+				 */
+				@Funnel
+				default E onkeyup(Object onkeyup) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onkeyup", onkeyup);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onkeyup(Supplier<?,Ex> onkeyup) throws IOException, Ex {
+					return onkeyup((onkeyup == null) ? null : onkeyup.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+				 */
+				default <Ex extends Throwable> E onkeyup(AttributeWriter<Ex> onkeyup) throws IOException, Ex {
+					return onkeyup((Object)onkeyup);
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Keyboard Events</a>.
+			 * Supported HTML tags:
+			 * <blockquote>
+			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
+			 * </blockquote>
+			 */
+			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+				Onkeydown<E>,
+				Onkeypress<E>,
+				Onkeyup<E>
+			{
+				// No methods, just adding mouse event types
+			}
+		}
+
 		public static class Mouse {
 
 			/** Make no instances. */
@@ -1570,6 +1678,29 @@ public class Attributes {
 			{
 				// No methods, just adding mouse event types
 			}
+		}
+
+		// TODO: Drag
+
+		// TODO: Clipboard
+
+		// TODO: Media
+
+		// TODO: Misc
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">HTML Event Attributes</a>.
+		 * Supported HTML tags:
+		 * <blockquote>
+		 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
+		 * </blockquote>
+		 */
+		public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+			Form.AlmostGlobal<E>,
+			Keyboard.AlmostGlobal<E>,
+			Mouse.AlmostGlobal<E>
+		{
+			// No methods, just adding event types
 		}
 	}
 

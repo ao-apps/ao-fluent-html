@@ -170,7 +170,7 @@ public class Input extends EmptyElement<Input> implements
 	 * @deprecated  The align attribute of &lt;input&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements StringSupplier<RuntimeException> {
+	public enum Align implements Attributes.Enum.EnumSupplier {
 
 		/**
 		 * Left-aligns the image (this is default)
@@ -197,19 +197,19 @@ public class Input extends EmptyElement<Input> implements
 		 */
 		BOTTOM("bottom");
 
-		private final java.lang.String value;
+		private final String value;
 
-		private Align(java.lang.String value) {
+		private Align(String value) {
 			this.value = value;
 		}
 
 		@Override
-		public java.lang.String toString() {
+		public String toString() {
 			return value;
 		}
 
 		@Override
-		public java.lang.String get(Serialization serialization, Doctype doctype) {
+		public String get(Serialization serialization, Doctype doctype) {
 			return value;
 		}
 	}
@@ -266,14 +266,5 @@ public class Input extends EmptyElement<Input> implements
 			false,
 			true
 		);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
-	 */
-	@Override
-	// TODO: Still necessary, @Funnel'ed?
-	public <Ex extends Throwable> Input value(Supplier<?,Ex> value) throws IOException, Ex {
-		return value((value == null) ? null : value.get(html.serialization, html.doctype));
 	}
 }

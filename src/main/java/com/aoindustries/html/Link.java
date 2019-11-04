@@ -58,7 +58,7 @@ public class Link extends EmptyElement<Link> implements
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 	 */
-	public enum Crossorigin implements StringSupplier<RuntimeException> {
+	public enum Crossorigin implements Attributes.Enum.EnumSupplier {
 		ANONYMOUS(
 			Attributes.String.NO_VALUE,
 			"anonymous"
@@ -133,7 +133,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
-	public enum Rel implements StringSupplier<RuntimeException> {
+	public enum Rel implements Attributes.Enum.EnumSupplier {
 		ALTERNATE("alternate"),
 		AUTHOR("author"), // w3schools only
 		CANONICAL("canonical"), // TODO: This is not in the last.  Should we support arbitrary String values, like Script.type?
@@ -152,20 +152,20 @@ public class Link extends EmptyElement<Link> implements
 		SEARCH("search"),
 		STYLESHEET("stylesheet");
 
-		private final java.lang.String value;
+		private final String value;
 		// TODO: Verify values by doctype
 
-		private Rel(java.lang.String value) {
+		private Rel(String value) {
 			this.value = value;
 		}
 
 		@Override
-		public java.lang.String toString() {
+		public String toString() {
 			return value;
 		}
 
 		@Override
-		public java.lang.String get(Serialization serialization, Doctype doctype) {
+		public String get(Serialization serialization, Doctype doctype) {
 			return value;
 		}
 	}

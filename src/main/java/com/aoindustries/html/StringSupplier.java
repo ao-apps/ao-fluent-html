@@ -36,5 +36,5 @@ public interface StringSupplier<Ex extends Throwable> extends Supplier<String,Ex
 	 * @return  The value, {@link Attributes.String#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 	 */
 	@Override
-	String get(Serialization serialization, Doctype doctype) throws IOException, Ex;
+	String get() throws IOException, Ex;
 }

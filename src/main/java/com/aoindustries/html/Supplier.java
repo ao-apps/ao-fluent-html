@@ -29,6 +29,5 @@ import java.io.IOException;
  */
 @FunctionalInterface
 public interface Supplier<V,Ex extends Throwable> {
-	// TODO: Are serialization and doctype appropriate here?
-	V get(Serialization serialization, Doctype doctype) throws IOException, Ex;
+	V get() throws IOException, Ex;
 }

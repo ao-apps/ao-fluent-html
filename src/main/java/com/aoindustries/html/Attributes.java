@@ -112,8 +112,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 			 */
 			default <Ex extends Throwable> E async(Supplier<? extends java.lang.Boolean,Ex> async) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return async((async == null) ? null : async.get(element.html.serialization, element.html.doctype));
+				return async((async == null) ? null : async.get());
 			}
 		}
 
@@ -142,8 +141,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 			 */
 			default <Ex extends Throwable> E checked(Supplier<? extends java.lang.Boolean,Ex> checked) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return checked((checked == null) ? null : checked.get(element.html.serialization, element.html.doctype));
+				return checked((checked == null) ? null : checked.get());
 			}
 		}
 
@@ -172,8 +170,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 			 */
 			default <Ex extends Throwable> E defer(Supplier<? extends java.lang.Boolean,Ex> defer) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return defer((defer == null) ? null : defer.get(element.html.serialization, element.html.doctype));
+				return defer((defer == null) ? null : defer.get());
 			}
 		}
 
@@ -202,8 +199,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 			 */
 			default <Ex extends Throwable> E disabled(Supplier<? extends java.lang.Boolean,Ex> disabled) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return disabled((disabled == null) ? null : disabled.get(element.html.serialization, element.html.doctype));
+				return disabled((disabled == null) ? null : disabled.get());
 			}
 		}
 
@@ -251,8 +247,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			default <Ex extends Throwable> E noshade(Supplier<? extends java.lang.Boolean,Ex> noshade) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return noshade((noshade == null) ? null : noshade.get(element.html.serialization, element.html.doctype));
+				return noshade((noshade == null) ? null : noshade.get());
 			}
 		}
 
@@ -281,8 +276,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
 			 */
 			default <Ex extends Throwable> E readonly(Supplier<? extends java.lang.Boolean,Ex> readonly) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return readonly((readonly == null) ? null : readonly.get(element.html.serialization, element.html.doctype));
+				return readonly((readonly == null) ? null : readonly.get());
 			}
 		}
 
@@ -311,8 +305,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 			 */
 			default <Ex extends Throwable> E selected(Supplier<? extends java.lang.Boolean,Ex> selected) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return selected((selected == null) ? null : selected.get(element.html.serialization, element.html.doctype));
+				return selected((selected == null) ? null : selected.get());
 			}
 		}
 	}
@@ -381,8 +374,7 @@ public class Attributes {
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return width((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
+				return width((pixels == null) ? null : pixels.get());
 			}
 
 			/**
@@ -405,8 +397,7 @@ public class Attributes {
 			@Deprecated
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(StringSupplier<Ex> pixelsOrPercent) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return width((pixelsOrPercent == null) ? null : pixelsOrPercent.get(element.html.serialization, element.html.doctype));
+				return width((pixelsOrPercent == null) ? null : pixelsOrPercent.get());
 			}
 		}
 	}
@@ -423,7 +414,7 @@ public class Attributes {
 			while(script instanceof Supplier<?,?>) {
 				@SuppressWarnings("unchecked")
 				Supplier<?,Ex> supplier = (Supplier<?,Ex>)script;
-				script = supplier.get(element.html.serialization, element.html.doctype);
+				script = supplier.get();
 			}
 			if(script != null) {
 				element.html.out.write(' ');
@@ -483,8 +474,7 @@ public class Attributes {
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 				 */
 				default <Ex extends Throwable> E onclick(Supplier<?,Ex> onclick) throws IOException, Ex {
-					@SuppressWarnings("unchecked") E element = (E)this;
-					return onclick((onclick == null) ? null : onclick.get(element.html.serialization, element.html.doctype));
+					return onclick((onclick == null) ? null : onclick.get());
 				}
 
 				/**
@@ -513,6 +503,14 @@ public class Attributes {
 		/** Make no instances. */
 		private Enum() {}
 
+		@FunctionalInterface
+		public static interface EnumSupplier {
+			/**
+			 * @return  The value, {@link Attributes.String#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+			 */
+			java.lang.String get(Serialization serialization, Doctype doctype);
+		}
+
 		/**
 		 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
 		 *
@@ -521,7 +519,7 @@ public class Attributes {
 		@Deprecated
 		public static interface Align<
 			E extends Element<E> & Align<E,V>,
-			V extends java.lang.Enum<V> & StringSupplier<? extends RuntimeException>
+			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
 			/**
@@ -551,6 +549,16 @@ public class Attributes {
 			@Deprecated
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E align(StringSupplier<Ex> align) throws IOException, Ex {
+				return align((align == null) ? null : align.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+			 *
+			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			default E align(V align) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return align((align == null) ? null : align.get(element.html.serialization, element.html.doctype));
 			}
@@ -561,20 +569,9 @@ public class Attributes {
 			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			default E align(V align) throws IOException {
-				return align((StringSupplier<? extends RuntimeException>)align);
-			}
-
-			/**
-			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
-			 *
-			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
-			 */
-			@Deprecated
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E align(Supplier<? extends V,Ex> align) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return align((align== null) ? (V)null : align.get(element.html.serialization, element.html.doctype));
+				return align((align== null) ? (V)null : align.get());
 			}
 		}
 
@@ -583,7 +580,7 @@ public class Attributes {
 		 */
 		public static interface Rel<
 			E extends Element<E> & Rel<E,V>,
-			V extends java.lang.Enum<V> & StringSupplier<? extends RuntimeException>
+			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
 			/**
@@ -600,6 +597,13 @@ public class Attributes {
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(StringSupplier<Ex> rel) throws IOException, Ex {
+				return rel((rel == null) ? null : rel.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 */
+			default E rel(V rel) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return rel((rel == null) ? null : rel.get(element.html.serialization, element.html.doctype));
 			}
@@ -607,17 +611,9 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 			 */
-			default E rel(V rel) throws IOException {
-				return rel((StringSupplier<? extends RuntimeException>)rel);
-			}
-
-			/**
-			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
-			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(Supplier<? extends V,Ex> rel) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return rel((rel== null) ? (V)null : rel.get(element.html.serialization, element.html.doctype));
+				return rel((rel== null) ? (V)null : rel.get());
 			}
 		}
 
@@ -626,7 +622,7 @@ public class Attributes {
 		 */
 		public static interface Crossorigin<
 			E extends Element<E> & Crossorigin<E,V>,
-			V extends java.lang.Enum<V> & StringSupplier<? extends RuntimeException>
+			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
 			/**
@@ -643,6 +639,13 @@ public class Attributes {
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(StringSupplier<Ex> crossorigin) throws IOException, Ex {
+				return crossorigin((crossorigin == null) ? null : crossorigin.get());
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default E crossorigin(V crossorigin) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.html.serialization, element.html.doctype));
 			}
@@ -650,17 +653,9 @@ public class Attributes {
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 			 */
-			default E crossorigin(V crossorigin) throws IOException {
-				return crossorigin((StringSupplier<? extends RuntimeException>)crossorigin);
-			}
-
-			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
-			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get(element.html.serialization, element.html.doctype));
+				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get());
 			}
 		}
 	}
@@ -718,8 +713,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 			 */
 			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return height((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
+				return height((pixels == null) ? null : pixels.get());
 			}
 		}
 
@@ -818,8 +812,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
 			 */
 			default <Ex extends Throwable> E maxlength(Supplier<? extends java.lang.Integer,Ex> maxlength) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return maxlength((maxlength == null) ? null : maxlength.get(element.html.serialization, element.html.doctype));
+				return maxlength((maxlength == null) ? null : maxlength.get());
 			}
 		}
 
@@ -850,8 +843,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 			 */
 			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return size((size == null) ? null : size.get(element.html.serialization, element.html.doctype));
+				return size((size == null) ? null : size.get());
 			}
 		}
 
@@ -978,8 +970,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return tabindex((tabindex == null) ? null : tabindex.get(element.html.serialization, element.html.doctype));
+				return tabindex((tabindex == null) ? null : tabindex.get());
 			}
 		}
 
@@ -1025,8 +1016,7 @@ public class Attributes {
 			 */
 			@Override
 			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return tabindex((tabindex == null) ? null : tabindex.get(element.html.serialization, element.html.doctype));
+				return tabindex((tabindex == null) ? null : tabindex.get());
 			}
 		}
 
@@ -1057,8 +1047,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 			 */
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return width((pixels == null) ? null : pixels.get(element.html.serialization, element.html.doctype));
+				return width((pixels == null) ? null : pixels.get());
 			}
 		}
 
@@ -1195,7 +1184,7 @@ public class Attributes {
 			while(value instanceof Supplier<?,?>) {
 				@SuppressWarnings("unchecked")
 				Supplier<?,Ex> supplier = (Supplier<?,Ex>)value;
-				value = supplier.get(element.html.serialization, element.html.doctype);
+				value = supplier.get();
 			}
 			if(value != null) {
 				if(value instanceof AttributeWriter<?>) {
@@ -1262,8 +1251,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default <Ex extends Throwable> E clazz(Supplier<?,Ex> clazz) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return clazz((clazz == null) ? null : clazz.get(element.html.serialization, element.html.doctype));
+				return clazz((clazz == null) ? null : clazz.get());
 			}
 
 			/**
@@ -1374,8 +1362,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default <Ex extends Throwable> E id(Supplier<?,Ex> id) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return id((id == null) ? null : id.get(element.html.serialization, element.html.doctype));
+				return id((id == null) ? null : id.get());
 			}
 
 			/**
@@ -1477,8 +1464,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 			 */
 			default <Ex extends Throwable> E label(Supplier<?,Ex> label) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return label((label == null) ? null : label.get(element.html.serialization, element.html.doctype));
+				return label((label == null) ? null : label.get());
 			}
 
 			/**
@@ -1508,8 +1494,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 			 */
 			default <Ex extends Throwable> E media(Supplier<?,Ex> media) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return media((media == null) ? null : media.get(element.html.serialization, element.html.doctype));
+				return media((media == null) ? null : media.get());
 			}
 
 			/**
@@ -1538,8 +1523,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 			 */
 			default <Ex extends Throwable> E name(Supplier<?,Ex> name) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return name((name == null) ? null : name.get(element.html.serialization, element.html.doctype));
+				return name((name == null) ? null : name.get());
 			}
 
 			/**
@@ -1579,8 +1563,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default <Ex extends Throwable> E style(Supplier<?,Ex> style) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return style((style == null) ? null : style.get(element.html.serialization, element.html.doctype));
+				return style((style == null) ? null : style.get());
 			}
 
 			/**
@@ -1691,8 +1674,7 @@ public class Attributes {
 			 * </blockquote>
 			 */
 			default <Ex extends Throwable> E title(Supplier<?,Ex> title) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return title((title == null) ? null : title.get(element.html.serialization, element.html.doctype));
+				return title((title == null) ? null : title.get());
 			}
 
 			/**
@@ -1794,8 +1776,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 			 */
 			default <Ex extends Throwable> E value(Supplier<?,Ex> value) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return value((value == null) ? null : value.get(element.html.serialization, element.html.doctype));
+				return value((value == null) ? null : value.get());
 			}
 
 			/**
@@ -1846,8 +1827,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 			 */
 			default <Ex extends Throwable> E href(Supplier<? extends java.lang.String,Ex> href) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return href((href == null) ? null : href.get(element.html.serialization, element.html.doctype));
+				return href((href == null) ? null : href.get());
 			}
 		}
 
@@ -1870,8 +1850,7 @@ public class Attributes {
 			 */
 			// TODO: More bounds like this when disambiguation between multiple types unnecessary?
 			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String,Ex> src) throws IOException, Ex {
-				@SuppressWarnings("unchecked") E element = (E)this;
-				return src((src == null) ? null : src.get(element.html.serialization, element.html.doctype));
+				return src((src == null) ? null : src.get());
 			}
 		}
 	}

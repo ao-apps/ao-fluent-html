@@ -55,7 +55,7 @@ public class Hr extends EmptyElement<Hr> implements
 	 * @deprecated  The align attribute of &lt;hr&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements StringSupplier<RuntimeException> {
+	public enum Align implements Attributes.Enum.EnumSupplier {
 
 		/**
 		 * Left-aligns the horizontal line
@@ -72,19 +72,19 @@ public class Hr extends EmptyElement<Hr> implements
 		 */
 		RIGHT("right");
 
-		private final java.lang.String value;
+		private final String value;
 
-		private Align(java.lang.String value) {
+		private Align(String value) {
 			this.value = value;
 		}
 
 		@Override
-		public java.lang.String toString() {
+		public String toString() {
 			return value;
 		}
 
 		@Override
-		public java.lang.String get(Serialization serialization, Doctype doctype) {
+		public String get(Serialization serialization, Doctype doctype) {
 			return value;
 		}
 	}

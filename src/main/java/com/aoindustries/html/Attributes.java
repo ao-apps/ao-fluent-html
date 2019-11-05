@@ -2891,6 +2891,35 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+		 */
+		public static interface Accept<E extends Element<E> & Accept<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+			 */
+			@Funnel
+			default E accept(Object accept) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "accept", MarkupType.NONE, accept, true, true, textInXhtmlAttributeEncoder);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+			 */
+			default <Ex extends Throwable> E accept(Supplier<?,Ex> accept) throws IOException, Ex {
+				return accept((accept == null) ? null : accept.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+			 */
+			default <Ex extends Throwable> E accept(AttributeWriter<Ex> accept) throws IOException, Ex {
+				return accept((Object)accept);
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
 		 * <blockquote>
 		 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
@@ -3197,6 +3226,43 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E name(AttributeWriter<Ex> name) throws IOException, Ex {
 				return name((Object)name);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+		 */
+		public static interface Placeholder<E extends Element<E> & Placeholder<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+			 */
+			@Funnel
+			default E placeholder(Object placeholder) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"placeholder"
+					);
+				}
+				return attribute(element, "placeholder", MarkupType.TEXT, placeholder, false, true, textInXhtmlAttributeEncoder);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+			 */
+			default <Ex extends Throwable> E placeholder(Supplier<?,Ex> placeholder) throws IOException, Ex {
+				return placeholder((placeholder == null) ? null : placeholder.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+			 */
+			default <Ex extends Throwable> E placeholder(AttributeWriter<Ex> placeholder) throws IOException, Ex {
+				return placeholder((Object)placeholder);
 			}
 		}
 

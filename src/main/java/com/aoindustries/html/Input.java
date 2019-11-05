@@ -36,19 +36,41 @@ import java.util.Map;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: Should we create different subclasses of Input for each type, exposing
+// TODO: the attributes that only apply to that specific type?
+// TODO: Then a "custom/any" type that allows anything?
 @SuppressWarnings("deprecation")
 public class Input extends EmptyElement<Input> implements
-	Attributes.Enum.Align<Input,Input.Align>,
+	Attributes.Text.Accept<Input>, // TODO: Check type="file"?
+	Attributes.Enum.Align<Input,Input.Align>, // TODO: Check type="image"?
+	// TODO: alt
+	// TODO: autocomplete
+	// TODO: autofocus
 	Attributes.Boolean.Checked<Input>,
+	// TODO: dirname
 	Attributes.Boolean.Disabled<Input>,
-	Attributes.Integer.HeightHtml5Only<Input>,
+	// TODO: form
+	// TODO: formaction
+	// TODO: formenctype
+	// TODO: formmethod
+	// TODO: formnovalidate
+	// TODO: formtarget
+	Attributes.Integer.HeightHtml5Only<Input>, // TODO: Check type="image"?
+	// TODO: list
+	// TODO: max
 	Attributes.Integer.Maxlength<Input>,
+	// TODO: min
+	// TODO: multiple
 	Attributes.Text.Name<Input>,
+	// TODO: pattern
+	Attributes.Text.Placeholder<Input>, // TODO: Check type?
 	Attributes.Boolean.Readonly<Input>,
+	// TODO: required
 	Attributes.Integer.Size<Input>,
-	Attributes.Url.Src<Script>,
+	Attributes.Url.Src<Script>, // TODO: Check type="image"?
+	// TODO: step
 	Attributes.Text.Value<Input>,
-	Attributes.Integer.WidthHtml5Only<Input>,
+	Attributes.Integer.WidthHtml5Only<Input>, // TODO: Check type="image"?
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Integer.TabindexHtml4<Input>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp

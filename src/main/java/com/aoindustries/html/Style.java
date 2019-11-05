@@ -156,9 +156,9 @@ public class Style extends Element<Style> implements
 	// TODO: FUnctional versions for Java 1.8
 	public Style out(Object style) throws IOException {
 		if(style != null) {
-			if(style instanceof StyleWriterE) {
+			if(style instanceof StyleWriter) {
 				try {
-					return out((StyleWriterE<?>)style);
+					return out((StyleWriter<?>)style);
 				} catch(Error|RuntimeException|IOException e) {
 					throw e;
 				} catch(Throwable t) {
@@ -196,12 +196,13 @@ public class Style extends Element<Style> implements
 		};
 	}
 
+	// TODO: Consolidate with AttributeWriter?
 	@FunctionalInterface
-	public static interface StyleWriterE<Ex extends Throwable> {
+	public static interface StyleWriter<Ex extends Throwable> {
 		void writeStyle(MediaWriter style) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> Style out(StyleWriterE<Ex> style) throws IOException, Ex {
+	public <Ex extends Throwable> Style out(StyleWriter<Ex> style) throws IOException, Ex {
 		if(style != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();

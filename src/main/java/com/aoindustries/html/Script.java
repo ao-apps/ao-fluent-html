@@ -185,9 +185,9 @@ public class Script extends Element<Script> implements
 
 	public Script out(Object script) throws IOException {
 		if(script != null) {
-			if(script instanceof ScriptWriterE) {
+			if(script instanceof ScriptWriter) {
 				try {
-					return out((ScriptWriterE<?>)script);
+					return out((ScriptWriter<?>)script);
 				} catch(Error|RuntimeException|IOException e) {
 					throw e;
 				} catch(Throwable t) {
@@ -219,12 +219,13 @@ public class Script extends Element<Script> implements
 		};
 	}
 
+	// TODO: Consolidate with AttributeWriter?
 	@FunctionalInterface
-	public static interface ScriptWriterE<Ex extends Throwable> {
+	public static interface ScriptWriter<Ex extends Throwable> {
 		void writeScript(MediaWriter script) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> Script out(ScriptWriterE<Ex> script) throws IOException, Ex {
+	public <Ex extends Throwable> Script out(ScriptWriter<Ex> script) throws IOException, Ex {
 		if(script != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();

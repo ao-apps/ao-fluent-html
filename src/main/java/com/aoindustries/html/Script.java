@@ -194,11 +194,23 @@ public class Script extends Element<Script> implements
 					throw new WrappedException(t);
 				}
 			}
-			MediaType mediaType = getMediaType();
-			MediaEncoder encoder = getMediaEncoder(mediaType);
-			startBody();
-			// Allow text markup from translations
-			Coercion.write(script, mediaType.getMarkupType(), encoder, false, html.out);
+			script = Coercion.nullIfEmpty(script);
+			if(script != null) {
+				startBody();
+				// Allow text markup from translations
+				// TODO: writeWithMarkup appropriate for capturedBody?
+				// TODO: I think this would only work with SegmentedBuffer with a single segment
+				// TODO: We might need a special case in CharArrayWriter if we want this identity match for a single string
+				// TODO: Set back to SegmentedBuffer, if this is the case
+				MediaType mediaType = getMediaType();
+				Coercion.write(
+					script,
+					mediaType.getMarkupType(),
+					getMediaEncoder(mediaType),
+					false,
+					html.out
+				);
+			}
 		}
 		return this;
 	}

@@ -153,7 +153,6 @@ public class Style extends Element<Style> implements
 
 	// TODO: Out parameter with MediaType, that automatically picks the encoder
 	// TODO: Separate "Write" for direct writing (no encoding)?
-	// TODO: FUnctional versions for Java 1.8
 	public Style out(Object style) throws IOException {
 		if(style != null) {
 			if(style instanceof StyleWriter) {
@@ -165,17 +164,19 @@ public class Style extends Element<Style> implements
 					throw new WrappedException(t);
 				}
 			}
-			MediaEncoder encoder = getMediaEncoder(getMediaType());
-			startBody();
-			// Allow text markup from translations
-			Coercion.write(
-				style,
-				// TODO: Compatible, but better to make an explicit value for MarkupType.CSS: mediaType.getMarkupType()
-				MarkupType.JAVASCRIPT,
-				encoder,
-				false,
-				html.out
-			);
+			style = Coercion.nullIfEmpty(style);
+			if(style != null) {
+				startBody();
+				// Allow text markup from translations
+				Coercion.write(
+					style,
+					// TODO: Compatible, but better to make an explicit value for MarkupType.CSS: mediaType.getMarkupType()
+					MarkupType.JAVASCRIPT,
+					getMediaEncoder(getMediaType()),
+					false,
+					html.out
+				);
+			}
 		}
 		return this;
 	}

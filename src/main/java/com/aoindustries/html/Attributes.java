@@ -143,6 +143,14 @@ public class Attributes {
 			@Funnel
 			default E autofocus(boolean autofocus) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"autofocus"
+					);
+				}
 				return attribute(element, "autofocus", autofocus);
 			}
 

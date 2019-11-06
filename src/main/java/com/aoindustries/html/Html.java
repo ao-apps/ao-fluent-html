@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.EnumMap;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -128,7 +127,12 @@ public class Html {
 		return hr().__();
 	}
 
-	// TODO: Allow setting type on all of them, instead of writing default type immediately?
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+	 */
+	public Input input() throws IOException {
+		return new Input(this).open();
+	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
@@ -142,15 +146,24 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
+	public <Ex extends Throwable> Input input(StringSupplier<Ex> type) throws IOException, Ex {
+		return input((type == null) ? null : type.get());
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+	 */
 	public Input input(Input.Type type) throws IOException {
 		return new Input(this, type).open();
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
-	public Input input() throws IOException {
-		return new Input(this).open();
+	public <Ex extends Throwable> Input input(Supplier<? extends Input.Type,Ex> type) throws IOException, Ex {
+		return input((type == null) ? null : type.get());
 	}
 
 	/**
@@ -201,8 +214,24 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
 	 */
+	public <Ex extends Throwable> Script script(StringSupplier<Ex> type) throws IOException, Ex {
+		return script((type == null) ? null : type.get());
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
+	 */
 	public Script script(Script.Type type) throws IOException {
 		return new Script(this, type).open();
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
+	 */
+	public <Ex extends Throwable> Script script(Supplier<? extends Script.Type,Ex> type) throws IOException, Ex {
+		return script((type == null) ? null : type.get());
 	}
 
 	/**
@@ -226,8 +255,24 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
 	 */
+	public <Ex extends Throwable> Style style(StringSupplier<Ex> type) throws IOException, Ex {
+		return style((type == null) ? null : type.get());
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
+	 */
 	public Style style(Style.Type type) throws IOException {
 		return new Style(this, type).open();
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
+	 */
+	public <Ex extends Throwable> Style style(Supplier<? extends Style.Type,Ex> type) throws IOException, Ex {
+		return style((type == null) ? null : type.get());
 	}
 
 	// TODO: style__() - go directly to out, since no attributes? Lambda versions, too

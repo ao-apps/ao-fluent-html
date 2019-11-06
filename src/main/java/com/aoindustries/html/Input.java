@@ -297,15 +297,6 @@ public class Input extends EmptyElement<Input> implements
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
-	// Overriding for consistent javadocs and related code assist
-	@Override
-	public <Ex extends Throwable> Input type(StringSupplier<Ex> type) throws IOException, Ex {
-		return Attributes.Enum.Type.super.type(type);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
 	@Attributes.Funnel // New funnel, since type(String) calls this for known types.  TODO: Follow this pattern in Attributes.Enum to avoid encoding known values?
 	@Override
 	public Input type(Type type) throws IOException {

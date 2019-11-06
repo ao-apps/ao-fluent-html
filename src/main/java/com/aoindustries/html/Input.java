@@ -41,7 +41,7 @@ import java.util.Map;
  * This has the set of attributes common to all input types.  There are also
  * type-specific subclasses that add type-specific attributes.  Furthermore,
  * there is a {@link Input.Dynamic} implementation that has all the input attributes,
- * supporting unexpected or more dynamic configurations.
+ * supporting unanticipated or more dynamic configurations.
  * </p>
  *
  * @author  AO Industries, Inc.
@@ -88,7 +88,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 * <p>
 	 * This implementation that has all the input attributes,
-	 * supporting unexpected or more dynamic configurations.
+	 * supporting unanticipated or more dynamic configurations.
 	 * </p>
 	 * <p>
 	 * This does not limit attributes by type, and would allow mismatches where

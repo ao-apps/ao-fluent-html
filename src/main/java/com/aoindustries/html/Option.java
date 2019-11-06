@@ -74,6 +74,8 @@ public class Option extends Element<Option> implements
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
 	 *
+	 * @see #label(java.lang.Object)
+	 *
 	 * @deprecated  Although still part of the HTML specification, there is a
 	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>
 	 *              that the label attribute is not supported.  We are deprecating
@@ -89,6 +91,8 @@ public class Option extends Element<Option> implements
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @see #label(java.lang.Object)
 	 *
 	 * @deprecated  Although still part of the HTML specification, there is a
 	 *              <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=40545">20-year old Firefox bug</a>

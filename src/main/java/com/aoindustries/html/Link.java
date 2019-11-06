@@ -217,6 +217,8 @@ public class Link extends EmptyElement<Link> implements
 	 *
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 *
+	 * @see #rel(java.lang.String)
 	 */
 	@Override
 	public <Ex extends Throwable> Link rel(StringSupplier<Ex> rel) throws IOException, Ex {
@@ -231,6 +233,8 @@ public class Link extends EmptyElement<Link> implements
 	 *
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 *
+	 * @see #rel(java.lang.String)
 	 */
 	@Override
 	public Link rel(Rel rel) throws IOException {
@@ -245,6 +249,8 @@ public class Link extends EmptyElement<Link> implements
 	 *
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 *
+	 * @see #rel(com.aoindustries.html.Link.Rel)
 	 */
 	@Override
 	public <Ex extends Throwable> Link rel(Supplier<? extends Rel,Ex> rel) throws IOException, Ex {

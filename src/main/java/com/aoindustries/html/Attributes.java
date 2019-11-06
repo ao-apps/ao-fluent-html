@@ -114,6 +114,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+			 *
+			 * @see #async(boolean)
 			 */
 			default E async(java.lang.Boolean async) throws IOException {
 				return async(async != null && async);
@@ -121,6 +123,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+			 *
+			 * @see #async(java.lang.Boolean)
 			 */
 			default <Ex extends Throwable> E async(Supplier<? extends java.lang.Boolean,Ex> async) throws IOException, Ex {
 				return async((async == null) ? null : async.get());
@@ -143,6 +147,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+			 *
+			 * @see #checked(boolean)
 			 */
 			default E checked(java.lang.Boolean checked) throws IOException {
 				return checked(checked != null && checked);
@@ -150,6 +156,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+			 *
+			 * @see #checked(java.lang.Boolean)
 			 */
 			default <Ex extends Throwable> E checked(Supplier<? extends java.lang.Boolean,Ex> checked) throws IOException, Ex {
 				return checked((checked == null) ? null : checked.get());
@@ -172,6 +180,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+			 *
+			 * @see #defer(boolean)
 			 */
 			default E defer(java.lang.Boolean defer) throws IOException {
 				return defer(defer != null && defer);
@@ -179,6 +189,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+			 *
+			 * @see #defer(java.lang.Boolean)
 			 */
 			default <Ex extends Throwable> E defer(Supplier<? extends java.lang.Boolean,Ex> defer) throws IOException, Ex {
 				return defer((defer == null) ? null : defer.get());
@@ -201,6 +213,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+			 *
+			 * @see #disabled(boolean)
 			 */
 			default E disabled(java.lang.Boolean disabled) throws IOException {
 				return disabled(disabled != null && disabled);
@@ -208,6 +222,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+			 *
+			 * @see #disabled(java.lang.Boolean)
 			 */
 			default <Ex extends Throwable> E disabled(Supplier<? extends java.lang.Boolean,Ex> disabled) throws IOException, Ex {
 				return disabled((disabled == null) ? null : disabled.get());
@@ -244,6 +260,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
 			 *
+			 * @see #noshade(boolean)
+			 *
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
@@ -253,6 +271,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+			 *
+			 * @see #noshade(java.lang.Boolean)
 			 *
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
@@ -278,6 +298,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+			 *
+			 * @see #readonly(boolean)
 			 */
 			default E readonly(java.lang.Boolean readonly) throws IOException {
 				return readonly(readonly != null && readonly);
@@ -285,6 +307,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+			 *
+			 * @see #readonly(java.lang.Boolean)
 			 */
 			default <Ex extends Throwable> E readonly(Supplier<? extends java.lang.Boolean,Ex> readonly) throws IOException, Ex {
 				return readonly((readonly == null) ? null : readonly.get());
@@ -307,6 +331,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+			 *
+			 * @see #selected(boolean)
 			 */
 			default E selected(java.lang.Boolean selected) throws IOException {
 				return selected(selected != null && selected);
@@ -314,6 +340,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+			 *
+			 * @see #selected(java.lang.Boolean)
 			 */
 			default <Ex extends Throwable> E selected(Supplier<? extends java.lang.Boolean,Ex> selected) throws IOException, Ex {
 				return selected((selected == null) ? null : selected.get());
@@ -373,6 +401,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @see #width(java.lang.Integer)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
@@ -393,6 +423,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @see #width(java.lang.String)
 			 *
 			 * @deprecated  In HTML 4.01, the width could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 			 */
@@ -445,6 +477,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
+				 *
+				 * @see #onafterprint(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onafterprint(Supplier<?,Ex> onafterprint) throws IOException, Ex {
 					return onafterprint((onafterprint == null) ? null : onafterprint.get());
@@ -452,6 +486,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
+				 *
+				 * @see #onafterprint(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onafterprint(AttributeWriter<Ex> onafterprint) throws IOException, Ex {
 					return onafterprint((Object)onafterprint);
@@ -482,6 +518,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+				 *
+				 * @see #onbeforeprint(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onbeforeprint(Supplier<?,Ex> onbeforeprint) throws IOException, Ex {
 					return onbeforeprint((onbeforeprint == null) ? null : onbeforeprint.get());
@@ -489,6 +527,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+				 *
+				 * @see #onbeforeprint(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onbeforeprint(AttributeWriter<Ex> onbeforeprint) throws IOException, Ex {
 					return onbeforeprint((Object)onbeforeprint);
@@ -511,6 +551,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+				 *
+				 * @see #onbeforeunload(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onbeforeunload(Supplier<?,Ex> onbeforeunload) throws IOException, Ex {
 					return onbeforeunload((onbeforeunload == null) ? null : onbeforeunload.get());
@@ -518,6 +560,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+				 *
+				 * @see #onbeforeunload(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onbeforeunload(AttributeWriter<Ex> onbeforeunload) throws IOException, Ex {
 					return onbeforeunload((Object)onbeforeunload);
@@ -540,6 +584,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+				 *
+				 * @see #onerror(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onerror(Supplier<?,Ex> onerror) throws IOException, Ex {
 					return onerror((onerror == null) ? null : onerror.get());
@@ -547,6 +593,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+				 *
+				 * @see #onerror(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onerror(AttributeWriter<Ex> onerror) throws IOException, Ex {
 					return onerror((Object)onerror);
@@ -577,6 +625,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
+				 *
+				 * @see #onhashchange(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onhashchange(Supplier<?,Ex> onhashchange) throws IOException, Ex {
 					return onhashchange((onhashchange == null) ? null : onhashchange.get());
@@ -584,6 +634,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
+				 *
+				 * @see #onhashchange(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onhashchange(AttributeWriter<Ex> onhashchange) throws IOException, Ex {
 					return onhashchange((Object)onhashchange);
@@ -606,6 +658,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
+				 *
+				 * @see #onload(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onload(Supplier<?,Ex> onload) throws IOException, Ex {
 					return onload((onload == null) ? null : onload.get());
@@ -613,6 +667,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
+				 *
+				 * @see #onload(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onload(AttributeWriter<Ex> onload) throws IOException, Ex {
 					return onload((Object)onload);
@@ -643,6 +699,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
+				 *
+				 * @see #onmessage(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmessage(Supplier<?,Ex> onmessage) throws IOException, Ex {
 					return onmessage((onmessage == null) ? null : onmessage.get());
@@ -650,6 +708,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
+				 *
+				 * @see #onmessage(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmessage(AttributeWriter<Ex> onmessage) throws IOException, Ex {
 					return onmessage((Object)onmessage);
@@ -680,6 +740,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+				 *
+				 * @see #onoffline(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onoffline(Supplier<?,Ex> onoffline) throws IOException, Ex {
 					return onoffline((onoffline == null) ? null : onoffline.get());
@@ -687,6 +749,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+				 *
+				 * @see #onoffline(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onoffline(AttributeWriter<Ex> onoffline) throws IOException, Ex {
 					return onoffline((Object)onoffline);
@@ -717,6 +781,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+				 *
+				 * @see #ononline(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ononline(Supplier<?,Ex> ononline) throws IOException, Ex {
 					return ononline((ononline == null) ? null : ononline.get());
@@ -724,6 +790,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+				 *
+				 * @see #ononline(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ononline(AttributeWriter<Ex> ononline) throws IOException, Ex {
 					return ononline((Object)ononline);
@@ -746,6 +814,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+				 *
+				 * @see #onpagehide(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpagehide(Supplier<?,Ex> onpagehide) throws IOException, Ex {
 					return onpagehide((onpagehide == null) ? null : onpagehide.get());
@@ -753,6 +823,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+				 *
+				 * @see #onpagehide(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpagehide(AttributeWriter<Ex> onpagehide) throws IOException, Ex {
 					return onpagehide((Object)onpagehide);
@@ -775,6 +847,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+				 *
+				 * @see #onpageshow(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpageshow(Supplier<?,Ex> onpageshow) throws IOException, Ex {
 					return onpageshow((onpageshow == null) ? null : onpageshow.get());
@@ -782,6 +856,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+				 *
+				 * @see #onpageshow(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpageshow(AttributeWriter<Ex> onpageshow) throws IOException, Ex {
 					return onpageshow((Object)onpageshow);
@@ -804,6 +880,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+				 *
+				 * @see #onpopstate(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpopstate(Supplier<?,Ex> onpopstate) throws IOException, Ex {
 					return onpopstate((onpopstate == null) ? null : onpopstate.get());
@@ -811,6 +889,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+				 *
+				 * @see #onpopstate(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpopstate(AttributeWriter<Ex> onpopstate) throws IOException, Ex {
 					return onpopstate((Object)onpopstate);
@@ -841,6 +921,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
+				 *
+				 * @see #onresize(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onresize(Supplier<?,Ex> onresize) throws IOException, Ex {
 					return onresize((onresize == null) ? null : onresize.get());
@@ -848,6 +930,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
+				 *
+				 * @see #onresize(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onresize(AttributeWriter<Ex> onresize) throws IOException, Ex {
 					return onresize((Object)onresize);
@@ -870,6 +954,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+				 *
+				 * @see #onstorage(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onstorage(Supplier<?,Ex> onstorage) throws IOException, Ex {
 					return onstorage((onstorage == null) ? null : onstorage.get());
@@ -877,6 +963,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+				 *
+				 * @see #onstorage(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onstorage(AttributeWriter<Ex> onstorage) throws IOException, Ex {
 					return onstorage((Object)onstorage);
@@ -899,6 +987,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+				 *
+				 * @see #onunload(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onunload(Supplier<?,Ex> onunload) throws IOException, Ex {
 					return onunload((onunload == null) ? null : onunload.get());
@@ -906,6 +996,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+				 *
+				 * @see #onunload(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onunload(AttributeWriter<Ex> onunload) throws IOException, Ex {
 					return onunload((Object)onunload);
@@ -934,6 +1026,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+				 *
+				 * @see #onblur(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onblur(Supplier<?,Ex> onblur) throws IOException, Ex {
 					return onblur((onblur == null) ? null : onblur.get());
@@ -941,6 +1035,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+				 *
+				 * @see #onblur(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onblur(AttributeWriter<Ex> onblur) throws IOException, Ex {
 					return onblur((Object)onblur);
@@ -963,6 +1059,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+				 *
+				 * @see #onchange(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onchange(Supplier<?,Ex> onchange) throws IOException, Ex {
 					return onchange((onchange == null) ? null : onchange.get());
@@ -970,6 +1068,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+				 *
+				 * @see #onchange(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onchange(AttributeWriter<Ex> onchange) throws IOException, Ex {
 					return onchange((Object)onchange);
@@ -1000,6 +1100,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
+				 *
+				 * @see #oncontextmenu(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oncontextmenu(Supplier<?,Ex> oncontextmenu) throws IOException, Ex {
 					return oncontextmenu((oncontextmenu == null) ? null : oncontextmenu.get());
@@ -1007,6 +1109,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
+				 *
+				 * @see #oncontextmenu(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oncontextmenu(AttributeWriter<Ex> oncontextmenu) throws IOException, Ex {
 					return oncontextmenu((Object)oncontextmenu);
@@ -1029,6 +1133,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
+				 *
+				 * @see #onfocus(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onfocus(Supplier<?,Ex> onfocus) throws IOException, Ex {
 					return onfocus((onfocus == null) ? null : onfocus.get());
@@ -1036,6 +1142,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
+				 *
+				 * @see #onfocus(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onfocus(AttributeWriter<Ex> onfocus) throws IOException, Ex {
 					return onfocus((Object)onfocus);
@@ -1066,6 +1174,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+				 *
+				 * @see #oninput(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oninput(Supplier<?,Ex> oninput) throws IOException, Ex {
 					return oninput((oninput == null) ? null : oninput.get());
@@ -1073,6 +1183,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+				 *
+				 * @see #oninput(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oninput(AttributeWriter<Ex> oninput) throws IOException, Ex {
 					return oninput((Object)oninput);
@@ -1095,6 +1207,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+				 *
+				 * @see #oninvalid(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oninvalid(Supplier<?,Ex> oninvalid) throws IOException, Ex {
 					return oninvalid((oninvalid == null) ? null : oninvalid.get());
@@ -1102,6 +1216,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+				 *
+				 * @see #oninvalid(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oninvalid(AttributeWriter<Ex> oninvalid) throws IOException, Ex {
 					return oninvalid((Object)oninvalid);
@@ -1132,6 +1248,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+				 *
+				 * @see #onreset(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onreset(Supplier<?,Ex> onreset) throws IOException, Ex {
 					return onreset((onreset == null) ? null : onreset.get());
@@ -1139,6 +1257,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+				 *
+				 * @see #onreset(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onreset(AttributeWriter<Ex> onreset) throws IOException, Ex {
 					return onreset((Object)onreset);
@@ -1161,6 +1281,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+				 *
+				 * @see #onsearch(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onsearch(Supplier<?,Ex> onsearch) throws IOException, Ex {
 					return onsearch((onsearch == null) ? null : onsearch.get());
@@ -1168,6 +1290,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+				 *
+				 * @see #onsearch(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onsearch(AttributeWriter<Ex> onsearch) throws IOException, Ex {
 					return onsearch((Object)onsearch);
@@ -1190,6 +1314,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+				 *
+				 * @see #onselect(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onselect(Supplier<?,Ex> onselect) throws IOException, Ex {
 					return onselect((onselect == null) ? null : onselect.get());
@@ -1197,6 +1323,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+				 *
+				 * @see #onselect(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onselect(AttributeWriter<Ex> onselect) throws IOException, Ex {
 					return onselect((Object)onselect);
@@ -1219,6 +1347,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+				 *
+				 * @see #onsubmit(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onsubmit(Supplier<?,Ex> onsubmit) throws IOException, Ex {
 					return onsubmit((onsubmit == null) ? null : onsubmit.get());
@@ -1226,6 +1356,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+				 *
+				 * @see #onsubmit(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onsubmit(AttributeWriter<Ex> onsubmit) throws IOException, Ex {
 					return onsubmit((Object)onsubmit);
@@ -1277,6 +1409,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
+				 *
+				 * @see #onkeydown(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onkeydown(Supplier<?,Ex> onkeydown) throws IOException, Ex {
 					return onkeydown((onkeydown == null) ? null : onkeydown.get());
@@ -1284,6 +1418,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
+				 *
+				 * @see #onkeydown(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onkeydown(AttributeWriter<Ex> onkeydown) throws IOException, Ex {
 					return onkeydown((Object)onkeydown);
@@ -1306,6 +1442,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+				 *
+				 * @see #onkeypress(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onkeypress(Supplier<?,Ex> onkeypress) throws IOException, Ex {
 					return onkeypress((onkeypress == null) ? null : onkeypress.get());
@@ -1313,6 +1451,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+				 *
+				 * @see #onkeypress(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onkeypress(AttributeWriter<Ex> onkeypress) throws IOException, Ex {
 					return onkeypress((Object)onkeypress);
@@ -1335,6 +1475,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+				 *
+				 * @see #onkeyup(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onkeyup(Supplier<?,Ex> onkeyup) throws IOException, Ex {
 					return onkeyup((onkeyup == null) ? null : onkeyup.get());
@@ -1342,6 +1484,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+				 *
+				 * @see #onkeyup(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onkeyup(AttributeWriter<Ex> onkeyup) throws IOException, Ex {
 					return onkeyup((Object)onkeyup);
@@ -1385,6 +1529,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 *
+				 * @see #onclick(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onclick(Supplier<?,Ex> onclick) throws IOException, Ex {
 					return onclick((onclick == null) ? null : onclick.get());
@@ -1392,6 +1538,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+				 *
+				 * @see #onclick(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onclick(AttributeWriter<Ex> onclick) throws IOException, Ex {
 					return onclick((Object)onclick);
@@ -1414,6 +1562,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+				 *
+				 * @see #ondblclick(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondblclick(Supplier<?,Ex> ondblclick) throws IOException, Ex {
 					return ondblclick((ondblclick == null) ? null : ondblclick.get());
@@ -1421,6 +1571,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+				 *
+				 * @see #ondblclick(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondblclick(AttributeWriter<Ex> ondblclick) throws IOException, Ex {
 					return ondblclick((Object)ondblclick);
@@ -1443,6 +1595,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+				 *
+				 * @see #onmousedown(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmousedown(Supplier<?,Ex> onmousedown) throws IOException, Ex {
 					return onmousedown((onmousedown == null) ? null : onmousedown.get());
@@ -1450,6 +1604,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+				 *
+				 * @see #onmousedown(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmousedown(AttributeWriter<Ex> onmousedown) throws IOException, Ex {
 					return onmousedown((Object)onmousedown);
@@ -1472,6 +1628,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+				 *
+				 * @see #onmousemove(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmousemove(Supplier<?,Ex> onmousemove) throws IOException, Ex {
 					return onmousemove((onmousemove == null) ? null : onmousemove.get());
@@ -1479,6 +1637,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+				 *
+				 * @see #onmousemove(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmousemove(AttributeWriter<Ex> onmousemove) throws IOException, Ex {
 					return onmousemove((Object)onmousemove);
@@ -1501,6 +1661,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+				 *
+				 * @see #onmouseout(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmouseout(Supplier<?,Ex> onmouseout) throws IOException, Ex {
 					return onmouseout((onmouseout == null) ? null : onmouseout.get());
@@ -1508,6 +1670,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+				 *
+				 * @see #onmouseout(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmouseout(AttributeWriter<Ex> onmouseout) throws IOException, Ex {
 					return onmouseout((Object)onmouseout);
@@ -1530,6 +1694,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+				 *
+				 * @see #onmouseover(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmouseover(Supplier<?,Ex> onmouseover) throws IOException, Ex {
 					return onmouseover((onmouseover == null) ? null : onmouseover.get());
@@ -1537,6 +1703,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+				 *
+				 * @see #onmouseover(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmouseover(AttributeWriter<Ex> onmouseover) throws IOException, Ex {
 					return onmouseover((Object)onmouseover);
@@ -1559,6 +1727,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
+				 *
+				 * @see #onmouseup(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmouseup(Supplier<?,Ex> onmouseup) throws IOException, Ex {
 					return onmouseup((onmouseup == null) ? null : onmouseup.get());
@@ -1566,6 +1736,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
+				 *
+				 * @see #onmouseup(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onmouseup(AttributeWriter<Ex> onmouseup) throws IOException, Ex {
 					return onmouseup((Object)onmouseup);
@@ -1595,6 +1767,8 @@ public class Attributes {
 				/**
 				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
 				 *
+				 * @see #onmousewheel(java.lang.Object)
+				 *
 				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.Supplier) onwheel} attribute instead.
 				 */
 				@Deprecated
@@ -1604,6 +1778,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
+				 *
+				 * @see #onmousewheel(java.lang.Object)
 				 *
 				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.AttributeWriter) onwheel} attribute instead.
 				 */
@@ -1637,6 +1813,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+				 *
+				 * @see #onwheel(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onwheel(Supplier<?,Ex> onwheel) throws IOException, Ex {
 					return onwheel((onwheel == null) ? null : onwheel.get());
@@ -1644,6 +1822,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+				 *
+				 * @see #onwheel(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onwheel(AttributeWriter<Ex> onwheel) throws IOException, Ex {
 					return onwheel((Object)onwheel);
@@ -1709,6 +1889,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+				 *
+				 * @see #ondrag(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondrag(Supplier<?,Ex> ondrag) throws IOException, Ex {
 					return ondrag((ondrag == null) ? null : ondrag.get());
@@ -1716,6 +1898,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+				 *
+				 * @see #ondrag(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondrag(AttributeWriter<Ex> ondrag) throws IOException, Ex {
 					return ondrag((Object)ondrag);
@@ -1746,6 +1930,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+				 *
+				 * @see #ondragend(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragend(Supplier<?,Ex> ondragend) throws IOException, Ex {
 					return ondragend((ondragend == null) ? null : ondragend.get());
@@ -1753,6 +1939,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+				 *
+				 * @see #ondragend(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragend(AttributeWriter<Ex> ondragend) throws IOException, Ex {
 					return ondragend((Object)ondragend);
@@ -1783,6 +1971,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+				 *
+				 * @see #ondragenter(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragenter(Supplier<?,Ex> ondragenter) throws IOException, Ex {
 					return ondragenter((ondragenter == null) ? null : ondragenter.get());
@@ -1790,6 +1980,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+				 *
+				 * @see #ondragenter(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragenter(AttributeWriter<Ex> ondragenter) throws IOException, Ex {
 					return ondragenter((Object)ondragenter);
@@ -1820,6 +2012,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+				 *
+				 * @see #ondragleave(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragleave(Supplier<?,Ex> ondragleave) throws IOException, Ex {
 					return ondragleave((ondragleave == null) ? null : ondragleave.get());
@@ -1827,6 +2021,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+				 *
+				 * @see #ondragleave(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragleave(AttributeWriter<Ex> ondragleave) throws IOException, Ex {
 					return ondragleave((Object)ondragleave);
@@ -1857,6 +2053,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
+				 *
+				 * @see #ondragover(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragover(Supplier<?,Ex> ondragover) throws IOException, Ex {
 					return ondragover((ondragover == null) ? null : ondragover.get());
@@ -1864,6 +2062,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
+				 *
+				 * @see #ondragover(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragover(AttributeWriter<Ex> ondragover) throws IOException, Ex {
 					return ondragover((Object)ondragover);
@@ -1894,6 +2094,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+				 *
+				 * @see #ondragstart(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragstart(Supplier<?,Ex> ondragstart) throws IOException, Ex {
 					return ondragstart((ondragstart == null) ? null : ondragstart.get());
@@ -1901,6 +2103,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+				 *
+				 * @see #ondragstart(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondragstart(AttributeWriter<Ex> ondragstart) throws IOException, Ex {
 					return ondragstart((Object)ondragstart);
@@ -1931,6 +2135,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
+				 *
+				 * @see #ondrop(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondrop(Supplier<?,Ex> ondrop) throws IOException, Ex {
 					return ondrop((ondrop == null) ? null : ondrop.get());
@@ -1938,6 +2144,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
+				 *
+				 * @see #ondrop(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E ondrop(AttributeWriter<Ex> ondrop) throws IOException, Ex {
 					return ondrop((Object)ondrop);
@@ -1968,6 +2176,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+				 *
+				 * @see #onscroll(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onscroll(Supplier<?,Ex> onscroll) throws IOException, Ex {
 					return onscroll((onscroll == null) ? null : onscroll.get());
@@ -1975,6 +2185,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+				 *
+				 * @see #onscroll(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onscroll(AttributeWriter<Ex> onscroll) throws IOException, Ex {
 					return onscroll((Object)onscroll);
@@ -2018,6 +2230,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+				 *
+				 * @see #oncopy(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oncopy(Supplier<?,Ex> oncopy) throws IOException, Ex {
 					return oncopy((oncopy == null) ? null : oncopy.get());
@@ -2025,6 +2239,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+				 *
+				 * @see #oncopy(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oncopy(AttributeWriter<Ex> oncopy) throws IOException, Ex {
 					return oncopy((Object)oncopy);
@@ -2047,6 +2263,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+				 *
+				 * @see #oncut(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oncut(Supplier<?,Ex> oncut) throws IOException, Ex {
 					return oncut((oncut == null) ? null : oncut.get());
@@ -2054,6 +2272,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+				 *
+				 * @see #oncut(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E oncut(AttributeWriter<Ex> oncut) throws IOException, Ex {
 					return oncut((Object)oncut);
@@ -2076,6 +2296,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
+				 *
+				 * @see #onpaste(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpaste(Supplier<?,Ex> onpaste) throws IOException, Ex {
 					return onpaste((onpaste == null) ? null : onpaste.get());
@@ -2083,6 +2305,8 @@ public class Attributes {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
+				 *
+				 * @see #onpaste(java.lang.Object)
 				 */
 				default <Ex extends Throwable> E onpaste(AttributeWriter<Ex> onpaste) throws IOException, Ex {
 					return onpaste((Object)onpaste);
@@ -2178,6 +2402,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
 			 *
+			 * @see #align(java.lang.String)
+			 *
 			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
@@ -2189,6 +2415,8 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
 			 *
+			 * @see #align(java.lang.String)
+			 *
 			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
@@ -2199,6 +2427,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3resource.com/html/attributes/html-align-attribute.php">HTML align attribute</a>.
+			 *
+			 * @see #align(java.lang.Enum)
 			 *
 			 * @deprecated  The align attribute is not supported in HTML5. Use CSS instead.
 			 */
@@ -2228,6 +2458,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 *
+			 * @see #crossorigin(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(StringSupplier<Ex> crossorigin) throws IOException, Ex {
@@ -2236,6 +2468,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 *
+			 * @see #crossorigin(java.lang.String)
 			 */
 			default E crossorigin(V crossorigin) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -2244,6 +2478,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 *
+			 * @see #crossorigin(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
@@ -2270,6 +2506,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 *
+			 * @see #rel(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(StringSupplier<Ex> rel) throws IOException, Ex {
@@ -2278,6 +2516,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 *
+			 * @see #rel(java.lang.String)
 			 */
 			default E rel(V rel) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -2286,6 +2526,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
+			 *
+			 * @see #rel(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(Supplier<? extends V,Ex> rel) throws IOException, Ex {
@@ -2312,6 +2554,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
+			 *
+			 * @see #type(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E type(StringSupplier<Ex> type) throws IOException, Ex {
@@ -2320,6 +2564,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
+			 *
+			 * @see #type(java.lang.String)
 			 */
 			default E type(V type) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -2328,6 +2574,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
+			 *
+			 * @see #type(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E type(Supplier<? extends V,Ex> type) throws IOException, Ex {
@@ -2386,6 +2634,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+			 *
+			 * @see #height(java.lang.Integer)
 			 */
 			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				return height((pixels == null) ? null : pixels.get());
@@ -2444,6 +2694,8 @@ public class Attributes {
 			 * <p>
 			 * The height attribute is new in HTML5.
 			 * </p>
+			 *
+			 * @see #height(java.lang.Integer)
 			 */
 			@Override
 			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
@@ -2485,6 +2737,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+			 *
+			 * @see #maxlength(java.lang.Integer)
 			 */
 			default <Ex extends Throwable> E maxlength(Supplier<? extends java.lang.Integer,Ex> maxlength) throws IOException, Ex {
 				return maxlength((maxlength == null) ? null : maxlength.get());
@@ -2516,6 +2770,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+			 *
+			 * @see #size(java.lang.Integer)
 			 */
 			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
 				return size((size == null) ? null : size.get());
@@ -2572,6 +2828,8 @@ public class Attributes {
 
 			/**
 			 * {@inheritDoc}
+			 *
+			 * @see #size(java.lang.Integer)
 			 *
 			 * @deprecated  Not supported in HTML5.
 			 */
@@ -2643,6 +2901,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #tabindex(java.lang.Integer)
 			 */
 			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
 				return tabindex((tabindex == null) ? null : tabindex.get());
@@ -2688,6 +2948,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
 			 * </blockquote>
+			 *
+			 * @see #tabindex(java.lang.Integer)
 			 */
 			@Override
 			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
@@ -2720,6 +2982,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @see #width(java.lang.Integer)
 			 */
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				return width((pixels == null) ? null : pixels.get());
@@ -2781,6 +3045,8 @@ public class Attributes {
 			 * <p>
 			 * The width attribute is new in HTML5.
 			 * </p>
+			 *
+			 * @see #width(java.lang.Integer)
 			 */
 			@Override
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
@@ -2919,6 +3185,8 @@ public class Attributes {
 			 * An arbitrary attribute.
 			 *
 			 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+			 *
+			 * @see #attribute(java.lang.String, java.lang.Object)
 			 */
 			default <Ex extends Throwable> E attribute(java.lang.String name, Supplier<?,Ex> value) throws IOException, Ex {
 				return attribute(name, (value == null) ? null : value.get());
@@ -2926,6 +3194,8 @@ public class Attributes {
 
 			/**
 			 * An arbitrary attribute.
+			 *
+			 * @see #attribute(java.lang.String, java.lang.Object)
 			 */
 			default <Ex extends Throwable> E attribute(java.lang.String name, AttributeWriter<Ex> value) throws IOException, Ex {
 				return attribute(name, (Object)value);
@@ -2948,6 +3218,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+			 *
+			 * @see #accept(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E accept(Supplier<?,Ex> accept) throws IOException, Ex {
 				return accept((accept == null) ? null : accept.get());
@@ -2955,6 +3227,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+			 *
+			 * @see #accept(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E accept(AttributeWriter<Ex> accept) throws IOException, Ex {
 				return accept((Object)accept);
@@ -2986,6 +3260,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #clazz(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E clazz(Supplier<?,Ex> clazz) throws IOException, Ex {
 				return clazz((clazz == null) ? null : clazz.get());
@@ -2996,6 +3272,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #clazz(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E clazz(AttributeWriter<Ex> clazz) throws IOException, Ex {
 				return clazz((Object)clazz);
@@ -3036,6 +3314,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #clazz(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E clazz(Supplier<?,Ex> clazz) throws IOException, Ex {
@@ -3056,6 +3336,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #clazz(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E clazz(AttributeWriter<Ex> clazz) throws IOException, Ex {
@@ -3097,6 +3379,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #id(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E id(Supplier<?,Ex> id) throws IOException, Ex {
 				return id((id == null) ? null : id.get());
@@ -3107,6 +3391,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #id(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E id(AttributeWriter<Ex> id) throws IOException, Ex {
 				return id((Object)id);
@@ -3147,6 +3433,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #id(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E id(Supplier<?,Ex> id) throws IOException, Ex {
@@ -3167,6 +3455,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #id(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E id(AttributeWriter<Ex> id) throws IOException, Ex {
@@ -3199,6 +3489,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 *
+			 * @see #label(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E label(Supplier<?,Ex> label) throws IOException, Ex {
 				return label((label == null) ? null : label.get());
@@ -3206,6 +3498,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+			 *
+			 * @see #label(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E label(AttributeWriter<Ex> label) throws IOException, Ex {
 				return label((Object)label);
@@ -3229,6 +3523,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 *
+			 * @see #media(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E media(Supplier<?,Ex> media) throws IOException, Ex {
 				return media((media == null) ? null : media.get());
@@ -3236,6 +3532,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+			 *
+			 * @see #media(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E media(AttributeWriter<Ex> media) throws IOException, Ex {
 				return media((Object)media);
@@ -3258,6 +3556,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 *
+			 * @see #name(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E name(Supplier<?,Ex> name) throws IOException, Ex {
 				return name((name == null) ? null : name.get());
@@ -3265,6 +3565,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 *
+			 * @see #name(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E name(AttributeWriter<Ex> name) throws IOException, Ex {
 				return name((Object)name);
@@ -3295,6 +3597,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+			 *
+			 * @see #placeholder(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E placeholder(Supplier<?,Ex> placeholder) throws IOException, Ex {
 				return placeholder((placeholder == null) ? null : placeholder.get());
@@ -3302,6 +3606,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+			 *
+			 * @see #placeholder(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E placeholder(AttributeWriter<Ex> placeholder) throws IOException, Ex {
 				return placeholder((Object)placeholder);
@@ -3335,6 +3641,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #style(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E style(Supplier<?,Ex> style) throws IOException, Ex {
 				return style((style == null) ? null : style.get());
@@ -3345,6 +3653,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #style(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E style(AttributeWriter<Ex> style) throws IOException, Ex {
 				return style((Object)style);
@@ -3385,6 +3695,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #style(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E style(Supplier<?,Ex> style) throws IOException, Ex {
@@ -3405,6 +3717,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #style(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E style(AttributeWriter<Ex> style) throws IOException, Ex {
@@ -3446,6 +3760,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #title(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E title(Supplier<?,Ex> title) throws IOException, Ex {
 				return title((title == null) ? null : title.get());
@@ -3456,6 +3772,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 			 * </blockquote>
+			 *
+			 * @see #title(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E title(AttributeWriter<Ex> title) throws IOException, Ex {
 				return title((Object)title);
@@ -3496,6 +3814,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #title(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E title(Supplier<?,Ex> title) throws IOException, Ex {
@@ -3516,6 +3836,8 @@ public class Attributes {
 			 * <blockquote>
 			 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 			 * </blockquote>
+			 *
+			 * @see #title(java.lang.Object)
 			 */
 			@Override
 			default <Ex extends Throwable> E title(AttributeWriter<Ex> title) throws IOException, Ex {
@@ -3548,6 +3870,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 *
+			 * @see #value(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E value(Supplier<?,Ex> value) throws IOException, Ex {
 				return value((value == null) ? null : value.get());
@@ -3555,6 +3879,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+			 *
+			 * @see #value(java.lang.Object)
 			 */
 			default <Ex extends Throwable> E value(AttributeWriter<Ex> value) throws IOException, Ex {
 				return value((Object)value);
@@ -3599,6 +3925,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
+			 *
+			 * @see #href(java.lang.String)
 			 */
 			default <Ex extends Throwable> E href(Supplier<? extends java.lang.String,Ex> href) throws IOException, Ex {
 				return href((href == null) ? null : href.get());
@@ -3621,6 +3949,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
+			 *
+			 * @see #src(java.lang.String)
 			 */
 			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String,Ex> src) throws IOException, Ex {
 				return src((src == null) ? null : src.get());

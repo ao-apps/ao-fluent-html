@@ -266,7 +266,6 @@ public class Input extends EmptyElement<Input> implements
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
 	@Override
-	@Attributes.Funnel
 	public Input type(String type) throws IOException {
 		type = StringUtility.trimNullIfEmpty(type);
 		if(type != null) {
@@ -297,7 +296,6 @@ public class Input extends EmptyElement<Input> implements
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
-	@Attributes.Funnel // New funnel, since type(String) calls this for known types.  TODO: Follow this pattern in Attributes.Enum to avoid encoding known values?
 	@Override
 	public Input type(Type type) throws IOException {
 		if(this.type != null) {

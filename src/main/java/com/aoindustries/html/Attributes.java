@@ -4028,6 +4028,55 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
+		 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+		 */
+		public static interface List<E extends Element<E> & List<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+			 */
+			@Funnel
+			default E list(Object list) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"list"
+					);
+				}
+				return attribute(element, "list", MarkupType.NONE, list, true, true, textInXhtmlAttributeEncoder);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+			 *
+			 * @see #list(java.lang.Object)
+			 */
+			default <Ex extends Throwable> E list(Supplier<?,Ex> list) throws IOException, Ex {
+				return list((list == null) ? null : list.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+			 *
+			 * @see #list(java.lang.Object)
+			 */
+			default <Ex extends Throwable> E list(AttributeWriter<Ex> list) throws IOException, Ex {
+				return list((Object)list);
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 		 */
 		// TODO: Any sort of comments allowed in media queries?  MarkupType?

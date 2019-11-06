@@ -57,7 +57,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	// TODO: formnovalidate
 	// TODO: formtarget
 	// TODO: inputmode here or global?
-	// TODO: list
 	// TODO: max
 	// TODO: min
 	Attributes.Text.Name<E>,
@@ -107,6 +106,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Enum.Capture<Dynamic,File.Capture>,
 		Attributes.Boolean.Checked<Dynamic>,
 		Attributes.Integer.HeightHtml5Only<Dynamic>,
+		Attributes.Text.List<Dynamic>,
 		Attributes.Integer.Maxlength<Dynamic>,
 		Attributes.Integer.Minlength<Dynamic>,
 		Attributes.Boolean.Multiple<Dynamic>,
@@ -403,6 +403,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Color extends Input<Color> implements
 		Attributes.Enum.Autocomplete<Color,Color.Autocomplete>,
+		Attributes.Text.List<Color>,
 		Attributes.Boolean.Readonly<Color>, // Guessed
 		Attributes.Text.Value<Color>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -474,6 +475,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Date extends Input<Date> implements
 		Attributes.Enum.Autocomplete<Date,Date.Autocomplete>,
+		Attributes.Text.List<Date>,
 		Attributes.Boolean.Readonly<Date>, // Guessed
 		Attributes.Text.Value<Date>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -547,6 +549,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class DatetimeLocal extends Input<DatetimeLocal> implements
 		Attributes.Enum.Autocomplete<DatetimeLocal,DatetimeLocal.Autocomplete>,
+		Attributes.Text.List<DatetimeLocal>,
 		Attributes.Boolean.Readonly<DatetimeLocal>, // Guessed
 		Attributes.Text.Value<DatetimeLocal>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -619,6 +622,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Email extends Input<Email> implements
 		Attributes.Enum.Autocomplete<Email,Email.Autocomplete>,
+		Attributes.Text.List<Email>,
 		Attributes.Integer.Maxlength<Email>,
 		Attributes.Integer.Minlength<Email>,
 		Attributes.Boolean.Multiple<Email>,
@@ -859,6 +863,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Month extends Input<Month> implements
 		Attributes.Enum.Autocomplete<Month,Month.Autocomplete>,
+		Attributes.Text.List<Month>,
 		Attributes.Boolean.Readonly<Month>, // Guessed
 		Attributes.Text.Value<Month>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -933,6 +938,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Number extends Input<Number> implements
 		Attributes.Enum.Autocomplete<Number,Number.Autocomplete>,
+		Attributes.Text.List<Number>,
 		Attributes.Boolean.Readonly<Number>,
 		Attributes.Text.Value<Number>, // TODO: Review types (this and others), perhaps Attributes.Number or similar?
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -1119,6 +1125,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Range extends Input<Range> implements
 		Attributes.Enum.Autocomplete<Range,Range.Autocomplete>,
+		Attributes.Text.List<Range>,
 		Attributes.Text.Value<Range>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 		Attributes.Event.Form.Onchange<Range>,
@@ -1225,6 +1232,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Search extends Input<Search> implements
 		Attributes.Enum.Autocomplete<Search,Search.Autocomplete>,
+		Attributes.Text.List<Search>,
 		Attributes.Integer.Maxlength<Search>,
 		Attributes.Integer.Minlength<Search>,
 		Attributes.Text.Placeholder<Search>,
@@ -1384,6 +1392,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Tel extends Input<Tel> implements
 		Attributes.Enum.Autocomplete<Tel,Tel.Autocomplete>,
+		Attributes.Text.List<Tel>,
 		Attributes.Integer.Maxlength<Tel>,
 		Attributes.Integer.Minlength<Tel>,
 		Attributes.Text.Placeholder<Tel>,
@@ -1470,6 +1479,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Enum.Autocomplete<Text,Attributes.Enum.Autocomplete.Value>,
 		Attributes.Integer.Maxlength<Text>,
 		Attributes.Integer.Minlength<Text>,
+		Attributes.Text.List<Text>,
 		Attributes.Text.Placeholder<Text>,
 		Attributes.Boolean.Readonly<Text>,
 		Attributes.Integer.Size<Text>,
@@ -1495,6 +1505,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Time extends Input<Time> implements
 		Attributes.Enum.Autocomplete<Time,Time.Autocomplete>,
+		Attributes.Text.List<Time>,
 		Attributes.Boolean.Readonly<Time>, // Guessed
 		Attributes.Text.Value<Time>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -1566,6 +1577,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Url extends Input<Url> implements
 		Attributes.Enum.Autocomplete<Url,Url.Autocomplete>,
+		Attributes.Text.List<Url>,
 		Attributes.Integer.Maxlength<Url>,
 		Attributes.Integer.Minlength<Url>,
 		Attributes.Text.Placeholder<Url>,
@@ -1649,6 +1661,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Week extends Input<Week> implements
 		Attributes.Enum.Autocomplete<Week,Week.Autocomplete>,
+		Attributes.Text.List<Week>,
 		Attributes.Boolean.Readonly<Week>, // Guessed
 		Attributes.Text.Value<Week>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp

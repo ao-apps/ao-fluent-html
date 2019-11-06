@@ -60,7 +60,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	// TODO: list
 	// TODO: max
 	// TODO: min
-	// TODO: minlength: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 	// TODO: multiple
 	Attributes.Text.Name<E>,
 	// TODO: pattern
@@ -110,6 +109,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Boolean.Checked<Dynamic>,
 		Attributes.Integer.HeightHtml5Only<Dynamic>,
 		Attributes.Integer.Maxlength<Dynamic>,
+		Attributes.Integer.Minlength<Dynamic>,
 		Attributes.Text.Placeholder<Dynamic>,
 		Attributes.Boolean.Readonly<Dynamic>,
 		Attributes.Integer.Size<Dynamic>,
@@ -620,6 +620,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Email extends Input<Email> implements
 		Attributes.Enum.Autocomplete<Email,Email.Autocomplete>,
 		Attributes.Integer.Maxlength<Email>,
+		Attributes.Integer.Minlength<Email>,
 		Attributes.Text.Placeholder<Email>,
 		Attributes.Boolean.Readonly<Email>,
 		Attributes.Integer.Size<Email>,
@@ -1021,6 +1022,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Password extends Input<Password> implements
 		Attributes.Enum.Autocomplete<Password,Password.Autocomplete>,
 		Attributes.Integer.Maxlength<Password>,
+		Attributes.Integer.Minlength<Password>,
 		Attributes.Text.Placeholder<Password>,
 		Attributes.Boolean.Readonly<Password>,
 		Attributes.Integer.Size<Password>,
@@ -1222,6 +1224,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Search extends Input<Search> implements
 		Attributes.Enum.Autocomplete<Search,Search.Autocomplete>,
 		Attributes.Integer.Maxlength<Search>,
+		Attributes.Integer.Minlength<Search>,
 		Attributes.Text.Placeholder<Search>,
 		Attributes.Boolean.Readonly<Search>,
 		Attributes.Integer.Size<Search>,
@@ -1380,6 +1383,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Tel extends Input<Tel> implements
 		Attributes.Enum.Autocomplete<Tel,Tel.Autocomplete>,
 		Attributes.Integer.Maxlength<Tel>,
+		Attributes.Integer.Minlength<Tel>,
 		Attributes.Text.Placeholder<Tel>,
 		Attributes.Boolean.Readonly<Tel>, // Guessed
 		Attributes.Integer.Size<Tel>,
@@ -1463,6 +1467,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Text extends Input<Text> implements
 		Attributes.Enum.Autocomplete<Text,Attributes.Enum.Autocomplete.Value>,
 		Attributes.Integer.Maxlength<Text>,
+		Attributes.Integer.Minlength<Text>,
 		Attributes.Text.Placeholder<Text>,
 		Attributes.Boolean.Readonly<Text>,
 		Attributes.Integer.Size<Text>,
@@ -1560,6 +1565,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Url extends Input<Url> implements
 		Attributes.Enum.Autocomplete<Url,Url.Autocomplete>,
 		Attributes.Integer.Maxlength<Url>,
+		Attributes.Integer.Minlength<Url>,
 		Attributes.Text.Placeholder<Url>,
 		Attributes.Boolean.Readonly<Url>,
 		Attributes.Integer.Size<Url>,

@@ -3160,6 +3160,39 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
+		 */
+		public static interface Minlength<E extends Element<E> & Minlength<E>> {
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
+			 */
+			@Funnel
+			default E minlength(int minlength) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "minlength", minlength);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
+			 */
+			@Funnel
+			default E minlength(java.lang.Integer minlength) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "minlength", minlength);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
+			 *
+			 * @see #minlength(java.lang.Integer)
+			 */
+			default <Ex extends Throwable> E minlength(Supplier<? extends java.lang.Integer,Ex> minlength) throws IOException, Ex {
+				return minlength((minlength == null) ? null : minlength.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 		 */
 		public static interface Size<E extends Element<E> & Size<E>> {

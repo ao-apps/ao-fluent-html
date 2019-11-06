@@ -133,6 +133,39 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
+		 */
+		public static interface Autofocus<E extends Element<E> & Autofocus<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
+			 */
+			@Funnel
+			default E autofocus(boolean autofocus) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "autofocus", autofocus);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
+			 *
+			 * @see #autofocus(boolean)
+			 */
+			default E autofocus(java.lang.Boolean autofocus) throws IOException {
+				return autofocus(autofocus != null && autofocus);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
+			 *
+			 * @see #autofocus(java.lang.Boolean)
+			 */
+			default <Ex extends Throwable> E autofocus(Supplier<? extends java.lang.Boolean,Ex> autofocus) throws IOException, Ex {
+				return autofocus((autofocus == null) ? null : autofocus.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 		 */
 		public static interface Checked<E extends Element<E> & Checked<E>> {

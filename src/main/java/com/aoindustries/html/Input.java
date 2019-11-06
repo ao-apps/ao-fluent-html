@@ -46,7 +46,7 @@ import java.util.Map;
  * @author  AO Industries, Inc.
  */
 public abstract class Input<E extends Input<E>> extends EmptyElement<E> implements
-	// TODO: autofocus
+	Attributes.Boolean.Autofocus<E>,
 	Attributes.Boolean.Checked<E>,
 	// TODO: dirname
 	Attributes.Boolean.Disabled<E>,

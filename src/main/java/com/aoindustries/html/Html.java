@@ -128,29 +128,14 @@ public class Html {
 		return hr().__();
 	}
 
-	// TODO: Simplify this type stuff to be more like Script and Style
-	//       Allow setting type on all of them, instead of writing default type immediately?
-	private Input input;
-	private EnumMap<Input.Type,Input> inputs;
+	// TODO: Allow setting type on all of them, instead of writing default type immediately?
 
-	protected Input getInput(Input.Type type) {
-		if(type == null) {
-			if(input == null) input = new Input(this);
-			return input;
-		} else {
-			Input i;
-			if(inputs == null) {
-				inputs = new EnumMap<>(Input.Type.class);
-				i = null;
-			} else {
-				i = inputs.get(type);
-			}
-			if(i == null) {
-				i = new Input(this, type);
-				inputs.put(type, i);
-			}
-			return i;
-		}
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+	 */
+	public Input input(String type) throws IOException {
+		return new Input(this, type).open();
 	}
 
 	/**
@@ -158,50 +143,20 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
 	public Input input(Input.Type type) throws IOException {
-		return getInput(type).open();
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	public Html input__(Input.Type type) throws IOException {
-		return input(type).__();
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	public Input input(String type) throws IOException {
-		return input((type == null) ? (Input.Type)null : Input.Type.valueOfWithLower(type));
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	public Html input__(String type) throws IOException {
-		return input(type).__();
+		return new Input(this, type).open();
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 */
 	public Input input() throws IOException {
-		return input((Input.Type)null);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 */
-	public Html input__() throws IOException {
-		return input().__();
+		return new Input(this).open();
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.
 	 */
+	// TODO: Variants of Link by Rel, with per-implementation attributes like Input?
 	public Link link() throws IOException {
 		return new Link(this).open();
 	}

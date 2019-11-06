@@ -2210,6 +2210,48 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+		 */
+		public static interface Crossorigin<
+			E extends Element<E> & Crossorigin<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			@Funnel
+			default E crossorigin(java.lang.String crossorigin) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return String.attribute(element, "crossorigin", MarkupType.NONE, crossorigin, true, true);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E crossorigin(StringSupplier<Ex> crossorigin) throws IOException, Ex {
+				return crossorigin((crossorigin == null) ? null : crossorigin.get());
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			default E crossorigin(V crossorigin) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
+				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 		 */
 		public static interface Rel<
@@ -2252,44 +2294,44 @@ public class Attributes {
 		}
 
 		/**
-		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+		 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 		 */
-		public static interface Crossorigin<
-			E extends Element<E> & Crossorigin<E,V>,
+		public static interface Type<
+			E extends Element<E> & Type<E,V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 			 */
 			@Funnel
-			default E crossorigin(java.lang.String crossorigin) throws IOException {
+			default E type(java.lang.String type) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return String.attribute(element, "crossorigin", MarkupType.NONE, crossorigin, true, true);
+				return String.attribute(element, "type", MarkupType.NONE, type, true, true);
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E crossorigin(StringSupplier<Ex> crossorigin) throws IOException, Ex {
-				return crossorigin((crossorigin == null) ? null : crossorigin.get());
+			default <Ex extends Throwable> E type(StringSupplier<Ex> type) throws IOException, Ex {
+				return type((type == null) ? null : type.get());
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 			 */
-			default E crossorigin(V crossorigin) throws IOException {
+			default E type(V type) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.html.serialization, element.html.doctype));
+				return type((type == null) ? null : type.get(element.html.serialization, element.html.doctype));
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
-				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get());
+			default <Ex extends Throwable> E type(Supplier<? extends V,Ex> type) throws IOException, Ex {
+				return type((type== null) ? (V)null : type.get());
 			}
 		}
 	}

@@ -22,9 +22,12 @@
  */
 package com.aoindustries.html;
 
+import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
+import com.aoindustries.lang.LocalizedIllegalStateException;
+import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.util.HashMap;
@@ -67,6 +70,7 @@ public class Input extends EmptyElement<Input> implements
 	Attributes.Boolean.Readonly<Input>,
 	// TODO: required
 	Attributes.Integer.Size<Input>,
+	Attributes.Enum.Type<Input,Input.Type>,
 	Attributes.Url.Src<Script>, // TODO: Check type="image"?
 	// TODO: step
 	Attributes.Text.Value<Input>,
@@ -87,7 +91,7 @@ public class Input extends EmptyElement<Input> implements
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
-	public enum Type {
+	public enum Type implements Attributes.Enum.EnumSupplier {
 		BUTTON("button") {
 			@Override
 			public MarkupType getMarkupType() {
@@ -143,6 +147,15 @@ public class Input extends EmptyElement<Input> implements
 			return value;
 		}
 
+		@Override
+		public String get(Serialization serialization, Doctype doctype) {
+			return value;
+		}
+
+		public String getValue() {
+			return value;
+		}
+
 		public Doctype getRequiredDoctype() {
 			return requiredDoctype;
 		}
@@ -159,38 +172,43 @@ public class Input extends EmptyElement<Input> implements
 		private static final Map<String,Type> byLowerValue = new HashMap<>(values.length*4/3+1);
 		static {
 			for(Type type : values) {
-				byLowerValue.put(type.value.toLowerCase(Locale.ROOT), type);
+				if(!type.value.equals(type.value.toLowerCase(Locale.ROOT))) throw new AssertionError("Values must be lowercase as looked-up later");
+				// TODO: trimNullIfEmpty where appropriate
+				if(!type.value.equals(type.value.trim())) throw new AssertionError("Values must be trimmed as looked-up later");
+				byLowerValue.put(type.value, type);
 			}
-		}
-		public static Type valueOfWithLower(String name) {
-			Type type = byLowerValue.get(name.toLowerCase(Locale.ROOT));
-			if(type == null) {
-				type = valueOf(name.toUpperCase(Locale.ROOT));
-			}
-			return type;
 		}
 	}
 
-	private final Type type;
+	private String type;
 
-	public Input(Html html, Type type) {
+	public Input(Html html) {
 		super(html);
-		this.type = type;
+		this.type = null;
 	}
 
 	public Input(Html html, String type) {
-		this(html, (type == null) ? null : Type.valueOfWithLower(type));
+		super(html);
+		type = StringUtility.trimNullIfEmpty(type);
+		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public Input(Html html) {
-		this(html, (Type)null);
+	public Input(Html html, Type type) {
+		super(html);
+		this.type = (type == null) ? null : type.getValue();
 	}
 
 	@Override
 	protected Input open() throws IOException {
 		html.out.write("<input");
-		Input i = type(type);
-		assert i == this;
+		// Write the type now, if already set
+		String t = this.type;
+		if(t != null) {
+			// Unset to avoid duplicate attribute
+			this.type = null;
+			Input i = type(t);
+			assert i == this;
+		}
 		return this;
 	}
 
@@ -246,39 +264,76 @@ public class Input extends EmptyElement<Input> implements
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 *
-	 * @return  {@code this} when type unchanged, or an instance of {@link Input} for the given type.
 	 */
-	// TODO: Have enum-type in Attributes
-	public Input type(Type type) throws IOException {
+	@Override
+	@Attributes.Funnel
+	public Input type(String type) throws IOException {
+		type = StringUtility.trimNullIfEmpty(type);
 		if(type != null) {
-			Doctype requiredDoctype = type.getRequiredDoctype();
-			if(requiredDoctype != null && html.doctype != requiredDoctype) {
-				throw new LocalizedIllegalArgumentException(
+			type = type.toLowerCase(Locale.ROOT);
+			// Perform doctype checks and optimizations for recognized types
+			Type typeEnum = Type.byLowerValue.get(type);
+			if(typeEnum != null) {
+				return type(typeEnum);
+			}
+			if(this.type != null) {
+				throw new LocalizedIllegalStateException(
 					accessor,
-					"Input.typeRequiresDoctype",
-					type.value,
-					requiredDoctype,
-					html.doctype
+					"Html.duplicateAttribute",
+					"input",
+					"type",
+					this.type,
+					type
 				);
 			}
+			this.type = type;
 			html.out.write(" type=\"");
-			html.out.write(type.value);
+			encodeTextInXhtmlAttribute(type, html.out);
 			html.out.write('"');
 		}
-		return (type == this.type) ? this : html.getInput(type);
+		return this;
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 *
-	 * @return  {@code this} when type unchanged, or an instance of {@link Input} for the given type.
 	 */
-	// TODO: Invert: Have enum call String version, to allow type extension by String
-	public Input type(String type) throws IOException {
-		if(type != null) {
-			type(Type.valueOfWithLower(type));
+	// Overriding for consistent javadocs and related code assist
+	@Override
+	public <Ex extends Throwable> Input type(StringSupplier<Ex> type) throws IOException, Ex {
+		return Attributes.Enum.Type.super.type(type);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+	 */
+	@Attributes.Funnel // New funnel, since type(String) calls this for known types.  TODO: Follow this pattern in Attributes.Enum to avoid encoding known values?
+	@Override
+	public Input type(Type type) throws IOException {
+		if(this.type != null) {
+			throw new LocalizedIllegalStateException(
+				accessor,
+				"Html.duplicateAttribute",
+				"input",
+				"type",
+				this.type,
+				type
+			);
 		}
+		// Perform doctype checks for recognized types
+		Doctype requiredDoctype = type.getRequiredDoctype();
+		if(requiredDoctype != null && html.doctype != requiredDoctype) {
+			throw new LocalizedIllegalArgumentException(
+				accessor,
+				"Input.typeRequiresDoctype",
+				type.value,
+				requiredDoctype,
+				html.doctype
+			);
+		}
+		this.type = type.value;
+		html.out.write(" type=\"");
+		html.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
+		html.out.write('"');
 		return this;
 	}
 
@@ -287,11 +342,14 @@ public class Input extends EmptyElement<Input> implements
 	 */
 	@Override
 	public Input value(Object value) throws IOException {
+		assert this.type == null || this.type.equals(this.type.toLowerCase(Locale.ROOT));
+		assert this.type == null || this.type.equals(this.type.trim());
+		Type typeEnum = Type.byLowerValue.get(this.type);
 		return Attributes.Text.attribute(
 			this,
 			"value",
 			// Allow text markup from translations
-			(type == null) ? null : type.getMarkupType(),
+			(typeEnum == null) ? null : typeEnum.getMarkupType(),
 			value,
 			false,
 			true,

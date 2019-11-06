@@ -29,6 +29,7 @@ import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
@@ -75,14 +76,15 @@ public class Style extends Element<Style> implements
 			return contentType;
 		}
 
-		private static boolean assertAllLowerCase() {
+		private static boolean assertAllLowerCaseAndTrimmed() {
 			for(Type type : values()) {
 				if(!type.contentType.equals(type.contentType.toLowerCase(Locale.ROOT))) throw new AssertionError("Content types must be lowercase as looked-up later");
+				if(!type.contentType.equals(type.contentType.trim())) throw new AssertionError("Content types must be trimmed as looked-up later");
 			}
 			return true;
 		}
 		static {
-			assert assertAllLowerCase();
+			assert assertAllLowerCaseAndTrimmed();
 		}
 	}
 
@@ -95,6 +97,7 @@ public class Style extends Element<Style> implements
 
 	public Style(Html html, String type) {
 		super(html);
+		type = StringUtility.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 

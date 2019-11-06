@@ -29,6 +29,7 @@ import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.WrappedException;
 import java.io.IOException;
 import java.util.Locale;
@@ -94,14 +95,15 @@ public class Script extends Element<Script> implements
 			return contentType;
 		}
 
-		private static boolean assertAllLowerCase() {
+		private static boolean assertAllLowerCaseAndTrimmed() {
 			for(Type type : values()) {
 				if(!type.contentType.equals(type.contentType.toLowerCase(Locale.ROOT))) throw new AssertionError("Content types must be lowercase as looked-up later");
+				if(!type.contentType.equals(type.contentType.trim())) throw new AssertionError("Content types must be trimmed as looked-up later");
 			}
 			return true;
 		}
 		static {
-			assert assertAllLowerCase();
+			assert assertAllLowerCaseAndTrimmed();
 		}
 	}
 
@@ -114,6 +116,7 @@ public class Script extends Element<Script> implements
 
 	public Script(Html html, String type) {
 		super(html);
+		type = StringUtility.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
@@ -125,7 +128,9 @@ public class Script extends Element<Script> implements
 	@Override
 	protected Script open() throws IOException {
 		html.out.write("<script");
-		return type();
+		Script s = type();
+		assert s == this;
+		return this;
 	}
 
 	/**
@@ -183,6 +188,8 @@ public class Script extends Element<Script> implements
 		}
 	}
 
+	// TODO: Return a "Body" / "ScriptBody" that only allows additional out or closing the tag.
+	// TODO:     Setting attributes after startBody() would create invalid HTML.
 	public Script out(Object script) throws IOException {
 		if(script != null) {
 			if(script instanceof ScriptWriter) {

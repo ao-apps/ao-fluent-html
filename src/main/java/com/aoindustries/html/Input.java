@@ -47,7 +47,6 @@ import java.util.Map;
  */
 public abstract class Input<E extends Input<E>> extends EmptyElement<E> implements
 	Attributes.Boolean.Autofocus<E>,
-	Attributes.Boolean.Checked<E>,
 	// TODO: dirname
 	Attributes.Boolean.Disabled<E>,
 	// TODO: form
@@ -117,6 +116,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Enum.Align<Dynamic,Image.Align>,
 		Attributes.Text.Alt<Dynamic>,
 		Attributes.Enum.Autocomplete<Dynamic,Attributes.Enum.Autocomplete.Value>,
+		Attributes.Boolean.Checked<Dynamic>,
 		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
 		Attributes.Text.Value<Dynamic>
 	{
@@ -377,6 +377,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.
 	 */
 	public static class Checkbox extends Input<Checkbox> implements
+		Attributes.Boolean.Checked<Checkbox>,
 		Attributes.Text.Value<Checkbox>
 	{
 
@@ -997,6 +998,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.
 	 */
 	public static class Radio extends Input<Radio> implements
+		Attributes.Boolean.Checked<Radio>,
 		Attributes.Text.Value<Radio>
 	{
 

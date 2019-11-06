@@ -36,181 +36,71 @@ import java.util.Map;
 
 /**
  * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+ * <p>
+ * This has the set of attributes common to all input types.  There are also
+ * type-specific subclasses that add type-specific attributes.  Furthermore,
+ * there is a {@link Input.Dynamic} implementation that has all the input attributes,
+ * supporting unexpected or more dynamic configurations.
+ * </p>
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Should we create different subclasses of Input for each type, exposing
-// TODO: the attributes that only apply to that specific type?
-// TODO: Then a "custom/any" type that allows anything?
-@SuppressWarnings("deprecation")
-public class Input extends EmptyElement<Input> implements
-	Attributes.Text.Accept<Input>, // TODO: Check type="file"?
-	Attributes.Enum.Align<Input,Input.Align>, // TODO: Check type="image"?
+public abstract class Input<E extends Input<E>> extends EmptyElement<E> implements
+	Attributes.Text.Accept<E>, // TODO: Check type="file"?
+	Attributes.Enum.Align<E,Input.Align>, // TODO: Check type="image"?
 	// TODO: alt
 	// TODO: autocomplete
 	// TODO: autofocus
-	Attributes.Boolean.Checked<Input>,
+	Attributes.Boolean.Checked<E>,
 	// TODO: dirname
-	Attributes.Boolean.Disabled<Input>,
+	Attributes.Boolean.Disabled<E>,
 	// TODO: form
 	// TODO: formaction
 	// TODO: formenctype
 	// TODO: formmethod
 	// TODO: formnovalidate
 	// TODO: formtarget
-	Attributes.Integer.HeightHtml5Only<Input>, // TODO: Check type="image"?
+	Attributes.Integer.HeightHtml5Only<E>, // TODO: Check type="image"?
 	// TODO: list
 	// TODO: max
-	Attributes.Integer.Maxlength<Input>,
+	Attributes.Integer.Maxlength<E>,
 	// TODO: min
 	// TODO: multiple
-	Attributes.Text.Name<Input>,
+	Attributes.Text.Name<E>,
 	// TODO: pattern
-	Attributes.Text.Placeholder<Input>, // TODO: Check type?
-	Attributes.Boolean.Readonly<Input>,
+	Attributes.Text.Placeholder<E>, // TODO: Check type?
+	Attributes.Boolean.Readonly<E>,
 	// TODO: required
-	Attributes.Integer.Size<Input>,
-	Attributes.Enum.Type<Input,Input.Type>,
+	Attributes.Integer.Size<E>,
 	Attributes.Url.Src<Script>, // TODO: Check type="image"?
 	// TODO: step
-	Attributes.Text.Value<Input>,
-	Attributes.Integer.WidthHtml5Only<Input>, // TODO: Check type="image"?
+	Attributes.Integer.WidthHtml5Only<E>, // TODO: Check type="image"?
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Integer.TabindexHtml4<Input>,
+	Attributes.Integer.TabindexHtml4<E>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Input>,
-	Attributes.Event.Window.Onerror<Input>, // TODO: Check type="image"?
-	Attributes.Event.Window.Onload<Input>, // TODO: Check type="image"?
-	Attributes.Event.Form.Onchange<Input>, // TODO: Check type?
-	Attributes.Event.Form.Oninput<Input>, // TODO: Check type?
-	Attributes.Event.Form.Oninvalid<Input>,
-	Attributes.Event.Form.Onsearch<Input>, // TODO: Check type="search"?
-	Attributes.Event.Form.Onselect<Input> // TODO: Check type?
+	Attributes.Event.AlmostGlobal<E>,
+	Attributes.Event.Window.Onerror<E>, // TODO: Check type="image"?
+	Attributes.Event.Window.Onload<E>, // TODO: Check type="image"?
+	Attributes.Event.Form.Onchange<E>, // TODO: Check type?
+	Attributes.Event.Form.Oninput<E>, // TODO: Check type?
+	Attributes.Event.Form.Oninvalid<E>,
+	Attributes.Event.Form.Onsearch<E>, // TODO: Check type="search"?
+	Attributes.Event.Form.Onselect<E> // TODO: Check type?
 {
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	public enum Type implements Attributes.Enum.EnumSupplier {
-		BUTTON("button") {
-			@Override
-			public MarkupType getMarkupType() {
-				return MarkupType.TEXT;
-			}
-		},
-		CHECKBOX("checkbox"),
-		COLOR("color"),
-		DATE("date"),
-		DATETIME_LOCAL("datetime-local"),
-		EMAIL("email"),
-		FILE("file"),
-		HIDDEN("hidden"),
-		IMAGE("image"),
-		MONTH("month"),
-		NUMBER("number"),
-		PASSWORD("password"),
-		RADIO("radio"),
-		RANGE("range"),
-		RESET("reset") {
-			@Override
-			public MarkupType getMarkupType() {
-				return MarkupType.TEXT;
-			}
-		},
-		SEARCH("search"),
-		SUBMIT("submit") {
-			@Override
-			public MarkupType getMarkupType() {
-				return MarkupType.TEXT;
-			}
-		},
-		TEL("tel"),
-		TEXT("text"),
-		TIME("time"),
-		URL("url"),
-		WEEK("week");
-
-		private final String value;
-		private final Doctype requiredDoctype;
-
-		private Type(String value, Doctype requiredDoctype) {
-			this.value = value;
-			this.requiredDoctype = requiredDoctype;
-		}
-
-		private Type(String value) {
-			this(value, null);
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String get(Serialization serialization, Doctype doctype) {
-			return value;
-		}
-
-		public String getValue() {
-			return value;
-		}
-
-		public Doctype getRequiredDoctype() {
-			return requiredDoctype;
-		}
-
-		/**
-		 * Gets the interactive editor markup type or {@code null} to not alter
-		 * the value.
-		 */
-		public MarkupType getMarkupType() {
-			return null;
-		}
-
-		private static final Type[] values = values();
-		private static final Map<String,Type> byLowerValue = new HashMap<>(values.length*4/3+1);
-		static {
-			for(Type type : values) {
-				if(!type.value.equals(type.value.toLowerCase(Locale.ROOT))) throw new AssertionError("Values must be lowercase as looked-up later");
-				// TODO: trimNullIfEmpty where appropriate
-				if(!type.value.equals(type.value.trim())) throw new AssertionError("Values must be trimmed as looked-up later");
-				byLowerValue.put(type.value, type);
-			}
-		}
-	}
-
-	private String type;
 
 	public Input(Html html) {
 		super(html);
-		this.type = null;
-	}
-
-	public Input(Html html, String type) {
-		super(html);
-		type = StringUtility.trimNullIfEmpty(type);
-		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
-	}
-
-	public Input(Html html, Type type) {
-		super(html);
-		this.type = (type == null) ? null : type.getValue();
 	}
 
 	@Override
-	protected Input open() throws IOException {
+	protected E open() throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
 		html.out.write("<input");
-		// Write the type now, if already set
-		String t = this.type;
-		if(t != null) {
-			// Unset to avoid duplicate attribute
-			this.type = null;
-			Input i = type(t);
-			assert i == this;
-		}
-		return this;
+		openWriteType();
+		return element;
 	}
+
+	protected abstract void openWriteType() throws IOException;
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_align.asp">HTML input align Attribute</a>.
@@ -263,18 +153,183 @@ public class Input extends EmptyElement<Input> implements
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+	 * <p>
+	 * This implementation that has all the input attributes,
+	 * supporting unexpected or more dynamic configurations.
+	 * </p>
 	 */
-	@Override
-	public Input type(String type) throws IOException {
-		type = StringUtility.trimNullIfEmpty(type);
-		if(type != null) {
-			type = type.toLowerCase(Locale.ROOT);
-			// Perform doctype checks and optimizations for recognized types
-			Type typeEnum = Type.byLowerValue.get(type);
-			if(typeEnum != null) {
-				return type(typeEnum);
+	public static class Dynamic extends Input<Dynamic> implements
+		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
+		Attributes.Text.Value<Dynamic>
+	{
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+		 */
+		public enum Type implements Attributes.Enum.EnumSupplier {
+			BUTTON("button") {
+				/**
+				 * @see Button#value(java.lang.Object)
+				 */
+				@Override
+				public MarkupType getMarkupType() {
+					return MarkupType.TEXT;
+				}
+			},
+			CHECKBOX("checkbox"),
+			COLOR("color"),
+			DATE("date"),
+			DATETIME_LOCAL("datetime-local"),
+			EMAIL("email"),
+			FILE("file"),
+			HIDDEN("hidden"),
+			IMAGE("image"),
+			MONTH("month"),
+			NUMBER("number"),
+			PASSWORD("password"),
+			RADIO("radio"),
+			RANGE("range"),
+			RESET("reset") {
+				/**
+				 * @see Reset#value(java.lang.Object)
+				 */
+				@Override
+				public MarkupType getMarkupType() {
+					return MarkupType.TEXT;
+				}
+			},
+			SEARCH("search"),
+			SUBMIT("submit") {
+				/**
+				 * @see Submit#value(java.lang.Object)
+				 */
+				@Override
+				public MarkupType getMarkupType() {
+					return MarkupType.TEXT;
+				}
+			},
+			TEL("tel"),
+			TEXT("text"),
+			TIME("time"),
+			URL("url"),
+			WEEK("week");
+
+			private final String value;
+			private final Doctype requiredDoctype;
+
+			private Type(String value, Doctype requiredDoctype) {
+				this.value = value;
+				this.requiredDoctype = requiredDoctype;
 			}
+
+			private Type(String value) {
+				this(value, null);
+			}
+
+			@Override
+			public String toString() {
+				return value;
+			}
+
+			@Override
+			public String get(Serialization serialization, Doctype doctype) {
+				return value;
+			}
+
+			public String getValue() {
+				return value;
+			}
+
+			public Doctype getRequiredDoctype() {
+				return requiredDoctype;
+			}
+
+			/**
+			 * Gets the interactive editor markup type or {@code null} to not alter
+			 * the value.
+			 */
+			public MarkupType getMarkupType() {
+				return null;
+			}
+
+			private static final Type[] values = values();
+			private static final Map<String,Type> byLowerValue = new HashMap<>(values.length*4/3+1);
+			static {
+				for(Type type : values) {
+					if(!type.value.equals(type.value.toLowerCase(Locale.ROOT))) throw new AssertionError("Values must be lowercase as looked-up later");
+					// TODO: trimNullIfEmpty where appropriate
+					if(!type.value.equals(type.value.trim())) throw new AssertionError("Values must be trimmed as looked-up later");
+					byLowerValue.put(type.value, type);
+				}
+			}
+		}
+
+		private String type;
+		public Dynamic(Html html) {
+			super(html);
+			this.type = null;
+		}
+
+		public Dynamic(Html html, String type) {
+			super(html);
+			type = StringUtility.trimNullIfEmpty(type);
+			this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
+		}
+
+		public Dynamic(Html html, Type type) {
+			super(html);
+			this.type = (type == null) ? null : type.getValue();
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			// Write the type now, if already set
+			String t = this.type;
+			if(t != null) {
+				// Unset to avoid duplicate attribute
+				this.type = null;
+				Dynamic i = type(t);
+				assert i == this;
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+		 */
+		@Override
+		public Dynamic type(String type) throws IOException {
+			type = StringUtility.trimNullIfEmpty(type);
+			if(type != null) {
+				type = type.toLowerCase(Locale.ROOT);
+				// Perform doctype checks and optimizations for recognized types
+				Type typeEnum = Type.byLowerValue.get(type);
+				if(typeEnum != null) {
+					return type(typeEnum);
+				}
+				if(this.type != null) {
+					throw new LocalizedIllegalStateException(
+						accessor,
+						"Html.duplicateAttribute",
+						"input",
+						"type",
+						this.type,
+						type
+					);
+				}
+				this.type = type;
+				html.out.write(" type=\"");
+				encodeTextInXhtmlAttribute(type, html.out);
+				html.out.write('"');
+			}
+			return this;
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+		 */
+		@Override
+		public Dynamic type(Type type) throws IOException {
 			if(this.type != null) {
 				throw new LocalizedIllegalStateException(
 					accessor,
@@ -285,64 +340,572 @@ public class Input extends EmptyElement<Input> implements
 					type
 				);
 			}
-			this.type = type;
+			// Perform doctype checks for recognized types
+			Doctype requiredDoctype = type.getRequiredDoctype();
+			if(requiredDoctype != null && html.doctype != requiredDoctype) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeRequiresDoctype",
+					type.value,
+					requiredDoctype,
+					html.doctype
+				);
+			}
+			this.type = type.value;
 			html.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, html.out);
+			html.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
 			html.out.write('"');
+			return this;
 		}
-		return this;
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 */
+		@Override
+		public Dynamic value(Object value) throws IOException {
+			assert this.type == null || this.type.equals(this.type.toLowerCase(Locale.ROOT));
+			assert this.type == null || this.type.equals(this.type.trim());
+			Type typeEnum = Type.byLowerValue.get(this.type);
+			return Attributes.Text.attribute(
+				this,
+				"value",
+				// Allow text markup from translations
+				(typeEnum == null) ? null : typeEnum.getMarkupType(),
+				value,
+				false,
+				true,
+				textInXhtmlAttributeEncoder
+			);
+		}
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.
 	 */
-	@Override
-	public Input type(Type type) throws IOException {
-		if(this.type != null) {
-			throw new LocalizedIllegalStateException(
-				accessor,
-				"Html.duplicateAttribute",
-				"input",
-				"type",
-				this.type,
-				type
+	public static class Button extends Input<Button> implements
+		Attributes.Text.Value<Button>
+	{
+
+		public Button(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"button\"");
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 *
+		 * TODO: Test javadocs
+		 * @see Dynamic.Type#BUTTON
+		 */
+		@Override
+		public Button value(Object value) throws IOException {
+			return Attributes.Text.attribute(
+				this,
+				"value",
+				// Allow text markup from translations
+				Dynamic.Type.BUTTON.getMarkupType(),
+				value,
+				false,
+				true,
+				textInXhtmlAttributeEncoder
 			);
 		}
-		// Perform doctype checks for recognized types
-		Doctype requiredDoctype = type.getRequiredDoctype();
-		if(requiredDoctype != null && html.doctype != requiredDoctype) {
-			throw new LocalizedIllegalArgumentException(
-				accessor,
-				"Input.typeRequiresDoctype",
-				type.value,
-				requiredDoctype,
-				html.doctype
-			);
-		}
-		this.type = type.value;
-		html.out.write(" type=\"");
-		html.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
-		html.out.write('"');
-		return this;
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.
 	 */
-	@Override
-	public Input value(Object value) throws IOException {
-		assert this.type == null || this.type.equals(this.type.toLowerCase(Locale.ROOT));
-		assert this.type == null || this.type.equals(this.type.trim());
-		Type typeEnum = Type.byLowerValue.get(this.type);
-		return Attributes.Text.attribute(
-			this,
-			"value",
-			// Allow text markup from translations
-			(typeEnum == null) ? null : typeEnum.getMarkupType(),
-			value,
-			false,
-			true,
-			textInXhtmlAttributeEncoder
-		);
+	public static class Checkbox extends Input<Checkbox> implements
+		Attributes.Text.Value<Checkbox>
+	{
+
+		public Checkbox(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"checkbox\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
+	 */
+	public static class Color extends Input<Color> implements
+		Attributes.Text.Value<Color>
+	{
+
+		public Color(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"color"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"color\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
+	 */
+	public static class Date extends Input<Date> implements
+		Attributes.Text.Value<Date>
+	{
+
+		public Date(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"date"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"date\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
+	 */
+	public static class DatetimeLocal extends Input<DatetimeLocal> implements
+		Attributes.Text.Value<DatetimeLocal>
+	{
+
+		public DatetimeLocal(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"datetime-local"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"datetime-local\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
+	 */
+	public static class Email extends Input<Email> implements
+		Attributes.Text.Value<Email>
+	{
+
+		public Email(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"email"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"email\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
+	 */
+	public static class File extends Input<File> //implements
+		// Does not support value: Attributes.Text.Value<File>
+	{
+
+		public File(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"file\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
+	 */
+	public static class Hidden extends Input<Hidden> implements
+		Attributes.Text.Value<Hidden>
+	{
+
+		public Hidden(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"hidden\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
+	 */
+	public static class Image extends Input<Image> implements
+		Attributes.Text.Value<Image>
+	{
+
+		public Image(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"image\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
+	 */
+	public static class Month extends Input<Month> implements
+		Attributes.Text.Value<Month>
+	{
+
+		public Month(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"month"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"month\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
+	 */
+	public static class Number extends Input<Number> implements
+		Attributes.Text.Value<Number> // TODO: Review types (this and others), perhaps Attributes.Number or similar?
+	{
+
+		public Number(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"number"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"number\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.
+	 */
+	public static class Password extends Input<Password> implements
+		Attributes.Text.Value<Password>
+	{
+
+		public Password(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"password\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.
+	 */
+	public static class Radio extends Input<Radio> implements
+		Attributes.Text.Value<Radio>
+	{
+
+		public Radio(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"radio\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
+	 */
+	public static class Range extends Input<Range> implements
+		Attributes.Text.Value<Range>
+	{
+
+		public Range(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"range"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"range\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.
+	 */
+	public static class Reset extends Input<Reset> implements
+		Attributes.Text.Value<Reset>
+	{
+
+		public Reset(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"reset\"");
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 *
+		 * TODO: Test javadocs
+		 * @see Dynamic.Type#RESET
+		 */
+		@Override
+		public Reset value(Object value) throws IOException {
+			return Attributes.Text.attribute(
+				this,
+				"value",
+				// Allow text markup from translations
+				Dynamic.Type.RESET.getMarkupType(),
+				value,
+				false,
+				true,
+				textInXhtmlAttributeEncoder
+			);
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
+	 */
+	public static class Search extends Input<Search> implements
+		Attributes.Text.Value<Search>
+	{
+
+		public Search(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"search"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"search\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+	 */
+	public static class Submit extends Input<Submit> implements
+		Attributes.Text.Value<Submit>
+	{
+
+		public Submit(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"submit\"");
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 *
+		 * TODO: Test javadocs
+		 * @see Dynamic.Type#SUBMIT
+		 */
+		@Override
+		public Submit value(Object value) throws IOException {
+			return Attributes.Text.attribute(
+				this,
+				"value",
+				// Allow text markup from translations
+				Dynamic.Type.SUBMIT.getMarkupType(),
+				value,
+				false,
+				true,
+				textInXhtmlAttributeEncoder
+			);
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
+	 */
+	public static class Tel extends Input<Tel> implements
+		Attributes.Text.Value<Tel>
+	{
+
+		public Tel(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"tel"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"tel\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
+	 */
+	public static class Text extends Input<Text> implements
+		Attributes.Text.Value<Text>
+	{
+
+		public Text(Html html) {
+			super(html);
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"text\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
+	 */
+	public static class Time extends Input<Time> implements
+		Attributes.Text.Value<Time>
+	{
+
+		public Time(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"time"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"time\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
+	 */
+	public static class Url extends Input<Url> implements
+		Attributes.Text.Value<Url>
+	{
+
+		public Url(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"url"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"url\"");
+		}
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
+	 */
+	public static class Week extends Input<Week> implements
+		Attributes.Text.Value<Week>
+	{
+
+		public Week(Html html) {
+			super(html);
+			if(html.doctype != Doctype.HTML5) {
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Input.typeOnlySupportedInHtml5",
+					html.doctype,
+					"week"
+				);
+			}
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			html.out.write(" type=\"week\"");
+		}
 	}
 }

@@ -56,32 +56,21 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	// TODO: formmethod
 	// TODO: formnovalidate
 	// TODO: formtarget
-	Attributes.Integer.HeightHtml5Only<E>, // TODO: Check type="image"?
+	// TODO: inputmode here or global?
 	// TODO: list
 	// TODO: max
-	Attributes.Integer.Maxlength<E>,
 	// TODO: min
+	// TODO: minlength: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 	// TODO: multiple
 	Attributes.Text.Name<E>,
 	// TODO: pattern
-	Attributes.Text.Placeholder<E>, // TODO: Check type?
-	Attributes.Boolean.Readonly<E>,
 	// TODO: required
-	Attributes.Integer.Size<E>,
-	Attributes.Url.Src<Script>, // TODO: Check type="image"?
 	// TODO: step
-	Attributes.Integer.WidthHtml5Only<E>, // TODO: Check type="image"?
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Integer.TabindexHtml4<E>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<E>,
-	Attributes.Event.Window.Onerror<E>, // TODO: Check type="image"?
-	Attributes.Event.Window.Onload<E>, // TODO: Check type="image"?
-	Attributes.Event.Form.Onchange<E>, // TODO: Check type?
-	Attributes.Event.Form.Oninput<E>, // TODO: Check type?
-	Attributes.Event.Form.Oninvalid<E>,
-	Attributes.Event.Form.Onsearch<E>, // TODO: Check type="search"?
-	Attributes.Event.Form.Onselect<E> // TODO: Check type?
+	Attributes.Event.Form.Oninvalid<E>
 {
 
 	public Input(Html html) {
@@ -119,8 +108,22 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Enum.Autocomplete<Dynamic,Attributes.Enum.Autocomplete.Value>,
 		Attributes.Enum.Capture<Dynamic,File.Capture>,
 		Attributes.Boolean.Checked<Dynamic>,
+		Attributes.Integer.HeightHtml5Only<Dynamic>,
+		Attributes.Integer.Maxlength<Dynamic>,
+		Attributes.Text.Placeholder<Dynamic>,
+		Attributes.Boolean.Readonly<Dynamic>,
+		Attributes.Integer.Size<Dynamic>,
+		Attributes.Url.Src<Dynamic>,
 		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
-		Attributes.Text.Value<Dynamic>
+		Attributes.Text.Value<Dynamic>,
+		Attributes.Integer.WidthHtml5Only<Dynamic>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Window.Onerror<Dynamic>,
+		Attributes.Event.Window.Onload<Dynamic>,
+		Attributes.Event.Form.Onchange<Dynamic>,
+		Attributes.Event.Form.Oninput<Dynamic>,
+		Attributes.Event.Form.Onsearch<Dynamic>,
+		Attributes.Event.Form.Onselect<Dynamic>
 	{
 
 		private String type;
@@ -380,7 +383,9 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Checkbox extends Input<Checkbox> implements
 		Attributes.Boolean.Checked<Checkbox>,
-		Attributes.Text.Value<Checkbox>
+		Attributes.Text.Value<Checkbox>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Checkbox>
 	{
 
 		public Checkbox(Html html) {
@@ -398,7 +403,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Color extends Input<Color> implements
 		Attributes.Enum.Autocomplete<Color,Color.Autocomplete>,
-		Attributes.Text.Value<Color>
+		Attributes.Boolean.Readonly<Color>, // Guessed
+		Attributes.Text.Value<Color>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Color>,
+		Attributes.Event.Form.Oninput<Color>
 	{
 
 		public Color(Html html) {
@@ -465,7 +474,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Date extends Input<Date> implements
 		Attributes.Enum.Autocomplete<Date,Date.Autocomplete>,
-		Attributes.Text.Value<Date>
+		Attributes.Boolean.Readonly<Date>, // Guessed
+		Attributes.Text.Value<Date>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Date>,
+		Attributes.Event.Form.Oninput<Date>
 	{
 
 		public Date(Html html) {
@@ -534,7 +547,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class DatetimeLocal extends Input<DatetimeLocal> implements
 		Attributes.Enum.Autocomplete<DatetimeLocal,DatetimeLocal.Autocomplete>,
-		Attributes.Text.Value<DatetimeLocal>
+		Attributes.Boolean.Readonly<DatetimeLocal>, // Guessed
+		Attributes.Text.Value<DatetimeLocal>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<DatetimeLocal>,
+		Attributes.Event.Form.Oninput<DatetimeLocal>
 	{
 
 		public DatetimeLocal(Html html) {
@@ -602,7 +619,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Email extends Input<Email> implements
 		Attributes.Enum.Autocomplete<Email,Email.Autocomplete>,
-		Attributes.Text.Value<Email>
+		Attributes.Integer.Maxlength<Email>,
+		Attributes.Text.Placeholder<Email>,
+		Attributes.Boolean.Readonly<Email>,
+		Attributes.Integer.Size<Email>,
+		Attributes.Text.Value<Email>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Email>,
+		Attributes.Event.Form.Oninput<Email>,
+		Attributes.Event.Form.Onselect<Email> // Guessed (to match Placeholder)
 	{
 
 		public Email(Html html) {
@@ -673,8 +698,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class File extends Input<File> implements
 		Attributes.Text.Accept<File>,
-		Attributes.Enum.Capture<File,File.Capture>
+		Attributes.Enum.Capture<File,File.Capture>,
 		// Does not support value: Attributes.Text.Value<File>
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<File>,
+		Attributes.Event.Form.Onselect<File>
 	{
 
 		public File(Html html) {
@@ -754,7 +782,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class Image extends Input<Image> implements
 		Attributes.Enum.Align<Image,Image.Align>,
 		Attributes.Text.Alt<Image>,
-		Attributes.Text.Value<Image>
+		Attributes.Integer.HeightHtml5Only<Image>,
+		Attributes.Url.Src<Image>,
+		Attributes.Text.Value<Image>,
+		Attributes.Integer.WidthHtml5Only<Image>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Window.Onerror<Image>,
+		Attributes.Event.Window.Onload<Image>
 	{
 
 		public Image(Html html) {
@@ -822,7 +856,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Month extends Input<Month> implements
 		Attributes.Enum.Autocomplete<Month,Month.Autocomplete>,
-		Attributes.Text.Value<Month>
+		Attributes.Boolean.Readonly<Month>, // Guessed
+		Attributes.Text.Value<Month>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Month>,
+		Attributes.Event.Form.Oninput<Month>
 	{
 
 		public Month(Html html) {
@@ -892,7 +930,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Number extends Input<Number> implements
 		Attributes.Enum.Autocomplete<Number,Number.Autocomplete>,
-		Attributes.Text.Value<Number> // TODO: Review types (this and others), perhaps Attributes.Number or similar?
+		Attributes.Boolean.Readonly<Number>,
+		Attributes.Text.Value<Number>, // TODO: Review types (this and others), perhaps Attributes.Number or similar?
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Number>,
+		Attributes.Event.Form.Oninput<Number>
 	{
 
 		public Number(Html html) {
@@ -978,7 +1020,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Password extends Input<Password> implements
 		Attributes.Enum.Autocomplete<Password,Password.Autocomplete>,
-		Attributes.Text.Value<Password>
+		Attributes.Integer.Maxlength<Password>,
+		Attributes.Text.Placeholder<Password>,
+		Attributes.Boolean.Readonly<Password>,
+		Attributes.Integer.Size<Password>,
+		Attributes.Text.Value<Password>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Password>,
+		Attributes.Event.Form.Oninput<Password>,
+		Attributes.Event.Form.Onselect<Password>
 	{
 
 		public Password(Html html) {
@@ -1045,7 +1095,9 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Radio extends Input<Radio> implements
 		Attributes.Boolean.Checked<Radio>,
-		Attributes.Text.Value<Radio>
+		Attributes.Text.Value<Radio>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Radio>
 	{
 
 		public Radio(Html html) {
@@ -1063,7 +1115,10 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Range extends Input<Range> implements
 		Attributes.Enum.Autocomplete<Range,Range.Autocomplete>,
-		Attributes.Text.Value<Range>
+		Attributes.Text.Value<Range>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Range>,
+		Attributes.Event.Form.Oninput<Range>
 	{
 
 		public Range(Html html) {
@@ -1166,7 +1221,16 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Search extends Input<Search> implements
 		Attributes.Enum.Autocomplete<Search,Search.Autocomplete>,
-		Attributes.Text.Value<Search>
+		Attributes.Integer.Maxlength<Search>,
+		Attributes.Text.Placeholder<Search>,
+		Attributes.Boolean.Readonly<Search>,
+		Attributes.Integer.Size<Search>,
+		Attributes.Text.Value<Search>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Search>,
+		Attributes.Event.Form.Oninput<Search>,
+		Attributes.Event.Form.Onsearch<Search>,
+		Attributes.Event.Form.Onselect<Search> // Guessed (to match Placeholder)
 	{
 
 		public Search(Html html) {
@@ -1315,7 +1379,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Tel extends Input<Tel> implements
 		Attributes.Enum.Autocomplete<Tel,Tel.Autocomplete>,
-		Attributes.Text.Value<Tel>
+		Attributes.Integer.Maxlength<Tel>,
+		Attributes.Text.Placeholder<Tel>,
+		Attributes.Boolean.Readonly<Tel>, // Guessed
+		Attributes.Integer.Size<Tel>,
+		Attributes.Text.Value<Tel>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Tel>,
+		Attributes.Event.Form.Oninput<Tel>,
+		Attributes.Event.Form.Onselect<Tel> // Guessed (to match Placeholder)
 	{
 
 		public Tel(Html html) {
@@ -1390,7 +1462,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Text extends Input<Text> implements
 		Attributes.Enum.Autocomplete<Text,Attributes.Enum.Autocomplete.Value>,
-		Attributes.Text.Value<Text>
+		Attributes.Integer.Maxlength<Text>,
+		Attributes.Text.Placeholder<Text>,
+		Attributes.Boolean.Readonly<Text>,
+		Attributes.Integer.Size<Text>,
+		Attributes.Text.Value<Text>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Text>,
+		Attributes.Event.Form.Oninput<Text>,
+		Attributes.Event.Form.Onselect<Text>
 	{
 
 		public Text(Html html) {
@@ -1408,7 +1488,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Time extends Input<Time> implements
 		Attributes.Enum.Autocomplete<Time,Time.Autocomplete>,
-		Attributes.Text.Value<Time>
+		Attributes.Boolean.Readonly<Time>, // Guessed
+		Attributes.Text.Value<Time>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Time>,
+		Attributes.Event.Form.Oninput<Time>
 	{
 
 		public Time(Html html) {
@@ -1475,7 +1559,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Url extends Input<Url> implements
 		Attributes.Enum.Autocomplete<Url,Url.Autocomplete>,
-		Attributes.Text.Value<Url>
+		Attributes.Integer.Maxlength<Url>,
+		Attributes.Text.Placeholder<Url>,
+		Attributes.Boolean.Readonly<Url>,
+		Attributes.Integer.Size<Url>,
+		Attributes.Text.Value<Url>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Url>,
+		Attributes.Event.Form.Oninput<Url>,
+		Attributes.Event.Form.Onselect<Url> // Guessed (to match Placeholder)
 	{
 
 		public Url(Html html) {
@@ -1549,7 +1641,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 */
 	public static class Week extends Input<Week> implements
 		Attributes.Enum.Autocomplete<Week,Week.Autocomplete>,
-		Attributes.Text.Value<Week>
+		Attributes.Boolean.Readonly<Week>, // Guessed
+		Attributes.Text.Value<Week>,
+		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Form.Onchange<Week>,
+		Attributes.Event.Form.Oninput<Week>
 	{
 
 		public Week(Html html) {

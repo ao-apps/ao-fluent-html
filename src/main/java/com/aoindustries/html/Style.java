@@ -49,6 +49,7 @@ public class Style extends Element<Style> implements
 	Attributes.Text.TitleNoHtml4<Style>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <style>: Attributes.Event.AlmostGlobal<Style>
+	Attributes.Event.Window.Onerror<Link>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
 	Attributes.Event.Window.Onload<Link>
 {
 

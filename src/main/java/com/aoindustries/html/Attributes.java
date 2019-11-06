@@ -326,6 +326,7 @@ public class Attributes {
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefreadonly">&lt;input&gt;: The Input (Form Input) element</a>.
 		 */
 		public static interface Readonly<E extends Element<E> & Readonly<E>> {
 
@@ -610,8 +611,20 @@ public class Attributes {
 				}
 			}
 
+			// TODO: oncancel
+			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+			//       https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oncancel
+			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+
+			// TODO: onclose
+			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+			//       https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclose
+			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+			
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+			 * See <a href="https://www.w3schools.com/jsref/event_onerror.asp">onerror Event</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_onerror.asp">HTML onerror Attribute</a>.
 			 */
 			public static interface Onerror<E extends Element<E> & Onerror<E>> {
 
@@ -1087,6 +1100,7 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+			 * See <a href="https://www.w3schools.com/jsref/event_onchange.asp">onchange Event</a>.
 			 */
 			public static interface Onchange<E extends Element<E> & Onchange<E>> {
 
@@ -1194,6 +1208,7 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+			 * See <a href="https://www.w3schools.com/jsref/event_oninput.asp">oninput Event</a>.
 			 */
 			public static interface Oninput<E extends Element<E> & Oninput<E>> {
 
@@ -1309,6 +1324,7 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+			 * See <a href="https://www.w3schools.com/jsref/event_onsearch.asp">onsearch Event</a>.
 			 */
 			public static interface Onsearch<E extends Element<E> & Onsearch<E>> {
 
@@ -1342,6 +1358,8 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+			 * See <a href="https://www.w3schools.com/jsref/event_onselect.asp">onselect Event</a>.
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onselect">GlobalEventHandlers.onselect</a>.
 			 */
 			public static interface Onselect<E extends Element<E> & Onselect<E>> {
 
@@ -1373,6 +1391,10 @@ public class Attributes {
 				}
 			}
 
+			// TODO: onshow: https://www.w3schools.com/tags/ev_onshow.asp
+			//               https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+			//               (removed from HTML 5?)
+			
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
 			 */
@@ -1422,9 +1444,12 @@ public class Attributes {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Form Events</a>.
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
 			 */
 			public static interface Global<E extends Element<E> & Global<E>> extends
 				Oncontextmenu<E>
+				// TODO: onautocomplete
+				// TODO: onautocompleteerror
 			{
 				// No methods, just adding form event types
 			}
@@ -1653,6 +1678,9 @@ public class Attributes {
 					return onmousedown((Object)onmousedown);
 				}
 			}
+
+			// TODO: onmouseenter: https://www.w3schools.com/jsref/event_onmouseenter.asp
+			// TODO: onmouseleave: https://www.w3schools.com/jsref/event_onmouseleave.asp
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
@@ -2030,6 +2058,8 @@ public class Attributes {
 				}
 			}
 
+			// ondragexit (Gecko specific - don't use or have a deprecated)
+
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
 			 */
@@ -2367,9 +2397,50 @@ public class Attributes {
 			}
 		}
 
-		// TODO: Media
+		/**
+		 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Media Events</a>.
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
+		 */
+		public static class Media {
 
-		// TODO: Misc
+			/** Make no instances. */
+			private Media() {}
+
+			// TODO: onabort
+			// TODO: oncanplay
+			// TODO: oncanplaythrough
+			// TODO: oncuechange
+			// TODO: ondurationchange
+			// TODO: onemptied
+			// TODO: onended
+			// TODO: onerror (move from Window here, duplicate?)
+			// TODO: onloadeddata
+			// TODO: onloadedmetadata
+			// TODO: onloadstart
+			// TODO: onpause
+			// TODO: onplay
+			// TODO: onplaying
+			// TODO: onprogress
+			// TODO: onratechange
+			// TODO: onseeked
+			// TODO: onseeking
+			// TODO: onstalled
+			// TODO: onsuspend
+			// TODO: ontimeupdate
+			// TODO: onvolumechange
+			// TODO: onwaiting
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Misc Events</a>.
+		 */
+		public static class Misc {
+
+			/** Make no instances. */
+			private Misc() {}
+
+			// TODO: ontoggle
+		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">HTML Event Attributes</a>.
@@ -3056,6 +3127,7 @@ public class Attributes {
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefmaxlength">&lt;input&gt;: The Input (Form Input) element</a>.
 		 */
 		public static interface Maxlength<E extends Element<E> & Maxlength<E>> {
 
@@ -4335,18 +4407,43 @@ public class Attributes {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ref_standardattributes.asp">HTML Global attributes</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
 	 */
 	public static interface Global<E extends Element<E> & Global<E>> extends
+		// TODO: accesskey
+		// TODO: autocapitalize
 		Text.Class<E>,
+		// TODO: contenteditable
+		// TODO: contextmenu (deprecated)
+		// TODO: data-* (like Text.Attribute, but automatically adds "data-"? https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*
+		//                                                                    https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+		// TODO: dir
+		// TODO: draggable
+		// TODO: dropzone (experimental)
+		// TODO: exportparts (experimental)
+		// TODO: hidden
 		Text.Id<E>,
+		// TODO: inputmode
+		// TODO: is
+		// TODO: itemid
+		// TODO: itemprop
+		// TODO: itemref
+		// TODO: itemscope
+		// TODO: itemtype
+		// TODO: lang
+		// TODO: part (experimental)
+		// TODO: slot
+		// TODO: spellcheck (experimental)
 		Text.Style<E>,
 		Integer.Tabindex<E>,
 		Text.Title<E>,
+		// TODO: translate (experimental)
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 		Event.Form.Global<E>,
 		Event.Mouse.Global<E>,
 		Event.Drag.Global<E>,
 		Event.Clipboard.Global<E>
+		// TODO: onsort? https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 	{
 		// No methods, just adding attributes
 	}

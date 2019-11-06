@@ -36,6 +36,7 @@ import java.util.Map;
 
 /**
  * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+ * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.
  * <p>
  * This has the set of attributes common to all input types.  There are also
  * type-specific subclasses that add type-specific attributes.  Furthermore,
@@ -116,6 +117,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Enum.Align<Dynamic,Image.Align>,
 		Attributes.Text.Alt<Dynamic>,
 		Attributes.Enum.Autocomplete<Dynamic,Attributes.Enum.Autocomplete.Value>,
+		Attributes.Enum.Capture<Dynamic,File.Capture>,
 		Attributes.Boolean.Checked<Dynamic>,
 		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
 		Attributes.Text.Value<Dynamic>
@@ -667,14 +669,58 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">&lt;input type="file"&gt;</a>.
 	 */
 	public static class File extends Input<File> implements
-		Attributes.Text.Accept<File>
+		Attributes.Text.Accept<File>,
+		Attributes.Enum.Capture<File,File.Capture>
 		// Does not support value: Attributes.Text.Value<File>
 	{
 
 		public File(Html html) {
 			super(html);
+		}
+
+		/**
+		 * See <a href="https://www.w3.org/TR/mediacapture-streams/#dom-videofacingmodeenum">Media Capture and Streams: VideoFacingModeEnum</a>.
+		 */
+		public enum Capture implements Attributes.Enum.EnumSupplier {
+
+			/**
+			 * The source is facing toward the user (a self-view camera).
+			 */
+			USER("user"),
+
+			/**
+			 * The source is facing away from the user (viewing the environment).
+			 */
+			ENVIRONMENT("environment"),
+
+			/**
+			 * The source is facing to the left of the user.
+			 */
+			LEFT("left"),
+
+			/**
+			 * The source is facing to the right of the user.
+			 */
+			RIGHT("right");
+
+			private final String value;
+
+			private Capture(String value) {
+				this.value = value;
+			}
+
+			@Override
+			public String toString() {
+				return value;
+			}
+
+			@Override
+			public String get(Serialization serialization, Doctype doctype) {
+				return value;
+			}
 		}
 
 		@Override

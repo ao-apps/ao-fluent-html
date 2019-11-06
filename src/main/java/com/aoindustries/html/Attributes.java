@@ -273,6 +273,47 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
+		 */
+		public static interface Multiple<E extends Element<E> & Multiple<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
+			 */
+			@Funnel
+			default E multiple(boolean multiple) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"multiple"
+					);
+				}
+				return attribute(element, "multiple", multiple);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
+			 *
+			 * @see #multiple(boolean)
+			 */
+			default E multiple(java.lang.Boolean multiple) throws IOException {
+				return multiple(multiple != null && multiple);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
+			 *
+			 * @see #multiple(java.lang.Boolean)
+			 */
+			default <Ex extends Throwable> E multiple(Supplier<? extends java.lang.Boolean,Ex> multiple) throws IOException, Ex {
+				return multiple((multiple == null) ? null : multiple.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
 		 *
 		 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.

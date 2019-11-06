@@ -60,7 +60,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	// TODO: list
 	// TODO: max
 	// TODO: min
-	// TODO: multiple
 	Attributes.Text.Name<E>,
 	// TODO: pattern
 	// TODO: required
@@ -110,6 +109,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Integer.HeightHtml5Only<Dynamic>,
 		Attributes.Integer.Maxlength<Dynamic>,
 		Attributes.Integer.Minlength<Dynamic>,
+		Attributes.Boolean.Multiple<Dynamic>,
 		Attributes.Text.Placeholder<Dynamic>,
 		Attributes.Boolean.Readonly<Dynamic>,
 		Attributes.Integer.Size<Dynamic>,
@@ -621,6 +621,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Enum.Autocomplete<Email,Email.Autocomplete>,
 		Attributes.Integer.Maxlength<Email>,
 		Attributes.Integer.Minlength<Email>,
+		Attributes.Boolean.Multiple<Email>,
 		Attributes.Text.Placeholder<Email>,
 		Attributes.Boolean.Readonly<Email>,
 		Attributes.Integer.Size<Email>,
@@ -700,6 +701,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	public static class File extends Input<File> implements
 		Attributes.Text.Accept<File>,
 		Attributes.Enum.Capture<File,File.Capture>,
+		Attributes.Boolean.Multiple<File>,
 		// Does not support value: Attributes.Text.Value<File>
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 		Attributes.Event.Form.Onchange<File>,

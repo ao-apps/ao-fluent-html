@@ -3236,6 +3236,39 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
+		 */
+		public static interface Alt<E extends Element<E> & Alt<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
+			 */
+			@Funnel
+			default E alt(Object alt) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "alt", MarkupType.TEXT, alt, true, false, textInXhtmlAttributeEncoder);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
+			 *
+			 * @see #alt(java.lang.Object)
+			 */
+			default <Ex extends Throwable> E alt(Supplier<?,Ex> alt) throws IOException, Ex {
+				return alt((alt == null) ? null : alt.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
+			 *
+			 * @see #alt(java.lang.Object)
+			 */
+			default <Ex extends Throwable> E alt(AttributeWriter<Ex> alt) throws IOException, Ex {
+				return alt((Object)alt);
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
 		 * <blockquote>
 		 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).

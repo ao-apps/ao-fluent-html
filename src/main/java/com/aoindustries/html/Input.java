@@ -46,9 +46,6 @@ import java.util.Map;
  * @author  AO Industries, Inc.
  */
 public abstract class Input<E extends Input<E>> extends EmptyElement<E> implements
-	Attributes.Text.Accept<E>, // TODO: Check type="file"?
-	Attributes.Enum.Align<E,Input.Align>, // TODO: Check type="image"?
-	// TODO: alt
 	// TODO: autocomplete
 	// TODO: autofocus
 	Attributes.Boolean.Checked<E>,
@@ -103,66 +100,55 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	protected abstract void openWriteType() throws IOException;
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_align.asp">HTML input align Attribute</a>.
-	 *
-	 * @deprecated  The align attribute of &lt;input&gt; is not supported in HTML5. Use CSS instead.
-	 */
-	@Deprecated
-	public enum Align implements Attributes.Enum.EnumSupplier {
-
-		/**
-		 * Left-aligns the image (this is default)
-		 */
-		LEFT("left"),
-
-		/**
-		 * Right-aligns the image
-		 */
-		RIGHT("right"),
-
-		/**
-		 * Top-aligns the image
-		 */
-		TOP("top"),
-
-		/**
-		 * Middle-aligns the image
-		 */
-		MIDDLE("middle"),
-
-		/**
-		 * Bottom-aligns the image
-		 */
-		BOTTOM("bottom");
-
-		private final String value;
-
-		private Align(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String get(Serialization serialization, Doctype doctype) {
-			return value;
-		}
-	}
-
-	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 * <p>
 	 * This implementation that has all the input attributes,
 	 * supporting unexpected or more dynamic configurations.
 	 * </p>
+	 * <p>
+	 * This does not limit attributes by type, and would allow mismatches where
+	 * type-specific implementations may constrain the attributes and values.
+	 * Although there is less validation, doctype-specific checks are expected
+	 * to remain, such as only allowing type="color" in {@link Doctype#HTML5}.
+	 * </p>
 	 */
+	@SuppressWarnings("deprecation")
 	public static class Dynamic extends Input<Dynamic> implements
+		Attributes.Text.Accept<Dynamic>,
+		Attributes.Enum.Align<Dynamic,Image.Align>,
+		Attributes.Text.Alt<Dynamic>,
 		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
 		Attributes.Text.Value<Dynamic>
 	{
+
+		private String type;
+		public Dynamic(Html html) {
+			super(html);
+			this.type = null;
+		}
+
+		public Dynamic(Html html, String type) {
+			super(html);
+			type = StringUtility.trimNullIfEmpty(type);
+			this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
+		}
+
+		public Dynamic(Html html, Type type) {
+			super(html);
+			this.type = (type == null) ? null : type.getValue();
+		}
+
+		@Override
+		protected void openWriteType() throws IOException {
+			// Write the type now, if already set
+			String t = this.type;
+			if(t != null) {
+				// Unset to avoid duplicate attribute
+				this.type = null;
+				Dynamic i = type(t);
+				assert i == this;
+			}
+		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
@@ -178,18 +164,18 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				}
 			},
 			CHECKBOX("checkbox"),
-			COLOR("color"),
-			DATE("date"),
-			DATETIME_LOCAL("datetime-local"),
-			EMAIL("email"),
+			COLOR("color", Doctype.HTML5),
+			DATE("date", Doctype.HTML5),
+			DATETIME_LOCAL("datetime-local", Doctype.HTML5),
+			EMAIL("email", Doctype.HTML5),
 			FILE("file"),
 			HIDDEN("hidden"),
 			IMAGE("image"),
-			MONTH("month"),
-			NUMBER("number"),
+			MONTH("month", Doctype.HTML5),
+			NUMBER("number", Doctype.HTML5),
 			PASSWORD("password"),
 			RADIO("radio"),
-			RANGE("range"),
+			RANGE("range", Doctype.HTML5),
 			RESET("reset") {
 				/**
 				 * @see Reset#value(java.lang.Object)
@@ -199,7 +185,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					return MarkupType.TEXT;
 				}
 			},
-			SEARCH("search"),
+			SEARCH("search", Doctype.HTML5),
 			SUBMIT("submit") {
 				/**
 				 * @see Submit#value(java.lang.Object)
@@ -209,11 +195,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					return MarkupType.TEXT;
 				}
 			},
-			TEL("tel"),
+			TEL("tel", Doctype.HTML5),
 			TEXT("text"),
-			TIME("time"),
-			URL("url"),
-			WEEK("week");
+			TIME("time", Doctype.HTML5),
+			URL("url", Doctype.HTML5),
+			WEEK("week", Doctype.HTML5);
 
 			private final String value;
 			private final Doctype requiredDoctype;
@@ -265,35 +251,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
-		private String type;
-		public Dynamic(Html html) {
-			super(html);
-			this.type = null;
-		}
-
-		public Dynamic(Html html, String type) {
-			super(html);
-			type = StringUtility.trimNullIfEmpty(type);
-			this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
-		}
-
-		public Dynamic(Html html, Type type) {
-			super(html);
-			this.type = (type == null) ? null : type.getValue();
-		}
-
-		@Override
-		protected void openWriteType() throws IOException {
-			// Write the type now, if already set
-			String t = this.type;
-			if(t != null) {
-				// Unset to avoid duplicate attribute
-				this.type = null;
-				Dynamic i = type(t);
-				assert i == this;
-			}
-		}
-
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 		 */
@@ -330,31 +287,33 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 */
 		@Override
 		public Dynamic type(Type type) throws IOException {
-			if(this.type != null) {
-				throw new LocalizedIllegalStateException(
-					accessor,
-					"Html.duplicateAttribute",
-					"input",
-					"type",
-					this.type,
-					type
-				);
+			if(type != null) {
+				if(this.type != null) {
+					throw new LocalizedIllegalStateException(
+						accessor,
+						"Html.duplicateAttribute",
+						"input",
+						"type",
+						this.type,
+						type
+					);
+				}
+				// Perform doctype checks for recognized types
+				Doctype requiredDoctype = type.getRequiredDoctype();
+				if(requiredDoctype != null && html.doctype != requiredDoctype) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Input.typeRequiresDoctype",
+						type.value,
+						requiredDoctype,
+						html.doctype
+					);
+				}
+				this.type = type.value;
+				html.out.write(" type=\"");
+				html.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
+				html.out.write('"');
 			}
-			// Perform doctype checks for recognized types
-			Doctype requiredDoctype = type.getRequiredDoctype();
-			if(requiredDoctype != null && html.doctype != requiredDoctype) {
-				throw new LocalizedIllegalArgumentException(
-					accessor,
-					"Input.typeRequiresDoctype",
-					type.value,
-					requiredDoctype,
-					html.doctype
-				);
-			}
-			this.type = type.value;
-			html.out.write(" type=\"");
-			html.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
-			html.out.write('"');
 			return this;
 		}
 
@@ -536,7 +495,8 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
 	 */
-	public static class File extends Input<File> //implements
+	public static class File extends Input<File> implements
+		Attributes.Text.Accept<File>
 		// Does not support value: Attributes.Text.Value<File>
 	{
 
@@ -570,7 +530,10 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
 	 */
+	@SuppressWarnings("deprecation")
 	public static class Image extends Input<Image> implements
+		Attributes.Enum.Align<Image,Image.Align>,
+		Attributes.Text.Alt<Image>,
 		Attributes.Text.Value<Image>
 	{
 
@@ -581,6 +544,56 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"image\"");
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_align.asp">HTML input align Attribute</a>.
+		 *
+		 * @deprecated  The align attribute of &lt;input&gt; is not supported in HTML5. Use CSS instead.
+		 */
+		@Deprecated
+		public enum Align implements Attributes.Enum.EnumSupplier {
+
+			/**
+			 * Left-aligns the image (this is default)
+			 */
+			LEFT("left"),
+
+			/**
+			 * Right-aligns the image
+			 */
+			RIGHT("right"),
+
+			/**
+			 * Top-aligns the image
+			 */
+			TOP("top"),
+
+			/**
+			 * Middle-aligns the image
+			 */
+			MIDDLE("middle"),
+
+			/**
+			 * Bottom-aligns the image
+			 */
+			BOTTOM("bottom");
+
+			private final String value;
+
+			private Align(String value) {
+				this.value = value;
+			}
+
+			@Override
+			public String toString() {
+				return value;
+			}
+
+			@Override
+			public String get(Serialization serialization, Doctype doctype) {
+				return value;
+			}
 		}
 	}
 

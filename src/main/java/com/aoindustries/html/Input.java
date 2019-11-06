@@ -46,7 +46,6 @@ import java.util.Map;
  * @author  AO Industries, Inc.
  */
 public abstract class Input<E extends Input<E>> extends EmptyElement<E> implements
-	// TODO: autocomplete
 	// TODO: autofocus
 	Attributes.Boolean.Checked<E>,
 	// TODO: dirname
@@ -117,6 +116,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Accept<Dynamic>,
 		Attributes.Enum.Align<Dynamic,Image.Align>,
 		Attributes.Text.Alt<Dynamic>,
+		Attributes.Enum.Autocomplete<Dynamic,Attributes.Enum.Autocomplete.Value>,
 		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
 		Attributes.Text.Value<Dynamic>
 	{
@@ -244,7 +244,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			static {
 				for(Type type : values) {
 					if(!type.value.equals(type.value.toLowerCase(Locale.ROOT))) throw new AssertionError("Values must be lowercase as looked-up later");
-					// TODO: trimNullIfEmpty where appropriate
 					if(!type.value.equals(type.value.trim())) throw new AssertionError("Values must be trimmed as looked-up later");
 					byLowerValue.put(type.value, type);
 				}
@@ -357,7 +356,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 *
-		 * TODO: Test javadocs
 		 * @see Dynamic.Type#BUTTON
 		 */
 		@Override
@@ -396,6 +394,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
 	 */
 	public static class Color extends Input<Color> implements
+		Attributes.Enum.Autocomplete<Color,Color.Autocomplete>,
 		Attributes.Text.Value<Color>
 	{
 
@@ -411,6 +410,47 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"color\"");
@@ -421,6 +461,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
 	 */
 	public static class Date extends Input<Date> implements
+		Attributes.Enum.Autocomplete<Date,Date.Autocomplete>,
 		Attributes.Text.Value<Date>
 	{
 
@@ -436,6 +477,49 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			CC_EXP(Value.CC_EXP),
+			BDAY(Value.BDAY);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"date\"");
@@ -446,6 +530,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
 	 */
 	public static class DatetimeLocal extends Input<DatetimeLocal> implements
+		Attributes.Enum.Autocomplete<DatetimeLocal,DatetimeLocal.Autocomplete>,
 		Attributes.Text.Value<DatetimeLocal>
 	{
 
@@ -461,6 +546,48 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			BDAY(Value.BDAY);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"datetime-local\"");
@@ -471,6 +598,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
 	 */
 	public static class Email extends Input<Email> implements
+		Attributes.Enum.Autocomplete<Email,Email.Autocomplete>,
 		Attributes.Text.Value<Email>
 	{
 
@@ -483,6 +611,50 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					html.doctype,
 					"email"
 				);
+			}
+		}
+
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			EMAIL(Value.EMAIL),
+			IMPP(Value.IMPP),
+			URL(Value.URL);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
 			}
 		}
 
@@ -514,6 +686,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
 	 */
 	public static class Hidden extends Input<Hidden> implements
+		Attributes.Enum.Autocomplete<Hidden,Attributes.Enum.Autocomplete.Value>,
 		Attributes.Text.Value<Hidden>
 	{
 
@@ -601,6 +774,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
 	 */
 	public static class Month extends Input<Month> implements
+		Attributes.Enum.Autocomplete<Month,Month.Autocomplete>,
 		Attributes.Text.Value<Month>
 	{
 
@@ -616,6 +790,50 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			CC_EXP(Value.CC_EXP),
+			CC_EXP_MONTH(Value.CC_EXP_MONTH),
+			BDAY_MONTH(Value.BDAY_MONTH);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"month\"");
@@ -626,6 +844,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
 	 */
 	public static class Number extends Input<Number> implements
+		Attributes.Enum.Autocomplete<Number,Number.Autocomplete>,
 		Attributes.Text.Value<Number> // TODO: Review types (this and others), perhaps Attributes.Number or similar?
 	{
 
@@ -641,6 +860,66 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			ONE_TIME_CODE(Value.ONE_TIME_CODE),
+			ADDRESS_LEVEL4(Value.ADDRESS_LEVEL4),
+			ADDRESS_LEVEL3(Value.ADDRESS_LEVEL3),
+			ADDRESS_LEVEL2(Value.ADDRESS_LEVEL2),
+			ADDRESS_LEVEL1(Value.ADDRESS_LEVEL1),
+			POSTAL_CODE(Value.POSTAL_CODE),
+			CC_NUMBER(Value.CC_NUMBER),
+			CC_EXP_MONTH(Value.CC_EXP_MONTH),
+			CC_EXP_YEAR(Value.CC_EXP_YEAR),
+			CC_CSC(Value.CC_CSC),
+			TRANSACTION_AMOUNT(Value.TRANSACTION_AMOUNT),
+			BDAY_DAY(Value.BDAY_DAY),
+			BDAY_MONTH(Value.BDAY_MONTH),
+			BDAY_YEAR(Value.BDAY_YEAR),
+			TEL_COUNTRY_CODE(Value.TEL_COUNTRY_CODE),
+			TEL_AREA_CODE(Value.TEL_AREA_CODE),
+			TEL_LOCAL_PREFIX(Value.TEL_LOCAL_PREFIX),
+			TEL_LOCAL_SUFFIX(Value.TEL_LOCAL_SUFFIX),
+			TEL_EXTENSION(Value.TEL_EXTENSION);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"number\"");
@@ -651,11 +930,61 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.
 	 */
 	public static class Password extends Input<Password> implements
+		Attributes.Enum.Autocomplete<Password,Password.Autocomplete>,
 		Attributes.Text.Value<Password>
 	{
 
 		public Password(Html html) {
 			super(html);
+		}
+
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			NEW_PASSWORD(Value.NEW_PASSWORD),
+			CURRENT_PASSWORD(Value.CURRENT_PASSWORD),
+			ONE_TIME_CODE(Value.ONE_TIME_CODE),
+			CC_NUMBER(Value.CC_NUMBER),
+			CC_EXP(Value.CC_EXP),
+			CC_EXP_MONTH(Value.CC_EXP_MONTH),
+			CC_EXP_YEAR(Value.CC_EXP_YEAR),
+			CC_CSC(Value.CC_CSC);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
 		}
 
 		@Override
@@ -685,6 +1014,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
 	 */
 	public static class Range extends Input<Range> implements
+		Attributes.Enum.Autocomplete<Range,Range.Autocomplete>,
 		Attributes.Text.Value<Range>
 	{
 
@@ -697,6 +1027,47 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					html.doctype,
 					"range"
 				);
+			}
+		}
+
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
 			}
 		}
 
@@ -725,7 +1096,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 *
-		 * TODO: Test javadocs
 		 * @see Dynamic.Type#RESET
 		 */
 		@Override
@@ -747,6 +1117,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
 	 */
 	public static class Search extends Input<Search> implements
+		Attributes.Enum.Autocomplete<Search,Search.Autocomplete>,
 		Attributes.Text.Value<Search>
 	{
 
@@ -759,6 +1130,93 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					html.doctype,
 					"search"
 				);
+			}
+		}
+
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			NAME(Value.NAME),
+			HONORIFIC_PREFIX(Value.HONORIFIC_PREFIX),
+			GIVEN_NAME(Value.GIVEN_NAME),
+			ADDITIONAL_NAME(Value.ADDITIONAL_NAME),
+			FAMILY_NAME(Value.FAMILY_NAME),
+			HONORIFIC_SUFFIX(Value.HONORIFIC_SUFFIX),
+			NICKNAME(Value.NICKNAME),
+			EMAIL(Value.EMAIL),
+			USERNAME(Value.USERNAME),
+			ORGANIZATION_TITLE(Value.ORGANIZATION_TITLE),
+			ORGANIZATION(Value.ORGANIZATION),
+			STREET_ADDRESS(Value.STREET_ADDRESS),
+			ADDRESS_LINE1(Value.ADDRESS_LINE1),
+			ADDRESS_LINE2(Value.ADDRESS_LINE2),
+			ADDRESS_LINE3(Value.ADDRESS_LINE3),
+			ADDRESS_LEVEL4(Value.ADDRESS_LEVEL4),
+			ADDRESS_LEVEL3(Value.ADDRESS_LEVEL3),
+			ADDRESS_LEVEL2(Value.ADDRESS_LEVEL2),
+			ADDRESS_LEVEL1(Value.ADDRESS_LEVEL1),
+			COUNTRY(Value.COUNTRY),
+			COUNTRY_NAME(Value.COUNTRY_NAME),
+			POSTAL_CODE(Value.POSTAL_CODE),
+			CC_NAME(Value.CC_NAME),
+			CC_GIVEN_NAME(Value.CC_GIVEN_NAME),
+			CC_ADDITIONAL_NAME(Value.CC_ADDITIONAL_NAME),
+			CC_FAMILY_NAME(Value.CC_FAMILY_NAME),
+			CC_TYPE(Value.CC_TYPE),
+			TRANSACTION_CURRENCY(Value.TRANSACTION_CURRENCY),
+			TRANSACTION_AMOUNT(Value.TRANSACTION_AMOUNT),
+			LANGUAGE(Value.LANGUAGE),
+			BDAY(Value.BDAY),
+			BDAY_DAY(Value.BDAY_DAY),
+			BDAY_MONTH(Value.BDAY_MONTH),
+			BDAY_YEAR(Value.BDAY_YEAR),
+			SEX(Value.SEX),
+			TEL(Value.TEL),
+			TEL_COUNTRY_CODE(Value.TEL_COUNTRY_CODE),
+			TEL_NATIONAL(Value.TEL_NATIONAL),
+			TEL_AREA_CODE(Value.TEL_AREA_CODE),
+			TEL_LOCAL(Value.TEL_LOCAL),
+			TEL_LOCAL_PREFIX(Value.TEL_LOCAL_PREFIX),
+			TEL_LOCAL_SUFFIX(Value.TEL_LOCAL_SUFFIX),
+			TEL_EXTENSION(Value.TEL_EXTENSION),
+			IMPP(Value.IMPP),
+			URL(Value.URL),
+			PHOTO(Value.PHOTO);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
 			}
 		}
 
@@ -787,7 +1245,6 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 *
-		 * TODO: Test javadocs
 		 * @see Dynamic.Type#SUBMIT
 		 */
 		@Override
@@ -809,6 +1266,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
 	 */
 	public static class Tel extends Input<Tel> implements
+		Attributes.Enum.Autocomplete<Tel,Tel.Autocomplete>,
 		Attributes.Text.Value<Tel>
 	{
 
@@ -824,6 +1282,55 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			TEL(Value.TEL),
+			TEL_COUNTRY_CODE(Value.TEL_COUNTRY_CODE),
+			TEL_NATIONAL(Value.TEL_NATIONAL),
+			TEL_AREA_CODE(Value.TEL_AREA_CODE),
+			TEL_LOCAL(Value.TEL_LOCAL),
+			TEL_LOCAL_PREFIX(Value.TEL_LOCAL_PREFIX),
+			TEL_LOCAL_SUFFIX(Value.TEL_LOCAL_SUFFIX),
+			TEL_EXTENSION(Value.TEL_EXTENSION);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"tel\"");
@@ -834,6 +1341,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
 	 */
 	public static class Text extends Input<Text> implements
+		Attributes.Enum.Autocomplete<Text,Attributes.Enum.Autocomplete.Value>,
 		Attributes.Text.Value<Text>
 	{
 
@@ -851,6 +1359,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
 	 */
 	public static class Time extends Input<Time> implements
+		Attributes.Enum.Autocomplete<Time,Time.Autocomplete>,
 		Attributes.Text.Value<Time>
 	{
 
@@ -866,6 +1375,47 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"time\"");
@@ -876,6 +1426,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
 	 */
 	public static class Url extends Input<Url> implements
+		Attributes.Enum.Autocomplete<Url,Url.Autocomplete>,
 		Attributes.Text.Value<Url>
 	{
 
@@ -891,6 +1442,54 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 		}
 
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			EMAIL(Value.EMAIL),
+			TEL(Value.TEL),
+			TEL_NATIONAL(Value.TEL_NATIONAL),
+			TEL_LOCAL(Value.TEL_LOCAL),
+			IMPP(Value.IMPP),
+			URL(Value.URL),
+			PHOTO(Value.PHOTO);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
+			}
+		}
+
 		@Override
 		protected void openWriteType() throws IOException {
 			html.out.write(" type=\"url\"");
@@ -901,6 +1500,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
 	 */
 	public static class Week extends Input<Week> implements
+		Attributes.Enum.Autocomplete<Week,Week.Autocomplete>,
 		Attributes.Text.Value<Week>
 	{
 
@@ -913,6 +1513,49 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					html.doctype,
 					"week"
 				);
+			}
+		}
+
+		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+		 * <p>
+		 * We're making our best guess which values are applicable.
+		 * This is to give a nice short list in code assist.
+		 * TODO: Find somewhere this relationship is defined (if there is any).
+		 * </p>
+		 *
+		 * @see Attributes.Enum.Autocomplete.Value
+		 */
+		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+			OFF(Value.OFF),
+			ON(Value.ON),
+			CC_EXP(Value.CC_EXP),
+			BDAY(Value.BDAY);
+
+			private final Value value;
+
+			private Autocomplete(Value value) {
+				this.value = value;
+			}
+
+			@Override
+			public java.lang.String toString() {
+				return value.toString();
+			}
+
+			@Override
+			public java.lang.String get(Serialization serialization, Doctype doctype) {
+				return value.get(serialization, doctype);
+			}
+
+			public Attributes.Enum.Autocomplete.Value getValue() {
+				return value;
+			}
+
+			static {
+				for(Autocomplete value : values()) {
+					if(!value.name().equals(value.value.name())) throw new AssertionError("Enum name mismatch");
+				}
 			}
 		}
 

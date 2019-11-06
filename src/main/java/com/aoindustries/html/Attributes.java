@@ -30,6 +30,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextIn
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
+import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.lang.annotation.ElementType;
@@ -2436,6 +2437,233 @@ public class Attributes {
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E align(Supplier<? extends V,Ex> align) throws IOException, Ex {
 				return align((align== null) ? (V)null : align.get());
+			}
+		}
+
+		/**
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+		 * </ul>
+		 */
+		public static interface Autocomplete<
+			E extends Element<E> & Autocomplete<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+			 * </ul>
+			 */
+			@Funnel
+			default E autocomplete(java.lang.String autocomplete) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"autocomplete"
+					);
+				}
+				return String.attribute(element, "autocomplete", MarkupType.NONE, autocomplete, true, true);
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E autocomplete(StringSupplier<Ex> autocomplete) throws IOException, Ex {
+				return autocomplete((autocomplete == null) ? null : autocomplete.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+			 * </ul>
+			 */
+			default E autocomplete(V autocomplete) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return autocomplete((autocomplete == null) ? null : autocomplete.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E autocomplete(Supplier<? extends V,Ex> autocomplete) throws IOException, Ex {
+				return autocomplete((autocomplete== null) ? (V)null : autocomplete.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+			 * </ul>
+			 */
+			@Funnel
+			default E autocomplete(java.lang.String ... autocomplete) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"autocomplete"
+					);
+				}
+				if(autocomplete != null) {
+					boolean didOne = false;
+					for(java.lang.String value : autocomplete) {
+						value = StringUtility.trimNullIfEmpty(value);
+						if(value != null) {
+							if(!didOne) {
+								element.html.out.write(" autocomplete=\"");
+								didOne = true;
+							} else {
+								element.html.out.write(' ');
+							}
+							encodeTextInXhtmlAttribute(value, element.html.out);
+						}
+					}
+					if(didOne) element.html.out.write('"');
+				}
+				return element;
+			}
+
+			// TODO: More variants for suppliers of arrays, arrays of suppliers, iterables, ...?
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_autocomplete.asp">HTML autocomplete Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
+			 * </ul>
+			 */
+			@Funnel
+			@SuppressWarnings("unchecked")
+			default E autocomplete(V ... autocomplete) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"autocomplete"
+					);
+				}
+				if(autocomplete != null) {
+					boolean didOne = false;
+					for(V value : autocomplete) {
+						if(value != null) {
+							if(!didOne) {
+								element.html.out.write(" autocomplete=\"");
+								didOne = true;
+							} else {
+								element.html.out.write(' ');
+							}
+							encodeTextInXhtmlAttribute(value.get(element.html.serialization, element.html.doctype), element.html.out);
+						}
+					}
+					if(didOne) element.html.out.write('"');
+				}
+				return element;
+			}
+
+			// TODO: More variants for suppliers of arrays, arrays of suppliers, iterables, ...?
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+			 */
+			public enum Value implements EnumSupplier {
+				OFF("off"),
+				ON("on"),
+				NAME("name"),
+				HONORIFIC_PREFIX("honorific-prefix"),
+				GIVEN_NAME("given-name"),
+				ADDITIONAL_NAME("additional-name"),
+				FAMILY_NAME("family-name"),
+				HONORIFIC_SUFFIX("honorific-suffix"),
+				NICKNAME("nickname"),
+				EMAIL("email"),
+				USERNAME("username"),
+				NEW_PASSWORD("new-password"),
+				CURRENT_PASSWORD("current-password"),
+				ONE_TIME_CODE("one-time-code"),
+				ORGANIZATION_TITLE("organization-title"),
+				ORGANIZATION("organization"),
+				STREET_ADDRESS("street-address"),
+				ADDRESS_LINE1("address-line1"),
+				ADDRESS_LINE2("address-line2"),
+				ADDRESS_LINE3("address-line3"),
+				ADDRESS_LEVEL4("address-level4"),
+				ADDRESS_LEVEL3("address-level3"),
+				ADDRESS_LEVEL2("address-level2"),
+				ADDRESS_LEVEL1("address-level1"),
+				COUNTRY("country"),
+				COUNTRY_NAME("country-name"),
+				POSTAL_CODE("postal-code"),
+				CC_NAME("cc-name"),
+				CC_GIVEN_NAME("cc-given-name"),
+				CC_ADDITIONAL_NAME("cc-additional-name"),
+				CC_FAMILY_NAME("cc-family-name"),
+				CC_NUMBER("cc-number"),
+				CC_EXP("cc-exp"),
+				CC_EXP_MONTH("cc-exp-month"),
+				CC_EXP_YEAR("cc-exp-year"),
+				CC_CSC("cc-csc"),
+				CC_TYPE("cc-type"),
+				TRANSACTION_CURRENCY("transaction-currency"),
+				TRANSACTION_AMOUNT("transaction-amount"),
+				LANGUAGE("language"),
+				BDAY("bday"),
+				BDAY_DAY("bday-day"),
+				BDAY_MONTH("bday-month"),
+				BDAY_YEAR("bday-year"),
+				SEX("sex"),
+				TEL("tel"),
+				TEL_COUNTRY_CODE("tel-country-code"),
+				TEL_NATIONAL("tel-national"),
+				TEL_AREA_CODE("tel-area-code"),
+				TEL_LOCAL("tel-local"),
+				TEL_LOCAL_PREFIX("tel-local-prefix"),
+				TEL_LOCAL_SUFFIX("tel-local-suffix"),
+				TEL_EXTENSION("tel-extension"),
+				IMPP("impp"),
+				URL("url"),
+				PHOTO("photo");
+
+				private final java.lang.String value;
+
+				private Value(java.lang.String value) {
+					this.value = value;
+				}
+
+				@Override
+				public java.lang.String toString() {
+					return value;
+				}
+
+				@Override
+				public java.lang.String get(Serialization serialization, Doctype doctype) {
+					return value;
+				}
+
+				public java.lang.String getValue() {
+					return value;
+				}
 			}
 		}
 

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -291,6 +291,30 @@ public class Html {
 		 */
 		public com.aoindustries.html.Input.Submit submit() throws IOException {
 			return new com.aoindustries.html.Input.Submit(html).open();
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 */
+		public Html submit__(Object value) throws IOException {
+			return submit().value(value).__();
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 */
+		public <Ex extends Throwable> Html submit__(Supplier<?,Ex> value) throws IOException, Ex {
+			return submit().value(value).__();
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
+		 */
+		public <Ex extends Throwable> Html submit__(AttributeWriter<Ex> value) throws IOException, Ex {
+			return submit().value(value).__();
 		}
 
 		/**

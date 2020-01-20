@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -185,10 +185,12 @@ public class Style extends Element<Style> implements
 		return this;
 	}
 
+	// TODO: Supplier (see how done for attributes)
+
 	/**
 	 * Writes the style, automatically closing the style via
-	 * {@link #__()} on {@link MediaWriter#close()}.  This is well suited
-	 * for use in a try-with-resources block.
+	 * {@link #__()} on {@link MediaWriter#close()}.
+	 * This is well suited for use in a try-with-resources block.
 	 */
 	public MediaWriter out() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());

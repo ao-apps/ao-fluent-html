@@ -22,6 +22,13 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Coercion;
+import com.aoindustries.encoding.MediaWriter;
+import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
+import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
+import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.util.WrappedException;
+import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
@@ -88,6 +95,92 @@ public class Html {
 		return this;
 	}
 
+	/**
+	 * Writes the given text with proper encoding.
+	 * Does not perform any translation markups.
+	 */
+	public Html text(char ch) throws IOException {
+		encodeTextInXhtml(ch, out);
+		return this;
+	}
+
+	/**
+	 * Writes the given text with proper encoding.
+	 * Does not perform any translation markups.
+	 */
+	public Html text(char[] cbuf) throws IOException {
+		encodeTextInXhtml(cbuf, out);
+		return this;
+	}
+
+	/**
+	 * Writes the given text with proper encoding.
+	 * Does not perform any translation markups.
+	 */
+	public Html text(char[] cbuf, int start, int len) throws IOException {
+		encodeTextInXhtml(cbuf, start, len, out);
+		return this;
+	}
+
+	// TODO: text(CharSequence)?
+	// TODO: text(CharSequence, int, int)?
+
+	/**
+	 * Writes the given text with proper encoding.
+	 * Supports translation markup type {@link MarkupType#XHTML}.
+	 */
+	public Html text(Object text) throws IOException {
+		if(text instanceof TextWriter) {
+			try {
+				return text((TextWriter<?>)text);
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
+		// Allow text markup from translations
+		// TODO: Coercion support CharSequence, too?
+		Coercion.write(text, MarkupType.XHTML, textInXhtmlEncoder, false, out);
+		return this;
+	}
+
+	// TODO: Supplier (see how done for attributes)
+
+	/**
+	 * Writes the given text with proper encoding.
+	 * Does not perform any translation markups.
+	 * This is well suited for use in a try-with-resources block.
+	 */
+	public MediaWriter text() throws IOException {
+		return new MediaWriter(
+			textInXhtmlEncoder,
+			new NoCloseWriter(out)
+		);
+	}
+
+	// TODO: Consolidate with AttributeWriter?
+	@FunctionalInterface
+	public static interface TextWriter<Ex extends Throwable> {
+		void writeText(MediaWriter text) throws IOException, Ex;
+	}
+
+	public <Ex extends Throwable> Html text(TextWriter<Ex> text) throws IOException, Ex {
+		if(text != null) {
+			text.writeText(
+				new MediaWriter(
+					textInXhtmlEncoder,
+					new NoCloseWriter(out)
+				)
+			);
+		}
+		return this;
+	}
+
+	// TODO: comments
+
+	// TODO: Make newline configurable, since HTML inside email should be \r\n
+	// TODO: Use this configuration in all places, instead of hard-coded \n
 	public Html nl() throws IOException {
 		out.write('\n');
 		return this;

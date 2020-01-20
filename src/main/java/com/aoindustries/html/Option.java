@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,11 +23,10 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
-import com.aoindustries.encoding.MediaEncoder;
-import com.aoindustries.encoding.MediaException;
-import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
+import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
@@ -109,36 +108,62 @@ public class Option extends Element<Option> implements
 
 	/**
 	 * Writes the text body and closes the tag.
+	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 */
-	public Html innerText(Object text) throws IOException {
+	public Html innerText(Object innerText) throws IOException {
+		if(innerText instanceof InnerTextWriter) {
+			try {
+				return innerText((InnerTextWriter<?>)innerText);
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
 		html.out.write('>');
 		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 		// Allow text markup from translations
-		Coercion.write(text, MarkupType.TEXT, textInXhtmlEncoder, false, html.out);
-		html.out.write("</option>");
-		return html;
+		Coercion.write(innerText, MarkupType.TEXT, textInXhtmlEncoder, false, html.out);
+		return __();
 	}
 
-	// TODO: indent variant, indent all lines in a filter?
+	// TODO: Supplier (see how done for attributes)
+
+	/**
+	 * Writes the text body and closes the tag.
+	 * Does not perform any translation markups.
+	 * This is well suited for use in a try-with-resources block.
+	 */
 	public MediaWriter innerText() throws IOException {
-		try {
-			html.out.write('>');
-			return new MediaWriter(
-				MediaEncoder.getInstance(
-					null,
-					MediaType.TEXT,
-					MediaType.XHTML
-				),
-				html.out
-			) {
-				@Override
-				public void close() throws IOException {
-					html.out.write("</option>");
-				}
-			};
-		} catch(MediaException e) {
-			throw new IOException(e);
+		html.out.write('>');
+		return new MediaWriter(
+			textInXhtmlEncoder,
+			html.out
+		) {
+			@Override
+			public void close() throws IOException {
+				__();
+			}
+		};
+	}
+
+	// TODO: Consolidate with AttributeWriter?
+	@FunctionalInterface
+	public static interface InnerTextWriter<Ex extends Throwable> {
+		void writeInnerText(MediaWriter innerText) throws IOException, Ex;
+	}
+
+	public <Ex extends Throwable> Html innerText(InnerTextWriter<Ex> innerText) throws IOException, Ex {
+		html.out.write('>');
+		if(innerText != null) {
+			innerText.writeInnerText(
+				new MediaWriter(
+					textInXhtmlEncoder,
+					new NoCloseWriter(html.out)
+				)
+			);
 		}
+		return __();
 	}
 
 	/**

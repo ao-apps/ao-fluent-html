@@ -124,7 +124,8 @@ public class Option extends Element<Option> implements
 		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 		// Allow text markup from translations
 		Coercion.write(innerText, MarkupType.TEXT, textInXhtmlEncoder, false, html.out);
-		return __();
+		html.out.write("</option>");
+		return html;
 	}
 
 	// TODO: Supplier (see how done for attributes)
@@ -142,7 +143,7 @@ public class Option extends Element<Option> implements
 		) {
 			@Override
 			public void close() throws IOException {
-				__();
+				html.out.write("</option>");
 			}
 		};
 	}
@@ -163,7 +164,8 @@ public class Option extends Element<Option> implements
 				)
 			);
 		}
-		return __();
+		html.out.write("</option>");
+		return html;
 	}
 
 	/**

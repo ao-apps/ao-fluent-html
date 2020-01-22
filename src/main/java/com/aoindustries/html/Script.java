@@ -194,53 +194,46 @@ public class Script extends Element<Script> implements
 	// TODO:     Similar for "text", too.
 	// TODO: Interface for "out" with default methods? (Another for "text", too)
 	public Script out(Object script) throws IOException {
+		while(script instanceof Supplier<?,?>) {
+			try {
+				script = ((Supplier<?,?>)script).get();
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
+		if(script instanceof ScriptWriter) {
+			try {
+				return out((ScriptWriter<?>)script);
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
+		script = Coercion.nullIfEmpty(script);
 		if(script != null) {
-			if(script instanceof ScriptWriter) {
-				try {
-					return out((ScriptWriter<?>)script);
-				} catch(Error|RuntimeException|IOException e) {
-					throw e;
-				} catch(Throwable t) {
-					throw new WrappedException(t);
-				}
-			}
-			script = Coercion.nullIfEmpty(script);
-			if(script != null) {
-				startBody();
-				// Allow text markup from translations
-				// TODO: writeWithMarkup appropriate for capturedBody?
-				// TODO: I think this would only work with SegmentedBuffer with a single segment
-				// TODO: We might need a special case in CharArrayWriter if we want this identity match for a single string
-				// TODO: Set back to SegmentedBuffer, if this is the case
-				MediaType mediaType = getMediaType();
-				Coercion.write(
-					script,
-					mediaType.getMarkupType(),
-					getMediaEncoder(mediaType),
-					false,
-					html.out
-				);
-			}
+			startBody();
+			// Allow text markup from translations
+			// TODO: writeWithMarkup appropriate for capturedBody?
+			// TODO: I think this would only work with SegmentedBuffer with a single segment
+			// TODO: We might need a special case in CharArrayWriter if we want this identity match for a single string
+			// TODO: Set back to SegmentedBuffer, if this is the case
+			MediaType mediaType = getMediaType();
+			Coercion.write(
+				script,
+				mediaType.getMarkupType(),
+				getMediaEncoder(mediaType),
+				false,
+				html.out
+			);
 		}
 		return this;
 	}
 
-	// TODO: Supplier (see how done for attributes)
-
-	/**
-	 * Writes the script, automatically closing the script via
-	 * {@link #__()} on {@link MediaWriter#close()}.
-	 * This is well suited for use in a try-with-resources block.
-	 */
-	public MediaWriter out__() throws IOException {
-		MediaEncoder encoder = getMediaEncoder(getMediaType());
-		startBody();
-		return new MediaWriter(encoder, html.out) {
-			@Override
-			public void close() throws IOException {
-				__();
-			}
-		};
+	public <Ex extends Throwable> Script out(Supplier<?,Ex> script) throws IOException, Ex {
+		return out((script == null) ? null : script.get());
 	}
 
 	// TODO: Consolidate with AttributeWriter?
@@ -261,6 +254,22 @@ public class Script extends Element<Script> implements
 			);
 		}
 		return this;
+	}
+
+	/**
+	 * Writes the script, automatically closing the script via
+	 * {@link #__()} on {@link MediaWriter#close()}.
+	 * This is well suited for use in a try-with-resources block.
+	 */
+	public MediaWriter out__() throws IOException {
+		MediaEncoder encoder = getMediaEncoder(getMediaType());
+		startBody();
+		return new MediaWriter(encoder, html.out) {
+			@Override
+			public void close() throws IOException {
+				__();
+			}
+		};
 	}
 
 	public Html __() throws IOException {

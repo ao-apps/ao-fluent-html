@@ -130,6 +130,15 @@ public class Html {
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 */
 	public Html text(Object text) throws IOException {
+		while(text instanceof Supplier<?,?>) {
+			try {
+				text = ((Supplier<?,?>)text).get();
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
 		if(text instanceof TextWriter) {
 			try {
 				return text((TextWriter<?>)text);
@@ -145,18 +154,8 @@ public class Html {
 		return this;
 	}
 
-	// TODO: Supplier (see how done for attributes)
-
-	/**
-	 * Writes the given text with proper encoding.
-	 * Does not perform any translation markups.
-	 * This is well suited for use in a try-with-resources block.
-	 */
-	public MediaWriter text() throws IOException {
-		return new MediaWriter(
-			textInXhtmlEncoder,
-			new NoCloseWriter(out)
-		);
+	public <Ex extends Throwable> Html text(Supplier<?,Ex> text) throws IOException, Ex {
+		return text((text == null) ? null : text.get());
 	}
 
 	public <Ex extends Throwable> Html text(TextWriter<Ex> text) throws IOException, Ex {
@@ -169,6 +168,18 @@ public class Html {
 			);
 		}
 		return this;
+	}
+
+	/**
+	 * Writes the given text with proper encoding.
+	 * Does not perform any translation markups.
+	 * This is well suited for use in a try-with-resources block.
+	 */
+	public MediaWriter text() throws IOException {
+		return new MediaWriter(
+			textInXhtmlEncoder,
+			new NoCloseWriter(out)
+		);
 	}
 
 	// TODO: comments

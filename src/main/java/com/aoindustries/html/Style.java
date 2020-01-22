@@ -158,49 +158,42 @@ public class Style extends Element<Style> implements
 	// TODO: Out parameter with MediaType, that automatically picks the encoder
 	// TODO: Separate "Write" for direct writing (no encoding)?
 	public Style out(Object style) throws IOException {
+		while(style instanceof Supplier<?,?>) {
+			try {
+				style = ((Supplier<?,?>)style).get();
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
+		if(style instanceof StyleWriter) {
+			try {
+				return out((StyleWriter<?>)style);
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
+		style = Coercion.nullIfEmpty(style);
 		if(style != null) {
-			if(style instanceof StyleWriter) {
-				try {
-					return out((StyleWriter<?>)style);
-				} catch(Error|RuntimeException|IOException e) {
-					throw e;
-				} catch(Throwable t) {
-					throw new WrappedException(t);
-				}
-			}
-			style = Coercion.nullIfEmpty(style);
-			if(style != null) {
-				startBody();
-				// Allow text markup from translations
-				Coercion.write(
-					style,
-					// TODO: Compatible, but better to make an explicit value for MarkupType.CSS: mediaType.getMarkupType()
-					MarkupType.JAVASCRIPT,
-					getMediaEncoder(getMediaType()),
-					false,
-					html.out
-				);
-			}
+			startBody();
+			// Allow text markup from translations
+			Coercion.write(
+				style,
+				// TODO: Compatible, but better to make an explicit value for MarkupType.CSS: mediaType.getMarkupType()
+				MarkupType.JAVASCRIPT,
+				getMediaEncoder(getMediaType()),
+				false,
+				html.out
+			);
 		}
 		return this;
 	}
 
-	// TODO: Supplier (see how done for attributes)
-
-	/**
-	 * Writes the style, automatically closing the style via
-	 * {@link #__()} on {@link MediaWriter#close()}.
-	 * This is well suited for use in a try-with-resources block.
-	 */
-	public MediaWriter out__() throws IOException {
-		MediaEncoder encoder = getMediaEncoder(getMediaType());
-		startBody();
-		return new MediaWriter(encoder, html.out) {
-			@Override
-			public void close() throws IOException {
-				__();
-			}
-		};
+	public <Ex extends Throwable> Style out(Supplier<?,Ex> style) throws IOException, Ex {
+		return out((style == null) ? null : style.get());
 	}
 
 	// TODO: Consolidate with AttributeWriter?
@@ -221,6 +214,22 @@ public class Style extends Element<Style> implements
 			);
 		}
 		return this;
+	}
+
+	/**
+	 * Writes the style, automatically closing the style via
+	 * {@link #__()} on {@link MediaWriter#close()}.
+	 * This is well suited for use in a try-with-resources block.
+	 */
+	public MediaWriter out__() throws IOException {
+		MediaEncoder encoder = getMediaEncoder(getMediaType());
+		startBody();
+		return new MediaWriter(encoder, html.out) {
+			@Override
+			public void close() throws IOException {
+				__();
+			}
+		};
 	}
 
 	public Html __() throws IOException {

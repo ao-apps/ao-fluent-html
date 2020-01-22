@@ -111,6 +111,15 @@ public class Option extends Element<Option> implements
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 */
 	public Html text__(Object text) throws IOException {
+		while(text instanceof Supplier<?,?>) {
+			try {
+				text = ((Supplier<?,?>)text).get();
+			} catch(Error|RuntimeException|IOException e) {
+				throw e;
+			} catch(Throwable t) {
+				throw new WrappedException(t);
+			}
+		}
 		if(text instanceof TextWriter) {
 			try {
 				return text__((TextWriter<?>)text);
@@ -128,7 +137,23 @@ public class Option extends Element<Option> implements
 		return html;
 	}
 
-	// TODO: Supplier (see how done for attributes)
+	public <Ex extends Throwable> Html text__(Supplier<?,Ex> text) throws IOException, Ex {
+		return text__((text == null) ? null : text.get());
+	}
+
+	public <Ex extends Throwable> Html text__(TextWriter<Ex> text) throws IOException, Ex {
+		html.out.write('>');
+		if(text != null) {
+			text.writeText(
+				new MediaWriter(
+					textInXhtmlEncoder,
+					new NoCloseWriter(html.out)
+				)
+			);
+		}
+		html.out.write("</option>");
+		return html;
+	}
 
 	/**
 	 * Writes the text body and closes the tag.
@@ -146,20 +171,6 @@ public class Option extends Element<Option> implements
 				html.out.write("</option>");
 			}
 		};
-	}
-
-	public <Ex extends Throwable> Html text__(TextWriter<Ex> text) throws IOException, Ex {
-		html.out.write('>');
-		if(text != null) {
-			text.writeText(
-				new MediaWriter(
-					textInXhtmlEncoder,
-					new NoCloseWriter(html.out)
-				)
-			);
-		}
-		html.out.write("</option>");
-		return html;
 	}
 
 	/**

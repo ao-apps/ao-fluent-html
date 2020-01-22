@@ -139,6 +139,7 @@ public class Script extends Element<Script> implements
 	 * @see Doctype#scriptType(java.lang.Appendable)
 	 */
 	protected Script type() throws IOException {
+		// TODO: Check didBody here and other attributes, perhaps in some central attribute registry that detects duplicate attributes, too
 		if(
 			type == null
 			|| type.equals(Type.APPLICATION_JAVASCRIPT.getContentType())
@@ -190,6 +191,8 @@ public class Script extends Element<Script> implements
 
 	// TODO: Return a "Body" / "ScriptBody" that only allows additional out or closing the tag.
 	// TODO:     Setting attributes after startBody() would create invalid HTML.
+	// TODO:     Similar for "text", too.
+	// TODO: Interface for "out" with default methods? (Another for "text", too)
 	public Script out(Object script) throws IOException {
 		if(script != null) {
 			if(script instanceof ScriptWriter) {

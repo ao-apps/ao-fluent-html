@@ -110,10 +110,10 @@ public class Option extends Element<Option> implements
 	 * Writes the text body and closes the tag.
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 */
-	public Html innerText(Object innerText) throws IOException {
-		if(innerText instanceof InnerTextWriter) {
+	public Html text__(Object text) throws IOException {
+		if(text instanceof TextWriter) {
 			try {
-				return innerText((InnerTextWriter<?>)innerText);
+				return text__((TextWriter<?>)text);
 			} catch(Error|RuntimeException|IOException e) {
 				throw e;
 			} catch(Throwable t) {
@@ -123,7 +123,7 @@ public class Option extends Element<Option> implements
 		html.out.write('>');
 		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 		// Allow text markup from translations
-		Coercion.write(innerText, MarkupType.TEXT, textInXhtmlEncoder, false, html.out);
+		Coercion.write(text, MarkupType.TEXT, textInXhtmlEncoder, false, html.out);
 		html.out.write("</option>");
 		return html;
 	}
@@ -135,7 +135,7 @@ public class Option extends Element<Option> implements
 	 * Does not perform any translation markups.
 	 * This is well suited for use in a try-with-resources block.
 	 */
-	public MediaWriter innerText() throws IOException {
+	public MediaWriter text__() throws IOException {
 		html.out.write('>');
 		return new MediaWriter(
 			textInXhtmlEncoder,
@@ -148,16 +148,10 @@ public class Option extends Element<Option> implements
 		};
 	}
 
-	// TODO: Consolidate with AttributeWriter?
-	@FunctionalInterface
-	public static interface InnerTextWriter<Ex extends Throwable> {
-		void writeInnerText(MediaWriter innerText) throws IOException, Ex;
-	}
-
-	public <Ex extends Throwable> Html innerText(InnerTextWriter<Ex> innerText) throws IOException, Ex {
+	public <Ex extends Throwable> Html text__(TextWriter<Ex> text) throws IOException, Ex {
 		html.out.write('>');
-		if(innerText != null) {
-			innerText.writeInnerText(
+		if(text != null) {
+			text.writeText(
 				new MediaWriter(
 					textInXhtmlEncoder,
 					new NoCloseWriter(html.out)

@@ -159,12 +159,6 @@ public class Html {
 		);
 	}
 
-	// TODO: Consolidate with AttributeWriter?
-	@FunctionalInterface
-	public static interface TextWriter<Ex extends Throwable> {
-		void writeText(MediaWriter text) throws IOException, Ex;
-	}
-
 	public <Ex extends Throwable> Html text(TextWriter<Ex> text) throws IOException, Ex {
 		if(text != null) {
 			text.writeText(

@@ -139,6 +139,9 @@ public class Html {
 				throw new WrappedException(t);
 			}
 		}
+		if(text instanceof char[]) {
+			return text((char[])text);
+		}
 		if(text instanceof TextWriter) {
 			try {
 				return text((TextWriter<?>)text);

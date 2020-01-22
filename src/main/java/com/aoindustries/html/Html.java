@@ -149,7 +149,6 @@ public class Html {
 			}
 		}
 		// Allow text markup from translations
-		// TODO: Coercion support CharSequence, too?
 		Coercion.write(text, MarkupType.XHTML, textInXhtmlEncoder, false, out);
 		return this;
 	}

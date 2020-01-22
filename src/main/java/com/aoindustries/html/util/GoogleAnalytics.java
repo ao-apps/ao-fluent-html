@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -58,7 +58,7 @@ public class GoogleAnalytics {
 			// + "<!-- Global site tag (gtag.js) - Google Analytics -->\n"
 			// TODO: Attribute streaming src
 			html.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trackingId)).__().nl();
-			try (MediaWriter script = html.script().out()) {
+			try (MediaWriter script = html.script().out__()) {
 				script.write("  window.dataLayer = window.dataLayer || [];\n"
 					+ "  function gtag(){dataLayer.push(arguments);}\n"
 					+ "  gtag(\"js\", new Date());\n"
@@ -82,7 +82,7 @@ public class GoogleAnalytics {
 	public static void writeAnalyticsJs(Html html, String trackingId) throws IOException {
 		trackingId = StringUtility.trimNullIfEmpty(trackingId);
 		if(trackingId != null) {
-			try (MediaWriter script = html.script().out()) {
+			try (MediaWriter script = html.script().out__()) {
 				script.write("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){\n"
 					+ "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n"
 					+ "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n"

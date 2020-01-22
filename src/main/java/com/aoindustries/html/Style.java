@@ -192,7 +192,7 @@ public class Style extends Element<Style> implements
 	 * {@link #__()} on {@link MediaWriter#close()}.
 	 * This is well suited for use in a try-with-resources block.
 	 */
-	public MediaWriter out() throws IOException {
+	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
 		return new MediaWriter(encoder, html.out) {

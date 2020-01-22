@@ -30,5 +30,5 @@ import java.io.IOException;
  */
 @FunctionalInterface
 public interface TextWriter<Ex extends Throwable> {
-	void writeText(MediaWriter value) throws IOException, Ex;
+	void writeText(MediaWriter text) throws IOException, Ex;
 }

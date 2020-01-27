@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -4435,7 +4435,7 @@ public class Attributes {
 			@Funnel
 			default E value(Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value", MarkupType.NONE, value, false, true, textInXhtmlAttributeEncoder);
+				return attribute(element, "value", MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
 			}
 
 			/**

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -706,7 +706,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Accept<File>,
 		Attributes.Enum.Capture<File,File.Capture>,
 		Attributes.Boolean.Multiple<File>,
-		// Does not support value: Attributes.Text.Value<File>
+		// Does not support value per https://www.w3schools.com/tags/att_input_value.asp: Attributes.Text.Value<File>
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 		Attributes.Event.Form.Onchange<File>,
 		Attributes.Event.Form.Onselect<File>

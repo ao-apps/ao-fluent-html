@@ -4435,7 +4435,7 @@ public class Attributes {
 			@Funnel
 			default E value(Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return attribute(element, "value", MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
+				return attribute(element, "value", MarkupType.NONE, value, false, true, textInXhtmlAttributeEncoder);
 			}
 
 			/**

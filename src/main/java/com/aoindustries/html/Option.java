@@ -24,6 +24,7 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.MediaWriter;
+import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.WrappedException;
@@ -104,6 +105,18 @@ public class Option extends Element<Option> implements
 	@Override
 	public <Ex extends Throwable> Option label(AttributeWriter<Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_option_value.asp">HTML option value Attribute</a>.
+	 * <p>
+	 * An empty value must still be specified for &lt;option&gt;, as it overrides the
+	 * default behavior of using the tag's text content as the value.
+	 * </p>
+	 */
+	@Override
+	public Option value(Object value) throws IOException {
+		return Attributes.Text.attribute(this, "value", MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
 	}
 
 	/**

@@ -174,7 +174,8 @@ public class Script extends Element<Script> implements
 		return
 			html.serialization == Serialization.XML
 			&& (
-				Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
+				type == null
+				|| Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
 				|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
 			);
 	}

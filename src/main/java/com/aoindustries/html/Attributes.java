@@ -3692,7 +3692,7 @@ public class Attributes {
 			 *
 			 * @see #usemap(java.lang.String)
 			 */
-			default <Ex extends Throwable> E usemap(StringSupplier<Ex> usemap) throws IOException, Ex {
+			default <Ex extends Throwable> E usemap(Supplier<? extends java.lang.String,Ex> usemap) throws IOException, Ex {
 				return usemap((usemap == null) ? null : usemap.get());
 			}
 		}

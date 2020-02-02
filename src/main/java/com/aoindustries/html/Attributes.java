@@ -273,6 +273,39 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
+		 */
+		public static interface Ismap<E extends Element<E> & Ismap<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
+			 */
+			@Funnel
+			default E ismap(boolean ismap) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "ismap", ismap);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
+			 *
+			 * @see #ismap(boolean)
+			 */
+			default E ismap(java.lang.Boolean ismap) throws IOException {
+				return ismap(ismap != null && ismap);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
+			 *
+			 * @see #ismap(java.lang.Boolean)
+			 */
+			default <Ex extends Throwable> E ismap(Supplier<? extends java.lang.Boolean,Ex> ismap) throws IOException, Ex {
+				return ismap((ismap == null) ? null : ismap.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
 		 */
 		public static interface Multiple<E extends Element<E> & Multiple<E>> {
@@ -2447,7 +2480,39 @@ public class Attributes {
 			/** Make no instances. */
 			private Media() {}
 
-			// TODO: onabort
+			/**
+			 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
+			 */
+			public static interface Onabort<E extends Element<E> & Onabort<E>> {
+
+				/**
+				 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
+				 */
+				@Funnel
+				default E onabort(Object onabort) throws IOException {
+					@SuppressWarnings("unchecked") E element = (E)this;
+					return Event.attribute(element, "onabort", onabort);
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
+				 *
+				 * @see #onabort(java.lang.Object)
+				 */
+				default <Ex extends Throwable> E onabort(Supplier<?,Ex> onabort) throws IOException, Ex {
+					return onabort((onabort == null) ? null : onabort.get());
+				}
+
+				/**
+				 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
+				 *
+				 * @see #onabort(java.lang.Object)
+				 */
+				default <Ex extends Throwable> E onabort(AttributeWriter<Ex> onabort) throws IOException, Ex {
+					return onabort((Object)onabort);
+				}
+			}
+
 			// TODO: oncanplay
 			// TODO: oncanplaythrough
 			// TODO: oncuechange
@@ -3570,7 +3635,7 @@ public class Attributes {
 					element.html.out.write(' ');
 					element.html.out.write(name);
 				} else {
-					if(trim) value = value.trim();
+					if(trim) value = value.trim(); // TODO: These trims should all be from StringUtility?
 					if(!nullIfEmpty || !value.isEmpty()) {
 						element.html.out.write(' ');
 						element.html.out.write(name);
@@ -3588,7 +3653,49 @@ public class Attributes {
 			return element;
 		}
 
-		// TODO: Move some non-streamable attributes from Text to here?
+		// TODO: Move some non-streamable attributes from Text to here, such as id and name
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
+		 */
+		public static interface Usemap<E extends Element<E> & Usemap<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
+			 * <p>
+			 * Automatically prefixes '#' to any non-null and non-empty (after trimming)
+			 * value that does not already begin with '#'.
+			 * </p>
+			 */
+			@Funnel
+			default E usemap(java.lang.String usemap) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				// TODO: Why is this trimmed while name (above) is not?
+				usemap = StringUtility.trimNullIfEmpty(usemap);
+				if(usemap != null) {
+					if(!usemap.startsWith("#")) usemap = '#' + usemap;
+					return attribute(
+						element,
+						"usemap",
+						MarkupType.NONE,
+						usemap,
+						false, // already trimmed
+						false  // already nullIfEmpty
+					);
+				} else {
+					return element;
+				}
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
+			 *
+			 * @see #usemap(java.lang.String)
+			 */
+			default <Ex extends Throwable> E usemap(StringSupplier<Ex> usemap) throws IOException, Ex {
+				return usemap((usemap == null) ? null : usemap.get());
+			}
+		}
 	}
 
 	/**

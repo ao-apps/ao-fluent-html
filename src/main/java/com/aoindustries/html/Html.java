@@ -89,7 +89,10 @@ public class Html {
 
 	/**
 	 * @see Serialization#selfClose(java.lang.Appendable)
+	 *
+	 * @deprecated  Please use specific tag implementations
 	 */
+	@Deprecated
 	public Html selfClose() throws IOException {
 		serialization.selfClose(out);
 		return this;
@@ -225,6 +228,15 @@ public class Html {
 	 */
 	public Html hr__() throws IOException {
 		return hr().__();
+	}
+
+	protected Img img;
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
+	 */
+	public Img img() throws IOException {
+		return new Img(this).open();
 	}
 
 	/**

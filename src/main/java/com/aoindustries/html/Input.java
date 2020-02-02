@@ -118,6 +118,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Value<Dynamic>,
 		Attributes.Integer.WidthHtml5Only<Dynamic>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Media.Onabort<Dynamic>,
 		Attributes.Event.Window.Onerror<Dynamic>,
 		Attributes.Event.Window.Onload<Dynamic>,
 		Attributes.Event.Form.Onchange<Dynamic>,
@@ -794,6 +795,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Value<Image>,
 		Attributes.Integer.WidthHtml5Only<Image>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+		Attributes.Event.Media.Onabort<Image>,
 		Attributes.Event.Window.Onerror<Image>,
 		Attributes.Event.Window.Onload<Image>
 	{

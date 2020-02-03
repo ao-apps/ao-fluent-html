@@ -2680,10 +2680,11 @@ public class Attributes {
 			@Funnel
 			default E autocomplete(java.lang.String autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
-						"Attributes.notSupportedInHtml5",
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
 						"autocomplete"
 					);
 				}
@@ -2736,10 +2737,11 @@ public class Attributes {
 			@Funnel
 			default E autocomplete(java.lang.String ... autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
-						"Attributes.notSupportedInHtml5",
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
 						"autocomplete"
 					);
 				}
@@ -2775,10 +2777,11 @@ public class Attributes {
 			@SuppressWarnings("unchecked")
 			default E autocomplete(V ... autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						accessor,
-						"Attributes.notSupportedInHtml5",
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
 						"autocomplete"
 					);
 				}
@@ -2801,67 +2804,89 @@ public class Attributes {
 			}
 
 			// TODO: More variants for suppliers of arrays, arrays of suppliers, iterables, ...?
+		}
+
+		/**
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_charset.asp">HTML charset Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
+		 * </ul>
+		 */
+		public static interface Charset<
+			E extends Element<E> & Charset<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_charset.asp">HTML charset Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
+			 * </ul>
+			 */
+			@Funnel
+			default E charset(java.lang.String charset) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						"charset"
+					);
+				}
+				return String.attribute(element, "charset", MarkupType.NONE, charset, true, true);
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_charset.asp">HTML charset Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E charset(StringSupplier<Ex> charset) throws IOException, Ex {
+				return charset((charset == null) ? null : charset.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_charset.asp">HTML charset Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
+			 * </ul>
+			 */
+			default E charset(V charset) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return charset((charset == null) ? null : charset.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_charset.asp">HTML charset Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E charset(Supplier<? extends V,Ex> charset) throws IOException, Ex {
+				return charset((charset== null) ? (V)null : charset.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
+			 * <li>See <a href="https://www.iana.org/assignments/character-sets/character-sets.xhtml">Character Sets</a>.</li>
+			 * </ul>
 			 */
 			public enum Value implements EnumSupplier {
-				OFF("off"),
-				ON("on"),
-				NAME("name"),
-				HONORIFIC_PREFIX("honorific-prefix"),
-				GIVEN_NAME("given-name"),
-				ADDITIONAL_NAME("additional-name"),
-				FAMILY_NAME("family-name"),
-				HONORIFIC_SUFFIX("honorific-suffix"),
-				NICKNAME("nickname"),
-				EMAIL("email"),
-				USERNAME("username"),
-				NEW_PASSWORD("new-password"),
-				CURRENT_PASSWORD("current-password"),
-				ONE_TIME_CODE("one-time-code"),
-				ORGANIZATION_TITLE("organization-title"),
-				ORGANIZATION("organization"),
-				STREET_ADDRESS("street-address"),
-				ADDRESS_LINE1("address-line1"),
-				ADDRESS_LINE2("address-line2"),
-				ADDRESS_LINE3("address-line3"),
-				ADDRESS_LEVEL4("address-level4"),
-				ADDRESS_LEVEL3("address-level3"),
-				ADDRESS_LEVEL2("address-level2"),
-				ADDRESS_LEVEL1("address-level1"),
-				COUNTRY("country"),
-				COUNTRY_NAME("country-name"),
-				POSTAL_CODE("postal-code"),
-				CC_NAME("cc-name"),
-				CC_GIVEN_NAME("cc-given-name"),
-				CC_ADDITIONAL_NAME("cc-additional-name"),
-				CC_FAMILY_NAME("cc-family-name"),
-				CC_NUMBER("cc-number"),
-				CC_EXP("cc-exp"),
-				CC_EXP_MONTH("cc-exp-month"),
-				CC_EXP_YEAR("cc-exp-year"),
-				CC_CSC("cc-csc"),
-				CC_TYPE("cc-type"),
-				TRANSACTION_CURRENCY("transaction-currency"),
-				TRANSACTION_AMOUNT("transaction-amount"),
-				LANGUAGE("language"),
-				BDAY("bday"),
-				BDAY_DAY("bday-day"),
-				BDAY_MONTH("bday-month"),
-				BDAY_YEAR("bday-year"),
-				SEX("sex"),
-				TEL("tel"),
-				TEL_COUNTRY_CODE("tel-country-code"),
-				TEL_NATIONAL("tel-national"),
-				TEL_AREA_CODE("tel-area-code"),
-				TEL_LOCAL("tel-local"),
-				TEL_LOCAL_PREFIX("tel-local-prefix"),
-				TEL_LOCAL_SUFFIX("tel-local-suffix"),
-				TEL_EXTENSION("tel-extension"),
-				IMPP("impp"),
-				URL("url"),
-				PHOTO("photo");
+				// TODO: Add other charsets here?
+				US_ASCII("US-ASCII"),
+				ISO_8859_1("ISO-8859-1"),
+				UTF_8("UTF-8"),
+				WINDOWS_1252("windows-1252");
 
 				private final java.lang.String value;
 
@@ -3003,6 +3028,116 @@ public class Attributes {
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
 				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get());
+			}
+		}
+
+		/**
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_http-equiv.asp">HTML http-equiv Attribute</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_meta_http_equiv.asp">HTML meta http-equiv Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+		 * </ul>
+		 */
+		public static interface HttpEquiv<
+			E extends Element<E> & HttpEquiv<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_http-equiv.asp">HTML http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_meta_http_equiv.asp">HTML meta http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * </ul>
+			 */
+			@Funnel
+			default E httpEquiv(java.lang.String httpEquiv) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return String.attribute(element, "http-equiv", MarkupType.NONE, httpEquiv, true, false);
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_http-equiv.asp">HTML http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_meta_http_equiv.asp">HTML meta http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E httpEquiv(StringSupplier<Ex> httpEquiv) throws IOException, Ex {
+				return httpEquiv((httpEquiv == null) ? null : httpEquiv.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_http-equiv.asp">HTML http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_meta_http_equiv.asp">HTML meta http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * </ul>
+			 */
+			default E httpEquiv(V httpEquiv) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return httpEquiv((httpEquiv == null) ? null : httpEquiv.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_http-equiv.asp">HTML http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_meta_http_equiv.asp">HTML meta http-equiv Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E httpEquiv(Supplier<? extends V,Ex> httpEquiv) throws IOException, Ex {
+				return httpEquiv((httpEquiv== null) ? (V)null : httpEquiv.get());
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+		 */
+		public static interface Name<
+			E extends Element<E> & Name<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 */
+			@Funnel
+			default E name(java.lang.String name) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return String.attribute(element, "name", MarkupType.NONE, name, true, true);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 *
+			 * @see #name(java.lang.String)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E name(StringSupplier<Ex> name) throws IOException, Ex {
+				return name((name == null) ? null : name.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 *
+			 * @see #name(java.lang.String)
+			 */
+			default E name(V name) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return name((name == null) ? null : name.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+			 *
+			 * @see #name(java.lang.Enum)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E name(Supplier<? extends V,Ex> name) throws IOException, Ex {
+				return name((name== null) ? (V)null : name.get());
 			}
 		}
 
@@ -3979,6 +4114,39 @@ public class Attributes {
 					);
 				}
 				return Class.super.clazz(clazz);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
+		 */
+		public static interface Content<E extends Element<E> & Content<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
+			 */
+			@Funnel
+			default E content(Object content) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "content", MarkupType.NONE, content, false, false, textInXhtmlAttributeEncoder);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
+			 *
+			 * @see #content(java.lang.Object)
+			 */
+			default <Ex extends Throwable> E content(Supplier<?,Ex> content) throws IOException, Ex {
+				return content((content == null) ? null : content.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
+			 *
+			 * @see #content(java.lang.Object)
+			 */
+			default <Ex extends Throwable> E content(AttributeWriter<Ex> content) throws IOException, Ex {
+				return content((Object)content);
 			}
 		}
 

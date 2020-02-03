@@ -92,6 +92,7 @@ public class Html {
 	 *
 	 * @deprecated  Please use specific tag implementations
 	 */
+	// TODO: Remove this method once no longer used
 	@Deprecated
 	public Html selfClose() throws IOException {
 		serialization.selfClose(out);
@@ -230,8 +231,6 @@ public class Html {
 		return hr().__();
 	}
 
-	protected Img img;
-
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
 	 */
@@ -258,6 +257,7 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
+	// TODO: Move these type Input.type only?
 	public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic input(StringSupplier<Ex> type) throws IOException, Ex {
 		return input((type == null) ? null : type.get());
 	}
@@ -274,6 +274,7 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
+	// TODO: Move these type Input.type only?
 	public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic input(Supplier<? extends com.aoindustries.html.Input.Dynamic.Type,Ex> type) throws IOException, Ex {
 		return input((type == null) ? null : type.get());
 	}
@@ -475,7 +476,51 @@ public class Html {
 		return new Link(this).open();
 	}
 
+	/**
+	 * @see #link()
+	 * @see Link#rel(java.lang.Enum)
+	 */
+	public Link link(Link.Rel rel) throws IOException {
+		return link().rel(rel);
+	}
+
 	// No link__(), since either rel or itemprop is required
+
+	/**
+	 * <ul>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+	 * </ul>
+	 */
+	public Meta meta() throws IOException {
+		return new Meta(this).open();
+	}
+
+	/**
+	 * @see #meta()
+	 * @see Meta#name(java.lang.Enum)
+	 */
+	public Meta meta(Meta.Name name) throws IOException {
+		return meta().name(name);
+	}
+
+	/**
+	 * @see #meta()
+	 * @see Meta#httpEquiv(java.lang.Enum)
+	 */
+	public Meta meta(Meta.HttpEquiv httpEquiv) throws IOException {
+		return meta().httpEquiv(httpEquiv);
+	}
+
+	/**
+	 * @see #meta()
+	 * @see Meta#charset(java.lang.Enum)
+	 */
+	public Meta meta(Attributes.Enum.Charset.Value charset) throws IOException {
+		return meta().charset(charset);
+	}
+
+	// No meta__(), since either name, http-equiv, or itemprop is required (TODO: confirm itemprop-only metas?)
 
 	protected Option option;
 

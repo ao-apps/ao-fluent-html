@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -152,7 +152,27 @@ public class Link extends EmptyElement<Link> implements
 		PRERENDER("prerender"),
 		PREV("prev"), // w3schools only
 		SEARCH("search"),
-		STYLESHEET("stylesheet");
+		STYLESHEET("stylesheet"),
+
+		/**
+		 * <p>
+		 * To specify an icon for a single webpage or replace the website icon with a webpage-specific icon, add a link element to the webpage.
+		 * </p>
+		 * <p>
+		 * See <a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">Configuring Web Applications</a>.
+		 * </p>
+		 */
+		APPLE_TOUCH_ICON("apple-touch-icon"),
+
+		/**
+		 * <p>
+		 * On iOS, similar to native applications, you can specify a launch screen image that is displayed while your web application launches.
+		 * </p>
+		 * <p>
+		 * See <a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">Configuring Web Applications</a>.
+		 * </p>
+		 */
+		APPLE_TOUCH_STARTUP_IMAGE("apple-touch-startup-image");
 
 		private final String value;
 		// TODO: Verify values by doctype

@@ -85,6 +85,94 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	protected abstract void openWriteType() throws IOException;
 
 	/**
+	 * <p>
+	 * The complete list of expected autocomplete values.  Specific input types may provide
+	 * a shorter list.
+	 * </p>
+	 * <p>
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
+	 * </p>
+	 */
+	public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		OFF("off"),
+		ON("on"),
+		NAME("name"),
+		HONORIFIC_PREFIX("honorific-prefix"),
+		GIVEN_NAME("given-name"),
+		ADDITIONAL_NAME("additional-name"),
+		FAMILY_NAME("family-name"),
+		HONORIFIC_SUFFIX("honorific-suffix"),
+		NICKNAME("nickname"),
+		EMAIL("email"),
+		USERNAME("username"),
+		NEW_PASSWORD("new-password"),
+		CURRENT_PASSWORD("current-password"),
+		ONE_TIME_CODE("one-time-code"),
+		ORGANIZATION_TITLE("organization-title"),
+		ORGANIZATION("organization"),
+		STREET_ADDRESS("street-address"),
+		ADDRESS_LINE1("address-line1"),
+		ADDRESS_LINE2("address-line2"),
+		ADDRESS_LINE3("address-line3"),
+		ADDRESS_LEVEL4("address-level4"),
+		ADDRESS_LEVEL3("address-level3"),
+		ADDRESS_LEVEL2("address-level2"),
+		ADDRESS_LEVEL1("address-level1"),
+		COUNTRY("country"),
+		COUNTRY_NAME("country-name"),
+		POSTAL_CODE("postal-code"),
+		CC_NAME("cc-name"),
+		CC_GIVEN_NAME("cc-given-name"),
+		CC_ADDITIONAL_NAME("cc-additional-name"),
+		CC_FAMILY_NAME("cc-family-name"),
+		CC_NUMBER("cc-number"),
+		CC_EXP("cc-exp"),
+		CC_EXP_MONTH("cc-exp-month"),
+		CC_EXP_YEAR("cc-exp-year"),
+		CC_CSC("cc-csc"),
+		CC_TYPE("cc-type"),
+		TRANSACTION_CURRENCY("transaction-currency"),
+		TRANSACTION_AMOUNT("transaction-amount"),
+		LANGUAGE("language"),
+		BDAY("bday"),
+		BDAY_DAY("bday-day"),
+		BDAY_MONTH("bday-month"),
+		BDAY_YEAR("bday-year"),
+		SEX("sex"),
+		TEL("tel"),
+		TEL_COUNTRY_CODE("tel-country-code"),
+		TEL_NATIONAL("tel-national"),
+		TEL_AREA_CODE("tel-area-code"),
+		TEL_LOCAL("tel-local"),
+		TEL_LOCAL_PREFIX("tel-local-prefix"),
+		TEL_LOCAL_SUFFIX("tel-local-suffix"),
+		TEL_EXTENSION("tel-extension"),
+		IMPP("impp"),
+		URL("url"),
+		PHOTO("photo");
+
+		private final java.lang.String value;
+
+		private Autocomplete(java.lang.String value) {
+			this.value = value;
+		}
+
+		@Override
+		public java.lang.String toString() {
+			return value;
+		}
+
+		@Override
+		public java.lang.String get(Serialization serialization, Doctype doctype) {
+			return value;
+		}
+
+		public java.lang.String getValue() {
+			return value;
+		}
+	}
+
+	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
 	 * <p>
 	 * This implementation that has all the input attributes,
@@ -102,7 +190,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Accept<Dynamic>,
 		Attributes.Enum.Align<Dynamic,Image.Align>,
 		Attributes.Text.Alt<Dynamic>,
-		Attributes.Enum.Autocomplete<Dynamic,Attributes.Enum.Autocomplete.Value>,
+		Attributes.Enum.Autocomplete<Dynamic,Input.Autocomplete>,
 		Attributes.Enum.Capture<Dynamic,File.Capture>,
 		Attributes.Boolean.Checked<Dynamic>,
 		Attributes.Integer.HeightHtml5Only<Dynamic>,
@@ -432,15 +520,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -454,7 +542,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -504,17 +592,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			CC_EXP(Value.CC_EXP),
-			BDAY(Value.BDAY);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			CC_EXP(Input.Autocomplete.CC_EXP),
+			BDAY(Input.Autocomplete.BDAY);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -528,7 +616,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -578,16 +666,16 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			BDAY(Value.BDAY);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			BDAY(Input.Autocomplete.BDAY);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -601,7 +689,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -657,18 +745,18 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			EMAIL(Value.EMAIL),
-			IMPP(Value.IMPP),
-			URL(Value.URL);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			EMAIL(Input.Autocomplete.EMAIL),
+			IMPP(Input.Autocomplete.IMPP),
+			URL(Input.Autocomplete.URL);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -682,7 +770,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -769,7 +857,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
 	 */
 	public static class Hidden extends Input<Hidden> implements
-		Attributes.Enum.Autocomplete<Hidden,Attributes.Enum.Autocomplete.Value>,
+		Attributes.Enum.Autocomplete<Hidden,Input.Autocomplete>,
 		Attributes.Text.Value<Hidden>
 	{
 
@@ -893,18 +981,18 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			CC_EXP(Value.CC_EXP),
-			CC_EXP_MONTH(Value.CC_EXP_MONTH),
-			BDAY_MONTH(Value.BDAY_MONTH);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			CC_EXP(Input.Autocomplete.CC_EXP),
+			CC_EXP_MONTH(Input.Autocomplete.CC_EXP_MONTH),
+			BDAY_MONTH(Input.Autocomplete.BDAY_MONTH);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -918,7 +1006,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -968,34 +1056,34 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			ONE_TIME_CODE(Value.ONE_TIME_CODE),
-			ADDRESS_LEVEL4(Value.ADDRESS_LEVEL4),
-			ADDRESS_LEVEL3(Value.ADDRESS_LEVEL3),
-			ADDRESS_LEVEL2(Value.ADDRESS_LEVEL2),
-			ADDRESS_LEVEL1(Value.ADDRESS_LEVEL1),
-			POSTAL_CODE(Value.POSTAL_CODE),
-			CC_NUMBER(Value.CC_NUMBER),
-			CC_EXP_MONTH(Value.CC_EXP_MONTH),
-			CC_EXP_YEAR(Value.CC_EXP_YEAR),
-			CC_CSC(Value.CC_CSC),
-			TRANSACTION_AMOUNT(Value.TRANSACTION_AMOUNT),
-			BDAY_DAY(Value.BDAY_DAY),
-			BDAY_MONTH(Value.BDAY_MONTH),
-			BDAY_YEAR(Value.BDAY_YEAR),
-			TEL_COUNTRY_CODE(Value.TEL_COUNTRY_CODE),
-			TEL_AREA_CODE(Value.TEL_AREA_CODE),
-			TEL_LOCAL_PREFIX(Value.TEL_LOCAL_PREFIX),
-			TEL_LOCAL_SUFFIX(Value.TEL_LOCAL_SUFFIX),
-			TEL_EXTENSION(Value.TEL_EXTENSION);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			ONE_TIME_CODE(Input.Autocomplete.ONE_TIME_CODE),
+			ADDRESS_LEVEL4(Input.Autocomplete.ADDRESS_LEVEL4),
+			ADDRESS_LEVEL3(Input.Autocomplete.ADDRESS_LEVEL3),
+			ADDRESS_LEVEL2(Input.Autocomplete.ADDRESS_LEVEL2),
+			ADDRESS_LEVEL1(Input.Autocomplete.ADDRESS_LEVEL1),
+			POSTAL_CODE(Input.Autocomplete.POSTAL_CODE),
+			CC_NUMBER(Input.Autocomplete.CC_NUMBER),
+			CC_EXP_MONTH(Input.Autocomplete.CC_EXP_MONTH),
+			CC_EXP_YEAR(Input.Autocomplete.CC_EXP_YEAR),
+			CC_CSC(Input.Autocomplete.CC_CSC),
+			TRANSACTION_AMOUNT(Input.Autocomplete.TRANSACTION_AMOUNT),
+			BDAY_DAY(Input.Autocomplete.BDAY_DAY),
+			BDAY_MONTH(Input.Autocomplete.BDAY_MONTH),
+			BDAY_YEAR(Input.Autocomplete.BDAY_YEAR),
+			TEL_COUNTRY_CODE(Input.Autocomplete.TEL_COUNTRY_CODE),
+			TEL_AREA_CODE(Input.Autocomplete.TEL_AREA_CODE),
+			TEL_LOCAL_PREFIX(Input.Autocomplete.TEL_LOCAL_PREFIX),
+			TEL_LOCAL_SUFFIX(Input.Autocomplete.TEL_LOCAL_SUFFIX),
+			TEL_EXTENSION(Input.Autocomplete.TEL_EXTENSION);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1009,7 +1097,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1055,23 +1143,23 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			NEW_PASSWORD(Value.NEW_PASSWORD),
-			CURRENT_PASSWORD(Value.CURRENT_PASSWORD),
-			ONE_TIME_CODE(Value.ONE_TIME_CODE),
-			CC_NUMBER(Value.CC_NUMBER),
-			CC_EXP(Value.CC_EXP),
-			CC_EXP_MONTH(Value.CC_EXP_MONTH),
-			CC_EXP_YEAR(Value.CC_EXP_YEAR),
-			CC_CSC(Value.CC_CSC);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			NEW_PASSWORD(Input.Autocomplete.NEW_PASSWORD),
+			CURRENT_PASSWORD(Input.Autocomplete.CURRENT_PASSWORD),
+			ONE_TIME_CODE(Input.Autocomplete.ONE_TIME_CODE),
+			CC_NUMBER(Input.Autocomplete.CC_NUMBER),
+			CC_EXP(Input.Autocomplete.CC_EXP),
+			CC_EXP_MONTH(Input.Autocomplete.CC_EXP_MONTH),
+			CC_EXP_YEAR(Input.Autocomplete.CC_EXP_YEAR),
+			CC_CSC(Input.Autocomplete.CC_CSC);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1085,7 +1173,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1154,15 +1242,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1176,7 +1264,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1268,61 +1356,61 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			NAME(Value.NAME),
-			HONORIFIC_PREFIX(Value.HONORIFIC_PREFIX),
-			GIVEN_NAME(Value.GIVEN_NAME),
-			ADDITIONAL_NAME(Value.ADDITIONAL_NAME),
-			FAMILY_NAME(Value.FAMILY_NAME),
-			HONORIFIC_SUFFIX(Value.HONORIFIC_SUFFIX),
-			NICKNAME(Value.NICKNAME),
-			EMAIL(Value.EMAIL),
-			USERNAME(Value.USERNAME),
-			ORGANIZATION_TITLE(Value.ORGANIZATION_TITLE),
-			ORGANIZATION(Value.ORGANIZATION),
-			STREET_ADDRESS(Value.STREET_ADDRESS),
-			ADDRESS_LINE1(Value.ADDRESS_LINE1),
-			ADDRESS_LINE2(Value.ADDRESS_LINE2),
-			ADDRESS_LINE3(Value.ADDRESS_LINE3),
-			ADDRESS_LEVEL4(Value.ADDRESS_LEVEL4),
-			ADDRESS_LEVEL3(Value.ADDRESS_LEVEL3),
-			ADDRESS_LEVEL2(Value.ADDRESS_LEVEL2),
-			ADDRESS_LEVEL1(Value.ADDRESS_LEVEL1),
-			COUNTRY(Value.COUNTRY),
-			COUNTRY_NAME(Value.COUNTRY_NAME),
-			POSTAL_CODE(Value.POSTAL_CODE),
-			CC_NAME(Value.CC_NAME),
-			CC_GIVEN_NAME(Value.CC_GIVEN_NAME),
-			CC_ADDITIONAL_NAME(Value.CC_ADDITIONAL_NAME),
-			CC_FAMILY_NAME(Value.CC_FAMILY_NAME),
-			CC_TYPE(Value.CC_TYPE),
-			TRANSACTION_CURRENCY(Value.TRANSACTION_CURRENCY),
-			TRANSACTION_AMOUNT(Value.TRANSACTION_AMOUNT),
-			LANGUAGE(Value.LANGUAGE),
-			BDAY(Value.BDAY),
-			BDAY_DAY(Value.BDAY_DAY),
-			BDAY_MONTH(Value.BDAY_MONTH),
-			BDAY_YEAR(Value.BDAY_YEAR),
-			SEX(Value.SEX),
-			TEL(Value.TEL),
-			TEL_COUNTRY_CODE(Value.TEL_COUNTRY_CODE),
-			TEL_NATIONAL(Value.TEL_NATIONAL),
-			TEL_AREA_CODE(Value.TEL_AREA_CODE),
-			TEL_LOCAL(Value.TEL_LOCAL),
-			TEL_LOCAL_PREFIX(Value.TEL_LOCAL_PREFIX),
-			TEL_LOCAL_SUFFIX(Value.TEL_LOCAL_SUFFIX),
-			TEL_EXTENSION(Value.TEL_EXTENSION),
-			IMPP(Value.IMPP),
-			URL(Value.URL),
-			PHOTO(Value.PHOTO);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			NAME(Input.Autocomplete.NAME),
+			HONORIFIC_PREFIX(Input.Autocomplete.HONORIFIC_PREFIX),
+			GIVEN_NAME(Input.Autocomplete.GIVEN_NAME),
+			ADDITIONAL_NAME(Input.Autocomplete.ADDITIONAL_NAME),
+			FAMILY_NAME(Input.Autocomplete.FAMILY_NAME),
+			HONORIFIC_SUFFIX(Input.Autocomplete.HONORIFIC_SUFFIX),
+			NICKNAME(Input.Autocomplete.NICKNAME),
+			EMAIL(Input.Autocomplete.EMAIL),
+			USERNAME(Input.Autocomplete.USERNAME),
+			ORGANIZATION_TITLE(Input.Autocomplete.ORGANIZATION_TITLE),
+			ORGANIZATION(Input.Autocomplete.ORGANIZATION),
+			STREET_ADDRESS(Input.Autocomplete.STREET_ADDRESS),
+			ADDRESS_LINE1(Input.Autocomplete.ADDRESS_LINE1),
+			ADDRESS_LINE2(Input.Autocomplete.ADDRESS_LINE2),
+			ADDRESS_LINE3(Input.Autocomplete.ADDRESS_LINE3),
+			ADDRESS_LEVEL4(Input.Autocomplete.ADDRESS_LEVEL4),
+			ADDRESS_LEVEL3(Input.Autocomplete.ADDRESS_LEVEL3),
+			ADDRESS_LEVEL2(Input.Autocomplete.ADDRESS_LEVEL2),
+			ADDRESS_LEVEL1(Input.Autocomplete.ADDRESS_LEVEL1),
+			COUNTRY(Input.Autocomplete.COUNTRY),
+			COUNTRY_NAME(Input.Autocomplete.COUNTRY_NAME),
+			POSTAL_CODE(Input.Autocomplete.POSTAL_CODE),
+			CC_NAME(Input.Autocomplete.CC_NAME),
+			CC_GIVEN_NAME(Input.Autocomplete.CC_GIVEN_NAME),
+			CC_ADDITIONAL_NAME(Input.Autocomplete.CC_ADDITIONAL_NAME),
+			CC_FAMILY_NAME(Input.Autocomplete.CC_FAMILY_NAME),
+			CC_TYPE(Input.Autocomplete.CC_TYPE),
+			TRANSACTION_CURRENCY(Input.Autocomplete.TRANSACTION_CURRENCY),
+			TRANSACTION_AMOUNT(Input.Autocomplete.TRANSACTION_AMOUNT),
+			LANGUAGE(Input.Autocomplete.LANGUAGE),
+			BDAY(Input.Autocomplete.BDAY),
+			BDAY_DAY(Input.Autocomplete.BDAY_DAY),
+			BDAY_MONTH(Input.Autocomplete.BDAY_MONTH),
+			BDAY_YEAR(Input.Autocomplete.BDAY_YEAR),
+			SEX(Input.Autocomplete.SEX),
+			TEL(Input.Autocomplete.TEL),
+			TEL_COUNTRY_CODE(Input.Autocomplete.TEL_COUNTRY_CODE),
+			TEL_NATIONAL(Input.Autocomplete.TEL_NATIONAL),
+			TEL_AREA_CODE(Input.Autocomplete.TEL_AREA_CODE),
+			TEL_LOCAL(Input.Autocomplete.TEL_LOCAL),
+			TEL_LOCAL_PREFIX(Input.Autocomplete.TEL_LOCAL_PREFIX),
+			TEL_LOCAL_SUFFIX(Input.Autocomplete.TEL_LOCAL_SUFFIX),
+			TEL_EXTENSION(Input.Autocomplete.TEL_EXTENSION),
+			IMPP(Input.Autocomplete.IMPP),
+			URL(Input.Autocomplete.URL),
+			PHOTO(Input.Autocomplete.PHOTO);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1336,7 +1424,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1427,23 +1515,23 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			TEL(Value.TEL),
-			TEL_COUNTRY_CODE(Value.TEL_COUNTRY_CODE),
-			TEL_NATIONAL(Value.TEL_NATIONAL),
-			TEL_AREA_CODE(Value.TEL_AREA_CODE),
-			TEL_LOCAL(Value.TEL_LOCAL),
-			TEL_LOCAL_PREFIX(Value.TEL_LOCAL_PREFIX),
-			TEL_LOCAL_SUFFIX(Value.TEL_LOCAL_SUFFIX),
-			TEL_EXTENSION(Value.TEL_EXTENSION);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			TEL(Input.Autocomplete.TEL),
+			TEL_COUNTRY_CODE(Input.Autocomplete.TEL_COUNTRY_CODE),
+			TEL_NATIONAL(Input.Autocomplete.TEL_NATIONAL),
+			TEL_AREA_CODE(Input.Autocomplete.TEL_AREA_CODE),
+			TEL_LOCAL(Input.Autocomplete.TEL_LOCAL),
+			TEL_LOCAL_PREFIX(Input.Autocomplete.TEL_LOCAL_PREFIX),
+			TEL_LOCAL_SUFFIX(Input.Autocomplete.TEL_LOCAL_SUFFIX),
+			TEL_EXTENSION(Input.Autocomplete.TEL_EXTENSION);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1457,7 +1545,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1478,7 +1566,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
 	 */
 	public static class Text extends Input<Text> implements
-		Attributes.Enum.Autocomplete<Text,Attributes.Enum.Autocomplete.Value>,
+		Attributes.Enum.Autocomplete<Text,Input.Autocomplete>,
 		Attributes.Integer.Maxlength<Text>,
 		Attributes.Integer.Minlength<Text>,
 		Attributes.Text.List<Text>,
@@ -1535,15 +1623,15 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1557,7 +1645,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1612,22 +1700,22 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			EMAIL(Value.EMAIL),
-			TEL(Value.TEL),
-			TEL_NATIONAL(Value.TEL_NATIONAL),
-			TEL_LOCAL(Value.TEL_LOCAL),
-			IMPP(Value.IMPP),
-			URL(Value.URL),
-			PHOTO(Value.PHOTO);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			EMAIL(Input.Autocomplete.EMAIL),
+			TEL(Input.Autocomplete.TEL),
+			TEL_NATIONAL(Input.Autocomplete.TEL_NATIONAL),
+			TEL_LOCAL(Input.Autocomplete.TEL_LOCAL),
+			IMPP(Input.Autocomplete.IMPP),
+			URL(Input.Autocomplete.URL),
+			PHOTO(Input.Autocomplete.PHOTO);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1641,7 +1729,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 
@@ -1691,17 +1779,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * TODO: Find somewhere this relationship is defined (if there is any).
 		 * </p>
 		 *
-		 * @see Attributes.Enum.Autocomplete.Value
+		 * @see Input.Autocomplete
 		 */
 		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
-			OFF(Value.OFF),
-			ON(Value.ON),
-			CC_EXP(Value.CC_EXP),
-			BDAY(Value.BDAY);
+			OFF(Input.Autocomplete.OFF),
+			ON(Input.Autocomplete.ON),
+			CC_EXP(Input.Autocomplete.CC_EXP),
+			BDAY(Input.Autocomplete.BDAY);
 
-			private final Value value;
+			private final Input.Autocomplete value;
 
-			private Autocomplete(Value value) {
+			private Autocomplete(Input.Autocomplete value) {
 				this.value = value;
 			}
 
@@ -1715,7 +1803,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				return value.get(serialization, doctype);
 			}
 
-			public Attributes.Enum.Autocomplete.Value getValue() {
+			public Input.Autocomplete getValue() {
 				return value;
 			}
 

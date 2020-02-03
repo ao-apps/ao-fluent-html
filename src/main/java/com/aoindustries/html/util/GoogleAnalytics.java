@@ -53,8 +53,8 @@ public class GoogleAnalytics {
 		trackingId = StringUtility.trimNullIfEmpty(trackingId);
 		if(trackingId != null) {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
-			html.link().href("https://www.google-analytics.com").rel(Link.Rel.DNS_PREFETCH).__().nl();
-			html.link().href("https://www.google-analytics.com").rel(Link.Rel.PRECONNECT).crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
+			html.link(Link.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
+			html.link(Link.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
 			// + "<!-- Global site tag (gtag.js) - Google Analytics -->\n"
 			// TODO: Attribute streaming src
 			html.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trackingId)).__().nl();

@@ -41,8 +41,11 @@ import java.util.Locale;
  */
 public class Script extends Element<Script> implements
 	Attributes.Boolean.Async<Script>,
+	Attributes.Enum.Charset<Script,Attributes.Enum.Charset.Value>,
 	Attributes.Boolean.Defer<Script>,
 	Attributes.Url.Src<Script>,
+	// TODO: type
+	// TODO: xmlSpace
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Text.ClassNoHtml4<Script>,
 	Attributes.Text.IdNoHtml4<Script>,
@@ -65,7 +68,10 @@ public class Script extends Element<Script> implements
 
 		/**
 		 * The default type for XHTML 1.0 / HTML 4.
+		 *
+		 * @deprecated  Use {@link #APPLICATION_JAVASCRIPT} in HTML 5.
 		 */
+		@Deprecated
 		TEXT_JAVASCRIPT("text/javascript"),
 
 		/**

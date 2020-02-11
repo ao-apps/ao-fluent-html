@@ -54,11 +54,15 @@ public class Circle implements Shape, Serializable {
 		int ex = x - radius;
 		int ey = y - radius;
 		int ewh = radius * 2;
+
 		// If in a small'ish range, use the Float implementation for speed, as rounding should still be well in range
+		// Note: Float mantissa is 23 bits in range from 0 to 32 MiB
+		final int FLOAT_THRESHOLD = 0x100000; // 1 MiB, or 1/32nd of the mantissa to leave room for calculations without significant rounding effects
+
 		if(
-			ex >= Short.MIN_VALUE && ex <= Short.MAX_VALUE
-			&& ey >= Short.MIN_VALUE && ey <= Short.MAX_VALUE
-			&& ewh >= Short.MIN_VALUE && ewh <= Short.MAX_VALUE
+			   ex  > -FLOAT_THRESHOLD && ex  < FLOAT_THRESHOLD
+			&& ey  > -FLOAT_THRESHOLD && ey  < FLOAT_THRESHOLD
+			&& ewh > -FLOAT_THRESHOLD && ewh < FLOAT_THRESHOLD
 		) {
 			this.ellipse = new Ellipse2D.Float(ex, ey, ewh, ewh);
 		} else {

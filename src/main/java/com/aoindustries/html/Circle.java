@@ -29,6 +29,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 /**
@@ -41,20 +43,10 @@ import java.io.Serializable;
  */
 public class Circle implements Shape, Serializable {
 
-	private final int x, y, radius;
-
-	private final Ellipse2D ellipse;
-
-	private static final long serialVersionUID = 1L;
-
-	public Circle(int x, int y, int radius) {
-		this.x = x;
-		this.y = y;
-		this.radius = radius;
+	private static Ellipse2D getEllipse(int x, int y, int radius) {
 		int ex = x - radius;
 		int ey = y - radius;
 		int ewh = radius * 2;
-
 		// If in a small'ish range, use the Float implementation for speed, as rounding should still be well in range
 		// Note: Float mantissa is 23 bits in range from 0 to 32 MiB
 		final int DOUBLE_THRESHOLD = 0x100000; // 1 MiB, or 1/32nd of the mantissa to leave room for calculations without significant rounding effects
@@ -64,10 +56,29 @@ public class Circle implements Shape, Serializable {
 			&& ey  > -DOUBLE_THRESHOLD && ey  < DOUBLE_THRESHOLD
 			&& ewh > -DOUBLE_THRESHOLD && ewh < DOUBLE_THRESHOLD
 		) {
-			this.ellipse = new Ellipse2D.Float(ex, ey, ewh, ewh);
+			return new Ellipse2D.Float(ex, ey, ewh, ewh);
 		} else {
-			this.ellipse = new Ellipse2D.Double(ex, ey, ewh, ewh);
+			return new Ellipse2D.Double(ex, ey, ewh, ewh);
 		}
+	}
+
+	private final int x, y, radius;
+
+	private transient Ellipse2D ellipse;
+
+	private static final long serialVersionUID = 1L;
+
+	public Circle(int x, int y, int radius) {
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+
+		this.ellipse = getEllipse(x, y, radius);
+	}
+
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		ellipse = getEllipse(x, y, radius);
 	}
 
 	public int getX() {

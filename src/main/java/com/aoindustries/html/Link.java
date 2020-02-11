@@ -32,15 +32,24 @@ import com.aoindustries.util.StringUtility;
 import java.io.IOException;
 
 /**
+ * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.
  * See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.
  *
  * @author  AO Industries, Inc.
  */
 public class Link extends EmptyElement<Link> implements
+	// TODO: as
+	// TODO: charset
 	Attributes.Enum.Crossorigin<Link,Link.Crossorigin>,
+	// TODO: disabled
 	Attributes.Url.Href<Link>,
+	Attributes.String.Hreflang<Link>,
 	Attributes.Text.Media<Link>,
 	Attributes.Enum.Rel<Link,Link.Rel>,
+	// TODO: rev
+	// TODO: sizes
+	// TODO: target (not standardizes per MDN)
+	// TODO: type
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<Link>,
 	Attributes.Event.Window.Onerror<Link>,
@@ -103,7 +112,7 @@ public class Link extends EmptyElement<Link> implements
 	private Object itemprop;
 
 	// TODO: Is global property, move there and add See comment, still checking for link-specific rules here
-	// TODO: Attributes...itemprop
+	// TODO: Attributes...itemprop in global
 	public Link itemprop(Object itemprop) throws IOException {
 		itemprop = Coercion.trimNullIfEmpty(itemprop);
 		if(itemprop != null) {
@@ -132,27 +141,61 @@ public class Link extends EmptyElement<Link> implements
 	}
 
 	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
 	 */
 	public enum Rel implements Attributes.Enum.EnumSupplier {
 		ALTERNATE("alternate"),
-		AUTHOR("author"), // w3schools only
-		CANONICAL("canonical"), // TODO: This is not in the last.  Should we support arbitrary String values, like Script.type?
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		ARCHIVES("archives"), // MDN only
+		AUTHOR("author"), // w3schools, MDN only
+		CANONICAL("canonical"), // MDN only
 		DNS_PREFETCH("dns-prefetch"),
-		HELP("help"), // w3schools only
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		FIRST("first"), // MDN only
+		HELP("help"), // w3schools, MDN only
 		ICON("icon"),
-		LICENSE("license"), // w3schools only
-		MODULEPRELOAD("modulepreload"), // HTML Standard only
+		IMPORT("import"), // MDN only
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		INDEX("index"), // MDN only
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		LAST("last"), // MDN only
+		LICENSE("license"), // w3schools, MDN only
+		MANIFEST("manifest"), // MDN only
+		MODULEPRELOAD("modulepreload"),
 		NEXT("next"),
 		PINGBACK("pingback"),
 		PRECONNECT("preconnect"),
 		PREFETCH("prefetch"),
 		PRELOAD("preload"),
 		PRERENDER("prerender"),
-		PREV("prev"), // w3schools only
+		PREV("prev"), // w3schools, MDN only
 		SEARCH("search"),
+		SHORTLINK("shortlink"), // MDN only
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		SIDEBAR("sidebar"), // MDN only
 		STYLESHEET("stylesheet"),
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		UP("up"), // MDN only
 
 		/**
 		 * <p>
@@ -241,7 +284,7 @@ public class Link extends EmptyElement<Link> implements
 	 * @see #rel(java.lang.String)
 	 */
 	@Override
-	public <Ex extends Throwable> Link rel(StringSupplier<Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> Link rel(Suppliers.String<Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -286,7 +329,6 @@ public class Link extends EmptyElement<Link> implements
 	 *
 	 * See <a href="https://www.w3schools.com/tags/att_link_type.asp">HTML link type Attribute</a>.
 	 */
-	// TODO: Attributes...type
 	public Link type(String type) throws IOException {
 		type = StringUtility.trimNullIfEmpty(type);
 		this.type = type;

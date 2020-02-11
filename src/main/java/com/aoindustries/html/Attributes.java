@@ -32,11 +32,16 @@ import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.i18n.MarkupType;
+import java.awt.Point;
+import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.Locale;
+import java.util.Objects;
 
 /**
  * See <a href="https://www.w3schools.com/tags/ref_attributes.asp">HTML Attributes</a>.
@@ -494,6 +499,257 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+		 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+		 */
+		public static interface Coords<E extends Element<E> & Coords<E>> {
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			@Funnel
+			default E coords(java.lang.String coords) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "coords", coords);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @see #coords(java.lang.String)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E coords(Supplier<? extends java.lang.String,Ex> coords) throws IOException, Ex {
+				return coords((coords == null) ? null : coords.get());
+			}
+
+			// RECT
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(int left, int top, int right, int bottom) throws IOException {
+				return coords(
+					java.lang.Integer.toString(left),
+					java.lang.Integer.toString(top),
+					java.lang.Integer.toString(right),
+					java.lang.Integer.toString(bottom)
+				);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(java.lang.Integer left, java.lang.Integer top, java.lang.Integer right, java.lang.Integer bottom) throws IOException {
+				return coords(
+					Objects.toString(left, null),
+					Objects.toString(top, null),
+					Objects.toString(right, null),
+					Objects.toString(bottom, null)
+				);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(Rectangle rect) throws IOException {
+				if(rect != null) {
+					return coords(rect.x, rect.y, rect.x + rect.width, rect.y + rect.height);
+				} else {
+					return coords((java.lang.Integer)null, null, null, null);
+				}
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @see #coords(java.awt.Rectangle)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E coords(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
+				return coords((rect == null) ? null : rect.get());
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @deprecated  In HTML4, the values are numbers of pixels or percentages, if a percent sign (%) is appended;
+			 *              in HTML5, the values are numbers of CSS pixels.
+			 */
+			@Deprecated
+			default E coords(java.lang.String left, java.lang.String top, java.lang.String right, java.lang.String bottom) throws IOException {
+				left = StringUtility.trimNullIfEmpty(left);
+				top = StringUtility.trimNullIfEmpty(top);
+				right = StringUtility.trimNullIfEmpty(right);
+				bottom = StringUtility.trimNullIfEmpty(bottom);
+				if(left != null || top != null || right != null || bottom != null) {
+					return coords(left + "," + top + "," + right + "," + bottom);
+				} else {
+					return coords((java.lang.String)null);
+				}
+			}
+
+			// CIRCLE
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(int x, int y, int radius) throws IOException {
+				return coords(
+					java.lang.Integer.toString(x),
+					java.lang.Integer.toString(y),
+					java.lang.Integer.toString(radius)
+				);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(java.lang.Integer x, java.lang.Integer y, java.lang.Integer radius) throws IOException {
+				return coords(
+					Objects.toString(x, null),
+					Objects.toString(y, null),
+					Objects.toString(radius, null)
+				);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(Circle circle) throws IOException {
+				if(circle != null) {
+					return coords(circle.getX(), circle.getY(), circle.getRadius());
+				} else {
+					return coords((java.lang.Integer)null, null, null);
+				}
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @see #coords(com.aoindustries.html.Circle)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E coords(Suppliers.Circle<Ex> circle) throws IOException, Ex {
+				return coords((circle == null) ? null : circle.get());
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @deprecated  In HTML4, the values are numbers of pixels or percentages, if a percent sign (%) is appended;
+			 *              in HTML5, the values are numbers of CSS pixels.
+			 */
+			@Deprecated
+			default E coords(java.lang.String x, java.lang.String y, java.lang.String radius) throws IOException {
+				x = StringUtility.trimNullIfEmpty(x);
+				y = StringUtility.trimNullIfEmpty(y);
+				radius = StringUtility.trimNullIfEmpty(radius);
+				if(x != null || y != null || radius != null) {
+					return coords(x + "," + y + "," + radius);
+				} else {
+					return coords((java.lang.String)null);
+				}
+			}
+
+			// POLY
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(Point ... poly) throws IOException {
+				// TODO: This could be done via a streaming attribute at the cost of not going through the current single funnel
+				StringBuilder sb = new StringBuilder();
+				if(poly != null) {
+					for(Point p : poly) {
+						if(p != null) {
+							if(sb.length() > 0) sb.append(',');
+							sb.append(p.x).append(',').append(p.y);
+						}
+					}
+				}
+				return coords(sb.length() == 0 ? (java.lang.String)null : sb.toString());
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(Polygon poly) throws IOException {
+				if(poly == null || poly.npoints == 0) {
+					return coords((java.lang.String)null);
+				} else {
+					// TODO: This could be done via a streaming attribute at the cost of not going through the current single funnel
+					StringBuilder sb = new StringBuilder();
+					for(int i = 0; i < poly.npoints; i++) {
+						if(sb.length() > 0) sb.append(',');
+						sb.append(poly.xpoints[i]).append(',').append(poly.ypoints[i]);
+					}
+					return coords(sb.toString());
+				}
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @see #coords(java.awt.Polygon)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E coords(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
+				return coords((poly == null) ? null : poly.get());
+			}
+
+			// Shape base class
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 */
+			default E coords(java.awt.Shape shape) throws IOException {
+				if(shape == null) return coords((java.lang.String)null);
+				if(shape instanceof Rectangle) return coords((Rectangle)shape);
+				if(shape instanceof Circle) return coords((Circle)shape);
+				if(shape instanceof Polygon) return coords((Polygon)shape);
+				throw new LocalizedIllegalArgumentException(
+					accessor,
+					"Attributes.Dimension.Coords.unexpectedShape",
+					java.awt.Shape.class.getName(),
+					"coords",
+					java.awt.Rectangle.class.getName(),
+					Circle.class.getName(),
+					java.awt.Polygon.class.getName(),
+					shape.getClass().getName(),
+					shape.toString()
+				);
+			}
+
+			/**
+			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 *
+			 * @see #coords(java.awt.Shape)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E coords(Suppliers.Shape<Ex> shape) throws IOException, Ex {
+				return coords((shape == null) ? null : shape.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 		 */
 		public static interface Width<E extends Element<E> & Width<E>> {
@@ -547,7 +803,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E width(StringSupplier<Ex> pixelsOrPercent) throws IOException, Ex {
+			default <Ex extends Throwable> E width(Suppliers.String<Ex> pixelsOrPercent) throws IOException, Ex {
 				return width((pixelsOrPercent == null) ? null : pixelsOrPercent.get());
 			}
 		}
@@ -2627,7 +2883,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E align(StringSupplier<Ex> align) throws IOException, Ex {
+			default <Ex extends Throwable> E align(Suppliers.String<Ex> align) throws IOException, Ex {
 				return align((align == null) ? null : align.get());
 			}
 
@@ -2699,7 +2955,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E autocomplete(StringSupplier<Ex> autocomplete) throws IOException, Ex {
+			default <Ex extends Throwable> E autocomplete(Suppliers.String<Ex> autocomplete) throws IOException, Ex {
 				return autocomplete((autocomplete == null) ? null : autocomplete.get());
 			}
 
@@ -2847,7 +3103,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E charset(StringSupplier<Ex> charset) throws IOException, Ex {
+			default <Ex extends Throwable> E charset(Suppliers.String<Ex> charset) throws IOException, Ex {
 				return charset((charset == null) ? null : charset.get());
 			}
 
@@ -2948,7 +3204,7 @@ public class Attributes {
 			 * @see #capture(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E capture(StringSupplier<Ex> capture) throws IOException, Ex {
+			default <Ex extends Throwable> E capture(Suppliers.String<Ex> capture) throws IOException, Ex {
 				return capture((capture == null) ? null : capture.get());
 			}
 
@@ -3006,7 +3262,7 @@ public class Attributes {
 			 * @see #crossorigin(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E crossorigin(StringSupplier<Ex> crossorigin) throws IOException, Ex {
+			default <Ex extends Throwable> E crossorigin(Suppliers.String<Ex> crossorigin) throws IOException, Ex {
 				return crossorigin((crossorigin == null) ? null : crossorigin.get());
 			}
 
@@ -3064,7 +3320,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E httpEquiv(StringSupplier<Ex> httpEquiv) throws IOException, Ex {
+			default <Ex extends Throwable> E httpEquiv(Suppliers.String<Ex> httpEquiv) throws IOException, Ex {
 				return httpEquiv((httpEquiv == null) ? null : httpEquiv.get());
 			}
 
@@ -3116,7 +3372,7 @@ public class Attributes {
 			 * @see #name(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E name(StringSupplier<Ex> name) throws IOException, Ex {
+			default <Ex extends Throwable> E name(Suppliers.String<Ex> name) throws IOException, Ex {
 				return name((name == null) ? null : name.get());
 			}
 
@@ -3164,7 +3420,7 @@ public class Attributes {
 			 * @see #rel(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E rel(StringSupplier<Ex> rel) throws IOException, Ex {
+			default <Ex extends Throwable> E rel(Suppliers.String<Ex> rel) throws IOException, Ex {
 				return rel((rel == null) ? null : rel.get());
 			}
 
@@ -3186,6 +3442,54 @@ public class Attributes {
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E rel(Supplier<? extends V,Ex> rel) throws IOException, Ex {
 				return rel((rel== null) ? (V)null : rel.get());
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
+		 */
+		public static interface Shape<
+			E extends Element<E> & Shape<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
+			 */
+			@Funnel
+			default E shape(java.lang.String shape) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return String.attribute(element, "shape", MarkupType.NONE, shape, true, true);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
+			 *
+			 * @see #shape(java.lang.String)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E shape(Suppliers.String<Ex> shape) throws IOException, Ex {
+				return shape((shape == null) ? null : shape.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
+			 *
+			 * @see #shape(java.lang.String)
+			 */
+			default E shape(V shape) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return shape((shape == null) ? null : shape.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
+			 *
+			 * @see #shape(java.lang.Enum)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E shape(Supplier<? extends V,Ex> shape) throws IOException, Ex {
+				return shape((shape== null) ? (V)null : shape.get());
 			}
 		}
 
@@ -3212,7 +3516,7 @@ public class Attributes {
 			 * @see #type(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E type(StringSupplier<Ex> type) throws IOException, Ex {
+			default <Ex extends Throwable> E type(Suppliers.String<Ex> type) throws IOException, Ex {
 				return type((type == null) ? null : type.get());
 			}
 
@@ -3791,6 +4095,50 @@ public class Attributes {
 		// TODO: Move some non-streamable attributes from Text to here, such as id and name
 
 		/**
+		 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+		 */
+		public static interface Hreflang<E extends Element<E> & Hreflang<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+			 */
+			@Funnel
+			default E hreflang(java.lang.String hreflang) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "hreflang", MarkupType.NONE, hreflang, true, true);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+			 *
+			 * @see #hreflang(java.lang.String)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E hreflang(Supplier<? extends java.lang.String,Ex> hreflang) throws IOException, Ex {
+				return hreflang((hreflang == null) ? null : hreflang.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+			 *
+			 * @see #hreflang(java.lang.String)
+			 */
+			default E hreflang(Locale hreflang) throws IOException {
+				return hreflang((hreflang == null) ? null : hreflang.toLanguageTag());
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+			 *
+			 * @see #hreflang(java.util.Locale)
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E hreflang(Suppliers.Locale<Ex> hreflang) throws IOException, Ex {
+				return hreflang((hreflang == null) ? null : hreflang.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
 		 */
 		public static interface Usemap<E extends Element<E> & Usemap<E>> {
@@ -3903,7 +4251,10 @@ public class Attributes {
 			 * An arbitrary attribute.
 			 *
 			 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+			 *
+			 * @deprecated  Please implement specific attributes as-needed
 			 */
+			@Deprecated
 			@Funnel
 			default E attribute(java.lang.String name, Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -3917,7 +4268,10 @@ public class Attributes {
 			 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 			 *
 			 * @see #attribute(java.lang.String, java.lang.Object)
+			 *
+			 * @deprecated  Please implement specific attributes as-needed
 			 */
+			@Deprecated
 			default <Ex extends Throwable> E attribute(java.lang.String name, Supplier<?,Ex> value) throws IOException, Ex {
 				return attribute(name, (value == null) ? null : value.get());
 			}
@@ -3926,7 +4280,10 @@ public class Attributes {
 			 * An arbitrary attribute.
 			 *
 			 * @see #attribute(java.lang.String, java.lang.Object)
+			 *
+			 * @deprecated  Please implement specific attributes as-needed
 			 */
+			@Deprecated
 			default <Ex extends Throwable> E attribute(java.lang.String name, AttributeWriter<Ex> value) throws IOException, Ex {
 				return attribute(name, (Object)value);
 			}

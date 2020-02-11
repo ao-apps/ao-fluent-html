@@ -29,6 +29,9 @@ import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
@@ -197,6 +200,93 @@ public class Html {
 		return this;
 	}
 
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public Area area() throws IOException {
+		return new Area(this).open();
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public Area area(Rectangle rect) throws IOException {
+		return area().shape(Area.Shape.RECT).coords(rect);
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public <Ex extends Throwable> Area area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
+		return area().shape(Area.Shape.RECT).coords(rect);
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public Area area(Circle circle) throws IOException {
+		return area().shape(Area.Shape.CIRCLE).coords(circle);
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public <Ex extends Throwable> Area area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
+		return area().shape(Area.Shape.CIRCLE).coords(circle);
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public Area area(Polygon poly) throws IOException {
+		return area().shape(Area.Shape.POLY).coords(poly);
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public <Ex extends Throwable> Area area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
+		return area().shape(Area.Shape.POLY).coords(poly);
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public Area area(Shape shape) throws IOException {
+		if(shape == null) return area();
+		if(shape instanceof Rectangle) return area((Rectangle)shape);
+		if(shape instanceof Circle) return area((Circle)shape);
+		if(shape instanceof Polygon) return area((Polygon)shape);
+		// Pass-through in a way that must result in an exception for the unknown type instead of duplicating long exception message here
+		area().coords(shape);
+		throw new AssertionError("IllegalArgumentException must have been thrown by coords for invalid Shape");
+	}
+
+	/**
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+	 */
+	public <Ex extends Throwable> Area area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
+		return area(shape == null ? null : shape.get());
+	}
+
 	protected Br br;
 
 	/**
@@ -258,7 +348,7 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 	 */
 	// TODO: Move these type Input.type only?
-	public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic input(StringSupplier<Ex> type) throws IOException, Ex {
+	public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic input(Suppliers.String<Ex> type) throws IOException, Ex {
 		return input((type == null) ? null : type.get());
 	}
 
@@ -560,7 +650,7 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
 	 */
-	public <Ex extends Throwable> Script script(StringSupplier<Ex> type) throws IOException, Ex {
+	public <Ex extends Throwable> Script script(Suppliers.String<Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
@@ -601,7 +691,7 @@ public class Html {
 	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
 	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
 	 */
-	public <Ex extends Throwable> Style style(StringSupplier<Ex> type) throws IOException, Ex {
+	public <Ex extends Throwable> Style style(Suppliers.String<Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 

@@ -57,12 +57,12 @@ public class Circle implements Shape, Serializable {
 
 		// If in a small'ish range, use the Float implementation for speed, as rounding should still be well in range
 		// Note: Float mantissa is 23 bits in range from 0 to 32 MiB
-		final int FLOAT_THRESHOLD = 0x100000; // 1 MiB, or 1/32nd of the mantissa to leave room for calculations without significant rounding effects
+		final int DOUBLE_THRESHOLD = 0x100000; // 1 MiB, or 1/32nd of the mantissa to leave room for calculations without significant rounding effects
 
 		if(
-			   ex  > -FLOAT_THRESHOLD && ex  < FLOAT_THRESHOLD
-			&& ey  > -FLOAT_THRESHOLD && ey  < FLOAT_THRESHOLD
-			&& ewh > -FLOAT_THRESHOLD && ewh < FLOAT_THRESHOLD
+			   ex  > -DOUBLE_THRESHOLD && ex  < DOUBLE_THRESHOLD
+			&& ey  > -DOUBLE_THRESHOLD && ey  < DOUBLE_THRESHOLD
+			&& ewh > -DOUBLE_THRESHOLD && ewh < DOUBLE_THRESHOLD
 		) {
 			this.ellipse = new Ellipse2D.Float(ex, ey, ewh, ewh);
 		} else {

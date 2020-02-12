@@ -807,6 +807,112 @@ public class Attributes {
 				return width((pixelsOrPercent == null) ? null : pixelsOrPercent.get());
 			}
 		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+		 *
+		 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
+		 */
+		@Deprecated
+		public static interface WidthHtml4Only<E extends Element<E> & WidthHtml4Only<E>> extends Width<E> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@Funnel
+			default E width(int pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"width"
+					);
+				}
+				return Width.super.width(pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@Funnel
+			default E width(java.lang.Integer pixels) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"width"
+					);
+				}
+				return Width.super.width(pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"width"
+					);
+				}
+				return Width.super.width(pixels);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@Funnel
+			default E width(java.lang.String pixelsOrPercent) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"width"
+					);
+				}
+				return Width.super.width(pixelsOrPercent);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+			 *
+			 * @see #width(java.lang.String)
+			 *
+			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E width(Suppliers.String<Ex> pixelsOrPercent) throws IOException, Ex {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"width"
+					);
+				}
+				return Width.super.width(pixelsOrPercent);
+			}
+		}
 	}
 
 	/**
@@ -3540,6 +3646,76 @@ public class Attributes {
 				return type((type== null) ? (V)null : type.get());
 			}
 		}
+
+		/**
+		 * See <a href="https://www.w3resource.com/html/attributes/html-valign-attribute.php">HTML valign attribute</a>.
+		 *
+		 * @deprecated  The valign attribute is not supported in HTML5. Use CSS instead.
+		 */
+		@Deprecated
+		public static interface Valign<
+			E extends Element<E> & Valign<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-valign-attribute.php">HTML valign attribute</a>.
+			 *
+			 * @deprecated  The valign attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@Funnel
+			default E valign(java.lang.String valign) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				if(element.html.doctype == Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.notSupportedInHtml5",
+						"valign"
+					);
+				}
+				return String.attribute(element, "valign", MarkupType.NONE, valign, true, true);
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-valign-attribute.php">HTML valign attribute</a>.
+			 *
+			 * @see #valign(java.lang.String)
+			 *
+			 * @deprecated  The valign attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E valign(Suppliers.String<Ex> valign) throws IOException, Ex {
+				return valign((valign == null) ? null : valign.get());
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-valign-attribute.php">HTML valign attribute</a>.
+			 *
+			 * @see #valign(java.lang.String)
+			 *
+			 * @deprecated  The valign attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			default E valign(V valign) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return valign((valign == null) ? null : valign.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * See <a href="https://www.w3resource.com/html/attributes/html-valign-attribute.php">HTML valign attribute</a>.
+			 *
+			 * @see #valign(java.lang.Enum)
+			 *
+			 * @deprecated  The valign attribute is not supported in HTML5. Use CSS instead.
+			 */
+			@Deprecated
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E valign(Supplier<? extends V,Ex> valign) throws IOException, Ex {
+				return valign((valign== null) ? (V)null : valign.get());
+			}
+		}
 	}
 
 	/**
@@ -3837,6 +4013,39 @@ public class Attributes {
 					);
 				}
 				return Size.super.size(size);
+			}
+		}
+
+		/**
+		 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
+		 */
+		public static interface Span<E extends Element<E> & Span<E>> {
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
+			 */
+			@Funnel
+			default E span(int span) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "span", span);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
+			 */
+			@Funnel
+			default E span(java.lang.Integer span) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "span", span);
+			}
+
+			/**
+			 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
+			 *
+			 * @see #span(java.lang.Integer)
+			 */
+			default <Ex extends Throwable> E span(Supplier<? extends java.lang.Integer,Ex> span) throws IOException, Ex {
+				return span((span == null) ? null : span.get());
 			}
 		}
 

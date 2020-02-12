@@ -338,6 +338,14 @@ public class Html {
 	}
 
 	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.
+	 */
+	public Col col() throws IOException {
+		return new Col(this).open();
+	}
+
+	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
 	 */
 	public Img img() throws IOException {

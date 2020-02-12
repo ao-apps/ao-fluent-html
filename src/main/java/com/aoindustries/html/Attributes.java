@@ -822,6 +822,7 @@ public class Attributes {
 			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
+			@Override
 			@Funnel
 			default E width(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -841,6 +842,7 @@ public class Attributes {
 			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
+			@Override
 			@Funnel
 			default E width(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -860,6 +862,7 @@ public class Attributes {
 			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
+			@Override
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -879,6 +882,7 @@ public class Attributes {
 			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
+			@Override
 			@Funnel
 			default E width(java.lang.String pixelsOrPercent) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
@@ -900,6 +904,7 @@ public class Attributes {
 			 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
+			@Override
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Suppliers.String<Ex> pixelsOrPercent) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;

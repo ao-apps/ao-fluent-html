@@ -630,6 +630,24 @@ public class Html {
 	}
 
 	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.
+	 */
+	public Param param() throws IOException {
+		return new Param(this).open();
+	}
+
+	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.
+	 */
+	public Html param__(Object name, Object value) throws IOException {
+		return param().name(name).value(value).__();
+	}
+
+	// TODO: More types like supported by ao-taglib (ParamsTag.java), including collection types, as "params__"?
+
+	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
 	 *
 	 * @see Doctype#scriptType(java.lang.Appendable)

@@ -4753,6 +4753,7 @@ public class Attributes {
 			@Funnel
 			default E name(Object name) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
+				// TODO: Review if trim-to-null is the best default.  Maybe default to "false" and override where should be true instead.
 				return attribute(element, "name", MarkupType.NONE, name, false, true, textInXhtmlAttributeEncoder);
 			}
 
@@ -5067,6 +5068,7 @@ public class Attributes {
 			@Funnel
 			default E value(Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
+				// TODO: Review if trim-to-null is the best default.  Maybe default to "false" and override where should be true instead.
 				return attribute(element, "value", MarkupType.NONE, value, false, true, textInXhtmlAttributeEncoder);
 			}
 

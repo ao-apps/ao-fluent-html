@@ -287,6 +287,22 @@ public class Html {
 		return area(shape == null ? null : shape.get());
 	}
 
+	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.
+	 */
+	public Base base() throws IOException {
+		return new Base(this).open();
+	}
+
+	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.
+	 * See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.
+	 */
+	public Html base__(String href) throws IOException {
+		return base().href(href).__();
+	}
+
 	protected Br br;
 
 	/**

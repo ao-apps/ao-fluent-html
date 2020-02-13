@@ -59,13 +59,13 @@ public class GoogleAnalytics {
 			// TODO: Attribute streaming src
 			html.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trackingId)).__().nl();
 			try (MediaWriter script = html.script().out__()) {
-				script.write("  window.dataLayer = window.dataLayer || [];\n"
-					+ "  function gtag(){dataLayer.push(arguments);}\n"
-					+ "  gtag(\"js\", new Date());\n"
+				script.write("window.dataLayer = window.dataLayer || [];\n"
+					+ "function gtag(){dataLayer.push(arguments);}\n"
+					+ "gtag(\"js\", new Date());\n"
 					// + "\n"
-					+ "  gtag(\"config\", \"");
+					+ "gtag(\"config\", \"");
 				encodeTextInJavaScript(trackingId, script);
-				script.write("\");\n");
+				script.write("\");");
 			}
 			html.nl();
 		}
@@ -90,7 +90,7 @@ public class GoogleAnalytics {
 					+ "ga(\"create\",\"");
 				encodeTextInJavaScript(trackingId, script);
 				script.write("\",\"auto\");\n"
-					+ "ga(\"send\",\"pageview\");\n");
+					+ "ga(\"send\",\"pageview\");");
 			}
 			html.nl();
 		}

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
+import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaException;
 import com.aoindustries.encoding.MediaType;

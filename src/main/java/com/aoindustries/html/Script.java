@@ -188,6 +188,8 @@ public class Script extends Element<Script> implements
 				type == null
 				|| type.equals(ContentType.JAVASCRIPT)
 				|| type.equals(ContentType.JAVASCRIPT_OLD)
+				|| type.equals(ContentType.ECMASCRIPT)
+				|| type.equals(ContentType.ECMASCRIPT_OLD)
 			);
 	}
 
@@ -197,6 +199,7 @@ public class Script extends Element<Script> implements
 		if(!didBody) {
 			html.out.write('>');
 			if(doCdata()) html.out.write("//<![CDATA[");
+			html.nl();
 			didBody = true;
 		}
 	}
@@ -288,6 +291,7 @@ public class Script extends Element<Script> implements
 		if(!didBody) {
 			html.out.write("></script>");
 		} else {
+			html.nl();
 			if(doCdata()) html.out.write("//]]>");
 			html.out.write("</script>");
 		}

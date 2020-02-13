@@ -179,6 +179,7 @@ public class Script extends Element<Script> implements
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	protected boolean doCdata() {
 		return
 			html.serialization == Serialization.XML

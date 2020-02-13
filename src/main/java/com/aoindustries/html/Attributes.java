@@ -23,9 +23,11 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
+import com.aoindustries.encoding.Doctype;
 import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
 import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaWriter;
+import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
@@ -2939,7 +2941,7 @@ public class Attributes {
 	 * value is allowed for values that are not part of the enumeration.
 	 * </p>
 	 * <p>
-	 * When converting from {@link java.lang.Enum}, uses {@link EnumSupplier#get(com.aoindustries.html.Serialization, com.aoindustries.html.Doctype)}.
+	 * When converting from {@link java.lang.Enum}, uses {@link EnumSupplier#get(com.aoindustries.encoding.Serialization, com.aoindustries.encoding.Doctype)}.
 	 * </p>
 	 */
 	public static class Enum {

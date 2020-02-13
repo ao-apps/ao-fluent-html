@@ -23,7 +23,9 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
+import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaWriter;
+import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
@@ -48,16 +50,6 @@ import java.nio.charset.StandardCharsets;
 public class Html {
 
 	/**
-	 * Content type for HTML.
-	 */
-	public static final String CONTENT_TYPE_HTML = "text/html";
-
-	/**
-	 * Content type for XHTML.
-	 */
-	public static final String CONTENT_TYPE_XHTML = "application/xhtml+xml";
-
-	/**
 	 * The default, and recommended, encoding for (X)HTML.
 	 */
 	public static final Charset ENCODING = StandardCharsets.UTF_8;
@@ -73,7 +65,7 @@ public class Html {
 	}
 
 	/**
-	 * @see Doctype#xmlDeclaration(com.aoindustries.html.Serialization, java.lang.String, java.lang.Appendable)
+	 * @see Doctype#xmlDeclaration(com.aoindustries.encoding.Serialization, java.lang.String, java.lang.Appendable)
 	 */
 	// TODO: Define here only since depends on both serialization and doctype
 	public Html xmlDeclaration(String documentEncoding) throws IOException {
@@ -82,7 +74,7 @@ public class Html {
 	}
 
 	/**
-	 * @see Doctype#doctype(com.aoindustries.html.Serialization, java.lang.Appendable)
+	 * @see Doctype#doctype(com.aoindustries.encoding.Serialization, java.lang.Appendable)
 	 */
 	// TODO: Define here only since depends on both serialization and doctype
 	public Html doctype() throws IOException {

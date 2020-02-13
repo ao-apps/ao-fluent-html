@@ -23,9 +23,9 @@
 // TODO: Move this package to a new ao-fluent-html-utils project?
 package com.aoindustries.html.util;
 
+import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInJavaScriptEncoder.encodeTextInJavaScript;
-import com.aoindustries.html.Doctype;
 import com.aoindustries.html.Html;
 import com.aoindustries.html.Link;
 import com.aoindustries.net.URIEncoder;

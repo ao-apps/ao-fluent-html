@@ -23,10 +23,13 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
+import com.aoindustries.encoding.Doctype;
+import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.html.Style.Type;
+import com.aoindustries.io.ContentType;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.util.StringUtility;
 import java.io.IOException;
@@ -338,7 +341,7 @@ public class Link extends EmptyElement<Link> implements
 				html.doctype == Doctype.HTML5
 				&& rel != null
 				&& rel.equals(Rel.STYLESHEET.toString())
-				&& Type.TEXT_CSS.getContentType().equalsIgnoreCase(type)
+				&& ContentType.CSS.equalsIgnoreCase(type)
 			)
 		) {
 			html.out.write(" type=\"");
@@ -368,7 +371,7 @@ public class Link extends EmptyElement<Link> implements
 			&& rel.equals(Rel.STYLESHEET.toString())
 		) {
 			html.out.write(" type=\"");
-			html.out.write(Type.TEXT_CSS.getContentType());
+			html.out.write(ContentType.CSS);
 			html.out.write('"');
 		}
 		super.__();

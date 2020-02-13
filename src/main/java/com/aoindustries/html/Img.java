@@ -22,6 +22,8 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Doctype;
+import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
 
 /**

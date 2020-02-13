@@ -27,7 +27,9 @@ import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaException;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
+import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
+import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.WrappedException;
@@ -64,7 +66,7 @@ public class Script extends Element<Script> implements
 		/**
 		 * The default type for (X)HTML 5.
 		 */
-		APPLICATION_JAVASCRIPT("application/javascript"),
+		APPLICATION_JAVASCRIPT(ContentType.JAVASCRIPT),
 
 		/**
 		 * The default type for XHTML 1.0 / HTML 4.
@@ -72,19 +74,19 @@ public class Script extends Element<Script> implements
 		 * @deprecated  Use {@link #APPLICATION_JAVASCRIPT} in HTML 5.
 		 */
 		@Deprecated
-		TEXT_JAVASCRIPT("text/javascript"),
+		TEXT_JAVASCRIPT(ContentType.JAVASCRIPT_OLD),
 
 		/**
 		 * A JSON script.
 		 */
-		APPLICATION_JSON("application/json"),
+		APPLICATION_JSON(ContentType.JSON),
 
 		/**
 		 * A JSON linked data script.
 		 */
-		APPLICATION_JD_JSON("application/ld+json"),
+		APPLICATION_JD_JSON(ContentType.LD_JSON),
 
-		APPLICATION_ECMASCRIPT("application/ecmascript");
+		APPLICATION_ECMASCRIPT(ContentType.ECMASCRIPT);
 
 		private final String contentType;
 
@@ -144,12 +146,13 @@ public class Script extends Element<Script> implements
 	 *
 	 * @see Doctype#scriptType(java.lang.Appendable)
 	 */
+	@SuppressWarnings("deprecation")
 	protected Script type() throws IOException {
 		// TODO: Check didBody here and other attributes, perhaps in some central attribute registry that detects duplicate attributes, too
 		if(
 			type == null
-			|| type.equals(Type.APPLICATION_JAVASCRIPT.getContentType())
-			|| type.equals(Type.TEXT_JAVASCRIPT.getContentType())
+			|| type.equals(ContentType.JAVASCRIPT)
+			|| type.equals(ContentType.JAVASCRIPT_OLD)
 		) {
 			html.doctype.scriptType(html.out);
 		} else {
@@ -181,8 +184,8 @@ public class Script extends Element<Script> implements
 			html.serialization == Serialization.XML
 			&& (
 				type == null
-				|| Type.APPLICATION_JAVASCRIPT.getContentType().equals(type)
-				|| Type.TEXT_JAVASCRIPT.getContentType().equals(type)
+				|| type.equals(ContentType.JAVASCRIPT)
+				|| type.equals(ContentType.JAVASCRIPT_OLD)
 			);
 	}
 
@@ -191,7 +194,7 @@ public class Script extends Element<Script> implements
 	protected void startBody() throws IOException {
 		if(!didBody) {
 			html.out.write('>');
-			if(doCdata()) html.out.write("//<![CDATA[\n");
+			if(doCdata()) html.out.write("//<![CDATA[");
 			didBody = true;
 		}
 	}
@@ -283,8 +286,6 @@ public class Script extends Element<Script> implements
 		if(!didBody) {
 			html.out.write("></script>");
 		} else {
-			// TODO: Track what was written and avoid unnecessary newline?
-			html.nl();
 			if(doCdata()) html.out.write("//]]>");
 			html.out.write("</script>");
 		}

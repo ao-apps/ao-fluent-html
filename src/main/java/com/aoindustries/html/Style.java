@@ -26,8 +26,10 @@ import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
+import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
+import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.StringUtility;
 import com.aoindustries.util.WrappedException;
@@ -60,7 +62,7 @@ public class Style extends Element<Style> implements
 		/**
 		 * The default type.
 		 */
-		TEXT_CSS("text/css");
+		TEXT_CSS(ContentType.CSS);
 
 		private final String contentType;
 
@@ -121,7 +123,7 @@ public class Style extends Element<Style> implements
 	protected Style type() throws IOException {
 		if(
 			type == null
-			|| type.equals(Type.TEXT_CSS.getContentType())
+			|| type.equals(ContentType.CSS)
 		) {
 			html.doctype.styleType(html.out);
 		} else {
@@ -150,7 +152,7 @@ public class Style extends Element<Style> implements
 	protected void startBody() throws IOException {
 		if(!didBody) {
 			html.out.write('>');
-			if(doCdata()) html.out.write("/*<![CDATA[*/\n");
+			if(doCdata()) html.out.write("/*<![CDATA[*/");
 			didBody = true;
 		}
 	}
@@ -236,8 +238,6 @@ public class Style extends Element<Style> implements
 		if(!didBody) {
 			html.out.write("></style>");
 		} else {
-			// TODO: Track what was written and avoid unnecessary newline?
-			html.nl();
 			if(doCdata()) html.out.write("/*]]>*/");
 			html.out.write("</style>");
 		}

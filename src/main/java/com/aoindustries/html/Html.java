@@ -59,10 +59,10 @@ public class Html {
 
 	/**
 	 * Writer for raw output.
-	 *
-	 * @deprecated  This field will possibly become "protected" once the full set of HTML tags have been implemented.
+	 * <p>
+	 * TODO: This field will possibly become "protected" (or deprecated to minimize direct usage) once the full set of HTML tags have been implemented.
+	 * </p>
 	 */
-	@Deprecated
 	public final Writer out;
 
 	public Html(Serialization serialization, Doctype doctype, Writer out) {

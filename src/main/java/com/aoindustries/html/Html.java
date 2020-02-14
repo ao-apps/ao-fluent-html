@@ -56,7 +56,14 @@ public class Html {
 
 	public final Serialization serialization;
 	public final Doctype doctype;
-	protected final Writer out;
+
+	/**
+	 * Writer for raw output.
+	 *
+	 * @deprecated  This field will possibly become "protected" once the full set of HTML tags have been implemented.
+	 */
+	@Deprecated
+	public final Writer out;
 
 	public Html(Serialization serialization, Doctype doctype, Writer out) {
 		this.serialization = serialization;
@@ -185,8 +192,10 @@ public class Html {
 
 	// TODO: comments
 
-	// TODO: Make newline configurable, since HTML inside email should be \r\n
-	// TODO: Use this configuration in all places, instead of hard-coded \n
+	/**
+	 * This is {@code '\n'} on all platforms.  If a different newline is required,
+	 * such as {@code "\r\n"} for email, filter the output.
+	 */
 	public Html nl() throws IOException {
 		out.write('\n');
 		return this;

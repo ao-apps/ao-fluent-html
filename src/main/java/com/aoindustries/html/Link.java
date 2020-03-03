@@ -44,7 +44,8 @@ public class Link extends EmptyElement<Link> implements
 	// TODO: as
 	// TODO: charset
 	Attributes.Enum.Crossorigin<Link,Link.Crossorigin>,
-	// TODO: disabled
+	// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-disabled
+	Attributes.Boolean.Disabled<Link>,
 	Attributes.Url.Href<Link>,
 	Attributes.String.Hreflang<Link>,
 	Attributes.Text.Media<Link>,

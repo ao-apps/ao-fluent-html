@@ -34,7 +34,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2019-11-04T09:31:29-0600"
+		dateModified="2020-03-04T15:56:35-0600"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -96,7 +96,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				<ao:a href="https://github.com/xmlet/HtmlFlow">HtmlFlow</ao:a> is a Java DSL to write typesafe
 				HTML documents in a fluent style.  It is very close to what we want.  We
 				may look into integrating our unique needs with their implementation.  At this
-				time, however, we still required support for XHTML 1.0, HTML 4, and XHTML 5.
+				time, however, we still require support for XHTML 1.0, HTML 4, and XHTML 5.
 				This, along with interoperability with our other projects, is steering us toward
 				our own implementation.
 			</section:section>

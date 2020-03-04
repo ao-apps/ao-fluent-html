@@ -60,7 +60,7 @@ complete implementation.
 [HtmlFlow](https://github.com/xmlet/HtmlFlow) is a Java DSL to write typesafe
 HTML documents in a fluent style.  It is very close to what we want.  We
 may look into integrating our unique needs with their implementation.  At this
-time, however, we still required support for XHTML 1.0, HTML 4, and XHTML 5.
+time, however, we still require support for XHTML 1.0, HTML 4, and XHTML 5.
 This, along with interoperability with our other projects, is steering us toward
 our own implementation.
 

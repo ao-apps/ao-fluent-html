@@ -341,7 +341,7 @@ public class Link extends EmptyElement<Link> implements
 			&& !(
 				html.doctype == Doctype.HTML5
 				&& rel != null
-				&& rel.equals(Rel.STYLESHEET.toString())
+				&& rel.equalsIgnoreCase(Rel.STYLESHEET.toString())
 				&& ContentType.CSS.equalsIgnoreCase(type)
 			)
 		) {
@@ -369,7 +369,7 @@ public class Link extends EmptyElement<Link> implements
 			type == null
 			&& html.doctype != Doctype.HTML5
 			&& rel != null
-			&& rel.equals(Rel.STYLESHEET.toString())
+			&& rel.equalsIgnoreCase(Rel.STYLESHEET.toString())
 		) {
 			html.out.write(" type=\"");
 			html.out.write(ContentType.CSS);

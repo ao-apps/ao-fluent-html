@@ -46,15 +46,15 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	</properties>
 
 	<name>AO Fluent HTML</name>
-	<url>https://aoindustries.com/${project.artifactId}/</url>
+	<url>https://aoindustries.com/ao-fluent-html/</url>
 	<description>Fluent Java DSL for high-performance HTML generation.</description>
 	<inceptionYear>2019</inceptionYear>
 
 	<scm>
 		<!-- Can't inherit due to multi-module -->
-		<connection>scm:git:git://github.com/aoindustries/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git@github.com:aoindustries/${project.artifactId}.git</developerConnection>
-		<url>https://github.com/aoindustries/${project.artifactId}</url>
+		<connection>scm:git:git://github.com/aoindustries/ao-fluent-html.git</connection>
+		<developerConnection>scm:git:git@github.com:aoindustries/ao-fluent-html.git</developerConnection>
+		<url>https://github.com/aoindustries/ao-fluent-html</url>
 		<tag>HEAD</tag>
 	</scm>
 

@@ -22,13 +22,17 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.lang.Iterables;
 import java.io.IOException;
 
 /**
  * Variant bounded by classes other than {@link Object}, since can't have multiple methods with different bounds due to erasure.
  *
+ * @see  Iterables
+ *
  * @author  AO Industries, Inc.
  */
+// TODO: Move to ao-lang, since it is very similar to the new Iterables utility class.
 public class Suppliers {
 
 	private Suppliers() {}

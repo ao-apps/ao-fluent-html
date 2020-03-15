@@ -32,7 +32,7 @@ import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.util.WrappedException;
 import java.io.IOException;
 import java.util.Locale;
@@ -125,7 +125,7 @@ public class Script extends Element<Script> implements
 
 	public Script(Html html, String type) {
 		super(html);
-		type = StringUtility.trimNullIfEmpty(type);
+		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 

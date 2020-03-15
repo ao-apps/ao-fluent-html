@@ -31,7 +31,7 @@ import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.html.Style.Type;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.lang.LocalizedIllegalStateException;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import java.io.IOException;
 
 /**
@@ -252,7 +252,7 @@ public class Link extends EmptyElement<Link> implements
 	 */
 	@Override
 	public Link rel(String rel) throws IOException {
-		rel = StringUtility.trimNullIfEmpty(rel);
+		rel = Strings.trimNullIfEmpty(rel);
 		if(rel != null) {
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
@@ -334,7 +334,7 @@ public class Link extends EmptyElement<Link> implements
 	 * See <a href="https://www.w3schools.com/tags/att_link_type.asp">HTML link type Attribute</a>.
 	 */
 	public Link type(String type) throws IOException {
-		type = StringUtility.trimNullIfEmpty(type);
+		type = Strings.trimNullIfEmpty(type);
 		this.type = type;
 		if(
 			type != null

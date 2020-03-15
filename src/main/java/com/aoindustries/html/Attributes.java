@@ -32,7 +32,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextIn
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
 import java.awt.Point;
 import java.awt.Polygon;
@@ -587,10 +587,10 @@ public class Attributes {
 			 */
 			@Deprecated
 			default E coords(java.lang.String left, java.lang.String top, java.lang.String right, java.lang.String bottom) throws IOException {
-				left = StringUtility.trimNullIfEmpty(left);
-				top = StringUtility.trimNullIfEmpty(top);
-				right = StringUtility.trimNullIfEmpty(right);
-				bottom = StringUtility.trimNullIfEmpty(bottom);
+				left = Strings.trimNullIfEmpty(left);
+				top = Strings.trimNullIfEmpty(top);
+				right = Strings.trimNullIfEmpty(right);
+				bottom = Strings.trimNullIfEmpty(bottom);
 				if(left != null || top != null || right != null || bottom != null) {
 					return coords(left + "," + top + "," + right + "," + bottom);
 				} else {
@@ -656,9 +656,9 @@ public class Attributes {
 			 */
 			@Deprecated
 			default E coords(java.lang.String x, java.lang.String y, java.lang.String radius) throws IOException {
-				x = StringUtility.trimNullIfEmpty(x);
-				y = StringUtility.trimNullIfEmpty(y);
-				radius = StringUtility.trimNullIfEmpty(radius);
+				x = Strings.trimNullIfEmpty(x);
+				y = Strings.trimNullIfEmpty(y);
+				radius = Strings.trimNullIfEmpty(radius);
 				if(x != null || y != null || radius != null) {
 					return coords(x + "," + y + "," + radius);
 				} else {
@@ -3117,7 +3117,7 @@ public class Attributes {
 				if(autocomplete != null) {
 					boolean didOne = false;
 					for(java.lang.String value : autocomplete) {
-						value = StringUtility.trimNullIfEmpty(value);
+						value = Strings.trimNullIfEmpty(value);
 						if(value != null) {
 							if(!didOne) {
 								element.html.out.write(" autocomplete=\"");
@@ -4290,7 +4290,7 @@ public class Attributes {
 					element.html.out.write(' ');
 					element.html.out.write(name);
 				} else {
-					if(trim) value = value.trim(); // TODO: These trims should all be from StringUtility?
+					if(trim) value = value.trim(); // TODO: These trims should all be from Strings?
 					if(!nullIfEmpty || !value.isEmpty()) {
 						element.html.out.write(' ');
 						element.html.out.write(name);
@@ -4370,7 +4370,7 @@ public class Attributes {
 			default E usemap(java.lang.String usemap) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				// TODO: Why is this trimmed while name (above) is not?
-				usemap = StringUtility.trimNullIfEmpty(usemap);
+				usemap = Strings.trimNullIfEmpty(usemap);
 				if(usemap != null) {
 					if(!usemap.startsWith("#")) usemap = '#' + usemap;
 					return attribute(

@@ -32,7 +32,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextIn
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
@@ -101,7 +101,7 @@ public class Style extends Element<Style> implements
 
 	public Style(Html html, String type) {
 		super(html);
-		type = StringUtility.trimNullIfEmpty(type);
+		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 

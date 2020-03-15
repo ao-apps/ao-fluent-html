@@ -29,7 +29,7 @@ import static com.aoindustries.encoding.TextInJavaScriptEncoder.encodeTextInJava
 import com.aoindustries.html.Html;
 import com.aoindustries.html.Link;
 import com.aoindustries.net.URIEncoder;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import java.io.IOException;
 
 /**
@@ -50,7 +50,7 @@ public class GoogleAnalytics {
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
 	public static void writeGlobalSiteTag(Html html, String trackingId) throws IOException {
-		trackingId = StringUtility.trimNullIfEmpty(trackingId);
+		trackingId = Strings.trimNullIfEmpty(trackingId);
 		if(trackingId != null) {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
 			html.link(Link.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
@@ -80,7 +80,7 @@ public class GoogleAnalytics {
 	 */
 	// TODO: Support hitType exception? https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
 	public static void writeAnalyticsJs(Html html, String trackingId) throws IOException {
-		trackingId = StringUtility.trimNullIfEmpty(trackingId);
+		trackingId = Strings.trimNullIfEmpty(trackingId);
 		if(trackingId != null) {
 			try (MediaWriter script = html.script().out__()) {
 				script.write("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){\n"

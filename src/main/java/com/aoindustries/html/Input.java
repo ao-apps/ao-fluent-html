@@ -29,7 +29,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlA
 import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.LocalizedIllegalStateException;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.util.HashMap;
@@ -225,7 +225,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		public Dynamic(Html html, String type) {
 			super(html);
-			type = StringUtility.trimNullIfEmpty(type);
+			type = Strings.trimNullIfEmpty(type);
 			this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 		}
 
@@ -351,7 +351,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 */
 		@Override
 		public Dynamic type(String type) throws IOException {
-			type = StringUtility.trimNullIfEmpty(type);
+			type = Strings.trimNullIfEmpty(type);
 			if(type != null) {
 				type = type.toLowerCase(Locale.ROOT);
 				// Perform doctype checks and optimizations for recognized types

@@ -28,8 +28,8 @@ import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInJavaScriptEncoder.encodeTextInJavaScript;
 import com.aoindustries.html.Html;
 import com.aoindustries.html.Link;
-import com.aoindustries.net.URIEncoder;
 import com.aoindustries.lang.Strings;
+import com.aoindustries.net.URIEncoder;
 import java.io.IOException;
 
 /**
@@ -43,7 +43,7 @@ public class GoogleAnalytics {
 	private GoogleAnalytics() {}
 
 	/**
-	 * Writes the modern Google Analytics <a href="https://support.google.com/analytics/answer/1008080?hl=en&ref_topic=1008079#GA">Global Site Tag</a>.
+	 * Writes the modern Google Analytics <a href="https://support.google.com/analytics/answer/1008080?hl=en&amp;ref_topic=1008079#GA">Global Site Tag</a>.
 	 * This is best used with {@link Doctype#HTML5}.
 	 * This should be added first, or very hig	h up, in the <code>&lt;head&gt;</code>.
 	 *

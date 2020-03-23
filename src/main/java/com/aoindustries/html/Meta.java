@@ -215,7 +215,7 @@ public class Meta extends EmptyElement<Meta> implements
 
 		/**
 		 * <code>referrer</code> which controls the
-		 * HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer">Referer</code>
+		 * HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer">Referer</a>
 		 * header attached to requests sent from the document.
 		 */
 		REFERRER("referrer"),
@@ -289,7 +289,7 @@ public class Meta extends EmptyElement<Meta> implements
 		 * </p>
 		 * <ul>
 		 * <li>See <a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">Configuring Web Applications</a>.</li>
-		 * <li>See <a href="https://medium.com/@firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb">Don’t use iOS meta tags irresponsibly in your Progressive Web Apps</a>.</li>
+		 * <li>See <a href="https://medium.com/%40firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb">Don’t use iOS meta tags irresponsibly in your Progressive Web Apps</a>.</li>
 		 * </ul>
 		 */
 		APPLE_MOBILE_WEB_APP_CAPABLE("apple-mobile-web-app-capable"),

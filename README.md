@@ -27,7 +27,7 @@ Fluent Java DSL for high-performance HTML generation.
 * [Project Home](https://aoindustries.com/ao-fluent-html/)
 * [Changelog](https://aoindustries.com/ao-fluent-html/changelog)
 * [API Docs](https://aoindustries.com/ao-fluent-html/apidocs/)
-* [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.aoindustries%22%20AND%20a:%22ao-fluent-html%22)
+* [Maven Central Repository](https://search.maven.org/artifact/com.aoindustries/ao-fluent-html)
 * [GitHub](https://github.com/aoindustries/ao-fluent-html)
 
 ## Modules

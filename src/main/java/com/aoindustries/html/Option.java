@@ -26,8 +26,8 @@ import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
+import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.NoCloseWriter;
-import com.aoindustries.util.WrappedException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 

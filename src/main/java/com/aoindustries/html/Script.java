@@ -25,7 +25,6 @@ package com.aoindustries.html;
 import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaEncoder;
-import com.aoindustries.encoding.MediaException;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
@@ -36,6 +35,7 @@ import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.lang.Strings;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 /**
@@ -165,20 +165,12 @@ public class Script extends Element<Script> implements
 		return this;
 	}
 
-	protected MediaType getMediaType() throws IOException {
-		try {
-			return type == null ? MediaType.JAVASCRIPT : MediaType.getMediaTypeForContentType(type);
-		} catch(MediaException e) {
-			throw new IOException(e);
-		}
+	protected MediaType getMediaType() throws UnsupportedEncodingException {
+		return type == null ? MediaType.JAVASCRIPT : MediaType.getMediaTypeForContentType(type);
 	}
 
-	protected MediaEncoder getMediaEncoder(MediaType mediaType) throws IOException {
-		try {
-			return MediaEncoder.getInstance(html.encodingContext, mediaType, MediaType.XHTML);
-		} catch(MediaException e) {
-			throw new IOException(e);
-		}
+	protected MediaEncoder getMediaEncoder(MediaType mediaType) throws UnsupportedEncodingException {
+		return MediaEncoder.getInstance(html.encodingContext, mediaType, MediaType.XHTML);
 	}
 
 	@SuppressWarnings("deprecation")

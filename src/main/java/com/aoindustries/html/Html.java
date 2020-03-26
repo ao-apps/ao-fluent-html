@@ -26,6 +26,7 @@ import com.aoindustries.encoding.ChainWriter;
 import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.EncodingContext;
+import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
@@ -41,7 +42,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import com.aoindustries.encoding.MediaWritable;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -265,6 +265,8 @@ public class Html {
 			new NoCloseWriter(out)
 		);
 	}
+
+	// TODO: A set of out() methods that take MediaType and value
 
 	// TODO: comments
 

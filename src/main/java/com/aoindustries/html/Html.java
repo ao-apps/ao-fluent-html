@@ -266,6 +266,8 @@ public class Html {
 		);
 	}
 
+	// TODO: A set of per-type methods, like xml(), script(), style(), ...
+
 	// TODO: A set of out() methods that take MediaType and value
 
 	// TODO: comments

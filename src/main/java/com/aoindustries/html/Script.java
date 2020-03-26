@@ -29,6 +29,7 @@ import com.aoindustries.encoding.MediaException;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
+import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.ContentType;
@@ -174,7 +175,7 @@ public class Script extends Element<Script> implements
 
 	protected MediaEncoder getMediaEncoder(MediaType mediaType) throws IOException {
 		try {
-			return MediaEncoder.getInstance(null, mediaType, MediaType.XHTML);
+			return MediaEncoder.getInstance(html.encodingContext, mediaType, MediaType.XHTML);
 		} catch(MediaException e) {
 			throw new IOException(e);
 		}
@@ -263,6 +264,7 @@ public class Script extends Element<Script> implements
 			startBody();
 			script.writeScript(
 				new MediaWriter(
+					html.encodingContext,
 					encoder,
 					new NoCloseWriter(html.out)
 				)
@@ -279,7 +281,7 @@ public class Script extends Element<Script> implements
 	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
-		return new MediaWriter(encoder, html.out) {
+		return new MediaWriter(html.encodingContext, encoder, html.out) {
 			@Override
 			public void close() throws IOException {
 				__();

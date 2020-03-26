@@ -22,10 +22,13 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.ChainWriter;
 import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
+import com.aoindustries.encoding.EncodingContext;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
+import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.exception.WrappedException;
@@ -38,6 +41,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import com.aoindustries.encoding.MediaWritable;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -54,7 +58,10 @@ public class Html {
 	 */
 	public static final Charset ENCODING = StandardCharsets.UTF_8;
 
+	public final EncodingContext encodingContext;
+	// TODO: Remove this and just use encodingContext?
 	public final Serialization serialization;
+	// TODO: Remove this and just use encodingContext?
 	public final Doctype doctype;
 
 	/**
@@ -63,12 +70,59 @@ public class Html {
 	 * TODO: This field will possibly become "protected" (or deprecated to minimize direct usage) once the full set of HTML tags have been implemented.
 	 * </p>
 	 */
+
+	// TODO: Wrap this writer in XhtmlValidator if is not already validating XHTML?
+	// TODO:     If wrapping, consider uses of this losing access to this wrapping, such as NoCloseWriter
+
+	// TODO: Make this be a ChainWriter?  This might be incorrect as it would encourage using html.out instead of elements and attributes
 	public final Writer out;
 
-	public Html(Serialization serialization, Doctype doctype, Writer out) {
+	public Html(EncodingContext encodingContext, Serialization serialization, Doctype doctype, Writer out) {
+		this.encodingContext = encodingContext;
 		this.serialization = serialization;
 		this.doctype = doctype;
 		this.out = out;
+	}
+
+	public Html(Serialization serialization, Doctype doctype, Writer out) {
+		this(
+			new EncodingContext() {
+				@Override
+				public Serialization getSerialization() {
+					return serialization;
+				}
+				@Override
+				public Doctype getDoctype() {
+					return doctype;
+				}
+			},
+			serialization,
+			doctype,
+			out
+		);
+	}
+
+	public Html(EncodingContext encodingContext, Writer out) {
+		this(
+			encodingContext,
+			encodingContext.getSerialization(),
+			encodingContext.getDoctype(),
+			out
+		);
+	}
+
+	/**
+	 * @see  EncodingContext#DEFAULT
+	 */
+	public Html(Writer out) {
+		this(EncodingContext.DEFAULT, out);
+	}
+
+	/**
+	 * Unwraps the given chain writer.
+	 */
+	public Html(ChainWriter out) {
+		this(out.getEncodingContext(), out.getPrintWriter());
 	}
 
 	/**
@@ -103,16 +157,22 @@ public class Html {
 
 	/**
 	 * Writes the given text with proper encoding.
+	 * <p>
 	 * Does not perform any translation markups.
+	 * </p>
 	 */
 	public Html text(char ch) throws IOException {
 		encodeTextInXhtml(ch, out);
 		return this;
 	}
 
+	// TODO: codePoint?
+
 	/**
 	 * Writes the given text with proper encoding.
+	 * <p>
 	 * Does not perform any translation markups.
+	 * </p>
 	 */
 	public Html text(char[] cbuf) throws IOException {
 		encodeTextInXhtml(cbuf, out);
@@ -121,10 +181,12 @@ public class Html {
 
 	/**
 	 * Writes the given text with proper encoding.
+	 * <p>
 	 * Does not perform any translation markups.
+	 * </p>
 	 */
-	public Html text(char[] cbuf, int start, int len) throws IOException {
-		encodeTextInXhtml(cbuf, start, len, out);
+	public Html text(char[] cbuf, int offset, int len) throws IOException {
+		encodeTextInXhtml(cbuf, offset, len, out);
 		return this;
 	}
 
@@ -133,7 +195,9 @@ public class Html {
 
 	/**
 	 * Writes the given text with proper encoding.
+	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
+	 * </p>
 	 */
 	public Html text(Object text) throws IOException {
 		while(text instanceof Supplier<?,?>) {
@@ -148,9 +212,9 @@ public class Html {
 		if(text instanceof char[]) {
 			return text((char[])text);
 		}
-		if(text instanceof TextWriter) {
+		if(text instanceof MediaWritable) {
 			try {
-				return text((TextWriter<?>)text);
+				return text((MediaWritable<?>)text);
 			} catch(Error|RuntimeException|IOException e) {
 				throw e;
 			} catch(Throwable t) {
@@ -162,29 +226,41 @@ public class Html {
 		return this;
 	}
 
+	/**
+	 * Writes the given text with proper encoding.
+	 * <p>
+	 * Supports translation markup type {@link MarkupType#XHTML}.
+	 * </p>
+	 */
 	public <Ex extends Throwable> Html text(Supplier<?,Ex> text) throws IOException, Ex {
 		return text((text == null) ? null : text.get());
 	}
 
-	public <Ex extends Throwable> Html text(TextWriter<Ex> text) throws IOException, Ex {
+	/**
+	 * Writes the given text with proper encoding.
+	 * <p>
+	 * Does not perform any translation markups.
+	 * </p>
+	 */
+	public <Ex extends Throwable> Html text(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
-			text.writeText(
-				new MediaWriter(
-					textInXhtmlEncoder,
-					new NoCloseWriter(out)
-				)
-			);
+			text.writeTo(text());
 		}
 		return this;
 	}
 
 	/**
 	 * Writes the given text with proper encoding.
-	 * Does not perform any translation markups.
 	 * This is well suited for use in a try-with-resources block.
+	 * <p>
+	 * Does not perform any translation markups.
+	 * </p>
+	 *
+	 * @return  A new writer that may be used for arbitrary text
 	 */
 	public MediaWriter text() throws IOException {
 		return new MediaWriter(
+			encodingContext,
 			textInXhtmlEncoder,
 			new NoCloseWriter(out)
 		);
@@ -541,7 +617,7 @@ public class Html {
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 */
-		public <Ex extends Throwable> Html submit__(AttributeWriter<Ex> value) throws IOException, Ex {
+		public <Ex extends Throwable> Html submit__(MediaWritable<Ex> value) throws IOException, Ex {
 			return submit().value(value).__();
 		}
 

@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Supplier;
 import com.aoindustries.lang.Iterables;
 import java.io.IOException;
 

@@ -28,6 +28,7 @@ import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
+import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.exception.WrappedException;
@@ -211,6 +212,7 @@ public class Style extends Element<Style> implements
 			startBody();
 			style.writeStyle(
 				new MediaWriter(
+					html.encodingContext,
 					encoder,
 					new NoCloseWriter(html.out)
 				)
@@ -227,7 +229,7 @@ public class Style extends Element<Style> implements
 	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
-		return new MediaWriter(encoder, html.out) {
+		return new MediaWriter(html.encodingContext, encoder, html.out) {
 			@Override
 			public void close() throws IOException {
 				__();

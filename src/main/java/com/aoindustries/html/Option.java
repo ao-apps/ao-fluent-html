@@ -24,12 +24,14 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.MediaWriter;
+import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
+import com.aoindustries.encoding.MediaWritable;
 
 /**
  * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
@@ -103,7 +105,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option label(AttributeWriter<Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> Option label(MediaWritable<Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
 	}
 
@@ -133,9 +135,9 @@ public class Option extends Element<Option> implements
 				throw new WrappedException(t);
 			}
 		}
-		if(text instanceof TextWriter) {
+		if(text instanceof MediaWritable) {
 			try {
-				return text__((TextWriter<?>)text);
+				return text__((MediaWritable<?>)text);
 			} catch(Error|RuntimeException|IOException e) {
 				throw e;
 			} catch(Throwable t) {
@@ -154,11 +156,12 @@ public class Option extends Element<Option> implements
 		return text__((text == null) ? null : text.get());
 	}
 
-	public <Ex extends Throwable> Html text__(TextWriter<Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> Html text__(MediaWritable<Ex> text) throws IOException, Ex {
 		html.out.write('>');
 		if(text != null) {
-			text.writeText(
+			text.writeTo(
 				new MediaWriter(
+					html.encodingContext,
 					textInXhtmlEncoder,
 					new NoCloseWriter(html.out)
 				)
@@ -176,6 +179,7 @@ public class Option extends Element<Option> implements
 	public MediaWriter text__() throws IOException {
 		html.out.write('>');
 		return new MediaWriter(
+			html.encodingContext,
 			textInXhtmlEncoder,
 			html.out
 		) {

@@ -22,7 +22,6 @@
  */
 package com.aoindustries.html.util;
 
-import static com.aoindustries.encoding.TextInJavaScriptEncoder.encodeTextInJavaScript;
 import com.aoindustries.html.Html;
 import java.io.IOException;
 
@@ -43,11 +42,9 @@ public class ImagePreload {
 	 *             (not &amp;amp;)
 	 */
 	public static void writeImagePreloadScript(String url, Html html) throws IOException {
-		html.script().out(script -> {
-			script.write("  var img=new Image();\n"
-				+ "  img.src=\"");
-			encodeTextInJavaScript(url, script);
-			script.write("\";");
-		}).__();
+		html.script().out(script ->
+			script.append("  var img=new Image();\n"
+				+ "  img.src=").text(url).append(';')
+		).__();
 	}
 }

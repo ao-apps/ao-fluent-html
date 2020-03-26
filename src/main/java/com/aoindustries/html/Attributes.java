@@ -26,8 +26,10 @@ import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
 import com.aoindustries.encoding.MediaEncoder;
+import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
+import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.html.ApplicationResources.accessor;
@@ -975,7 +977,7 @@ public class Attributes {
 				 *
 				 * @see #onafterprint(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onafterprint(AttributeWriter<Ex> onafterprint) throws IOException, Ex {
+				default <Ex extends Throwable> E onafterprint(MediaWritable<Ex> onafterprint) throws IOException, Ex {
 					return onafterprint((Object)onafterprint);
 				}
 			}
@@ -1016,7 +1018,7 @@ public class Attributes {
 				 *
 				 * @see #onbeforeprint(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onbeforeprint(AttributeWriter<Ex> onbeforeprint) throws IOException, Ex {
+				default <Ex extends Throwable> E onbeforeprint(MediaWritable<Ex> onbeforeprint) throws IOException, Ex {
 					return onbeforeprint((Object)onbeforeprint);
 				}
 			}
@@ -1049,7 +1051,7 @@ public class Attributes {
 				 *
 				 * @see #onbeforeunload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onbeforeunload(AttributeWriter<Ex> onbeforeunload) throws IOException, Ex {
+				default <Ex extends Throwable> E onbeforeunload(MediaWritable<Ex> onbeforeunload) throws IOException, Ex {
 					return onbeforeunload((Object)onbeforeunload);
 				}
 			}
@@ -1094,7 +1096,7 @@ public class Attributes {
 				 *
 				 * @see #onerror(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onerror(AttributeWriter<Ex> onerror) throws IOException, Ex {
+				default <Ex extends Throwable> E onerror(MediaWritable<Ex> onerror) throws IOException, Ex {
 					return onerror((Object)onerror);
 				}
 			}
@@ -1135,7 +1137,7 @@ public class Attributes {
 				 *
 				 * @see #onhashchange(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onhashchange(AttributeWriter<Ex> onhashchange) throws IOException, Ex {
+				default <Ex extends Throwable> E onhashchange(MediaWritable<Ex> onhashchange) throws IOException, Ex {
 					return onhashchange((Object)onhashchange);
 				}
 			}
@@ -1168,7 +1170,7 @@ public class Attributes {
 				 *
 				 * @see #onload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onload(AttributeWriter<Ex> onload) throws IOException, Ex {
+				default <Ex extends Throwable> E onload(MediaWritable<Ex> onload) throws IOException, Ex {
 					return onload((Object)onload);
 				}
 			}
@@ -1209,7 +1211,7 @@ public class Attributes {
 				 *
 				 * @see #onmessage(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmessage(AttributeWriter<Ex> onmessage) throws IOException, Ex {
+				default <Ex extends Throwable> E onmessage(MediaWritable<Ex> onmessage) throws IOException, Ex {
 					return onmessage((Object)onmessage);
 				}
 			}
@@ -1250,7 +1252,7 @@ public class Attributes {
 				 *
 				 * @see #onoffline(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onoffline(AttributeWriter<Ex> onoffline) throws IOException, Ex {
+				default <Ex extends Throwable> E onoffline(MediaWritable<Ex> onoffline) throws IOException, Ex {
 					return onoffline((Object)onoffline);
 				}
 			}
@@ -1291,7 +1293,7 @@ public class Attributes {
 				 *
 				 * @see #ononline(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ononline(AttributeWriter<Ex> ononline) throws IOException, Ex {
+				default <Ex extends Throwable> E ononline(MediaWritable<Ex> ononline) throws IOException, Ex {
 					return ononline((Object)ononline);
 				}
 			}
@@ -1324,7 +1326,7 @@ public class Attributes {
 				 *
 				 * @see #onpagehide(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpagehide(AttributeWriter<Ex> onpagehide) throws IOException, Ex {
+				default <Ex extends Throwable> E onpagehide(MediaWritable<Ex> onpagehide) throws IOException, Ex {
 					return onpagehide((Object)onpagehide);
 				}
 			}
@@ -1357,7 +1359,7 @@ public class Attributes {
 				 *
 				 * @see #onpageshow(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpageshow(AttributeWriter<Ex> onpageshow) throws IOException, Ex {
+				default <Ex extends Throwable> E onpageshow(MediaWritable<Ex> onpageshow) throws IOException, Ex {
 					return onpageshow((Object)onpageshow);
 				}
 			}
@@ -1390,7 +1392,7 @@ public class Attributes {
 				 *
 				 * @see #onpopstate(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpopstate(AttributeWriter<Ex> onpopstate) throws IOException, Ex {
+				default <Ex extends Throwable> E onpopstate(MediaWritable<Ex> onpopstate) throws IOException, Ex {
 					return onpopstate((Object)onpopstate);
 				}
 			}
@@ -1431,7 +1433,7 @@ public class Attributes {
 				 *
 				 * @see #onresize(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onresize(AttributeWriter<Ex> onresize) throws IOException, Ex {
+				default <Ex extends Throwable> E onresize(MediaWritable<Ex> onresize) throws IOException, Ex {
 					return onresize((Object)onresize);
 				}
 			}
@@ -1464,7 +1466,7 @@ public class Attributes {
 				 *
 				 * @see #onstorage(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onstorage(AttributeWriter<Ex> onstorage) throws IOException, Ex {
+				default <Ex extends Throwable> E onstorage(MediaWritable<Ex> onstorage) throws IOException, Ex {
 					return onstorage((Object)onstorage);
 				}
 			}
@@ -1497,7 +1499,7 @@ public class Attributes {
 				 *
 				 * @see #onunload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onunload(AttributeWriter<Ex> onunload) throws IOException, Ex {
+				default <Ex extends Throwable> E onunload(MediaWritable<Ex> onunload) throws IOException, Ex {
 					return onunload((Object)onunload);
 				}
 			}
@@ -1536,7 +1538,7 @@ public class Attributes {
 				 *
 				 * @see #onblur(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onblur(AttributeWriter<Ex> onblur) throws IOException, Ex {
+				default <Ex extends Throwable> E onblur(MediaWritable<Ex> onblur) throws IOException, Ex {
 					return onblur((Object)onblur);
 				}
 			}
@@ -1570,7 +1572,7 @@ public class Attributes {
 				 *
 				 * @see #onchange(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onchange(AttributeWriter<Ex> onchange) throws IOException, Ex {
+				default <Ex extends Throwable> E onchange(MediaWritable<Ex> onchange) throws IOException, Ex {
 					return onchange((Object)onchange);
 				}
 			}
@@ -1611,7 +1613,7 @@ public class Attributes {
 				 *
 				 * @see #oncontextmenu(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncontextmenu(AttributeWriter<Ex> oncontextmenu) throws IOException, Ex {
+				default <Ex extends Throwable> E oncontextmenu(MediaWritable<Ex> oncontextmenu) throws IOException, Ex {
 					return oncontextmenu((Object)oncontextmenu);
 				}
 			}
@@ -1644,7 +1646,7 @@ public class Attributes {
 				 *
 				 * @see #onfocus(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onfocus(AttributeWriter<Ex> onfocus) throws IOException, Ex {
+				default <Ex extends Throwable> E onfocus(MediaWritable<Ex> onfocus) throws IOException, Ex {
 					return onfocus((Object)onfocus);
 				}
 			}
@@ -1686,7 +1688,7 @@ public class Attributes {
 				 *
 				 * @see #oninput(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oninput(AttributeWriter<Ex> oninput) throws IOException, Ex {
+				default <Ex extends Throwable> E oninput(MediaWritable<Ex> oninput) throws IOException, Ex {
 					return oninput((Object)oninput);
 				}
 			}
@@ -1719,7 +1721,7 @@ public class Attributes {
 				 *
 				 * @see #oninvalid(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oninvalid(AttributeWriter<Ex> oninvalid) throws IOException, Ex {
+				default <Ex extends Throwable> E oninvalid(MediaWritable<Ex> oninvalid) throws IOException, Ex {
 					return oninvalid((Object)oninvalid);
 				}
 			}
@@ -1760,7 +1762,7 @@ public class Attributes {
 				 *
 				 * @see #onreset(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onreset(AttributeWriter<Ex> onreset) throws IOException, Ex {
+				default <Ex extends Throwable> E onreset(MediaWritable<Ex> onreset) throws IOException, Ex {
 					return onreset((Object)onreset);
 				}
 			}
@@ -1794,7 +1796,7 @@ public class Attributes {
 				 *
 				 * @see #onsearch(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onsearch(AttributeWriter<Ex> onsearch) throws IOException, Ex {
+				default <Ex extends Throwable> E onsearch(MediaWritable<Ex> onsearch) throws IOException, Ex {
 					return onsearch((Object)onsearch);
 				}
 			}
@@ -1829,7 +1831,7 @@ public class Attributes {
 				 *
 				 * @see #onselect(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onselect(AttributeWriter<Ex> onselect) throws IOException, Ex {
+				default <Ex extends Throwable> E onselect(MediaWritable<Ex> onselect) throws IOException, Ex {
 					return onselect((Object)onselect);
 				}
 			}
@@ -1866,7 +1868,7 @@ public class Attributes {
 				 *
 				 * @see #onsubmit(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onsubmit(AttributeWriter<Ex> onsubmit) throws IOException, Ex {
+				default <Ex extends Throwable> E onsubmit(MediaWritable<Ex> onsubmit) throws IOException, Ex {
 					return onsubmit((Object)onsubmit);
 				}
 			}
@@ -1931,7 +1933,7 @@ public class Attributes {
 				 *
 				 * @see #onkeydown(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeydown(AttributeWriter<Ex> onkeydown) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeydown(MediaWritable<Ex> onkeydown) throws IOException, Ex {
 					return onkeydown((Object)onkeydown);
 				}
 			}
@@ -1964,7 +1966,7 @@ public class Attributes {
 				 *
 				 * @see #onkeypress(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeypress(AttributeWriter<Ex> onkeypress) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeypress(MediaWritable<Ex> onkeypress) throws IOException, Ex {
 					return onkeypress((Object)onkeypress);
 				}
 			}
@@ -1997,7 +1999,7 @@ public class Attributes {
 				 *
 				 * @see #onkeyup(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeyup(AttributeWriter<Ex> onkeyup) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeyup(MediaWritable<Ex> onkeyup) throws IOException, Ex {
 					return onkeyup((Object)onkeyup);
 				}
 			}
@@ -2051,7 +2053,7 @@ public class Attributes {
 				 *
 				 * @see #onclick(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onclick(AttributeWriter<Ex> onclick) throws IOException, Ex {
+				default <Ex extends Throwable> E onclick(MediaWritable<Ex> onclick) throws IOException, Ex {
 					return onclick((Object)onclick);
 				}
 			}
@@ -2084,7 +2086,7 @@ public class Attributes {
 				 *
 				 * @see #ondblclick(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondblclick(AttributeWriter<Ex> ondblclick) throws IOException, Ex {
+				default <Ex extends Throwable> E ondblclick(MediaWritable<Ex> ondblclick) throws IOException, Ex {
 					return ondblclick((Object)ondblclick);
 				}
 			}
@@ -2117,7 +2119,7 @@ public class Attributes {
 				 *
 				 * @see #onmousedown(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmousedown(AttributeWriter<Ex> onmousedown) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousedown(MediaWritable<Ex> onmousedown) throws IOException, Ex {
 					return onmousedown((Object)onmousedown);
 				}
 			}
@@ -2153,7 +2155,7 @@ public class Attributes {
 				 *
 				 * @see #onmousemove(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmousemove(AttributeWriter<Ex> onmousemove) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousemove(MediaWritable<Ex> onmousemove) throws IOException, Ex {
 					return onmousemove((Object)onmousemove);
 				}
 			}
@@ -2186,7 +2188,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseout(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseout(AttributeWriter<Ex> onmouseout) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseout(MediaWritable<Ex> onmouseout) throws IOException, Ex {
 					return onmouseout((Object)onmouseout);
 				}
 			}
@@ -2219,7 +2221,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseover(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseover(AttributeWriter<Ex> onmouseover) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseover(MediaWritable<Ex> onmouseover) throws IOException, Ex {
 					return onmouseover((Object)onmouseover);
 				}
 			}
@@ -2252,7 +2254,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseup(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseup(AttributeWriter<Ex> onmouseup) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseup(MediaWritable<Ex> onmouseup) throws IOException, Ex {
 					return onmouseup((Object)onmouseup);
 				}
 			}
@@ -2294,10 +2296,10 @@ public class Attributes {
 				 *
 				 * @see #onmousewheel(java.lang.Object)
 				 *
-				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.AttributeWriter) onwheel} attribute instead.
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.encoding.MediaWritable) onwheel} attribute instead.
 				 */
 				@Deprecated
-				default <Ex extends Throwable> E onmousewheel(AttributeWriter<Ex> onmousewheel) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousewheel(MediaWritable<Ex> onmousewheel) throws IOException, Ex {
 					return onmousewheel((Object)onmousewheel);
 				}
 			}
@@ -2338,7 +2340,7 @@ public class Attributes {
 				 *
 				 * @see #onwheel(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onwheel(AttributeWriter<Ex> onwheel) throws IOException, Ex {
+				default <Ex extends Throwable> E onwheel(MediaWritable<Ex> onwheel) throws IOException, Ex {
 					return onwheel((Object)onwheel);
 				}
 			}
@@ -2414,7 +2416,7 @@ public class Attributes {
 				 *
 				 * @see #ondrag(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondrag(AttributeWriter<Ex> ondrag) throws IOException, Ex {
+				default <Ex extends Throwable> E ondrag(MediaWritable<Ex> ondrag) throws IOException, Ex {
 					return ondrag((Object)ondrag);
 				}
 			}
@@ -2455,7 +2457,7 @@ public class Attributes {
 				 *
 				 * @see #ondragend(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragend(AttributeWriter<Ex> ondragend) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragend(MediaWritable<Ex> ondragend) throws IOException, Ex {
 					return ondragend((Object)ondragend);
 				}
 			}
@@ -2496,7 +2498,7 @@ public class Attributes {
 				 *
 				 * @see #ondragenter(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragenter(AttributeWriter<Ex> ondragenter) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragenter(MediaWritable<Ex> ondragenter) throws IOException, Ex {
 					return ondragenter((Object)ondragenter);
 				}
 			}
@@ -2539,7 +2541,7 @@ public class Attributes {
 				 *
 				 * @see #ondragleave(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragleave(AttributeWriter<Ex> ondragleave) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragleave(MediaWritable<Ex> ondragleave) throws IOException, Ex {
 					return ondragleave((Object)ondragleave);
 				}
 			}
@@ -2580,7 +2582,7 @@ public class Attributes {
 				 *
 				 * @see #ondragover(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragover(AttributeWriter<Ex> ondragover) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragover(MediaWritable<Ex> ondragover) throws IOException, Ex {
 					return ondragover((Object)ondragover);
 				}
 			}
@@ -2621,7 +2623,7 @@ public class Attributes {
 				 *
 				 * @see #ondragstart(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragstart(AttributeWriter<Ex> ondragstart) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragstart(MediaWritable<Ex> ondragstart) throws IOException, Ex {
 					return ondragstart((Object)ondragstart);
 				}
 			}
@@ -2662,7 +2664,7 @@ public class Attributes {
 				 *
 				 * @see #ondrop(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondrop(AttributeWriter<Ex> ondrop) throws IOException, Ex {
+				default <Ex extends Throwable> E ondrop(MediaWritable<Ex> ondrop) throws IOException, Ex {
 					return ondrop((Object)ondrop);
 				}
 			}
@@ -2703,7 +2705,7 @@ public class Attributes {
 				 *
 				 * @see #onscroll(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onscroll(AttributeWriter<Ex> onscroll) throws IOException, Ex {
+				default <Ex extends Throwable> E onscroll(MediaWritable<Ex> onscroll) throws IOException, Ex {
 					return onscroll((Object)onscroll);
 				}
 			}
@@ -2757,7 +2759,7 @@ public class Attributes {
 				 *
 				 * @see #oncopy(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncopy(AttributeWriter<Ex> oncopy) throws IOException, Ex {
+				default <Ex extends Throwable> E oncopy(MediaWritable<Ex> oncopy) throws IOException, Ex {
 					return oncopy((Object)oncopy);
 				}
 			}
@@ -2790,7 +2792,7 @@ public class Attributes {
 				 *
 				 * @see #oncut(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncut(AttributeWriter<Ex> oncut) throws IOException, Ex {
+				default <Ex extends Throwable> E oncut(MediaWritable<Ex> oncut) throws IOException, Ex {
 					return oncut((Object)oncut);
 				}
 			}
@@ -2823,7 +2825,7 @@ public class Attributes {
 				 *
 				 * @see #onpaste(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpaste(AttributeWriter<Ex> onpaste) throws IOException, Ex {
+				default <Ex extends Throwable> E onpaste(MediaWritable<Ex> onpaste) throws IOException, Ex {
 					return onpaste((Object)onpaste);
 				}
 			}
@@ -2877,7 +2879,7 @@ public class Attributes {
 				 *
 				 * @see #onabort(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onabort(AttributeWriter<Ex> onabort) throws IOException, Ex {
+				default <Ex extends Throwable> E onabort(MediaWritable<Ex> onabort) throws IOException, Ex {
 					return onabort((Object)onabort);
 				}
 			}
@@ -4415,14 +4417,14 @@ public class Attributes {
 				value = supplier.get();
 			}
 			if(value != null) {
-				if(value instanceof AttributeWriter<?>) {
+				if(value instanceof MediaWritable<?>) {
 					@SuppressWarnings("unchecked")
-					AttributeWriter<Ex> writer = (AttributeWriter<Ex>)value;
+					MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
 					element.html.out.write(' ');
 					element.html.out.write(name);
 					element.html.out.write("=\"");
-					writer.writeAttribute(
-						new MediaWriter(encoder, element.html.out) {
+					writer.writeTo(
+						new MediaWriter(element.html.encodingContext, encoder, element.html.out) {
 							@Override
 							public void close() throws IOException {
 								// Do not close underlying writer
@@ -4500,7 +4502,7 @@ public class Attributes {
 			 * @deprecated  Please implement specific attributes as-needed
 			 */
 			@Deprecated
-			default <Ex extends Throwable> E attribute(java.lang.String name, AttributeWriter<Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E attribute(java.lang.String name, MediaWritable<Ex> value) throws IOException, Ex {
 				return attribute(name, (Object)value);
 			}
 		}
@@ -4533,7 +4535,7 @@ public class Attributes {
 			 *
 			 * @see #accept(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E accept(AttributeWriter<Ex> accept) throws IOException, Ex {
+			default <Ex extends Throwable> E accept(MediaWritable<Ex> accept) throws IOException, Ex {
 				return accept((Object)accept);
 			}
 		}
@@ -4566,7 +4568,7 @@ public class Attributes {
 			 *
 			 * @see #alt(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E alt(AttributeWriter<Ex> alt) throws IOException, Ex {
+			default <Ex extends Throwable> E alt(MediaWritable<Ex> alt) throws IOException, Ex {
 				return alt((Object)alt);
 			}
 		}
@@ -4611,7 +4613,7 @@ public class Attributes {
 			 *
 			 * @see #clazz(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E clazz(AttributeWriter<Ex> clazz) throws IOException, Ex {
+			default <Ex extends Throwable> E clazz(MediaWritable<Ex> clazz) throws IOException, Ex {
 				return clazz((Object)clazz);
 			}
 		}
@@ -4676,7 +4678,7 @@ public class Attributes {
 			 * @see #clazz(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E clazz(AttributeWriter<Ex> clazz) throws IOException, Ex {
+			default <Ex extends Throwable> E clazz(MediaWritable<Ex> clazz) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4718,7 +4720,7 @@ public class Attributes {
 			 *
 			 * @see #content(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E content(AttributeWriter<Ex> content) throws IOException, Ex {
+			default <Ex extends Throwable> E content(MediaWritable<Ex> content) throws IOException, Ex {
 				return content((Object)content);
 			}
 		}
@@ -4763,7 +4765,7 @@ public class Attributes {
 			 *
 			 * @see #id(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E id(AttributeWriter<Ex> id) throws IOException, Ex {
+			default <Ex extends Throwable> E id(MediaWritable<Ex> id) throws IOException, Ex {
 				return id((Object)id);
 			}
 		}
@@ -4828,7 +4830,7 @@ public class Attributes {
 			 * @see #id(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E id(AttributeWriter<Ex> id) throws IOException, Ex {
+			default <Ex extends Throwable> E id(MediaWritable<Ex> id) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4870,7 +4872,7 @@ public class Attributes {
 			 *
 			 * @see #label(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E label(AttributeWriter<Ex> label) throws IOException, Ex {
+			default <Ex extends Throwable> E label(MediaWritable<Ex> label) throws IOException, Ex {
 				return label((Object)label);
 			}
 		}
@@ -4919,7 +4921,7 @@ public class Attributes {
 			 *
 			 * @see #list(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E list(AttributeWriter<Ex> list) throws IOException, Ex {
+			default <Ex extends Throwable> E list(MediaWritable<Ex> list) throws IOException, Ex {
 				return list((Object)list);
 			}
 		}
@@ -4953,7 +4955,7 @@ public class Attributes {
 			 *
 			 * @see #media(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E media(AttributeWriter<Ex> media) throws IOException, Ex {
+			default <Ex extends Throwable> E media(MediaWritable<Ex> media) throws IOException, Ex {
 				return media((Object)media);
 			}
 		}
@@ -4987,7 +4989,7 @@ public class Attributes {
 			 *
 			 * @see #name(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E name(AttributeWriter<Ex> name) throws IOException, Ex {
+			default <Ex extends Throwable> E name(MediaWritable<Ex> name) throws IOException, Ex {
 				return name((Object)name);
 			}
 		}
@@ -5028,7 +5030,7 @@ public class Attributes {
 			 *
 			 * @see #placeholder(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E placeholder(AttributeWriter<Ex> placeholder) throws IOException, Ex {
+			default <Ex extends Throwable> E placeholder(MediaWritable<Ex> placeholder) throws IOException, Ex {
 				return placeholder((Object)placeholder);
 			}
 		}
@@ -5075,7 +5077,7 @@ public class Attributes {
 			 *
 			 * @see #style(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E style(AttributeWriter<Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E style(MediaWritable<Ex> style) throws IOException, Ex {
 				return style((Object)style);
 			}
 		}
@@ -5140,7 +5142,7 @@ public class Attributes {
 			 * @see #style(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E style(AttributeWriter<Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E style(MediaWritable<Ex> style) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5194,7 +5196,7 @@ public class Attributes {
 			 *
 			 * @see #title(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E title(AttributeWriter<Ex> title) throws IOException, Ex {
+			default <Ex extends Throwable> E title(MediaWritable<Ex> title) throws IOException, Ex {
 				return title((Object)title);
 			}
 		}
@@ -5259,7 +5261,7 @@ public class Attributes {
 			 * @see #title(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E title(AttributeWriter<Ex> title) throws IOException, Ex {
+			default <Ex extends Throwable> E title(MediaWritable<Ex> title) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5302,7 +5304,7 @@ public class Attributes {
 			 *
 			 * @see #value(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E value(AttributeWriter<Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E value(MediaWritable<Ex> value) throws IOException, Ex {
 				return value((Object)value);
 			}
 		}

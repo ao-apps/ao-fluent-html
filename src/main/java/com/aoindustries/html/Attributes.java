@@ -3184,6 +3184,7 @@ public class Attributes {
 		 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
 		 * </ul>
 		 */
+		// TODO: Support java Charset, too
 		public static interface Charset<
 			E extends Element<E> & Charset<E,V>,
 			V extends java.lang.Enum<V> & EnumSupplier
@@ -4579,6 +4580,7 @@ public class Attributes {
 		 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 		 * </blockquote>
 		 */
+		// TODO: Move to String?
 		public static interface Class<E extends Element<E> & Class<E>> {
 
 			/**
@@ -4703,6 +4705,7 @@ public class Attributes {
 			@Funnel
 			default E content(Object content) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
+				// TODO: Might be able to perform markup for some types of content (keywords, description, ...)?
 				return attribute(element, "content", MarkupType.NONE, content, false, false, textInXhtmlAttributeEncoder);
 			}
 
@@ -4731,6 +4734,7 @@ public class Attributes {
 		 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 		 * </blockquote>
 		 */
+		// TODO: Move to String?
 		public static interface Id<E extends Element<E> & Id<E>> {
 
 			/**

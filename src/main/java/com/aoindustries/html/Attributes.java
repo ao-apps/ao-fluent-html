@@ -3479,6 +3479,7 @@ public class Attributes {
 			@Funnel
 			default E name(java.lang.String name) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
+				// TODO: Is nullIfEmpty correct?  Is an empty name ever valid?
 				return String.attribute(element, "name", MarkupType.NONE, name, true, true);
 			}
 

@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2019-10-28T07:26:00-0500"
+		dateModified="2020-03-26T20:43:16-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-fluent-html:pom.version}" />
@@ -52,22 +52,31 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>New project for fluent Java DSL for high-performance HTML generation.</li>
-					<li>New class <ao:a href="apidocs/com/aoindustries/html/Html.html">Html</ao:a>:
-						<ol>
-							<li>
-								New functionality derived from methods and constants moved from
-								<ao:a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/HtmlTag.html">HtmlTag</ao:a>.
-							</li>
-						</ol>
-					</li>
-					<li>New class <code>Serialization</code> representing HTML/XHTML differences.</li>
-					<li>Now supports writing XML declaration when both serving as XHTML and response encoding is not <code>UTF-8</code>.</li>
-					<li>Now selects HTML or XHTML doctype based on current <code>Serialization</code>.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="0.1.0"
+			datePublished="2020-03-26T20:43:16-05:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>New project for fluent Java DSL for high-performance HTML generation.</li>
+				<li>New class <ao:a href="apidocs/com/aoindustries/html/Html.html">Html</ao:a>:
+					<ol>
+						<li>
+							New functionality derived from methods and constants moved from
+							<ao:a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/HtmlTag.html">HtmlTag</ao:a>.
+						</li>
+					</ol>
+				</li>
+				<li>New class <code>Serialization</code> representing HTML/XHTML differences.</li>
+				<li>Now supports writing XML declaration when both serving as XHTML and response encoding is not <code>UTF-8</code>.</li>
+				<li>Now selects HTML or XHTML doctype based on current <code>Serialization</code>.</li>
+			</ul>
+		</changelog:release>
 	</core:page>
 </jsp:root>

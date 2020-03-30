@@ -47,7 +47,6 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	<inceptionYear>2019</inceptionYear>
 
 	<scm>
-		<!-- Can't inherit due to multi-module -->
 		<connection>scm:git:git://github.com/aoindustries/ao-fluent-html.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/ao-fluent-html.git</developerConnection>
 		<url>https://github.com/aoindustries/ao-fluent-html</url>

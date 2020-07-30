@@ -3405,6 +3405,95 @@ public class Attributes {
 
 		/**
 		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
+		 * </ul>
+		 */
+		public static interface Dir<
+			E extends Element<E>, // TODO: How to use from Global?  Remove others?  & Dir<E,V>,
+			V extends java.lang.Enum<V> & EnumSupplier
+		> {
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
+			 * </ul>
+			 */
+			@Funnel
+			default E dir(java.lang.String dir) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return String.attribute(element, "dir", MarkupType.NONE, dir, true, true);
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E dir(Suppliers.String<Ex> dir) throws IOException, Ex {
+				return dir((dir == null) ? null : dir.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
+			 * </ul>
+			 */
+			default E dir(V dir) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return dir((dir == null) ? null : dir.get(element.html.serialization, element.html.doctype));
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
+			 * </ul>
+			 */
+			@SuppressWarnings("overloads")
+			default <Ex extends Throwable> E dir(Supplier<? extends V,Ex> dir) throws IOException, Ex {
+				return dir((dir== null) ? (V)null : dir.get());
+			}
+
+			/**
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
+			 * </ul>
+			 */
+			public enum Value implements EnumSupplier {
+				LTR("ltr"),
+				RTL("rtl"),
+				AUTO("auto");
+
+				private final java.lang.String value;
+
+				private Value(java.lang.String value) {
+					this.value = value;
+				}
+
+				@Override
+				public java.lang.String toString() {
+					return value;
+				}
+
+				@Override
+				public java.lang.String get(Serialization serialization, Doctype doctype) {
+					return value;
+				}
+
+				public java.lang.String getValue() {
+					return value;
+				}
+			}
+		}
+
+		/**
+		 * <ul>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_http-equiv.asp">HTML http-equiv Attribute</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_meta_http_equiv.asp">HTML meta http-equiv Attribute</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
@@ -5397,7 +5486,7 @@ public class Attributes {
 		// TODO: contextmenu (deprecated)
 		// TODO: data-* (like Text.Attribute, but automatically adds "data-"? https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*
 		//                                                                    https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
-		// TODO: dir
+		Enum.Dir<E,Enum.Dir.Value>,
 		// TODO: draggable
 		// TODO: dropzone (experimental)
 		// TODO: exportparts (experimental)

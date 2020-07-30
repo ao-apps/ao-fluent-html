@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2020-03-26T20:43:16-05:00"
+		dateModified="2020-07-30T18:27:59-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-fluent-html:pom.version}" />
@@ -52,7 +52,11 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Added <ao:a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">global attribute <code>dir</code></ao:a>.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release

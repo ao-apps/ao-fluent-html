@@ -3415,6 +3415,20 @@ public class Attributes {
 		> {
 
 			/**
+			 * Normalizes a dir attribute.
+			 *
+			 * @see  Strings#trimNullIfEmpty(java.lang.String)
+			 * @see  java.lang.String#toLowerCase(java.util.Locale)
+			 * @see  Locale#ROOT
+			 */
+			// TODO: Normalize other attributes the same way
+			public static java.lang.String normalize(java.lang.String dir) {
+				dir = Strings.trimNullIfEmpty(dir);
+				if(dir != null) dir = dir.toLowerCase(Locale.ROOT);
+				return dir;
+			}
+
+			/**
 			 * <ul>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
@@ -3423,7 +3437,7 @@ public class Attributes {
 			@Funnel
 			default E dir(java.lang.String dir) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return String.attribute(element, "dir", MarkupType.NONE, dir, true, true);
+				return String.attribute(element, "dir", MarkupType.NONE, normalize(dir), false, false);
 			}
 
 			/**

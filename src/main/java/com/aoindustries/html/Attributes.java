@@ -3489,6 +3489,22 @@ public class Attributes {
 				public java.lang.String getValue() {
 					return value;
 				}
+
+				private static final Value[] values = values();
+
+				/**
+				 * Gets the enum by value, case-sensitive.
+				 *
+				 * @return  The enum or {@code null} when not found.
+				 */
+				public static Value getByValue(java.lang.String dir) {
+					if(dir != null) {
+						for(Value value : values) {
+							if(value.value.equals(dir)) return value;
+						}
+					}
+					return null;
+				}
 			}
 		}
 

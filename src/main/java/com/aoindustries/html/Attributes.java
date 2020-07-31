@@ -36,6 +36,9 @@ import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
+import com.aoindustries.validation.InvalidResult;
+import com.aoindustries.validation.ValidResult;
+import com.aoindustries.validation.ValidationResult;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -3426,6 +3429,27 @@ public class Attributes {
 				dir = Strings.trimNullIfEmpty(dir);
 				if(dir != null) dir = dir.toLowerCase(Locale.ROOT);
 				return dir;
+			}
+
+			/**
+			 * Validates a dir attribute.
+			 * The value should already be {@linkplain #normalize(java.lang.String) normalized}.
+			 *
+			 * @see #normalize(java.lang.String)
+			 */
+			public static ValidationResult validate(java.lang.String dir) {
+				if(
+					dir != null
+					&& Attributes.Enum.Dir.Value.getByValue(dir) == null
+				) {
+					return new InvalidResult(
+						ApplicationResources.accessor,
+						"Attributes.Enum.Dir.invalid",
+						dir
+					);
+				} else {
+					return ValidResult.getInstance();
+				}
 			}
 
 			/**

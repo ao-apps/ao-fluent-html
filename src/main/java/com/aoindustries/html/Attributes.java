@@ -5186,7 +5186,8 @@ public class Attributes {
 							);
 						}
 					}
-					return ValidResult.getInstance();
+					// Must also convert into a valid data-* HTML attribute name
+					return data.validate(toAttrName(jsName));
 				}
 
 				/**

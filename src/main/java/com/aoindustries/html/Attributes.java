@@ -4645,6 +4645,7 @@ public class Attributes {
 						// Empty attribute
 						element.html.out.write(' ');
 						element.html.out.write(name);
+						// TODO: When serialization is XML, set equal to attribute name or empty?
 					} else {
 						if(trim) {
 							if(nullIfEmpty) {

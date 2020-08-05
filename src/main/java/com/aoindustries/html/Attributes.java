@@ -5091,9 +5091,18 @@ public class Attributes {
 			@Funnel
 			default E data(java.lang.String attrName, Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
+				validate(attrName, data::validate);
+				if(element.html.doctype != Doctype.HTML5) {
+					throw new LocalizedIllegalArgumentException(
+						accessor,
+						"Attributes.onlySupportedInHtml5",
+						element.html.doctype,
+						attrName
+					);
+				}
 				return attribute(
 					element,
-					validate(attrName, data::validate),
+					attrName,
 					MarkupType.NONE,
 					value,
 					false,

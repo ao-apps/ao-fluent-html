@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2020-07-30T18:27:59-05:00"
+		dateModified="2020-08-05T01:34:41-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-fluent-html:pom.version}" />
@@ -55,6 +55,10 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			>
 				<ul>
 					<li>Added <ao:a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">global attribute <code>dir</code></ao:a>.</li>
+					<li>
+						Added <ao:a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">global attribute <code>data-*</code></ao:a>,
+						with implementations for both HTML attribute and JavaScript property names.
+					</li>
 				</ul>
 			</changelog:release>
 		</c:if>

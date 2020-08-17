@@ -5358,6 +5358,7 @@ public class Attributes {
 			@Override
 			@Funnel
 			default E id(Object id) throws IOException {
+				// TODO: normalize, then only throw when non-empty/null.  Here and other attributes.
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(

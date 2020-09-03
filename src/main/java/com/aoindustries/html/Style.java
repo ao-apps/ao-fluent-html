@@ -161,6 +161,7 @@ public class Style extends Element<Style> implements
 
 	// TODO: Out parameter with MediaType, that automatically picks the encoder
 	// TODO: Separate "Write" for direct writing (no encoding)?
+	@SuppressWarnings("UseSpecificCatch")
 	public Style out(Object style) throws IOException {
 		while(style instanceof Supplier<?,?>) {
 			try {

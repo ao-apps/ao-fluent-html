@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Coercion;
+import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
@@ -31,7 +32,6 @@ import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
-import com.aoindustries.encoding.MediaWritable;
 
 /**
  * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
@@ -125,6 +125,7 @@ public class Option extends Element<Option> implements
 	 * Writes the text body and closes the tag.
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 */
+	@SuppressWarnings("UseSpecificCatch")
 	public Html text__(Object text) throws IOException {
 		while(text instanceof Supplier<?,?>) {
 			try {

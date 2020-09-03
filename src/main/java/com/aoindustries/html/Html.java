@@ -199,6 +199,7 @@ public class Html {
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
 	 */
+	@SuppressWarnings("UseSpecificCatch")
 	public Html text(Object text) throws IOException {
 		while(text instanceof Supplier<?,?>) {
 			try {

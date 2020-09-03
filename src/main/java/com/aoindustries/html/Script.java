@@ -201,6 +201,7 @@ public class Script extends Element<Script> implements
 	// TODO:     Setting attributes after startBody() would create invalid HTML.
 	// TODO:     Similar for "text", too.
 	// TODO: Interface for "out" with default methods? (Another for "text", too)
+	@SuppressWarnings("UseSpecificCatch")
 	public Script out(Object script) throws IOException {
 		while(script instanceof Supplier<?,?>) {
 			try {

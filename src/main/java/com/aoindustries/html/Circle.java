@@ -94,37 +94,37 @@ public class Circle implements Shape, Serializable {
 	}
 
 	@Override
-    public int hashCode() {
+	public int hashCode() {
 		int hash = x;
 		hash = hash * 37 + y;
 		hash = hash * 43 + radius;
 		return hash;
-    }
+	}
 
 	@Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj instanceof Circle) {
-            Circle c = (Circle) obj;
-            return
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+		if (obj instanceof Circle) {
+			Circle c = (Circle) obj;
+			return
 				getX() == c.getX()
 				&& getY() == c.getY()
 				&& getRadius() == c.getRadius();
-        }
-        return false;
-    }
+		}
+		return false;
+	}
 
-    /**
-     * Returns a <code>String</code> representing this <code>Circle</code> and its values.
+	/**
+	 * Returns a <code>String</code> representing this <code>Circle</code> and its values.
 	 *
-     * @return a <code>String</code> representing this <code>Circle</code> object's coordinate and radius values.
-     */
+	 * @return a <code>String</code> representing this <code>Circle</code> object's coordinate and radius values.
+	 */
 	@Override
-    public String toString() {
-        return getClass().getName() + "[x=" + x + ",y=" + y + ",radius=" + radius + "]";
-    }
+	public String toString() {
+		return getClass().getName() + "[x=" + x + ",y=" + y + ",radius=" + radius + "]";
+	}
 
 	public Ellipse2D getEllipse() {
 		return ellipse;

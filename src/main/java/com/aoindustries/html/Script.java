@@ -206,7 +206,7 @@ public class Script extends Element<Script> implements
 		while(script instanceof Supplier<?,?>) {
 			try {
 				script = ((Supplier<?,?>)script).get();
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);
@@ -215,7 +215,7 @@ public class Script extends Element<Script> implements
 		if(script instanceof ScriptWriter) {
 			try {
 				return out((ScriptWriter<?>)script);
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);

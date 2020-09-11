@@ -130,7 +130,7 @@ public class Option extends Element<Option> implements
 		while(text instanceof Supplier<?,?>) {
 			try {
 				text = ((Supplier<?,?>)text).get();
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);
@@ -139,7 +139,7 @@ public class Option extends Element<Option> implements
 		if(text instanceof MediaWritable) {
 			try {
 				return text__((MediaWritable<?>)text);
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);

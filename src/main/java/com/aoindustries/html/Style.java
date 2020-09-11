@@ -166,7 +166,7 @@ public class Style extends Element<Style> implements
 		while(style instanceof Supplier<?,?>) {
 			try {
 				style = ((Supplier<?,?>)style).get();
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);
@@ -175,7 +175,7 @@ public class Style extends Element<Style> implements
 		if(style instanceof StyleWriter) {
 			try {
 				return out((StyleWriter<?>)style);
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);

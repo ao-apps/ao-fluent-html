@@ -204,7 +204,7 @@ public class Html {
 		while(text instanceof Supplier<?,?>) {
 			try {
 				text = ((Supplier<?,?>)text).get();
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);
@@ -216,7 +216,7 @@ public class Html {
 		if(text instanceof MediaWritable) {
 			try {
 				return text((MediaWritable<?>)text);
-			} catch(Error|RuntimeException|IOException e) {
+			} catch(Error | RuntimeException | IOException e) {
 				throw e;
 			} catch(Throwable t) {
 				throw new WrappedException(t);

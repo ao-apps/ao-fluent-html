@@ -30,10 +30,10 @@ import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
-import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.lang.Strings;
+import com.aoindustries.lang.Throwables;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
@@ -206,19 +206,15 @@ public class Script extends Element<Script> implements
 		while(script instanceof Supplier<?,?>) {
 			try {
 				script = ((Supplier<?,?>)script).get();
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		if(script instanceof ScriptWriter) {
 			try {
 				return out((ScriptWriter<?>)script);
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		script = Coercion.nullIfEmpty(script);

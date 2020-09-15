@@ -32,8 +32,8 @@ import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
-import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupType;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -204,10 +204,8 @@ public class Html {
 		while(text instanceof Supplier<?,?>) {
 			try {
 				text = ((Supplier<?,?>)text).get();
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		if(text instanceof char[]) {
@@ -216,10 +214,8 @@ public class Html {
 		if(text instanceof MediaWritable) {
 			try {
 				return text((MediaWritable<?>)text);
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		// Allow text markup from translations

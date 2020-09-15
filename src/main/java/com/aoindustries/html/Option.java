@@ -28,8 +28,8 @@ import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
-import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
@@ -130,19 +130,15 @@ public class Option extends Element<Option> implements
 		while(text instanceof Supplier<?,?>) {
 			try {
 				text = ((Supplier<?,?>)text).get();
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		if(text instanceof MediaWritable) {
 			try {
 				return text__((MediaWritable<?>)text);
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		html.out.write('>');

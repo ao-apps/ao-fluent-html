@@ -31,10 +31,10 @@ import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
-import com.aoindustries.exception.WrappedException;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.lang.Strings;
+import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.util.Locale;
@@ -166,19 +166,15 @@ public class Style extends Element<Style> implements
 		while(style instanceof Supplier<?,?>) {
 			try {
 				style = ((Supplier<?,?>)style).get();
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		if(style instanceof StyleWriter) {
 			try {
 				return out((StyleWriter<?>)style);
-			} catch(Error | RuntimeException | IOException e) {
-				throw e;
 			} catch(Throwable t) {
-				throw new WrappedException(t);
+				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
 		style = Coercion.nullIfEmpty(style);

@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.collections.AoCollections;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
@@ -32,7 +33,6 @@ import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -336,7 +336,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 
 			private static final Type[] values = values();
-			private static final Map<String,Type> byLowerValue = new HashMap<>(values.length*4/3+1);
+			private static final Map<String,Type> byLowerValue = AoCollections.newHashMap(values.length);
 			static {
 				for(Type type : values) {
 					if(!type.value.equals(type.value.toLowerCase(Locale.ROOT))) throw new AssertionError("Values must be lowercase as looked-up later");

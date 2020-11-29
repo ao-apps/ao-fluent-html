@@ -4170,8 +4170,6 @@ public class Attributes {
 		public static interface SizeHtml4Only<E extends Element<E> & SizeHtml4Only<E>> extends Size<E> {
 
 			/**
-			 * {@inheritDoc}
-			 *
 			 * @deprecated  Not supported in HTML5.
 			 */
 			@Deprecated
@@ -4190,8 +4188,6 @@ public class Attributes {
 			}
 
 			/**
-			 * {@inheritDoc}
-			 *
 			 * @deprecated  Not supported in HTML5.
 			 */
 			@Deprecated
@@ -4210,8 +4206,6 @@ public class Attributes {
 			}
 
 			/**
-			 * {@inheritDoc}
-			 *
 			 * @see #size(java.lang.Integer)
 			 *
 			 * @deprecated  Not supported in HTML5.

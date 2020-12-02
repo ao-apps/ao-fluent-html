@@ -221,10 +221,6 @@ public class Script extends Element<Script> implements
 		if(script != null) {
 			startBody();
 			// Allow text markup from translations
-			// TODO: writeWithMarkup appropriate for capturedBody?
-			// TODO: I think this would only work with SegmentedBuffer with a single segment
-			// TODO: We might need a special case in CharArrayWriter if we want this identity match for a single string
-			// TODO: Set back to SegmentedBuffer, if this is the case
 			MediaType mediaType = getMediaType();
 			Coercion.write(
 				script,

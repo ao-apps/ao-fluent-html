@@ -27,11 +27,11 @@ import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
+import com.aoindustries.util.i18n.Resources;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
@@ -71,6 +71,8 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	Attributes.Event.AlmostGlobal<E>,
 	Attributes.Event.Form.Oninvalid<E>
 {
+
+	private static final Resources RESOURCES = Resources.getResources(Input.class);
 
 	public Input(Html html) {
 		super(html);
@@ -361,7 +363,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				}
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
-						accessor,
+						RESOURCES,
 						"Html.duplicateAttribute",
 						"input",
 						"type",
@@ -385,7 +387,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			if(type != null) {
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
-						accessor,
+						RESOURCES,
 						"Html.duplicateAttribute",
 						"input",
 						"type",
@@ -397,7 +399,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				Doctype requiredDoctype = type.getRequiredDoctype();
 				if(requiredDoctype != null && html.doctype != requiredDoctype) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Input.typeRequiresDoctype",
 						type.value,
 						requiredDoctype,
@@ -506,7 +508,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"color"
@@ -578,7 +580,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"date"
@@ -652,7 +654,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"datetime-local"
@@ -731,7 +733,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"email"
@@ -967,7 +969,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"month"
@@ -1042,7 +1044,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"number"
@@ -1228,7 +1230,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"range"
@@ -1342,7 +1344,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"search"
@@ -1501,7 +1503,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"tel"
@@ -1609,7 +1611,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"time"
@@ -1686,7 +1688,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"url"
@@ -1765,7 +1767,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			super(html);
 			if(html.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Input.typeOnlySupportedInHtml5",
 					html.doctype,
 					"week"

@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2020-11-17T23:35:17-06:00"
+		dateModified="2020-12-01T13:31:44-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-fluent-html:pom.version}" />
@@ -52,7 +52,14 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			/>
+			>
+				<ul>
+					<li>
+						Split development-only classes into a new sub-project in <code>devel/</code>.  This
+						sub-project is used development only and is never deployed to artifact repositories.
+					</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release

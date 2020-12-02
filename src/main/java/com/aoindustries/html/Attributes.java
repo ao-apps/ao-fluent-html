@@ -32,10 +32,10 @@ import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
+import com.aoindustries.util.i18n.Resources;
 import com.aoindustries.validation.InvalidResult;
 import com.aoindustries.validation.ValidResult;
 import com.aoindustries.validation.ValidationResult;
@@ -59,6 +59,8 @@ import java.util.function.Function;
  */
 // TODO: Review which attributes should be trimmed and/or nullIfEmpty
 public class Attributes {
+
+	private static final Resources RESOURCES = Resources.getResources(Attributes.class);
 
 	/** Make no instances. */
 	private Attributes() {}
@@ -104,7 +106,7 @@ public class Attributes {
 			if(validationResult instanceof InvalidResult) {
 				InvalidResult invalidResult = (InvalidResult)validationResult;
 				throw new LocalizedIllegalArgumentException(
-					invalidResult.getAccessor(),
+					invalidResult.getResources(),
 					invalidResult.getKey(),
 					invalidResult.getArgs()
 				);
@@ -194,7 +196,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"autofocus"
@@ -367,7 +369,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"multiple"
@@ -414,7 +416,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"noshade"
 					);
@@ -769,7 +771,7 @@ public class Attributes {
 				if(shape instanceof Circle) return coords((Circle)shape);
 				if(shape instanceof Polygon) return coords((Polygon)shape);
 				throw new LocalizedIllegalArgumentException(
-					accessor,
+					RESOURCES,
 					"Attributes.Dimension.Coords.unexpectedShape",
 					java.awt.Shape.class.getName(),
 					"coords",
@@ -872,7 +874,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"width"
 					);
@@ -892,7 +894,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"width"
 					);
@@ -912,7 +914,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"width"
 					);
@@ -932,7 +934,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"width"
 					);
@@ -954,7 +956,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"width"
 					);
@@ -994,7 +996,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onafterprint"
@@ -1035,7 +1037,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onbeforeprint"
@@ -1154,7 +1156,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onhashchange"
@@ -1228,7 +1230,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onmessage"
@@ -1269,7 +1271,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onoffline"
@@ -1310,7 +1312,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ononline"
@@ -1450,7 +1452,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onresize"
@@ -1630,7 +1632,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"oncontextmenu"
@@ -1705,7 +1707,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"oninput"
@@ -1779,7 +1781,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onreset"
@@ -2357,7 +2359,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onwheel"
@@ -2433,7 +2435,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondrag"
@@ -2474,7 +2476,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragend"
@@ -2515,7 +2517,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragenter"
@@ -2558,7 +2560,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragleave"
@@ -2599,7 +2601,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragover"
@@ -2640,7 +2642,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragstart"
@@ -2681,7 +2683,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"ondrop"
@@ -2722,7 +2724,7 @@ public class Attributes {
 					@SuppressWarnings("unchecked") E element = (E)this;
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.onlySupportedInHtml5",
 							element.html.doctype,
 							"onscroll"
@@ -3021,7 +3023,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"align"
 					);
@@ -3093,7 +3095,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"autocomplete"
@@ -3150,7 +3152,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"autocomplete"
@@ -3190,7 +3192,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"autocomplete"
@@ -3242,7 +3244,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"charset"
@@ -3491,7 +3493,7 @@ public class Attributes {
 						&& Attributes.Enum.Dir.Value.getByValue(dir) == null
 					) {
 						return new InvalidResult(
-							ApplicationResources.accessor,
+							RESOURCES,
 							"Attributes.Enum.Dir.invalid",
 							dir
 						);
@@ -3884,7 +3886,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"valign"
 					);
@@ -4008,7 +4010,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"height"
@@ -4029,7 +4031,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"height"
@@ -4051,7 +4053,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"height"
@@ -4179,7 +4181,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"size"
 					);
@@ -4197,7 +4199,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"size"
 					);
@@ -4216,7 +4218,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.notSupportedInHtml5",
 						"size"
 					);
@@ -4277,7 +4279,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"tabindex"
@@ -4297,7 +4299,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"tabindex"
@@ -4420,7 +4422,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"width"
@@ -4441,7 +4443,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"width"
@@ -4463,7 +4465,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"width"
@@ -4842,7 +4844,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"class"
@@ -4864,7 +4866,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"class"
@@ -4886,7 +4888,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"class"
@@ -4968,11 +4970,11 @@ public class Attributes {
 				 */
 				public static ValidationResult validate(java.lang.String attrName) {
 					if(attrName == null) {
-						return new InvalidResult(accessor, "Attributes.Text.Data.data.validate.isNull");
+						return new InvalidResult(RESOURCES, "Attributes.Text.Data.data.validate.isNull");
 					}
 					if(!attrName.startsWith(ATTRIBUTE_PREFIX)) {
 						return new InvalidResult(
-							accessor,
+							RESOURCES,
 							"Attributes.Text.Data.data.validate.invalidStart",
 							ATTRIBUTE_PREFIX,
 							attrName
@@ -4983,7 +4985,7 @@ public class Attributes {
 					// The * may be replaced by any name following the production rule of XML names:
 					if(!XmlUtils.isValidName(attrName, pos, len)) {
 						return new InvalidResult(
-							accessor,
+							RESOURCES,
 							"Attributes.Text.Data.data.validate.notFollowedByValidName",
 							ATTRIBUTE_PREFIX,
 							attrName
@@ -4997,7 +4999,7 @@ public class Attributes {
 						char ch = attrName.charAt(pos++);
 						if(ch >= 'A' && ch <= 'Z') {
 							return new InvalidResult(
-								accessor,
+								RESOURCES,
 								"Attributes.Text.Data.data.validate.mayNotContainCapitalLetters",
 								attrName
 							);
@@ -5006,7 +5008,7 @@ public class Attributes {
 					// the name must not start with xml, whatever case is used for these letters:
 					if(attrName.regionMatches(ATTRIBUTE_PREFIX.length(), "xml", 0, 3)) {
 						return new InvalidResult(
-							accessor,
+							RESOURCES,
 							"Attributes.Text.Data.data.validate.mayNotStartXml",
 							ATTRIBUTE_PREFIX,
 							attrName
@@ -5042,7 +5044,7 @@ public class Attributes {
 				private static java.lang.String toJSNameNoAssert(java.lang.String attrName) {
 					if(!attrName.startsWith(ATTRIBUTE_PREFIX)) {
 						throw new LocalizedIllegalArgumentException(
-							accessor,
+							RESOURCES,
 							"Attributes.Text.Data.data.validate.invalidStart",
 							ATTRIBUTE_PREFIX,
 							attrName
@@ -5089,7 +5091,7 @@ public class Attributes {
 				validate(attrName, data::validate);
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						attrName
@@ -5158,7 +5160,7 @@ public class Attributes {
 				 */
 				public static ValidationResult validate(java.lang.String jsName) {
 					if(jsName == null) {
-						return new InvalidResult(accessor, "Attributes.Text.Data.dataset.validate.isNull");
+						return new InvalidResult(RESOURCES, "Attributes.Text.Data.dataset.validate.isNull");
 					}
 					// 1. Restriction: Before the transformation, a dash must not be immediately followed by
 					//    an ASCII lowercase letter a to z
@@ -5175,7 +5177,7 @@ public class Attributes {
 						char nextChar = jsName.charAt(pos);
 						if(nextChar >= 'a' && nextChar <= 'z') {
 							return new InvalidResult(
-								accessor,
+								RESOURCES,
 								"Attributes.Text.Data.dataset.validate.dashThenLower",
 								jsName
 							);
@@ -5356,7 +5358,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"id"
@@ -5378,7 +5380,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"id"
@@ -5400,7 +5402,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"id"
@@ -5460,7 +5462,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"list"
@@ -5573,7 +5575,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.onlySupportedInHtml5",
 						element.html.doctype,
 						"placeholder"
@@ -5668,7 +5670,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"style"
@@ -5690,7 +5692,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"style"
@@ -5712,7 +5714,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"style"
@@ -5787,7 +5789,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"title"
@@ -5809,7 +5811,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"title"
@@ -5831,7 +5833,7 @@ public class Attributes {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
-						accessor,
+						RESOURCES,
 						"Attributes.invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"title"

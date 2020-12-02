@@ -28,11 +28,11 @@ import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import static com.aoindustries.html.ApplicationResources.accessor;
 import com.aoindustries.html.Style.Type;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
+import com.aoindustries.util.i18n.Resources;
 import java.io.IOException;
 
 /**
@@ -60,6 +60,8 @@ public class Link extends EmptyElement<Link> implements
 	Attributes.Event.Window.Onerror<Link>,
 	Attributes.Event.Window.Onload<Link>
 {
+
+	private static final Resources RESOURCES = Resources.getResources(Link.class);
 
 	public Link(Html html) {
 		super(html);
@@ -123,7 +125,7 @@ public class Link extends EmptyElement<Link> implements
 		if(itemprop != null) {
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(
-					accessor,
+					RESOURCES,
 					"Html.duplicateAttribute",
 					"link",
 					"itemprop",
@@ -134,7 +136,7 @@ public class Link extends EmptyElement<Link> implements
 			this.itemprop = itemprop;
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
-					accessor,
+					RESOURCES,
 					"Item.relOrItemprop"
 				);
 			}
@@ -257,7 +259,7 @@ public class Link extends EmptyElement<Link> implements
 		if(rel != null) {
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
-					accessor,
+					RESOURCES,
 					"Html.duplicateAttribute",
 					"link",
 					"rel",
@@ -268,7 +270,7 @@ public class Link extends EmptyElement<Link> implements
 			this.rel = rel;
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(
-					accessor,
+					RESOURCES,
 					"Item.relOrItemprop"
 				);
 			}
@@ -379,7 +381,7 @@ public class Link extends EmptyElement<Link> implements
 		super.__();
 		if(rel == null && itemprop == null) {
 			throw new LocalizedIllegalStateException(
-				accessor,
+				RESOURCES,
 				"Item.relOrItemprop"
 			);
 		}

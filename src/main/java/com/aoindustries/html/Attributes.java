@@ -75,6 +75,7 @@ public class Attributes {
 	 * compared by identity, not by value.
 	 * </p>
 	 */
+	@SuppressWarnings("RedundantStringConstructorCall")
 	public static final java.lang.String NO_VALUE = new java.lang.String("<<<NO_VALUE>>>"); // Use string constructor to ensure unique instance for identity comparisons
 
 	/**
@@ -1933,6 +1934,7 @@ public class Attributes {
 			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Form Events</a>.
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
 			 */
+			@SuppressWarnings("MarkerInterface")
 			public static interface Global<E extends Element<E> & Global<E>> extends
 				Oncontextmenu<E>
 				// TODO: onautocomplete
@@ -3161,15 +3163,15 @@ public class Attributes {
 				if(autocomplete != null) {
 					boolean didOne = false;
 					for(java.lang.String value : autocomplete) {
-						value = Strings.trimNullIfEmpty(value);
-						if(value != null) {
+						java.lang.String trimmed = Strings.trimNullIfEmpty(value);
+						if(trimmed != null) {
 							if(!didOne) {
 								element.html.out.write(" autocomplete=\"");
 								didOne = true;
 							} else {
 								element.html.out.write(' ');
 							}
-							encodeTextInXhtmlAttribute(value, element.html.out);
+							encodeTextInXhtmlAttribute(trimmed, element.html.out);
 						}
 					}
 					if(didOne) element.html.out.write('"');
@@ -4488,6 +4490,7 @@ public class Attributes {
 		 * @param value  If is {@link #NO_VALUE} (by identity), will write empty attribute.
 		 */
 		// TODO: Remove trim and nullIfEmpty once all attributes have normalize methods
+		@SuppressWarnings("StringEquality")
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
 				if(value == NO_VALUE) { // Identity comparison for marker value
@@ -4504,7 +4507,7 @@ public class Attributes {
 							// Short-cut additional type checks done by Coercion, since we already have a String
 							encodeTextInXhtmlAttribute(value, element.html.out);
 						} else {
-							Coercion.write(value, markupType, textInXhtmlAttributeEncoder, false, element.html.out);
+							Coercion.write(value, markupType, true, textInXhtmlAttributeEncoder, false, element.html.out);
 						}
 						element.html.out.write('"');
 					}
@@ -4656,7 +4659,7 @@ public class Attributes {
 							element.html.out.write(' ');
 							element.html.out.write(name);
 							element.html.out.write("=\"");
-							Coercion.write(value, markupType, encoder, false, element.html.out);
+							Coercion.write(value, markupType, true, encoder, false, element.html.out);
 							element.html.out.write('"');
 						}
 					}

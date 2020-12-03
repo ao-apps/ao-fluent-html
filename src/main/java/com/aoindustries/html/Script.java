@@ -225,6 +225,7 @@ public class Script extends Element<Script> implements
 			Coercion.write(
 				script,
 				mediaType.getMarkupType(),
+				true,
 				getMediaEncoder(mediaType),
 				false,
 				html.out

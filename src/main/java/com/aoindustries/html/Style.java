@@ -142,6 +142,7 @@ public class Style extends Element<Style> implements
 
 	protected MediaEncoder getMediaEncoder(MediaType mediaType) throws IOException {
 		// TODO: This is in a CDATA context, is this the correct way?  Probably not, but how to protect close CDATA ]]>?
+		// TODO: Make CSS a fully-supported MediaType, then so this similar to Script.java
 		return textInXhtmlEncoder;
 	}
 
@@ -181,11 +182,13 @@ public class Style extends Element<Style> implements
 		if(style != null) {
 			startBody();
 			// Allow text markup from translations
+			MediaType mediaType = getMediaType();
 			Coercion.write(
 				style,
-				// TODO: Compatible, but better to make an explicit value for MarkupType.CSS: mediaType.getMarkupType()
-				MarkupType.JAVASCRIPT,
-				getMediaEncoder(getMediaType()),
+				// TODO: Find and fix other uses of MarkupType.JAVASCRIPT that should be CSS
+				MarkupType.CSS,// TODO: Once CSS is a full-on media type: mediaType.getMarkupType(),
+				true,
+				getMediaEncoder(mediaType),
 				false,
 				html.out
 			);

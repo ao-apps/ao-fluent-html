@@ -219,7 +219,7 @@ public class Html {
 			}
 		}
 		// Allow text markup from translations
-		Coercion.write(text, MarkupType.XHTML, textInXhtmlEncoder, false, out);
+		Coercion.write(text, MarkupType.XHTML, false, textInXhtmlEncoder, false, out);
 		return this;
 	}
 

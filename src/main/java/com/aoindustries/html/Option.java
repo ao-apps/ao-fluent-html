@@ -144,7 +144,7 @@ public class Option extends Element<Option> implements
 		html.out.write('>');
 		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 		// Allow text markup from translations
-		Coercion.write(text, MarkupType.TEXT, textInXhtmlEncoder, false, html.out);
+		Coercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, html.out);
 		html.out.write("</option>");
 		return html;
 	}

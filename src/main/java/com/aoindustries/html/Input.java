@@ -31,7 +31,7 @@ import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
-import com.aoindustries.util.i18n.Resources;
+import com.aoindustries.i18n.Resources;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
@@ -72,7 +72,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	Attributes.Event.Form.Oninvalid<E>
 {
 
-	private static final Resources RESOURCES = Resources.getResources(Input.class);
+	private static final Resources RESOURCES = Resources.getResources(Input.class.getPackage());
 
 	public Input(Html html) {
 		super(html);

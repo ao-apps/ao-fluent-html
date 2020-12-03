@@ -29,10 +29,10 @@ import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.html.Style.Type;
+import com.aoindustries.i18n.Resources;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
-import com.aoindustries.util.i18n.Resources;
 import java.io.IOException;
 
 /**
@@ -61,7 +61,7 @@ public class Link extends EmptyElement<Link> implements
 	Attributes.Event.Window.Onload<Link>
 {
 
-	private static final Resources RESOURCES = Resources.getResources(Link.class);
+	private static final Resources RESOURCES = Resources.getResources(Link.class.getPackage());
 
 	public Link(Html html) {
 		super(html);

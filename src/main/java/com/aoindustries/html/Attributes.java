@@ -35,7 +35,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlA
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
-import com.aoindustries.util.i18n.Resources;
+import com.aoindustries.i18n.Resources;
 import com.aoindustries.validation.InvalidResult;
 import com.aoindustries.validation.ValidResult;
 import com.aoindustries.validation.ValidationResult;
@@ -60,7 +60,7 @@ import java.util.function.Function;
 // TODO: Review which attributes should be trimmed and/or nullIfEmpty
 public class Attributes {
 
-	private static final Resources RESOURCES = Resources.getResources(Attributes.class);
+	private static final Resources RESOURCES = Resources.getResources(Attributes.class.getPackage());
 
 	/** Make no instances. */
 	private Attributes() {}

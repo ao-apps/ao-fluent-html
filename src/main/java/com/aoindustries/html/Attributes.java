@@ -60,7 +60,7 @@ import java.util.function.Function;
 // TODO: Review which attributes should be trimmed and/or nullIfEmpty
 public class Attributes {
 
-	private static final Resources RESOURCES = Resources.getResources(Attributes.class.getPackage());
+	private static final Resources RESOURCES = Resources.getResources(Attributes.class);
 
 	/** Make no instances. */
 	private Attributes() {}
@@ -198,7 +198,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"autofocus"
 					);
@@ -371,7 +371,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"multiple"
 					);
@@ -418,7 +418,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"noshade"
 					);
 				}
@@ -773,7 +773,7 @@ public class Attributes {
 				if(shape instanceof Polygon) return coords((Polygon)shape);
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
-					"Attributes.Dimension.Coords.unexpectedShape",
+					"Dimension.Coords.unexpectedShape",
 					java.awt.Shape.class.getName(),
 					"coords",
 					java.awt.Rectangle.class.getName(),
@@ -876,7 +876,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"width"
 					);
 				}
@@ -896,7 +896,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"width"
 					);
 				}
@@ -916,7 +916,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"width"
 					);
 				}
@@ -936,7 +936,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"width"
 					);
 				}
@@ -958,7 +958,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"width"
 					);
 				}
@@ -998,7 +998,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onafterprint"
 						);
@@ -1039,7 +1039,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onbeforeprint"
 						);
@@ -1158,7 +1158,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onhashchange"
 						);
@@ -1232,7 +1232,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onmessage"
 						);
@@ -1273,7 +1273,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onoffline"
 						);
@@ -1314,7 +1314,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ononline"
 						);
@@ -1454,7 +1454,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onresize"
 						);
@@ -1634,7 +1634,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"oncontextmenu"
 						);
@@ -1709,7 +1709,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"oninput"
 						);
@@ -1783,7 +1783,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onreset"
 						);
@@ -2362,7 +2362,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onwheel"
 						);
@@ -2438,7 +2438,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondrag"
 						);
@@ -2479,7 +2479,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragend"
 						);
@@ -2520,7 +2520,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragenter"
 						);
@@ -2563,7 +2563,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragleave"
 						);
@@ -2604,7 +2604,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragover"
 						);
@@ -2645,7 +2645,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondragstart"
 						);
@@ -2686,7 +2686,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"ondrop"
 						);
@@ -2727,7 +2727,7 @@ public class Attributes {
 					if(element.html.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.onlySupportedInHtml5",
+							"onlySupportedInHtml5",
 							element.html.doctype,
 							"onscroll"
 						);
@@ -3026,7 +3026,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"align"
 					);
 				}
@@ -3098,7 +3098,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"autocomplete"
 					);
@@ -3155,7 +3155,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"autocomplete"
 					);
@@ -3195,7 +3195,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"autocomplete"
 					);
@@ -3247,7 +3247,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"charset"
 					);
@@ -3496,7 +3496,7 @@ public class Attributes {
 					) {
 						return new InvalidResult(
 							RESOURCES,
-							"Attributes.Enum.Dir.invalid",
+							"Enum.Dir.invalid",
 							dir
 						);
 					} else {
@@ -3889,7 +3889,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"valign"
 					);
 				}
@@ -4013,7 +4013,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"height"
 					);
@@ -4034,7 +4034,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"height"
 					);
@@ -4056,7 +4056,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"height"
 					);
@@ -4184,7 +4184,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"size"
 					);
 				}
@@ -4202,7 +4202,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"size"
 					);
 				}
@@ -4221,7 +4221,7 @@ public class Attributes {
 				if(element.html.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.notSupportedInHtml5",
+						"notSupportedInHtml5",
 						"size"
 					);
 				}
@@ -4282,7 +4282,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"tabindex"
 					);
@@ -4302,7 +4302,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"tabindex"
 					);
@@ -4425,7 +4425,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"width"
 					);
@@ -4446,7 +4446,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"width"
 					);
@@ -4468,7 +4468,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"width"
 					);
@@ -4848,7 +4848,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"class"
 					);
@@ -4870,7 +4870,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"class"
 					);
@@ -4892,7 +4892,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"class"
 					);
@@ -4973,12 +4973,12 @@ public class Attributes {
 				 */
 				public static ValidationResult validate(java.lang.String attrName) {
 					if(attrName == null) {
-						return new InvalidResult(RESOURCES, "Attributes.Text.Data.data.validate.isNull");
+						return new InvalidResult(RESOURCES, "Text.Data.data.validate.isNull");
 					}
 					if(!attrName.startsWith(ATTRIBUTE_PREFIX)) {
 						return new InvalidResult(
 							RESOURCES,
-							"Attributes.Text.Data.data.validate.invalidStart",
+							"Text.Data.data.validate.invalidStart",
 							ATTRIBUTE_PREFIX,
 							attrName
 						);
@@ -4989,7 +4989,7 @@ public class Attributes {
 					if(!XmlUtils.isValidName(attrName, pos, len)) {
 						return new InvalidResult(
 							RESOURCES,
-							"Attributes.Text.Data.data.validate.notFollowedByValidName",
+							"Text.Data.data.validate.notFollowedByValidName",
 							ATTRIBUTE_PREFIX,
 							attrName
 						);
@@ -5003,7 +5003,7 @@ public class Attributes {
 						if(ch >= 'A' && ch <= 'Z') {
 							return new InvalidResult(
 								RESOURCES,
-								"Attributes.Text.Data.data.validate.mayNotContainCapitalLetters",
+								"Text.Data.data.validate.mayNotContainCapitalLetters",
 								attrName
 							);
 						}
@@ -5012,7 +5012,7 @@ public class Attributes {
 					if(attrName.regionMatches(ATTRIBUTE_PREFIX.length(), "xml", 0, 3)) {
 						return new InvalidResult(
 							RESOURCES,
-							"Attributes.Text.Data.data.validate.mayNotStartXml",
+							"Text.Data.data.validate.mayNotStartXml",
 							ATTRIBUTE_PREFIX,
 							attrName
 						);
@@ -5048,7 +5048,7 @@ public class Attributes {
 					if(!attrName.startsWith(ATTRIBUTE_PREFIX)) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
-							"Attributes.Text.Data.data.validate.invalidStart",
+							"Text.Data.data.validate.invalidStart",
 							ATTRIBUTE_PREFIX,
 							attrName
 						);
@@ -5095,7 +5095,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						attrName
 					);
@@ -5163,7 +5163,7 @@ public class Attributes {
 				 */
 				public static ValidationResult validate(java.lang.String jsName) {
 					if(jsName == null) {
-						return new InvalidResult(RESOURCES, "Attributes.Text.Data.dataset.validate.isNull");
+						return new InvalidResult(RESOURCES, "Text.Data.dataset.validate.isNull");
 					}
 					// 1. Restriction: Before the transformation, a dash must not be immediately followed by
 					//    an ASCII lowercase letter a to z
@@ -5181,7 +5181,7 @@ public class Attributes {
 						if(nextChar >= 'a' && nextChar <= 'z') {
 							return new InvalidResult(
 								RESOURCES,
-								"Attributes.Text.Data.dataset.validate.dashThenLower",
+								"Text.Data.dataset.validate.dashThenLower",
 								jsName
 							);
 						}
@@ -5362,7 +5362,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"id"
 					);
@@ -5384,7 +5384,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"id"
 					);
@@ -5406,7 +5406,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"id"
 					);
@@ -5466,7 +5466,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"list"
 					);
@@ -5579,7 +5579,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.onlySupportedInHtml5",
+						"onlySupportedInHtml5",
 						element.html.doctype,
 						"placeholder"
 					);
@@ -5674,7 +5674,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"style"
 					);
@@ -5696,7 +5696,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"style"
 					);
@@ -5718,7 +5718,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"style"
 					);
@@ -5793,7 +5793,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"title"
 					);
@@ -5815,7 +5815,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"title"
 					);
@@ -5837,7 +5837,7 @@ public class Attributes {
 				if(element.html.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
-						"Attributes.invalidGlobalAttributeForDoctype",
+						"invalidGlobalAttributeForDoctype",
 						element.html.doctype,
 						"title"
 					);

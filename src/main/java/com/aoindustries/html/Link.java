@@ -29,7 +29,6 @@ import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.html.Style.Type;
-import com.aoindustries.i18n.Resources;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
@@ -61,7 +60,8 @@ public class Link extends EmptyElement<Link> implements
 	Attributes.Event.Window.Onload<Link>
 {
 
-	private static final Resources RESOURCES = Resources.getResources(Link.class.getPackage());
+	private static final com.aoindustries.i18n.Resources RESOURCES =
+		com.aoindustries.i18n.Resources.getResources(Link.class);
 
 	public Link(Html html) {
 		super(html);
@@ -125,7 +125,7 @@ public class Link extends EmptyElement<Link> implements
 		if(itemprop != null) {
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(
-					RESOURCES,
+					Resources.PACKAGE_RESOURCES,
 					"Html.duplicateAttribute",
 					"link",
 					"itemprop",
@@ -135,10 +135,7 @@ public class Link extends EmptyElement<Link> implements
 			}
 			this.itemprop = itemprop;
 			if(this.rel != null) {
-				throw new LocalizedIllegalStateException(
-					RESOURCES,
-					"Item.relOrItemprop"
-				);
+				throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 			}
 			html.out.write(" itemprop=\"");
 			Coercion.write(itemprop, textInXhtmlAttributeEncoder, html.out);
@@ -259,7 +256,7 @@ public class Link extends EmptyElement<Link> implements
 		if(rel != null) {
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
-					RESOURCES,
+					Resources.PACKAGE_RESOURCES,
 					"Html.duplicateAttribute",
 					"link",
 					"rel",
@@ -269,10 +266,7 @@ public class Link extends EmptyElement<Link> implements
 			}
 			this.rel = rel;
 			if(this.itemprop != null) {
-				throw new LocalizedIllegalStateException(
-					RESOURCES,
-					"Item.relOrItemprop"
-				);
+				throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 			}
 			Attributes.Enum.Rel.super.rel(rel);
 		}
@@ -380,10 +374,7 @@ public class Link extends EmptyElement<Link> implements
 		}
 		super.__();
 		if(rel == null && itemprop == null) {
-			throw new LocalizedIllegalStateException(
-				RESOURCES,
-				"Item.relOrItemprop"
-			);
+			throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 		}
 		return html;
 	}

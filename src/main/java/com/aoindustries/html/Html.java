@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -241,7 +241,9 @@ public class Html {
 	 */
 	public <Ex extends Throwable> Html text(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
-			text.writeTo(text());
+			try (MediaWriter out = text()) {
+				text.writeTo(out);
+			}
 		}
 		return this;
 	}

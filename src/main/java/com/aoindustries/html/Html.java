@@ -23,7 +23,6 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.ChainWriter;
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.EncodingContext;
 import com.aoindustries.encoding.MediaWritable;
@@ -34,6 +33,7 @@ import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.lang.Throwables;
+import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -219,7 +219,7 @@ public class Html {
 			}
 		}
 		// Allow text markup from translations
-		Coercion.write(text, MarkupType.XHTML, false, textInXhtmlEncoder, false, out);
+		MarkupCoercion.write(text, MarkupType.XHTML, false, textInXhtmlEncoder, false, out);
 		return this;
 	}
 
@@ -241,8 +241,8 @@ public class Html {
 	 */
 	public <Ex extends Throwable> Html text(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
-			try (MediaWriter out = text()) {
-				text.writeTo(out);
+			try (MediaWriter _out = text()) {
+				text.writeTo(_out);
 			}
 		}
 		return this;

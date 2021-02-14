@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
@@ -32,8 +31,10 @@ import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.lang.Throwables;
+import com.aoindustries.util.i18n.MarkupCoercion;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
@@ -222,7 +223,7 @@ public class Script extends Element<Script> implements
 			startBody();
 			// Allow text markup from translations
 			MediaType mediaType = getMediaType();
-			Coercion.write(
+			MarkupCoercion.write(
 				script,
 				mediaType.getMarkupType(),
 				true,

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.javaScriptInXhtmlAttributeEncoder;
 import com.aoindustries.encoding.MediaEncoder;
@@ -36,6 +35,8 @@ import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
 import com.aoindustries.i18n.Resources;
+import com.aoindustries.lang.Coercion;
+import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.validation.InvalidResult;
 import com.aoindustries.validation.ValidResult;
 import com.aoindustries.validation.ValidationResult;
@@ -4507,7 +4508,7 @@ public class Attributes {
 							// Short-cut additional type checks done by Coercion, since we already have a String
 							encodeTextInXhtmlAttribute(value, element.html.out);
 						} else {
-							Coercion.write(value, markupType, true, textInXhtmlAttributeEncoder, false, element.html.out);
+							MarkupCoercion.write(value, markupType, true, textInXhtmlAttributeEncoder, false, element.html.out);
 						}
 						element.html.out.write('"');
 					}
@@ -4659,7 +4660,7 @@ public class Attributes {
 							element.html.out.write(' ');
 							element.html.out.write(name);
 							element.html.out.write("=\"");
-							Coercion.write(value, markupType, true, encoder, false, element.html.out);
+							MarkupCoercion.write(value, markupType, true, encoder, false, element.html.out);
 							element.html.out.write('"');
 						}
 					}

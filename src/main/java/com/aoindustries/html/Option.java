@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Supplier;
@@ -30,6 +29,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlA
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.lang.Throwables;
+import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
@@ -144,7 +144,7 @@ public class Option extends Element<Option> implements
 		html.out.write('>');
 		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 		// Allow text markup from translations
-		Coercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, html.out);
+		MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, html.out);
 		html.out.write("</option>");
 		return html;
 	}

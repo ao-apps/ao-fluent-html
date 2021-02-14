@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
@@ -30,6 +29,7 @@ import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextIn
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.html.Style.Type;
 import com.aoindustries.io.ContentType;
+import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import java.io.IOException;

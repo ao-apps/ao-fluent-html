@@ -120,25 +120,25 @@ public class Script extends Element<Script> implements
 
 	private final String type;
 
-	public Script(Html html) {
-		super(html);
+	public Script(Document document) {
+		super(document);
 		this.type = null;
 	}
 
-	public Script(Html html, String type) {
-		super(html);
+	public Script(Document document, String type) {
+		super(document);
 		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public Script(Html html, Type type) {
-		super(html);
+	public Script(Document document, Type type) {
+		super(document);
 		this.type = (type == null) ? null : type.getContentType();
 	}
 
 	@Override
 	protected Script open() throws IOException {
-		html.out.write("<script");
+		document.out.write("<script");
 		Script s = type();
 		assert s == this;
 		return this;
@@ -157,11 +157,11 @@ public class Script extends Element<Script> implements
 			|| type.equals(ContentType.JAVASCRIPT)
 			|| type.equals(ContentType.JAVASCRIPT_OLD)
 		) {
-			html.doctype.scriptType(html.out);
+			document.doctype.scriptType(document.out);
 		} else {
-			html.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, html.out);
-			html.out.write('"');
+			document.out.write(" type=\"");
+			encodeTextInXhtmlAttribute(type, document.out);
+			document.out.write('"');
 		}
 		return this;
 	}
@@ -171,13 +171,13 @@ public class Script extends Element<Script> implements
 	}
 
 	protected MediaEncoder getMediaEncoder(MediaType mediaType) throws UnsupportedEncodingException {
-		return MediaEncoder.getInstance(html.encodingContext, mediaType, MediaType.XHTML);
+		return MediaEncoder.getInstance(document.encodingContext, mediaType, MediaType.XHTML);
 	}
 
 	@SuppressWarnings("deprecation")
 	protected boolean doCdata() {
 		return
-			html.serialization == Serialization.XML
+			document.serialization == Serialization.XML
 			&& (
 				type == null
 				|| type.equals(ContentType.JAVASCRIPT)
@@ -191,9 +191,9 @@ public class Script extends Element<Script> implements
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
-			html.out.write('>');
-			if(doCdata()) html.out.write("//<![CDATA[");
-			html.nl();
+			document.out.write('>');
+			if(doCdata()) document.out.write("//<![CDATA[");
+			document.nl();
 			didBody = true;
 		}
 	}
@@ -229,7 +229,7 @@ public class Script extends Element<Script> implements
 				true,
 				getMediaEncoder(mediaType),
 				false,
-				html.out
+				document.out
 			);
 		}
 		return this;
@@ -251,9 +251,9 @@ public class Script extends Element<Script> implements
 			startBody();
 			script.writeScript(
 				new MediaWriter(
-					html.encodingContext,
+					document.encodingContext,
 					encoder,
-					new NoCloseWriter(html.out)
+					new NoCloseWriter(document.out)
 				)
 			);
 		}
@@ -268,7 +268,7 @@ public class Script extends Element<Script> implements
 	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
-		return new MediaWriter(html.encodingContext, encoder, html.out) {
+		return new MediaWriter(document.encodingContext, encoder, document.out) {
 			@Override
 			public void close() throws IOException {
 				__();
@@ -276,14 +276,14 @@ public class Script extends Element<Script> implements
 		};
 	}
 
-	public Html __() throws IOException {
+	public Document __() throws IOException {
 		if(!didBody) {
-			html.out.write("></script>");
+			document.out.write("></script>");
 		} else {
-			html.nl();
-			if(doCdata()) html.out.write("//]]>");
-			html.out.write("</script>");
+			document.nl();
+			if(doCdata()) document.out.write("//]]>");
+			document.out.write("</script>");
 		}
-		return html;
+		return document;
 	}
 }

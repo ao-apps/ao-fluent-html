@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,13 +34,13 @@ public class Br extends EmptyElement<Br>
 	// Not on <br>: Attributes.Event.AlmostGlobal<Br>
 {
 
-	public Br(Html html) {
-		super(html);
+	public Br(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Br open() throws IOException {
-		html.out.write("<br");
+		document.out.write("<br");
 		return this;
 	}
 }

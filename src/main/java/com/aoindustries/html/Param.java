@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020  AO Industries, Inc.
+ * Copyright (C) 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -41,13 +41,13 @@ public class Param extends EmptyElement<Param> implements
 	// Not on <param>: Attributes.Event.AlmostGlobal<Param>
 {
 
-	public Param(Html html) {
-		super(html);
+	public Param(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Param open() throws IOException {
-		html.out.write("<param");
+		document.out.write("<param");
 		return this;
 	}
 

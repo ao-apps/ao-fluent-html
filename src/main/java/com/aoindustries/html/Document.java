@@ -51,7 +51,7 @@ import java.nio.charset.StandardCharsets;
  *
  * @author  AO Industries, Inc.
  */
-public class Html {
+public class Document {
 
 	/**
 	 * The default, and recommended, encoding for (X)HTML.
@@ -77,14 +77,14 @@ public class Html {
 	// TODO: Make this be a ChainWriter?  This might be incorrect as it would encourage using html.out instead of elements and attributes
 	public final Writer out;
 
-	public Html(EncodingContext encodingContext, Serialization serialization, Doctype doctype, Writer out) {
+	public Document(EncodingContext encodingContext, Serialization serialization, Doctype doctype, Writer out) {
 		this.encodingContext = encodingContext;
 		this.serialization = serialization;
 		this.doctype = doctype;
 		this.out = out;
 	}
 
-	public Html(Serialization serialization, Doctype doctype, Writer out) {
+	public Document(Serialization serialization, Doctype doctype, Writer out) {
 		this(
 			new EncodingContext() {
 				@Override
@@ -102,7 +102,7 @@ public class Html {
 		);
 	}
 
-	public Html(EncodingContext encodingContext, Writer out) {
+	public Document(EncodingContext encodingContext, Writer out) {
 		this(
 			encodingContext,
 			encodingContext.getSerialization(),
@@ -114,14 +114,14 @@ public class Html {
 	/**
 	 * @see  EncodingContext#DEFAULT
 	 */
-	public Html(Writer out) {
+	public Document(Writer out) {
 		this(EncodingContext.DEFAULT, out);
 	}
 
 	/**
 	 * Unwraps the given chain writer.
 	 */
-	public Html(ChainWriter out) {
+	public Document(ChainWriter out) {
 		this(out.getEncodingContext(), out.getPrintWriter());
 	}
 
@@ -129,7 +129,7 @@ public class Html {
 	 * @see Doctype#xmlDeclaration(com.aoindustries.encoding.Serialization, java.lang.String, java.lang.Appendable)
 	 */
 	// TODO: Define here only since depends on both serialization and doctype
-	public Html xmlDeclaration(String documentEncoding) throws IOException {
+	public Document xmlDeclaration(String documentEncoding) throws IOException {
 		doctype.xmlDeclaration(serialization, documentEncoding, out);
 		return this;
 	}
@@ -138,7 +138,7 @@ public class Html {
 	 * @see Doctype#doctype(com.aoindustries.encoding.Serialization, java.lang.Appendable)
 	 */
 	// TODO: Define here only since depends on both serialization and doctype
-	public Html doctype() throws IOException {
+	public Document doctype() throws IOException {
 		doctype.doctype(serialization, out);
 		return this;
 	}
@@ -150,7 +150,7 @@ public class Html {
 	 */
 	// TODO: Remove this method once no longer used
 	@Deprecated
-	public Html selfClose() throws IOException {
+	public Document selfClose() throws IOException {
 		serialization.selfClose(out);
 		return this;
 	}
@@ -161,7 +161,7 @@ public class Html {
 	 * Does not perform any translation markups.
 	 * </p>
 	 */
-	public Html text(char ch) throws IOException {
+	public Document text(char ch) throws IOException {
 		encodeTextInXhtml(ch, out);
 		return this;
 	}
@@ -174,7 +174,7 @@ public class Html {
 	 * Does not perform any translation markups.
 	 * </p>
 	 */
-	public Html text(char[] cbuf) throws IOException {
+	public Document text(char[] cbuf) throws IOException {
 		encodeTextInXhtml(cbuf, out);
 		return this;
 	}
@@ -185,7 +185,7 @@ public class Html {
 	 * Does not perform any translation markups.
 	 * </p>
 	 */
-	public Html text(char[] cbuf, int offset, int len) throws IOException {
+	public Document text(char[] cbuf, int offset, int len) throws IOException {
 		encodeTextInXhtml(cbuf, offset, len, out);
 		return this;
 	}
@@ -200,7 +200,7 @@ public class Html {
 	 * </p>
 	 */
 	@SuppressWarnings("UseSpecificCatch")
-	public Html text(Object text) throws IOException {
+	public Document text(Object text) throws IOException {
 		while(text instanceof Supplier<?,?>) {
 			try {
 				text = ((Supplier<?,?>)text).get();
@@ -229,7 +229,7 @@ public class Html {
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
 	 */
-	public <Ex extends Throwable> Html text(Supplier<?,Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> Document text(Supplier<?,Ex> text) throws IOException, Ex {
 		return text((text == null) ? null : text.get());
 	}
 
@@ -239,7 +239,7 @@ public class Html {
 	 * Does not perform any translation markups.
 	 * </p>
 	 */
-	public <Ex extends Throwable> Html text(MediaWritable<Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> Document text(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
 			try (MediaWriter _out = text()) {
 				text.writeTo(_out);
@@ -275,7 +275,7 @@ public class Html {
 	 * This is {@code '\n'} on all platforms.  If a different newline is required,
 	 * such as {@code "\r\n"} for email, filter the output.
 	 */
-	public Html nl() throws IOException {
+	public Document nl() throws IOException {
 		out.write('\n');
 		return this;
 	}
@@ -379,7 +379,7 @@ public class Html {
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.
 	 * See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.
 	 */
-	public Html base__(String href) throws IOException {
+	public Document base__(String href) throws IOException {
 		return base().href(href).__();
 	}
 
@@ -396,7 +396,7 @@ public class Html {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
 	 */
-	public Html br__() throws IOException {
+	public Document br__() throws IOException {
 		return br().__();
 	}
 
@@ -413,7 +413,7 @@ public class Html {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
 	 */
-	public Html hr__() throws IOException {
+	public Document hr__() throws IOException {
 		return hr().__();
 	}
 
@@ -475,136 +475,136 @@ public class Html {
 
 	public static class Input {
 
-		private final Html html;
+		private final Document document;
 
-		public Input(Html html) {
-			this.html = html;
+		public Input(Document document) {
+			this.document = document;
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.
 		 */
 		public com.aoindustries.html.Input.Button button() throws IOException {
-			return new com.aoindustries.html.Input.Button(html).open();
+			return new com.aoindustries.html.Input.Button(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.
 		 */
 		public com.aoindustries.html.Input.Checkbox checkbox() throws IOException {
-			return new com.aoindustries.html.Input.Checkbox(html).open();
+			return new com.aoindustries.html.Input.Checkbox(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
 		 */
 		public com.aoindustries.html.Input.Color color() throws IOException {
-			return new com.aoindustries.html.Input.Color(html).open();
+			return new com.aoindustries.html.Input.Color(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
 		 */
 		public com.aoindustries.html.Input.Date date() throws IOException {
-			return new com.aoindustries.html.Input.Date(html).open();
+			return new com.aoindustries.html.Input.Date(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
 		 */
 		public com.aoindustries.html.Input.DatetimeLocal datetimeLocal() throws IOException {
-			return new com.aoindustries.html.Input.DatetimeLocal(html).open();
+			return new com.aoindustries.html.Input.DatetimeLocal(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
 		 */
 		public com.aoindustries.html.Input.Email email() throws IOException {
-			return new com.aoindustries.html.Input.Email(html).open();
+			return new com.aoindustries.html.Input.Email(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
 		 */
 		public com.aoindustries.html.Input.File file() throws IOException {
-			return new com.aoindustries.html.Input.File(html).open();
+			return new com.aoindustries.html.Input.File(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
 		 */
 		public com.aoindustries.html.Input.Hidden hidden() throws IOException {
-			return new com.aoindustries.html.Input.Hidden(html).open();
+			return new com.aoindustries.html.Input.Hidden(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
 		 */
 		public com.aoindustries.html.Input.Image image() throws IOException {
-			return new com.aoindustries.html.Input.Image(html).open();
+			return new com.aoindustries.html.Input.Image(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
 		 */
 		public com.aoindustries.html.Input.Month month() throws IOException {
-			return new com.aoindustries.html.Input.Month(html).open();
+			return new com.aoindustries.html.Input.Month(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
 		 */
 		public com.aoindustries.html.Input.Number number() throws IOException {
-			return new com.aoindustries.html.Input.Number(html).open();
+			return new com.aoindustries.html.Input.Number(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.
 		 */
 		public com.aoindustries.html.Input.Password password() throws IOException {
-			return new com.aoindustries.html.Input.Password(html).open();
+			return new com.aoindustries.html.Input.Password(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.
 		 */
 		public com.aoindustries.html.Input.Radio radio() throws IOException {
-			return new com.aoindustries.html.Input.Radio(html).open();
+			return new com.aoindustries.html.Input.Radio(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
 		 */
 		public com.aoindustries.html.Input.Range range() throws IOException {
-			return new com.aoindustries.html.Input.Range(html).open();
+			return new com.aoindustries.html.Input.Range(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.
 		 */
 		public com.aoindustries.html.Input.Reset reset() throws IOException {
-			return new com.aoindustries.html.Input.Reset(html).open();
+			return new com.aoindustries.html.Input.Reset(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
 		 */
 		public com.aoindustries.html.Input.Search search() throws IOException {
-			return new com.aoindustries.html.Input.Search(html).open();
+			return new com.aoindustries.html.Input.Search(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
 		 */
 		public com.aoindustries.html.Input.Submit submit() throws IOException {
-			return new com.aoindustries.html.Input.Submit(html).open();
+			return new com.aoindustries.html.Input.Submit(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 */
-		public Html submit__(Object value) throws IOException {
+		public Document submit__(Object value) throws IOException {
 			return submit().value(value).__();
 		}
 
@@ -612,7 +612,7 @@ public class Html {
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 */
-		public <Ex extends Throwable> Html submit__(Supplier<?,Ex> value) throws IOException, Ex {
+		public <Ex extends Throwable> Document submit__(Supplier<?,Ex> value) throws IOException, Ex {
 			return submit().value(value).__();
 		}
 
@@ -620,7 +620,7 @@ public class Html {
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 */
-		public <Ex extends Throwable> Html submit__(MediaWritable<Ex> value) throws IOException, Ex {
+		public <Ex extends Throwable> Document submit__(MediaWritable<Ex> value) throws IOException, Ex {
 			return submit().value(value).__();
 		}
 
@@ -628,35 +628,35 @@ public class Html {
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
 		 */
 		public com.aoindustries.html.Input.Tel tel() throws IOException {
-			return new com.aoindustries.html.Input.Tel(html).open();
+			return new com.aoindustries.html.Input.Tel(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
 		 */
 		public com.aoindustries.html.Input.Text text() throws IOException {
-			return new com.aoindustries.html.Input.Text(html).open();
+			return new com.aoindustries.html.Input.Text(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
 		 */
 		public com.aoindustries.html.Input.Time time() throws IOException {
-			return new com.aoindustries.html.Input.Time(html).open();
+			return new com.aoindustries.html.Input.Time(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
 		 */
 		public com.aoindustries.html.Input.Url url() throws IOException {
-			return new com.aoindustries.html.Input.Url(html).open();
+			return new com.aoindustries.html.Input.Url(document).open();
 		}
 
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
 		 */
 		public com.aoindustries.html.Input.Week week() throws IOException {
-			return new com.aoindustries.html.Input.Week(html).open();
+			return new com.aoindustries.html.Input.Week(document).open();
 		}
 	}
 
@@ -729,7 +729,7 @@ public class Html {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
 	 */
-	public Html option__() throws IOException {
+	public Document option__() throws IOException {
 		return option().__();
 	}
 
@@ -745,7 +745,7 @@ public class Html {
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.
 	 * See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.
 	 */
-	public Html param__(Object name, Object value) throws IOException {
+	public Document param__(Object name, Object value) throws IOException {
 		return param().name(name).value(value).__();
 	}
 

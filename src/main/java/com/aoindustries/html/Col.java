@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020  AO Industries, Inc.
+ * Copyright (C) 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -45,13 +45,13 @@ public class Col extends EmptyElement<Col> implements
 	Attributes.Event.AlmostGlobal<Col>
 {
 
-	public Col(Html html) {
-		super(html);
+	public Col(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Col open() throws IOException {
-		html.out.write("<col");
+		document.out.write("<col");
 		return this;
 	}
 

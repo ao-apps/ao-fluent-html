@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -74,14 +74,14 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	private static final com.aoindustries.i18n.Resources RESOURCES =
 		com.aoindustries.i18n.Resources.getResources(Input.class);
 
-	public Input(Html html) {
-		super(html);
+	public Input(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected E open() throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		html.out.write("<input");
+		document.out.write("<input");
 		openWriteType();
 		return element;
 	}
@@ -220,19 +220,19 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	{
 
 		private String type;
-		public Dynamic(Html html) {
-			super(html);
+		public Dynamic(Document document) {
+			super(document);
 			this.type = null;
 		}
 
-		public Dynamic(Html html, String type) {
-			super(html);
+		public Dynamic(Document document, String type) {
+			super(document);
 			type = Strings.trimNullIfEmpty(type);
 			this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 		}
 
-		public Dynamic(Html html, Type type) {
-			super(html);
+		public Dynamic(Document document, Type type) {
+			super(document);
 			this.type = (type == null) ? null : type.getValue();
 		}
 
@@ -364,7 +364,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
 						Resources.PACKAGE_RESOURCES,
-						"Html.duplicateAttribute",
+						"Document.duplicateAttribute",
 						"input",
 						"type",
 						this.type,
@@ -372,9 +372,9 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 					);
 				}
 				this.type = type;
-				html.out.write(" type=\"");
-				encodeTextInXhtmlAttribute(type, html.out);
-				html.out.write('"');
+				document.out.write(" type=\"");
+				encodeTextInXhtmlAttribute(type, document.out);
+				document.out.write('"');
 			}
 			return this;
 		}
@@ -388,7 +388,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
 						Resources.PACKAGE_RESOURCES,
-						"Html.duplicateAttribute",
+						"Document.duplicateAttribute",
 						"input",
 						"type",
 						this.type,
@@ -397,19 +397,19 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 				}
 				// Perform doctype checks for recognized types
 				Doctype requiredDoctype = type.getRequiredDoctype();
-				if(requiredDoctype != null && html.doctype != requiredDoctype) {
+				if(requiredDoctype != null && document.doctype != requiredDoctype) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"typeRequiresDoctype",
 						type.value,
 						requiredDoctype,
-						html.doctype
+						document.doctype
 					);
 				}
 				this.type = type.value;
-				html.out.write(" type=\"");
-				html.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
-				html.out.write('"');
+				document.out.write(" type=\"");
+				document.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
+				document.out.write('"');
 			}
 			return this;
 		}
@@ -442,13 +442,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Value<Button>
 	{
 
-		public Button(Html html) {
-			super(html);
+		public Button(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"button\"");
+			document.out.write(" type=\"button\"");
 		}
 
 		/**
@@ -481,13 +481,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onchange<Checkbox>
 	{
 
-		public Checkbox(Html html) {
-			super(html);
+		public Checkbox(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"checkbox\"");
+			document.out.write(" type=\"checkbox\"");
 		}
 	}
 
@@ -504,13 +504,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Color>
 	{
 
-		public Color(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Color(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"color"
 				);
 			}
@@ -559,7 +559,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"color\"");
+			document.out.write(" type=\"color\"");
 		}
 	}
 
@@ -576,13 +576,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Date>
 	{
 
-		public Date(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Date(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"date"
 				);
 			}
@@ -633,7 +633,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"date\"");
+			document.out.write(" type=\"date\"");
 		}
 	}
 
@@ -650,13 +650,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<DatetimeLocal>
 	{
 
-		public DatetimeLocal(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public DatetimeLocal(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"datetime-local"
 				);
 			}
@@ -706,7 +706,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"datetime-local\"");
+			document.out.write(" type=\"datetime-local\"");
 		}
 	}
 
@@ -729,13 +729,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<Email> // Guessed (to match Placeholder)
 	{
 
-		public Email(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Email(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"email"
 				);
 			}
@@ -787,7 +787,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"email\"");
+			document.out.write(" type=\"email\"");
 		}
 	}
 
@@ -805,8 +805,8 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<File>
 	{
 
-		public File(Html html) {
-			super(html);
+		public File(Document document) {
+			super(document);
 		}
 
 		/**
@@ -853,7 +853,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"file\"");
+			document.out.write(" type=\"file\"");
 		}
 	}
 
@@ -865,13 +865,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Value<Hidden>
 	{
 
-		public Hidden(Html html) {
-			super(html);
+		public Hidden(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"hidden\"");
+			document.out.write(" type=\"hidden\"");
 		}
 	}
 
@@ -892,13 +892,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Window.Onload<Image>
 	{
 
-		public Image(Html html) {
-			super(html);
+		public Image(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"image\"");
+			document.out.write(" type=\"image\"");
 		}
 
 		/**
@@ -965,13 +965,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Month>
 	{
 
-		public Month(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Month(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"month"
 				);
 			}
@@ -1023,7 +1023,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"month\"");
+			document.out.write(" type=\"month\"");
 		}
 	}
 
@@ -1040,13 +1040,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Number>
 	{
 
-		public Number(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Number(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"number"
 				);
 			}
@@ -1114,7 +1114,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"number\"");
+			document.out.write(" type=\"number\"");
 		}
 	}
 
@@ -1135,8 +1135,8 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<Password>
 	{
 
-		public Password(Html html) {
-			super(html);
+		public Password(Document document) {
+			super(document);
 		}
 
 		/**
@@ -1190,7 +1190,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"password\"");
+			document.out.write(" type=\"password\"");
 		}
 	}
 
@@ -1204,13 +1204,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onchange<Radio>
 	{
 
-		public Radio(Html html) {
-			super(html);
+		public Radio(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"radio\"");
+			document.out.write(" type=\"radio\"");
 		}
 	}
 
@@ -1226,13 +1226,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Range>
 	{
 
-		public Range(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Range(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"range"
 				);
 			}
@@ -1281,7 +1281,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"range\"");
+			document.out.write(" type=\"range\"");
 		}
 	}
 
@@ -1292,13 +1292,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Value<Reset>
 	{
 
-		public Reset(Html html) {
-			super(html);
+		public Reset(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"reset\"");
+			document.out.write(" type=\"reset\"");
 		}
 
 		/**
@@ -1340,13 +1340,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<Search> // Guessed (to match Placeholder)
 	{
 
-		public Search(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Search(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"search"
 				);
 			}
@@ -1441,7 +1441,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"search\"");
+			document.out.write(" type=\"search\"");
 		}
 	}
 
@@ -1452,13 +1452,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Text.Value<Submit>
 	{
 
-		public Submit(Html html) {
-			super(html);
+		public Submit(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"submit\"");
+			document.out.write(" type=\"submit\"");
 		}
 
 		/**
@@ -1499,13 +1499,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<Tel> // Guessed (to match Placeholder)
 	{
 
-		public Tel(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Tel(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"tel"
 				);
 			}
@@ -1562,7 +1562,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"tel\"");
+			document.out.write(" type=\"tel\"");
 		}
 	}
 
@@ -1584,13 +1584,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<Text>
 	{
 
-		public Text(Html html) {
-			super(html);
+		public Text(Document document) {
+			super(document);
 		}
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"text\"");
+			document.out.write(" type=\"text\"");
 		}
 	}
 
@@ -1607,13 +1607,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Time>
 	{
 
-		public Time(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Time(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"time"
 				);
 			}
@@ -1662,7 +1662,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"time\"");
+			document.out.write(" type=\"time\"");
 		}
 	}
 
@@ -1684,13 +1684,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Onselect<Url> // Guessed (to match Placeholder)
 	{
 
-		public Url(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Url(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"url"
 				);
 			}
@@ -1746,7 +1746,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"url\"");
+			document.out.write(" type=\"url\"");
 		}
 	}
 
@@ -1763,13 +1763,13 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		Attributes.Event.Form.Oninput<Week>
 	{
 
-		public Week(Html html) {
-			super(html);
-			if(html.doctype != Doctype.HTML5) {
+		public Week(Document document) {
+			super(document);
+			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
 					"typeOnlySupportedInHtml5",
-					html.doctype,
+					document.doctype,
 					"week"
 				);
 			}
@@ -1820,7 +1820,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 		@Override
 		protected void openWriteType() throws IOException {
-			html.out.write(" type=\"week\"");
+			document.out.write(" type=\"week\"");
 		}
 	}
 }

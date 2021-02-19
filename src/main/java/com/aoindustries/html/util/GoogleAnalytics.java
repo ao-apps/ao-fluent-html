@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,7 +24,7 @@
 package com.aoindustries.html.util;
 
 import com.aoindustries.encoding.Doctype;
-import com.aoindustries.html.Html;
+import com.aoindustries.html.Document;
 import com.aoindustries.html.Link;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.net.URIEncoder;
@@ -47,15 +47,15 @@ public class GoogleAnalytics {
 	 *
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
-	public static void writeGlobalSiteTag(Html html, String trackingId) throws IOException {
+	public static void writeGlobalSiteTag(Document document, String trackingId) throws IOException {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
-			html.link(Link.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
-			html.link(Link.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
+			document.link(Link.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
+			document.link(Link.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
 			// + "<!-- Global site tag (gtag.js) - Google Analytics -->\n"
 			// TODO: Attribute streaming src
-			html
+			document
 				.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trimmedId)).__().nl()
 				.script().out(script ->
 					script.append("window.dataLayer = window.dataLayer || [];\n"
@@ -75,10 +75,10 @@ public class GoogleAnalytics {
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
 	// TODO: Support hitType exception? https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
-	public static void writeAnalyticsJs(Html html, String trackingId) throws IOException {
+	public static void writeAnalyticsJs(Document document, String trackingId) throws IOException {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
-			html.script().out(script ->
+			document.script().out(script ->
 				script.append("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){\n"
 					+ "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n"
 					+ "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n"

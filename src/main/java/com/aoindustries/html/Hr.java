@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -41,13 +41,13 @@ public class Hr extends EmptyElement<Hr> implements
 	Attributes.Event.AlmostGlobal<Hr>
 {
 
-	public Hr(Html html) {
-		super(html);
+	public Hr(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Hr open() throws IOException {
-		html.out.write("<hr");
+		document.out.write("<hr");
 		return this;
 	}
 

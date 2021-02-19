@@ -31,12 +31,12 @@ import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
-import com.aoindustries.lang.Strings;
-import com.aoindustries.util.i18n.MarkupType;
 import com.aoindustries.i18n.Resources;
 import com.aoindustries.lang.Coercion;
+import com.aoindustries.lang.LocalizedIllegalArgumentException;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupCoercion;
+import com.aoindustries.util.i18n.MarkupType;
 import com.aoindustries.validation.InvalidResult;
 import com.aoindustries.validation.ValidResult;
 import com.aoindustries.validation.ValidationResult;
@@ -139,14 +139,14 @@ public class Attributes {
 
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
 			if(value) {
-				element.html.out.write(' ');
-				element.html.out.write(name);
-				if(element.html.serialization == Serialization.XML) {
-					element.html.out.write("=\"");
-					element.html.out.write(name);
-					element.html.out.write('"');
+				element.document.out.write(' ');
+				element.document.out.write(name);
+				if(element.document.serialization == Serialization.XML) {
+					element.document.out.write("=\"");
+					element.document.out.write(name);
+					element.document.out.write('"');
 				} else {
-					assert element.html.serialization == Serialization.SGML;
+					assert element.document.serialization == Serialization.SGML;
 				}
 			}
 			return element;
@@ -196,11 +196,11 @@ public class Attributes {
 			@Funnel
 			default E autofocus(boolean autofocus) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"autofocus"
 					);
 				}
@@ -369,11 +369,11 @@ public class Attributes {
 			@Funnel
 			default E multiple(boolean multiple) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"multiple"
 					);
 				}
@@ -416,7 +416,7 @@ public class Attributes {
 			@Funnel
 			default E noshade(boolean noshade) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -874,7 +874,7 @@ public class Attributes {
 			@Funnel
 			default E width(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -894,7 +894,7 @@ public class Attributes {
 			@Funnel
 			default E width(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -914,7 +914,7 @@ public class Attributes {
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -934,7 +934,7 @@ public class Attributes {
 			@Funnel
 			default E width(java.lang.String pixelsOrPercent) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -956,7 +956,7 @@ public class Attributes {
 			@SuppressWarnings("overloads")
 			default <Ex extends Throwable> E width(Suppliers.String<Ex> pixelsOrPercent) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -996,11 +996,11 @@ public class Attributes {
 				@Funnel
 				default E onafterprint(Object onafterprint) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onafterprint"
 						);
 					}
@@ -1037,11 +1037,11 @@ public class Attributes {
 				@Funnel
 				default E onbeforeprint(Object onbeforeprint) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onbeforeprint"
 						);
 					}
@@ -1156,11 +1156,11 @@ public class Attributes {
 				@Funnel
 				default E onhashchange(Object onhashchange) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onhashchange"
 						);
 					}
@@ -1230,11 +1230,11 @@ public class Attributes {
 				@Funnel
 				default E onmessage(Object onmessage) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onmessage"
 						);
 					}
@@ -1271,11 +1271,11 @@ public class Attributes {
 				@Funnel
 				default E onoffline(Object onoffline) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onoffline"
 						);
 					}
@@ -1312,11 +1312,11 @@ public class Attributes {
 				@Funnel
 				default E ononline(Object ononline) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ononline"
 						);
 					}
@@ -1452,11 +1452,11 @@ public class Attributes {
 				@Funnel
 				default E onresize(Object onresize) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onresize"
 						);
 					}
@@ -1632,11 +1632,11 @@ public class Attributes {
 				@Funnel
 				default E oncontextmenu(Object oncontextmenu) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"oncontextmenu"
 						);
 					}
@@ -1707,11 +1707,11 @@ public class Attributes {
 				@Funnel
 				default E oninput(Object oninput) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"oninput"
 						);
 					}
@@ -1781,11 +1781,11 @@ public class Attributes {
 				@Funnel
 				default E onreset(Object onreset) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onreset"
 						);
 					}
@@ -2360,11 +2360,11 @@ public class Attributes {
 				@Funnel
 				default E onwheel(Object onwheel) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onwheel"
 						);
 					}
@@ -2436,11 +2436,11 @@ public class Attributes {
 				@Funnel
 				default E ondrag(Object ondrag) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondrag"
 						);
 					}
@@ -2477,11 +2477,11 @@ public class Attributes {
 				@Funnel
 				default E ondragend(Object ondragend) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondragend"
 						);
 					}
@@ -2518,11 +2518,11 @@ public class Attributes {
 				@Funnel
 				default E ondragenter(Object ondragenter) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondragenter"
 						);
 					}
@@ -2561,11 +2561,11 @@ public class Attributes {
 				@Funnel
 				default E ondragleave(Object ondragleave) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondragleave"
 						);
 					}
@@ -2602,11 +2602,11 @@ public class Attributes {
 				@Funnel
 				default E ondragover(Object ondragover) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondragover"
 						);
 					}
@@ -2643,11 +2643,11 @@ public class Attributes {
 				@Funnel
 				default E ondragstart(Object ondragstart) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondragstart"
 						);
 					}
@@ -2684,11 +2684,11 @@ public class Attributes {
 				@Funnel
 				default E ondrop(Object ondrop) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"ondrop"
 						);
 					}
@@ -2725,11 +2725,11 @@ public class Attributes {
 				@Funnel
 				default E onscroll(Object onscroll) throws IOException {
 					@SuppressWarnings("unchecked") E element = (E)this;
-					if(element.html.doctype != Doctype.HTML5) {
+					if(element.document.doctype != Doctype.HTML5) {
 						throw new LocalizedIllegalArgumentException(
 							RESOURCES,
 							"onlySupportedInHtml5",
-							element.html.doctype,
+							element.document.doctype,
 							"onscroll"
 						);
 					}
@@ -3024,7 +3024,7 @@ public class Attributes {
 			@Funnel
 			default E align(java.lang.String align) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -3057,7 +3057,7 @@ public class Attributes {
 			@Deprecated
 			default E align(V align) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return align((align == null) ? null : align.get(element.html.serialization, element.html.doctype));
+				return align((align == null) ? null : align.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3096,11 +3096,11 @@ public class Attributes {
 			@Funnel
 			default E autocomplete(java.lang.String autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"autocomplete"
 					);
 				}
@@ -3128,7 +3128,7 @@ public class Attributes {
 			 */
 			default E autocomplete(V autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return autocomplete((autocomplete == null) ? null : autocomplete.get(element.html.serialization, element.html.doctype));
+				return autocomplete((autocomplete == null) ? null : autocomplete.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3153,11 +3153,11 @@ public class Attributes {
 			@Funnel
 			default E autocomplete(java.lang.String ... autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"autocomplete"
 					);
 				}
@@ -3167,15 +3167,15 @@ public class Attributes {
 						java.lang.String trimmed = Strings.trimNullIfEmpty(value);
 						if(trimmed != null) {
 							if(!didOne) {
-								element.html.out.write(" autocomplete=\"");
+								element.document.out.write(" autocomplete=\"");
 								didOne = true;
 							} else {
-								element.html.out.write(' ');
+								element.document.out.write(' ');
 							}
-							encodeTextInXhtmlAttribute(trimmed, element.html.out);
+							encodeTextInXhtmlAttribute(trimmed, element.document.out);
 						}
 					}
-					if(didOne) element.html.out.write('"');
+					if(didOne) element.document.out.write('"');
 				}
 				return element;
 			}
@@ -3193,11 +3193,11 @@ public class Attributes {
 			@SuppressWarnings("unchecked")
 			default E autocomplete(V ... autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"autocomplete"
 					);
 				}
@@ -3206,15 +3206,15 @@ public class Attributes {
 					for(V value : autocomplete) {
 						if(value != null) {
 							if(!didOne) {
-								element.html.out.write(" autocomplete=\"");
+								element.document.out.write(" autocomplete=\"");
 								didOne = true;
 							} else {
-								element.html.out.write(' ');
+								element.document.out.write(' ');
 							}
-							encodeTextInXhtmlAttribute(value.get(element.html.serialization, element.html.doctype), element.html.out);
+							encodeTextInXhtmlAttribute(value.get(element.document.serialization, element.document.doctype), element.document.out);
 						}
 					}
-					if(didOne) element.html.out.write('"');
+					if(didOne) element.document.out.write('"');
 				}
 				return element;
 			}
@@ -3245,11 +3245,11 @@ public class Attributes {
 			@Funnel
 			default E charset(java.lang.String charset) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"charset"
 					);
 				}
@@ -3277,7 +3277,7 @@ public class Attributes {
 			 */
 			default E charset(V charset) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return charset((charset == null) ? null : charset.get(element.html.serialization, element.html.doctype));
+				return charset((charset == null) ? null : charset.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3381,7 +3381,7 @@ public class Attributes {
 			 */
 			default E capture(V capture) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return capture((capture == null) ? null : capture.get(element.html.serialization, element.html.doctype));
+				return capture((capture == null) ? null : capture.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3434,7 +3434,7 @@ public class Attributes {
 			 */
 			default E crossorigin(V crossorigin) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.html.serialization, element.html.doctype));
+				return crossorigin((crossorigin == null) ? null : crossorigin.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3549,7 +3549,7 @@ public class Attributes {
 			 */
 			default E dir(V dir) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return dir((dir == null) ? null : dir.get(element.html.serialization, element.html.doctype));
+				return dir((dir == null) ? null : dir.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3658,7 +3658,7 @@ public class Attributes {
 			 */
 			default E httpEquiv(V httpEquiv) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return httpEquiv((httpEquiv == null) ? null : httpEquiv.get(element.html.serialization, element.html.doctype));
+				return httpEquiv((httpEquiv == null) ? null : httpEquiv.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3709,7 +3709,7 @@ public class Attributes {
 			 */
 			default E name(V name) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return name((name == null) ? null : name.get(element.html.serialization, element.html.doctype));
+				return name((name == null) ? null : name.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3757,7 +3757,7 @@ public class Attributes {
 			 */
 			default E rel(V rel) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return rel((rel == null) ? null : rel.get(element.html.serialization, element.html.doctype));
+				return rel((rel == null) ? null : rel.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3805,7 +3805,7 @@ public class Attributes {
 			 */
 			default E shape(V shape) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return shape((shape == null) ? null : shape.get(element.html.serialization, element.html.doctype));
+				return shape((shape == null) ? null : shape.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3853,7 +3853,7 @@ public class Attributes {
 			 */
 			default E type(V type) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return type((type == null) ? null : type.get(element.html.serialization, element.html.doctype));
+				return type((type == null) ? null : type.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3887,7 +3887,7 @@ public class Attributes {
 			@Funnel
 			default E valign(java.lang.String valign) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -3920,7 +3920,7 @@ public class Attributes {
 			@Deprecated
 			default E valign(V valign) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				return valign((valign == null) ? null : valign.get(element.html.serialization, element.html.doctype));
+				return valign((valign == null) ? null : valign.get(element.document.serialization, element.document.doctype));
 			}
 
 			/**
@@ -3947,11 +3947,11 @@ public class Attributes {
 		private Integer() {}
 
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, int value) throws IOException {
-			element.html.out.write(' ');
-			element.html.out.write(name);
-			element.html.out.write("=\"");
-			element.html.out.write(java.lang.Integer.toString(value));
-			element.html.out.write('"');
+			element.document.out.write(' ');
+			element.document.out.write(name);
+			element.document.out.write("=\"");
+			element.document.out.write(java.lang.Integer.toString(value));
+			element.document.out.write('"');
 			return element;
 		}
 
@@ -4011,11 +4011,11 @@ public class Attributes {
 			@Funnel
 			default E height(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"height"
 					);
 				}
@@ -4032,11 +4032,11 @@ public class Attributes {
 			@Funnel
 			default E height(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"height"
 					);
 				}
@@ -4054,11 +4054,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"height"
 					);
 				}
@@ -4182,7 +4182,7 @@ public class Attributes {
 			@Funnel
 			default E size(int size) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -4200,7 +4200,7 @@ public class Attributes {
 			@Funnel
 			default E size(java.lang.Integer size) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -4219,7 +4219,7 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype == Doctype.HTML5) {
+				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"notSupportedInHtml5",
@@ -4280,11 +4280,11 @@ public class Attributes {
 			@Funnel
 			default E tabindex(int tabindex) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"tabindex"
 					);
 				}
@@ -4300,11 +4300,11 @@ public class Attributes {
 			@Funnel
 			default E tabindex(java.lang.Integer tabindex) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"tabindex"
 					);
 				}
@@ -4423,11 +4423,11 @@ public class Attributes {
 			@Funnel
 			default E width(int pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"width"
 					);
 				}
@@ -4444,11 +4444,11 @@ public class Attributes {
 			@Funnel
 			default E width(java.lang.Integer pixels) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"width"
 					);
 				}
@@ -4466,11 +4466,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"width"
 					);
 				}
@@ -4496,21 +4496,21 @@ public class Attributes {
 			if(value != null) {
 				if(value == NO_VALUE) { // Identity comparison for marker value
 					// Empty attribute
-					element.html.out.write(' ');
-					element.html.out.write(name);
+					element.document.out.write(' ');
+					element.document.out.write(name);
 				} else {
 					if(trim) value = value.trim(); // TODO: These trims should all be from Strings?
 					if(!nullIfEmpty || !value.isEmpty()) {
-						element.html.out.write(' ');
-						element.html.out.write(name);
-						element.html.out.write("=\"");
+						element.document.out.write(' ');
+						element.document.out.write(name);
+						element.document.out.write("=\"");
 						if(markupType == null || markupType == MarkupType.NONE) {
 							// Short-cut additional type checks done by Coercion, since we already have a String
-							encodeTextInXhtmlAttribute(value, element.html.out);
+							encodeTextInXhtmlAttribute(value, element.document.out);
 						} else {
-							MarkupCoercion.write(value, markupType, true, textInXhtmlAttributeEncoder, false, element.html.out);
+							MarkupCoercion.write(value, markupType, true, textInXhtmlAttributeEncoder, false, element.document.out);
 						}
-						element.html.out.write('"');
+						element.document.out.write('"');
 					}
 				}
 			}
@@ -4628,23 +4628,23 @@ public class Attributes {
 				if(value instanceof MediaWritable<?>) {
 					@SuppressWarnings("unchecked")
 					MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
-					element.html.out.write(' ');
-					element.html.out.write(name);
-					element.html.out.write("=\"");
+					element.document.out.write(' ');
+					element.document.out.write(name);
+					element.document.out.write("=\"");
 					writer.writeTo(
-						new MediaWriter(element.html.encodingContext, encoder, element.html.out) {
+						new MediaWriter(element.document.encodingContext, encoder, element.document.out) {
 							@Override
 							public void close() throws IOException {
 								// Do not close underlying writer
 							}
 						}
 					);
-					element.html.out.write('"');
+					element.document.out.write('"');
 				} else {
 					if(value == NO_VALUE) { // Identity comparison for marker value
 						// Empty attribute
-						element.html.out.write(' ');
-						element.html.out.write(name);
+						element.document.out.write(' ');
+						element.document.out.write(name);
 						// TODO: When serialization is XML, set equal to attribute name or empty?
 					} else {
 						if(trim) {
@@ -4657,11 +4657,11 @@ public class Attributes {
 							value = Coercion.nullIfEmpty(value);
 						}
 						if(value != null) {
-							element.html.out.write(' ');
-							element.html.out.write(name);
-							element.html.out.write("=\"");
-							MarkupCoercion.write(value, markupType, true, encoder, false, element.html.out);
-							element.html.out.write('"');
+							element.document.out.write(' ');
+							element.document.out.write(name);
+							element.document.out.write("=\"");
+							MarkupCoercion.write(value, markupType, true, encoder, false, element.document.out);
+							element.document.out.write('"');
 						}
 					}
 				}
@@ -4846,11 +4846,11 @@ public class Attributes {
 			@Funnel
 			default E clazz(Object clazz) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"class"
 					);
 				}
@@ -4868,11 +4868,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E clazz(Supplier<?,Ex> clazz) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"class"
 					);
 				}
@@ -4890,11 +4890,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E clazz(MediaWritable<Ex> clazz) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"class"
 					);
 				}
@@ -5093,11 +5093,11 @@ public class Attributes {
 			default E data(java.lang.String attrName, Object value) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				validate(attrName, data::validate);
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						attrName
 					);
 				}
@@ -5360,11 +5360,11 @@ public class Attributes {
 			default E id(Object id) throws IOException {
 				// TODO: normalize, then only throw when non-empty/null.  Here and other attributes.
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"id"
 					);
 				}
@@ -5382,11 +5382,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E id(Supplier<?,Ex> id) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"id"
 					);
 				}
@@ -5404,11 +5404,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E id(MediaWritable<Ex> id) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"id"
 					);
 				}
@@ -5464,11 +5464,11 @@ public class Attributes {
 			@Funnel
 			default E list(Object list) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"list"
 					);
 				}
@@ -5577,11 +5577,11 @@ public class Attributes {
 			@Funnel
 			default E placeholder(Object placeholder) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"onlySupportedInHtml5",
-						element.html.doctype,
+						element.document.doctype,
 						"placeholder"
 					);
 				}
@@ -5672,11 +5672,11 @@ public class Attributes {
 			@Funnel
 			default E style(Object style) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"style"
 					);
 				}
@@ -5694,11 +5694,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E style(Supplier<?,Ex> style) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"style"
 					);
 				}
@@ -5716,11 +5716,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E style(MediaWritable<Ex> style) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"style"
 					);
 				}
@@ -5791,11 +5791,11 @@ public class Attributes {
 			@Funnel
 			default E title(Object title) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"title"
 					);
 				}
@@ -5813,11 +5813,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E title(Supplier<?,Ex> title) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"title"
 					);
 				}
@@ -5835,11 +5835,11 @@ public class Attributes {
 			@Override
 			default <Ex extends Throwable> E title(MediaWritable<Ex> title) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
-				if(element.html.doctype != Doctype.HTML5) {
+				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
 						RESOURCES,
 						"invalidGlobalAttributeForDoctype",
-						element.html.doctype,
+						element.document.doctype,
 						"title"
 					);
 				}
@@ -5893,12 +5893,12 @@ public class Attributes {
 
 		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
 			if(url != null) {
-				element.html.out.write(' ');
-				element.html.out.write(name);
-				element.html.out.write("=\"");
+				element.document.out.write(' ');
+				element.document.out.write(name);
+				element.document.out.write("=\"");
 				// TODO: UrlInXhtmlAttributeEncoder once RFC 3987 supported
-				textInXhtmlAttributeEncoder.write(url, element.html.out);
-				element.html.out.write('"');
+				textInXhtmlAttributeEncoder.write(url, element.document.out);
+				element.document.out.write('"');
 			}
 			return element;
 		}

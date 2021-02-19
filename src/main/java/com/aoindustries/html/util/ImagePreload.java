@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020  AO Industries, Inc.
+ * Copyright (C) 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,7 @@
  */
 package com.aoindustries.html.util;
 
-import com.aoindustries.html.Html;
+import com.aoindustries.html.Document;
 import java.io.IOException;
 
 /**
@@ -41,8 +41,8 @@ public class ImagePreload {
 	 * @param url This should be the URL-encoded URL, but with only a standalone ampersand (&amp;) as parameter separator
 	 *             (not &amp;amp;)
 	 */
-	public static void writeImagePreloadScript(String url, Html html) throws IOException {
-		html.script().out(script ->
+	public static void writeImagePreloadScript(String url, Document document) throws IOException {
+		document.script().out(script ->
 			script.append("  var img=new Image();\n"
 				+ "  img.src=").text(url).append(';')
 		).__();

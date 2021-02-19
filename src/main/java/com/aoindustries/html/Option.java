@@ -47,13 +47,13 @@ public class Option extends Element<Option> implements
 	Attributes.Event.AlmostGlobal<Option>
 {
 
-	public Option(Html html) {
-		super(html);
+	public Option(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Option open() throws IOException {
-		html.out.write("<option");
+		document.out.write("<option");
 		return this;
 	}
 
@@ -126,7 +126,7 @@ public class Option extends Element<Option> implements
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 */
 	@SuppressWarnings("UseSpecificCatch")
-	public Html text__(Object text) throws IOException {
+	public Document text__(Object text) throws IOException {
 		while(text instanceof Supplier<?,?>) {
 			try {
 				text = ((Supplier<?,?>)text).get();
@@ -141,31 +141,31 @@ public class Option extends Element<Option> implements
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
-		html.out.write('>');
+		document.out.write('>');
 		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 		// Allow text markup from translations
-		MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, html.out);
-		html.out.write("</option>");
-		return html;
+		MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, document.out);
+		document.out.write("</option>");
+		return document;
 	}
 
-	public <Ex extends Throwable> Html text__(Supplier<?,Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> Document text__(Supplier<?,Ex> text) throws IOException, Ex {
 		return text__((text == null) ? null : text.get());
 	}
 
-	public <Ex extends Throwable> Html text__(MediaWritable<Ex> text) throws IOException, Ex {
-		html.out.write('>');
+	public <Ex extends Throwable> Document text__(MediaWritable<Ex> text) throws IOException, Ex {
+		document.out.write('>');
 		if(text != null) {
 			text.writeTo(
 				new MediaWriter(
-					html.encodingContext,
+					document.encodingContext,
 					textInXhtmlEncoder,
-					new NoCloseWriter(html.out)
+					new NoCloseWriter(document.out)
 				)
 			);
 		}
-		html.out.write("</option>");
-		return html;
+		document.out.write("</option>");
+		return document;
 	}
 
 	/**
@@ -174,15 +174,15 @@ public class Option extends Element<Option> implements
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	public MediaWriter text__() throws IOException {
-		html.out.write('>');
+		document.out.write('>');
 		return new MediaWriter(
-			html.encodingContext,
+			document.encodingContext,
 			textInXhtmlEncoder,
-			html.out
+			document.out
 		) {
 			@Override
 			public void close() throws IOException {
-				html.out.write("</option>");
+				document.out.write("</option>");
 			}
 		};
 	}
@@ -190,8 +190,8 @@ public class Option extends Element<Option> implements
 	/**
 	 * Closes to form an empty option.
 	 */
-	public Html __() throws IOException {
-		html.out.write("></option>");
-		return html;
+	public Document __() throws IOException {
+		document.out.write("></option>");
+		return document;
 	}
 }

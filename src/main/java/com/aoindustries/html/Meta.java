@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020  AO Industries, Inc.
+ * Copyright (C) 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -44,13 +44,13 @@ public class Meta extends EmptyElement<Meta> implements
 	// Not on <meta>: Attributes.Event.AlmostGlobal<Meta>
 {
 
-	public Meta(Html html) {
-		super(html);
+	public Meta(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Meta open() throws IOException {
-		html.out.write("<meta");
+		document.out.write("<meta");
 		return this;
 	}
 

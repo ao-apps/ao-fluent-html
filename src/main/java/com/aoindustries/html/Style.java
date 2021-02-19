@@ -96,25 +96,25 @@ public class Style extends Element<Style> implements
 
 	private final String type;
 
-	public Style(Html html) {
-		super(html);
+	public Style(Document document) {
+		super(document);
 		this.type = null;
 	}
 
-	public Style(Html html, String type) {
-		super(html);
+	public Style(Document document, String type) {
+		super(document);
 		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public Style(Html html, Type type) {
-		super(html);
+	public Style(Document document, Type type) {
+		super(document);
 		this.type = (type == null) ? null : type.getContentType();
 	}
 
 	@Override
 	protected Style open() throws IOException {
-		html.out.write("<style");
+		document.out.write("<style");
 		return type();
 	}
 
@@ -128,11 +128,11 @@ public class Style extends Element<Style> implements
 			type == null
 			|| type.equals(ContentType.CSS)
 		) {
-			html.doctype.styleType(html.out);
+			document.doctype.styleType(document.out);
 		} else {
-			html.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, html.out);
-			html.out.write('"');
+			document.out.write(" type=\"");
+			encodeTextInXhtmlAttribute(type, document.out);
+			document.out.write('"');
 		}
 		return this;
 	}
@@ -148,15 +148,15 @@ public class Style extends Element<Style> implements
 	}
 
 	protected boolean doCdata() {
-		return html.serialization == Serialization.XML;
+		return document.serialization == Serialization.XML;
 	}
 
 	private boolean didBody;
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
-			html.out.write('>');
-			if(doCdata()) html.out.write("/*<![CDATA[*/");
+			document.out.write('>');
+			if(doCdata()) document.out.write("/*<![CDATA[*/");
 			didBody = true;
 		}
 	}
@@ -191,7 +191,7 @@ public class Style extends Element<Style> implements
 				true,
 				getMediaEncoder(mediaType),
 				false,
-				html.out
+				document.out
 			);
 		}
 		return this;
@@ -213,9 +213,9 @@ public class Style extends Element<Style> implements
 			startBody();
 			style.writeStyle(
 				new MediaWriter(
-					html.encodingContext,
+					document.encodingContext,
 					encoder,
-					new NoCloseWriter(html.out)
+					new NoCloseWriter(document.out)
 				)
 			);
 		}
@@ -230,7 +230,7 @@ public class Style extends Element<Style> implements
 	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
-		return new MediaWriter(html.encodingContext, encoder, html.out) {
+		return new MediaWriter(document.encodingContext, encoder, document.out) {
 			@Override
 			public void close() throws IOException {
 				__();
@@ -238,13 +238,13 @@ public class Style extends Element<Style> implements
 		};
 	}
 
-	public Html __() throws IOException {
+	public Document __() throws IOException {
 		if(!didBody) {
-			html.out.write("></style>");
+			document.out.write("></style>");
 		} else {
-			if(doCdata()) html.out.write("/*]]>*/");
-			html.out.write("</style>");
+			if(doCdata()) document.out.write("/*]]>*/");
+			document.out.write("</style>");
 		}
-		return html;
+		return document;
 	}
 }

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * @author  AO Industries, Inc.
  */
-// TODO: Rename Html to Document, and make an element <html>?
+// TODO: Make an element <html>?
 abstract public class Element<E extends Element<E>> implements
 	// Allow any arbitrary attributes
 	Attributes.Text.Attribute<E>,
@@ -35,10 +35,10 @@ abstract public class Element<E extends Element<E>> implements
 	Attributes.Global<E>
 {
 
-	protected final Html html;
+	protected final Document document;
 
-	public Element(Html html) {
-		this.html = html;
+	public Element(Document document) {
+		this.document = document;
 	}
 
 	abstract protected E open() throws IOException;

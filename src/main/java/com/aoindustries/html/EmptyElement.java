@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,16 +29,16 @@ import java.io.IOException;
  */
 abstract public class EmptyElement<E extends EmptyElement<E>> extends Element<E> {
 
-	public EmptyElement(Html html) {
-		super(html);
+	public EmptyElement(Document document) {
+		super(document);
 	}
 
 	/**
 	 * Closes this element.
 	 */
 	@SuppressWarnings("deprecation")
-	public Html __() throws IOException {
-		html.selfClose();
-		return html;
+	public Document __() throws IOException {
+		document.selfClose();
+		return document;
 	}
 }

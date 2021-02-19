@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020  AO Industries, Inc.
+ * Copyright (C) 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -54,13 +54,13 @@ public class Area extends EmptyElement<Area> implements
 	Attributes.Event.AlmostGlobal<Area>
 {
 
-	public Area(Html html) {
-		super(html);
+	public Area(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Area open() throws IOException {
-		html.out.write("<area");
+		document.out.write("<area");
 		return this;
 	}
 

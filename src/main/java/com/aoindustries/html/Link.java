@@ -63,13 +63,13 @@ public class Link extends EmptyElement<Link> implements
 	private static final com.aoindustries.i18n.Resources RESOURCES =
 		com.aoindustries.i18n.Resources.getResources(Link.class);
 
-	public Link(Html html) {
-		super(html);
+	public Link(Document document) {
+		super(document);
 	}
 
 	@Override
 	protected Link open() throws IOException {
-		html.out.write("<link");
+		document.out.write("<link");
 		return this;
 	}
 
@@ -126,7 +126,7 @@ public class Link extends EmptyElement<Link> implements
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(
 					Resources.PACKAGE_RESOURCES,
-					"Html.duplicateAttribute",
+					"Document.duplicateAttribute",
 					"link",
 					"itemprop",
 					Coercion.toString(this.itemprop),
@@ -137,9 +137,9 @@ public class Link extends EmptyElement<Link> implements
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 			}
-			html.out.write(" itemprop=\"");
-			Coercion.write(itemprop, textInXhtmlAttributeEncoder, html.out);
-			html.out.write('"');
+			document.out.write(" itemprop=\"");
+			Coercion.write(itemprop, textInXhtmlAttributeEncoder, document.out);
+			document.out.write('"');
 		}
 		return this;
 	}
@@ -257,7 +257,7 @@ public class Link extends EmptyElement<Link> implements
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
 					Resources.PACKAGE_RESOURCES,
-					"Html.duplicateAttribute",
+					"Document.duplicateAttribute",
 					"link",
 					"rel",
 					Coercion.toString(this.rel),
@@ -336,15 +336,15 @@ public class Link extends EmptyElement<Link> implements
 		if(
 			type != null
 			&& !(
-				html.doctype == Doctype.HTML5
+				document.doctype == Doctype.HTML5
 				&& rel != null
 				&& rel.equalsIgnoreCase(Rel.STYLESHEET.toString())
 				&& ContentType.CSS.equalsIgnoreCase(type)
 			)
 		) {
-			html.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, html.out);
-			html.out.write('"');
+			document.out.write(" type=\"");
+			encodeTextInXhtmlAttribute(type, document.out);
+			document.out.write('"');
 		}
 		return this;
 	}
@@ -361,21 +361,21 @@ public class Link extends EmptyElement<Link> implements
 	 * </blockquote>
 	 */
 	@Override
-	public Html __() throws IOException {
+	public Document __() throws IOException {
 		if(
 			type == null
-			&& html.doctype != Doctype.HTML5
+			&& document.doctype != Doctype.HTML5
 			&& rel != null
 			&& rel.equalsIgnoreCase(Rel.STYLESHEET.toString())
 		) {
-			html.out.write(" type=\"");
-			html.out.write(ContentType.CSS);
-			html.out.write('"');
+			document.out.write(" type=\"");
+			document.out.write(ContentType.CSS);
+			document.out.write('"');
 		}
 		super.__();
 		if(rel == null && itemprop == null) {
 			throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 		}
-		return html;
+		return document;
 	}
 }

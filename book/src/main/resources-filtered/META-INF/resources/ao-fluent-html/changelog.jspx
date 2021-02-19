@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2021-01-02T14:19:55-06:00"
+		dateModified="2021-02-19T05:52:12-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -46,7 +46,11 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Renamed <code>Html</code> to <code>Document</code>.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
@@ -118,7 +122,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		>
 			<ul>
 				<li>New project for fluent Java DSL for high-performance HTML generation.</li>
-				<li>New class <ao:a href="apidocs/com/aoindustries/html/Html.html">Html</ao:a>:
+				<li>New class <ao:a href="apidocs/com/aoindustries/html/Document.html">Html</ao:a>:
 					<ol>
 						<li>
 							New functionality derived from methods and constants moved from

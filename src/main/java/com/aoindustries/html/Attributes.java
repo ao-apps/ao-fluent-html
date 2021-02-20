@@ -58,6 +58,7 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: We should probably be using long/Long for integer values.
 // TODO: Review which attributes should be trimmed and/or nullIfEmpty
 public class Attributes {
 

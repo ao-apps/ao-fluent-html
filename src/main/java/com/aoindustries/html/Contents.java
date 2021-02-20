@@ -136,10 +136,9 @@ public class Contents {
 
 			/**
 			 * Opens a new link element with the given rel attribute.
-			 * <p>
+			 *
 			 * @see #link()
 			 * @see com.aoindustries.html.Link#rel(java.lang.Enum)
-			 * </p>
 			 */
 			com.aoindustries.html.Link<PC> link(com.aoindustries.html.Link.Rel rel) throws IOException;
 

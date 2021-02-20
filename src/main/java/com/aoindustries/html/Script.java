@@ -42,24 +42,26 @@ import java.util.Locale;
 /**
  * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
-public class Script extends Element<Script> implements
-	Attributes.Boolean.Async<Script>,
-	Attributes.Enum.Charset<Script,Attributes.Enum.Charset.Value>,
-	Attributes.Boolean.Defer<Script>,
-	Attributes.Url.Src<Script>,
+public class Script<PC extends Content> extends Element<Script<PC>> implements
+	Attributes.Boolean.Async<Script<PC>>,
+	Attributes.Enum.Charset<Script<PC>, Attributes.Enum.Charset.Value>,
+	Attributes.Boolean.Defer<Script<PC>>,
+	Attributes.Url.Src<Script<PC>>,
 	// TODO: type
 	// TODO: xmlSpace
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Text.ClassNoHtml4<Script>,
-	Attributes.Text.IdNoHtml4<Script>,
-	Attributes.Text.StyleNoHtml4<Script>,
-	Attributes.Text.TitleNoHtml4<Script>,
+	Attributes.Text.ClassNoHtml4<Script<PC>>,
+	Attributes.Text.IdNoHtml4<Script<PC>>,
+	Attributes.Text.StyleNoHtml4<Script<PC>>,
+	Attributes.Text.TitleNoHtml4<Script<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <script>: Attributes.Event.AlmostGlobal<Script>
-	Attributes.Event.Window.Onerror<Script>,
-	Attributes.Event.Window.Onload<Script>
+	Attributes.Event.Window.Onerror<Script<PC>>,
+	Attributes.Event.Window.Onload<Script<PC>>
 {
 
 	/**
@@ -137,9 +139,9 @@ public class Script extends Element<Script> implements
 	}
 
 	@Override
-	protected Script open() throws IOException {
+	protected Script<PC> open() throws IOException {
 		document.out.write("<script");
-		Script s = type();
+		Script<PC> s = type();
 		assert s == this;
 		return this;
 	}
@@ -150,7 +152,7 @@ public class Script extends Element<Script> implements
 	 * @see Doctype#scriptType(java.lang.Appendable)
 	 */
 	@SuppressWarnings("deprecation")
-	protected Script type() throws IOException {
+	protected Script<PC> type() throws IOException {
 		// TODO: Check didBody here and other attributes, perhaps in some central attribute registry that detects duplicate attributes, too
 		if(
 			type == null
@@ -203,10 +205,10 @@ public class Script extends Element<Script> implements
 	// TODO:     Similar for "text", too.
 	// TODO: Interface for "out" with default methods? (Another for "text", too)
 	@SuppressWarnings("UseSpecificCatch")
-	public Script out(Object script) throws IOException {
-		while(script instanceof Supplier<?,?>) {
+	public Script<PC> out(Object script) throws IOException {
+		while(script instanceof Supplier<?, ?>) {
 			try {
-				script = ((Supplier<?,?>)script).get();
+				script = ((Supplier<?, ?>)script).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -235,7 +237,7 @@ public class Script extends Element<Script> implements
 		return this;
 	}
 
-	public <Ex extends Throwable> Script out(Supplier<?,Ex> script) throws IOException, Ex {
+	public <Ex extends Throwable> Script<PC> out(Supplier<?, Ex> script) throws IOException, Ex {
 		return out((script == null) ? null : script.get());
 	}
 
@@ -245,7 +247,7 @@ public class Script extends Element<Script> implements
 		void writeScript(MediaWriter script) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> Script out(ScriptWriter<Ex> script) throws IOException, Ex {
+	public <Ex extends Throwable> Script<PC> out(ScriptWriter<Ex> script) throws IOException, Ex {
 		if(script != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();
@@ -276,7 +278,12 @@ public class Script extends Element<Script> implements
 		};
 	}
 
-	public Document __() throws IOException {
+	/**
+	 * Closes this element.
+	 *
+	 * @return  The parent content model this element is within
+	 */
+	public PC __() throws IOException {
 		if(!didBody) {
 			document.out.write("></script>");
 		} else {
@@ -284,6 +291,7 @@ public class Script extends Element<Script> implements
 			if(doCdata()) document.out.write("//]]>");
 			document.out.write("</script>");
 		}
-		return document;
+		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		return pc;
 	}
 }

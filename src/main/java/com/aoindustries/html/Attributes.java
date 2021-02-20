@@ -125,7 +125,7 @@ public class Attributes {
 	 * @throws  IllegalArgumentException  When invalid, supporting {@link LocalizedIllegalArgumentException} when
 	 *                                    validationResult is a {@link InvalidResult}
 	 */
-	public static <T> T validate(T value, Function<? super T,ValidationResult> validator) throws IllegalArgumentException {
+	public static <T> T validate(T value, Function<? super T, ValidationResult> validator) throws IllegalArgumentException {
 		return validate(value, validator.apply(value));
 	}
 
@@ -180,7 +180,7 @@ public class Attributes {
 			 *
 			 * @see #async(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E async(Supplier<? extends java.lang.Boolean,Ex> async) throws IOException, Ex {
+			default <Ex extends Throwable> E async(Supplier<? extends java.lang.Boolean, Ex> async) throws IOException, Ex {
 				return async((async == null) ? null : async.get());
 			}
 		}
@@ -221,7 +221,7 @@ public class Attributes {
 			 *
 			 * @see #autofocus(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E autofocus(Supplier<? extends java.lang.Boolean,Ex> autofocus) throws IOException, Ex {
+			default <Ex extends Throwable> E autofocus(Supplier<? extends java.lang.Boolean, Ex> autofocus) throws IOException, Ex {
 				return autofocus((autofocus == null) ? null : autofocus.get());
 			}
 		}
@@ -254,7 +254,7 @@ public class Attributes {
 			 *
 			 * @see #checked(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E checked(Supplier<? extends java.lang.Boolean,Ex> checked) throws IOException, Ex {
+			default <Ex extends Throwable> E checked(Supplier<? extends java.lang.Boolean, Ex> checked) throws IOException, Ex {
 				return checked((checked == null) ? null : checked.get());
 			}
 		}
@@ -287,7 +287,7 @@ public class Attributes {
 			 *
 			 * @see #defer(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E defer(Supplier<? extends java.lang.Boolean,Ex> defer) throws IOException, Ex {
+			default <Ex extends Throwable> E defer(Supplier<? extends java.lang.Boolean, Ex> defer) throws IOException, Ex {
 				return defer((defer == null) ? null : defer.get());
 			}
 		}
@@ -320,7 +320,7 @@ public class Attributes {
 			 *
 			 * @see #disabled(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E disabled(Supplier<? extends java.lang.Boolean,Ex> disabled) throws IOException, Ex {
+			default <Ex extends Throwable> E disabled(Supplier<? extends java.lang.Boolean, Ex> disabled) throws IOException, Ex {
 				return disabled((disabled == null) ? null : disabled.get());
 			}
 		}
@@ -353,7 +353,7 @@ public class Attributes {
 			 *
 			 * @see #ismap(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E ismap(Supplier<? extends java.lang.Boolean,Ex> ismap) throws IOException, Ex {
+			default <Ex extends Throwable> E ismap(Supplier<? extends java.lang.Boolean, Ex> ismap) throws IOException, Ex {
 				return ismap((ismap == null) ? null : ismap.get());
 			}
 		}
@@ -394,7 +394,7 @@ public class Attributes {
 			 *
 			 * @see #multiple(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E multiple(Supplier<? extends java.lang.Boolean,Ex> multiple) throws IOException, Ex {
+			default <Ex extends Throwable> E multiple(Supplier<? extends java.lang.Boolean, Ex> multiple) throws IOException, Ex {
 				return multiple((multiple == null) ? null : multiple.get());
 			}
 		}
@@ -446,14 +446,16 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			default <Ex extends Throwable> E noshade(Supplier<? extends java.lang.Boolean,Ex> noshade) throws IOException, Ex {
+			default <Ex extends Throwable> E noshade(Supplier<? extends java.lang.Boolean, Ex> noshade) throws IOException, Ex {
 				return noshade((noshade == null) ? null : noshade.get());
 			}
 		}
 
 		/**
-		 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
-		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefreadonly">&lt;input&gt;: The Input (Form Input) element</a>.
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefreadonly">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+		 * </ul>
 		 */
 		public static interface Readonly<E extends Element<E> & Readonly<E>> {
 
@@ -480,7 +482,7 @@ public class Attributes {
 			 *
 			 * @see #readonly(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E readonly(Supplier<? extends java.lang.Boolean,Ex> readonly) throws IOException, Ex {
+			default <Ex extends Throwable> E readonly(Supplier<? extends java.lang.Boolean, Ex> readonly) throws IOException, Ex {
 				return readonly((readonly == null) ? null : readonly.get());
 			}
 		}
@@ -513,7 +515,7 @@ public class Attributes {
 			 *
 			 * @see #selected(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E selected(Supplier<? extends java.lang.Boolean,Ex> selected) throws IOException, Ex {
+			default <Ex extends Throwable> E selected(Supplier<? extends java.lang.Boolean, Ex> selected) throws IOException, Ex {
 				return selected((selected == null) ? null : selected.get());
 			}
 		}
@@ -547,14 +549,18 @@ public class Attributes {
 		}
 
 		/**
-		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-		 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+		 * <ul>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+		 * </ul>
 		 */
 		public static interface Coords<E extends Element<E> & Coords<E>> {
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			@Funnel
 			default E coords(java.lang.String coords) throws IOException {
@@ -563,21 +569,25 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @see #coords(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E coords(Supplier<? extends java.lang.String,Ex> coords) throws IOException, Ex {
+			default <Ex extends Throwable> E coords(Supplier<? extends java.lang.String, Ex> coords) throws IOException, Ex {
 				return coords((coords == null) ? null : coords.get());
 			}
 
 			// RECT
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(int left, int top, int right, int bottom) throws IOException {
 				return coords(
@@ -589,8 +599,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(java.lang.Integer left, java.lang.Integer top, java.lang.Integer right, java.lang.Integer bottom) throws IOException {
 				return coords(
@@ -602,8 +614,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(Rectangle rect) throws IOException {
 				if(rect != null) {
@@ -614,8 +628,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @see #coords(java.awt.Rectangle)
 			 */
@@ -625,8 +641,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @deprecated  In HTML4, the values are numbers of pixels or percentages, if a percent sign (%) is appended;
 			 *              in HTML5, the values are numbers of CSS pixels.
@@ -647,8 +665,10 @@ public class Attributes {
 			// CIRCLE
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(int x, int y, int radius) throws IOException {
 				return coords(
@@ -659,8 +679,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(java.lang.Integer x, java.lang.Integer y, java.lang.Integer radius) throws IOException {
 				return coords(
@@ -671,8 +693,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(Circle circle) throws IOException {
 				if(circle != null) {
@@ -683,8 +707,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @see #coords(com.aoindustries.html.Circle)
 			 */
@@ -694,8 +720,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @deprecated  In HTML4, the values are numbers of pixels or percentages, if a percent sign (%) is appended;
 			 *              in HTML5, the values are numbers of CSS pixels.
@@ -715,8 +743,10 @@ public class Attributes {
 			// POLY
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(Point ... poly) throws IOException {
 				// TODO: This could be done via a streaming attribute at the cost of not going through the current single funnel
@@ -733,8 +763,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(Polygon poly) throws IOException {
 				if(poly == null || poly.npoints == 0) {
@@ -751,8 +783,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @see #coords(java.awt.Polygon)
 			 */
@@ -764,8 +798,10 @@ public class Attributes {
 			// Shape base class
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 */
 			default E coords(java.awt.Shape shape) throws IOException {
 				if(shape == null) return coords((java.lang.String)null);
@@ -786,8 +822,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
+			 * </ul>
 			 *
 			 * @see #coords(java.awt.Shape)
 			 */
@@ -826,7 +864,7 @@ public class Attributes {
 			 * @see #width(java.lang.Integer)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				return width((pixels == null) ? null : pixels.get());
 			}
 
@@ -912,7 +950,7 @@ public class Attributes {
 			@Deprecated
 			@Override
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -976,7 +1014,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Event() {}
 
-		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
+		static <E extends Element<E>, Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
 			return Text.attribute(element, name, MarkupType.JAVASCRIPT, script, true, true, javaScriptInXhtmlAttributeEncoder);
 		}
 
@@ -1012,7 +1050,7 @@ public class Attributes {
 				 *
 				 * @see #onafterprint(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onafterprint(Supplier<?,Ex> onafterprint) throws IOException, Ex {
+				default <Ex extends Throwable> E onafterprint(Supplier<?, Ex> onafterprint) throws IOException, Ex {
 					return onafterprint((onafterprint == null) ? null : onafterprint.get());
 				}
 
@@ -1053,7 +1091,7 @@ public class Attributes {
 				 *
 				 * @see #onbeforeprint(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onbeforeprint(Supplier<?,Ex> onbeforeprint) throws IOException, Ex {
+				default <Ex extends Throwable> E onbeforeprint(Supplier<?, Ex> onbeforeprint) throws IOException, Ex {
 					return onbeforeprint((onbeforeprint == null) ? null : onbeforeprint.get());
 				}
 
@@ -1086,7 +1124,7 @@ public class Attributes {
 				 *
 				 * @see #onbeforeunload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onbeforeunload(Supplier<?,Ex> onbeforeunload) throws IOException, Ex {
+				default <Ex extends Throwable> E onbeforeunload(Supplier<?, Ex> onbeforeunload) throws IOException, Ex {
 					return onbeforeunload((onbeforeunload == null) ? null : onbeforeunload.get());
 				}
 
@@ -1111,9 +1149,11 @@ public class Attributes {
 			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
 			
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
-			 * See <a href="https://www.w3schools.com/jsref/event_onerror.asp">onerror Event</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_onerror.asp">HTML onerror Attribute</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/jsref/event_onerror.asp">onerror Event</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_onerror.asp">HTML onerror Attribute</a>.</li>
+			 * </ul>
 			 */
 			public static interface Onerror<E extends Element<E> & Onerror<E>> {
 
@@ -1131,7 +1171,7 @@ public class Attributes {
 				 *
 				 * @see #onerror(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onerror(Supplier<?,Ex> onerror) throws IOException, Ex {
+				default <Ex extends Throwable> E onerror(Supplier<?, Ex> onerror) throws IOException, Ex {
 					return onerror((onerror == null) ? null : onerror.get());
 				}
 
@@ -1172,7 +1212,7 @@ public class Attributes {
 				 *
 				 * @see #onhashchange(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onhashchange(Supplier<?,Ex> onhashchange) throws IOException, Ex {
+				default <Ex extends Throwable> E onhashchange(Supplier<?, Ex> onhashchange) throws IOException, Ex {
 					return onhashchange((onhashchange == null) ? null : onhashchange.get());
 				}
 
@@ -1205,7 +1245,7 @@ public class Attributes {
 				 *
 				 * @see #onload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onload(Supplier<?,Ex> onload) throws IOException, Ex {
+				default <Ex extends Throwable> E onload(Supplier<?, Ex> onload) throws IOException, Ex {
 					return onload((onload == null) ? null : onload.get());
 				}
 
@@ -1246,7 +1286,7 @@ public class Attributes {
 				 *
 				 * @see #onmessage(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmessage(Supplier<?,Ex> onmessage) throws IOException, Ex {
+				default <Ex extends Throwable> E onmessage(Supplier<?, Ex> onmessage) throws IOException, Ex {
 					return onmessage((onmessage == null) ? null : onmessage.get());
 				}
 
@@ -1287,7 +1327,7 @@ public class Attributes {
 				 *
 				 * @see #onoffline(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onoffline(Supplier<?,Ex> onoffline) throws IOException, Ex {
+				default <Ex extends Throwable> E onoffline(Supplier<?, Ex> onoffline) throws IOException, Ex {
 					return onoffline((onoffline == null) ? null : onoffline.get());
 				}
 
@@ -1328,7 +1368,7 @@ public class Attributes {
 				 *
 				 * @see #ononline(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ononline(Supplier<?,Ex> ononline) throws IOException, Ex {
+				default <Ex extends Throwable> E ononline(Supplier<?, Ex> ononline) throws IOException, Ex {
 					return ononline((ononline == null) ? null : ononline.get());
 				}
 
@@ -1361,7 +1401,7 @@ public class Attributes {
 				 *
 				 * @see #onpagehide(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpagehide(Supplier<?,Ex> onpagehide) throws IOException, Ex {
+				default <Ex extends Throwable> E onpagehide(Supplier<?, Ex> onpagehide) throws IOException, Ex {
 					return onpagehide((onpagehide == null) ? null : onpagehide.get());
 				}
 
@@ -1394,7 +1434,7 @@ public class Attributes {
 				 *
 				 * @see #onpageshow(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpageshow(Supplier<?,Ex> onpageshow) throws IOException, Ex {
+				default <Ex extends Throwable> E onpageshow(Supplier<?, Ex> onpageshow) throws IOException, Ex {
 					return onpageshow((onpageshow == null) ? null : onpageshow.get());
 				}
 
@@ -1427,7 +1467,7 @@ public class Attributes {
 				 *
 				 * @see #onpopstate(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpopstate(Supplier<?,Ex> onpopstate) throws IOException, Ex {
+				default <Ex extends Throwable> E onpopstate(Supplier<?, Ex> onpopstate) throws IOException, Ex {
 					return onpopstate((onpopstate == null) ? null : onpopstate.get());
 				}
 
@@ -1468,7 +1508,7 @@ public class Attributes {
 				 *
 				 * @see #onresize(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onresize(Supplier<?,Ex> onresize) throws IOException, Ex {
+				default <Ex extends Throwable> E onresize(Supplier<?, Ex> onresize) throws IOException, Ex {
 					return onresize((onresize == null) ? null : onresize.get());
 				}
 
@@ -1501,7 +1541,7 @@ public class Attributes {
 				 *
 				 * @see #onstorage(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onstorage(Supplier<?,Ex> onstorage) throws IOException, Ex {
+				default <Ex extends Throwable> E onstorage(Supplier<?, Ex> onstorage) throws IOException, Ex {
 					return onstorage((onstorage == null) ? null : onstorage.get());
 				}
 
@@ -1534,7 +1574,7 @@ public class Attributes {
 				 *
 				 * @see #onunload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onunload(Supplier<?,Ex> onunload) throws IOException, Ex {
+				default <Ex extends Throwable> E onunload(Supplier<?, Ex> onunload) throws IOException, Ex {
 					return onunload((onunload == null) ? null : onunload.get());
 				}
 
@@ -1573,7 +1613,7 @@ public class Attributes {
 				 *
 				 * @see #onblur(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onblur(Supplier<?,Ex> onblur) throws IOException, Ex {
+				default <Ex extends Throwable> E onblur(Supplier<?, Ex> onblur) throws IOException, Ex {
 					return onblur((onblur == null) ? null : onblur.get());
 				}
 
@@ -1588,8 +1628,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
-			 * See <a href="https://www.w3schools.com/jsref/event_onchange.asp">onchange Event</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/jsref/event_onchange.asp">onchange Event</a>.</li>
+			 * </ul>
 			 */
 			public static interface Onchange<E extends Element<E> & Onchange<E>> {
 
@@ -1607,7 +1649,7 @@ public class Attributes {
 				 *
 				 * @see #onchange(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onchange(Supplier<?,Ex> onchange) throws IOException, Ex {
+				default <Ex extends Throwable> E onchange(Supplier<?, Ex> onchange) throws IOException, Ex {
 					return onchange((onchange == null) ? null : onchange.get());
 				}
 
@@ -1648,7 +1690,7 @@ public class Attributes {
 				 *
 				 * @see #oncontextmenu(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncontextmenu(Supplier<?,Ex> oncontextmenu) throws IOException, Ex {
+				default <Ex extends Throwable> E oncontextmenu(Supplier<?, Ex> oncontextmenu) throws IOException, Ex {
 					return oncontextmenu((oncontextmenu == null) ? null : oncontextmenu.get());
 				}
 
@@ -1681,7 +1723,7 @@ public class Attributes {
 				 *
 				 * @see #onfocus(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onfocus(Supplier<?,Ex> onfocus) throws IOException, Ex {
+				default <Ex extends Throwable> E onfocus(Supplier<?, Ex> onfocus) throws IOException, Ex {
 					return onfocus((onfocus == null) ? null : onfocus.get());
 				}
 
@@ -1696,8 +1738,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
-			 * See <a href="https://www.w3schools.com/jsref/event_oninput.asp">oninput Event</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/jsref/event_oninput.asp">oninput Event</a>.</li>
+			 * </ul>
 			 */
 			public static interface Oninput<E extends Element<E> & Oninput<E>> {
 
@@ -1723,7 +1767,7 @@ public class Attributes {
 				 *
 				 * @see #oninput(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oninput(Supplier<?,Ex> oninput) throws IOException, Ex {
+				default <Ex extends Throwable> E oninput(Supplier<?, Ex> oninput) throws IOException, Ex {
 					return oninput((oninput == null) ? null : oninput.get());
 				}
 
@@ -1756,7 +1800,7 @@ public class Attributes {
 				 *
 				 * @see #oninvalid(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oninvalid(Supplier<?,Ex> oninvalid) throws IOException, Ex {
+				default <Ex extends Throwable> E oninvalid(Supplier<?, Ex> oninvalid) throws IOException, Ex {
 					return oninvalid((oninvalid == null) ? null : oninvalid.get());
 				}
 
@@ -1797,7 +1841,7 @@ public class Attributes {
 				 *
 				 * @see #onreset(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onreset(Supplier<?,Ex> onreset) throws IOException, Ex {
+				default <Ex extends Throwable> E onreset(Supplier<?, Ex> onreset) throws IOException, Ex {
 					return onreset((onreset == null) ? null : onreset.get());
 				}
 
@@ -1812,8 +1856,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
-			 * See <a href="https://www.w3schools.com/jsref/event_onsearch.asp">onsearch Event</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/jsref/event_onsearch.asp">onsearch Event</a>.</li>
+			 * </ul>
 			 */
 			public static interface Onsearch<E extends Element<E> & Onsearch<E>> {
 
@@ -1831,7 +1877,7 @@ public class Attributes {
 				 *
 				 * @see #onsearch(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onsearch(Supplier<?,Ex> onsearch) throws IOException, Ex {
+				default <Ex extends Throwable> E onsearch(Supplier<?, Ex> onsearch) throws IOException, Ex {
 					return onsearch((onsearch == null) ? null : onsearch.get());
 				}
 
@@ -1846,9 +1892,11 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
-			 * See <a href="https://www.w3schools.com/jsref/event_onselect.asp">onselect Event</a>.
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onselect">GlobalEventHandlers.onselect</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/jsref/event_onselect.asp">onselect Event</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onselect">GlobalEventHandlers.onselect</a>.</li>
+			 * </ul>
 			 */
 			public static interface Onselect<E extends Element<E> & Onselect<E>> {
 
@@ -1866,7 +1914,7 @@ public class Attributes {
 				 *
 				 * @see #onselect(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onselect(Supplier<?,Ex> onselect) throws IOException, Ex {
+				default <Ex extends Throwable> E onselect(Supplier<?, Ex> onselect) throws IOException, Ex {
 					return onselect((onselect == null) ? null : onselect.get());
 				}
 
@@ -1903,7 +1951,7 @@ public class Attributes {
 				 *
 				 * @see #onsubmit(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onsubmit(Supplier<?,Ex> onsubmit) throws IOException, Ex {
+				default <Ex extends Throwable> E onsubmit(Supplier<?, Ex> onsubmit) throws IOException, Ex {
 					return onsubmit((onsubmit == null) ? null : onsubmit.get());
 				}
 
@@ -1932,8 +1980,10 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Form Events</a>.
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Form Events</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.</li>
+			 * </ul>
 			 */
 			@SuppressWarnings("MarkerInterface")
 			public static interface Global<E extends Element<E> & Global<E>> extends
@@ -1969,7 +2019,7 @@ public class Attributes {
 				 *
 				 * @see #onkeydown(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeydown(Supplier<?,Ex> onkeydown) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeydown(Supplier<?, Ex> onkeydown) throws IOException, Ex {
 					return onkeydown((onkeydown == null) ? null : onkeydown.get());
 				}
 
@@ -2002,7 +2052,7 @@ public class Attributes {
 				 *
 				 * @see #onkeypress(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeypress(Supplier<?,Ex> onkeypress) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeypress(Supplier<?, Ex> onkeypress) throws IOException, Ex {
 					return onkeypress((onkeypress == null) ? null : onkeypress.get());
 				}
 
@@ -2035,7 +2085,7 @@ public class Attributes {
 				 *
 				 * @see #onkeyup(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeyup(Supplier<?,Ex> onkeyup) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeyup(Supplier<?, Ex> onkeyup) throws IOException, Ex {
 					return onkeyup((onkeyup == null) ? null : onkeyup.get());
 				}
 
@@ -2089,7 +2139,7 @@ public class Attributes {
 				 *
 				 * @see #onclick(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onclick(Supplier<?,Ex> onclick) throws IOException, Ex {
+				default <Ex extends Throwable> E onclick(Supplier<?, Ex> onclick) throws IOException, Ex {
 					return onclick((onclick == null) ? null : onclick.get());
 				}
 
@@ -2122,7 +2172,7 @@ public class Attributes {
 				 *
 				 * @see #ondblclick(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondblclick(Supplier<?,Ex> ondblclick) throws IOException, Ex {
+				default <Ex extends Throwable> E ondblclick(Supplier<?, Ex> ondblclick) throws IOException, Ex {
 					return ondblclick((ondblclick == null) ? null : ondblclick.get());
 				}
 
@@ -2155,7 +2205,7 @@ public class Attributes {
 				 *
 				 * @see #onmousedown(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmousedown(Supplier<?,Ex> onmousedown) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousedown(Supplier<?, Ex> onmousedown) throws IOException, Ex {
 					return onmousedown((onmousedown == null) ? null : onmousedown.get());
 				}
 
@@ -2191,7 +2241,7 @@ public class Attributes {
 				 *
 				 * @see #onmousemove(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmousemove(Supplier<?,Ex> onmousemove) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousemove(Supplier<?, Ex> onmousemove) throws IOException, Ex {
 					return onmousemove((onmousemove == null) ? null : onmousemove.get());
 				}
 
@@ -2224,7 +2274,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseout(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseout(Supplier<?,Ex> onmouseout) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseout(Supplier<?, Ex> onmouseout) throws IOException, Ex {
 					return onmouseout((onmouseout == null) ? null : onmouseout.get());
 				}
 
@@ -2257,7 +2307,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseover(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseover(Supplier<?,Ex> onmouseover) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseover(Supplier<?, Ex> onmouseover) throws IOException, Ex {
 					return onmouseover((onmouseover == null) ? null : onmouseover.get());
 				}
 
@@ -2290,7 +2340,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseup(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseup(Supplier<?,Ex> onmouseup) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseup(Supplier<?, Ex> onmouseup) throws IOException, Ex {
 					return onmouseup((onmouseup == null) ? null : onmouseup.get());
 				}
 
@@ -2332,7 +2382,7 @@ public class Attributes {
 				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.Supplier) onwheel} attribute instead.
 				 */
 				@Deprecated
-				default <Ex extends Throwable> E onmousewheel(Supplier<?,Ex> onmousewheel) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousewheel(Supplier<?, Ex> onmousewheel) throws IOException, Ex {
 					return onmousewheel((onmousewheel == null) ? null : onmousewheel.get());
 				}
 
@@ -2376,7 +2426,7 @@ public class Attributes {
 				 *
 				 * @see #onwheel(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onwheel(Supplier<?,Ex> onwheel) throws IOException, Ex {
+				default <Ex extends Throwable> E onwheel(Supplier<?, Ex> onwheel) throws IOException, Ex {
 					return onwheel((onwheel == null) ? null : onwheel.get());
 				}
 
@@ -2452,7 +2502,7 @@ public class Attributes {
 				 *
 				 * @see #ondrag(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondrag(Supplier<?,Ex> ondrag) throws IOException, Ex {
+				default <Ex extends Throwable> E ondrag(Supplier<?, Ex> ondrag) throws IOException, Ex {
 					return ondrag((ondrag == null) ? null : ondrag.get());
 				}
 
@@ -2493,7 +2543,7 @@ public class Attributes {
 				 *
 				 * @see #ondragend(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragend(Supplier<?,Ex> ondragend) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragend(Supplier<?, Ex> ondragend) throws IOException, Ex {
 					return ondragend((ondragend == null) ? null : ondragend.get());
 				}
 
@@ -2534,7 +2584,7 @@ public class Attributes {
 				 *
 				 * @see #ondragenter(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragenter(Supplier<?,Ex> ondragenter) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragenter(Supplier<?, Ex> ondragenter) throws IOException, Ex {
 					return ondragenter((ondragenter == null) ? null : ondragenter.get());
 				}
 
@@ -2577,7 +2627,7 @@ public class Attributes {
 				 *
 				 * @see #ondragleave(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragleave(Supplier<?,Ex> ondragleave) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragleave(Supplier<?, Ex> ondragleave) throws IOException, Ex {
 					return ondragleave((ondragleave == null) ? null : ondragleave.get());
 				}
 
@@ -2618,7 +2668,7 @@ public class Attributes {
 				 *
 				 * @see #ondragover(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragover(Supplier<?,Ex> ondragover) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragover(Supplier<?, Ex> ondragover) throws IOException, Ex {
 					return ondragover((ondragover == null) ? null : ondragover.get());
 				}
 
@@ -2659,7 +2709,7 @@ public class Attributes {
 				 *
 				 * @see #ondragstart(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragstart(Supplier<?,Ex> ondragstart) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragstart(Supplier<?, Ex> ondragstart) throws IOException, Ex {
 					return ondragstart((ondragstart == null) ? null : ondragstart.get());
 				}
 
@@ -2700,7 +2750,7 @@ public class Attributes {
 				 *
 				 * @see #ondrop(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondrop(Supplier<?,Ex> ondrop) throws IOException, Ex {
+				default <Ex extends Throwable> E ondrop(Supplier<?, Ex> ondrop) throws IOException, Ex {
 					return ondrop((ondrop == null) ? null : ondrop.get());
 				}
 
@@ -2741,7 +2791,7 @@ public class Attributes {
 				 *
 				 * @see #onscroll(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onscroll(Supplier<?,Ex> onscroll) throws IOException, Ex {
+				default <Ex extends Throwable> E onscroll(Supplier<?, Ex> onscroll) throws IOException, Ex {
 					return onscroll((onscroll == null) ? null : onscroll.get());
 				}
 
@@ -2795,7 +2845,7 @@ public class Attributes {
 				 *
 				 * @see #oncopy(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncopy(Supplier<?,Ex> oncopy) throws IOException, Ex {
+				default <Ex extends Throwable> E oncopy(Supplier<?, Ex> oncopy) throws IOException, Ex {
 					return oncopy((oncopy == null) ? null : oncopy.get());
 				}
 
@@ -2828,7 +2878,7 @@ public class Attributes {
 				 *
 				 * @see #oncut(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncut(Supplier<?,Ex> oncut) throws IOException, Ex {
+				default <Ex extends Throwable> E oncut(Supplier<?, Ex> oncut) throws IOException, Ex {
 					return oncut((oncut == null) ? null : oncut.get());
 				}
 
@@ -2861,7 +2911,7 @@ public class Attributes {
 				 *
 				 * @see #onpaste(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpaste(Supplier<?,Ex> onpaste) throws IOException, Ex {
+				default <Ex extends Throwable> E onpaste(Supplier<?, Ex> onpaste) throws IOException, Ex {
 					return onpaste((onpaste == null) ? null : onpaste.get());
 				}
 
@@ -2888,8 +2938,10 @@ public class Attributes {
 		}
 
 		/**
-		 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Media Events</a>.
-		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Media Events</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.</li>
+		 * </ul>
 		 */
 		public static class Media {
 
@@ -2915,7 +2967,7 @@ public class Attributes {
 				 *
 				 * @see #onabort(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onabort(Supplier<?,Ex> onabort) throws IOException, Ex {
+				default <Ex extends Throwable> E onabort(Supplier<?, Ex> onabort) throws IOException, Ex {
 					return onabort((onabort == null) ? null : onabort.get());
 				}
 
@@ -3011,7 +3063,7 @@ public class Attributes {
 		 */
 		@Deprecated
 		public static interface Align<
-			E extends Element<E> & Align<E,V>,
+			E extends Element<E> & Align<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3069,7 +3121,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E align(Supplier<? extends V,Ex> align) throws IOException, Ex {
+			default <Ex extends Throwable> E align(Supplier<? extends V, Ex> align) throws IOException, Ex {
 				return align((align== null) ? (V)null : align.get());
 			}
 		}
@@ -3082,7 +3134,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface Autocomplete<
-			E extends Element<E> & Autocomplete<E,V>,
+			E extends Element<E> & Autocomplete<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3139,7 +3191,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E autocomplete(Supplier<? extends V,Ex> autocomplete) throws IOException, Ex {
+			default <Ex extends Throwable> E autocomplete(Supplier<? extends V, Ex> autocomplete) throws IOException, Ex {
 				return autocomplete((autocomplete== null) ? (V)null : autocomplete.get());
 			}
 
@@ -3190,7 +3242,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@Funnel
-			@SuppressWarnings("unchecked")
+			@SuppressWarnings("unchecked") // generic varargs
 			default E autocomplete(V ... autocomplete) throws IOException {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
@@ -3231,7 +3283,7 @@ public class Attributes {
 		 */
 		// TODO: Support java Charset, too
 		public static interface Charset<
-			E extends Element<E> & Charset<E,V>,
+			E extends Element<E> & Charset<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3288,7 +3340,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E charset(Supplier<? extends V,Ex> charset) throws IOException, Ex {
+			default <Ex extends Throwable> E charset(Supplier<? extends V, Ex> charset) throws IOException, Ex {
 				return charset((charset== null) ? (V)null : charset.get());
 			}
 
@@ -3336,7 +3388,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface Capture<
-			E extends Element<E> & Capture<E,V>,
+			E extends Element<E> & Capture<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3395,7 +3447,7 @@ public class Attributes {
 			 * @see #capture(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E capture(Supplier<? extends V,Ex> capture) throws IOException, Ex {
+			default <Ex extends Throwable> E capture(Supplier<? extends V, Ex> capture) throws IOException, Ex {
 				return capture((capture== null) ? (V)null : capture.get());
 			}
 		}
@@ -3404,7 +3456,7 @@ public class Attributes {
 		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 		 */
 		public static interface Crossorigin<
-			E extends Element<E> & Crossorigin<E,V>,
+			E extends Element<E> & Crossorigin<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3443,7 +3495,7 @@ public class Attributes {
 			 * @see #crossorigin(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E crossorigin(Supplier<? extends V,Ex> crossorigin) throws IOException, Ex {
+			default <Ex extends Throwable> E crossorigin(Supplier<? extends V, Ex> crossorigin) throws IOException, Ex {
 				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get());
 			}
 		}
@@ -3455,7 +3507,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface Dir<
-			E extends Element<E>, // TODO: How to use from Global?  Remove others?  & Dir<E,V>,
+			E extends Element<E>, // TODO: How to use from Global?  Remove others?  & Dir<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3559,7 +3611,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E dir(Supplier<? extends V,Ex> dir) throws IOException, Ex {
+			default <Ex extends Throwable> E dir(Supplier<? extends V, Ex> dir) throws IOException, Ex {
 				return dir((dir== null) ? (V)null : dir.get());
 			}
 
@@ -3620,7 +3672,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface HttpEquiv<
-			E extends Element<E> & HttpEquiv<E,V>,
+			E extends Element<E> & HttpEquiv<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3669,7 +3721,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E httpEquiv(Supplier<? extends V,Ex> httpEquiv) throws IOException, Ex {
+			default <Ex extends Throwable> E httpEquiv(Supplier<? extends V, Ex> httpEquiv) throws IOException, Ex {
 				return httpEquiv((httpEquiv== null) ? (V)null : httpEquiv.get());
 			}
 		}
@@ -3678,7 +3730,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 		 */
 		public static interface Name<
-			E extends Element<E> & Name<E,V>,
+			E extends Element<E> & Name<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3718,7 +3770,7 @@ public class Attributes {
 			 * @see #name(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E name(Supplier<? extends V,Ex> name) throws IOException, Ex {
+			default <Ex extends Throwable> E name(Supplier<? extends V, Ex> name) throws IOException, Ex {
 				return name((name== null) ? (V)null : name.get());
 			}
 		}
@@ -3727,7 +3779,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 		 */
 		public static interface Rel<
-			E extends Element<E> & Rel<E,V>,
+			E extends Element<E> & Rel<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3766,7 +3818,7 @@ public class Attributes {
 			 * @see #rel(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E rel(Supplier<? extends V,Ex> rel) throws IOException, Ex {
+			default <Ex extends Throwable> E rel(Supplier<? extends V, Ex> rel) throws IOException, Ex {
 				return rel((rel== null) ? (V)null : rel.get());
 			}
 		}
@@ -3775,7 +3827,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
 		 */
 		public static interface Shape<
-			E extends Element<E> & Shape<E,V>,
+			E extends Element<E> & Shape<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3814,7 +3866,7 @@ public class Attributes {
 			 * @see #shape(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E shape(Supplier<? extends V,Ex> shape) throws IOException, Ex {
+			default <Ex extends Throwable> E shape(Supplier<? extends V, Ex> shape) throws IOException, Ex {
 				return shape((shape== null) ? (V)null : shape.get());
 			}
 		}
@@ -3823,7 +3875,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 		 */
 		public static interface Type<
-			E extends Element<E> & Type<E,V>,
+			E extends Element<E> & Type<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3862,7 +3914,7 @@ public class Attributes {
 			 * @see #type(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E type(Supplier<? extends V,Ex> type) throws IOException, Ex {
+			default <Ex extends Throwable> E type(Supplier<? extends V, Ex> type) throws IOException, Ex {
 				return type((type== null) ? (V)null : type.get());
 			}
 		}
@@ -3874,7 +3926,7 @@ public class Attributes {
 		 */
 		@Deprecated
 		public static interface Valign<
-			E extends Element<E> & Valign<E,V>,
+			E extends Element<E> & Valign<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3932,7 +3984,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E valign(Supplier<? extends V,Ex> valign) throws IOException, Ex {
+			default <Ex extends Throwable> E valign(Supplier<? extends V, Ex> valign) throws IOException, Ex {
 				return valign((valign== null) ? (V)null : valign.get());
 			}
 		}
@@ -3991,7 +4043,7 @@ public class Attributes {
 			 *
 			 * @see #height(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				return height((pixels == null) ? null : pixels.get());
 			}
 		}
@@ -4052,7 +4104,7 @@ public class Attributes {
 			 * @see #height(java.lang.Integer)
 			 */
 			@Override
-			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4067,8 +4119,10 @@ public class Attributes {
 		}
 
 		/**
-		 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
-		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefmaxlength">&lt;input&gt;: The Input (Form Input) element</a>.
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefmaxlength">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+		 * </ul>
 		 */
 		public static interface Maxlength<E extends Element<E> & Maxlength<E>> {
 
@@ -4095,7 +4149,7 @@ public class Attributes {
 			 *
 			 * @see #maxlength(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E maxlength(Supplier<? extends java.lang.Integer,Ex> maxlength) throws IOException, Ex {
+			default <Ex extends Throwable> E maxlength(Supplier<? extends java.lang.Integer, Ex> maxlength) throws IOException, Ex {
 				return maxlength((maxlength == null) ? null : maxlength.get());
 			}
 		}
@@ -4128,7 +4182,7 @@ public class Attributes {
 			 *
 			 * @see #minlength(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E minlength(Supplier<? extends java.lang.Integer,Ex> minlength) throws IOException, Ex {
+			default <Ex extends Throwable> E minlength(Supplier<? extends java.lang.Integer, Ex> minlength) throws IOException, Ex {
 				return minlength((minlength == null) ? null : minlength.get());
 			}
 		}
@@ -4161,7 +4215,7 @@ public class Attributes {
 			 *
 			 * @see #size(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
+			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer, Ex> size) throws IOException, Ex {
 				return size((size == null) ? null : size.get());
 			}
 		}
@@ -4217,7 +4271,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
-			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer,Ex> size) throws IOException, Ex {
+			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer, Ex> size) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4258,7 +4312,7 @@ public class Attributes {
 			 *
 			 * @see #span(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E span(Supplier<? extends java.lang.Integer,Ex> span) throws IOException, Ex {
+			default <Ex extends Throwable> E span(Supplier<? extends java.lang.Integer, Ex> span) throws IOException, Ex {
 				return span((span == null) ? null : span.get());
 			}
 		}
@@ -4319,7 +4373,7 @@ public class Attributes {
 			 *
 			 * @see #tabindex(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
+			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer, Ex> tabindex) throws IOException, Ex {
 				return tabindex((tabindex == null) ? null : tabindex.get());
 			}
 		}
@@ -4367,7 +4421,7 @@ public class Attributes {
 			 * @see #tabindex(java.lang.Integer)
 			 */
 			@Override
-			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer,Ex> tabindex) throws IOException, Ex {
+			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer, Ex> tabindex) throws IOException, Ex {
 				return tabindex((tabindex == null) ? null : tabindex.get());
 			}
 		}
@@ -4400,7 +4454,7 @@ public class Attributes {
 			 *
 			 * @see #width(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				return width((pixels == null) ? null : pixels.get());
 			}
 		}
@@ -4464,7 +4518,7 @@ public class Attributes {
 			 * @see #width(java.lang.Integer)
 			 */
 			@Override
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer,Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4539,7 +4593,7 @@ public class Attributes {
 			 * @see #hreflang(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E hreflang(Supplier<? extends java.lang.String,Ex> hreflang) throws IOException, Ex {
+			default <Ex extends Throwable> E hreflang(Supplier<? extends java.lang.String, Ex> hreflang) throws IOException, Ex {
 				return hreflang((hreflang == null) ? null : hreflang.get());
 			}
 
@@ -4600,7 +4654,7 @@ public class Attributes {
 			 *
 			 * @see #usemap(java.lang.String)
 			 */
-			default <Ex extends Throwable> E usemap(Supplier<? extends java.lang.String,Ex> usemap) throws IOException, Ex {
+			default <Ex extends Throwable> E usemap(Supplier<? extends java.lang.String, Ex> usemap) throws IOException, Ex {
 				return usemap((usemap == null) ? null : usemap.get());
 			}
 		}
@@ -4617,17 +4671,15 @@ public class Attributes {
 		/**
 		 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 		 */
-		static <E extends Element<E>,Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
+		static <E extends Element<E>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			// TODO: Assert is valid attribute name by doctype
-			while(value instanceof Supplier<?,?>) {
-				@SuppressWarnings("unchecked")
-				Supplier<?,Ex> supplier = (Supplier<?,Ex>)value;
+			while(value instanceof Supplier<?, ?>) {
+				@SuppressWarnings("unchecked") Supplier<?, Ex> supplier = (Supplier<?, Ex>)value;
 				value = supplier.get();
 			}
 			if(value != null) {
 				if(value instanceof MediaWritable<?>) {
-					@SuppressWarnings("unchecked")
-					MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
+					@SuppressWarnings("unchecked") MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
 					element.document.out.write(' ');
 					element.document.out.write(name);
 					element.document.out.write("=\"");
@@ -4699,7 +4751,7 @@ public class Attributes {
 			 * @deprecated  Please implement specific attributes as-needed
 			 */
 			@Deprecated
-			default <Ex extends Throwable> E attribute(java.lang.String name, Supplier<?,Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E attribute(java.lang.String name, Supplier<?, Ex> value) throws IOException, Ex {
 				return attribute(name, (value == null) ? null : value.get());
 			}
 
@@ -4735,7 +4787,7 @@ public class Attributes {
 			 *
 			 * @see #accept(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E accept(Supplier<?,Ex> accept) throws IOException, Ex {
+			default <Ex extends Throwable> E accept(Supplier<?, Ex> accept) throws IOException, Ex {
 				return accept((accept == null) ? null : accept.get());
 			}
 
@@ -4768,7 +4820,7 @@ public class Attributes {
 			 *
 			 * @see #alt(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E alt(Supplier<?,Ex> alt) throws IOException, Ex {
+			default <Ex extends Throwable> E alt(Supplier<?, Ex> alt) throws IOException, Ex {
 				return alt((alt == null) ? null : alt.get());
 			}
 
@@ -4811,7 +4863,7 @@ public class Attributes {
 			 *
 			 * @see #clazz(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E clazz(Supplier<?,Ex> clazz) throws IOException, Ex {
+			default <Ex extends Throwable> E clazz(Supplier<?, Ex> clazz) throws IOException, Ex {
 				return clazz((clazz == null) ? null : clazz.get());
 			}
 
@@ -4866,7 +4918,7 @@ public class Attributes {
 			 * @see #clazz(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E clazz(Supplier<?,Ex> clazz) throws IOException, Ex {
+			default <Ex extends Throwable> E clazz(Supplier<?, Ex> clazz) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4922,7 +4974,7 @@ public class Attributes {
 			 *
 			 * @see #content(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E content(Supplier<?,Ex> content) throws IOException, Ex {
+			default <Ex extends Throwable> E content(Supplier<?, Ex> content) throws IOException, Ex {
 				return content((content == null) ? null : content.get());
 			}
 
@@ -5123,7 +5175,7 @@ public class Attributes {
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 			 * </ul>
 			 */
-			default <Ex extends Throwable> E data(java.lang.String attrName, Supplier<?,Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E data(java.lang.String attrName, Supplier<?, Ex> value) throws IOException, Ex {
 				return data(attrName, (value == null) ? null : value.get());
 			}
 
@@ -5275,7 +5327,7 @@ public class Attributes {
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 			 * </ul>
 			 */
-			default <Ex extends Throwable> E dataset(java.lang.String jsName, Supplier<?,Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E dataset(java.lang.String jsName, Supplier<?, Ex> value) throws IOException, Ex {
 				return dataset(jsName, (value == null) ? null : value.get());
 			}
 
@@ -5324,7 +5376,7 @@ public class Attributes {
 			 *
 			 * @see #id(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E id(Supplier<?,Ex> id) throws IOException, Ex {
+			default <Ex extends Throwable> E id(Supplier<?, Ex> id) throws IOException, Ex {
 				return id((id == null) ? null : id.get());
 			}
 
@@ -5380,7 +5432,7 @@ public class Attributes {
 			 * @see #id(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E id(Supplier<?,Ex> id) throws IOException, Ex {
+			default <Ex extends Throwable> E id(Supplier<?, Ex> id) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5435,7 +5487,7 @@ public class Attributes {
 			 *
 			 * @see #label(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E label(Supplier<?,Ex> label) throws IOException, Ex {
+			default <Ex extends Throwable> E label(Supplier<?, Ex> label) throws IOException, Ex {
 				return label((label == null) ? null : label.get());
 			}
 
@@ -5450,16 +5502,20 @@ public class Attributes {
 		}
 
 		/**
-		 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
-		 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
-		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+		 * <ul>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+		 * </ul>
 		 */
 		public static interface List<E extends Element<E> & List<E>> {
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * </ul>
 			 */
 			@Funnel
 			default E list(Object list) throws IOException {
@@ -5476,20 +5532,24 @@ public class Attributes {
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * </ul>
 			 *
 			 * @see #list(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E list(Supplier<?,Ex> list) throws IOException, Ex {
+			default <Ex extends Throwable> E list(Supplier<?, Ex> list) throws IOException, Ex {
 				return list((list == null) ? null : list.get());
 			}
 
 			/**
-			 * See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.
-			 * See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.
-			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.
+			 * <ul>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_list.asp">HTML list Attribute</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * </ul>
 			 *
 			 * @see #list(java.lang.Object)
 			 */
@@ -5518,7 +5578,7 @@ public class Attributes {
 			 *
 			 * @see #media(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E media(Supplier<?,Ex> media) throws IOException, Ex {
+			default <Ex extends Throwable> E media(Supplier<?, Ex> media) throws IOException, Ex {
 				return media((media == null) ? null : media.get());
 			}
 
@@ -5552,7 +5612,7 @@ public class Attributes {
 			 *
 			 * @see #name(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E name(Supplier<?,Ex> name) throws IOException, Ex {
+			default <Ex extends Throwable> E name(Supplier<?, Ex> name) throws IOException, Ex {
 				return name((name == null) ? null : name.get());
 			}
 
@@ -5593,7 +5653,7 @@ public class Attributes {
 			 *
 			 * @see #placeholder(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E placeholder(Supplier<?,Ex> placeholder) throws IOException, Ex {
+			default <Ex extends Throwable> E placeholder(Supplier<?, Ex> placeholder) throws IOException, Ex {
 				return placeholder((placeholder == null) ? null : placeholder.get());
 			}
 
@@ -5637,7 +5697,7 @@ public class Attributes {
 			 *
 			 * @see #style(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E style(Supplier<?,Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E style(Supplier<?, Ex> style) throws IOException, Ex {
 				return style((style == null) ? null : style.get());
 			}
 
@@ -5692,7 +5752,7 @@ public class Attributes {
 			 * @see #style(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E style(Supplier<?,Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E style(Supplier<?, Ex> style) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5756,7 +5816,7 @@ public class Attributes {
 			 *
 			 * @see #title(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E title(Supplier<?,Ex> title) throws IOException, Ex {
+			default <Ex extends Throwable> E title(Supplier<?, Ex> title) throws IOException, Ex {
 				return title((title == null) ? null : title.get());
 			}
 
@@ -5811,7 +5871,7 @@ public class Attributes {
 			 * @see #title(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E title(Supplier<?,Ex> title) throws IOException, Ex {
+			default <Ex extends Throwable> E title(Supplier<?, Ex> title) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5867,7 +5927,7 @@ public class Attributes {
 			 *
 			 * @see #value(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E value(Supplier<?,Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E value(Supplier<?, Ex> value) throws IOException, Ex {
 				return value((value == null) ? null : value.get());
 			}
 
@@ -5922,7 +5982,7 @@ public class Attributes {
 			 *
 			 * @see #href(java.lang.String)
 			 */
-			default <Ex extends Throwable> E href(Supplier<? extends java.lang.String,Ex> href) throws IOException, Ex {
+			default <Ex extends Throwable> E href(Supplier<? extends java.lang.String, Ex> href) throws IOException, Ex {
 				return href((href == null) ? null : href.get());
 			}
 		}
@@ -5946,15 +6006,17 @@ public class Attributes {
 			 *
 			 * @see #src(java.lang.String)
 			 */
-			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String,Ex> src) throws IOException, Ex {
+			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String, Ex> src) throws IOException, Ex {
 				return src((src == null) ? null : src.get());
 			}
 		}
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/ref_standardattributes.asp">HTML Global attributes</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.
+	 * <ul>
+	 * <li>See <a href="https://www.w3schools.com/tags/ref_standardattributes.asp">HTML Global attributes</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.</li>
+	 * </ul>
 	 */
 	public static interface Global<E extends Element<E> & Global<E>> extends
 		// TODO: accesskey
@@ -5963,7 +6025,7 @@ public class Attributes {
 		// TODO: contenteditable
 		// TODO: contextmenu (deprecated)
 		Text.Data<E>,
-		Enum.Dir<E,Enum.Dir.Value>,
+		Enum.Dir<E, Enum.Dir.Value>,
 		// TODO: draggable
 		// TODO: dropzone (experimental)
 		// TODO: exportparts (experimental)

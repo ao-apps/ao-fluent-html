@@ -27,22 +27,26 @@ import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
 
 /**
- * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.
- * See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.
+ * <ul>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
+ * </ul>
+ *
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class Col extends EmptyElement<Col> implements
-	Attributes.Enum.Align<Col,Col.Align>,
+public class Col<PC extends Content> extends VoidElement<Col<PC>, PC> implements
+	Attributes.Enum.Align<Col<PC>, Col.Align>,
 	// TODO: bgcolor (deprecated)
 	// TODO: char (deprecated)
 	// TODO: charoff (deprecated)
-	Attributes.Integer.Span<Col>,
-	Attributes.Enum.Valign<Col,Col.Valign>,
-	Attributes.Dimension.WidthHtml4Only<Col>,
+	Attributes.Integer.Span<Col<PC>>,
+	Attributes.Enum.Valign<Col<PC>, Col.Valign>,
+	Attributes.Dimension.WidthHtml4Only<Col<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Col>
+	Attributes.Event.AlmostGlobal<Col<PC>>
 {
 
 	public Col(Document document) {
@@ -50,7 +54,7 @@ public class Col extends EmptyElement<Col> implements
 	}
 
 	@Override
-	protected Col open() throws IOException {
+	protected Col<PC> open() throws IOException {
 		document.out.write("<col");
 		return this;
 	}

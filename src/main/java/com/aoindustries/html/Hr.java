@@ -29,16 +29,18 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class Hr extends EmptyElement<Hr> implements
-	Attributes.Enum.Align<Hr,Hr.Align>,
-	Attributes.Boolean.Noshade<Hr>,
-	Attributes.Integer.SizeHtml4Only<Hr>,
-	Attributes.Dimension.Width<Hr>,
+public class Hr<PC extends Content> extends VoidElement<Hr<PC>, PC> implements
+	Attributes.Enum.Align<Hr<PC>, Hr.Align>,
+	Attributes.Boolean.Noshade<Hr<PC>>,
+	Attributes.Integer.SizeHtml4Only<Hr<PC>>,
+	Attributes.Dimension.Width<Hr<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Hr>
+	Attributes.Event.AlmostGlobal<Hr<PC>>
 {
 
 	public Hr(Document document) {
@@ -46,7 +48,7 @@ public class Hr extends EmptyElement<Hr> implements
 	}
 
 	@Override
-	protected Hr open() throws IOException {
+	protected Hr<PC> open() throws IOException {
 		document.out.write("<hr");
 		return this;
 	}

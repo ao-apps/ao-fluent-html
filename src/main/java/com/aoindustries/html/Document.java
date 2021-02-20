@@ -32,7 +32,9 @@ import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.lang.RunnableE;
 import com.aoindustries.lang.Throwables;
+import com.aoindustries.util.function.ConsumerE;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
 import java.awt.Polygon;
@@ -46,12 +48,149 @@ import java.nio.charset.StandardCharsets;
 /**
  * Fluent Java DSL for high-performance HTML generation.
  * <p>
+ * This class implements all content interfaces, and is the only class to implement them.
+ * </p>
+ * <p>
+ * Because this is the only class to implement all <code>*Content</code> interfaces, it is safe to cast
+ * between all <code>*Content</code> when needing to break out of the expected content model.
+ * However, the recommended approach is to use {@link #getDocument()}, which supports all element types.
+ * </p>
+ * <p>
  * See also <a href="https://github.com/xmlet/HtmlFlow">HtmlFlow</a>.
  * </p>
  *
  * @author  AO Industries, Inc.
  */
-public class Document {
+public class Document implements
+	Content,
+	TextContent<Document>,
+	// TODO: Whitespace?
+	// All content models
+	MetadataContent<Document>,
+	FlowContent<Document>,
+	SectioningContent<Document>,
+	HeadingContent<Document>,
+	PhrasingContent<Document>,
+	EmbeddedContent<Document>,
+	InteractiveContent<Document>,
+	PalpableContent<Document>,
+	// Every individual type of content
+	Contents.Document.Html<Document>,
+	Contents.Metadata.Head<Document>,
+	Contents.Metadata.Title<Document>,
+	Contents.Metadata.Base<Document>,
+	Contents.Metadata.Link<Document>,
+	Contents.Metadata.Meta<Document>,
+	Contents.Metadata.Style<Document>,
+	Contents.Sections.Body<Document>,
+	Contents.Sections.Article<Document>,
+	Contents.Sections.Section<Document>,
+	Contents.Sections.Nav<Document>,
+	Contents.Sections.Aside<Document>,
+	Contents.Sections.H1<Document>,
+	Contents.Sections.H2<Document>,
+	Contents.Sections.H3<Document>,
+	Contents.Sections.H4<Document>,
+	Contents.Sections.H5<Document>,
+	Contents.Sections.H6<Document>,
+	Contents.Sections.Hgroup<Document>,
+	Contents.Sections.Header<Document>,
+	Contents.Sections.Footer<Document>,
+	Contents.Sections.Address<Document>,
+	Contents.Grouping.P<Document>,
+	Contents.Grouping.Hr<Document>,
+	Contents.Grouping.Pre<Document>,
+	Contents.Grouping.Blockquote<Document>,
+	Contents.Grouping.Ol<Document>,
+	Contents.Grouping.Ul<Document>,
+	Contents.Grouping.Menu<Document>,
+	Contents.Grouping.Li<Document>,
+	Contents.Grouping.Dl<Document>,
+	Contents.Grouping.Dt<Document>,
+	Contents.Grouping.Dd<Document>,
+	Contents.Grouping.Figure<Document>,
+	Contents.Grouping.Figcaption<Document>,
+	Contents.Grouping.Main<Document>,
+	Contents.Grouping.Div<Document>,
+	Contents.Text.A<Document>,
+	Contents.Text.Em<Document>,
+	Contents.Text.Strong<Document>,
+	Contents.Text.Small<Document>,
+	Contents.Text.S<Document>,
+	Contents.Text.Cite<Document>,
+	Contents.Text.Q<Document>,
+	Contents.Text.Dfn<Document>,
+	Contents.Text.Abbr<Document>,
+	Contents.Text.Ruby<Document>,
+	Contents.Text.Rt<Document>,
+	Contents.Text.Rp<Document>,
+	Contents.Text.Data<Document>,
+	Contents.Text.Time<Document>,
+	Contents.Text.Code<Document>,
+	Contents.Text.Var<Document>,
+	Contents.Text.Samp<Document>,
+	Contents.Text.Kbd<Document>,
+	Contents.Text.Sub<Document>,
+	Contents.Text.Sup<Document>,
+	Contents.Text.I<Document>,
+	Contents.Text.B<Document>,
+	Contents.Text.U<Document>,
+	Contents.Text.Mark<Document>,
+	Contents.Text.Bdi<Document>,
+	Contents.Text.Bdo<Document>,
+	Contents.Text.Span<Document>,
+	Contents.Text.Br<Document>,
+	Contents.Text.Wbr<Document>,
+	Contents.Edits.Ins<Document>,
+	Contents.Edits.Del<Document>,
+	Contents.Embedded.Picture<Document>,
+	Contents.Embedded.Source<Document>,
+	Contents.Embedded.Img<Document>,
+	Contents.Embedded.Iframe<Document>,
+	Contents.Embedded.Embed<Document>,
+	Contents.Embedded.Object<Document>,
+	Contents.Embedded.Param<Document>,
+	Contents.Embedded.Video<Document>,
+	Contents.Embedded.Audio<Document>,
+	Contents.Embedded.Track<Document>,
+	Contents.Embedded.Map<Document>,
+	Contents.Embedded.Area<Document>,
+	// TODO: MathML math
+	// TODO: SVG svg
+	Contents.Tabular.Table<Document>,
+	Contents.Tabular.Caption<Document>,
+	Contents.Tabular.Colgroup<Document>,
+	Contents.Tabular.Col<Document>,
+	Contents.Tabular.Tbody<Document>,
+	Contents.Tabular.Thead<Document>,
+	Contents.Tabular.Tfoot<Document>,
+	Contents.Tabular.Tr<Document>,
+	Contents.Tabular.Td<Document>,
+	Contents.Tabular.Th<Document>,
+	Contents.Forms.Form<Document>,
+	Contents.Forms.Label<Document>,
+	Contents.Forms.Input<Document>,
+	Contents.Forms.Button<Document>,
+	Contents.Forms.Select<Document>,
+	Contents.Forms.Datalist<Document>,
+	Contents.Forms.Optgroup<Document>,
+	Contents.Forms.Option<Document>,
+	Contents.Forms.Textarea<Document>,
+	Contents.Forms.Output<Document>,
+	Contents.Forms.Progress<Document>,
+	Contents.Forms.Meter<Document>,
+	Contents.Forms.Fieldset<Document>,
+	Contents.Forms.Legend<Document>,
+	Contents.Interactive.Details<Document>,
+	Contents.Interactive.Summary<Document>,
+	Contents.Interactive.Dialog<Document>,
+	Contents.Scripting.Script<Document>,
+	Contents.Scripting.Noscript<Document>,
+	Contents.Scripting.Template<Document>,
+	Contents.Scripting.Slot<Document>,
+	Contents.Scripting.Canvas<Document>
+	// TODO: autonomous custom elements
+{
 
 	/**
 	 * The default, and recommended, encoding for (X)HTML.
@@ -155,12 +294,12 @@ public class Document {
 		return this;
 	}
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * <p>
-	 * Does not perform any translation markups.
-	 * </p>
-	 */
+	@Override
+	public Document getDocument() {
+		return this;
+	}
+
+	@Override
 	public Document text(char ch) throws IOException {
 		encodeTextInXhtml(ch, out);
 		return this;
@@ -168,23 +307,13 @@ public class Document {
 
 	// TODO: codePoint?
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * <p>
-	 * Does not perform any translation markups.
-	 * </p>
-	 */
+	@Override
 	public Document text(char[] cbuf) throws IOException {
 		encodeTextInXhtml(cbuf, out);
 		return this;
 	}
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * <p>
-	 * Does not perform any translation markups.
-	 * </p>
-	 */
+	@Override
 	public Document text(char[] cbuf, int offset, int len) throws IOException {
 		encodeTextInXhtml(cbuf, offset, len, out);
 		return this;
@@ -193,17 +322,12 @@ public class Document {
 	// TODO: text(CharSequence)?
 	// TODO: text(CharSequence, int, int)?
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * <p>
-	 * Supports translation markup type {@link MarkupType#XHTML}.
-	 * </p>
-	 */
+	@Override
 	@SuppressWarnings("UseSpecificCatch")
 	public Document text(Object text) throws IOException {
-		while(text instanceof Supplier<?,?>) {
+		while(text instanceof Supplier<?, ?>) {
 			try {
-				text = ((Supplier<?,?>)text).get();
+				text = ((Supplier<?, ?>)text).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -223,22 +347,12 @@ public class Document {
 		return this;
 	}
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * <p>
-	 * Supports translation markup type {@link MarkupType#XHTML}.
-	 * </p>
-	 */
-	public <Ex extends Throwable> Document text(Supplier<?,Ex> text) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Document text(Supplier<?, Ex> text) throws IOException, Ex {
 		return text((text == null) ? null : text.get());
 	}
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * <p>
-	 * Does not perform any translation markups.
-	 * </p>
-	 */
+	@Override
 	public <Ex extends Throwable> Document text(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
 			try (MediaWriter _out = text()) {
@@ -248,15 +362,7 @@ public class Document {
 		return this;
 	}
 
-	/**
-	 * Writes the given text with proper encoding.
-	 * This is well suited for use in a try-with-resources block.
-	 * <p>
-	 * Does not perform any translation markups.
-	 * </p>
-	 *
-	 * @return  A new writer that may be used for arbitrary text
-	 */
+	@Override
 	public MediaWriter text() throws IOException {
 		return new MediaWriter(
 			encodingContext,
@@ -265,90 +371,93 @@ public class Document {
 		);
 	}
 
+	@Override
+	public Document nl() throws IOException {
+		out.write('\n');
+		return this;
+	}
+
 	// TODO: A set of per-type methods, like xml(), script(), style(), ...
 
 	// TODO: A set of out() methods that take MediaType and value
 
 	// TODO: comments
 
-	/**
-	 * This is {@code '\n'} on all platforms.  If a different newline is required,
-	 * such as {@code "\r\n"} for email, filter the output.
-	 */
-	public Document nl() throws IOException {
-		out.write('\n');
-		return this;
+	protected A<Document> a;
+
+	@Override
+	public A<Document> a() throws IOException {
+		if(a == null) a = new A<Document>(this);
+		return a.open();
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public Area area() throws IOException {
-		return new Area(this).open();
+	@Override
+	public A<Document> a(String href) throws IOException {
+		return a().href(href);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public Area area(Rectangle rect) throws IOException {
+	@Override
+	public <Ex extends Throwable> A<Document> a(Supplier<? extends String, Ex> href) throws IOException, Ex {
+		return a().href(href);
+	}
+
+	@Override
+	public <Ex extends Throwable> Document a__(RunnableE<Ex> a) throws IOException, Ex {
+		return a().__(a);
+	}
+
+	@Override
+	public <Ex extends Throwable> Document a__(ConsumerE<? super Document, Ex> a) throws IOException, Ex {
+		return a().__(a);
+	}
+
+	@Override
+	public Document a__(Object text) throws IOException {
+		return a().__(text);
+	}
+
+	@Override
+	public Document a__() throws IOException {
+		return a().__();
+	}
+
+	@Override
+	public Area<Document> area() throws IOException {
+		return new Area<Document>(this).open();
+	}
+
+	@Override
+	public Area<Document> area(Rectangle rect) throws IOException {
 		return area().shape(Area.Shape.RECT).coords(rect);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public <Ex extends Throwable> Area area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Area<Document> area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
 		return area().shape(Area.Shape.RECT).coords(rect);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public Area area(Circle circle) throws IOException {
+	@Override
+	public Area<Document> area(Circle circle) throws IOException {
 		return area().shape(Area.Shape.CIRCLE).coords(circle);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public <Ex extends Throwable> Area area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Area<Document> area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
 		return area().shape(Area.Shape.CIRCLE).coords(circle);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public Area area(Polygon poly) throws IOException {
+	@Override
+	public Area<Document> area(Polygon poly) throws IOException {
 		return area().shape(Area.Shape.POLY).coords(poly);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public <Ex extends Throwable> Area area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Area<Document> area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
 		return area().shape(Area.Shape.POLY).coords(poly);
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public Area area(Shape shape) throws IOException {
+	@Override
+	public Area<Document> area(Shape shape) throws IOException {
 		if(shape == null) return area();
 		if(shape instanceof Rectangle) return area((Rectangle)shape);
 		if(shape instanceof Circle) return area((Circle)shape);
@@ -358,478 +467,259 @@ public class Document {
 		throw new AssertionError("IllegalArgumentException must have been thrown by coords for invalid Shape");
 	}
 
-	/**
-	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
-	 */
-	public <Ex extends Throwable> Area area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Area<Document> area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
 		return area(shape == null ? null : shape.get());
 	}
 
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.
-	 */
-	public Base base() throws IOException {
-		return new Base(this).open();
+	protected B<Document> b;
+
+	@Override
+	public B<Document> b() throws IOException {
+		if(b == null) b = new B<Document>(this);
+		return b.open();
 	}
 
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.
-	 */
+	@Override
+	public <Ex extends Throwable> Document b__(RunnableE<Ex> b) throws IOException, Ex {
+		return b().__(b);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, BContent extends PhrasingContent<BContent>> Document b__(ConsumerE<? super BContent, Ex> b) throws IOException, Ex {
+		return b().__((ConsumerE)b);
+	}
+
+	@Override
+	public Document b__(Object text) throws IOException {
+		return b().__(text);
+	}
+
+	@Override
+	public Document b__() throws IOException {
+		return b().__();
+	}
+
+	@Override
+	public Base<Document> base() throws IOException {
+		return new Base<Document>(this).open();
+	}
+
+	@Override
 	public Document base__(String href) throws IOException {
 		return base().href(href).__();
 	}
 
-	protected Br br;
+	protected Br<Document> br;
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
-	 */
-	public Br br() throws IOException {
-		if(br == null) br = new Br(this);
+	@Override
+	public Br<Document> br() throws IOException {
+		if(br == null) br = new Br<Document>(this);
 		return br.open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
-	 */
+	@Override
 	public Document br__() throws IOException {
 		return br().__();
 	}
 
-	protected Hr hr;
+	protected Hr<Document> hr;
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
-	 */
-	public Hr hr() throws IOException {
-		if(hr == null) hr = new Hr(this);
+	@Override
+	public Hr<Document> hr() throws IOException {
+		if(hr == null) hr = new Hr<Document>(this);
 		return hr.open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
-	 */
+	@Override
 	public Document hr__() throws IOException {
 		return hr().__();
 	}
 
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.
-	 */
-	public Col col() throws IOException {
-		return new Col(this).open();
+	@Override
+	public Col<Document> col() throws IOException {
+		return new Col<Document>(this).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
-	 */
-	public Img img() throws IOException {
-		return new Img(this).open();
+	protected I<Document> i;
+
+	@Override
+	public I<Document> i() throws IOException {
+		if(i == null) i = new I<Document>(this);
+		return i.open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 */
-	public com.aoindustries.html.Input.Dynamic input() throws IOException {
-		return new com.aoindustries.html.Input.Dynamic(this).open();
+	@Override
+	public <Ex extends Throwable> Document i__(RunnableE<Ex> i) throws IOException, Ex {
+		return i().__(i);
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	public com.aoindustries.html.Input.Dynamic input(String type) throws IOException {
-		return new com.aoindustries.html.Input.Dynamic(this, type).open();
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, IContent extends PhrasingContent<IContent>> Document i__(ConsumerE<? super IContent, Ex> i) throws IOException, Ex {
+		return i().__((ConsumerE)i);
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	// TODO: Move these type Input.type only?
-	public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic input(Suppliers.String<Ex> type) throws IOException, Ex {
-		return input((type == null) ? null : type.get());
+	@Override
+	public Document i__(Object text) throws IOException {
+		return i().__(text);
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	public com.aoindustries.html.Input.Dynamic input(com.aoindustries.html.Input.Dynamic.Type type) throws IOException {
-		return new com.aoindustries.html.Input.Dynamic(this, type).open();
+	@Override
+	public Document i__() throws IOException {
+		return i().__();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
-	 */
-	// TODO: Move these type Input.type only?
-	public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic input(Supplier<? extends com.aoindustries.html.Input.Dynamic.Type,Ex> type) throws IOException, Ex {
-		return input((type == null) ? null : type.get());
+	@Override
+	public Img<Document> img() throws IOException {
+		return new Img<Document>(this).open();
 	}
 
-	public static class Input {
+	protected Contents.Forms.Input.Type<Document> input;
 
-		private final Document document;
-
-		public Input(Document document) {
-			this.document = document;
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.
-		 */
-		public com.aoindustries.html.Input.Button button() throws IOException {
-			return new com.aoindustries.html.Input.Button(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.
-		 */
-		public com.aoindustries.html.Input.Checkbox checkbox() throws IOException {
-			return new com.aoindustries.html.Input.Checkbox(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
-		 */
-		public com.aoindustries.html.Input.Color color() throws IOException {
-			return new com.aoindustries.html.Input.Color(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
-		 */
-		public com.aoindustries.html.Input.Date date() throws IOException {
-			return new com.aoindustries.html.Input.Date(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
-		 */
-		public com.aoindustries.html.Input.DatetimeLocal datetimeLocal() throws IOException {
-			return new com.aoindustries.html.Input.DatetimeLocal(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
-		 */
-		public com.aoindustries.html.Input.Email email() throws IOException {
-			return new com.aoindustries.html.Input.Email(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
-		 */
-		public com.aoindustries.html.Input.File file() throws IOException {
-			return new com.aoindustries.html.Input.File(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
-		 */
-		public com.aoindustries.html.Input.Hidden hidden() throws IOException {
-			return new com.aoindustries.html.Input.Hidden(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
-		 */
-		public com.aoindustries.html.Input.Image image() throws IOException {
-			return new com.aoindustries.html.Input.Image(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
-		 */
-		public com.aoindustries.html.Input.Month month() throws IOException {
-			return new com.aoindustries.html.Input.Month(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
-		 */
-		public com.aoindustries.html.Input.Number number() throws IOException {
-			return new com.aoindustries.html.Input.Number(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.
-		 */
-		public com.aoindustries.html.Input.Password password() throws IOException {
-			return new com.aoindustries.html.Input.Password(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.
-		 */
-		public com.aoindustries.html.Input.Radio radio() throws IOException {
-			return new com.aoindustries.html.Input.Radio(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
-		 */
-		public com.aoindustries.html.Input.Range range() throws IOException {
-			return new com.aoindustries.html.Input.Range(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.
-		 */
-		public com.aoindustries.html.Input.Reset reset() throws IOException {
-			return new com.aoindustries.html.Input.Reset(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
-		 */
-		public com.aoindustries.html.Input.Search search() throws IOException {
-			return new com.aoindustries.html.Input.Search(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
-		 */
-		public com.aoindustries.html.Input.Submit submit() throws IOException {
-			return new com.aoindustries.html.Input.Submit(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
-		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
-		 */
-		public Document submit__(Object value) throws IOException {
-			return submit().value(value).__();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
-		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
-		 */
-		public <Ex extends Throwable> Document submit__(Supplier<?,Ex> value) throws IOException, Ex {
-			return submit().value(value).__();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
-		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
-		 */
-		public <Ex extends Throwable> Document submit__(MediaWritable<Ex> value) throws IOException, Ex {
-			return submit().value(value).__();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
-		 */
-		public com.aoindustries.html.Input.Tel tel() throws IOException {
-			return new com.aoindustries.html.Input.Tel(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
-		 */
-		public com.aoindustries.html.Input.Text text() throws IOException {
-			return new com.aoindustries.html.Input.Text(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
-		 */
-		public com.aoindustries.html.Input.Time time() throws IOException {
-			return new com.aoindustries.html.Input.Time(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
-		 */
-		public com.aoindustries.html.Input.Url url() throws IOException {
-			return new com.aoindustries.html.Input.Url(document).open();
-		}
-
-		/**
-		 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
-		 */
-		public com.aoindustries.html.Input.Week week() throws IOException {
-			return new com.aoindustries.html.Input.Week(document).open();
-		}
+	@Override
+	public Contents.Forms.Input.Type<Document> input() {
+		if(input == null) input = new Contents.Forms.Input.Type<Document>(this);
+		return input;
 	}
 
-	public final Input input = new Input(this);
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.
-	 */
 	// TODO: Variants of Link by Rel, with per-implementation attributes like Input?
-	public Link link() throws IOException {
-		return new Link(this).open();
+	@Override
+	public Link<Document> link() throws IOException {
+		return new Link<Document>(this).open();
 	}
 
-	/**
-	 * @see #link()
-	 * @see Link#rel(java.lang.Enum)
-	 */
-	public Link link(Link.Rel rel) throws IOException {
+	@Override
+	public Link<Document> link(Link.Rel rel) throws IOException {
 		return link().rel(rel);
 	}
 
 	// No link__(), since either rel or itemprop is required
 
-	/**
-	 * <ul>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
-	 * </ul>
-	 */
-	public Meta meta() throws IOException {
-		return new Meta(this).open();
+	@Override
+	public Meta<Document> meta() throws IOException {
+		return new Meta<Document>(this).open();
 	}
 
-	/**
-	 * @see #meta()
-	 * @see Meta#name(java.lang.Enum)
-	 */
-	public Meta meta(Meta.Name name) throws IOException {
+	@Override
+	public Meta<Document> meta(Meta.Name name) throws IOException {
 		return meta().name(name);
 	}
 
-	/**
-	 * @see #meta()
-	 * @see Meta#httpEquiv(java.lang.Enum)
-	 */
-	public Meta meta(Meta.HttpEquiv httpEquiv) throws IOException {
+	@Override
+	public Meta<Document> meta(Meta.HttpEquiv httpEquiv) throws IOException {
 		return meta().httpEquiv(httpEquiv);
 	}
 
-	/**
-	 * @see #meta()
-	 * @see Meta#charset(java.lang.Enum)
-	 */
-	public Meta meta(Attributes.Enum.Charset.Value charset) throws IOException {
+	@Override
+	public Meta<Document> meta(Attributes.Enum.Charset.Value charset) throws IOException {
 		return meta().charset(charset);
 	}
 
 	// No meta__(), since either name, http-equiv, or itemprop is required (TODO: confirm itemprop-only metas?)
 
-	protected Option option;
+	protected Option<Document> option;
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
-	 */
-	public Option option() throws IOException {
-		if(option == null) option = new Option(this);
+	@Override
+	public Option<Document> option() throws IOException {
+		if(option == null) option = new Option<Document>(this);
 		return option.open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
-	 */
+	@Override
 	public Document option__() throws IOException {
 		return option().__();
 	}
 
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.
-	 */
-	public Param param() throws IOException {
-		return new Param(this).open();
+	protected P<Document> p;
+
+	@Override
+	public P<Document> p() throws IOException {
+		if(p == null) p = new P<Document>(this);
+		return p.open();
 	}
 
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.
-	 */
+	@Override
+	public <Ex extends Throwable> Document p__(RunnableE<Ex> p) throws IOException, Ex {
+		return p().__(p);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, PContent extends PhrasingContent<PContent>> Document p__(ConsumerE<? super PContent, Ex> p) throws IOException, Ex {
+		return p().__((ConsumerE)p);
+	}
+
+	@Override
+	public Document p__(Object text) throws IOException {
+		return p().__(text);
+	}
+
+	@Override
+	public Document p__() throws IOException {
+		return p().__();
+	}
+
+	@Override
+	public Param<Document> param() throws IOException {
+		return new Param<Document>(this).open();
+	}
+
+	@Override
 	public Document param__(Object name, Object value) throws IOException {
 		return param().name(name).value(value).__();
 	}
 
 	// TODO: More types like supported by ao-taglib (ParamsTag.java), including collection types, as "params__"?
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
-	 *
-	 * @see Doctype#scriptType(java.lang.Appendable)
-	 */
-	public Script script() throws IOException {
-		return new Script(this).open();
+	@Override
+	public Script<Document> script() throws IOException {
+		return new Script<Document>(this).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
-	 */
-	public Script script(String type) throws IOException {
-		return new Script(this, type).open();
+	@Override
+	public Script<Document> script(String type) throws IOException {
+		return new Script<Document>(this, type).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
-	 */
-	public <Ex extends Throwable> Script script(Suppliers.String<Ex> type) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Script<Document> script(Suppliers.String<Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
-	 */
-	public Script script(Script.Type type) throws IOException {
-		return new Script(this, type).open();
+	@Override
+	public Script<Document> script(Script.Type type) throws IOException {
+		return new Script<Document>(this, type).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
-	 */
-	public <Ex extends Throwable> Script script(Supplier<? extends Script.Type,Ex> type) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Script<Document> script(Supplier<? extends Script.Type, Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
-	 *
-	 * @see Doctype#styleType(java.lang.Appendable)
-	 */
-	public Style style() throws IOException {
-		return new Style(this).open();
+	@Override
+	public Style<Document> style() throws IOException {
+		return new Style<Document>(this).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
-	 */
-	public Style style(String type) throws IOException {
-		return new Style(this, type).open();
+	@Override
+	public Style<Document> style(String type) throws IOException {
+		return new Style<Document>(this, type).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
-	 */
-	public <Ex extends Throwable> Style style(Suppliers.String<Ex> type) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Style<Document> style(Suppliers.String<Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
-	 */
-	public Style style(Style.Type type) throws IOException {
-		return new Style(this, type).open();
+	@Override
+	public Style<Document> style(Style.Type type) throws IOException {
+		return new Style<Document>(this, type).open();
 	}
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.
-	 */
-	public <Ex extends Throwable> Style style(Supplier<? extends Style.Type,Ex> type) throws IOException, Ex {
+	@Override
+	public <Ex extends Throwable> Style<Document> style(Supplier<? extends Style.Type, Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 
@@ -837,4 +727,33 @@ public class Document {
 
 	// TODO: A version called HtmlWriter that extends ChainWriter to avoid all this passing of appendables?
 	// TODO: html.input.style.type().print("...").__().  How far do we take this?
+
+	protected U<Document> u;
+
+	@Override
+	public U<Document> u() throws IOException {
+		if(u == null) u = new U<Document>(this);
+		return u.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document u__(RunnableE<Ex> u) throws IOException, Ex {
+		return u().__(u);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> Document u__(ConsumerE<? super UContent, Ex> u) throws IOException, Ex {
+		return u().__((ConsumerE)u);
+	}
+
+	@Override
+	public Document u__(Object text) throws IOException {
+		return u().__(text);
+	}
+
+	@Override
+	public Document u__() throws IOException {
+		return u().__();
+	}
 }

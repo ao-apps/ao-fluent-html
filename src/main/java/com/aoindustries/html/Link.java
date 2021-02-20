@@ -35,29 +35,33 @@ import com.aoindustries.lang.Strings;
 import java.io.IOException;
 
 /**
- * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.
- * See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.
+ * <ul>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
+ * </ul>
+ *
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Link extends EmptyElement<Link> implements
+public class Link<PC extends Content> extends VoidElement<Link<PC>, PC> implements
 	// TODO: as
 	// TODO: charset
-	Attributes.Enum.Crossorigin<Link,Link.Crossorigin>,
+	Attributes.Enum.Crossorigin<Link<PC>, Link.Crossorigin>,
 	// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-disabled
-	Attributes.Boolean.Disabled<Link>,
-	Attributes.Url.Href<Link>,
-	Attributes.String.Hreflang<Link>,
-	Attributes.Text.Media<Link>,
-	Attributes.Enum.Rel<Link,Link.Rel>,
+	Attributes.Boolean.Disabled<Link<PC>>,
+	Attributes.Url.Href<Link<PC>>,
+	Attributes.String.Hreflang<Link<PC>>,
+	Attributes.Text.Media<Link<PC>>,
+	Attributes.Enum.Rel<Link<PC>, Link.Rel>,
 	// TODO: rev
 	// TODO: sizes
 	// TODO: target (not standardizes per MDN)
 	// TODO: type
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Link>,
-	Attributes.Event.Window.Onerror<Link>,
-	Attributes.Event.Window.Onload<Link>
+	Attributes.Event.AlmostGlobal<Link<PC>>,
+	Attributes.Event.Window.Onerror<Link<PC>>,
+	Attributes.Event.Window.Onload<Link<PC>>
 {
 
 	private static final com.aoindustries.i18n.Resources RESOURCES =
@@ -68,7 +72,7 @@ public class Link extends EmptyElement<Link> implements
 	}
 
 	@Override
-	protected Link open() throws IOException {
+	protected Link<PC> open() throws IOException {
 		document.out.write("<link");
 		return this;
 	}
@@ -120,7 +124,7 @@ public class Link extends EmptyElement<Link> implements
 
 	// TODO: Is global property, move there and add See comment, still checking for link-specific rules here
 	// TODO: Attributes...itemprop in global
-	public Link itemprop(Object itemprop) throws IOException {
+	public Link<PC> itemprop(Object itemprop) throws IOException {
 		itemprop = Coercion.trimNullIfEmpty(itemprop);
 		if(itemprop != null) {
 			if(this.itemprop != null) {
@@ -145,9 +149,11 @@ public class Link extends EmptyElement<Link> implements
 	}
 
 	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
+	 * </ul>
 	 */
 	public enum Rel implements Attributes.Enum.EnumSupplier {
 		ALTERNATE("alternate"),
@@ -246,12 +252,13 @@ public class Link extends EmptyElement<Link> implements
 	 * <blockquote>
 	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
 	 * </blockquote>
-	 *
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
+	 * </ul>
 	 */
 	@Override
-	public Link rel(String rel) throws IOException {
+	public Link<PC> rel(String rel) throws IOException {
 		rel = Strings.trimNullIfEmpty(rel);
 		if(rel != null) {
 			if(this.rel != null) {
@@ -278,14 +285,15 @@ public class Link extends EmptyElement<Link> implements
 	 * <blockquote>
 	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
 	 * </blockquote>
-	 *
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
+	 * </ul>
 	 *
 	 * @see #rel(java.lang.String)
 	 */
 	@Override
-	public <Ex extends Throwable> Link rel(Suppliers.String<Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> Link<PC> rel(Suppliers.String<Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -294,14 +302,15 @@ public class Link extends EmptyElement<Link> implements
 	 * <blockquote>
 	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
 	 * </blockquote>
-	 *
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
+	 * </ul>
 	 *
 	 * @see #rel(java.lang.String)
 	 */
 	@Override
-	public Link rel(Rel rel) throws IOException {
+	public Link<PC> rel(Rel rel) throws IOException {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -310,14 +319,15 @@ public class Link extends EmptyElement<Link> implements
 	 * <blockquote>
 	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
 	 * </blockquote>
-	 *
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
+	 * </ul>
 	 *
 	 * @see #rel(com.aoindustries.html.Link.Rel)
 	 */
 	@Override
-	public <Ex extends Throwable> Link rel(Supplier<? extends Rel,Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> Link<PC> rel(Supplier<? extends Rel, Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -330,7 +340,7 @@ public class Link extends EmptyElement<Link> implements
 	 *
 	 * See <a href="https://www.w3schools.com/tags/att_link_type.asp">HTML link type Attribute</a>.
 	 */
-	public Link type(String type) throws IOException {
+	public Link<PC> type(String type) throws IOException {
 		type = Strings.trimNullIfEmpty(type);
 		this.type = type;
 		if(
@@ -350,18 +360,23 @@ public class Link extends EmptyElement<Link> implements
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * <p>
 	 * If the rel is {@link Rel#STYLESHEET}, a {@linkplain #type(java.lang.String) type}
 	 * has not been written, and the {@link Doctype} is not {@link Doctype#HTML5},
 	 * writes the default type {@link Type#TEXT_CSS} for backward compatibility.
+	 * </p>
 	 * <p>
 	 * <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-link-element">HTML Standard</a>:
 	 * </p>
 	 * <blockquote>
 	 *   A link element must have either a rel attribute or an itemprop attribute, but not both.
 	 * </blockquote>
+	 *
+	 * @return  The parent content model this element is within
 	 */
 	@Override
-	public Document __() throws IOException {
+	public PC __() throws IOException {
 		if(
 			type == null
 			&& document.doctype != Doctype.HTML5
@@ -376,6 +391,7 @@ public class Link extends EmptyElement<Link> implements
 		if(rel == null && itemprop == null) {
 			throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 		}
-		return document;
+		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		return pc;
 	}
 }

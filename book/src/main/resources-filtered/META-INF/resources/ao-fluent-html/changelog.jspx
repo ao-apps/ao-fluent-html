@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2021-02-19T05:52:12-06:00"
+		dateModified="2021-02-20T01:55:18-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -49,6 +49,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			>
 				<ul>
 					<li>Renamed <code>Html</code> to <code>Document</code>.</li>
+					<li>Implemented element content with self-referential generics optimized for lambda bodies.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

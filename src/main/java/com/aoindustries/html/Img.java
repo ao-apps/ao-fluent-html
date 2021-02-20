@@ -29,29 +29,31 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class Img extends EmptyElement<Img> implements
-	Attributes.Enum.Align<Img,Img.Align>,
-	Attributes.Text.Alt<Img>,
+public class Img<PC extends Content> extends VoidElement<Img<PC>, PC> implements
+	Attributes.Enum.Align<Img<PC>, Img.Align>,
+	Attributes.Text.Alt<Img<PC>>,
 	// TODO: border
 	// TODO: crossorigin
-	Attributes.Integer.Height<Img>,
+	Attributes.Integer.Height<Img<PC>>,
 	// TODO: hspace
-	Attributes.Boolean.Ismap<Img>,
+	Attributes.Boolean.Ismap<Img<PC>>,
 	// TODO: longdesc
 	// TODO: sizes
-	Attributes.Url.Src<Img>,
+	Attributes.Url.Src<Img<PC>>,
 	// TODO: srcset
-	Attributes.String.Usemap<Img>,
+	Attributes.String.Usemap<Img<PC>>,
 	// TODO: vspace
-	Attributes.Integer.Width<Img>,
+	Attributes.Integer.Width<Img<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Img>,
-	Attributes.Event.Media.Onabort<Img>,
-	Attributes.Event.Window.Onerror<Img>,
-	Attributes.Event.Window.Onload<Img>
+	Attributes.Event.AlmostGlobal<Img<PC>>,
+	Attributes.Event.Media.Onabort<Img<PC>>,
+	Attributes.Event.Window.Onerror<Img<PC>>,
+	Attributes.Event.Window.Onload<Img<PC>>
 	// TODO: More events
 {
 
@@ -60,7 +62,7 @@ public class Img extends EmptyElement<Img> implements
 	}
 
 	@Override
-	protected Img open() throws IOException {
+	protected Img<PC> open() throws IOException {
 		document.out.write("<img");
 		return this;
 	}

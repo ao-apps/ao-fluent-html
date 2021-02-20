@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -44,7 +44,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Circle<Ex extends Throwable> extends Supplier<com.aoindustries.html.Circle,Ex> {
+	public interface Circle<Ex extends Throwable> extends Supplier<com.aoindustries.html.Circle, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -59,7 +59,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Locale<Ex extends Throwable> extends Supplier<java.util.Locale,Ex> {
+	public interface Locale<Ex extends Throwable> extends Supplier<java.util.Locale, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -74,7 +74,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Polygon<Ex extends Throwable> extends Supplier<java.awt.Polygon,Ex> {
+	public interface Polygon<Ex extends Throwable> extends Supplier<java.awt.Polygon, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -89,7 +89,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Rectangle<Ex extends Throwable> extends Supplier<java.awt.Rectangle,Ex> {
+	public interface Rectangle<Ex extends Throwable> extends Supplier<java.awt.Rectangle, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -104,7 +104,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Shape<Ex extends Throwable> extends Supplier<java.awt.Shape,Ex> {
+	public interface Shape<Ex extends Throwable> extends Supplier<java.awt.Shape, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -119,7 +119,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface String<Ex extends Throwable> extends Supplier<java.lang.String,Ex> {
+	public interface String<Ex extends Throwable> extends Supplier<java.lang.String, Ex> {
 
 		/**
 		 * @return  The attribute value, {@link Attributes#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.

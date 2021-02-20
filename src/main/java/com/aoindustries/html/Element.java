@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * @author  AO Industries, Inc.
  */
-// TODO: Make an element <html>?
+// TODO: Take <PC extends Content>, too for parent?  Should every element have a __() closing method?
 abstract public class Element<E extends Element<E>> implements
 	// Allow any arbitrary attributes
 	Attributes.Text.Attribute<E>,

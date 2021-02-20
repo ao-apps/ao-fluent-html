@@ -36,18 +36,22 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
- * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.
  * <p>
  * This has the set of attributes common to all input types.  There are also
  * type-specific subclasses that add type-specific attributes.  Furthermore,
  * there is a {@link Input.Dynamic} implementation that has all the input attributes,
  * supporting unanticipated or more dynamic configurations.
  * </p>
+ * <ul>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+ * </ul>
+ *
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public abstract class Input<E extends Input<E>> extends EmptyElement<E> implements
+public abstract class Input<E extends Input<E, PC>, PC extends Content> extends VoidElement<E, PC> implements
 	Attributes.Boolean.Autofocus<E>,
 	// TODO: dirname
 	Attributes.Boolean.Disabled<E>,
@@ -188,35 +192,37 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	 * Although there is less validation, doctype-specific checks are expected
 	 * to remain, such as only allowing type="color" in {@link Doctype#HTML5}.
 	 * </p>
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
 	@SuppressWarnings("deprecation")
-	public static class Dynamic extends Input<Dynamic> implements
-		Attributes.Text.Accept<Dynamic>,
-		Attributes.Enum.Align<Dynamic,Image.Align>,
-		Attributes.Text.Alt<Dynamic>,
-		Attributes.Enum.Autocomplete<Dynamic,Input.Autocomplete>,
-		Attributes.Enum.Capture<Dynamic,File.Capture>,
-		Attributes.Boolean.Checked<Dynamic>,
-		Attributes.Integer.HeightHtml5Only<Dynamic>,
-		Attributes.Text.List<Dynamic>,
-		Attributes.Integer.Maxlength<Dynamic>,
-		Attributes.Integer.Minlength<Dynamic>,
-		Attributes.Boolean.Multiple<Dynamic>,
-		Attributes.Text.Placeholder<Dynamic>,
-		Attributes.Boolean.Readonly<Dynamic>,
-		Attributes.Integer.Size<Dynamic>,
-		Attributes.Url.Src<Dynamic>,
-		Attributes.Enum.Type<Dynamic,Dynamic.Type>,
-		Attributes.Text.Value<Dynamic>,
-		Attributes.Integer.WidthHtml5Only<Dynamic>,
+	public static class Dynamic<PC extends Content> extends Input<Dynamic<PC>, PC> implements
+		Attributes.Text.Accept<Dynamic<PC>>,
+		Attributes.Enum.Align<Dynamic<PC>, Image.Align>,
+		Attributes.Text.Alt<Dynamic<PC>>,
+		Attributes.Enum.Autocomplete<Dynamic<PC>, Input.Autocomplete>,
+		Attributes.Enum.Capture<Dynamic<PC>, File.Capture>,
+		Attributes.Boolean.Checked<Dynamic<PC>>,
+		Attributes.Integer.HeightHtml5Only<Dynamic<PC>>,
+		Attributes.Text.List<Dynamic<PC>>,
+		Attributes.Integer.Maxlength<Dynamic<PC>>,
+		Attributes.Integer.Minlength<Dynamic<PC>>,
+		Attributes.Boolean.Multiple<Dynamic<PC>>,
+		Attributes.Text.Placeholder<Dynamic<PC>>,
+		Attributes.Boolean.Readonly<Dynamic<PC>>,
+		Attributes.Integer.Size<Dynamic<PC>>,
+		Attributes.Url.Src<Dynamic<PC>>,
+		Attributes.Enum.Type<Dynamic<PC>, Dynamic.Type>,
+		Attributes.Text.Value<Dynamic<PC>>,
+		Attributes.Integer.WidthHtml5Only<Dynamic<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Media.Onabort<Dynamic>,
-		Attributes.Event.Window.Onerror<Dynamic>,
-		Attributes.Event.Window.Onload<Dynamic>,
-		Attributes.Event.Form.Onchange<Dynamic>,
-		Attributes.Event.Form.Oninput<Dynamic>,
-		Attributes.Event.Form.Onsearch<Dynamic>,
-		Attributes.Event.Form.Onselect<Dynamic>
+		Attributes.Event.Media.Onabort<Dynamic<PC>>,
+		Attributes.Event.Window.Onerror<Dynamic<PC>>,
+		Attributes.Event.Window.Onload<Dynamic<PC>>,
+		Attributes.Event.Form.Onchange<Dynamic<PC>>,
+		Attributes.Event.Form.Oninput<Dynamic<PC>>,
+		Attributes.Event.Form.Onsearch<Dynamic<PC>>,
+		Attributes.Event.Form.Onselect<Dynamic<PC>>
 	{
 
 		private String type;
@@ -243,7 +249,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			if(t != null) {
 				// Unset to avoid duplicate attribute
 				this.type = null;
-				Dynamic i = type(t);
+				Dynamic<PC> i = type(t);
 				assert i == this;
 			}
 		}
@@ -338,7 +344,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 			}
 
 			private static final Type[] values = values();
-			private static final Map<String,Type> byLowerValue = AoCollections.newHashMap(values.length);
+			private static final Map<String, Type> byLowerValue = AoCollections.newHashMap(values.length);
 			static {
 				for(Type type : values) {
 					if(!type.value.equals(type.value.toLowerCase(Locale.ROOT))) throw new AssertionError("Values must be lowercase as looked-up later");
@@ -352,7 +358,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 		 */
 		@Override
-		public Dynamic type(String type) throws IOException {
+		public Dynamic<PC> type(String type) throws IOException {
 			type = Strings.trimNullIfEmpty(type);
 			if(type != null) {
 				type = type.toLowerCase(Locale.ROOT);
@@ -383,7 +389,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 		 */
 		@Override
-		public Dynamic type(Type type) throws IOException {
+		public Dynamic<PC> type(Type type) throws IOException {
 			if(type != null) {
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
@@ -418,7 +424,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.
 		 */
 		@Override
-		public Dynamic value(Object value) throws IOException {
+		public Dynamic<PC> value(Object value) throws IOException {
 			assert this.type == null || this.type.equals(this.type.toLowerCase(Locale.ROOT));
 			assert this.type == null || this.type.equals(this.type.trim());
 			Type typeEnum = Type.byLowerValue.get(this.type);
@@ -437,9 +443,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Button extends Input<Button> implements
-		Attributes.Text.Value<Button>
+	public static class Button<PC extends Content> extends Input<Button<PC>, PC> implements
+		Attributes.Text.Value<Button<PC>>
 	{
 
 		public Button(Document document) {
@@ -457,7 +465,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * @see Dynamic.Type#BUTTON
 		 */
 		@Override
-		public Button value(Object value) throws IOException {
+		public Button<PC> value(Object value) throws IOException {
 			return Attributes.Text.attribute(
 				this,
 				"value",
@@ -473,12 +481,14 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Checkbox extends Input<Checkbox> implements
-		Attributes.Boolean.Checked<Checkbox>,
-		Attributes.Text.Value<Checkbox>,
+	public static class Checkbox<PC extends Content> extends Input<Checkbox<PC>, PC> implements
+		Attributes.Boolean.Checked<Checkbox<PC>>,
+		Attributes.Text.Value<Checkbox<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Checkbox>
+		Attributes.Event.Form.Onchange<Checkbox<PC>>
 	{
 
 		public Checkbox(Document document) {
@@ -493,15 +503,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Color extends Input<Color> implements
-		Attributes.Enum.Autocomplete<Color,Color.Autocomplete>,
-		Attributes.Text.List<Color>,
-		Attributes.Boolean.Readonly<Color>, // Guessed
-		Attributes.Text.Value<Color>,
+	public static class Color<PC extends Content> extends Input<Color<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Color<PC>, Color.Autocomplete>,
+		Attributes.Text.List<Color<PC>>,
+		Attributes.Boolean.Readonly<Color<PC>>, // Guessed
+		Attributes.Text.Value<Color<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Color>,
-		Attributes.Event.Form.Oninput<Color>
+		Attributes.Event.Form.Onchange<Color<PC>>,
+		Attributes.Event.Form.Oninput<Color<PC>>
 	{
 
 		public Color(Document document) {
@@ -565,15 +577,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Date extends Input<Date> implements
-		Attributes.Enum.Autocomplete<Date,Date.Autocomplete>,
-		Attributes.Text.List<Date>,
-		Attributes.Boolean.Readonly<Date>, // Guessed
-		Attributes.Text.Value<Date>,
+	public static class Date<PC extends Content> extends Input<Date<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Date<PC>, Date.Autocomplete>,
+		Attributes.Text.List<Date<PC>>,
+		Attributes.Boolean.Readonly<Date<PC>>, // Guessed
+		Attributes.Text.Value<Date<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Date>,
-		Attributes.Event.Form.Oninput<Date>
+		Attributes.Event.Form.Onchange<Date<PC>>,
+		Attributes.Event.Form.Oninput<Date<PC>>
 	{
 
 		public Date(Document document) {
@@ -639,15 +653,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class DatetimeLocal extends Input<DatetimeLocal> implements
-		Attributes.Enum.Autocomplete<DatetimeLocal,DatetimeLocal.Autocomplete>,
-		Attributes.Text.List<DatetimeLocal>,
-		Attributes.Boolean.Readonly<DatetimeLocal>, // Guessed
-		Attributes.Text.Value<DatetimeLocal>,
+	public static class DatetimeLocal<PC extends Content> extends Input<DatetimeLocal<PC>, PC> implements
+		Attributes.Enum.Autocomplete<DatetimeLocal<PC>, DatetimeLocal.Autocomplete>,
+		Attributes.Text.List<DatetimeLocal<PC>>,
+		Attributes.Boolean.Readonly<DatetimeLocal<PC>>, // Guessed
+		Attributes.Text.Value<DatetimeLocal<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<DatetimeLocal>,
-		Attributes.Event.Form.Oninput<DatetimeLocal>
+		Attributes.Event.Form.Onchange<DatetimeLocal<PC>>,
+		Attributes.Event.Form.Oninput<DatetimeLocal<PC>>
 	{
 
 		public DatetimeLocal(Document document) {
@@ -712,21 +728,23 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Email extends Input<Email> implements
-		Attributes.Enum.Autocomplete<Email,Email.Autocomplete>,
-		Attributes.Text.List<Email>,
-		Attributes.Integer.Maxlength<Email>,
-		Attributes.Integer.Minlength<Email>,
-		Attributes.Boolean.Multiple<Email>,
-		Attributes.Text.Placeholder<Email>,
-		Attributes.Boolean.Readonly<Email>,
-		Attributes.Integer.Size<Email>,
-		Attributes.Text.Value<Email>,
+	public static class Email<PC extends Content> extends Input<Email<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Email<PC>, Email.Autocomplete>,
+		Attributes.Text.List<Email<PC>>,
+		Attributes.Integer.Maxlength<Email<PC>>,
+		Attributes.Integer.Minlength<Email<PC>>,
+		Attributes.Boolean.Multiple<Email<PC>>,
+		Attributes.Text.Placeholder<Email<PC>>,
+		Attributes.Boolean.Readonly<Email<PC>>,
+		Attributes.Integer.Size<Email<PC>>,
+		Attributes.Text.Value<Email<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Email>,
-		Attributes.Event.Form.Oninput<Email>,
-		Attributes.Event.Form.Onselect<Email> // Guessed (to match Placeholder)
+		Attributes.Event.Form.Onchange<Email<PC>>,
+		Attributes.Event.Form.Oninput<Email<PC>>,
+		Attributes.Event.Form.Onselect<Email<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Email(Document document) {
@@ -792,17 +810,21 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">&lt;input type="file"&gt;</a>.
+	 * <ul>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">&lt;input type="file"&gt;</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class File extends Input<File> implements
-		Attributes.Text.Accept<File>,
-		Attributes.Enum.Capture<File,File.Capture>,
-		Attributes.Boolean.Multiple<File>,
+	public static class File<PC extends Content> extends Input<File<PC>, PC> implements
+		Attributes.Text.Accept<File<PC>>,
+		Attributes.Enum.Capture<File<PC>, File.Capture>,
+		Attributes.Boolean.Multiple<File<PC>>,
 		// Does not support value per https://www.w3schools.com/tags/att_input_value.asp: Attributes.Text.Value<File>
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<File>,
-		Attributes.Event.Form.Onselect<File>
+		Attributes.Event.Form.Onchange<File<PC>>,
+		Attributes.Event.Form.Onselect<File<PC>>
 	{
 
 		public File(Document document) {
@@ -859,10 +881,12 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Hidden extends Input<Hidden> implements
-		Attributes.Enum.Autocomplete<Hidden,Input.Autocomplete>,
-		Attributes.Text.Value<Hidden>
+	public static class Hidden<PC extends Content> extends Input<Hidden<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Hidden<PC>, Input.Autocomplete>,
+		Attributes.Text.Value<Hidden<PC>>
 	{
 
 		public Hidden(Document document) {
@@ -877,19 +901,21 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
 	@SuppressWarnings("deprecation")
-	public static class Image extends Input<Image> implements
-		Attributes.Enum.Align<Image,Image.Align>,
-		Attributes.Text.Alt<Image>,
-		Attributes.Integer.HeightHtml5Only<Image>,
-		Attributes.Url.Src<Image>,
-		Attributes.Text.Value<Image>,
-		Attributes.Integer.WidthHtml5Only<Image>,
+	public static class Image<PC extends Content> extends Input<Image<PC>, PC> implements
+		Attributes.Enum.Align<Image<PC>, Image.Align>,
+		Attributes.Text.Alt<Image<PC>>,
+		Attributes.Integer.HeightHtml5Only<Image<PC>>,
+		Attributes.Url.Src<Image<PC>>,
+		Attributes.Text.Value<Image<PC>>,
+		Attributes.Integer.WidthHtml5Only<Image<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Media.Onabort<Image>,
-		Attributes.Event.Window.Onerror<Image>,
-		Attributes.Event.Window.Onload<Image>
+		Attributes.Event.Media.Onabort<Image<PC>>,
+		Attributes.Event.Window.Onerror<Image<PC>>,
+		Attributes.Event.Window.Onload<Image<PC>>
 	{
 
 		public Image(Document document) {
@@ -954,15 +980,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Month extends Input<Month> implements
-		Attributes.Enum.Autocomplete<Month,Month.Autocomplete>,
-		Attributes.Text.List<Month>,
-		Attributes.Boolean.Readonly<Month>, // Guessed
-		Attributes.Text.Value<Month>,
+	public static class Month<PC extends Content> extends Input<Month<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Month<PC>, Month.Autocomplete>,
+		Attributes.Text.List<Month<PC>>,
+		Attributes.Boolean.Readonly<Month<PC>>, // Guessed
+		Attributes.Text.Value<Month<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Month>,
-		Attributes.Event.Form.Oninput<Month>
+		Attributes.Event.Form.Onchange<Month<PC>>,
+		Attributes.Event.Form.Oninput<Month<PC>>
 	{
 
 		public Month(Document document) {
@@ -1029,15 +1057,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Number extends Input<Number> implements
-		Attributes.Enum.Autocomplete<Number,Number.Autocomplete>,
-		Attributes.Text.List<Number>,
-		Attributes.Boolean.Readonly<Number>,
-		Attributes.Text.Value<Number>, // TODO: Review types (this and others), perhaps Attributes.Number or similar?
+	public static class Number<PC extends Content> extends Input<Number<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Number<PC>, Number.Autocomplete>,
+		Attributes.Text.List<Number<PC>>,
+		Attributes.Boolean.Readonly<Number<PC>>,
+		Attributes.Text.Value<Number<PC>>, // TODO: Review types (this and others), perhaps Attributes.Number or similar?
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Number>,
-		Attributes.Event.Form.Oninput<Number>
+		Attributes.Event.Form.Onchange<Number<PC>>,
+		Attributes.Event.Form.Oninput<Number<PC>>
 	{
 
 		public Number(Document document) {
@@ -1120,19 +1150,21 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Password extends Input<Password> implements
-		Attributes.Enum.Autocomplete<Password,Password.Autocomplete>,
-		Attributes.Integer.Maxlength<Password>,
-		Attributes.Integer.Minlength<Password>,
-		Attributes.Text.Placeholder<Password>,
-		Attributes.Boolean.Readonly<Password>,
-		Attributes.Integer.Size<Password>,
-		Attributes.Text.Value<Password>,
+	public static class Password<PC extends Content> extends Input<Password<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Password<PC>, Password.Autocomplete>,
+		Attributes.Integer.Maxlength<Password<PC>>,
+		Attributes.Integer.Minlength<Password<PC>>,
+		Attributes.Text.Placeholder<Password<PC>>,
+		Attributes.Boolean.Readonly<Password<PC>>,
+		Attributes.Integer.Size<Password<PC>>,
+		Attributes.Text.Value<Password<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Password>,
-		Attributes.Event.Form.Oninput<Password>,
-		Attributes.Event.Form.Onselect<Password>
+		Attributes.Event.Form.Onchange<Password<PC>>,
+		Attributes.Event.Form.Oninput<Password<PC>>,
+		Attributes.Event.Form.Onselect<Password<PC>>
 	{
 
 		public Password(Document document) {
@@ -1196,12 +1228,14 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Radio extends Input<Radio> implements
-		Attributes.Boolean.Checked<Radio>,
-		Attributes.Text.Value<Radio>,
+	public static class Radio<PC extends Content> extends Input<Radio<PC>, PC> implements
+		Attributes.Boolean.Checked<Radio<PC>>,
+		Attributes.Text.Value<Radio<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Radio>
+		Attributes.Event.Form.Onchange<Radio<PC>>
 	{
 
 		public Radio(Document document) {
@@ -1216,14 +1250,16 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Range extends Input<Range> implements
-		Attributes.Enum.Autocomplete<Range,Range.Autocomplete>,
-		Attributes.Text.List<Range>,
-		Attributes.Text.Value<Range>,
+	public static class Range<PC extends Content> extends Input<Range<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Range<PC>, Range.Autocomplete>,
+		Attributes.Text.List<Range<PC>>,
+		Attributes.Text.Value<Range<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Range>,
-		Attributes.Event.Form.Oninput<Range>
+		Attributes.Event.Form.Onchange<Range<PC>>,
+		Attributes.Event.Form.Oninput<Range<PC>>
 	{
 
 		public Range(Document document) {
@@ -1287,9 +1323,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Reset extends Input<Reset> implements
-		Attributes.Text.Value<Reset>
+	public static class Reset<PC extends Content> extends Input<Reset<PC>, PC> implements
+		Attributes.Text.Value<Reset<PC>>
 	{
 
 		public Reset(Document document) {
@@ -1307,7 +1345,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * @see Dynamic.Type#RESET
 		 */
 		@Override
-		public Reset value(Object value) throws IOException {
+		public Reset<PC> value(Object value) throws IOException {
 			return Attributes.Text.attribute(
 				this,
 				"value",
@@ -1323,21 +1361,23 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Search extends Input<Search> implements
-		Attributes.Enum.Autocomplete<Search,Search.Autocomplete>,
-		Attributes.Text.List<Search>,
-		Attributes.Integer.Maxlength<Search>,
-		Attributes.Integer.Minlength<Search>,
-		Attributes.Text.Placeholder<Search>,
-		Attributes.Boolean.Readonly<Search>,
-		Attributes.Integer.Size<Search>,
-		Attributes.Text.Value<Search>,
+	public static class Search<PC extends Content> extends Input<Search<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Search<PC>, Search.Autocomplete>,
+		Attributes.Text.List<Search<PC>>,
+		Attributes.Integer.Maxlength<Search<PC>>,
+		Attributes.Integer.Minlength<Search<PC>>,
+		Attributes.Text.Placeholder<Search<PC>>,
+		Attributes.Boolean.Readonly<Search<PC>>,
+		Attributes.Integer.Size<Search<PC>>,
+		Attributes.Text.Value<Search<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Search>,
-		Attributes.Event.Form.Oninput<Search>,
-		Attributes.Event.Form.Onsearch<Search>,
-		Attributes.Event.Form.Onselect<Search> // Guessed (to match Placeholder)
+		Attributes.Event.Form.Onchange<Search<PC>>,
+		Attributes.Event.Form.Oninput<Search<PC>>,
+		Attributes.Event.Form.Onsearch<Search<PC>>,
+		Attributes.Event.Form.Onselect<Search<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Search(Document document) {
@@ -1447,9 +1487,11 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Submit extends Input<Submit> implements
-		Attributes.Text.Value<Submit>
+	public static class Submit<PC extends Content> extends Input<Submit<PC>, PC> implements
+		Attributes.Text.Value<Submit<PC>>
 	{
 
 		public Submit(Document document) {
@@ -1467,7 +1509,7 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 		 * @see Dynamic.Type#SUBMIT
 		 */
 		@Override
-		public Submit value(Object value) throws IOException {
+		public Submit<PC> value(Object value) throws IOException {
 			return Attributes.Text.attribute(
 				this,
 				"value",
@@ -1483,20 +1525,22 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Tel extends Input<Tel> implements
-		Attributes.Enum.Autocomplete<Tel,Tel.Autocomplete>,
-		Attributes.Text.List<Tel>,
-		Attributes.Integer.Maxlength<Tel>,
-		Attributes.Integer.Minlength<Tel>,
-		Attributes.Text.Placeholder<Tel>,
-		Attributes.Boolean.Readonly<Tel>, // Guessed
-		Attributes.Integer.Size<Tel>,
-		Attributes.Text.Value<Tel>,
+	public static class Tel<PC extends Content> extends Input<Tel<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Tel<PC>, Tel.Autocomplete>,
+		Attributes.Text.List<Tel<PC>>,
+		Attributes.Integer.Maxlength<Tel<PC>>,
+		Attributes.Integer.Minlength<Tel<PC>>,
+		Attributes.Text.Placeholder<Tel<PC>>,
+		Attributes.Boolean.Readonly<Tel<PC>>, // Guessed
+		Attributes.Integer.Size<Tel<PC>>,
+		Attributes.Text.Value<Tel<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Tel>,
-		Attributes.Event.Form.Oninput<Tel>,
-		Attributes.Event.Form.Onselect<Tel> // Guessed (to match Placeholder)
+		Attributes.Event.Form.Onchange<Tel<PC>>,
+		Attributes.Event.Form.Oninput<Tel<PC>>,
+		Attributes.Event.Form.Onselect<Tel<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Tel(Document document) {
@@ -1568,20 +1612,22 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Text extends Input<Text> implements
-		Attributes.Enum.Autocomplete<Text,Input.Autocomplete>,
-		Attributes.Integer.Maxlength<Text>,
-		Attributes.Integer.Minlength<Text>,
-		Attributes.Text.List<Text>,
-		Attributes.Text.Placeholder<Text>,
-		Attributes.Boolean.Readonly<Text>,
-		Attributes.Integer.Size<Text>,
-		Attributes.Text.Value<Text>,
+	public static class Text<PC extends Content> extends Input<Text<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Text<PC>, Input.Autocomplete>,
+		Attributes.Integer.Maxlength<Text<PC>>,
+		Attributes.Integer.Minlength<Text<PC>>,
+		Attributes.Text.List<Text<PC>>,
+		Attributes.Text.Placeholder<Text<PC>>,
+		Attributes.Boolean.Readonly<Text<PC>>,
+		Attributes.Integer.Size<Text<PC>>,
+		Attributes.Text.Value<Text<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Text>,
-		Attributes.Event.Form.Oninput<Text>,
-		Attributes.Event.Form.Onselect<Text>
+		Attributes.Event.Form.Onchange<Text<PC>>,
+		Attributes.Event.Form.Oninput<Text<PC>>,
+		Attributes.Event.Form.Onselect<Text<PC>>
 	{
 
 		public Text(Document document) {
@@ -1596,15 +1642,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Time extends Input<Time> implements
-		Attributes.Enum.Autocomplete<Time,Time.Autocomplete>,
-		Attributes.Text.List<Time>,
-		Attributes.Boolean.Readonly<Time>, // Guessed
-		Attributes.Text.Value<Time>,
+	public static class Time<PC extends Content> extends Input<Time<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Time<PC>, Time.Autocomplete>,
+		Attributes.Text.List<Time<PC>>,
+		Attributes.Boolean.Readonly<Time<PC>>, // Guessed
+		Attributes.Text.Value<Time<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Time>,
-		Attributes.Event.Form.Oninput<Time>
+		Attributes.Event.Form.Onchange<Time<PC>>,
+		Attributes.Event.Form.Oninput<Time<PC>>
 	{
 
 		public Time(Document document) {
@@ -1668,20 +1716,22 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Url extends Input<Url> implements
-		Attributes.Enum.Autocomplete<Url,Url.Autocomplete>,
-		Attributes.Text.List<Url>,
-		Attributes.Integer.Maxlength<Url>,
-		Attributes.Integer.Minlength<Url>,
-		Attributes.Text.Placeholder<Url>,
-		Attributes.Boolean.Readonly<Url>,
-		Attributes.Integer.Size<Url>,
-		Attributes.Text.Value<Url>,
+	public static class Url<PC extends Content> extends Input<Url<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Url<PC>, Url.Autocomplete>,
+		Attributes.Text.List<Url<PC>>,
+		Attributes.Integer.Maxlength<Url<PC>>,
+		Attributes.Integer.Minlength<Url<PC>>,
+		Attributes.Text.Placeholder<Url<PC>>,
+		Attributes.Boolean.Readonly<Url<PC>>,
+		Attributes.Integer.Size<Url<PC>>,
+		Attributes.Text.Value<Url<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Url>,
-		Attributes.Event.Form.Oninput<Url>,
-		Attributes.Event.Form.Onselect<Url> // Guessed (to match Placeholder)
+		Attributes.Event.Form.Onchange<Url<PC>>,
+		Attributes.Event.Form.Oninput<Url<PC>>,
+		Attributes.Event.Form.Onselect<Url<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Url(Document document) {
@@ -1752,15 +1802,17 @@ public abstract class Input<E extends Input<E>> extends EmptyElement<E> implemen
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
+	 *
+	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Week extends Input<Week> implements
-		Attributes.Enum.Autocomplete<Week,Week.Autocomplete>,
-		Attributes.Text.List<Week>,
-		Attributes.Boolean.Readonly<Week>, // Guessed
-		Attributes.Text.Value<Week>,
+	public static class Week<PC extends Content> extends Input<Week<PC>, PC> implements
+		Attributes.Enum.Autocomplete<Week<PC>, Week.Autocomplete>,
+		Attributes.Text.List<Week<PC>>,
+		Attributes.Boolean.Readonly<Week<PC>>, // Guessed
+		Attributes.Text.Value<Week<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Week>,
-		Attributes.Event.Form.Oninput<Week>
+		Attributes.Event.Form.Onchange<Week<PC>>,
+		Attributes.Event.Form.Oninput<Week<PC>>
 	{
 
 		public Week(Document document) {

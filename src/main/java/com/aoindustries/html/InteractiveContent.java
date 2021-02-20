@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,32 +22,26 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
-
 /**
- * <ul>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
- * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#interactive-content">3.2.5.2.7 Interactive content</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Base<PC extends Content> extends VoidElement<Base<PC>, PC> implements
-	Attributes.Url.Href<Base<PC>>
-	// TODO: target
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <base>: Attributes.Event.AlmostGlobal<Base<PC>>
+public interface InteractiveContent<PC extends Content> extends Content,
+	Contents.Text.A<PC>, // if the href attribute is present
+	Contents.Embedded.Audio<PC>, // if the controls attribute is present
+	Contents.Forms.Button<PC>,
+	Contents.Interactive.Details<PC>,
+	Contents.Embedded.Embed<PC>,
+	Contents.Embedded.Iframe<PC>,
+	Contents.Embedded.Img<PC>, // if the usemap attribute is present
+	Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
+	Contents.Forms.Label<PC>,
+	Contents.Embedded.Object<PC>, // if the usemap attribute is present
+	Contents.Forms.Select<PC>,
+	Contents.Forms.Textarea<PC>,
+	Contents.Embedded.Video<PC> // if the controls attribute is present
 {
-
-	public Base(Document document) {
-		super(document);
-	}
-
-	@Override
-	protected Base<PC> open() throws IOException {
-		document.out.write("<base");
-		return this;
-	}
 }

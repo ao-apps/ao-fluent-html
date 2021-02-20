@@ -32,13 +32,15 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
  * </ul>
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
-public class Meta extends EmptyElement<Meta> implements
-	Attributes.Enum.Charset<Meta,Attributes.Enum.Charset.Value>,
-	Attributes.Text.Content<Meta>,
-	Attributes.Enum.HttpEquiv<Meta,Meta.HttpEquiv>,
-	Attributes.Enum.Name<Meta,Meta.Name>
+public class Meta<PC extends Content> extends VoidElement<Meta<PC>, PC> implements
+	Attributes.Enum.Charset<Meta<PC>, Attributes.Enum.Charset.Value>,
+	Attributes.Text.Content<Meta<PC>>,
+	Attributes.Enum.HttpEquiv<Meta<PC>, Meta.HttpEquiv>,
+	Attributes.Enum.Name<Meta<PC>, Meta.Name>
 	// TODO: scheme
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <meta>: Attributes.Event.AlmostGlobal<Meta>
@@ -49,7 +51,7 @@ public class Meta extends EmptyElement<Meta> implements
 	}
 
 	@Override
-	protected Meta open() throws IOException {
+	protected Meta<PC> open() throws IOException {
 		document.out.write("<meta");
 		return this;
 	}

@@ -36,15 +36,17 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
-public class Option extends Element<Option> implements
-	Attributes.Boolean.Disabled<Option>,
-	Attributes.Text.Label<Option>,
-	Attributes.Boolean.Selected<Option>,
-	Attributes.Text.Value<Option>,
+public class Option<PC extends Content> extends Element<Option<PC>> implements
+	Attributes.Boolean.Disabled<Option<PC>>,
+	Attributes.Text.Label<Option<PC>>,
+	Attributes.Boolean.Selected<Option<PC>>,
+	Attributes.Text.Value<Option<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Option>
+	Attributes.Event.AlmostGlobal<Option<PC>>
 {
 
 	public Option(Document document) {
@@ -52,7 +54,7 @@ public class Option extends Element<Option> implements
 	}
 
 	@Override
-	protected Option open() throws IOException {
+	protected Option<PC> open() throws IOException {
 		document.out.write("<option");
 		return this;
 	}
@@ -69,7 +71,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public Option label(Object label) throws IOException {
+	public Option<PC> label(Object label) throws IOException {
 		return Attributes.Text.Label.super.label(label);
 	}
 
@@ -87,7 +89,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option label(Supplier<?,Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> Option<PC> label(Supplier<?, Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
 	}
 
@@ -105,7 +107,7 @@ public class Option extends Element<Option> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option label(MediaWritable<Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> Option<PC> label(MediaWritable<Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
 	}
 
@@ -117,19 +119,21 @@ public class Option extends Element<Option> implements
 	 * </p>
 	 */
 	@Override
-	public Option value(Object value) throws IOException {
+	public Option<PC> value(Object value) throws IOException {
 		return Attributes.Text.attribute(this, "value", MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
 	}
 
 	/**
-	 * Writes the text body and closes the tag.
+	 * Writes the text body then closes this element.
 	 * Supports translation markup type {@link MarkupType#XHTML}.
+	 *
+	 * @return  The parent content model this element is within
 	 */
 	@SuppressWarnings("UseSpecificCatch")
-	public Document text__(Object text) throws IOException {
-		while(text instanceof Supplier<?,?>) {
+	public PC text__(Object text) throws IOException {
+		while(text instanceof Supplier<?, ?>) {
 			try {
-				text = ((Supplier<?,?>)text).get();
+				text = ((Supplier<?, ?>)text).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -146,14 +150,27 @@ public class Option extends Element<Option> implements
 		// Allow text markup from translations
 		MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, document.out);
 		document.out.write("</option>");
-		return document;
+		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		return pc;
 	}
 
-	public <Ex extends Throwable> Document text__(Supplier<?,Ex> text) throws IOException, Ex {
+	/**
+	 * Writes the text body then closes this element.
+	 * Supports translation markup type {@link MarkupType#XHTML}.
+	 *
+	 * @return  The parent content model this element is within
+	 */
+	public <Ex extends Throwable> PC text__(Supplier<?, Ex> text) throws IOException, Ex {
 		return text__((text == null) ? null : text.get());
 	}
 
-	public <Ex extends Throwable> Document text__(MediaWritable<Ex> text) throws IOException, Ex {
+	/**
+	 * Writes the text body then closes this element.
+	 * Does not perform any translation markups.
+	 *
+	 * @return  The parent content model this element is within
+	 */
+	public <Ex extends Throwable> PC text__(MediaWritable<Ex> text) throws IOException, Ex {
 		document.out.write('>');
 		if(text != null) {
 			text.writeTo(
@@ -165,11 +182,12 @@ public class Option extends Element<Option> implements
 			);
 		}
 		document.out.write("</option>");
-		return document;
+		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		return pc;
 	}
 
 	/**
-	 * Writes the text body and closes the tag.
+	 * Writes a text body then closes this element.
 	 * Does not perform any translation markups.
 	 * This is well suited for use in a try-with-resources block.
 	 */
@@ -188,10 +206,13 @@ public class Option extends Element<Option> implements
 	}
 
 	/**
-	 * Closes to form an empty option.
+	 * Closes this element to form an empty option.
+	 *
+	 * @return  The parent content model this element is within
 	 */
-	public Document __() throws IOException {
+	public PC __() throws IOException {
 		document.out.write("></option>");
-		return document;
+		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		return pc;
 	}
 }

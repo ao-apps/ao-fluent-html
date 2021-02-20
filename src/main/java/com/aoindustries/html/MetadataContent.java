@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,23 +22,21 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
-
 /**
+ * See <a href="https://html.spec.whatwg.org/#metadata-content">3.2.5.2.1 Metadata content</a>.
+ *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
-abstract public class EmptyElement<E extends EmptyElement<E>> extends Element<E> {
-
-	public EmptyElement(Document document) {
-		super(document);
-	}
-
-	/**
-	 * Closes this element.
-	 */
-	@SuppressWarnings("deprecation")
-	public Document __() throws IOException {
-		document.selfClose();
-		return document;
-	}
+public interface MetadataContent<PC extends Content> extends Content,
+	Contents.Metadata.Base<PC>,
+	Contents.Metadata.Link<PC>,
+	Contents.Metadata.Meta<PC>,
+	Contents.Scripting.Noscript<PC>,
+	Contents.Scripting.Script<PC>,
+	Contents.Metadata.Style<PC>,
+	Contents.Scripting.Template<PC>,
+	Contents.Metadata.Title<PC>
+{
 }

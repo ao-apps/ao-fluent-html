@@ -43,19 +43,21 @@ import java.util.Locale;
 /**
  * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
-public class Style extends Element<Style> implements
-	Attributes.Text.Media<Style>,
+public class Style<PC extends Content> extends Element<Style<PC>> implements
+	Attributes.Text.Media<Style<PC>>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Text.ClassNoHtml4<Style>,
-	Attributes.Text.IdNoHtml4<Style>,
-	Attributes.Text.StyleNoHtml4<Style>,
-	Attributes.Text.TitleNoHtml4<Style>,
+	Attributes.Text.ClassNoHtml4<Style<PC>>,
+	Attributes.Text.IdNoHtml4<Style<PC>>,
+	Attributes.Text.StyleNoHtml4<Style<PC>>,
+	Attributes.Text.TitleNoHtml4<Style<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <style>: Attributes.Event.AlmostGlobal<Style>
-	Attributes.Event.Window.Onerror<Link>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
-	Attributes.Event.Window.Onload<Link>
+	Attributes.Event.Window.Onerror<Link<PC>>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
+	Attributes.Event.Window.Onload<Link<PC>>
 {
 
 	/**
@@ -113,7 +115,7 @@ public class Style extends Element<Style> implements
 	}
 
 	@Override
-	protected Style open() throws IOException {
+	protected Style<PC> open() throws IOException {
 		document.out.write("<style");
 		return type();
 	}
@@ -123,7 +125,7 @@ public class Style extends Element<Style> implements
 	 *
 	 * @see Doctype#styleType(java.lang.Appendable)
 	 */
-	protected Style type() throws IOException {
+	protected Style<PC> type() throws IOException {
 		if(
 			type == null
 			|| type.equals(ContentType.CSS)
@@ -164,10 +166,10 @@ public class Style extends Element<Style> implements
 	// TODO: Out parameter with MediaType, that automatically picks the encoder
 	// TODO: Separate "Write" for direct writing (no encoding)?
 	@SuppressWarnings("UseSpecificCatch")
-	public Style out(Object style) throws IOException {
-		while(style instanceof Supplier<?,?>) {
+	public Style<PC> out(Object style) throws IOException {
+		while(style instanceof Supplier<?, ?>) {
 			try {
-				style = ((Supplier<?,?>)style).get();
+				style = ((Supplier<?, ?>)style).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -187,7 +189,7 @@ public class Style extends Element<Style> implements
 			MarkupCoercion.write(
 				style,
 				// TODO: Find and fix other uses of MarkupType.JAVASCRIPT that should be CSS
-				MarkupType.CSS,// TODO: Once CSS is a full-on media type: mediaType.getMarkupType(),
+				MarkupType.CSS, // TODO: Once CSS is a full-on media type: mediaType.getMarkupType(),
 				true,
 				getMediaEncoder(mediaType),
 				false,
@@ -197,7 +199,7 @@ public class Style extends Element<Style> implements
 		return this;
 	}
 
-	public <Ex extends Throwable> Style out(Supplier<?,Ex> style) throws IOException, Ex {
+	public <Ex extends Throwable> Style<PC> out(Supplier<?, Ex> style) throws IOException, Ex {
 		return out((style == null) ? null : style.get());
 	}
 
@@ -207,7 +209,7 @@ public class Style extends Element<Style> implements
 		void writeStyle(MediaWriter style) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> Style out(StyleWriter<Ex> style) throws IOException, Ex {
+	public <Ex extends Throwable> Style<PC> out(StyleWriter<Ex> style) throws IOException, Ex {
 		if(style != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();
@@ -238,13 +240,19 @@ public class Style extends Element<Style> implements
 		};
 	}
 
-	public Document __() throws IOException {
+	/**
+	 * Closes this element.
+	 *
+	 * @return  The parent content model this element is within
+	 */
+	public PC __() throws IOException {
 		if(!didBody) {
 			document.out.write("></style>");
 		} else {
 			if(doCdata()) document.out.write("/*]]>*/");
 			document.out.write("</style>");
 		}
-		return document;
+		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		return pc;
 	}
 }

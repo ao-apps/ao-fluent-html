@@ -27,31 +27,35 @@ import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.
- * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
- * See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
+ * </ul>
+ *
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Area extends EmptyElement<Area> implements
-	Attributes.Text.Alt<Area>,
-	Attributes.Dimension.Coords<Area>,
+public class Area<PC extends Content> extends VoidElement<Area<PC>, PC> implements
+	Attributes.Text.Alt<Area<PC>>,
+	Attributes.Dimension.Coords<Area<PC>>,
 	// TODO: download
-	Attributes.Url.Href<Area>,
-	Attributes.String.Hreflang<Area>,
-	Attributes.Text.Media<Area>,
+	Attributes.Url.Href<Area<PC>>,
+	Attributes.String.Hreflang<Area<PC>>,
+	Attributes.Text.Media<Area<PC>>,
 	// TODO: name? (MDN only)
 	// TODO: nohref
 	// TODO: ping
 	// TODO: referrerpolicy
-	Attributes.Enum.Rel<Area,Area.Rel>,
-	Attributes.Enum.Shape<Area,Area.Shape>,
+	Attributes.Enum.Rel<Area<PC>, Area.Rel>,
+	Attributes.Enum.Shape<Area<PC>, Area.Shape>,
 	// TODO: target
 	// TODO: type (deprecated since definition is in conflict and doesn't do anything?)
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Integer.TabindexHtml4<Area>,
+	Attributes.Integer.TabindexHtml4<Area<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<Area>
+	Attributes.Event.AlmostGlobal<Area<PC>>
 {
 
 	public Area(Document document) {
@@ -59,15 +63,17 @@ public class Area extends EmptyElement<Area> implements
 	}
 
 	@Override
-	protected Area open() throws IOException {
+	protected Area<PC> open() throws IOException {
 		document.out.write("<area");
 		return this;
 	}
 
 	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel">HTML Standard</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.</li>
+	 * </ul>
 	 */
 	public enum Rel implements Attributes.Enum.EnumSupplier {
 		ALTERNATE("alternate"),
@@ -134,8 +140,10 @@ public class Area extends EmptyElement<Area> implements
 	}
 
 	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-shape">&lt;area&gt; - HTML: Hypertext Markup Language</a>.
-	 * See <a href="https://www.w3schools.com/tags/att_area_shape.asp">HTML area shape Attribute</a>.
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-shape">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_area_shape.asp">HTML area shape Attribute</a>.</li>
+	 * </ul>
 	 */
 	public enum Shape implements Attributes.Enum.EnumSupplier {
 		DEFAULT("default"),

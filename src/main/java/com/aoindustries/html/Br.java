@@ -27,9 +27,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
-public class Br extends EmptyElement<Br>
+public class Br<PC extends Content> extends VoidElement<Br<PC>, PC>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <br>: Attributes.Event.AlmostGlobal<Br>
 {
@@ -39,7 +41,7 @@ public class Br extends EmptyElement<Br>
 	}
 
 	@Override
-	protected Br open() throws IOException {
+	protected Br<PC> open() throws IOException {
 		document.out.write("<br");
 		return this;
 	}

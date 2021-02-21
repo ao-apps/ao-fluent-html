@@ -25,13 +25,16 @@ package com.aoindustries.html;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Br<PC extends Content> extends VoidElement<Br<PC>, PC>
+public class Br<PC extends PhrasingContent<PC>> extends VoidElement<Br<PC>, PC>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <br>: Attributes.Event.AlmostGlobal<Br>
 {

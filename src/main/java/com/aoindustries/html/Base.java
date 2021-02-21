@@ -26,6 +26,7 @@ import java.io.IOException;
 
 /**
  * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
  * </ul>
@@ -34,7 +35,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Base<PC extends Content> extends VoidElement<Base<PC>, PC> implements
+public class Base<PC extends MetadataContent<PC>> extends VoidElement<Base<PC>, PC> implements
 	Attributes.Url.Href<Base<PC>>
 	// TODO: target
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp

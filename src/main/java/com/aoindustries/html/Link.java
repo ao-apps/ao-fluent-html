@@ -36,6 +36,7 @@ import java.io.IOException;
 
 /**
  * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-link-element">4.2.4 The link element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
  * </ul>

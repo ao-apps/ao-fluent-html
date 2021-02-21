@@ -27,7 +27,10 @@ import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

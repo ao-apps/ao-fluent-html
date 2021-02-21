@@ -28,6 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-param-element">4.8.8 The param element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
  * </ul>
@@ -36,6 +37,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: <PC extends ObjectContent<PC>>
 public class Param<PC extends Content> extends VoidElement<Param<PC>, PC> implements
 	Attributes.Text.Name<Param<PC>>,
 	// TODO: type (deprecated)

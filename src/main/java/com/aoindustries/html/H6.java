@@ -33,7 +33,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class H6<PC extends Content> extends Element<H6<PC>> implements
+public class H6<PC extends HeadingContent<PC>> extends Element<H6<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<H6<PC>>
 {

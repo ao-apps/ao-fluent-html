@@ -58,11 +58,9 @@ public class Contents {
 
 		/**
 		 * See <a href="https://html.spec.whatwg.org/#the-html-element">4.1.1 The html element</a>.
-		 *
-		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Html<PC extends Content> extends Content {
+		public static interface Html<Document> extends Content {
 			// TODO
 		}
 	}
@@ -81,6 +79,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends HtmlContent<PC>>
 		public static interface Head<PC extends Content> extends Content {
 			// TODO
 		}
@@ -91,7 +90,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Title<PC extends Content> extends Content {
+		public static interface Title<PC extends MetadataContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -100,10 +99,11 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Base<PC extends Content> extends Content {
+		public static interface Base<PC extends MetadataContent<PC>> extends Content {
 			/**
 			 * Opens a new base element.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
 			 * </ul>
@@ -113,6 +113,7 @@ public class Contents {
 			/**
 			 * Shortcut to create a base with href only.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
 			 * </ul>
@@ -124,22 +125,33 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-link-element">4.2.4 The link element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-link-element">4.2.4 The link element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		public static interface Link<PC extends Content> extends Content {
 			/**
 			 * Opens a new link element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-link-element">4.2.4 The link element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
+			 * </ul>
 			 */
 			// TODO: Variants of Link by Rel, with per-implementation attributes like Input?
 			com.aoindustries.html.Link<PC> link() throws IOException;
 
 			/**
 			 * Opens a new link element with the given rel attribute.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-link-element">4.2.4 The link element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">&lt;link&gt; - HTML: Hypertext Markup Language</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
+			 * </ul>
 			 *
 			 * @see #link()
 			 * @see com.aoindustries.html.Link#rel(java.lang.Enum)
@@ -150,7 +162,11 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-meta-element">4.2.5 The meta element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-meta-element">4.2.5 The meta element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
@@ -158,14 +174,20 @@ public class Contents {
 			/**
 			 * Opens a new meta element.
 			 * <ul>
-			 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-meta-element">4.2.5 The meta element</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
 			 * </ul>
 			 */
 			com.aoindustries.html.Meta<PC> meta() throws IOException;
 
 			/**
 			 * Opens a new meta element with the given name attribute.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-meta-element">4.2.5 The meta element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
+			 * </ul>
 			 *
 			 * @see #meta()
 			 * @see com.aoindustries.html.Meta#name(java.lang.Enum)
@@ -174,6 +196,11 @@ public class Contents {
 
 			/**
 			 * Opens a new meta element with the given name http-equiv.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-meta-element">4.2.5 The meta element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
+			 * </ul>
 			 *
 			 * @see #meta()
 			 * @see com.aoindustries.html.Meta#httpEquiv(java.lang.Enum)
@@ -182,6 +209,11 @@ public class Contents {
 
 			/**
 			 * Opens a new meta element with the given charset attribute.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-meta-element">4.2.5 The meta element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
+			 * </ul>
 			 *
 			 * @see #meta()
 			 * @see com.aoindustries.html.Meta#charset(java.lang.Enum)
@@ -192,16 +224,20 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Style<PC extends Content> extends Content {
+		public static interface Style<PC extends MetadataContent<PC>> extends Content {
 			/**
 			 * Opens a new style element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+			 * </ul>
 			 *
 			 * @see Doctype#styleType(java.lang.Appendable)
 			 */
@@ -210,6 +246,7 @@ public class Contents {
 			/**
 			 * Opens a new style element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 			 * </ul>
@@ -219,6 +256,7 @@ public class Contents {
 			/**
 			 * Opens a new style element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 			 * </ul>
@@ -228,6 +266,7 @@ public class Contents {
 			/**
 			 * Opens a new style element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 			 * </ul>
@@ -237,6 +276,7 @@ public class Contents {
 			/**
 			 * Opens a new style element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 			 * </ul>
@@ -264,6 +304,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends HtmlContent<PC>>
 		public static interface Body<PC extends Content> extends Content {
 			// TODO
 		}
@@ -274,7 +315,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Article<PC extends Content> extends Content {
+		public static interface Article<PC extends SectioningContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -284,7 +325,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Section<PC extends Content> extends Content {
+		public static interface Section<PC extends SectioningContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -294,7 +335,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Nav<PC extends Content> extends Content {
+		public static interface Nav<PC extends SectioningContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -304,7 +345,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Aside<PC extends Content> extends Content {
+		public static interface Aside<PC extends SectioningContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -313,7 +354,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface H1<PC extends Content> extends Content {
+		public static interface H1<PC extends HeadingContent<PC>> extends Content {
 
 			/**
 			 * Opens a new h1 element.
@@ -369,7 +410,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface H2<PC extends Content> extends Content {
+		public static interface H2<PC extends HeadingContent<PC>> extends Content {
 
 			/**
 			 * Opens a new h2 element.
@@ -425,7 +466,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface H3<PC extends Content> extends Content {
+		public static interface H3<PC extends HeadingContent<PC>> extends Content {
 
 			/**
 			 * Opens a new h3 element.
@@ -481,7 +522,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface H4<PC extends Content> extends Content {
+		public static interface H4<PC extends HeadingContent<PC>> extends Content {
 
 			/**
 			 * Opens a new h4 element.
@@ -537,7 +578,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface H5<PC extends Content> extends Content {
+		public static interface H5<PC extends HeadingContent<PC>> extends Content {
 
 			/**
 			 * Opens a new h5 element.
@@ -593,7 +634,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface H6<PC extends Content> extends Content {
+		public static interface H6<PC extends HeadingContent<PC>> extends Content {
 
 			/**
 			 * Opens a new h6 element.
@@ -650,7 +691,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Hgroup<PC extends Content> extends Content {
+		public static interface Hgroup<PC extends HeadingContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -660,7 +701,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Header<PC extends Content> extends Content {
+		public static interface Header<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -670,7 +711,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Footer<PC extends Content> extends Content {
+		public static interface Footer<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -680,7 +721,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Address<PC extends Content> extends Content {
+		public static interface Address<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 	}
@@ -698,7 +739,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface P<PC extends Content> extends Content {
+		public static interface P<PC extends PalpableContent<PC>> extends Content {
 
 			/**
 			 * Opens a new p element.
@@ -750,24 +791,29 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Hr<PC extends Content> extends Content {
+		public static interface Hr<PC extends FlowContent<PC>> extends Content {
 			/**
 			 * Opens a new hr element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
+			 * </ul>
 			 */
 			com.aoindustries.html.Hr<PC> hr() throws IOException;
 
 			/**
 			 * Creates an empty hr element with no attributes.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
+			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
 			 */
@@ -780,7 +826,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Pre<PC extends Content> extends Content {
+		public static interface Pre<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -792,7 +838,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Blockquote<PC extends Content> extends Content {
+		public static interface Blockquote<PC extends PalpableContent<PC>> extends Content {
 
 			/**
 			 * Opens a new blockquote element.
@@ -854,7 +900,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ol<PC extends Content> extends Content {
+		public static interface Ol<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -864,7 +910,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ul<PC extends Content> extends Content {
+		public static interface Ul<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -874,7 +920,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Menu<PC extends Content> extends Content {
+		public static interface Menu<PC extends InteractiveContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -884,6 +930,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends ListContent<PC>>
 		public static interface Li<PC extends Content> extends Content {
 			// TODO
 		}
@@ -894,7 +941,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Dl<PC extends Content> extends Content {
+		public static interface Dl<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -924,7 +971,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Figure<PC extends Content> extends Content {
+		public static interface Figure<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -934,6 +981,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends FigcaptionContent<PC>> (where FigcaptionContent extends FlowContent + Figcaption)
 		public static interface Figcaption<PC extends Content> extends Content {
 			// TODO
 		}
@@ -944,7 +992,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Main<PC extends Content> extends Content {
+		public static interface Main<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -954,7 +1002,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Div<PC extends Content> extends Content {
+		public static interface Div<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 	}
@@ -1092,7 +1140,7 @@ public class Contents {
 		/**
 		 * <ul>
 		 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
 		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
@@ -1103,7 +1151,7 @@ public class Contents {
 			 * Opens a new q element.
 			 * <ul>
 			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
 			 * </ul>
 			 */
 			com.aoindustries.html.Q<PC> q() throws IOException;
@@ -1112,7 +1160,7 @@ public class Contents {
 			 * Creates a q element with no attributes and the given body.
 			 * <ul>
 			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
 			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
@@ -1123,7 +1171,7 @@ public class Contents {
 			 * Creates a q element with no attributes and the given body.
 			 * <ul>
 			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
 			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
@@ -1134,7 +1182,7 @@ public class Contents {
 			 * Creates a q element with no attributes and a text body.
 			 * <ul>
 			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
 			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
@@ -1145,7 +1193,7 @@ public class Contents {
 			 * Creates an empty q element with no attributes.
 			 * <ul>
 			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
 			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
@@ -1189,6 +1237,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends RubyContent<PC>>
 		public static interface Rt<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1199,6 +1248,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends RubyContent<PC>>
 		public static interface Rp<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1489,24 +1539,29 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Br<PC extends Content> extends Content {
+		public static interface Br<PC extends PhrasingContent<PC>> extends Content {
 			/**
 			 * Opens a new br element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
+			 * </ul>
 			 */
 			com.aoindustries.html.Br<PC> br() throws IOException;
 
 			/**
 			 * Creates a br element with no attributes.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
+			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
 			 */
@@ -1519,7 +1574,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Wbr<PC extends Content> extends Content {
+		public static interface Wbr<PC extends PhrasingContent<PC>> extends Content {
 			// TODO
 		}
 	}
@@ -1548,7 +1603,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Del<PC extends Content> extends Content {
+		public static interface Del<PC extends PhrasingContent<PC>> extends Content {
 			// TODO
 		}
 	}
@@ -1567,7 +1622,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Picture<PC extends Content> extends Content {
+		public static interface Picture<PC extends EmbeddedContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -1582,16 +1637,20 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		public static interface Img<PC extends Content> extends Content {
 			/**
 			 * Opens a new img element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
+			 * </ul>
 			 */
 			com.aoindustries.html.Img<PC> img() throws IOException;
 		}
@@ -1627,14 +1686,20 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-param-element">4.8.8 The param element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-param-element">4.8.8 The param element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
+		// TODO: <PC extends ObjectContent<PC>>
 		public static interface Param<PC extends Content> extends Content {
 			/**
 			 * Opens a new param element.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-param-element">4.8.8 The param element</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
 			 * </ul>
@@ -1644,6 +1709,7 @@ public class Contents {
 			/**
 			 * Creates a param element with the given name and value.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-param-element">4.8.8 The param element</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
 			 * </ul>
@@ -1681,6 +1747,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends MediaContent<PC>>
 		public static interface Track<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1700,7 +1767,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Area<PC extends Content> extends Content {
+		public static interface Area<PC extends PhrasingContent<PC>> extends Content {
 			/**
 			 * Opens a new area element.
 			 * <ul>
@@ -1811,7 +1878,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Table<PC extends Content> extends Content {
+		public static interface Table<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -1821,6 +1888,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TableContent<PC>>
 		public static interface Caption<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1836,14 +1904,20 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-col-element">4.9.4 The col element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-col-element">4.9.4 The col element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
+		// TODO: <PC extends ColgroupContent<PC>>
 		public static interface Col<PC extends Content> extends Content {
 			/**
 			 * Opens a new col element.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-col-element">4.9.4 The col element</a>.</li>
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
 			 * </ul>
@@ -1857,6 +1931,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TableContent<PC>>
 		public static interface Tbody<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1867,6 +1942,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TableContent<PC>>
 		public static interface Thead<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1877,6 +1953,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TableContent<PC>>
 		public static interface Tfoot<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1887,6 +1964,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TableContent<PC>>
 		public static interface Tr<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1897,6 +1975,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TrContent<PC>>
 		public static interface Td<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1907,6 +1986,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TrContent<PC>>
 		public static interface Th<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1926,7 +2006,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Form<PC extends Content> extends Content {
+		public static interface Form<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -1941,7 +2021,11 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
@@ -1949,6 +2033,11 @@ public class Contents {
 
 			/**
 			 * Specialized input implementations.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+			 * </ul>
 			 *
 			 * @param  <PC>  The parent content model this element is within
 			 */
@@ -1961,7 +2050,11 @@ public class Contents {
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Dynamic<PC> dynamic() throws IOException {
 					return new com.aoindustries.html.Input.Dynamic<PC>(document).open();
@@ -1969,6 +2062,8 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 				 * </ul>
@@ -1979,6 +2074,8 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 				 * </ul>
@@ -1990,6 +2087,8 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 				 * </ul>
@@ -2000,6 +2099,8 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 				 * </ul>
@@ -2010,119 +2111,204 @@ public class Contents {
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Button<PC> button() throws IOException {
 					return new com.aoindustries.html.Input.Button<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Checkbox<PC> checkbox() throws IOException {
 					return new com.aoindustries.html.Input.Checkbox<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Color<PC> color() throws IOException {
 					return new com.aoindustries.html.Input.Color<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Date<PC> date() throws IOException {
 					return new com.aoindustries.html.Input.Date<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.DatetimeLocal<PC> datetimeLocal() throws IOException {
 					return new com.aoindustries.html.Input.DatetimeLocal<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Email<PC> email() throws IOException {
 					return new com.aoindustries.html.Input.Email<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.File<PC> file() throws IOException {
 					return new com.aoindustries.html.Input.File<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Hidden<PC> hidden() throws IOException {
 					return new com.aoindustries.html.Input.Hidden<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Image<PC> image() throws IOException {
 					return new com.aoindustries.html.Input.Image<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Month<PC> month() throws IOException {
 					return new com.aoindustries.html.Input.Month<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Number<PC> number() throws IOException {
 					return new com.aoindustries.html.Input.Number<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Password<PC> password() throws IOException {
 					return new com.aoindustries.html.Input.Password<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Radio<PC> radio() throws IOException {
 					return new com.aoindustries.html.Input.Radio<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Range<PC> range() throws IOException {
 					return new com.aoindustries.html.Input.Range<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Reset<PC> reset() throws IOException {
 					return new com.aoindustries.html.Input.Reset<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Search<PC> search() throws IOException {
 					return new com.aoindustries.html.Input.Search<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Submit<PC> submit() throws IOException {
 					return new com.aoindustries.html.Input.Submit<PC>(document).open();
@@ -2130,6 +2316,9 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.</li>
 				 * </ul>
@@ -2142,6 +2331,9 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.</li>
 				 * </ul>
@@ -2154,6 +2346,9 @@ public class Contents {
 
 				/**
 				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
 				 * <li>See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.</li>
 				 * </ul>
@@ -2165,35 +2360,60 @@ public class Contents {
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Tel<PC> tel() throws IOException {
 					return new com.aoindustries.html.Input.Tel<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Text<PC> text() throws IOException {
 					return new com.aoindustries.html.Input.Text<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Time<PC> time() throws IOException {
 					return new com.aoindustries.html.Input.Time<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Url<PC> url() throws IOException {
 					return new com.aoindustries.html.Input.Url<PC>(document).open();
 				}
 
 				/**
-				 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
+				 * <ul>
+				 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+				 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+				 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.</li>
+				 * </ul>
 				 */
 				public com.aoindustries.html.Input.Week<PC> week() throws IOException {
 					return new com.aoindustries.html.Input.Week<PC>(document).open();
@@ -2202,6 +2422,11 @@ public class Contents {
 
 			/**
 			 * Specialized input implementations.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+			 * </ul>
 			 */
 			Type<PC> input();
 		}
@@ -2232,7 +2457,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Datalist<PC extends Content> extends Content {
+		public static interface Datalist<PC extends PhrasingContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -2242,29 +2467,35 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends SelectContent<PC>>
 		public static interface Optgroup<PC extends Content> extends Content {
 			// TODO
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		public static interface Option<PC extends Content> extends Content {
 			/**
 			 * Opens a new option element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
+			 * </ul>
 			 */
 			com.aoindustries.html.Option<PC> option() throws IOException;
 
 			/**
 			 * Creates an empty option element with no attributes.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
+			 * </ul>
 			 *
 			 * @return  The parent content model this element is within
 			 */
@@ -2317,7 +2548,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Fieldset<PC extends Content> extends Content {
+		public static interface Fieldset<PC extends PalpableContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -2327,6 +2558,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends FieldsetContent<PC>>
 		public static interface Legend<PC extends Content> extends Content {
 			// TODO
 		}
@@ -2346,7 +2578,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Details<PC extends Content> extends Content {
+		public static interface Details<PC extends InteractiveContent<PC>> extends Content {
 			// TODO
 		}
 
@@ -2356,6 +2588,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends DetailsContent<PC>>
 		public static interface Summary<PC extends Content> extends Content {
 			// TODO
 		}
@@ -2366,7 +2599,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Dialog<PC extends Content> extends Content {
+		public static interface Dialog<PC extends FlowContent<PC>> extends Content {
 			// TODO
 		}
 	}
@@ -2380,16 +2613,20 @@ public class Contents {
 		private Scripting() {}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+		 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		public static interface Script<PC extends Content> extends Content {
 			/**
 			 * Opens a new script element.
-			 * <p>
-			 * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
-			 * </p>
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+			 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
+			 * </ul>
 			 *
 			 * @see Doctype#scriptType(java.lang.Appendable)
 			 */
@@ -2398,6 +2635,7 @@ public class Contents {
 			/**
 			 * Opens a new script element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 			 * </ul>
@@ -2407,6 +2645,7 @@ public class Contents {
 			/**
 			 * Opens a new script element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 			 * </ul>
@@ -2416,6 +2655,7 @@ public class Contents {
 			/**
 			 * Opens a new script element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 			 * </ul>
@@ -2425,6 +2665,7 @@ public class Contents {
 			/**
 			 * Opens a new script element of the given type.
 			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 			 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 			 * </ul>
@@ -2458,7 +2699,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Slot<PC extends Content> extends Content {
+		public static interface Slot<PC extends PhrasingContent<PC>> extends Content {
 			// TODO
 		}
 

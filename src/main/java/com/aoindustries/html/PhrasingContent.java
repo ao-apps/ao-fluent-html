@@ -32,7 +32,7 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public interface PhrasingContent<PC extends Content> extends
+public interface PhrasingContent<PC extends PhrasingContent<PC>> extends
 	//
 	// Content models:
 	//

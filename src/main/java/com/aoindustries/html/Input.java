@@ -43,8 +43,9 @@ import java.util.Map;
  * supporting unanticipated or more dynamic configurations.
  * </p>
  * <ul>
- * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
  * </ul>
  *
  * @param  <PC>  The parent content model this element is within

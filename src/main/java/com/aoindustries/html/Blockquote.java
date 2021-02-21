@@ -36,7 +36,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Blockquote<PC extends Content> extends Element<Blockquote<PC>> implements
+public class Blockquote<PC extends PalpableContent<PC>> extends Element<Blockquote<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// TODO: cite
 	Attributes.Event.AlmostGlobal<Blockquote<PC>>

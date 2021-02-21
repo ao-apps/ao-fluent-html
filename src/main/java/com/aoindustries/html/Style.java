@@ -41,13 +41,16 @@ import java.io.IOException;
 import java.util.Locale;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Style<PC extends Content> extends Element<Style<PC>> implements
+public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>> implements
 	Attributes.Text.Media<Style<PC>>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Text.ClassNoHtml4<Style<PC>>,

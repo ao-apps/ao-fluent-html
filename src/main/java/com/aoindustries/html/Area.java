@@ -37,7 +37,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Area<PC extends Content> extends VoidElement<Area<PC>, PC> implements
+public class Area<PC extends PhrasingContent<PC>> extends VoidElement<Area<PC>, PC> implements
 	Attributes.Text.Alt<Area<PC>>,
 	Attributes.Dimension.Coords<Area<PC>>,
 	// TODO: download

@@ -32,7 +32,12 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public interface PalpableContent<PC extends Content> extends
+// TODO: Many elements are both PhrasingContext and PalpableContent, which means we can't narrow their Content.
+//       If this interface is not used by our final implementation, consider removing it and narrowing the generic
+//       bounds of element's Content.
+// TODO: Make a new super interface for elements that are common to both?
+//       other super interfaces could exist for things like Interactive versus Phrasing, too
+public interface PalpableContent<PC extends PalpableContent<PC>> extends
 	//
 	// Content models:
 	//

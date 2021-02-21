@@ -27,14 +27,17 @@ import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class Hr<PC extends Content> extends VoidElement<Hr<PC>, PC> implements
+public class Hr<PC extends FlowContent<PC>> extends VoidElement<Hr<PC>, PC> implements
 	Attributes.Enum.Align<Hr<PC>, Hr.Align>,
 	Attributes.Boolean.Noshade<Hr<PC>>,
 	Attributes.Integer.SizeHtml4Only<Hr<PC>>,

@@ -40,7 +40,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

@@ -32,7 +32,7 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public interface FlowContent<PC extends Content> extends
+public interface FlowContent<PC extends FlowContent<PC>> extends
 	//
 	// Content models:
 	//

@@ -34,7 +34,10 @@ import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
 /**
- * See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

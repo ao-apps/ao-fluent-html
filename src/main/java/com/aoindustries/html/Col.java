@@ -28,6 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-col-element">4.9.4 The col element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
  * </ul>
@@ -37,6 +38,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
+// TODO: <PC extends ColgroupContent<PC>>
 public class Col<PC extends Content> extends VoidElement<Col<PC>, PC> implements
 	Attributes.Enum.Align<Col<PC>, Col.Align>,
 	// TODO: bgcolor (deprecated)

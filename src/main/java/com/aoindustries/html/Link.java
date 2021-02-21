@@ -24,11 +24,11 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
-import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.html.Style.Type;
 import com.aoindustries.io.ContentType;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
@@ -327,7 +327,7 @@ public class Link<PC extends Content> extends VoidElement<Link<PC>, PC> implemen
 	 * @see #rel(com.aoindustries.html.Link.Rel)
 	 */
 	@Override
-	public <Ex extends Throwable> Link<PC> rel(Supplier<? extends Rel, Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> Link<PC> rel(IOSupplierE<? extends Rel, Ex> rel) throws IOException, Ex {
 		return Attributes.Enum.Rel.super.rel(rel);
 	}
 

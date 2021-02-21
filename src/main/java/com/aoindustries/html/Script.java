@@ -27,10 +27,10 @@ import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
-import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.io.ContentType;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.lang.Throwables;
@@ -206,9 +206,9 @@ public class Script<PC extends Content> extends Element<Script<PC>> implements
 	// TODO: Interface for "out" with default methods? (Another for "text", too)
 	@SuppressWarnings("UseSpecificCatch")
 	public Script<PC> out(Object script) throws IOException {
-		while(script instanceof Supplier<?, ?>) {
+		while(script instanceof IOSupplierE<?, ?>) {
 			try {
-				script = ((Supplier<?, ?>)script).get();
+				script = ((IOSupplierE<?, ?>)script).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -237,7 +237,7 @@ public class Script<PC extends Content> extends Element<Script<PC>> implements
 		return this;
 	}
 
-	public <Ex extends Throwable> Script<PC> out(Supplier<?, Ex> script) throws IOException, Ex {
+	public <Ex extends Throwable> Script<PC> out(IOSupplierE<?, Ex> script) throws IOException, Ex {
 		return out((script == null) ? null : script.get());
 	}
 

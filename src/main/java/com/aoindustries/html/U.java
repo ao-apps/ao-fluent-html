@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.lang.RunnableE;
-import com.aoindustries.util.function.ConsumerE;
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -53,7 +53,7 @@ public class U<PC extends Content> extends Element<U<PC>> implements
 	 *
 	 * @return  The parent content model this element is within
 	 */
-	public <Ex extends Throwable> PC __(RunnableE<Ex> u) throws IOException, Ex {
+	public <Ex extends Throwable> PC __(IORunnableE<Ex> u) throws IOException, Ex {
 		if(u != null) {
 			document.out.write('>');
 			u.run();
@@ -70,7 +70,7 @@ public class U<PC extends Content> extends Element<U<PC>> implements
 	 *
 	 * @return  The parent content model this element is within
 	 */
-	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> PC __(ConsumerE<? super UContent, Ex> u) throws IOException, Ex {
+	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> PC __(IOConsumerE<? super UContent, Ex> u) throws IOException, Ex {
 		if(u != null) {
 			document.out.write('>');
 			@SuppressWarnings("unchecked") UContent c = (UContent)document;

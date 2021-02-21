@@ -24,9 +24,9 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaWritable;
-import com.aoindustries.encoding.Supplier;
-import com.aoindustries.lang.RunnableE;
-import com.aoindustries.util.function.ConsumerE;
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import com.aoindustries.io.function.IOSupplierE;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -120,7 +120,7 @@ public class Contents {
 			 * @return  The parent content model this element is within
 			 */
 			PC base__(String href) throws IOException;
-			// TODO: Supplier version like A? (review others, too)
+			// TODO: IOSupplierE version like A? (review others, too)
 		}
 
 		/**
@@ -241,7 +241,7 @@ public class Contents {
 			 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 			 * </ul>
 			 */
-			<Ex extends Throwable> com.aoindustries.html.Style<PC> style(Supplier<? extends com.aoindustries.html.Style.Type, Ex> type) throws IOException, Ex;
+			<Ex extends Throwable> com.aoindustries.html.Style<PC> style(IOSupplierE<? extends com.aoindustries.html.Style.Type, Ex> type) throws IOException, Ex;
 
 			// TODO: style__() - go directly to out, since no attributes? Lambda versions, too
 
@@ -331,7 +331,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC h1__(RunnableE<Ex> h1) throws IOException, Ex;
+			<Ex extends Throwable> PC h1__(IORunnableE<Ex> h1) throws IOException, Ex;
 
 			/**
 			 * Creates an h1 element with no attributes and the given body.
@@ -341,7 +341,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, H1Content extends PhrasingContent<H1Content>> PC h1__(ConsumerE<? super H1Content, Ex> h1) throws IOException, Ex;
+			<Ex extends Throwable, H1Content extends PhrasingContent<H1Content>> PC h1__(IOConsumerE<? super H1Content, Ex> h1) throws IOException, Ex;
 
 			/**
 			 * Creates an h1 element with no attributes and a text body.
@@ -387,7 +387,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC h2__(RunnableE<Ex> h2) throws IOException, Ex;
+			<Ex extends Throwable> PC h2__(IORunnableE<Ex> h2) throws IOException, Ex;
 
 			/**
 			 * Creates an h2 element with no attributes and the given body.
@@ -397,7 +397,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, H2Content extends PhrasingContent<H2Content>> PC h2__(ConsumerE<? super H2Content, Ex> h2) throws IOException, Ex;
+			<Ex extends Throwable, H2Content extends PhrasingContent<H2Content>> PC h2__(IOConsumerE<? super H2Content, Ex> h2) throws IOException, Ex;
 
 			/**
 			 * Creates an h2 element with no attributes and a text body.
@@ -443,7 +443,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC h3__(RunnableE<Ex> h3) throws IOException, Ex;
+			<Ex extends Throwable> PC h3__(IORunnableE<Ex> h3) throws IOException, Ex;
 
 			/**
 			 * Creates an h3 element with no attributes and the given body.
@@ -453,7 +453,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, H3Content extends PhrasingContent<H3Content>> PC h3__(ConsumerE<? super H3Content, Ex> h3) throws IOException, Ex;
+			<Ex extends Throwable, H3Content extends PhrasingContent<H3Content>> PC h3__(IOConsumerE<? super H3Content, Ex> h3) throws IOException, Ex;
 
 			/**
 			 * Creates an h3 element with no attributes and a text body.
@@ -499,7 +499,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC h4__(RunnableE<Ex> h4) throws IOException, Ex;
+			<Ex extends Throwable> PC h4__(IORunnableE<Ex> h4) throws IOException, Ex;
 
 			/**
 			 * Creates an h4 element with no attributes and the given body.
@@ -509,7 +509,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, H4Content extends PhrasingContent<H4Content>> PC h4__(ConsumerE<? super H4Content, Ex> h4) throws IOException, Ex;
+			<Ex extends Throwable, H4Content extends PhrasingContent<H4Content>> PC h4__(IOConsumerE<? super H4Content, Ex> h4) throws IOException, Ex;
 
 			/**
 			 * Creates an h4 element with no attributes and a text body.
@@ -555,7 +555,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC h5__(RunnableE<Ex> h5) throws IOException, Ex;
+			<Ex extends Throwable> PC h5__(IORunnableE<Ex> h5) throws IOException, Ex;
 
 			/**
 			 * Creates an h5 element with no attributes and the given body.
@@ -565,7 +565,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, H5Content extends PhrasingContent<H5Content>> PC h5__(ConsumerE<? super H5Content, Ex> h5) throws IOException, Ex;
+			<Ex extends Throwable, H5Content extends PhrasingContent<H5Content>> PC h5__(IOConsumerE<? super H5Content, Ex> h5) throws IOException, Ex;
 
 			/**
 			 * Creates an h5 element with no attributes and a text body.
@@ -611,7 +611,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC h6__(RunnableE<Ex> h6) throws IOException, Ex;
+			<Ex extends Throwable> PC h6__(IORunnableE<Ex> h6) throws IOException, Ex;
 
 			/**
 			 * Creates an h6 element with no attributes and the given body.
@@ -621,7 +621,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, H6Content extends PhrasingContent<H6Content>> PC h6__(ConsumerE<? super H6Content, Ex> h6) throws IOException, Ex;
+			<Ex extends Throwable, H6Content extends PhrasingContent<H6Content>> PC h6__(IOConsumerE<? super H6Content, Ex> h6) throws IOException, Ex;
 
 			/**
 			 * Creates an h6 element with no attributes and a text body.
@@ -716,7 +716,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC p__(RunnableE<Ex> p) throws IOException, Ex;
+			<Ex extends Throwable> PC p__(IORunnableE<Ex> p) throws IOException, Ex;
 
 			/**
 			 * Creates a p element with no attributes and the given body.
@@ -726,7 +726,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, PContent extends PhrasingContent<PContent>> PC p__(ConsumerE<? super PContent, Ex> p) throws IOException, Ex;
+			<Ex extends Throwable, PContent extends PhrasingContent<PContent>> PC p__(IOConsumerE<? super PContent, Ex> p) throws IOException, Ex;
 
 			/**
 			 * Creates a p element with no attributes and a text body.
@@ -941,7 +941,7 @@ public class Contents {
 			 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
 			 * </p>
 			 */
-			<Ex extends Throwable> com.aoindustries.html.A<PC> a(Supplier<? extends java.lang.String, Ex> href) throws IOException, Ex;
+			<Ex extends Throwable> com.aoindustries.html.A<PC> a(IOSupplierE<? extends java.lang.String, Ex> href) throws IOException, Ex;
 
 			/**
 			 * Creates an a element with no attributes and the given body.
@@ -951,7 +951,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC a__(RunnableE<Ex> a) throws IOException, Ex;
+			<Ex extends Throwable> PC a__(IORunnableE<Ex> a) throws IOException, Ex;
 
 			/**
 			 * Creates an a element with no attributes and the given body.
@@ -962,7 +962,7 @@ public class Contents {
 			 * @return  The parent content model this element is within
 			 */
 			// TODO: How to limit content to not have interactive elements?
-			<Ex extends Throwable> PC a__(ConsumerE<? super PC, Ex> a) throws IOException, Ex;
+			<Ex extends Throwable> PC a__(IOConsumerE<? super PC, Ex> a) throws IOException, Ex;
 
 			/**
 			 * Creates an a element with no attributes and a text body.
@@ -1197,7 +1197,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC i__(RunnableE<Ex> i) throws IOException, Ex;
+			<Ex extends Throwable> PC i__(IORunnableE<Ex> i) throws IOException, Ex;
 
 			/**
 			 * Creates an i element with no attributes and the given body.
@@ -1207,7 +1207,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, IContent extends PhrasingContent<IContent>> PC i__(ConsumerE<? super IContent, Ex> i) throws IOException, Ex;
+			<Ex extends Throwable, IContent extends PhrasingContent<IContent>> PC i__(IOConsumerE<? super IContent, Ex> i) throws IOException, Ex;
 
 			/**
 			 * Creates an i element with no attributes and a text body.
@@ -1252,7 +1252,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC b__(RunnableE<Ex> b) throws IOException, Ex;
+			<Ex extends Throwable> PC b__(IORunnableE<Ex> b) throws IOException, Ex;
 
 			/**
 			 * Creates a b element with no attributes and the given body.
@@ -1262,7 +1262,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, BContent extends PhrasingContent<BContent>> PC b__(ConsumerE<? super BContent, Ex> b) throws IOException, Ex;
+			<Ex extends Throwable, BContent extends PhrasingContent<BContent>> PC b__(IOConsumerE<? super BContent, Ex> b) throws IOException, Ex;
 
 			/**
 			 * Creates a b element with no attributes and a text body.
@@ -1307,7 +1307,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable> PC u__(RunnableE<Ex> u) throws IOException, Ex;
+			<Ex extends Throwable> PC u__(IORunnableE<Ex> u) throws IOException, Ex;
 
 			/**
 			 * Creates a u element with no attributes and the given body.
@@ -1317,7 +1317,7 @@ public class Contents {
 			 *
 			 * @return  The parent content model this element is within
 			 */
-			<Ex extends Throwable, UContent extends PhrasingContent<UContent>> PC u__(ConsumerE<? super UContent, Ex> u) throws IOException, Ex;
+			<Ex extends Throwable, UContent extends PhrasingContent<UContent>> PC u__(IOConsumerE<? super UContent, Ex> u) throws IOException, Ex;
 
 			/**
 			 * Creates a u element with no attributes and a text body.
@@ -1897,7 +1897,7 @@ public class Contents {
 				 * </ul>
 				 */
 				// TODO: Move these type Input.type only?
-				public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic<PC> dynamic(Supplier<? extends com.aoindustries.html.Input.Dynamic.Type, Ex> type) throws IOException, Ex {
+				public <Ex extends Throwable> com.aoindustries.html.Input.Dynamic<PC> dynamic(IOSupplierE<? extends com.aoindustries.html.Input.Dynamic.Type, Ex> type) throws IOException, Ex {
 					return dynamic((type == null) ? null : type.get());
 				}
 
@@ -2040,7 +2040,7 @@ public class Contents {
 				 *
 				 * @return  The parent content model this element is within
 				 */
-				public <Ex extends Throwable> PC submit__(Supplier<?, Ex> value) throws IOException, Ex {
+				public <Ex extends Throwable> PC submit__(IOSupplierE<?, Ex> value) throws IOException, Ex {
 					return submit().value(value).__();
 				}
 
@@ -2321,7 +2321,7 @@ public class Contents {
 			 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 			 * </ul>
 			 */
-			<Ex extends Throwable> com.aoindustries.html.Script<PC> script(Supplier<? extends com.aoindustries.html.Script.Type, Ex> type) throws IOException, Ex;
+			<Ex extends Throwable> com.aoindustries.html.Script<PC> script(IOSupplierE<? extends com.aoindustries.html.Script.Type, Ex> type) throws IOException, Ex;
 		}
 
 		/**

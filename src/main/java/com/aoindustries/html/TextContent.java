@@ -24,7 +24,7 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
-import com.aoindustries.encoding.Supplier;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
@@ -82,7 +82,7 @@ public interface TextContent<PC extends Content> extends Content {
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
 	 */
-	<Ex extends Throwable> PC text(Supplier<?, Ex> text) throws IOException, Ex;
+	<Ex extends Throwable> PC text(IOSupplierE<?, Ex> text) throws IOException, Ex;
 
 	/**
 	 * Writes the given text with proper encoding.

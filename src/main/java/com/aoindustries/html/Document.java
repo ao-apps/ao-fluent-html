@@ -28,13 +28,13 @@ import com.aoindustries.encoding.EncodingContext;
 import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
-import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
-import com.aoindustries.lang.RunnableE;
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Throwables;
-import com.aoindustries.util.function.ConsumerE;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
 import java.awt.Polygon;
@@ -330,9 +330,9 @@ public class Document implements
 	@Override
 	@SuppressWarnings("UseSpecificCatch")
 	public Document text(Object text) throws IOException {
-		while(text instanceof Supplier<?, ?>) {
+		while(text instanceof IOSupplierE<?, ?>) {
 			try {
-				text = ((Supplier<?, ?>)text).get();
+				text = ((IOSupplierE<?, ?>)text).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -353,7 +353,7 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document text(Supplier<?, Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> Document text(IOSupplierE<?, Ex> text) throws IOException, Ex {
 		return text((text == null) ? null : text.get());
 	}
 
@@ -402,17 +402,17 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> A<Document> a(Supplier<? extends String, Ex> href) throws IOException, Ex {
+	public <Ex extends Throwable> A<Document> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
 		return a().href(href);
 	}
 
 	@Override
-	public <Ex extends Throwable> Document a__(RunnableE<Ex> a) throws IOException, Ex {
+	public <Ex extends Throwable> Document a__(IORunnableE<Ex> a) throws IOException, Ex {
 		return a().__(a);
 	}
 
 	@Override
-	public <Ex extends Throwable> Document a__(ConsumerE<? super Document, Ex> a) throws IOException, Ex {
+	public <Ex extends Throwable> Document a__(IOConsumerE<? super Document, Ex> a) throws IOException, Ex {
 		return a().__(a);
 	}
 
@@ -486,14 +486,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document b__(RunnableE<Ex> b) throws IOException, Ex {
+	public <Ex extends Throwable> Document b__(IORunnableE<Ex> b) throws IOException, Ex {
 		return b().__(b);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, BContent extends PhrasingContent<BContent>> Document b__(ConsumerE<? super BContent, Ex> b) throws IOException, Ex {
-		return b().__((ConsumerE)b);
+	public <Ex extends Throwable, BContent extends PhrasingContent<BContent>> Document b__(IOConsumerE<? super BContent, Ex> b) throws IOException, Ex {
+		return b().__((IOConsumerE)b);
 	}
 
 	@Override
@@ -543,14 +543,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document h1__(RunnableE<Ex> h1) throws IOException, Ex {
+	public <Ex extends Throwable> Document h1__(IORunnableE<Ex> h1) throws IOException, Ex {
 		return h1().__(h1);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, H1Content extends PhrasingContent<H1Content>> Document h1__(ConsumerE<? super H1Content, Ex> h1) throws IOException, Ex {
-		return h1().__((ConsumerE)h1);
+	public <Ex extends Throwable, H1Content extends PhrasingContent<H1Content>> Document h1__(IOConsumerE<? super H1Content, Ex> h1) throws IOException, Ex {
+		return h1().__((IOConsumerE)h1);
 	}
 
 	@Override
@@ -572,14 +572,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document h2__(RunnableE<Ex> h2) throws IOException, Ex {
+	public <Ex extends Throwable> Document h2__(IORunnableE<Ex> h2) throws IOException, Ex {
 		return h2().__(h2);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, H2Content extends PhrasingContent<H2Content>> Document h2__(ConsumerE<? super H2Content, Ex> h2) throws IOException, Ex {
-		return h2().__((ConsumerE)h2);
+	public <Ex extends Throwable, H2Content extends PhrasingContent<H2Content>> Document h2__(IOConsumerE<? super H2Content, Ex> h2) throws IOException, Ex {
+		return h2().__((IOConsumerE)h2);
 	}
 
 	@Override
@@ -601,14 +601,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document h3__(RunnableE<Ex> h3) throws IOException, Ex {
+	public <Ex extends Throwable> Document h3__(IORunnableE<Ex> h3) throws IOException, Ex {
 		return h3().__(h3);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, H3Content extends PhrasingContent<H3Content>> Document h3__(ConsumerE<? super H3Content, Ex> h3) throws IOException, Ex {
-		return h3().__((ConsumerE)h3);
+	public <Ex extends Throwable, H3Content extends PhrasingContent<H3Content>> Document h3__(IOConsumerE<? super H3Content, Ex> h3) throws IOException, Ex {
+		return h3().__((IOConsumerE)h3);
 	}
 
 	@Override
@@ -630,14 +630,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document h4__(RunnableE<Ex> h4) throws IOException, Ex {
+	public <Ex extends Throwable> Document h4__(IORunnableE<Ex> h4) throws IOException, Ex {
 		return h4().__(h4);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, H4Content extends PhrasingContent<H4Content>> Document h4__(ConsumerE<? super H4Content, Ex> h4) throws IOException, Ex {
-		return h4().__((ConsumerE)h4);
+	public <Ex extends Throwable, H4Content extends PhrasingContent<H4Content>> Document h4__(IOConsumerE<? super H4Content, Ex> h4) throws IOException, Ex {
+		return h4().__((IOConsumerE)h4);
 	}
 
 	@Override
@@ -659,14 +659,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document h5__(RunnableE<Ex> h5) throws IOException, Ex {
+	public <Ex extends Throwable> Document h5__(IORunnableE<Ex> h5) throws IOException, Ex {
 		return h5().__(h5);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, H5Content extends PhrasingContent<H5Content>> Document h5__(ConsumerE<? super H5Content, Ex> h5) throws IOException, Ex {
-		return h5().__((ConsumerE)h5);
+	public <Ex extends Throwable, H5Content extends PhrasingContent<H5Content>> Document h5__(IOConsumerE<? super H5Content, Ex> h5) throws IOException, Ex {
+		return h5().__((IOConsumerE)h5);
 	}
 
 	@Override
@@ -688,14 +688,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document h6__(RunnableE<Ex> h6) throws IOException, Ex {
+	public <Ex extends Throwable> Document h6__(IORunnableE<Ex> h6) throws IOException, Ex {
 		return h6().__(h6);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, H6Content extends PhrasingContent<H6Content>> Document h6__(ConsumerE<? super H6Content, Ex> h6) throws IOException, Ex {
-		return h6().__((ConsumerE)h6);
+	public <Ex extends Throwable, H6Content extends PhrasingContent<H6Content>> Document h6__(IOConsumerE<? super H6Content, Ex> h6) throws IOException, Ex {
+		return h6().__((IOConsumerE)h6);
 	}
 
 	@Override
@@ -730,14 +730,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document i__(RunnableE<Ex> i) throws IOException, Ex {
+	public <Ex extends Throwable> Document i__(IORunnableE<Ex> i) throws IOException, Ex {
 		return i().__(i);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, IContent extends PhrasingContent<IContent>> Document i__(ConsumerE<? super IContent, Ex> i) throws IOException, Ex {
-		return i().__((ConsumerE)i);
+	public <Ex extends Throwable, IContent extends PhrasingContent<IContent>> Document i__(IOConsumerE<? super IContent, Ex> i) throws IOException, Ex {
+		return i().__((IOConsumerE)i);
 	}
 
 	@Override
@@ -820,14 +820,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document p__(RunnableE<Ex> p) throws IOException, Ex {
+	public <Ex extends Throwable> Document p__(IORunnableE<Ex> p) throws IOException, Ex {
 		return p().__(p);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, PContent extends PhrasingContent<PContent>> Document p__(ConsumerE<? super PContent, Ex> p) throws IOException, Ex {
-		return p().__((ConsumerE)p);
+	public <Ex extends Throwable, PContent extends PhrasingContent<PContent>> Document p__(IOConsumerE<? super PContent, Ex> p) throws IOException, Ex {
+		return p().__((IOConsumerE)p);
 	}
 
 	@Override
@@ -873,7 +873,7 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Script<Document> script(Supplier<? extends Script.Type, Ex> type) throws IOException, Ex {
+	public <Ex extends Throwable> Script<Document> script(IOSupplierE<? extends Script.Type, Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
@@ -898,7 +898,7 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Style<Document> style(Supplier<? extends Style.Type, Ex> type) throws IOException, Ex {
+	public <Ex extends Throwable> Style<Document> style(IOSupplierE<? extends Style.Type, Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 
@@ -916,14 +916,14 @@ public class Document implements
 	}
 
 	@Override
-	public <Ex extends Throwable> Document u__(RunnableE<Ex> u) throws IOException, Ex {
+	public <Ex extends Throwable> Document u__(IORunnableE<Ex> u) throws IOException, Ex {
 		return u().__(u);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> Document u__(ConsumerE<? super UContent, Ex> u) throws IOException, Ex {
-		return u().__((ConsumerE)u);
+	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> Document u__(IOConsumerE<? super UContent, Ex> u) throws IOException, Ex {
+		return u().__((IOConsumerE)u);
 	}
 
 	@Override

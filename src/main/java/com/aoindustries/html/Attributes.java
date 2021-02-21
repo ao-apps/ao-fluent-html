@@ -28,10 +28,10 @@ import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
-import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.i18n.Resources;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.lang.Strings;
@@ -181,7 +181,7 @@ public class Attributes {
 			 *
 			 * @see #async(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E async(Supplier<? extends java.lang.Boolean, Ex> async) throws IOException, Ex {
+			default <Ex extends Throwable> E async(IOSupplierE<? extends java.lang.Boolean, Ex> async) throws IOException, Ex {
 				return async((async == null) ? null : async.get());
 			}
 		}
@@ -222,7 +222,7 @@ public class Attributes {
 			 *
 			 * @see #autofocus(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E autofocus(Supplier<? extends java.lang.Boolean, Ex> autofocus) throws IOException, Ex {
+			default <Ex extends Throwable> E autofocus(IOSupplierE<? extends java.lang.Boolean, Ex> autofocus) throws IOException, Ex {
 				return autofocus((autofocus == null) ? null : autofocus.get());
 			}
 		}
@@ -255,7 +255,7 @@ public class Attributes {
 			 *
 			 * @see #checked(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E checked(Supplier<? extends java.lang.Boolean, Ex> checked) throws IOException, Ex {
+			default <Ex extends Throwable> E checked(IOSupplierE<? extends java.lang.Boolean, Ex> checked) throws IOException, Ex {
 				return checked((checked == null) ? null : checked.get());
 			}
 		}
@@ -288,7 +288,7 @@ public class Attributes {
 			 *
 			 * @see #defer(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E defer(Supplier<? extends java.lang.Boolean, Ex> defer) throws IOException, Ex {
+			default <Ex extends Throwable> E defer(IOSupplierE<? extends java.lang.Boolean, Ex> defer) throws IOException, Ex {
 				return defer((defer == null) ? null : defer.get());
 			}
 		}
@@ -321,7 +321,7 @@ public class Attributes {
 			 *
 			 * @see #disabled(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E disabled(Supplier<? extends java.lang.Boolean, Ex> disabled) throws IOException, Ex {
+			default <Ex extends Throwable> E disabled(IOSupplierE<? extends java.lang.Boolean, Ex> disabled) throws IOException, Ex {
 				return disabled((disabled == null) ? null : disabled.get());
 			}
 		}
@@ -354,7 +354,7 @@ public class Attributes {
 			 *
 			 * @see #ismap(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E ismap(Supplier<? extends java.lang.Boolean, Ex> ismap) throws IOException, Ex {
+			default <Ex extends Throwable> E ismap(IOSupplierE<? extends java.lang.Boolean, Ex> ismap) throws IOException, Ex {
 				return ismap((ismap == null) ? null : ismap.get());
 			}
 		}
@@ -395,7 +395,7 @@ public class Attributes {
 			 *
 			 * @see #multiple(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E multiple(Supplier<? extends java.lang.Boolean, Ex> multiple) throws IOException, Ex {
+			default <Ex extends Throwable> E multiple(IOSupplierE<? extends java.lang.Boolean, Ex> multiple) throws IOException, Ex {
 				return multiple((multiple == null) ? null : multiple.get());
 			}
 		}
@@ -447,7 +447,7 @@ public class Attributes {
 			 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 			 */
 			@Deprecated
-			default <Ex extends Throwable> E noshade(Supplier<? extends java.lang.Boolean, Ex> noshade) throws IOException, Ex {
+			default <Ex extends Throwable> E noshade(IOSupplierE<? extends java.lang.Boolean, Ex> noshade) throws IOException, Ex {
 				return noshade((noshade == null) ? null : noshade.get());
 			}
 		}
@@ -483,7 +483,7 @@ public class Attributes {
 			 *
 			 * @see #readonly(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E readonly(Supplier<? extends java.lang.Boolean, Ex> readonly) throws IOException, Ex {
+			default <Ex extends Throwable> E readonly(IOSupplierE<? extends java.lang.Boolean, Ex> readonly) throws IOException, Ex {
 				return readonly((readonly == null) ? null : readonly.get());
 			}
 		}
@@ -516,7 +516,7 @@ public class Attributes {
 			 *
 			 * @see #selected(java.lang.Boolean)
 			 */
-			default <Ex extends Throwable> E selected(Supplier<? extends java.lang.Boolean, Ex> selected) throws IOException, Ex {
+			default <Ex extends Throwable> E selected(IOSupplierE<? extends java.lang.Boolean, Ex> selected) throws IOException, Ex {
 				return selected((selected == null) ? null : selected.get());
 			}
 		}
@@ -578,7 +578,7 @@ public class Attributes {
 			 * @see #coords(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E coords(Supplier<? extends java.lang.String, Ex> coords) throws IOException, Ex {
+			default <Ex extends Throwable> E coords(IOSupplierE<? extends java.lang.String, Ex> coords) throws IOException, Ex {
 				return coords((coords == null) ? null : coords.get());
 			}
 
@@ -865,7 +865,7 @@ public class Attributes {
 			 * @see #width(java.lang.Integer)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(IOSupplierE<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				return width((pixels == null) ? null : pixels.get());
 			}
 
@@ -951,7 +951,7 @@ public class Attributes {
 			@Deprecated
 			@Override
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(IOSupplierE<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -1051,7 +1051,7 @@ public class Attributes {
 				 *
 				 * @see #onafterprint(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onafterprint(Supplier<?, Ex> onafterprint) throws IOException, Ex {
+				default <Ex extends Throwable> E onafterprint(IOSupplierE<?, Ex> onafterprint) throws IOException, Ex {
 					return onafterprint((onafterprint == null) ? null : onafterprint.get());
 				}
 
@@ -1092,7 +1092,7 @@ public class Attributes {
 				 *
 				 * @see #onbeforeprint(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onbeforeprint(Supplier<?, Ex> onbeforeprint) throws IOException, Ex {
+				default <Ex extends Throwable> E onbeforeprint(IOSupplierE<?, Ex> onbeforeprint) throws IOException, Ex {
 					return onbeforeprint((onbeforeprint == null) ? null : onbeforeprint.get());
 				}
 
@@ -1125,7 +1125,7 @@ public class Attributes {
 				 *
 				 * @see #onbeforeunload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onbeforeunload(Supplier<?, Ex> onbeforeunload) throws IOException, Ex {
+				default <Ex extends Throwable> E onbeforeunload(IOSupplierE<?, Ex> onbeforeunload) throws IOException, Ex {
 					return onbeforeunload((onbeforeunload == null) ? null : onbeforeunload.get());
 				}
 
@@ -1172,7 +1172,7 @@ public class Attributes {
 				 *
 				 * @see #onerror(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onerror(Supplier<?, Ex> onerror) throws IOException, Ex {
+				default <Ex extends Throwable> E onerror(IOSupplierE<?, Ex> onerror) throws IOException, Ex {
 					return onerror((onerror == null) ? null : onerror.get());
 				}
 
@@ -1213,7 +1213,7 @@ public class Attributes {
 				 *
 				 * @see #onhashchange(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onhashchange(Supplier<?, Ex> onhashchange) throws IOException, Ex {
+				default <Ex extends Throwable> E onhashchange(IOSupplierE<?, Ex> onhashchange) throws IOException, Ex {
 					return onhashchange((onhashchange == null) ? null : onhashchange.get());
 				}
 
@@ -1246,7 +1246,7 @@ public class Attributes {
 				 *
 				 * @see #onload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onload(Supplier<?, Ex> onload) throws IOException, Ex {
+				default <Ex extends Throwable> E onload(IOSupplierE<?, Ex> onload) throws IOException, Ex {
 					return onload((onload == null) ? null : onload.get());
 				}
 
@@ -1287,7 +1287,7 @@ public class Attributes {
 				 *
 				 * @see #onmessage(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmessage(Supplier<?, Ex> onmessage) throws IOException, Ex {
+				default <Ex extends Throwable> E onmessage(IOSupplierE<?, Ex> onmessage) throws IOException, Ex {
 					return onmessage((onmessage == null) ? null : onmessage.get());
 				}
 
@@ -1328,7 +1328,7 @@ public class Attributes {
 				 *
 				 * @see #onoffline(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onoffline(Supplier<?, Ex> onoffline) throws IOException, Ex {
+				default <Ex extends Throwable> E onoffline(IOSupplierE<?, Ex> onoffline) throws IOException, Ex {
 					return onoffline((onoffline == null) ? null : onoffline.get());
 				}
 
@@ -1369,7 +1369,7 @@ public class Attributes {
 				 *
 				 * @see #ononline(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ononline(Supplier<?, Ex> ononline) throws IOException, Ex {
+				default <Ex extends Throwable> E ononline(IOSupplierE<?, Ex> ononline) throws IOException, Ex {
 					return ononline((ononline == null) ? null : ononline.get());
 				}
 
@@ -1402,7 +1402,7 @@ public class Attributes {
 				 *
 				 * @see #onpagehide(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpagehide(Supplier<?, Ex> onpagehide) throws IOException, Ex {
+				default <Ex extends Throwable> E onpagehide(IOSupplierE<?, Ex> onpagehide) throws IOException, Ex {
 					return onpagehide((onpagehide == null) ? null : onpagehide.get());
 				}
 
@@ -1435,7 +1435,7 @@ public class Attributes {
 				 *
 				 * @see #onpageshow(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpageshow(Supplier<?, Ex> onpageshow) throws IOException, Ex {
+				default <Ex extends Throwable> E onpageshow(IOSupplierE<?, Ex> onpageshow) throws IOException, Ex {
 					return onpageshow((onpageshow == null) ? null : onpageshow.get());
 				}
 
@@ -1468,7 +1468,7 @@ public class Attributes {
 				 *
 				 * @see #onpopstate(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpopstate(Supplier<?, Ex> onpopstate) throws IOException, Ex {
+				default <Ex extends Throwable> E onpopstate(IOSupplierE<?, Ex> onpopstate) throws IOException, Ex {
 					return onpopstate((onpopstate == null) ? null : onpopstate.get());
 				}
 
@@ -1509,7 +1509,7 @@ public class Attributes {
 				 *
 				 * @see #onresize(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onresize(Supplier<?, Ex> onresize) throws IOException, Ex {
+				default <Ex extends Throwable> E onresize(IOSupplierE<?, Ex> onresize) throws IOException, Ex {
 					return onresize((onresize == null) ? null : onresize.get());
 				}
 
@@ -1542,7 +1542,7 @@ public class Attributes {
 				 *
 				 * @see #onstorage(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onstorage(Supplier<?, Ex> onstorage) throws IOException, Ex {
+				default <Ex extends Throwable> E onstorage(IOSupplierE<?, Ex> onstorage) throws IOException, Ex {
 					return onstorage((onstorage == null) ? null : onstorage.get());
 				}
 
@@ -1575,7 +1575,7 @@ public class Attributes {
 				 *
 				 * @see #onunload(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onunload(Supplier<?, Ex> onunload) throws IOException, Ex {
+				default <Ex extends Throwable> E onunload(IOSupplierE<?, Ex> onunload) throws IOException, Ex {
 					return onunload((onunload == null) ? null : onunload.get());
 				}
 
@@ -1614,7 +1614,7 @@ public class Attributes {
 				 *
 				 * @see #onblur(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onblur(Supplier<?, Ex> onblur) throws IOException, Ex {
+				default <Ex extends Throwable> E onblur(IOSupplierE<?, Ex> onblur) throws IOException, Ex {
 					return onblur((onblur == null) ? null : onblur.get());
 				}
 
@@ -1650,7 +1650,7 @@ public class Attributes {
 				 *
 				 * @see #onchange(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onchange(Supplier<?, Ex> onchange) throws IOException, Ex {
+				default <Ex extends Throwable> E onchange(IOSupplierE<?, Ex> onchange) throws IOException, Ex {
 					return onchange((onchange == null) ? null : onchange.get());
 				}
 
@@ -1691,7 +1691,7 @@ public class Attributes {
 				 *
 				 * @see #oncontextmenu(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncontextmenu(Supplier<?, Ex> oncontextmenu) throws IOException, Ex {
+				default <Ex extends Throwable> E oncontextmenu(IOSupplierE<?, Ex> oncontextmenu) throws IOException, Ex {
 					return oncontextmenu((oncontextmenu == null) ? null : oncontextmenu.get());
 				}
 
@@ -1724,7 +1724,7 @@ public class Attributes {
 				 *
 				 * @see #onfocus(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onfocus(Supplier<?, Ex> onfocus) throws IOException, Ex {
+				default <Ex extends Throwable> E onfocus(IOSupplierE<?, Ex> onfocus) throws IOException, Ex {
 					return onfocus((onfocus == null) ? null : onfocus.get());
 				}
 
@@ -1768,7 +1768,7 @@ public class Attributes {
 				 *
 				 * @see #oninput(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oninput(Supplier<?, Ex> oninput) throws IOException, Ex {
+				default <Ex extends Throwable> E oninput(IOSupplierE<?, Ex> oninput) throws IOException, Ex {
 					return oninput((oninput == null) ? null : oninput.get());
 				}
 
@@ -1801,7 +1801,7 @@ public class Attributes {
 				 *
 				 * @see #oninvalid(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oninvalid(Supplier<?, Ex> oninvalid) throws IOException, Ex {
+				default <Ex extends Throwable> E oninvalid(IOSupplierE<?, Ex> oninvalid) throws IOException, Ex {
 					return oninvalid((oninvalid == null) ? null : oninvalid.get());
 				}
 
@@ -1842,7 +1842,7 @@ public class Attributes {
 				 *
 				 * @see #onreset(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onreset(Supplier<?, Ex> onreset) throws IOException, Ex {
+				default <Ex extends Throwable> E onreset(IOSupplierE<?, Ex> onreset) throws IOException, Ex {
 					return onreset((onreset == null) ? null : onreset.get());
 				}
 
@@ -1878,7 +1878,7 @@ public class Attributes {
 				 *
 				 * @see #onsearch(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onsearch(Supplier<?, Ex> onsearch) throws IOException, Ex {
+				default <Ex extends Throwable> E onsearch(IOSupplierE<?, Ex> onsearch) throws IOException, Ex {
 					return onsearch((onsearch == null) ? null : onsearch.get());
 				}
 
@@ -1915,7 +1915,7 @@ public class Attributes {
 				 *
 				 * @see #onselect(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onselect(Supplier<?, Ex> onselect) throws IOException, Ex {
+				default <Ex extends Throwable> E onselect(IOSupplierE<?, Ex> onselect) throws IOException, Ex {
 					return onselect((onselect == null) ? null : onselect.get());
 				}
 
@@ -1952,7 +1952,7 @@ public class Attributes {
 				 *
 				 * @see #onsubmit(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onsubmit(Supplier<?, Ex> onsubmit) throws IOException, Ex {
+				default <Ex extends Throwable> E onsubmit(IOSupplierE<?, Ex> onsubmit) throws IOException, Ex {
 					return onsubmit((onsubmit == null) ? null : onsubmit.get());
 				}
 
@@ -2020,7 +2020,7 @@ public class Attributes {
 				 *
 				 * @see #onkeydown(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeydown(Supplier<?, Ex> onkeydown) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeydown(IOSupplierE<?, Ex> onkeydown) throws IOException, Ex {
 					return onkeydown((onkeydown == null) ? null : onkeydown.get());
 				}
 
@@ -2053,7 +2053,7 @@ public class Attributes {
 				 *
 				 * @see #onkeypress(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeypress(Supplier<?, Ex> onkeypress) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeypress(IOSupplierE<?, Ex> onkeypress) throws IOException, Ex {
 					return onkeypress((onkeypress == null) ? null : onkeypress.get());
 				}
 
@@ -2086,7 +2086,7 @@ public class Attributes {
 				 *
 				 * @see #onkeyup(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onkeyup(Supplier<?, Ex> onkeyup) throws IOException, Ex {
+				default <Ex extends Throwable> E onkeyup(IOSupplierE<?, Ex> onkeyup) throws IOException, Ex {
 					return onkeyup((onkeyup == null) ? null : onkeyup.get());
 				}
 
@@ -2140,7 +2140,7 @@ public class Attributes {
 				 *
 				 * @see #onclick(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onclick(Supplier<?, Ex> onclick) throws IOException, Ex {
+				default <Ex extends Throwable> E onclick(IOSupplierE<?, Ex> onclick) throws IOException, Ex {
 					return onclick((onclick == null) ? null : onclick.get());
 				}
 
@@ -2173,7 +2173,7 @@ public class Attributes {
 				 *
 				 * @see #ondblclick(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondblclick(Supplier<?, Ex> ondblclick) throws IOException, Ex {
+				default <Ex extends Throwable> E ondblclick(IOSupplierE<?, Ex> ondblclick) throws IOException, Ex {
 					return ondblclick((ondblclick == null) ? null : ondblclick.get());
 				}
 
@@ -2206,7 +2206,7 @@ public class Attributes {
 				 *
 				 * @see #onmousedown(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmousedown(Supplier<?, Ex> onmousedown) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousedown(IOSupplierE<?, Ex> onmousedown) throws IOException, Ex {
 					return onmousedown((onmousedown == null) ? null : onmousedown.get());
 				}
 
@@ -2242,7 +2242,7 @@ public class Attributes {
 				 *
 				 * @see #onmousemove(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmousemove(Supplier<?, Ex> onmousemove) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousemove(IOSupplierE<?, Ex> onmousemove) throws IOException, Ex {
 					return onmousemove((onmousemove == null) ? null : onmousemove.get());
 				}
 
@@ -2275,7 +2275,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseout(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseout(Supplier<?, Ex> onmouseout) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseout(IOSupplierE<?, Ex> onmouseout) throws IOException, Ex {
 					return onmouseout((onmouseout == null) ? null : onmouseout.get());
 				}
 
@@ -2308,7 +2308,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseover(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseover(Supplier<?, Ex> onmouseover) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseover(IOSupplierE<?, Ex> onmouseover) throws IOException, Ex {
 					return onmouseover((onmouseover == null) ? null : onmouseover.get());
 				}
 
@@ -2341,7 +2341,7 @@ public class Attributes {
 				 *
 				 * @see #onmouseup(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onmouseup(Supplier<?, Ex> onmouseup) throws IOException, Ex {
+				default <Ex extends Throwable> E onmouseup(IOSupplierE<?, Ex> onmouseup) throws IOException, Ex {
 					return onmouseup((onmouseup == null) ? null : onmouseup.get());
 				}
 
@@ -2380,10 +2380,10 @@ public class Attributes {
 				 *
 				 * @see #onmousewheel(java.lang.Object)
 				 *
-				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.html.Supplier) onwheel} attribute instead.
+				 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.io.function.IOSupplierE) onwheel} attribute instead.
 				 */
 				@Deprecated
-				default <Ex extends Throwable> E onmousewheel(Supplier<?, Ex> onmousewheel) throws IOException, Ex {
+				default <Ex extends Throwable> E onmousewheel(IOSupplierE<?, Ex> onmousewheel) throws IOException, Ex {
 					return onmousewheel((onmousewheel == null) ? null : onmousewheel.get());
 				}
 
@@ -2427,7 +2427,7 @@ public class Attributes {
 				 *
 				 * @see #onwheel(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onwheel(Supplier<?, Ex> onwheel) throws IOException, Ex {
+				default <Ex extends Throwable> E onwheel(IOSupplierE<?, Ex> onwheel) throws IOException, Ex {
 					return onwheel((onwheel == null) ? null : onwheel.get());
 				}
 
@@ -2503,7 +2503,7 @@ public class Attributes {
 				 *
 				 * @see #ondrag(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondrag(Supplier<?, Ex> ondrag) throws IOException, Ex {
+				default <Ex extends Throwable> E ondrag(IOSupplierE<?, Ex> ondrag) throws IOException, Ex {
 					return ondrag((ondrag == null) ? null : ondrag.get());
 				}
 
@@ -2544,7 +2544,7 @@ public class Attributes {
 				 *
 				 * @see #ondragend(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragend(Supplier<?, Ex> ondragend) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragend(IOSupplierE<?, Ex> ondragend) throws IOException, Ex {
 					return ondragend((ondragend == null) ? null : ondragend.get());
 				}
 
@@ -2585,7 +2585,7 @@ public class Attributes {
 				 *
 				 * @see #ondragenter(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragenter(Supplier<?, Ex> ondragenter) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragenter(IOSupplierE<?, Ex> ondragenter) throws IOException, Ex {
 					return ondragenter((ondragenter == null) ? null : ondragenter.get());
 				}
 
@@ -2628,7 +2628,7 @@ public class Attributes {
 				 *
 				 * @see #ondragleave(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragleave(Supplier<?, Ex> ondragleave) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragleave(IOSupplierE<?, Ex> ondragleave) throws IOException, Ex {
 					return ondragleave((ondragleave == null) ? null : ondragleave.get());
 				}
 
@@ -2669,7 +2669,7 @@ public class Attributes {
 				 *
 				 * @see #ondragover(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragover(Supplier<?, Ex> ondragover) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragover(IOSupplierE<?, Ex> ondragover) throws IOException, Ex {
 					return ondragover((ondragover == null) ? null : ondragover.get());
 				}
 
@@ -2710,7 +2710,7 @@ public class Attributes {
 				 *
 				 * @see #ondragstart(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondragstart(Supplier<?, Ex> ondragstart) throws IOException, Ex {
+				default <Ex extends Throwable> E ondragstart(IOSupplierE<?, Ex> ondragstart) throws IOException, Ex {
 					return ondragstart((ondragstart == null) ? null : ondragstart.get());
 				}
 
@@ -2751,7 +2751,7 @@ public class Attributes {
 				 *
 				 * @see #ondrop(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E ondrop(Supplier<?, Ex> ondrop) throws IOException, Ex {
+				default <Ex extends Throwable> E ondrop(IOSupplierE<?, Ex> ondrop) throws IOException, Ex {
 					return ondrop((ondrop == null) ? null : ondrop.get());
 				}
 
@@ -2792,7 +2792,7 @@ public class Attributes {
 				 *
 				 * @see #onscroll(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onscroll(Supplier<?, Ex> onscroll) throws IOException, Ex {
+				default <Ex extends Throwable> E onscroll(IOSupplierE<?, Ex> onscroll) throws IOException, Ex {
 					return onscroll((onscroll == null) ? null : onscroll.get());
 				}
 
@@ -2846,7 +2846,7 @@ public class Attributes {
 				 *
 				 * @see #oncopy(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncopy(Supplier<?, Ex> oncopy) throws IOException, Ex {
+				default <Ex extends Throwable> E oncopy(IOSupplierE<?, Ex> oncopy) throws IOException, Ex {
 					return oncopy((oncopy == null) ? null : oncopy.get());
 				}
 
@@ -2879,7 +2879,7 @@ public class Attributes {
 				 *
 				 * @see #oncut(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E oncut(Supplier<?, Ex> oncut) throws IOException, Ex {
+				default <Ex extends Throwable> E oncut(IOSupplierE<?, Ex> oncut) throws IOException, Ex {
 					return oncut((oncut == null) ? null : oncut.get());
 				}
 
@@ -2912,7 +2912,7 @@ public class Attributes {
 				 *
 				 * @see #onpaste(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onpaste(Supplier<?, Ex> onpaste) throws IOException, Ex {
+				default <Ex extends Throwable> E onpaste(IOSupplierE<?, Ex> onpaste) throws IOException, Ex {
 					return onpaste((onpaste == null) ? null : onpaste.get());
 				}
 
@@ -2968,7 +2968,7 @@ public class Attributes {
 				 *
 				 * @see #onabort(java.lang.Object)
 				 */
-				default <Ex extends Throwable> E onabort(Supplier<?, Ex> onabort) throws IOException, Ex {
+				default <Ex extends Throwable> E onabort(IOSupplierE<?, Ex> onabort) throws IOException, Ex {
 					return onabort((onabort == null) ? null : onabort.get());
 				}
 
@@ -3122,7 +3122,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E align(Supplier<? extends V, Ex> align) throws IOException, Ex {
+			default <Ex extends Throwable> E align(IOSupplierE<? extends V, Ex> align) throws IOException, Ex {
 				return align((align== null) ? (V)null : align.get());
 			}
 		}
@@ -3192,7 +3192,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E autocomplete(Supplier<? extends V, Ex> autocomplete) throws IOException, Ex {
+			default <Ex extends Throwable> E autocomplete(IOSupplierE<? extends V, Ex> autocomplete) throws IOException, Ex {
 				return autocomplete((autocomplete== null) ? (V)null : autocomplete.get());
 			}
 
@@ -3341,7 +3341,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E charset(Supplier<? extends V, Ex> charset) throws IOException, Ex {
+			default <Ex extends Throwable> E charset(IOSupplierE<? extends V, Ex> charset) throws IOException, Ex {
 				return charset((charset== null) ? (V)null : charset.get());
 			}
 
@@ -3448,7 +3448,7 @@ public class Attributes {
 			 * @see #capture(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E capture(Supplier<? extends V, Ex> capture) throws IOException, Ex {
+			default <Ex extends Throwable> E capture(IOSupplierE<? extends V, Ex> capture) throws IOException, Ex {
 				return capture((capture== null) ? (V)null : capture.get());
 			}
 		}
@@ -3496,7 +3496,7 @@ public class Attributes {
 			 * @see #crossorigin(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E crossorigin(Supplier<? extends V, Ex> crossorigin) throws IOException, Ex {
+			default <Ex extends Throwable> E crossorigin(IOSupplierE<? extends V, Ex> crossorigin) throws IOException, Ex {
 				return crossorigin((crossorigin== null) ? (V)null : crossorigin.get());
 			}
 		}
@@ -3612,7 +3612,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E dir(Supplier<? extends V, Ex> dir) throws IOException, Ex {
+			default <Ex extends Throwable> E dir(IOSupplierE<? extends V, Ex> dir) throws IOException, Ex {
 				return dir((dir== null) ? (V)null : dir.get());
 			}
 
@@ -3722,7 +3722,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E httpEquiv(Supplier<? extends V, Ex> httpEquiv) throws IOException, Ex {
+			default <Ex extends Throwable> E httpEquiv(IOSupplierE<? extends V, Ex> httpEquiv) throws IOException, Ex {
 				return httpEquiv((httpEquiv== null) ? (V)null : httpEquiv.get());
 			}
 		}
@@ -3771,7 +3771,7 @@ public class Attributes {
 			 * @see #name(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E name(Supplier<? extends V, Ex> name) throws IOException, Ex {
+			default <Ex extends Throwable> E name(IOSupplierE<? extends V, Ex> name) throws IOException, Ex {
 				return name((name== null) ? (V)null : name.get());
 			}
 		}
@@ -3819,7 +3819,7 @@ public class Attributes {
 			 * @see #rel(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E rel(Supplier<? extends V, Ex> rel) throws IOException, Ex {
+			default <Ex extends Throwable> E rel(IOSupplierE<? extends V, Ex> rel) throws IOException, Ex {
 				return rel((rel== null) ? (V)null : rel.get());
 			}
 		}
@@ -3867,7 +3867,7 @@ public class Attributes {
 			 * @see #shape(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E shape(Supplier<? extends V, Ex> shape) throws IOException, Ex {
+			default <Ex extends Throwable> E shape(IOSupplierE<? extends V, Ex> shape) throws IOException, Ex {
 				return shape((shape== null) ? (V)null : shape.get());
 			}
 		}
@@ -3915,7 +3915,7 @@ public class Attributes {
 			 * @see #type(java.lang.Enum)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E type(Supplier<? extends V, Ex> type) throws IOException, Ex {
+			default <Ex extends Throwable> E type(IOSupplierE<? extends V, Ex> type) throws IOException, Ex {
 				return type((type== null) ? (V)null : type.get());
 			}
 		}
@@ -3985,7 +3985,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E valign(Supplier<? extends V, Ex> valign) throws IOException, Ex {
+			default <Ex extends Throwable> E valign(IOSupplierE<? extends V, Ex> valign) throws IOException, Ex {
 				return valign((valign== null) ? (V)null : valign.get());
 			}
 		}
@@ -4044,7 +4044,7 @@ public class Attributes {
 			 *
 			 * @see #height(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E height(IOSupplierE<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				return height((pixels == null) ? null : pixels.get());
 			}
 		}
@@ -4105,7 +4105,7 @@ public class Attributes {
 			 * @see #height(java.lang.Integer)
 			 */
 			@Override
-			default <Ex extends Throwable> E height(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E height(IOSupplierE<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4150,7 +4150,7 @@ public class Attributes {
 			 *
 			 * @see #maxlength(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E maxlength(Supplier<? extends java.lang.Integer, Ex> maxlength) throws IOException, Ex {
+			default <Ex extends Throwable> E maxlength(IOSupplierE<? extends java.lang.Integer, Ex> maxlength) throws IOException, Ex {
 				return maxlength((maxlength == null) ? null : maxlength.get());
 			}
 		}
@@ -4183,7 +4183,7 @@ public class Attributes {
 			 *
 			 * @see #minlength(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E minlength(Supplier<? extends java.lang.Integer, Ex> minlength) throws IOException, Ex {
+			default <Ex extends Throwable> E minlength(IOSupplierE<? extends java.lang.Integer, Ex> minlength) throws IOException, Ex {
 				return minlength((minlength == null) ? null : minlength.get());
 			}
 		}
@@ -4216,7 +4216,7 @@ public class Attributes {
 			 *
 			 * @see #size(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer, Ex> size) throws IOException, Ex {
+			default <Ex extends Throwable> E size(IOSupplierE<? extends java.lang.Integer, Ex> size) throws IOException, Ex {
 				return size((size == null) ? null : size.get());
 			}
 		}
@@ -4272,7 +4272,7 @@ public class Attributes {
 			 */
 			@Deprecated
 			@Override
-			default <Ex extends Throwable> E size(Supplier<? extends java.lang.Integer, Ex> size) throws IOException, Ex {
+			default <Ex extends Throwable> E size(IOSupplierE<? extends java.lang.Integer, Ex> size) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype == Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4313,7 +4313,7 @@ public class Attributes {
 			 *
 			 * @see #span(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E span(Supplier<? extends java.lang.Integer, Ex> span) throws IOException, Ex {
+			default <Ex extends Throwable> E span(IOSupplierE<? extends java.lang.Integer, Ex> span) throws IOException, Ex {
 				return span((span == null) ? null : span.get());
 			}
 		}
@@ -4374,7 +4374,7 @@ public class Attributes {
 			 *
 			 * @see #tabindex(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer, Ex> tabindex) throws IOException, Ex {
+			default <Ex extends Throwable> E tabindex(IOSupplierE<? extends java.lang.Integer, Ex> tabindex) throws IOException, Ex {
 				return tabindex((tabindex == null) ? null : tabindex.get());
 			}
 		}
@@ -4422,7 +4422,7 @@ public class Attributes {
 			 * @see #tabindex(java.lang.Integer)
 			 */
 			@Override
-			default <Ex extends Throwable> E tabindex(Supplier<? extends java.lang.Integer, Ex> tabindex) throws IOException, Ex {
+			default <Ex extends Throwable> E tabindex(IOSupplierE<? extends java.lang.Integer, Ex> tabindex) throws IOException, Ex {
 				return tabindex((tabindex == null) ? null : tabindex.get());
 			}
 		}
@@ -4455,7 +4455,7 @@ public class Attributes {
 			 *
 			 * @see #width(java.lang.Integer)
 			 */
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(IOSupplierE<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				return width((pixels == null) ? null : pixels.get());
 			}
 		}
@@ -4519,7 +4519,7 @@ public class Attributes {
 			 * @see #width(java.lang.Integer)
 			 */
 			@Override
-			default <Ex extends Throwable> E width(Supplier<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
+			default <Ex extends Throwable> E width(IOSupplierE<? extends java.lang.Integer, Ex> pixels) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4594,7 +4594,7 @@ public class Attributes {
 			 * @see #hreflang(java.lang.String)
 			 */
 			@SuppressWarnings("overloads")
-			default <Ex extends Throwable> E hreflang(Supplier<? extends java.lang.String, Ex> hreflang) throws IOException, Ex {
+			default <Ex extends Throwable> E hreflang(IOSupplierE<? extends java.lang.String, Ex> hreflang) throws IOException, Ex {
 				return hreflang((hreflang == null) ? null : hreflang.get());
 			}
 
@@ -4655,7 +4655,7 @@ public class Attributes {
 			 *
 			 * @see #usemap(java.lang.String)
 			 */
-			default <Ex extends Throwable> E usemap(Supplier<? extends java.lang.String, Ex> usemap) throws IOException, Ex {
+			default <Ex extends Throwable> E usemap(IOSupplierE<? extends java.lang.String, Ex> usemap) throws IOException, Ex {
 				return usemap((usemap == null) ? null : usemap.get());
 			}
 		}
@@ -4674,8 +4674,8 @@ public class Attributes {
 		 */
 		static <E extends Element<E>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			// TODO: Assert is valid attribute name by doctype
-			while(value instanceof Supplier<?, ?>) {
-				@SuppressWarnings("unchecked") Supplier<?, Ex> supplier = (Supplier<?, Ex>)value;
+			while(value instanceof IOSupplierE<?, ?>) {
+				@SuppressWarnings("unchecked") IOSupplierE<?, Ex> supplier = (IOSupplierE<?, Ex>)value;
 				value = supplier.get();
 			}
 			if(value != null) {
@@ -4752,7 +4752,7 @@ public class Attributes {
 			 * @deprecated  Please implement specific attributes as-needed
 			 */
 			@Deprecated
-			default <Ex extends Throwable> E attribute(java.lang.String name, Supplier<?, Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E attribute(java.lang.String name, IOSupplierE<?, Ex> value) throws IOException, Ex {
 				return attribute(name, (value == null) ? null : value.get());
 			}
 
@@ -4788,7 +4788,7 @@ public class Attributes {
 			 *
 			 * @see #accept(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E accept(Supplier<?, Ex> accept) throws IOException, Ex {
+			default <Ex extends Throwable> E accept(IOSupplierE<?, Ex> accept) throws IOException, Ex {
 				return accept((accept == null) ? null : accept.get());
 			}
 
@@ -4821,7 +4821,7 @@ public class Attributes {
 			 *
 			 * @see #alt(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E alt(Supplier<?, Ex> alt) throws IOException, Ex {
+			default <Ex extends Throwable> E alt(IOSupplierE<?, Ex> alt) throws IOException, Ex {
 				return alt((alt == null) ? null : alt.get());
 			}
 
@@ -4864,7 +4864,7 @@ public class Attributes {
 			 *
 			 * @see #clazz(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E clazz(Supplier<?, Ex> clazz) throws IOException, Ex {
+			default <Ex extends Throwable> E clazz(IOSupplierE<?, Ex> clazz) throws IOException, Ex {
 				return clazz((clazz == null) ? null : clazz.get());
 			}
 
@@ -4919,7 +4919,7 @@ public class Attributes {
 			 * @see #clazz(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E clazz(Supplier<?, Ex> clazz) throws IOException, Ex {
+			default <Ex extends Throwable> E clazz(IOSupplierE<?, Ex> clazz) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -4975,7 +4975,7 @@ public class Attributes {
 			 *
 			 * @see #content(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E content(Supplier<?, Ex> content) throws IOException, Ex {
+			default <Ex extends Throwable> E content(IOSupplierE<?, Ex> content) throws IOException, Ex {
 				return content((content == null) ? null : content.get());
 			}
 
@@ -5176,7 +5176,7 @@ public class Attributes {
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 			 * </ul>
 			 */
-			default <Ex extends Throwable> E data(java.lang.String attrName, Supplier<?, Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E data(java.lang.String attrName, IOSupplierE<?, Ex> value) throws IOException, Ex {
 				return data(attrName, (value == null) ? null : value.get());
 			}
 
@@ -5328,7 +5328,7 @@ public class Attributes {
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 			 * </ul>
 			 */
-			default <Ex extends Throwable> E dataset(java.lang.String jsName, Supplier<?, Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E dataset(java.lang.String jsName, IOSupplierE<?, Ex> value) throws IOException, Ex {
 				return dataset(jsName, (value == null) ? null : value.get());
 			}
 
@@ -5377,7 +5377,7 @@ public class Attributes {
 			 *
 			 * @see #id(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E id(Supplier<?, Ex> id) throws IOException, Ex {
+			default <Ex extends Throwable> E id(IOSupplierE<?, Ex> id) throws IOException, Ex {
 				return id((id == null) ? null : id.get());
 			}
 
@@ -5433,7 +5433,7 @@ public class Attributes {
 			 * @see #id(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E id(Supplier<?, Ex> id) throws IOException, Ex {
+			default <Ex extends Throwable> E id(IOSupplierE<?, Ex> id) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5488,7 +5488,7 @@ public class Attributes {
 			 *
 			 * @see #label(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E label(Supplier<?, Ex> label) throws IOException, Ex {
+			default <Ex extends Throwable> E label(IOSupplierE<?, Ex> label) throws IOException, Ex {
 				return label((label == null) ? null : label.get());
 			}
 
@@ -5541,7 +5541,7 @@ public class Attributes {
 			 *
 			 * @see #list(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E list(Supplier<?, Ex> list) throws IOException, Ex {
+			default <Ex extends Throwable> E list(IOSupplierE<?, Ex> list) throws IOException, Ex {
 				return list((list == null) ? null : list.get());
 			}
 
@@ -5579,7 +5579,7 @@ public class Attributes {
 			 *
 			 * @see #media(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E media(Supplier<?, Ex> media) throws IOException, Ex {
+			default <Ex extends Throwable> E media(IOSupplierE<?, Ex> media) throws IOException, Ex {
 				return media((media == null) ? null : media.get());
 			}
 
@@ -5613,7 +5613,7 @@ public class Attributes {
 			 *
 			 * @see #name(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E name(Supplier<?, Ex> name) throws IOException, Ex {
+			default <Ex extends Throwable> E name(IOSupplierE<?, Ex> name) throws IOException, Ex {
 				return name((name == null) ? null : name.get());
 			}
 
@@ -5654,7 +5654,7 @@ public class Attributes {
 			 *
 			 * @see #placeholder(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E placeholder(Supplier<?, Ex> placeholder) throws IOException, Ex {
+			default <Ex extends Throwable> E placeholder(IOSupplierE<?, Ex> placeholder) throws IOException, Ex {
 				return placeholder((placeholder == null) ? null : placeholder.get());
 			}
 
@@ -5698,7 +5698,7 @@ public class Attributes {
 			 *
 			 * @see #style(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E style(Supplier<?, Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E style(IOSupplierE<?, Ex> style) throws IOException, Ex {
 				return style((style == null) ? null : style.get());
 			}
 
@@ -5753,7 +5753,7 @@ public class Attributes {
 			 * @see #style(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E style(Supplier<?, Ex> style) throws IOException, Ex {
+			default <Ex extends Throwable> E style(IOSupplierE<?, Ex> style) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5817,7 +5817,7 @@ public class Attributes {
 			 *
 			 * @see #title(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E title(Supplier<?, Ex> title) throws IOException, Ex {
+			default <Ex extends Throwable> E title(IOSupplierE<?, Ex> title) throws IOException, Ex {
 				return title((title == null) ? null : title.get());
 			}
 
@@ -5872,7 +5872,7 @@ public class Attributes {
 			 * @see #title(java.lang.Object)
 			 */
 			@Override
-			default <Ex extends Throwable> E title(Supplier<?, Ex> title) throws IOException, Ex {
+			default <Ex extends Throwable> E title(IOSupplierE<?, Ex> title) throws IOException, Ex {
 				@SuppressWarnings("unchecked") E element = (E)this;
 				if(element.document.doctype != Doctype.HTML5) {
 					throw new LocalizedIllegalArgumentException(
@@ -5928,7 +5928,7 @@ public class Attributes {
 			 *
 			 * @see #value(java.lang.Object)
 			 */
-			default <Ex extends Throwable> E value(Supplier<?, Ex> value) throws IOException, Ex {
+			default <Ex extends Throwable> E value(IOSupplierE<?, Ex> value) throws IOException, Ex {
 				return value((value == null) ? null : value.get());
 			}
 
@@ -5983,7 +5983,7 @@ public class Attributes {
 			 *
 			 * @see #href(java.lang.String)
 			 */
-			default <Ex extends Throwable> E href(Supplier<? extends java.lang.String, Ex> href) throws IOException, Ex {
+			default <Ex extends Throwable> E href(IOSupplierE<? extends java.lang.String, Ex> href) throws IOException, Ex {
 				return href((href == null) ? null : href.get());
 			}
 		}
@@ -6007,7 +6007,7 @@ public class Attributes {
 			 *
 			 * @see #src(java.lang.String)
 			 */
-			default <Ex extends Throwable> E src(Supplier<? extends java.lang.String, Ex> src) throws IOException, Ex {
+			default <Ex extends Throwable> E src(IOSupplierE<? extends java.lang.String, Ex> src) throws IOException, Ex {
 				return src((src == null) ? null : src.get());
 			}
 		}

@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.lang.RunnableE;
-import com.aoindustries.util.function.ConsumerE;
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -61,7 +61,7 @@ public class A<PC extends Content> extends Element<A<PC>> implements
 	 *
 	 * @return  The parent content model this element is within
 	 */
-	public <Ex extends Throwable> PC __(RunnableE<Ex> a) throws IOException, Ex {
+	public <Ex extends Throwable> PC __(IORunnableE<Ex> a) throws IOException, Ex {
 		if(a != null) {
 			document.out.write('>');
 			a.run();
@@ -80,7 +80,7 @@ public class A<PC extends Content> extends Element<A<PC>> implements
 	 */
 	// TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 	//       the tabindex attribute specified.
-	public <Ex extends Throwable> PC __(ConsumerE<? super PC, Ex> a) throws IOException, Ex {
+	public <Ex extends Throwable> PC __(IOConsumerE<? super PC, Ex> a) throws IOException, Ex {
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		if(a != null) {
 			document.out.write('>');

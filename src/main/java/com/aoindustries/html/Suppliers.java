@@ -22,7 +22,7 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Supplier;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Iterables;
 import java.io.IOException;
 
@@ -44,7 +44,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Circle<Ex extends Throwable> extends Supplier<com.aoindustries.html.Circle, Ex> {
+	public interface Circle<Ex extends Throwable> extends IOSupplierE<com.aoindustries.html.Circle, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -59,7 +59,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Locale<Ex extends Throwable> extends Supplier<java.util.Locale, Ex> {
+	public interface Locale<Ex extends Throwable> extends IOSupplierE<java.util.Locale, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -74,7 +74,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Polygon<Ex extends Throwable> extends Supplier<java.awt.Polygon, Ex> {
+	public interface Polygon<Ex extends Throwable> extends IOSupplierE<java.awt.Polygon, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -89,7 +89,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Rectangle<Ex extends Throwable> extends Supplier<java.awt.Rectangle, Ex> {
+	public interface Rectangle<Ex extends Throwable> extends IOSupplierE<java.awt.Rectangle, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -104,7 +104,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface Shape<Ex extends Throwable> extends Supplier<java.awt.Shape, Ex> {
+	public interface Shape<Ex extends Throwable> extends IOSupplierE<java.awt.Shape, Ex> {
 
 		/**
 		 * @return  The attribute value or {@code null} for no attribute.
@@ -119,7 +119,7 @@ public class Suppliers {
 	 * @author  AO Industries, Inc.
 	 */
 	@FunctionalInterface
-	public interface String<Ex extends Throwable> extends Supplier<java.lang.String, Ex> {
+	public interface String<Ex extends Throwable> extends IOSupplierE<java.lang.String, Ex> {
 
 		/**
 		 * @return  The attribute value, {@link Attributes#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.

@@ -24,10 +24,10 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.MediaWriter;
-import com.aoindustries.encoding.Supplier;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
@@ -89,7 +89,7 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> Option<PC> label(Supplier<?, Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> Option<PC> label(IOSupplierE<?, Ex> label) throws IOException, Ex {
 		return Attributes.Text.Label.super.label(label);
 	}
 
@@ -131,9 +131,9 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 	 */
 	@SuppressWarnings("UseSpecificCatch")
 	public PC text__(Object text) throws IOException {
-		while(text instanceof Supplier<?, ?>) {
+		while(text instanceof IOSupplierE<?, ?>) {
 			try {
-				text = ((Supplier<?, ?>)text).get();
+				text = ((IOSupplierE<?, ?>)text).get();
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -160,7 +160,7 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 	 *
 	 * @return  The parent content model this element is within
 	 */
-	public <Ex extends Throwable> PC text__(Supplier<?, Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> PC text__(IOSupplierE<?, Ex> text) throws IOException, Ex {
 		return text__((text == null) ? null : text.get());
 	}
 

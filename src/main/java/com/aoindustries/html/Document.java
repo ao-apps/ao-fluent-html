@@ -529,6 +529,185 @@ public class Document implements
 		return br().__();
 	}
 
+	@Override
+	public Col<Document> col() throws IOException {
+		return new Col<Document>(this).open();
+	}
+
+	protected H1<Document> h1;
+
+	@Override
+	public H1<Document> h1() throws IOException {
+		if(h1 == null) h1 = new H1<>(this);
+		return h1.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document h1__(RunnableE<Ex> h1) throws IOException, Ex {
+		return h1().__(h1);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, H1Content extends PhrasingContent<H1Content>> Document h1__(ConsumerE<? super H1Content, Ex> h1) throws IOException, Ex {
+		return h1().__((ConsumerE)h1);
+	}
+
+	@Override
+	public Document h1__(Object text) throws IOException {
+		return h1().__(text);
+	}
+
+	@Override
+	public Document h1__() throws IOException {
+		return h1().__();
+	}
+
+	protected H2<Document> h2;
+
+	@Override
+	public H2<Document> h2() throws IOException {
+		if(h2 == null) h2 = new H2<>(this);
+		return h2.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document h2__(RunnableE<Ex> h2) throws IOException, Ex {
+		return h2().__(h2);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, H2Content extends PhrasingContent<H2Content>> Document h2__(ConsumerE<? super H2Content, Ex> h2) throws IOException, Ex {
+		return h2().__((ConsumerE)h2);
+	}
+
+	@Override
+	public Document h2__(Object text) throws IOException {
+		return h2().__(text);
+	}
+
+	@Override
+	public Document h2__() throws IOException {
+		return h2().__();
+	}
+
+	protected H3<Document> h3;
+
+	@Override
+	public H3<Document> h3() throws IOException {
+		if(h3 == null) h3 = new H3<>(this);
+		return h3.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document h3__(RunnableE<Ex> h3) throws IOException, Ex {
+		return h3().__(h3);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, H3Content extends PhrasingContent<H3Content>> Document h3__(ConsumerE<? super H3Content, Ex> h3) throws IOException, Ex {
+		return h3().__((ConsumerE)h3);
+	}
+
+	@Override
+	public Document h3__(Object text) throws IOException {
+		return h3().__(text);
+	}
+
+	@Override
+	public Document h3__() throws IOException {
+		return h3().__();
+	}
+
+	protected H4<Document> h4;
+
+	@Override
+	public H4<Document> h4() throws IOException {
+		if(h4 == null) h4 = new H4<>(this);
+		return h4.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document h4__(RunnableE<Ex> h4) throws IOException, Ex {
+		return h4().__(h4);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, H4Content extends PhrasingContent<H4Content>> Document h4__(ConsumerE<? super H4Content, Ex> h4) throws IOException, Ex {
+		return h4().__((ConsumerE)h4);
+	}
+
+	@Override
+	public Document h4__(Object text) throws IOException {
+		return h4().__(text);
+	}
+
+	@Override
+	public Document h4__() throws IOException {
+		return h4().__();
+	}
+
+	protected H5<Document> h5;
+
+	@Override
+	public H5<Document> h5() throws IOException {
+		if(h5 == null) h5 = new H5<>(this);
+		return h5.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document h5__(RunnableE<Ex> h5) throws IOException, Ex {
+		return h5().__(h5);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, H5Content extends PhrasingContent<H5Content>> Document h5__(ConsumerE<? super H5Content, Ex> h5) throws IOException, Ex {
+		return h5().__((ConsumerE)h5);
+	}
+
+	@Override
+	public Document h5__(Object text) throws IOException {
+		return h5().__(text);
+	}
+
+	@Override
+	public Document h5__() throws IOException {
+		return h5().__();
+	}
+
+	protected H6<Document> h6;
+
+	@Override
+	public H6<Document> h6() throws IOException {
+		if(h6 == null) h6 = new H6<>(this);
+		return h6.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document h6__(RunnableE<Ex> h6) throws IOException, Ex {
+		return h6().__(h6);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, H6Content extends PhrasingContent<H6Content>> Document h6__(ConsumerE<? super H6Content, Ex> h6) throws IOException, Ex {
+		return h6().__((ConsumerE)h6);
+	}
+
+	@Override
+	public Document h6__(Object text) throws IOException {
+		return h6().__(text);
+	}
+
+	@Override
+	public Document h6__() throws IOException {
+		return h6().__();
+	}
+
 	protected Hr<Document> hr;
 
 	@Override
@@ -540,11 +719,6 @@ public class Document implements
 	@Override
 	public Document hr__() throws IOException {
 		return hr().__();
-	}
-
-	@Override
-	public Col<Document> col() throws IOException {
-		return new Col<Document>(this).open();
 	}
 
 	protected I<Document> i;

@@ -313,9 +313,55 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface H1<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new h1 element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 */
+			com.aoindustries.html.H1<PC> h1() throws IOException;
+
+			/**
+			 * Creates an h1 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC h1__(RunnableE<Ex> h1) throws IOException, Ex;
+
+			/**
+			 * Creates an h1 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, H1Content extends PhrasingContent<H1Content>> PC h1__(ConsumerE<? super H1Content, Ex> h1) throws IOException, Ex;
+
+			/**
+			 * Creates an h1 element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h1__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty h1 element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h1__() throws IOException;
 		}
 
 		/**
@@ -323,9 +369,55 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface H2<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new h2 element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 */
+			com.aoindustries.html.H2<PC> h2() throws IOException;
+
+			/**
+			 * Creates an h2 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC h2__(RunnableE<Ex> h2) throws IOException, Ex;
+
+			/**
+			 * Creates an h2 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, H2Content extends PhrasingContent<H2Content>> PC h2__(ConsumerE<? super H2Content, Ex> h2) throws IOException, Ex;
+
+			/**
+			 * Creates an h2 element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h2__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty h2 element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h2__() throws IOException;
 		}
 
 		/**
@@ -333,9 +425,55 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface H3<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new h3 element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 */
+			com.aoindustries.html.H3<PC> h3() throws IOException;
+
+			/**
+			 * Creates an h3 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC h3__(RunnableE<Ex> h3) throws IOException, Ex;
+
+			/**
+			 * Creates an h3 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, H3Content extends PhrasingContent<H3Content>> PC h3__(ConsumerE<? super H3Content, Ex> h3) throws IOException, Ex;
+
+			/**
+			 * Creates an h3 element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h3__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty h3 element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h3__() throws IOException;
 		}
 
 		/**
@@ -343,9 +481,55 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface H4<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new h4 element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 */
+			com.aoindustries.html.H4<PC> h4() throws IOException;
+
+			/**
+			 * Creates an h4 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC h4__(RunnableE<Ex> h4) throws IOException, Ex;
+
+			/**
+			 * Creates an h4 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, H4Content extends PhrasingContent<H4Content>> PC h4__(ConsumerE<? super H4Content, Ex> h4) throws IOException, Ex;
+
+			/**
+			 * Creates an h4 element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h4__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty h4 element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h4__() throws IOException;
 		}
 
 		/**
@@ -353,9 +537,55 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface H5<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new h5 element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 */
+			com.aoindustries.html.H5<PC> h5() throws IOException;
+
+			/**
+			 * Creates an h5 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC h5__(RunnableE<Ex> h5) throws IOException, Ex;
+
+			/**
+			 * Creates an h5 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, H5Content extends PhrasingContent<H5Content>> PC h5__(ConsumerE<? super H5Content, Ex> h5) throws IOException, Ex;
+
+			/**
+			 * Creates an h5 element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h5__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty h5 element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h5__() throws IOException;
 		}
 
 		/**
@@ -363,9 +593,55 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface H6<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new h6 element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 */
+			com.aoindustries.html.H6<PC> h6() throws IOException;
+
+			/**
+			 * Creates an h6 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC h6__(RunnableE<Ex> h6) throws IOException, Ex;
+
+			/**
+			 * Creates an h6 element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, H6Content extends PhrasingContent<H6Content>> PC h6__(ConsumerE<? super H6Content, Ex> h6) throws IOException, Ex;
+
+			/**
+			 * Creates an h6 element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h6__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty h6 element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+			 * </p>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC h6__() throws IOException;
 		}
 
 		/**

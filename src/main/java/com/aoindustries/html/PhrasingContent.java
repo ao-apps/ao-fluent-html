@@ -23,23 +23,34 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#phrasing-content">3.2.5.2.5 Phrasing content</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#phrasing-content">3.2.5.2.5 Phrasing content</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">Phrasing content</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface PhrasingContent<PC extends Content> extends Content,
+public interface PhrasingContent<PC extends Content> extends
+	//
+	// Content models:
+	//
+	// Inherited from EmbeddedContent: Content,
+	EmbeddedContent<PC>,
+	//
+	// Content types:
+	//
 	Contents.Text.A<PC>,
 	Contents.Text.Abbr<PC>,
 	Contents.Embedded.Area<PC>, // if a descendent of map
-	Contents.Embedded.Audio<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Audio<PC>,
 	Contents.Text.B<PC>,
 	Contents.Text.Bdi<PC>,
 	Contents.Text.Bdo<PC>,
 	Contents.Text.Br<PC>,
 	Contents.Forms.Button<PC>,
-	Contents.Scripting.Canvas<PC>,
+	// Inherited from EmbeddedContent: Contents.Scripting.Canvas<PC>,
 	Contents.Text.Cite<PC>,
 	Contents.Text.Code<PC>,
 	Contents.Text.Data<PC>,
@@ -47,10 +58,10 @@ public interface PhrasingContent<PC extends Content> extends Content,
 	Contents.Edits.Del<PC>,
 	Contents.Text.Dfn<PC>,
 	Contents.Text.Em<PC>,
-	Contents.Embedded.Embed<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Embed<PC>,
 	Contents.Text.I<PC>,
-	Contents.Embedded.Iframe<PC>,
-	Contents.Embedded.Img<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Iframe<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Img<PC>,
 	Contents.Forms.Input<PC>,
 	Contents.Edits.Ins<PC>,
 	Contents.Text.Kbd<PC>,
@@ -62,9 +73,9 @@ public interface PhrasingContent<PC extends Content> extends Content,
 	Contents.Metadata.Meta<PC>, // if the itemprop attribute is present
 	Contents.Forms.Meter<PC>,
 	Contents.Scripting.Noscript<PC>,
-	Contents.Embedded.Object<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Object<PC>,
 	Contents.Forms.Output<PC>,
-	Contents.Embedded.Picture<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Picture<PC>,
 	Contents.Forms.Progress<PC>,
 	Contents.Text.Q<PC>,
 	Contents.Text.Ruby<PC>,
@@ -84,7 +95,7 @@ public interface PhrasingContent<PC extends Content> extends Content,
 	Contents.Text.Time<PC>,
 	Contents.Text.U<PC>,
 	Contents.Text.Var<PC>,
-	Contents.Embedded.Video<PC>,
+	// Inherited from EmbeddedContent: Contents.Embedded.Video<PC>,
 	Contents.Text.Wbr<PC>,
 	// TODO: autonomous custom elements
 	TextContent<PC>

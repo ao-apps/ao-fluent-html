@@ -23,13 +23,23 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#embedded-content-2">3.2.5.2.6 Embedded content</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#embedded-content-2">3.2.5.2.6 Embedded content</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#embedded_content">Embedded content</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface EmbeddedContent<PC extends Content> extends Content,
+public interface EmbeddedContent<PC extends Content> extends
+	//
+	// Content models:
+	//
+	Content,
+	//
+	// Content types:
+	//
 	Contents.Embedded.Audio<PC>,
 	Contents.Scripting.Canvas<PC>,
 	Contents.Embedded.Embed<PC>,

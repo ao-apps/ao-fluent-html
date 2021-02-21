@@ -23,61 +23,74 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#palpable-content">3.2.5.2.8 Palpable content</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#palpable-content">3.2.5.2.8 Palpable content</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#palpable_content">Palpable content</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface PalpableContent<PC extends Content> extends Content,
-	Contents.Text.A<PC>,
+public interface PalpableContent<PC extends Content> extends
+	//
+	// Content models:
+	//
+	// Inherited from HeadingContent, InteractiveContent, and SectioningContent: Content,
+	SectioningContent<PC>,
+	HeadingContent<PC>,
+	InteractiveContent<PC>,
+	//
+	// Content types:
+	//
+	// Inherited from InteractiveContent: Contents.Text.A<PC>,
 	Contents.Text.Abbr<PC>,
 	Contents.Sections.Address<PC>,
-	Contents.Sections.Article<PC>,
-	Contents.Sections.Aside<PC>,
-	Contents.Embedded.Audio<PC>, // if the controls attribute is present
+	// Inherited from SectioningContent: Contents.Sections.Article<PC>,
+	// Inherited from SectioningContent: Contents.Sections.Aside<PC>,
+	// Inherited from InteractiveContent: Contents.Embedded.Audio<PC>, // if the controls attribute is present
 	Contents.Text.B<PC>,
 	Contents.Text.Bdi<PC>,
 	Contents.Text.Bdo<PC>,
 	Contents.Grouping.Blockquote<PC>,
-	Contents.Forms.Button<PC>,
+	// Inherited from InteractiveContent: Contents.Forms.Button<PC>,
 	Contents.Scripting.Canvas<PC>,
 	Contents.Text.Cite<PC>,
 	Contents.Text.Code<PC>,
 	Contents.Text.Data<PC>,
-	Contents.Interactive.Details<PC>,
+	// Inherited from InteractiveContent: Contents.Interactive.Details<PC>,
 	Contents.Text.Dfn<PC>,
 	Contents.Grouping.Div<PC>,
 	Contents.Grouping.Dl<PC>, // if childen contain at least one name/value pair
 	Contents.Text.Em<PC>,
-	Contents.Embedded.Embed<PC>,
+	// Inherited from InteractiveContent: Contents.Embedded.Embed<PC>,
 	Contents.Forms.Fieldset<PC>,
 	Contents.Grouping.Figure<PC>,
 	Contents.Sections.Footer<PC>,
 	Contents.Forms.Form<PC>,
-	Contents.Sections.H1<PC>,
-	Contents.Sections.H2<PC>,
-	Contents.Sections.H3<PC>,
-	Contents.Sections.H4<PC>,
-	Contents.Sections.H5<PC>,
-	Contents.Sections.H6<PC>,
+	// Inherited from HeadingContent: Contents.Sections.H1<PC>,
+	// Inherited from HeadingContent: Contents.Sections.H2<PC>,
+	// Inherited from HeadingContent: Contents.Sections.H3<PC>,
+	// Inherited from HeadingContent: Contents.Sections.H4<PC>,
+	// Inherited from HeadingContent: Contents.Sections.H5<PC>,
+	// Inherited from HeadingContent: Contents.Sections.H6<PC>,
 	Contents.Sections.Header<PC>,
-	Contents.Sections.Hgroup<PC>,
+	// Inherited from HeadingContent: Contents.Sections.Hgroup<PC>,
 	Contents.Text.I<PC>,
-	Contents.Embedded.Iframe<PC>,
-	Contents.Embedded.Img<PC>,
-	Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
+	// Inherited from InteractiveContent: Contents.Embedded.Iframe<PC>,
+	// Inherited from InteractiveContent: Contents.Embedded.Img<PC>,
+	// Inherited from InteractiveContent: Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
 	Contents.Edits.Ins<PC>,
 	Contents.Text.Kbd<PC>,
-	Contents.Forms.Label<PC>,
+	// Inherited from InteractiveContent: Contents.Forms.Label<PC>,
 	Contents.Grouping.Main<PC>,
 	Contents.Embedded.Map<PC>,
 	Contents.Text.Mark<PC>,
 	// TODO: MathML math
-	Contents.Grouping.Menu<PC>, // if children include at least one li
+	// Inherited from InteractiveContent: Contents.Grouping.Menu<PC>, // if children include at least one li
 	Contents.Forms.Meter<PC>,
-	Contents.Sections.Nav<PC>,
-	Contents.Embedded.Object<PC>,
+	// Inherited from SectioningContent: Contents.Sections.Nav<PC>,
+	// Inherited from InteractiveContent: Contents.Embedded.Object<PC>,
 	Contents.Grouping.Ol<PC>, // if children include at least one li
 	Contents.Forms.Output<PC>,
 	Contents.Grouping.P<PC>,
@@ -87,8 +100,8 @@ public interface PalpableContent<PC extends Content> extends Content,
 	Contents.Text.Ruby<PC>,
 	Contents.Text.S<PC>,
 	Contents.Text.Samp<PC>,
-	Contents.Sections.Section<PC>,
-	Contents.Forms.Select<PC>,
+	// Inherited from SectioningContent: Contents.Sections.Section<PC>,
+	// Inherited from InteractiveContent: Contents.Forms.Select<PC>,
 	Contents.Text.Small<PC>,
 	Contents.Text.Span<PC>,
 	Contents.Text.Strong<PC>,
@@ -96,12 +109,12 @@ public interface PalpableContent<PC extends Content> extends Content,
 	Contents.Text.Sup<PC>,
 	// TODO: SVG svg
 	Contents.Tabular.Table<PC>,
-	Contents.Forms.Textarea<PC>,
+	// Inherited from InteractiveContent: Contents.Forms.Textarea<PC>,
 	Contents.Text.Time<PC>,
 	Contents.Text.U<PC>,
 	Contents.Grouping.Ul<PC>, // if children include at least one li
 	Contents.Text.Var<PC>,
-	Contents.Embedded.Video<PC>,
+	// Inherited from InteractiveContent: Contents.Embedded.Video<PC>,
 	// TODO: autonomous custom elements
 	TextContent<PC> // that is not inter-element whitespace
 {

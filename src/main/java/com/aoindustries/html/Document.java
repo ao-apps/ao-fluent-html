@@ -62,102 +62,104 @@ import java.nio.charset.StandardCharsets;
  * @author  AO Industries, Inc.
  */
 public class Document implements
-	Content,
-	TextContent<Document>,
-	// TODO: Whitespace?
-	// All content models
+	//
+	// Content models:
+	//
+	// Inherited from FlowContent and MetadataContent: Content
 	MetadataContent<Document>,
 	FlowContent<Document>,
-	SectioningContent<Document>,
-	HeadingContent<Document>,
-	PhrasingContent<Document>,
-	EmbeddedContent<Document>,
-	InteractiveContent<Document>,
-	PalpableContent<Document>,
-	// Every individual type of content
+	// Inherited from FlowContent: SectioningContent<Document>
+	// Inherited from FlowContent: HeadingContent<Document>
+	// Inherited from FlowContent: PhrasingContent<Document>
+	// Inherited from FlowContent: EmbeddedContent<Document>
+	// Inherited from FlowContent: InteractiveContent<Document>
+	// Inherited from FlowContent: PalpableContent<Document>
+	//
+	// Content types:
+	//
 	Contents.Document.Html<Document>,
 	Contents.Metadata.Head<Document>,
-	Contents.Metadata.Title<Document>,
-	Contents.Metadata.Base<Document>,
-	Contents.Metadata.Link<Document>,
-	Contents.Metadata.Meta<Document>,
-	Contents.Metadata.Style<Document>,
+	// Inherited from MetadataContent: Contents.Metadata.Title<Document>
+	// Inherited from MetadataContent: Contents.Metadata.Base<Document>
+	// Inherited from FlowContent and MetadataContent: Contents.Metadata.Link<Document>
+	// Inherited from FlowContent and MetadataContent: Contents.Metadata.Meta<Document>
+	// Inherited from MetadataContent: Contents.Metadata.Style<Document>
 	Contents.Sections.Body<Document>,
-	Contents.Sections.Article<Document>,
-	Contents.Sections.Section<Document>,
-	Contents.Sections.Nav<Document>,
-	Contents.Sections.Aside<Document>,
-	Contents.Sections.H1<Document>,
-	Contents.Sections.H2<Document>,
-	Contents.Sections.H3<Document>,
-	Contents.Sections.H4<Document>,
-	Contents.Sections.H5<Document>,
-	Contents.Sections.H6<Document>,
-	Contents.Sections.Hgroup<Document>,
-	Contents.Sections.Header<Document>,
-	Contents.Sections.Footer<Document>,
-	Contents.Sections.Address<Document>,
-	Contents.Grouping.P<Document>,
-	Contents.Grouping.Hr<Document>,
-	Contents.Grouping.Pre<Document>,
-	Contents.Grouping.Blockquote<Document>,
-	Contents.Grouping.Ol<Document>,
-	Contents.Grouping.Ul<Document>,
-	Contents.Grouping.Menu<Document>,
+	// Inherited from FlowContent: Contents.Sections.Article<Document>
+	// Inherited from FlowContent: Contents.Sections.Section<Document>
+	// Inherited from FlowContent: Contents.Sections.Nav<Document>
+	// Inherited from FlowContent: Contents.Sections.Aside<Document>
+	// Inherited from FlowContent: Contents.Sections.H1<Document>
+	// Inherited from FlowContent: Contents.Sections.H2<Document>
+	// Inherited from FlowContent: Contents.Sections.H3<Document>
+	// Inherited from FlowContent: Contents.Sections.H4<Document>
+	// Inherited from FlowContent: Contents.Sections.H5<Document>
+	// Inherited from FlowContent: Contents.Sections.H6<Document>
+	// Inherited from FlowContent: Contents.Sections.Hgroup<Document>
+	// Inherited from FlowContent: Contents.Sections.Header<Document>
+	// Inherited from FlowContent: Contents.Sections.Footer<Document>
+	// Inherited from FlowContent: Contents.Sections.Address<Document>
+	// Inherited from FlowContent: Contents.Grouping.P<Document>
+	// Inherited from FlowContent: Contents.Grouping.Hr<Document>
+	// Inherited from FlowContent: Contents.Grouping.Pre<Document>
+	// Inherited from FlowContent: Contents.Grouping.Blockquote<Document>
+	// Inherited from FlowContent: Contents.Grouping.Ol<Document>
+	// Inherited from FlowContent: Contents.Grouping.Ul<Document>
+	// Inherited from FlowContent: Contents.Grouping.Menu<Document>
 	Contents.Grouping.Li<Document>,
-	Contents.Grouping.Dl<Document>,
+	// Inherited from FlowContent: Contents.Grouping.Dl<Document>
 	Contents.Grouping.Dt<Document>,
 	Contents.Grouping.Dd<Document>,
-	Contents.Grouping.Figure<Document>,
+	// Inherited from FlowContent: Contents.Grouping.Figure<Document>
 	Contents.Grouping.Figcaption<Document>,
-	Contents.Grouping.Main<Document>,
-	Contents.Grouping.Div<Document>,
-	Contents.Text.A<Document>,
-	Contents.Text.Em<Document>,
-	Contents.Text.Strong<Document>,
-	Contents.Text.Small<Document>,
-	Contents.Text.S<Document>,
-	Contents.Text.Cite<Document>,
-	Contents.Text.Q<Document>,
-	Contents.Text.Dfn<Document>,
-	Contents.Text.Abbr<Document>,
-	Contents.Text.Ruby<Document>,
+	// Inherited from FlowContent: Contents.Grouping.Main<Document>
+	// Inherited from FlowContent: Contents.Grouping.Div<Document>
+	// Inherited from FlowContent: Contents.Text.A<Document>
+	// Inherited from FlowContent: Contents.Text.Em<Document>
+	// Inherited from FlowContent: Contents.Text.Strong<Document>
+	// Inherited from FlowContent: Contents.Text.Small<Document>
+	// Inherited from FlowContent: Contents.Text.S<Document>
+	// Inherited from FlowContent: Contents.Text.Cite<Document>
+	// Inherited from FlowContent: Contents.Text.Q<Document>
+	// Inherited from FlowContent: Contents.Text.Dfn<Document>
+	// Inherited from FlowContent: Contents.Text.Abbr<Document>
+	// Inherited from FlowContent: Contents.Text.Ruby<Document>
 	Contents.Text.Rt<Document>,
 	Contents.Text.Rp<Document>,
-	Contents.Text.Data<Document>,
-	Contents.Text.Time<Document>,
-	Contents.Text.Code<Document>,
-	Contents.Text.Var<Document>,
-	Contents.Text.Samp<Document>,
-	Contents.Text.Kbd<Document>,
-	Contents.Text.Sub<Document>,
-	Contents.Text.Sup<Document>,
-	Contents.Text.I<Document>,
-	Contents.Text.B<Document>,
-	Contents.Text.U<Document>,
-	Contents.Text.Mark<Document>,
-	Contents.Text.Bdi<Document>,
-	Contents.Text.Bdo<Document>,
-	Contents.Text.Span<Document>,
-	Contents.Text.Br<Document>,
-	Contents.Text.Wbr<Document>,
-	Contents.Edits.Ins<Document>,
-	Contents.Edits.Del<Document>,
-	Contents.Embedded.Picture<Document>,
+	// Inherited from FlowContent: Contents.Text.Data<Document>
+	// Inherited from FlowContent: Contents.Text.Time<Document>
+	// Inherited from FlowContent: Contents.Text.Code<Document>
+	// Inherited from FlowContent: Contents.Text.Var<Document>
+	// Inherited from FlowContent: Contents.Text.Samp<Document>
+	// Inherited from FlowContent: Contents.Text.Kbd<Document>
+	// Inherited from FlowContent: Contents.Text.Sub<Document>
+	// Inherited from FlowContent: Contents.Text.Sup<Document>
+	// Inherited from FlowContent: Contents.Text.I<Document>
+	// Inherited from FlowContent: Contents.Text.B<Document>
+	// Inherited from FlowContent: Contents.Text.U<Document>
+	// Inherited from FlowContent: Contents.Text.Mark<Document>
+	// Inherited from FlowContent: Contents.Text.Bdi<Document>
+	// Inherited from FlowContent: Contents.Text.Bdo<Document>
+	// Inherited from FlowContent: Contents.Text.Span<Document>
+	// Inherited from FlowContent: Contents.Text.Br<Document>
+	// Inherited from FlowContent: Contents.Text.Wbr<Document>
+	// Inherited from FlowContent: Contents.Edits.Ins<Document>
+	// Inherited from FlowContent: Contents.Edits.Del<Document>
+	// Inherited from FlowContent: Contents.Embedded.Picture<Document>
 	Contents.Embedded.Source<Document>,
-	Contents.Embedded.Img<Document>,
-	Contents.Embedded.Iframe<Document>,
-	Contents.Embedded.Embed<Document>,
-	Contents.Embedded.Object<Document>,
+	// Inherited from FlowContent: Contents.Embedded.Img<Document>
+	// Inherited from FlowContent: Contents.Embedded.Iframe<Document>
+	// Inherited from FlowContent: Contents.Embedded.Embed<Document>
+	// Inherited from FlowContent: Contents.Embedded.Object<Document>
 	Contents.Embedded.Param<Document>,
-	Contents.Embedded.Video<Document>,
-	Contents.Embedded.Audio<Document>,
+	// Inherited from FlowContent: Contents.Embedded.Video<Document>
+	// Inherited from FlowContent: Contents.Embedded.Audio<Document>
 	Contents.Embedded.Track<Document>,
-	Contents.Embedded.Map<Document>,
-	Contents.Embedded.Area<Document>,
-	// TODO: MathML math
-	// TODO: SVG svg
-	Contents.Tabular.Table<Document>,
+	// Inherited from FlowContent: Contents.Embedded.Map<Document>
+	// Inherited from FlowContent: Contents.Embedded.Area<Document>
+	// Inherited from FlowContent: // TODO: MathML math
+	// Inherited from FlowContent: // TODO: SVG svg
+	// Inherited from FlowContent: Contents.Tabular.Table<Document>
 	Contents.Tabular.Caption<Document>,
 	Contents.Tabular.Colgroup<Document>,
 	Contents.Tabular.Col<Document>,
@@ -167,29 +169,31 @@ public class Document implements
 	Contents.Tabular.Tr<Document>,
 	Contents.Tabular.Td<Document>,
 	Contents.Tabular.Th<Document>,
-	Contents.Forms.Form<Document>,
-	Contents.Forms.Label<Document>,
-	Contents.Forms.Input<Document>,
-	Contents.Forms.Button<Document>,
-	Contents.Forms.Select<Document>,
-	Contents.Forms.Datalist<Document>,
+	// Inherited from FlowContent: Contents.Forms.Form<Document>
+	// Inherited from FlowContent: Contents.Forms.Label<Document>
+	// Inherited from FlowContent: Contents.Forms.Input<Document>
+	// Inherited from FlowContent: Contents.Forms.Button<Document>
+	// Inherited from FlowContent: Contents.Forms.Select<Document>
+	// Inherited from FlowContent: Contents.Forms.Datalist<Document>
 	Contents.Forms.Optgroup<Document>,
 	Contents.Forms.Option<Document>,
-	Contents.Forms.Textarea<Document>,
-	Contents.Forms.Output<Document>,
-	Contents.Forms.Progress<Document>,
-	Contents.Forms.Meter<Document>,
-	Contents.Forms.Fieldset<Document>,
+	// Inherited from FlowContent: Contents.Forms.Textarea<Document>
+	// Inherited from FlowContent: Contents.Forms.Output<Document>
+	// Inherited from FlowContent: Contents.Forms.Progress<Document>
+	// Inherited from FlowContent: Contents.Forms.Meter<Document>
+	// Inherited from FlowContent: Contents.Forms.Fieldset<Document>
 	Contents.Forms.Legend<Document>,
-	Contents.Interactive.Details<Document>,
-	Contents.Interactive.Summary<Document>,
-	Contents.Interactive.Dialog<Document>,
-	Contents.Scripting.Script<Document>,
-	Contents.Scripting.Noscript<Document>,
-	Contents.Scripting.Template<Document>,
-	Contents.Scripting.Slot<Document>,
-	Contents.Scripting.Canvas<Document>
-	// TODO: autonomous custom elements
+	// Inherited from FlowContent: Contents.Interactive.Details<Document>
+	Contents.Interactive.Summary<Document>
+	// Inherited from FlowContent: Contents.Interactive.Dialog<Document>
+	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Script<Document>
+	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Noscript<Document>
+	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Template<Document>
+	// Inherited from FlowContent: Contents.Scripting.Slot<Document>
+	// Inherited from FlowContent: Contents.Scripting.Canvas<Document>
+	// Inherited from FlowContent: // TODO: autonomous custom elements
+	// Inherited from FlowContent: TextContent<Document>
+	// TODO: Whitespace?
 {
 
 	/**
@@ -207,6 +211,7 @@ public class Document implements
 	 * Writer for raw output.
 	 * <p>
 	 * TODO: This field will possibly become "protected" (or deprecated to minimize direct usage) once the full set of HTML tags have been implemented.
+	 *       Or, access to it will be provided either directly or through methods named "unsafe".
 	 * </p>
 	 */
 
@@ -387,7 +392,7 @@ public class Document implements
 
 	@Override
 	public A<Document> a() throws IOException {
-		if(a == null) a = new A<Document>(this);
+		if(a == null) a = new A<>(this);
 		return a.open();
 	}
 
@@ -476,7 +481,7 @@ public class Document implements
 
 	@Override
 	public B<Document> b() throws IOException {
-		if(b == null) b = new B<Document>(this);
+		if(b == null) b = new B<>(this);
 		return b.open();
 	}
 
@@ -515,7 +520,7 @@ public class Document implements
 
 	@Override
 	public Br<Document> br() throws IOException {
-		if(br == null) br = new Br<Document>(this);
+		if(br == null) br = new Br<>(this);
 		return br.open();
 	}
 
@@ -528,7 +533,7 @@ public class Document implements
 
 	@Override
 	public Hr<Document> hr() throws IOException {
-		if(hr == null) hr = new Hr<Document>(this);
+		if(hr == null) hr = new Hr<>(this);
 		return hr.open();
 	}
 
@@ -546,7 +551,7 @@ public class Document implements
 
 	@Override
 	public I<Document> i() throws IOException {
-		if(i == null) i = new I<Document>(this);
+		if(i == null) i = new I<>(this);
 		return i.open();
 	}
 
@@ -580,7 +585,7 @@ public class Document implements
 
 	@Override
 	public Contents.Forms.Input.Type<Document> input() {
-		if(input == null) input = new Contents.Forms.Input.Type<Document>(this);
+		if(input == null) input = new Contents.Forms.Input.Type<>(this);
 		return input;
 	}
 
@@ -623,7 +628,7 @@ public class Document implements
 
 	@Override
 	public Option<Document> option() throws IOException {
-		if(option == null) option = new Option<Document>(this);
+		if(option == null) option = new Option<>(this);
 		return option.open();
 	}
 
@@ -636,7 +641,7 @@ public class Document implements
 
 	@Override
 	public P<Document> p() throws IOException {
-		if(p == null) p = new P<Document>(this);
+		if(p == null) p = new P<>(this);
 		return p.open();
 	}
 
@@ -732,7 +737,7 @@ public class Document implements
 
 	@Override
 	public U<Document> u() throws IOException {
-		if(u == null) u = new U<Document>(this);
+		if(u == null) u = new U<>(this);
 		return u.open();
 	}
 

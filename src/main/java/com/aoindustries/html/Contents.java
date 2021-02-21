@@ -33,7 +33,11 @@ import java.awt.Shape;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#content-models">3.2.5 Content models</a>.
+ * Interfaces for each type of element when used as content.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#content-models">3.2.5 Content models</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides</a>.</li>
+ * </ul>
  *
  * @author  AO Industries, Inc.
  */

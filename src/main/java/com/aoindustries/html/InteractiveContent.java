@@ -23,13 +23,23 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#interactive-content">3.2.5.2.7 Interactive content</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#interactive-content">3.2.5.2.7 Interactive content</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#interactive_content">Interactive content</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface InteractiveContent<PC extends Content> extends Content,
+public interface InteractiveContent<PC extends Content> extends
+	//
+	// Content models:
+	//
+	Content,
+	//
+	// Content types:
+	//
 	Contents.Text.A<PC>, // if the href attribute is present
 	Contents.Embedded.Audio<PC>, // if the controls attribute is present
 	Contents.Forms.Button<PC>,
@@ -39,6 +49,7 @@ public interface InteractiveContent<PC extends Content> extends Content,
 	Contents.Embedded.Img<PC>, // if the usemap attribute is present
 	Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
 	Contents.Forms.Label<PC>,
+	Contents.Grouping.Menu<PC>, // (MDN only) if the type attribute is in the toolbar state
 	Contents.Embedded.Object<PC>, // if the usemap attribute is present
 	Contents.Forms.Select<PC>,
 	Contents.Forms.Textarea<PC>,

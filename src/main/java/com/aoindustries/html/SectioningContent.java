@@ -23,13 +23,23 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#sectioning-content">3.2.5.2.3 Sectioning content</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#sectioning-content">3.2.5.2.3 Sectioning content</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#sectioning_content">Sectioning content</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface SectioningContent<PC extends Content> extends Content,
+public interface SectioningContent<PC extends Content> extends
+	//
+	// Content models:
+	//
+	Content,
+	//
+	// Content types:
+	//
 	Contents.Sections.Article<PC>,
 	Contents.Sections.Aside<PC>,
 	Contents.Sections.Nav<PC>,

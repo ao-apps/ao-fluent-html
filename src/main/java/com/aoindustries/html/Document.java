@@ -516,6 +516,35 @@ public class Document implements
 		return base().href(href).__();
 	}
 
+	protected Blockquote<Document> blockquote;
+
+	@Override
+	public Blockquote<Document> blockquote() throws IOException {
+		if(blockquote == null) blockquote = new Blockquote<>(this);
+		return blockquote.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document blockquote__(IORunnableE<Ex> blockquote) throws IOException, Ex {
+		return blockquote().__(blockquote);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, BlockquoteContent extends FlowContent<BlockquoteContent>> Document blockquote__(IOConsumerE<? super BlockquoteContent, Ex> blockquote) throws IOException, Ex {
+		return blockquote().__((IOConsumerE)blockquote);
+	}
+
+	@Override
+	public Document blockquote__(Object text) throws IOException {
+		return blockquote().__(text);
+	}
+
+	@Override
+	public Document blockquote__() throws IOException {
+		return blockquote().__();
+	}
+
 	protected Br<Document> br;
 
 	@Override
@@ -851,6 +880,35 @@ public class Document implements
 	}
 
 	// TODO: More types like supported by ao-taglib (ParamsTag.java), including collection types, as "params__"?
+
+	protected Q<Document> q;
+
+	@Override
+	public Q<Document> q() throws IOException {
+		if(q == null) q = new Q<>(this);
+		return q.open();
+	}
+
+	@Override
+	public <Ex extends Throwable> Document q__(IORunnableE<Ex> q) throws IOException, Ex {
+		return q().__(q);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <Ex extends Throwable, QContent extends PhrasingContent<QContent>> Document q__(IOConsumerE<? super QContent, Ex> q) throws IOException, Ex {
+		return q().__((IOConsumerE)q);
+	}
+
+	@Override
+	public Document q__(Object text) throws IOException {
+		return q().__(text);
+	}
+
+	@Override
+	public Document q__() throws IOException {
+		return q().__();
+	}
 
 	@Override
 	public Script<Document> script() throws IOException {

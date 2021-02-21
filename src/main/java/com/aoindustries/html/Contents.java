@@ -785,13 +785,67 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element - HTML: HyperText Markup Language</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface Blockquote<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new blockquote element.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 */
+			com.aoindustries.html.Blockquote<PC> blockquote() throws IOException;
+
+			/**
+			 * Creates a blockquote element with no attributes and the given body.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC blockquote__(IORunnableE<Ex> blockquote) throws IOException, Ex;
+
+			/**
+			 * Creates a blockquote element with no attributes and the given body.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, BlockquoteContent extends FlowContent<BlockquoteContent>> PC blockquote__(IOConsumerE<? super BlockquoteContent, Ex> blockquote) throws IOException, Ex;
+
+			/**
+			 * Creates a blockquote element with no attributes and a text body.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC blockquote__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty blockquote element with no attributes.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC blockquote__() throws IOException;
 		}
 
 		/**
@@ -1036,13 +1090,67 @@ public class Contents {
 		}
 
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.
+		 * <ul>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+		 * </ul>
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface Q<PC extends Content> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new q element.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 */
+			com.aoindustries.html.Q<PC> q() throws IOException;
+
+			/**
+			 * Creates a q element with no attributes and the given body.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable> PC q__(IORunnableE<Ex> q) throws IOException, Ex;
+
+			/**
+			 * Creates a q element with no attributes and the given body.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			<Ex extends Throwable, QContent extends PhrasingContent<QContent>> PC q__(IOConsumerE<? super QContent, Ex> q) throws IOException, Ex;
+
+			/**
+			 * Creates a q element with no attributes and a text body.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC q__(Object text) throws IOException;
+
+			/**
+			 * Creates an empty q element with no attributes.
+			 * <ul>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+			 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+			 * </ul>
+			 *
+			 * @return  The parent content model this element is within
+			 */
+			PC q__() throws IOException;
 		}
 
 		/**

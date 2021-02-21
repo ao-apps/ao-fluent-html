@@ -54,9 +54,13 @@ public class U<PC extends Content> extends Element<U<PC>> implements
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(RunnableE<Ex> u) throws IOException, Ex {
-		document.out.write('>');
-		if(u != null) u.run();
-		document.out.write("</u>");
+		if(u != null) {
+			document.out.write('>');
+			u.run();
+			document.out.write("</u>");
+		} else {
+			document.out.write("></u>");
+		}
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
@@ -67,10 +71,14 @@ public class U<PC extends Content> extends Element<U<PC>> implements
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> PC __(ConsumerE<? super UContent, Ex> u) throws IOException, Ex {
-		document.out.write('>');
-		@SuppressWarnings("unchecked") UContent c = (UContent)document;
-		if(u != null) u.accept(c);
-		document.out.write("</u>");
+		if(u != null) {
+			document.out.write('>');
+			@SuppressWarnings("unchecked") UContent c = (UContent)document;
+			u.accept(c);
+			document.out.write("</u>");
+		} else {
+			document.out.write("></u>");
+		}
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
@@ -83,9 +91,13 @@ public class U<PC extends Content> extends Element<U<PC>> implements
 	 * @see  Document#text(java.lang.Object)
 	 */
 	public PC __(Object text) throws IOException {
-		document.out.write('>');
-		document.text(text);
-		document.out.write("</u>");
+		if(text != null) {
+			document.out.write('>');
+			document.text(text);
+			document.out.write("</u>");
+		} else {
+			document.out.write("></u>");
+		}
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}

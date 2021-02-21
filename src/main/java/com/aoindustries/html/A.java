@@ -62,9 +62,13 @@ public class A<PC extends Content> extends Element<A<PC>> implements
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(RunnableE<Ex> a) throws IOException, Ex {
-		document.out.write('>');
-		if(a != null) a.run();
-		document.out.write("</a>");
+		if(a != null) {
+			document.out.write('>');
+			a.run();
+			document.out.write("</a>");
+		} else {
+			document.out.write("></a>");
+		}
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
@@ -77,10 +81,14 @@ public class A<PC extends Content> extends Element<A<PC>> implements
 	// TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 	//       the tabindex attribute specified.
 	public <Ex extends Throwable> PC __(ConsumerE<? super PC, Ex> a) throws IOException, Ex {
-		document.out.write('>');
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		if(a != null) a.accept(pc);
-		document.out.write("</a>");
+		if(a != null) {
+			document.out.write('>');
+			a.accept(pc);
+			document.out.write("</a>");
+		} else {
+			document.out.write("></a>");
+		}
 		return pc;
 	}
 
@@ -92,9 +100,13 @@ public class A<PC extends Content> extends Element<A<PC>> implements
 	 * @see  Document#text(java.lang.Object)
 	 */
 	public PC __(Object text) throws IOException {
-		document.out.write('>');
-		document.text(text);
-		document.out.write("</a>");
+		if(text != null) {
+			document.out.write('>');
+			document.text(text);
+			document.out.write("</a>");
+		} else {
+			document.out.write("></a>");
+		}
 		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}

@@ -34,25 +34,29 @@ package com.aoindustries.html;
  */
 public interface InteractiveContent<PC extends InteractiveContent<PC>> extends
 	//
+	// Unions:
+	//
+	UnionContent.Interactive_Phrasing<PC>,
+	//
 	// Content models:
 	//
-	Content,
+	// Inherited from Interactive_Phrasing: Content,
 	//
 	// Content types:
 	//
-	Contents.Text.A<PC>, // if the href attribute is present
-	Contents.Embedded.Audio<PC>, // if the controls attribute is present
-	Contents.Forms.Button<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Text.A<PC>, // if the href attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<PC>, // if the controls attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>,
 	Contents.Interactive.Details<PC>,
-	Contents.Embedded.Embed<PC>,
-	Contents.Embedded.Iframe<PC>,
-	Contents.Embedded.Img<PC>, // if the usemap attribute is present
-	Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
-	Contents.Forms.Label<PC>,
-	Contents.Grouping.Menu<PC>, // (MDN only) if the type attribute is in the toolbar state
-	Contents.Embedded.Object<PC>, // if the usemap attribute is present
-	Contents.Forms.Select<PC>,
-	Contents.Forms.Textarea<PC>,
-	Contents.Embedded.Video<PC> // if the controls attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Img<PC>, // if the usemap attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
+	// Inherited from Interactive_Phrasing: Contents.Forms.Label<PC>,
+	Contents.Grouping.Menu<PC> // (MDN only) if the type attribute is in the toolbar state
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Object<PC>, // if the usemap attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Forms.Select<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<PC>
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Video<PC> // if the controls attribute is present
 {
 }

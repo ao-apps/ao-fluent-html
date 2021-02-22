@@ -133,7 +133,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Link<PC extends Content> extends Content {
+		public static interface Link<PC extends UnionContent.Metadata_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new link element.
 			 * <ul>
@@ -170,7 +170,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Meta<PC extends Content> extends Content {
+		public static interface Meta<PC extends UnionContent.Metadata_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new meta element.
 			 * <ul>
@@ -951,6 +951,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TODO<PC>>
 		public static interface Dt<PC extends Content> extends Content {
 			// TODO
 		}
@@ -961,6 +962,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TODO<PC>>
 		public static interface Dd<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1020,7 +1022,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface A<PC extends Content> extends Content {
+		public static interface A<PC extends UnionContent.Interactive_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new a element.
 			 * <p>
@@ -1093,7 +1095,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Em<PC extends Content> extends Content {
+		public static interface Em<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1103,7 +1105,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Strong<PC extends Content> extends Content {
+		public static interface Strong<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1113,7 +1115,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Small<PC extends Content> extends Content {
+		public static interface Small<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1123,7 +1125,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface S<PC extends Content> extends Content {
+		public static interface S<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1133,7 +1135,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Cite<PC extends Content> extends Content {
+		public static interface Cite<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1145,7 +1147,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Q<PC extends Content> extends Content {
+		public static interface Q<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 
 			/**
 			 * Opens a new q element.
@@ -1207,7 +1209,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Dfn<PC extends Content> extends Content {
+		public static interface Dfn<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1217,7 +1219,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Abbr<PC extends Content> extends Content {
+		public static interface Abbr<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1227,7 +1229,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ruby<PC extends Content> extends Content {
+		public static interface Ruby<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1259,7 +1261,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Data<PC extends Content> extends Content {
+		public static interface Data<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1269,7 +1271,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Time<PC extends Content> extends Content {
+		public static interface Time<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1279,7 +1281,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Code<PC extends Content> extends Content {
+		public static interface Code<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1289,7 +1291,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Var<PC extends Content> extends Content {
+		public static interface Var<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1299,7 +1301,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Samp<PC extends Content> extends Content {
+		public static interface Samp<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1309,7 +1311,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Kbd<PC extends Content> extends Content {
+		public static interface Kbd<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1319,7 +1321,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Sub<PC extends Content> extends Content {
+		public static interface Sub<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1329,7 +1331,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Sup<PC extends Content> extends Content {
+		public static interface Sup<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1338,7 +1340,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface I<PC extends Content> extends Content {
+		public static interface I<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new i element.
 			 * <p>
@@ -1393,7 +1395,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface B<PC extends Content> extends Content {
+		public static interface B<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new b element.
 			 * <p>
@@ -1448,7 +1450,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface U<PC extends Content> extends Content {
+		public static interface U<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new u element.
 			 * <p>
@@ -1504,7 +1506,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Mark<PC extends Content> extends Content {
+		public static interface Mark<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1514,7 +1516,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Bdi<PC extends Content> extends Content {
+		public static interface Bdi<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1524,7 +1526,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Bdo<PC extends Content> extends Content {
+		public static interface Bdo<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1534,7 +1536,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Span<PC extends Content> extends Content {
+		public static interface Span<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1593,7 +1595,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ins<PC extends Content> extends Content {
+		public static interface Ins<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1632,6 +1634,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TODO<PC>>
 		public static interface Source<PC extends Content> extends Content {
 			// TODO
 		}
@@ -1644,7 +1647,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Img<PC extends Content> extends Content {
+		public static interface Img<PC extends UnionContent.Embedded_Interactive<PC>> extends Content {
 			/**
 			 * Opens a new img element.
 			 * <ul>
@@ -1661,7 +1664,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Iframe<PC extends Content> extends Content {
+		public static interface Iframe<PC extends UnionContent.Embedded_Interactive<PC>> extends Content {
 			// TODO
 		}
 
@@ -1671,7 +1674,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Embed<PC extends Content> extends Content {
+		public static interface Embed<PC extends UnionContent.Embedded_Interactive<PC>> extends Content {
 			// TODO
 		}
 
@@ -1681,7 +1684,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Object<PC extends Content> extends Content {
+		public static interface Object<PC extends UnionContent.Embedded_Interactive<PC>> extends Content {
 			// TODO
 		}
 
@@ -1727,7 +1730,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Video<PC extends Content> extends Content {
+		public static interface Video<PC extends UnionContent.Embedded_Interactive<PC>> extends Content {
 			// TODO
 		}
 
@@ -1737,7 +1740,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Audio<PC extends Content> extends Content {
+		public static interface Audio<PC extends UnionContent.Embedded_Interactive<PC>> extends Content {
 			// TODO
 		}
 
@@ -1758,7 +1761,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Map<PC extends Content> extends Content {
+		public static interface Map<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -1899,6 +1902,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
+		// TODO: <PC extends TableContent<PC>>
 		public static interface Colgroup<PC extends Content> extends Content {
 			// TODO
 		}
@@ -2016,7 +2020,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Label<PC extends Content> extends Content {
+		public static interface Label<PC extends UnionContent.Interactive_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2029,7 +2033,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Input<PC extends Content> extends Content {
+		public static interface Input<PC extends UnionContent.Interactive_Phrasing<PC>> extends Content {
 
 			/**
 			 * Specialized input implementations.
@@ -2041,7 +2045,7 @@ public class Contents {
 			 *
 			 * @param  <PC>  The parent content model this element is within
 			 */
-			public static class Type<PC extends Content> {
+			public static class Type<PC extends UnionContent.Interactive_Phrasing<PC>> {
 
 				private final com.aoindustries.html.Document document;
 
@@ -2437,7 +2441,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Button<PC extends Content> extends Content {
+		public static interface Button<PC extends UnionContent.Interactive_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2447,7 +2451,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Select<PC extends Content> extends Content {
+		public static interface Select<PC extends UnionContent.Interactive_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2480,6 +2484,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
+		// TODO: <PC extends TODO<PC>>
 		public static interface Option<PC extends Content> extends Content {
 			/**
 			 * Opens a new option element.
@@ -2508,7 +2513,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Textarea<PC extends Content> extends Content {
+		public static interface Textarea<PC extends UnionContent.Interactive_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2518,7 +2523,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Output<PC extends Content> extends Content {
+		public static interface Output<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2528,7 +2533,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Progress<PC extends Content> extends Content {
+		public static interface Progress<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2538,7 +2543,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Meter<PC extends Content> extends Content {
+		public static interface Meter<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2620,7 +2625,7 @@ public class Contents {
 		 *
 		 * @param  <PC>  The parent content model this element is within
 		 */
-		public static interface Script<PC extends Content> extends Content {
+		public static interface Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Content {
 			/**
 			 * Opens a new script element.
 			 * <ul>
@@ -2679,7 +2684,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Noscript<PC extends Content> extends Content {
+		public static interface Noscript<PC extends UnionContent.Metadata_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2689,7 +2694,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Template<PC extends Content> extends Content {
+		public static interface Template<PC extends UnionContent.Metadata_Phrasing<PC>> extends Content {
 			// TODO
 		}
 
@@ -2709,7 +2714,7 @@ public class Contents {
 		 * @param  <PC>  The parent content model this element is within
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Canvas<PC extends Content> extends Content {
+		public static interface Canvas<PC extends UnionContent.Embedded_Palpable_Phrasing<PC>> extends Content {
 			// TODO
 		}
 	}

@@ -34,21 +34,26 @@ package com.aoindustries.html;
  */
 public interface EmbeddedContent<PC extends EmbeddedContent<PC>> extends
 	//
+	// Unions:
+	//
+	UnionContent.Embedded_Interactive<PC>,
+	UnionContent.Embedded_Palpable_Phrasing<PC>,
+	//
 	// Content models:
 	//
-	Content,
+	// Inherited from Embedded_Interactive and Embedded_Palpable_Phrasing: Content,
 	//
 	// Content types:
 	//
-	Contents.Embedded.Audio<PC>,
-	Contents.Scripting.Canvas<PC>,
-	Contents.Embedded.Embed<PC>,
-	Contents.Embedded.Iframe<PC>,
-	Contents.Embedded.Img<PC>,
-	// TODO: MathML math
-	Contents.Embedded.Object<PC>,
-	Contents.Embedded.Picture<PC>,
-	// TODO: SVG svg
-	Contents.Embedded.Video<PC>
+	// Inherited from Embedded_Interactive: Contents.Embedded.Audio<PC>,
+	// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
+	// Inherited from Embedded_Interactive: Contents.Embedded.Embed<PC>,
+	// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<PC>,
+	// Inherited from Embedded_Interactive: Contents.Embedded.Img<PC>,
+	// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
+	// Inherited from Embedded_Interactive: Contents.Embedded.Object<PC>,
+	Contents.Embedded.Picture<PC>
+	// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
+	// Inherited from Embedded_Interactive: Contents.Embedded.Video<PC>
 {
 }

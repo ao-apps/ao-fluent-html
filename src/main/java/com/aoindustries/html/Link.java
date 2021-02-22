@@ -45,7 +45,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Link<PC extends Content> extends VoidElement<Link<PC>, PC> implements
+public class Link<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidElement<Link<PC>, PC> implements
 	// TODO: as
 	// TODO: charset
 	Attributes.Enum.Crossorigin<Link<PC>, Link.Crossorigin>,

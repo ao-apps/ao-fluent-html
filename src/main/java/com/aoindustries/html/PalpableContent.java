@@ -32,43 +32,42 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Many elements are both PhrasingContext and PalpableContent, which means we can't narrow their Content.
-//       If this interface is not used by our final implementation, consider removing it and narrowing the generic
-//       bounds of element's Content.
-// TODO: Make a new super interface for elements that are common to both?
-//       other super interfaces could exist for things like Interactive versus Phrasing, too
 public interface PalpableContent<PC extends PalpableContent<PC>> extends
+	//
+	// Unions:
+	//
+	UnionContent.Palpable_Phrasing<PC>,
 	//
 	// Content models:
 	//
-	// Inherited from HeadingContent, InteractiveContent, and SectioningContent: Content,
+	// Inherited from HeadingContent, InteractiveContent, SectioningContent, and Palpable_Phrasing: Content,
 	SectioningContent<PC>,
 	HeadingContent<PC>,
 	InteractiveContent<PC>,
 	//
 	// Content types:
 	//
-	// Inherited from InteractiveContent: Contents.Text.A<PC>,
-	Contents.Text.Abbr<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Text.A<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Abbr<PC>,
 	Contents.Sections.Address<PC>,
 	// Inherited from SectioningContent: Contents.Sections.Article<PC>,
 	// Inherited from SectioningContent: Contents.Sections.Aside<PC>,
-	// Inherited from InteractiveContent: Contents.Embedded.Audio<PC>, // if the controls attribute is present
-	Contents.Text.B<PC>,
-	Contents.Text.Bdi<PC>,
-	Contents.Text.Bdo<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Audio<PC>, // if the controls attribute is present
+	// Inherited from Palpable_Phrasing: Contents.Text.B<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Bdi<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Bdo<PC>,
 	Contents.Grouping.Blockquote<PC>,
-	// Inherited from InteractiveContent: Contents.Forms.Button<PC>,
-	Contents.Scripting.Canvas<PC>,
-	Contents.Text.Cite<PC>,
-	Contents.Text.Code<PC>,
-	Contents.Text.Data<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Button<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Cite<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Code<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Data<PC>,
 	// Inherited from InteractiveContent: Contents.Interactive.Details<PC>,
-	Contents.Text.Dfn<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Dfn<PC>,
 	Contents.Grouping.Div<PC>,
 	Contents.Grouping.Dl<PC>, // if childen contain at least one name/value pair
-	Contents.Text.Em<PC>,
-	// Inherited from InteractiveContent: Contents.Embedded.Embed<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Em<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Embed<PC>,
 	Contents.Forms.Fieldset<PC>,
 	Contents.Grouping.Figure<PC>,
 	Contents.Sections.Footer<PC>,
@@ -81,46 +80,46 @@ public interface PalpableContent<PC extends PalpableContent<PC>> extends
 	// Inherited from HeadingContent: Contents.Sections.H6<PC>,
 	Contents.Sections.Header<PC>,
 	// Inherited from HeadingContent: Contents.Sections.Hgroup<PC>,
-	Contents.Text.I<PC>,
-	// Inherited from InteractiveContent: Contents.Embedded.Iframe<PC>,
-	// Inherited from InteractiveContent: Contents.Embedded.Img<PC>,
-	// Inherited from InteractiveContent: Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
-	Contents.Edits.Ins<PC>,
-	Contents.Text.Kbd<PC>,
-	// Inherited from InteractiveContent: Contents.Forms.Label<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.I<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Iframe<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Img<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
+	// Inherited from Palpable_Phrasing: Contents.Edits.Ins<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Kbd<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Label<PC>,
 	Contents.Grouping.Main<PC>,
-	Contents.Embedded.Map<PC>,
-	Contents.Text.Mark<PC>,
-	// TODO: MathML math
+	// Inherited from Palpable_Phrasing: Contents.Embedded.Map<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Mark<PC>,
+	// Inherited from Palpable_Phrasing: // TODO: MathML math
 	// Inherited from InteractiveContent: Contents.Grouping.Menu<PC>, // if children include at least one li
-	Contents.Forms.Meter<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Forms.Meter<PC>,
 	// Inherited from SectioningContent: Contents.Sections.Nav<PC>,
-	// Inherited from InteractiveContent: Contents.Embedded.Object<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Object<PC>,
 	Contents.Grouping.Ol<PC>, // if children include at least one li
-	Contents.Forms.Output<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Forms.Output<PC>,
 	Contents.Grouping.P<PC>,
 	Contents.Grouping.Pre<PC>,
-	Contents.Forms.Progress<PC>,
-	Contents.Text.Q<PC>,
-	Contents.Text.Ruby<PC>,
-	Contents.Text.S<PC>,
-	Contents.Text.Samp<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Forms.Progress<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Q<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Ruby<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.S<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Samp<PC>,
 	// Inherited from SectioningContent: Contents.Sections.Section<PC>,
-	// Inherited from InteractiveContent: Contents.Forms.Select<PC>,
-	Contents.Text.Small<PC>,
-	Contents.Text.Span<PC>,
-	Contents.Text.Strong<PC>,
-	Contents.Text.Sub<PC>,
-	Contents.Text.Sup<PC>,
-	// TODO: SVG svg
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Select<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Small<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Span<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Strong<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Sub<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Sup<PC>,
+	// Inherited from Palpable_Phrasing: // TODO: SVG svg
 	Contents.Tabular.Table<PC>,
-	// Inherited from InteractiveContent: Contents.Forms.Textarea<PC>,
-	Contents.Text.Time<PC>,
-	Contents.Text.U<PC>,
-	Contents.Grouping.Ul<PC>, // if children include at least one li
-	Contents.Text.Var<PC>,
-	// Inherited from InteractiveContent: Contents.Embedded.Video<PC>,
-	// TODO: autonomous custom elements
-	TextContent<PC> // that is not inter-element whitespace
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Textarea<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Time<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.U<PC>,
+	Contents.Grouping.Ul<PC> // if children include at least one li
+	// Inherited from Palpable_Phrasing: Contents.Text.Var<PC>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Video<PC>,
+	// Inherited from Palpable_Phrasing: // TODO: autonomous custom elements
+	// Inherited from Palpable_Phrasing: TextContent<PC> // that is not inter-element whitespace
 {
 }

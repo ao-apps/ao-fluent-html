@@ -33,7 +33,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class A<PC extends Content> extends Element<A<PC>> implements
+public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends Element<A<PC>> implements
 	Attributes.Url.Href<A<PC>>,
 	// TODO: target
 	// TODO: download

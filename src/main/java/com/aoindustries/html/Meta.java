@@ -37,7 +37,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Meta<PC extends Content> extends VoidElement<Meta<PC>, PC> implements
+public class Meta<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidElement<Meta<PC>, PC> implements
 	Attributes.Enum.Charset<Meta<PC>, Attributes.Enum.Charset.Value>,
 	Attributes.Text.Content<Meta<PC>>,
 	Attributes.Enum.HttpEquiv<Meta<PC>, Meta.HttpEquiv>,

@@ -52,7 +52,7 @@ import java.util.Map;
  *
  * @author  AO Industries, Inc.
  */
-public abstract class Input<E extends Input<E, PC>, PC extends Content> extends VoidElement<E, PC> implements
+public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Interactive_Phrasing<PC>> extends VoidElement<E, PC> implements
 	Attributes.Boolean.Autofocus<E>,
 	// TODO: dirname
 	Attributes.Boolean.Disabled<E>,
@@ -197,7 +197,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	@SuppressWarnings("deprecation")
-	public static class Dynamic<PC extends Content> extends Input<Dynamic<PC>, PC> implements
+	public static class Dynamic<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Dynamic<PC>, PC> implements
 		Attributes.Text.Accept<Dynamic<PC>>,
 		Attributes.Enum.Align<Dynamic<PC>, Image.Align>,
 		Attributes.Text.Alt<Dynamic<PC>>,
@@ -447,7 +447,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Button<PC extends Content> extends Input<Button<PC>, PC> implements
+	public static class Button<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Button<PC>, PC> implements
 		Attributes.Text.Value<Button<PC>>
 	{
 
@@ -485,7 +485,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Checkbox<PC extends Content> extends Input<Checkbox<PC>, PC> implements
+	public static class Checkbox<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Checkbox<PC>, PC> implements
 		Attributes.Boolean.Checked<Checkbox<PC>>,
 		Attributes.Text.Value<Checkbox<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -507,7 +507,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Color<PC extends Content> extends Input<Color<PC>, PC> implements
+	public static class Color<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Color<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Color<PC>, Color.Autocomplete>,
 		Attributes.Text.List<Color<PC>>,
 		Attributes.Boolean.Readonly<Color<PC>>, // Guessed
@@ -581,7 +581,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Date<PC extends Content> extends Input<Date<PC>, PC> implements
+	public static class Date<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Date<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Date<PC>, Date.Autocomplete>,
 		Attributes.Text.List<Date<PC>>,
 		Attributes.Boolean.Readonly<Date<PC>>, // Guessed
@@ -657,7 +657,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class DatetimeLocal<PC extends Content> extends Input<DatetimeLocal<PC>, PC> implements
+	public static class DatetimeLocal<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<DatetimeLocal<PC>, PC> implements
 		Attributes.Enum.Autocomplete<DatetimeLocal<PC>, DatetimeLocal.Autocomplete>,
 		Attributes.Text.List<DatetimeLocal<PC>>,
 		Attributes.Boolean.Readonly<DatetimeLocal<PC>>, // Guessed
@@ -732,7 +732,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Email<PC extends Content> extends Input<Email<PC>, PC> implements
+	public static class Email<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Email<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Email<PC>, Email.Autocomplete>,
 		Attributes.Text.List<Email<PC>>,
 		Attributes.Integer.Maxlength<Email<PC>>,
@@ -818,7 +818,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class File<PC extends Content> extends Input<File<PC>, PC> implements
+	public static class File<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<File<PC>, PC> implements
 		Attributes.Text.Accept<File<PC>>,
 		Attributes.Enum.Capture<File<PC>, File.Capture>,
 		Attributes.Boolean.Multiple<File<PC>>,
@@ -885,7 +885,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Hidden<PC extends Content> extends Input<Hidden<PC>, PC> implements
+	public static class Hidden<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Hidden<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Hidden<PC>, Input.Autocomplete>,
 		Attributes.Text.Value<Hidden<PC>>
 	{
@@ -906,7 +906,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	@SuppressWarnings("deprecation")
-	public static class Image<PC extends Content> extends Input<Image<PC>, PC> implements
+	public static class Image<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Image<PC>, PC> implements
 		Attributes.Enum.Align<Image<PC>, Image.Align>,
 		Attributes.Text.Alt<Image<PC>>,
 		Attributes.Integer.HeightHtml5Only<Image<PC>>,
@@ -984,7 +984,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Month<PC extends Content> extends Input<Month<PC>, PC> implements
+	public static class Month<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Month<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Month<PC>, Month.Autocomplete>,
 		Attributes.Text.List<Month<PC>>,
 		Attributes.Boolean.Readonly<Month<PC>>, // Guessed
@@ -1061,7 +1061,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Number<PC extends Content> extends Input<Number<PC>, PC> implements
+	public static class Number<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Number<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Number<PC>, Number.Autocomplete>,
 		Attributes.Text.List<Number<PC>>,
 		Attributes.Boolean.Readonly<Number<PC>>,
@@ -1154,7 +1154,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Password<PC extends Content> extends Input<Password<PC>, PC> implements
+	public static class Password<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Password<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Password<PC>, Password.Autocomplete>,
 		Attributes.Integer.Maxlength<Password<PC>>,
 		Attributes.Integer.Minlength<Password<PC>>,
@@ -1232,7 +1232,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Radio<PC extends Content> extends Input<Radio<PC>, PC> implements
+	public static class Radio<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Radio<PC>, PC> implements
 		Attributes.Boolean.Checked<Radio<PC>>,
 		Attributes.Text.Value<Radio<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -1254,7 +1254,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Range<PC extends Content> extends Input<Range<PC>, PC> implements
+	public static class Range<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Range<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Range<PC>, Range.Autocomplete>,
 		Attributes.Text.List<Range<PC>>,
 		Attributes.Text.Value<Range<PC>>,
@@ -1327,7 +1327,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Reset<PC extends Content> extends Input<Reset<PC>, PC> implements
+	public static class Reset<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Reset<PC>, PC> implements
 		Attributes.Text.Value<Reset<PC>>
 	{
 
@@ -1365,7 +1365,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Search<PC extends Content> extends Input<Search<PC>, PC> implements
+	public static class Search<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Search<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Search<PC>, Search.Autocomplete>,
 		Attributes.Text.List<Search<PC>>,
 		Attributes.Integer.Maxlength<Search<PC>>,
@@ -1491,7 +1491,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Submit<PC extends Content> extends Input<Submit<PC>, PC> implements
+	public static class Submit<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Submit<PC>, PC> implements
 		Attributes.Text.Value<Submit<PC>>
 	{
 
@@ -1529,7 +1529,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Tel<PC extends Content> extends Input<Tel<PC>, PC> implements
+	public static class Tel<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Tel<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Tel<PC>, Tel.Autocomplete>,
 		Attributes.Text.List<Tel<PC>>,
 		Attributes.Integer.Maxlength<Tel<PC>>,
@@ -1616,7 +1616,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Text<PC extends Content> extends Input<Text<PC>, PC> implements
+	public static class Text<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Text<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Text<PC>, Input.Autocomplete>,
 		Attributes.Integer.Maxlength<Text<PC>>,
 		Attributes.Integer.Minlength<Text<PC>>,
@@ -1646,7 +1646,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Time<PC extends Content> extends Input<Time<PC>, PC> implements
+	public static class Time<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Time<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Time<PC>, Time.Autocomplete>,
 		Attributes.Text.List<Time<PC>>,
 		Attributes.Boolean.Readonly<Time<PC>>, // Guessed
@@ -1720,7 +1720,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Url<PC extends Content> extends Input<Url<PC>, PC> implements
+	public static class Url<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Url<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Url<PC>, Url.Autocomplete>,
 		Attributes.Text.List<Url<PC>>,
 		Attributes.Integer.Maxlength<Url<PC>>,
@@ -1806,7 +1806,7 @@ public abstract class Input<E extends Input<E, PC>, PC extends Content> extends 
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Week<PC extends Content> extends Input<Week<PC>, PC> implements
+	public static class Week<PC extends UnionContent.Interactive_Phrasing<PC>> extends Input<Week<PC>, PC> implements
 		Attributes.Enum.Autocomplete<Week<PC>, Week.Autocomplete>,
 		Attributes.Text.List<Week<PC>>,
 		Attributes.Boolean.Readonly<Week<PC>>, // Guessed

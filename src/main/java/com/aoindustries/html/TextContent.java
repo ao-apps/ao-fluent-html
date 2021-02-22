@@ -37,7 +37,7 @@ import java.io.IOException;
  */
 // TODO: Separate Whitespace? https://html.spec.whatwg.org/#inter-element-whitespace
 //       Could skip encoding (but verified when assertions enabled)
-public interface TextContent<PC extends Content> extends Content {
+public interface TextContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
 
 	/**
 	 * Writes the given text with proper encoding.

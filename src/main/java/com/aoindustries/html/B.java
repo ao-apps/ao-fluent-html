@@ -33,7 +33,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class B<PC extends Content> extends Element<B<PC>> implements
+public class B<PC extends UnionContent.Palpable_Phrasing<PC>> extends Element<B<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<B<PC>>
 {

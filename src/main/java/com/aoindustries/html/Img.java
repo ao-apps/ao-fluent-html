@@ -37,7 +37,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class Img<PC extends Content> extends VoidElement<Img<PC>, PC> implements
+public class Img<PC extends UnionContent.Embedded_Interactive<PC>> extends VoidElement<Img<PC>, PC> implements
 	Attributes.Enum.Align<Img<PC>, Img.Align>,
 	Attributes.Text.Alt<Img<PC>>,
 	// TODO: border

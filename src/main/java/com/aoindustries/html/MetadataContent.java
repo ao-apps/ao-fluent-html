@@ -34,19 +34,23 @@ package com.aoindustries.html;
  */
 public interface MetadataContent<PC extends MetadataContent<PC>> extends
 	//
+	// Unions:
+	//
+	UnionContent.Metadata_Phrasing<PC>,
+	//
 	// Content models:
 	//
-	Content,
+	// Inherited from Metadata_Phrasing: Content,
 	//
 	// Content types:
 	//
 	Contents.Metadata.Base<PC>,
-	Contents.Metadata.Link<PC>,
-	Contents.Metadata.Meta<PC>,
-	Contents.Scripting.Noscript<PC>,
-	Contents.Scripting.Script<PC>,
+	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<PC>,
+	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<PC>,
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<PC>,
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>,
 	Contents.Metadata.Style<PC>,
-	Contents.Scripting.Template<PC>, // WHATWG only
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<PC>, // WHATWG only
 	Contents.Metadata.Title<PC>
 {
 }

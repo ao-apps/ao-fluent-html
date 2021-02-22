@@ -49,7 +49,7 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-public class Script<PC extends Content> extends Element<Script<PC>> implements
+public class Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Element<Script<PC>> implements
 	Attributes.Boolean.Async<Script<PC>>,
 	Attributes.Enum.Charset<Script<PC>, Attributes.Enum.Charset.Value>,
 	Attributes.Boolean.Defer<Script<PC>>,

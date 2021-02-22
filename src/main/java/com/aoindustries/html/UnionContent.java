@@ -28,7 +28,7 @@ import com.aoindustries.html.Contents.Text.I;
 /**
  * Union content models represent the specific elements that are common between two or more content models,
  * but where the content models cannot inherit from one another.
- * These interfaces are not specifically part of the HTML specification, but are an artifact of to this implementation.
+ * These interfaces are not specifically part of the HTML specification, but are an artifact of this implementation.
  * These interfaces are primarily needed because there is "or" for generic upper bounds.
  * <p>
  * For example, both {@link B} and {@link I} are part of both {@link PalpableContent} and {@link PhrasingContent}.

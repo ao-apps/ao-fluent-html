@@ -43,6 +43,7 @@ import java.io.IOException;
  */
 // Note: Document directly implements every interface here.
 //       When adding an interface, also add to Document.
+// TODO: Should these be renamed "Factories", with each named "AFactory", "ImgFactory", ...?
 public class Contents {
 
 	/** Make no instances. */

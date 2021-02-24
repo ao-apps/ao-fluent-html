@@ -66,8 +66,8 @@ public class B<PC extends UnionContent.Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</b>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></b>" : "</b>");
 	}
 
 	@Override

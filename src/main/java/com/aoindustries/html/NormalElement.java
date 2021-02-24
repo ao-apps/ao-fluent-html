@@ -79,7 +79,7 @@ abstract public class NormalElement<
 
 		@Override
 		public PC __() throws IOException {
-			element.writeClose();
+			element.writeClose(false);
 			return element.pc;
 		}
 	}
@@ -91,7 +91,7 @@ abstract public class NormalElement<
 	/**
 	 * Writes the closing tag.
 	 */
-	abstract protected void writeClose() throws IOException;
+	abstract protected void writeClose(boolean closeAttributes) throws IOException;
 
 	/**
 	 * Ends attributes, invokes the body, then closes this element.
@@ -99,9 +99,13 @@ abstract public class NormalElement<
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
-		document.out.write('>');
-		if(body != null) body.run();
-		writeClose();
+		if(body != null) {
+			document.out.write('>');
+			body.run();
+			writeClose(false);
+		} else {
+			writeClose(true);
+		}
 		return pc;
 	}
 
@@ -113,9 +117,13 @@ abstract public class NormalElement<
 	 * @see  #newC()
 	 */
 	public <Ex extends Throwable> PC __(IOConsumerE<? super C, Ex> body) throws IOException, Ex {
-		document.out.write('>');
-		if(body != null) body.accept(newC());
-		writeClose();
+		if(body != null) {
+			document.out.write('>');
+			body.accept(newC());
+			writeClose(false);
+		} else {
+			writeClose(true);
+		}
 		return pc;
 	}
 
@@ -125,8 +133,7 @@ abstract public class NormalElement<
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
-		document.out.write('>');
-		writeClose();
+		writeClose(true);
 		return pc;
 	}
 

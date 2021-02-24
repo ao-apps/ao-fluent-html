@@ -66,8 +66,8 @@ public class H4<PC extends HeadingContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</h4>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></h4>" : "</h4>");
 	}
 
 	@Override

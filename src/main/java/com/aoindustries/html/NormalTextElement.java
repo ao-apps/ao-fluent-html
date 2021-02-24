@@ -76,9 +76,13 @@ abstract public class NormalTextElement<
 	 * @see  Document#text(java.lang.Object)
 	 */
 	public PC __(Object text) throws IOException {
-		document.out.write('>');
-		document.text(text);
-		writeClose();
+		if(text != null) {
+			document.out.write('>');
+			document.text(text);
+			writeClose(false);
+		} else {
+			writeClose(true);
+		}
 		return pc;
 	}
 }

@@ -67,8 +67,8 @@ public class Colgroup<PC extends TableContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</colgroup>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></colgroup>" : "</colgroup>");
 	}
 
 	@Override

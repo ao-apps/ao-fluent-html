@@ -72,8 +72,8 @@ public class Th<PC extends TrContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</th>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></th>" : "</th>");
 	}
 
 	@Override

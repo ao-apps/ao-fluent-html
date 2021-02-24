@@ -66,8 +66,8 @@ public class Thead<PC extends TableContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</thead>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></thead>" : "</thead>");
 	}
 
 	@Override

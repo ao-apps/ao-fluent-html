@@ -45,8 +45,11 @@ abstract public class TransparentElement<
 
 	/**
 	 * Writes the closing tag.
+	 *
+	 * @param  closeAttributes  When {@code true}, must end attributes with {@code '>'} before writing the closing tag.
+	 *                          These are expected to be combined to a single write.
 	 */
-	abstract protected void writeClose() throws IOException;
+	abstract protected void writeClose(boolean closeAttributes) throws IOException;
 
 	/**
 	 * Ends attributes, invokes the body, then closes this element.
@@ -54,9 +57,13 @@ abstract public class TransparentElement<
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
-		document.out.write('>');
-		if(body != null) body.run();
-		writeClose();
+		if(body != null) {
+			document.out.write('>');
+			body.run();
+			writeClose(false);
+		} else {
+			writeClose(true);
+		}
 		return pc;
 	}
 
@@ -66,9 +73,13 @@ abstract public class TransparentElement<
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(IOConsumerE<? super PC, Ex> body) throws IOException, Ex {
-		document.out.write('>');
-		if(body != null) body.accept(pc);
-		writeClose();
+		if(body != null) {
+			document.out.write('>');
+			body.accept(pc);
+			writeClose(false);
+		} else {
+			writeClose(true);
+		}
 		return pc;
 	}
 
@@ -78,8 +89,7 @@ abstract public class TransparentElement<
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
-		document.out.write('>');
-		writeClose();
+		writeClose(true);
 		return pc;
 	}
 }

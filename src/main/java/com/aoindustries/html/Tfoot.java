@@ -66,8 +66,8 @@ public class Tfoot<PC extends TableContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</tfoot>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></tfoot>" : "</tfoot>");
 	}
 
 	@Override

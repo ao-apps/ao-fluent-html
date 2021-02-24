@@ -70,8 +70,8 @@ public class Blockquote<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</blockquote>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></blockquote>" : "</blockquote>");
 	}
 
 	@Override

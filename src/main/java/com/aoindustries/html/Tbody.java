@@ -66,8 +66,8 @@ public class Tbody<PC extends TableContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</tbody>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></tbody>" : "</tbody>");
 	}
 
 	@Override

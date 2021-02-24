@@ -66,8 +66,8 @@ public class P<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</p>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></p>" : "</p>");
 	}
 
 	@Override

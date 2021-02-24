@@ -58,8 +58,8 @@ public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected void writeClose() throws IOException {
-		document.out.write("</a>");
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></a>" : "</a>");
 	}
 
 	/**
@@ -75,9 +75,13 @@ public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
 	 * @see  Document#text(java.lang.Object)
 	 */
 	public PC __(Object text) throws IOException {
-		document.out.write('>');
-		document.text(text);
-		writeClose();
+		if(text != null) {
+			document.out.write('>');
+			document.text(text);
+			writeClose(false);
+		} else {
+			writeClose(true);
+		}
 		return pc;
 	}
 }

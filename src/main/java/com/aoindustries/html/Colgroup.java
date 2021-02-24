@@ -39,7 +39,7 @@ public class Colgroup<PC extends TableContent<PC>> extends
 {
 
 	public static class ColgroupContent<PC extends TableContent<PC>> extends
-		NormalContent<PC> implements
+		NormalContent<PC, ColgroupContent<PC>> implements
 		com.aoindustries.html.ColgroupContent<ColgroupContent<PC>> {
 
 		protected ColgroupContent(Colgroup<PC> element) {
@@ -48,7 +48,7 @@ public class Colgroup<PC extends TableContent<PC>> extends
 	}
 
 	public static class ColgroupCloseableContent<PC extends TableContent<PC>> extends
-		CloseableNormalContent<PC> implements
+		CloseableNormalContent<PC, ColgroupCloseableContent<PC>> implements
 		com.aoindustries.html.ColgroupContent<ColgroupCloseableContent<PC>> {
 
 		protected ColgroupCloseableContent(Colgroup<PC> element) {

@@ -36,7 +36,7 @@ import java.io.IOException;
  */
 abstract public class TransparentElement<
 	E  extends TransparentElement<E, PC>,
-	PC extends Content
+	PC extends Content<PC>
 > extends Element<E, PC> {
 
 	protected TransparentElement(Document document, PC pc) {

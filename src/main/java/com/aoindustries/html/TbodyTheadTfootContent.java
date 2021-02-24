@@ -38,7 +38,7 @@ public interface TbodyTheadTfootContent<C extends TbodyTheadTfootContent<C>> ext
 	//
 	// Content models:
 	//
-	// Inherited from ScriptSupportingContent: Content
+	// Inherited from ScriptSupportingContent: Content<C>
 	ScriptSupportingContent<C>,
 	//
 	// Content types:

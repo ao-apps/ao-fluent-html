@@ -38,7 +38,7 @@ public class Table<PC extends PalpableContent<PC>> extends
 {
 
 	public static class TableContent<PC extends PalpableContent<PC>> extends
-		NormalContent<PC> implements
+		NormalContent<PC, TableContent<PC>> implements
 		com.aoindustries.html.TableContent<TableContent<PC>> {
 
 		protected TableContent(Table<PC> element) {
@@ -47,7 +47,7 @@ public class Table<PC extends PalpableContent<PC>> extends
 	}
 
 	public static class TableCloseableContent<PC extends PalpableContent<PC>> extends
-		CloseableNormalContent<PC> implements
+		CloseableNormalContent<PC, TableCloseableContent<PC>> implements
 		com.aoindustries.html.TableContent<TableCloseableContent<PC>> {
 
 		protected TableCloseableContent(Table<PC> element) {

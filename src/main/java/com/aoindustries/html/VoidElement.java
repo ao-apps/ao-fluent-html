@@ -31,7 +31,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Content> extends Element<E, PC> {
+abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Content<PC>> extends Element<E, PC> {
 
 	protected VoidElement(Document document, PC pc) {
 		super(document, pc);

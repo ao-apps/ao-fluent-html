@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 // TODO: Should every element have a __() closing method?
-abstract public class Element<E extends Element<E, PC>, PC extends Content> implements
+abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> implements
 	// Allow any arbitrary attributes
 	Attributes.Text.Attribute<E>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp

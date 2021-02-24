@@ -44,7 +44,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 // TODO: <PC extends TODO<PC>>
-public class Option<PC extends Content> extends Element<Option<PC>, PC> implements
+public class Option<PC extends Content<PC>> extends Element<Option<PC>, PC> implements
 	Attributes.Boolean.Disabled<Option<PC>>,
 	Attributes.Text.Label<Option<PC>>,
 	Attributes.Boolean.Selected<Option<PC>>,

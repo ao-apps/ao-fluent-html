@@ -38,7 +38,7 @@ public class Tbody<PC extends TableContent<PC>> extends
 {
 
 	public static class TbodyContent<PC extends TableContent<PC>> extends
-		NormalContent<PC> implements
+		NormalContent<PC, TbodyContent<PC>> implements
 		TbodyTheadTfootContent<TbodyContent<PC>> {
 
 		protected TbodyContent(Tbody<PC> element) {
@@ -47,7 +47,7 @@ public class Tbody<PC extends TableContent<PC>> extends
 	}
 
 	public static class TbodyCloseableContent<PC extends TableContent<PC>> extends
-		CloseableNormalContent<PC> implements
+		CloseableNormalContent<PC, TbodyCloseableContent<PC>> implements
 		TbodyTheadTfootContent<TbodyCloseableContent<PC>> {
 
 		protected TbodyCloseableContent(Tbody<PC> element) {

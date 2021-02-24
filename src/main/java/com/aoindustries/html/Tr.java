@@ -38,7 +38,7 @@ public class Tr<PC extends TbodyTheadTfootContent<PC>> extends
 {
 
 	public static class TrContent<PC extends TbodyTheadTfootContent<PC>> extends
-		NormalContent<PC> implements
+		NormalContent<PC, TrContent<PC>> implements
 		com.aoindustries.html.TrContent<TrContent<PC>> {
 
 		protected TrContent(Tr<PC> element) {
@@ -47,7 +47,7 @@ public class Tr<PC extends TbodyTheadTfootContent<PC>> extends
 	}
 
 	public static class TrCloseableContent<PC extends TbodyTheadTfootContent<PC>> extends
-		CloseableNormalContent<PC> implements
+		CloseableNormalContent<PC, TrCloseableContent<PC>> implements
 		com.aoindustries.html.TrContent<TrCloseableContent<PC>> {
 
 		protected TrCloseableContent(Tr<PC> element) {

@@ -62,7 +62,7 @@ public class Contents {
 		 * See <a href="https://html.spec.whatwg.org/#the-html-element">4.1.1 The html element</a>.
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Html<Document> extends Content {
+		public static interface Html extends Content<com.aoindustries.html.Document> {
 			// TODO
 		}
 	}
@@ -82,7 +82,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends HtmlContent<C>>
-		public static interface Head<C extends Content> extends Content {
+		public static interface Head<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -92,7 +92,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Title<C extends MetadataContent<C>> extends Content {
+		public static interface Title<C extends MetadataContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -101,7 +101,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Base<C extends MetadataContent<C>> extends Content {
+		public static interface Base<C extends MetadataContent<C>> extends Content<C> {
 			/**
 			 * Opens a new base element.
 			 * <ul>
@@ -140,7 +140,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Link<C extends UnionContent.Metadata_Phrasing<C>> extends Content {
+		public static interface Link<C extends UnionContent.Metadata_Phrasing<C>> extends Content<C> {
 			/**
 			 * Opens a new link element.
 			 * <ul>
@@ -182,7 +182,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Meta<C extends UnionContent.Metadata_Phrasing<C>> extends Content {
+		public static interface Meta<C extends UnionContent.Metadata_Phrasing<C>> extends Content<C> {
 			/**
 			 * Opens a new meta element.
 			 * <ul>
@@ -252,7 +252,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Style<C extends MetadataContent<C>> extends Content {
+		public static interface Style<C extends MetadataContent<C>> extends Content<C> {
 			/**
 			 * Opens a new style element.
 			 * <ul>
@@ -339,7 +339,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends HtmlContent<C>>
-		public static interface Body<C extends Content> extends Content {
+		public static interface Body<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -349,7 +349,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Article<C extends SectioningContent<C>> extends Content {
+		public static interface Article<C extends SectioningContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -359,7 +359,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Section<C extends SectioningContent<C>> extends Content {
+		public static interface Section<C extends SectioningContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -369,7 +369,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Nav<C extends SectioningContent<C>> extends Content {
+		public static interface Nav<C extends SectioningContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -379,7 +379,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Aside<C extends SectioningContent<C>> extends Content {
+		public static interface Aside<C extends SectioningContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -388,7 +388,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface H1<C extends HeadingContent<C>> extends Content {
+		public static interface H1<C extends HeadingContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new h1 element.
@@ -455,7 +455,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface H2<C extends HeadingContent<C>> extends Content {
+		public static interface H2<C extends HeadingContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new h2 element.
@@ -522,7 +522,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface H3<C extends HeadingContent<C>> extends Content {
+		public static interface H3<C extends HeadingContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new h3 element.
@@ -589,7 +589,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface H4<C extends HeadingContent<C>> extends Content {
+		public static interface H4<C extends HeadingContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new h4 element.
@@ -656,7 +656,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface H5<C extends HeadingContent<C>> extends Content {
+		public static interface H5<C extends HeadingContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new h5 element.
@@ -723,7 +723,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface H6<C extends HeadingContent<C>> extends Content {
+		public static interface H6<C extends HeadingContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new h6 element.
@@ -791,7 +791,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Hgroup<C extends HeadingContent<C>> extends Content {
+		public static interface Hgroup<C extends HeadingContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -801,7 +801,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Header<C extends PalpableContent<C>> extends Content {
+		public static interface Header<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -811,7 +811,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Footer<C extends PalpableContent<C>> extends Content {
+		public static interface Footer<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -821,7 +821,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Address<C extends PalpableContent<C>> extends Content {
+		public static interface Address<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 	}
@@ -839,7 +839,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface P<C extends PalpableContent<C>> extends Content {
+		public static interface P<C extends PalpableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new p element.
@@ -909,7 +909,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Hr<C extends FlowContent<C>> extends Content {
+		public static interface Hr<C extends FlowContent<C>> extends Content<C> {
 			/**
 			 * Opens a new hr element.
 			 * <ul>
@@ -942,7 +942,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Pre<C extends PalpableContent<C>> extends Content {
+		public static interface Pre<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -954,7 +954,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Blockquote<C extends PalpableContent<C>> extends Content {
+		public static interface Blockquote<C extends PalpableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new blockquote element.
@@ -1027,7 +1027,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ol<C extends PalpableContent<C>> extends Content {
+		public static interface Ol<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1037,7 +1037,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ul<C extends PalpableContent<C>> extends Content {
+		public static interface Ul<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1047,7 +1047,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Menu<C extends InteractiveContent<C>> extends Content {
+		public static interface Menu<C extends InteractiveContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1058,7 +1058,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends ListContent<C>>
-		public static interface Li<C extends Content> extends Content {
+		public static interface Li<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1068,7 +1068,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Dl<C extends PalpableContent<C>> extends Content {
+		public static interface Dl<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1079,7 +1079,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends TODO<C>>
-		public static interface Dt<C extends Content> extends Content {
+		public static interface Dt<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1090,7 +1090,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends TODO<C>>
-		public static interface Dd<C extends Content> extends Content {
+		public static interface Dd<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1100,7 +1100,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Figure<C extends PalpableContent<C>> extends Content {
+		public static interface Figure<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1111,7 +1111,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends FigcaptionContent<C>> (where FigcaptionContent extends FlowContent + Figcaption)
-		public static interface Figcaption<C extends Content> extends Content {
+		public static interface Figcaption<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1121,7 +1121,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Main<C extends PalpableContent<C>> extends Content {
+		public static interface Main<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1131,7 +1131,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Div<C extends PalpableContent<C>> extends Content {
+		public static interface Div<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 	}
@@ -1149,7 +1149,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface A<C extends UnionContent.Interactive_Phrasing<C>> extends Content {
+		public static interface A<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 			/**
 			 * Opens a new a element.
 			 * <p>
@@ -1237,7 +1237,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Em<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Em<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1247,7 +1247,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Strong<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Strong<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1257,7 +1257,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Small<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Small<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1267,7 +1267,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface S<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface S<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1277,7 +1277,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Cite<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Cite<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1289,7 +1289,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Q<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Q<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 
 			/**
 			 * Opens a new q element.
@@ -1362,7 +1362,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Dfn<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Dfn<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1372,7 +1372,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Abbr<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Abbr<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1382,7 +1382,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ruby<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Ruby<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1393,7 +1393,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends RubyContent<C>>
-		public static interface Rt<C extends Content> extends Content {
+		public static interface Rt<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1404,7 +1404,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends RubyContent<C>>
-		public static interface Rp<C extends Content> extends Content {
+		public static interface Rp<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1414,7 +1414,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Data<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Data<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1424,7 +1424,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Time<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Time<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1434,7 +1434,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Code<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Code<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1444,7 +1444,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Var<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Var<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1454,7 +1454,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Samp<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Samp<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1464,7 +1464,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Kbd<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Kbd<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1474,7 +1474,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Sub<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Sub<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1484,7 +1484,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Sup<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Sup<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1493,7 +1493,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface I<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface I<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			/**
 			 * Opens a new i element.
 			 * <p>
@@ -1559,7 +1559,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface B<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface B<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			/**
 			 * Opens a new b element.
 			 * <p>
@@ -1625,7 +1625,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface U<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface U<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			/**
 			 * Opens a new u element.
 			 * <p>
@@ -1692,7 +1692,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Mark<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Mark<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1702,7 +1702,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Bdi<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Bdi<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1712,7 +1712,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Bdo<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Bdo<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1722,7 +1722,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Span<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Span<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1734,7 +1734,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Br<C extends PhrasingContent<C>> extends Content {
+		public static interface Br<C extends PhrasingContent<C>> extends Content<C> {
 			/**
 			 * Opens a new br element.
 			 * <ul>
@@ -1767,7 +1767,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Wbr<C extends PhrasingContent<C>> extends Content {
+		public static interface Wbr<C extends PhrasingContent<C>> extends Content<C> {
 			// TODO
 		}
 	}
@@ -1786,7 +1786,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Ins<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Ins<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1796,7 +1796,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Del<C extends PhrasingContent<C>> extends Content {
+		public static interface Del<C extends PhrasingContent<C>> extends Content<C> {
 			// TODO
 		}
 	}
@@ -1815,7 +1815,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Picture<C extends EmbeddedContent<C>> extends Content {
+		public static interface Picture<C extends EmbeddedContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1826,7 +1826,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends TODO<C>>
-		public static interface Source<C extends Content> extends Content {
+		public static interface Source<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1838,7 +1838,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Img<C extends UnionContent.Embedded_Interactive<C>> extends Content {
+		public static interface Img<C extends UnionContent.Embedded_Interactive<C>> extends Content<C> {
 			/**
 			 * Opens a new img element.
 			 * <ul>
@@ -1858,7 +1858,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Iframe<C extends UnionContent.Embedded_Interactive<C>> extends Content {
+		public static interface Iframe<C extends UnionContent.Embedded_Interactive<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1868,7 +1868,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Embed<C extends UnionContent.Embedded_Interactive<C>> extends Content {
+		public static interface Embed<C extends UnionContent.Embedded_Interactive<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1878,7 +1878,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Object<C extends UnionContent.Embedded_Interactive<C>> extends Content {
+		public static interface Object<C extends UnionContent.Embedded_Interactive<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1892,7 +1892,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		// TODO: <C extends ObjectContent<C>>
-		public static interface Param<C extends Content> extends Content {
+		public static interface Param<C extends Content<C>> extends Content<C> {
 			/**
 			 * Opens a new param element.
 			 * <ul>
@@ -1929,7 +1929,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Video<C extends UnionContent.Embedded_Interactive<C>> extends Content {
+		public static interface Video<C extends UnionContent.Embedded_Interactive<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1939,7 +1939,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Audio<C extends UnionContent.Embedded_Interactive<C>> extends Content {
+		public static interface Audio<C extends UnionContent.Embedded_Interactive<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1950,7 +1950,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends MediaContent<C>>
-		public static interface Track<C extends Content> extends Content {
+		public static interface Track<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1960,7 +1960,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Map<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Map<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -1969,7 +1969,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Area<C extends PhrasingContent<C>> extends Content {
+		public static interface Area<C extends PhrasingContent<C>> extends Content<C> {
 			/**
 			 * Opens a new area element.
 			 * <ul>
@@ -2104,7 +2104,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Table<C extends PalpableContent<C>> extends Content {
+		public static interface Table<C extends PalpableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new table element.
@@ -2159,7 +2159,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Caption<C extends TableContent<C>> extends Content {
+		public static interface Caption<C extends TableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new caption element.
@@ -2226,7 +2226,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Colgroup<C extends TableContent<C>> extends Content {
+		public static interface Colgroup<C extends TableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new colgroup element.
@@ -2285,7 +2285,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Col<C extends ColgroupContent<C>> extends Content {
+		public static interface Col<C extends ColgroupContent<C>> extends Content<C> {
 			/**
 			 * Opens a new col element.
 			 * <ul>
@@ -2305,7 +2305,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Tbody<C extends TableContent<C>> extends Content {
+		public static interface Tbody<C extends TableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new tbody element.
@@ -2360,7 +2360,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Thead<C extends TableContent<C>> extends Content {
+		public static interface Thead<C extends TableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new thead element.
@@ -2415,7 +2415,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Tfoot<C extends TableContent<C>> extends Content {
+		public static interface Tfoot<C extends TableContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new tfoot element.
@@ -2470,7 +2470,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Tr<C extends TbodyTheadTfootContent<C>> extends Content {
+		public static interface Tr<C extends TbodyTheadTfootContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new tr element.
@@ -2525,7 +2525,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Td<C extends TrContent<C>> extends Content {
+		public static interface Td<C extends TrContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new td element.
@@ -2592,7 +2592,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Th<C extends TrContent<C>> extends Content {
+		public static interface Th<C extends TrContent<C>> extends Content<C> {
 
 			/**
 			 * Opens a new th element.
@@ -2669,7 +2669,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Form<C extends PalpableContent<C>> extends Content {
+		public static interface Form<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -2679,7 +2679,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Label<C extends UnionContent.Interactive_Phrasing<C>> extends Content {
+		public static interface Label<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -2692,7 +2692,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Input<C extends UnionContent.Interactive_Phrasing<C>> extends Content {
+		public static interface Input<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 
 			/**
 			 * Specialized input implementations.
@@ -3105,7 +3105,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Button<C extends UnionContent.Interactive_Phrasing<C>> extends Content {
+		public static interface Button<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3115,7 +3115,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Select<C extends UnionContent.Interactive_Phrasing<C>> extends Content {
+		public static interface Select<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3125,7 +3125,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Datalist<C extends PhrasingContent<C>> extends Content {
+		public static interface Datalist<C extends PhrasingContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3136,7 +3136,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends SelectContent<C>>
-		public static interface Optgroup<C extends Content> extends Content {
+		public static interface Optgroup<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3149,7 +3149,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		// TODO: <C extends TODO<C>>
-		public static interface Option<C extends Content> extends Content {
+		public static interface Option<C extends Content<C>> extends Content<C> {
 			/**
 			 * Opens a new option element.
 			 * <ul>
@@ -3182,7 +3182,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Textarea<C extends UnionContent.Interactive_Phrasing<C>> extends Content {
+		public static interface Textarea<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3192,7 +3192,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Output<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Output<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3202,7 +3202,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Progress<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Progress<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3212,7 +3212,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Meter<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
+		public static interface Meter<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3222,7 +3222,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Fieldset<C extends PalpableContent<C>> extends Content {
+		public static interface Fieldset<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3233,7 +3233,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends FieldsetContent<C>>
-		public static interface Legend<C extends Content> extends Content {
+		public static interface Legend<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 	}
@@ -3252,7 +3252,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Details<C extends InteractiveContent<C>> extends Content {
+		public static interface Details<C extends InteractiveContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3263,7 +3263,7 @@ public class Contents {
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
 		// TODO: <C extends DetailsContent<C>>
-		public static interface Summary<C extends Content> extends Content {
+		public static interface Summary<C extends Content<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3273,7 +3273,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Dialog<C extends FlowContent<C>> extends Content {
+		public static interface Dialog<C extends FlowContent<C>> extends Content<C> {
 			// TODO
 		}
 	}
@@ -3294,7 +3294,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Script<C extends ScriptSupportingContent<C>> extends Content {
+		public static interface Script<C extends ScriptSupportingContent<C>> extends Content<C> {
 			/**
 			 * Opens a new script element.
 			 * <ul>
@@ -3366,7 +3366,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Noscript<C extends UnionContent.Metadata_Phrasing<C>> extends Content {
+		public static interface Noscript<C extends UnionContent.Metadata_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3376,7 +3376,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Template<C extends UnionContent.Colgroup_ScriptSupporting<C>> extends Content {
+		public static interface Template<C extends UnionContent.Colgroup_ScriptSupporting<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3386,7 +3386,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Slot<C extends PhrasingContent<C>> extends Content {
+		public static interface Slot<C extends PhrasingContent<C>> extends Content<C> {
 			// TODO
 		}
 
@@ -3396,7 +3396,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Canvas<C extends UnionContent.Embedded_Palpable_Phrasing<C>> extends Content {
+		public static interface Canvas<C extends UnionContent.Embedded_Palpable_Phrasing<C>> extends Content<C> {
 			// TODO
 		}
 	}

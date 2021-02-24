@@ -37,7 +37,7 @@ public interface ScriptSupportingContent<C extends ScriptSupportingContent<C>> e
 	//
 	// Content models:
 	//
-	// Inherited from Colgroup_ScriptSupporting: Content
+	// Inherited from Colgroup_ScriptSupporting: Content<C>
 	//
 	// Content types:
 	//

@@ -33,11 +33,11 @@ public interface ColgroupContent<C extends ColgroupContent<C>> extends
 	//
 	// Unions:
 	//
-	// Inherited: Colgroup_ScriptSupporting
+	UnionContent.Colgroup_ScriptSupporting<C>,
 	//
 	// Content models:
 	//
-	// Inherited from Colgroup_ScriptSupporting: Content
+	// Inherited from Colgroup_ScriptSupporting: Content<C>
 	//
 	// Content types:
 	//

@@ -55,7 +55,7 @@ public class Document implements
 	//
 	// Content models:
 	//
-	// Inherited from ColgroupContent, FlowContent, MetadataContent, TableContent, and TrContent: Content
+	// Inherited from ColgroupContent, FlowContent, MetadataContent, TableContent, and TrContent: Content<Document>
 	ColgroupContent<Document>,
 	MetadataContent<Document>,
 	FlowContent<Document>,
@@ -72,7 +72,7 @@ public class Document implements
 	//
 	// Content types:
 	//
-	Contents.Document.Html<Document>,
+	Contents.Document.Html,
 	Contents.Metadata.Head<Document>,
 	// Inherited from MetadataContent: Contents.Metadata.Title<Document>
 	// Inherited from MetadataContent: Contents.Metadata.Base<Document>

@@ -38,7 +38,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 // TODO: <PC extends ObjectContent<PC>>
-public class Param<PC extends Content> extends VoidElement<Param<PC>, PC> implements
+public class Param<PC extends Content<PC>> extends VoidElement<Param<PC>, PC> implements
 	Attributes.Text.Name<Param<PC>>,
 	// TODO: type (deprecated)
 	Attributes.Text.Value<Param<PC>>

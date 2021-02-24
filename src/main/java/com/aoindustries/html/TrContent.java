@@ -33,7 +33,7 @@ public interface TrContent<C extends TrContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from ScriptSupportingContent: Content
+	// Inherited from ScriptSupportingContent: Content<C>
 	ScriptSupportingContent<C>,
 	//
 	// Content types:

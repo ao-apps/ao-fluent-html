@@ -36,7 +36,7 @@ public interface SectioningContent<C extends SectioningContent<C>> extends
 	//
 	// Content models:
 	//
-	Content,
+	Content<C>,
 	//
 	// Content types:
 	//

@@ -38,44 +38,29 @@ import java.io.IOException;
  */
 abstract public class NormalTextElement<
 	E  extends NormalTextElement<E, PC, C, CC>,
-	PC extends Content,
-	C  extends NormalTextElement.NormalTextContent<PC, C>  & UnionContent.Palpable_Phrasing<C>,
+	PC extends Content<PC>,
+	C  extends NormalTextElement.NormalTextContent<PC, C>,
 	// Would prefer "CC extends C & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	CC extends NormalTextElement.NormalTextContent<PC, CC> & UnionContent.Palpable_Phrasing<CC> & Closeable<PC>
+	CC extends NormalTextElement.CloseableNormalTextContent<PC, CC>
 > extends NormalElement<E, PC, C, CC> {
 
 	public static abstract class NormalTextContent<
-		PC extends Content,
-		C  extends UnionContent.Palpable_Phrasing<C>
-	>
-		extends NormalContent<PC>
-		implements TextContent<C> {
+		PC extends Content<PC>,
+		C  extends NormalTextContent<PC, C>
+	> extends NormalContent<PC, C> implements UnionContent.Palpable_Phrasing<C> {
 
-		protected NormalTextContent(NormalTextElement<?, PC, ?, ?> element) {
+		protected NormalTextContent(NormalTextElement<?, PC, C, ?> element) {
 			super(element);
-		}
-
-		@Override
-		public Document getDocument() {
-			return element.document;
 		}
 	}
 
 	public static abstract class CloseableNormalTextContent<
-		PC extends Content,
-		C  extends UnionContent.Palpable_Phrasing<C>
-	>
-		extends NormalTextContent<PC, C>
-		implements Closeable<PC> {
+		PC extends Content<PC>,
+		CC extends CloseableNormalTextContent<PC, CC>
+	> extends CloseableNormalContent<PC, CC> implements UnionContent.Palpable_Phrasing<CC> {
 
-		protected CloseableNormalTextContent(NormalTextElement<?, PC, ?, ?> element) {
+		protected CloseableNormalTextContent(NormalTextElement<?, PC, ?, CC> element) {
 			super(element);
-		}
-
-		@Override
-		public PC __() throws IOException {
-			element.writeClose();
-			return element.pc;
 		}
 	}
 

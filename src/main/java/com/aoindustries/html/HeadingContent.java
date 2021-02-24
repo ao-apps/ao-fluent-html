@@ -36,7 +36,7 @@ public interface HeadingContent<C extends HeadingContent<C>> extends
 	//
 	// Content models:
 	//
-	Content,
+	Content<C>,
 	//
 	// Content types:
 	//

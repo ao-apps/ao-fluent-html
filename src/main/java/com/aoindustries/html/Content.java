@@ -29,9 +29,12 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides</a>.</li>
  * </ul>
  *
+ * @param  <C>  This content model, which will be the parent content model of child elements
+ *
  * @author  AO Industries, Inc.
  */
-public interface Content {
+public interface Content<C extends Content<C>> {
+
 	/**
 	 * Gets the document for the current content model.  The document can be used to
 	 * perform raw output or write elements not expected in the current context.

@@ -38,7 +38,7 @@ public interface TableContent<C extends TableContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from TbodyTheadTfootContent: Content
+	// Inherited from TbodyTheadTfootContent: Content<C>
 	// Inherited from TbodyTheadTfootContent: ScriptSupportingContent<C>
 	TbodyTheadTfootContent<C>,
 	//

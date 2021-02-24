@@ -37,18 +37,20 @@ import java.io.IOException;
  */
 abstract public class NormalElement<
 	E  extends NormalElement<E, PC, C, CC>,
-	PC extends Content,
-	C  extends NormalElement.NormalContent<PC> /*Content*/,
+	PC extends Content<PC>,
+	C  extends NormalElement.NormalContent<PC, C>,
 	// Would prefer "CC extends C & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	CC extends NormalElement.NormalContent<PC> & Closeable<PC>
+	CC extends NormalElement.CloseableNormalContent<PC, CC>
 > extends Element<E, PC> {
 
-	public static abstract class NormalContent<PC extends Content>
-		implements Content {
+	public static abstract class NormalContent<
+		PC extends Content<PC>,
+		C  extends NormalContent<PC, C>
+	> implements Content<C> {
 
-		protected final NormalElement<?, PC, ?, ?> element;
+		protected final NormalElement<?, PC, C, ?> element;
 
-		protected NormalContent(NormalElement<?, PC, ?, ?> element) {
+		protected NormalContent(NormalElement<?, PC, C, ?> element) {
 			this.element = element;
 		}
 
@@ -58,12 +60,21 @@ abstract public class NormalElement<
 		}
 	}
 
-	public static abstract class CloseableNormalContent<PC extends Content>
-		extends NormalContent<PC>
-		implements Closeable<PC> {
+	// TODO: Can this extend NormalContent?  Should it?
+	public static abstract class CloseableNormalContent<
+		PC extends Content<PC>,
+		CC extends CloseableNormalContent<PC, CC>
+	> implements Content<CC>, Closeable<PC> {
 
-		protected CloseableNormalContent(NormalElement<?, PC, ?, ?> element) {
-			super(element);
+		protected final NormalElement<?, PC, ?, CC> element;
+
+		protected CloseableNormalContent(NormalElement<?, PC, ?, CC> element) {
+			this.element = element;
+		}
+
+		@Override
+		public Document getDocument() {
+			return element.document;
 		}
 
 		@Override

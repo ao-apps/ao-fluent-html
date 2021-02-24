@@ -40,18 +40,18 @@ public interface MetadataContent<C extends MetadataContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from Metadata_Phrasing: Content
-	// Inherited from Metadata_Phrasing: ScriptSupportingContent
+	// Inherited from Metadata_Phrasing: Content<C>
+	// Inherited from Metadata_Phrasing: ScriptSupportingContent<C>
 	//
 	// Content types:
 	//
 	Contents.Metadata.Base<C>,
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<PC>
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<PC>
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<PC>
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>
+	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<C>
+	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<C>
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<C>
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<C>
 	Contents.Metadata.Style<C>,
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<PC> // WHATWG only
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<C> // WHATWG only
 	Contents.Metadata.Title<C>
 {
 }

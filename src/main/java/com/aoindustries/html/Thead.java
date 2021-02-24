@@ -38,7 +38,7 @@ public class Thead<PC extends TableContent<PC>> extends
 {
 
 	public static class TheadContent<PC extends TableContent<PC>> extends
-		NormalContent<PC> implements
+		NormalContent<PC, TheadContent<PC>> implements
 		TbodyTheadTfootContent<TheadContent<PC>> {
 
 		protected TheadContent(Thead<PC> element) {
@@ -47,7 +47,7 @@ public class Thead<PC extends TableContent<PC>> extends
 	}
 
 	public static class TheadCloseableContent<PC extends TableContent<PC>> extends
-		CloseableNormalContent<PC> implements
+		CloseableNormalContent<PC, TheadCloseableContent<PC>> implements
 		TbodyTheadTfootContent<TheadCloseableContent<PC>> {
 
 		protected TheadCloseableContent(Thead<PC> element) {

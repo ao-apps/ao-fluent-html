@@ -51,7 +51,7 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		Content,
+		Content<C>,
 		//
 		// Content types:
 		//
@@ -68,7 +68,7 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		Content,
+		Content<C>,
 		//
 		// Content types:
 		//
@@ -91,7 +91,7 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		Content,
+		Content<C>,
 		//
 		// Content types:
 		//
@@ -114,22 +114,22 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		// Inherited from Embedded_Interactive: Content
+		// Inherited from Embedded_Interactive: Content<C>
 		//
 		// Content types:
 		//
 		Contents.Text.A<C>,
-		// Inherited from Embedded_Interactive: Contents.Embedded.Audio<PC>
+		// Inherited from Embedded_Interactive: Contents.Embedded.Audio<C>
 		Contents.Forms.Button<C>,
-		// Inherited from Embedded_Interactive: Contents.Embedded.Embed<PC>
+		// Inherited from Embedded_Interactive: Contents.Embedded.Embed<C>
 		Contents.Forms.Input<C>,
-		// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<PC>
-		// Inherited from Embedded_Interactive: Contents.Embedded.Img<PC>
+		// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<C>
+		// Inherited from Embedded_Interactive: Contents.Embedded.Img<C>
 		Contents.Forms.Label<C>,
-		// Inherited from Embedded_Interactive: Contents.Embedded.Object<PC>
+		// Inherited from Embedded_Interactive: Contents.Embedded.Object<C>
 		Contents.Forms.Select<C>,
 		Contents.Forms.Textarea<C>
-		// Inherited from Embedded_Interactive: Contents.Embedded.Video<PC>
+		// Inherited from Embedded_Interactive: Contents.Embedded.Video<C>
 	{
 	}
 
@@ -142,7 +142,7 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		// Inherited from ScriptSupportingContent: Content
+		// Inherited from ScriptSupportingContent: Content<C>
 		ScriptSupportingContent<C>,
 		//
 		// Content types:
@@ -169,54 +169,54 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		// Inherited from Embedded_Palpable_Phrasing and Interactive_Phrasing: Content
+		// Inherited from Embedded_Palpable_Phrasing and Interactive_Phrasing: Content<C>
 		//
 		// Content types:
 		//
-		// Inherited from Interactive_Phrasing: Contents.Text.A<PC>
+		// Inherited from Interactive_Phrasing: Contents.Text.A<C>
 		Contents.Text.Abbr<C>,
-		// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<PC>
+		// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<C>
 		Contents.Text.B<C>,
 		Contents.Text.Bdi<C>,
 		Contents.Text.Bdo<C>,
-		// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>
-		// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>
+		// Inherited from Interactive_Phrasing: Contents.Forms.Button<C>
+		// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<C>
 		Contents.Text.Cite<C>,
 		Contents.Text.Code<C>,
 		Contents.Text.Data<C>,
 		Contents.Text.Dfn<C>,
 		Contents.Text.Em<C>,
-		// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<PC>
+		// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<C>
 		Contents.Text.I<C>,
-		// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<PC>
-		// Inherited from Interactive_Phrasing: Contents.Embedded.Img<PC>
-		// Inherited from Interactive_Phrasing: Contents.Forms.Input<PC>
+		// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<C>
+		// Inherited from Interactive_Phrasing: Contents.Embedded.Img<C>
+		// Inherited from Interactive_Phrasing: Contents.Forms.Input<C>
 		Contents.Edits.Ins<C>,
 		Contents.Text.Kbd<C>,
-		// Inherited from Interactive_Phrasing: Contents.Forms.Label<PC>
+		// Inherited from Interactive_Phrasing: Contents.Forms.Label<C>
 		Contents.Embedded.Map<C>,
 		Contents.Text.Mark<C>,
 		// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
 		Contents.Forms.Meter<C>,
-		// Inherited from Interactive_Phrasing: Contents.Embedded.Object<PC>
+		// Inherited from Interactive_Phrasing: Contents.Embedded.Object<C>
 		Contents.Forms.Output<C>,
 		Contents.Forms.Progress<C>,
 		Contents.Text.Q<C>,
 		Contents.Text.Ruby<C>,
 		Contents.Text.S<C>,
 		Contents.Text.Samp<C>,
-		// Inherited from Interactive_Phrasing: Contents.Forms.Select<PC>
+		// Inherited from Interactive_Phrasing: Contents.Forms.Select<C>
 		Contents.Text.Small<C>,
 		Contents.Text.Span<C>,
 		Contents.Text.Strong<C>,
 		Contents.Text.Sub<C>,
 		Contents.Text.Sup<C>,
 		// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
-		// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<PC>
+		// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<C>
 		Contents.Text.Time<C>,
 		Contents.Text.U<C>,
 		Contents.Text.Var<C>,
-		// Inherited from Interactive_Phrasing: Contents.Embedded.Video<PC>
+		// Inherited from Interactive_Phrasing: Contents.Embedded.Video<C>
 		// TODO: autonomous custom elements
 		TextContent<C> // that is not inter-element whitespace
 	{

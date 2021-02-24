@@ -32,7 +32,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface Closeable<PC extends Content> extends java.io.Closeable {
+public interface Closeable<PC extends Content<PC>> extends java.io.Closeable {
 
 	/**
 	 * Closes the content and ends the parent tag.

@@ -43,6 +43,23 @@ public class UnionContent {
 	private UnionContent() {}
 
 	/**
+	 * Elements that are common to both {@link ColgroupContent} and {@link ScriptSupportingContent}.
+	 *
+	 * @param  <C>  This content model, which will be the parent content model of child elements
+	 */
+	public static interface Colgroup_ScriptSupporting<C extends Colgroup_ScriptSupporting<C>> extends
+		//
+		// Content models:
+		//
+		Content,
+		//
+		// Content types:
+		//
+		Contents.Scripting.Template<C>
+	{
+	}
+
+	/**
 	 * Elements that are common to both {@link EmbeddedContent} and {@link InteractiveContent}.
 	 *
 	 * @param  <C>  This content model, which will be the parent content model of child elements
@@ -125,15 +142,16 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		Content,
+		// Inherited from ScriptSupportingContent: Content
+		ScriptSupportingContent<C>,
 		//
 		// Content types:
 		//
 		Contents.Metadata.Link<C>,
 		Contents.Metadata.Meta<C>,
-		Contents.Scripting.Noscript<C>,
-		Contents.Scripting.Script<C>,
-		Contents.Scripting.Template<C>
+		Contents.Scripting.Noscript<C>
+		// Inherited from ScriptSupportingContent: Contents.Scripting.Script<C>
+		// Inherited from ScriptSupportingContent: Contents.Scripting.Template<C>
 	{
 	}
 
@@ -162,7 +180,7 @@ public class UnionContent {
 		Contents.Text.Bdi<C>,
 		Contents.Text.Bdo<C>,
 		// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>
-		// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
+		// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>
 		Contents.Text.Cite<C>,
 		Contents.Text.Code<C>,
 		Contents.Text.Data<C>,

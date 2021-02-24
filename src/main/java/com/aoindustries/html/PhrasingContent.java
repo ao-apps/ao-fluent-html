@@ -41,66 +41,67 @@ public interface PhrasingContent<C extends PhrasingContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Content,
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Content
 	EmbeddedContent<C>,
+	// Inherited from Metadata_Phrasing: ScriptSupportingContent
 	//
 	// Content types:
 	//
-	// Inherited from Palpable_Phrasing: Contents.Text.A<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Abbr<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.A<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Abbr<PC>
 	Contents.Embedded.Area<C>, // if a descendent of map
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Audio<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.B<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Bdi<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Bdo<PC>,
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Audio<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.B<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Bdi<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Bdo<PC>
 	Contents.Text.Br<C>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Button<PC>,
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Cite<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Code<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Data<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Forms.Button<PC>
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Scripting.Canvas<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Cite<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Code<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Data<PC>
 	Contents.Forms.Datalist<C>,
 	Contents.Edits.Del<C>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Dfn<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Em<PC>,
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Embed<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.I<PC>,
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Iframe<PC>,
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Img<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Input<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Edits.Ins<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Kbd<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Label<PC>,
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<PC>, // if it is allowed in body
-	// Inherited from Palpable_Phrasing: Contents.Embedded.Map<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Mark<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Dfn<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Em<PC>
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Embed<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.I<PC>
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Iframe<PC>
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Img<PC>
+	// Inherited from Palpable_Phrasing: Contents.Forms.Input<PC>
+	// Inherited from Palpable_Phrasing: Contents.Edits.Ins<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Kbd<PC>
+	// Inherited from Palpable_Phrasing: Contents.Forms.Label<PC>
+	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<PC> // if it is allowed in body
+	// Inherited from Palpable_Phrasing: Contents.Embedded.Map<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Mark<PC>
 	// Inherited from Palpable_Phrasing: // TODO: MathML math
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<PC>, // if the itemprop attribute is present
-	// Inherited from Palpable_Phrasing: Contents.Forms.Meter<PC>,
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<PC>,
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Object<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Output<PC>,
-	// Inherited from EmbeddedContent: Contents.Embedded.Picture<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Progress<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Q<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Ruby<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.S<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Samp<PC>,
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Select<PC>,
+	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<PC> // if the itemprop attribute is present
+	// Inherited from Palpable_Phrasing: Contents.Forms.Meter<PC>
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<PC>
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Object<PC>
+	// Inherited from Palpable_Phrasing: Contents.Forms.Output<PC>
+	// Inherited from EmbeddedContent: Contents.Embedded.Picture<PC>
+	// Inherited from Palpable_Phrasing: Contents.Forms.Progress<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Q<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Ruby<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.S<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Samp<PC>
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>
+	// Inherited from Palpable_Phrasing: Contents.Forms.Select<PC>
 	Contents.Scripting.Slot<C>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Small<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Span<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Strong<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Sub<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Sup<PC>,
+	// Inherited from Palpable_Phrasing: Contents.Text.Small<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Span<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Strong<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Sub<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Sup<PC>
 	// Inherited from Palpable_Phrasing: // TODO: SVG svg
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Textarea<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Time<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.U<PC>,
-	// Inherited from Palpable_Phrasing: Contents.Text.Var<PC>,
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Video<PC>,
+	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<PC>
+	// Inherited from Palpable_Phrasing: Contents.Forms.Textarea<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Time<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.U<PC>
+	// Inherited from Palpable_Phrasing: Contents.Text.Var<PC>
+	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Video<PC>
 	Contents.Text.Wbr<C>
 	// Inherited from Palpable_Phrasing: // TODO: autonomous custom elements
 	// Inherited from Palpable_Phrasing: TextContent<PC>

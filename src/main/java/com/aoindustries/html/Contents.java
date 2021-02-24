@@ -2104,9 +2104,54 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface Table<C extends PalpableContent<C>> extends Content {
-			// TODO
+
+			/**
+			 * Opens a new table element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Table<C> table() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Table<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a table element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C table__(IORunnableE<Ex> table) throws IOException, Ex {
+				return table().__(table);
+			}
+
+			/**
+			 * Creates a table element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C table__(IOConsumerE<? super com.aoindustries.html.Table.TableContent<C>, Ex> table) throws IOException, Ex {
+				return table().__(table);
+			}
+
+			/**
+			 * Creates an empty table element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C table__() throws IOException {
+				return table().__();
+			}
 		}
 
 		/**
@@ -2114,10 +2159,66 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TableContent<C>>
-		public static interface Caption<C extends Content> extends Content {
-			// TODO
+		public static interface Caption<C extends TableContent<C>> extends Content {
+
+			/**
+			 * Opens a new caption element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-caption-element">4.9.2 The caption element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Caption<C> caption() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Caption<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a caption element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-caption-element">4.9.2 The caption element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C caption__(IORunnableE<Ex> caption) throws IOException, Ex {
+				return caption().__(caption);
+			}
+
+			/**
+			 * Creates a caption element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-caption-element">4.9.2 The caption element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C caption__(IOConsumerE<? super com.aoindustries.html.Caption.CaptionContent<C>, Ex> caption) throws IOException, Ex {
+				return caption().__(caption);
+			}
+
+			/**
+			 * Creates a caption element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-caption-element">4.9.2 The caption element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C caption__(Object text) throws IOException {
+				return caption().__(text);
+			}
+
+			/**
+			 * Creates an empty caption element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-caption-element">4.9.2 The caption element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C caption__() throws IOException {
+				return caption().__();
+			}
 		}
 
 		/**
@@ -2125,10 +2226,54 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TableContent<C>>
-		public static interface Colgroup<C extends Content> extends Content {
-			// TODO
+		public static interface Colgroup<C extends TableContent<C>> extends Content {
+
+			/**
+			 * Opens a new colgroup element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Colgroup<C> colgroup() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Colgroup<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a colgroup element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C colgroup__(IORunnableE<Ex> colgroup) throws IOException, Ex {
+				return colgroup().__(colgroup);
+			}
+
+			/**
+			 * Creates a colgroup element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C colgroup__(IOConsumerE<? super com.aoindustries.html.Colgroup.ColgroupContent<C>, Ex> colgroup) throws IOException, Ex {
+				return colgroup().__(colgroup);
+			}
+
+			/**
+			 * Creates an empty colgroup element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C colgroup__() throws IOException {
+				return colgroup().__();
+			}
 		}
 
 		/**
@@ -2140,8 +2285,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		// TODO: <C extends ColgroupContent<C>>
-		public static interface Col<C extends Content> extends Content {
+		public static interface Col<C extends ColgroupContent<C>> extends Content {
 			/**
 			 * Opens a new col element.
 			 * <ul>
@@ -2161,10 +2305,54 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TableContent<C>>
-		public static interface Tbody<C extends Content> extends Content {
-			// TODO
+		public static interface Tbody<C extends TableContent<C>> extends Content {
+
+			/**
+			 * Opens a new tbody element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Tbody<C> tbody() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Tbody<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a tbody element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C tbody__(IORunnableE<Ex> tbody) throws IOException, Ex {
+				return tbody().__(tbody);
+			}
+
+			/**
+			 * Creates a tbody element with no attributes and the given body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C tbody__(IOConsumerE<? super com.aoindustries.html.Tbody.TbodyContent<C>, Ex> tbody) throws IOException, Ex {
+				return tbody().__(tbody);
+			}
+
+			/**
+			 * Creates an empty tbody element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C tbody__() throws IOException {
+				return tbody().__();
+			}
 		}
 
 		/**
@@ -2172,10 +2360,54 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TableContent<C>>
-		public static interface Thead<C extends Content> extends Content {
-			// TODO
+		public static interface Thead<C extends TableContent<C>> extends Content {
+
+			/**
+			 * Opens a new thead element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Thead<C> thead() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Thead<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a thead element with no attributes and the given head.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C thead__(IORunnableE<Ex> thead) throws IOException, Ex {
+				return thead().__(thead);
+			}
+
+			/**
+			 * Creates a thead element with no attributes and the given head.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C thead__(IOConsumerE<? super com.aoindustries.html.Thead.TheadContent<C>, Ex> thead) throws IOException, Ex {
+				return thead().__(thead);
+			}
+
+			/**
+			 * Creates an empty thead element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C thead__() throws IOException {
+				return thead().__();
+			}
 		}
 
 		/**
@@ -2183,10 +2415,54 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TableContent<C>>
-		public static interface Tfoot<C extends Content> extends Content {
-			// TODO
+		public static interface Tfoot<C extends TableContent<C>> extends Content {
+
+			/**
+			 * Opens a new tfoot element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Tfoot<C> tfoot() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Tfoot<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a tfoot element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C tfoot__(IORunnableE<Ex> tfoot) throws IOException, Ex {
+				return tfoot().__(tfoot);
+			}
+
+			/**
+			 * Creates a tfoot element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C tfoot__(IOConsumerE<? super com.aoindustries.html.Tfoot.TfootContent<C>, Ex> tfoot) throws IOException, Ex {
+				return tfoot().__(tfoot);
+			}
+
+			/**
+			 * Creates an empty tfoot element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C tfoot__() throws IOException {
+				return tfoot().__();
+			}
 		}
 
 		/**
@@ -2194,10 +2470,54 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TableContent<C>>
-		public static interface Tr<C extends Content> extends Content {
-			// TODO
+		public static interface Tr<C extends TbodyTheadTfootContent<C>> extends Content {
+
+			/**
+			 * Opens a new tr element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Tr<C> tr() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Tr<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a tr element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C tr__(IORunnableE<Ex> tr) throws IOException, Ex {
+				return tr().__(tr);
+			}
+
+			/**
+			 * Creates a tr element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C tr__(IOConsumerE<? super com.aoindustries.html.Tr.TrContent<C>, Ex> tr) throws IOException, Ex {
+				return tr().__(tr);
+			}
+
+			/**
+			 * Creates an empty tr element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C tr__() throws IOException {
+				return tr().__();
+			}
 		}
 
 		/**
@@ -2205,10 +2525,66 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TrContent<C>>
-		public static interface Td<C extends Content> extends Content {
-			// TODO
+		public static interface Td<C extends TrContent<C>> extends Content {
+
+			/**
+			 * Opens a new td element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-td-element">4.9.9 The td element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Td<C> td() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Td<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a td element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-td-element">4.9.9 The td element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C td__(IORunnableE<Ex> td) throws IOException, Ex {
+				return td().__(td);
+			}
+
+			/**
+			 * Creates a td element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-td-element">4.9.9 The td element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C td__(IOConsumerE<? super com.aoindustries.html.Td.TdContent<C>, Ex> td) throws IOException, Ex {
+				return td().__(td);
+			}
+
+			/**
+			 * Creates a td element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-td-element">4.9.9 The td element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C td__(Object text) throws IOException {
+				return td().__(text);
+			}
+
+			/**
+			 * Creates an empty td element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-td-element">4.9.9 The td element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C td__() throws IOException {
+				return td().__();
+			}
 		}
 
 		/**
@@ -2216,10 +2592,66 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		@SuppressWarnings("MarkerInterface") // TODO
-		// TODO: <C extends TrContent<C>>
-		public static interface Th<C extends Content> extends Content {
-			// TODO
+		public static interface Th<C extends TrContent<C>> extends Content {
+
+			/**
+			 * Opens a new th element.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-th-element">4.9.10 The th element</a>.
+			 * </p>
+			 */
+			default com.aoindustries.html.Th<C> th() throws IOException {
+				@SuppressWarnings("unchecked") C pc = (C)this;
+				return new com.aoindustries.html.Th<>(getDocument(), pc).writeOpen();
+			}
+
+			/**
+			 * Creates a th element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-th-element">4.9.10 The th element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C th__(IORunnableE<Ex> th) throws IOException, Ex {
+				return th().__(th);
+			}
+
+			/**
+			 * Creates a th element with no attributes and the given foot.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-th-element">4.9.10 The th element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default <Ex extends Throwable> C th__(IOConsumerE<? super com.aoindustries.html.Th.ThContent<C>, Ex> th) throws IOException, Ex {
+				return th().__(th);
+			}
+
+			/**
+			 * Creates a th element with no attributes and a text body.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-th-element">4.9.10 The th element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C th__(Object text) throws IOException {
+				return th().__(text);
+			}
+
+			/**
+			 * Creates an empty th element with no attributes.
+			 * <p>
+			 * See <a href="https://html.spec.whatwg.org/#the-th-element">4.9.10 The th element</a>.
+			 * </p>
+			 *
+			 * @return  This content model, which will be the parent content model of child elements
+			 */
+			default C th__() throws IOException {
+				return th().__();
+			}
 		}
 	}
 
@@ -2862,7 +3294,7 @@ public class Contents {
 		 *
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
-		public static interface Script<C extends UnionContent.Metadata_Phrasing<C>> extends Content {
+		public static interface Script<C extends ScriptSupportingContent<C>> extends Content {
 			/**
 			 * Opens a new script element.
 			 * <ul>
@@ -2944,7 +3376,7 @@ public class Contents {
 		 * @param  <C>  This content model, which will be the parent content model of child elements
 		 */
 		@SuppressWarnings("MarkerInterface") // TODO
-		public static interface Template<C extends UnionContent.Metadata_Phrasing<C>> extends Content {
+		public static interface Template<C extends UnionContent.Colgroup_ScriptSupporting<C>> extends Content {
 			// TODO
 		}
 

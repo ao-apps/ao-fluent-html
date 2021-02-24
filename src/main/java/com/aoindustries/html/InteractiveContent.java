@@ -40,22 +40,22 @@ public interface InteractiveContent<C extends InteractiveContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from Interactive_Phrasing: Content,
+	// Inherited from Interactive_Phrasing: Content
 	//
 	// Content types:
 	//
-	// Inherited from Interactive_Phrasing: Contents.Text.A<PC>, // if the href attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<PC>, // if the controls attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Text.A<PC> // if the href attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<PC> // if the controls attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>
 	Contents.Interactive.Details<C>,
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<PC>,
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<PC>,
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Img<PC>, // if the usemap attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
-	// Inherited from Interactive_Phrasing: Contents.Forms.Label<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<PC>
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<PC>
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Img<PC> // if the usemap attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Forms.Input<PC> // if type attribute is not in the hidden state
+	// Inherited from Interactive_Phrasing: Contents.Forms.Label<PC>
 	Contents.Grouping.Menu<C> // (MDN only) if the type attribute is in the toolbar state
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Object<PC>, // if the usemap attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Forms.Select<PC>,
+	// Inherited from Interactive_Phrasing: Contents.Embedded.Object<PC> // if the usemap attribute is present
+	// Inherited from Interactive_Phrasing: Contents.Forms.Select<PC>
 	// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<PC>
 	// Inherited from Interactive_Phrasing: Contents.Embedded.Video<PC> // if the controls attribute is present
 {

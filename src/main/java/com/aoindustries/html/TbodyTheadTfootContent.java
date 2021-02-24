@@ -23,35 +23,28 @@
 package com.aoindustries.html;
 
 /**
+ * Elements that are common to all three of {@link Tbody}, {@link Thead}, and {@link Tfoot}.
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#metadata-content">3.2.5.2.1 Metadata content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content">Metadata content</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.</li>
  * </ul>
  *
  * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MetadataContent<C extends MetadataContent<C>> extends
-	//
-	// Unions:
-	//
-	UnionContent.Metadata_Phrasing<C>,
+public interface TbodyTheadTfootContent<C extends TbodyTheadTfootContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from Metadata_Phrasing: Content
-	// Inherited from Metadata_Phrasing: ScriptSupportingContent
+	// Inherited from ScriptSupportingContent: Content
+	ScriptSupportingContent<C>,
 	//
 	// Content types:
 	//
-	Contents.Metadata.Base<C>,
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<PC>
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<PC>
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<PC>
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>
-	Contents.Metadata.Style<C>,
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<PC> // WHATWG only
-	Contents.Metadata.Title<C>
+	Contents.Tabular.Tr<C>
+	// Inherited from ScriptSupportingContent: Contents.Scripting.Script<C>
+	// Inherited from ScriptSupportingContent: Contents.Scripting.Template<C>
 {
 }

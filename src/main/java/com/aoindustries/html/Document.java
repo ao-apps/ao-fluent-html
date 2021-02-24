@@ -55,7 +55,8 @@ public class Document implements
 	//
 	// Content models:
 	//
-	// Inherited from FlowContent and MetadataContent: Content
+	// Inherited from ColgroupContent, FlowContent, MetadataContent, TableContent, and TrContent: Content
+	ColgroupContent<Document>,
 	MetadataContent<Document>,
 	FlowContent<Document>,
 	// Inherited from FlowContent: SectioningContent<Document>
@@ -64,6 +65,10 @@ public class Document implements
 	// Inherited from FlowContent: EmbeddedContent<Document>
 	// Inherited from FlowContent: InteractiveContent<Document>
 	// Inherited from FlowContent: PalpableContent<Document>
+	// Inherited from FlowContent, MetadataContent, TableContent, and TrContent: ScriptSupportingContent<Document>
+	TableContent<Document>,
+	TrContent<Document>,
+	// Inherited from TableContent: TbodyTheadTfootContent<Document>
 	//
 	// Content types:
 	//
@@ -150,15 +155,15 @@ public class Document implements
 	// Inherited from FlowContent: // TODO: MathML math
 	// Inherited from FlowContent: // TODO: SVG svg
 	// Inherited from FlowContent: Contents.Tabular.Table<Document>
-	Contents.Tabular.Caption<Document>,
-	Contents.Tabular.Colgroup<Document>,
-	Contents.Tabular.Col<Document>,
-	Contents.Tabular.Tbody<Document>,
-	Contents.Tabular.Thead<Document>,
-	Contents.Tabular.Tfoot<Document>,
-	Contents.Tabular.Tr<Document>,
-	Contents.Tabular.Td<Document>,
-	Contents.Tabular.Th<Document>,
+	// Inherited from TableContent: Contents.Tabular.Caption<Document>
+	// Inherited from TableContent: Contents.Tabular.Colgroup<Document>
+	// Inherited from ColgroupContent: Contents.Tabular.Col<Document>
+	// Inherited from TableContent: Contents.Tabular.Tbody<Document>
+	// Inherited from TableContent: Contents.Tabular.Thead<Document>
+	// Inherited from TableContent: Contents.Tabular.Tfoot<Document>
+	// Inherited from TableContent: Contents.Tabular.Tr<Document>
+	// Inherited from TrContent: Contents.Tabular.Td<Document>
+	// Inherited from TrContent: Contents.Tabular.Th<Document>
 	// Inherited from FlowContent: Contents.Forms.Form<Document>
 	// Inherited from FlowContent: Contents.Forms.Label<Document>
 	// Inherited from FlowContent: Contents.Forms.Input<Document>
@@ -176,9 +181,9 @@ public class Document implements
 	// Inherited from FlowContent: Contents.Interactive.Details<Document>
 	Contents.Interactive.Summary<Document>
 	// Inherited from FlowContent: Contents.Interactive.Dialog<Document>
-	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Script<Document>
+	// Inherited from FlowContent, MetadataContent, TableContent, and TrContent: Contents.Scripting.Script<Document>
 	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Noscript<Document>
-	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Template<Document>
+	// Inherited from ColgroupContent, FlowContent, MetadataContent, TableContent, and TrContent: Contents.Scripting.Template<Document>
 	// Inherited from FlowContent: Contents.Scripting.Slot<Document>
 	// Inherited from FlowContent: Contents.Scripting.Canvas<Document>
 	// Inherited from FlowContent: // TODO: autonomous custom elements

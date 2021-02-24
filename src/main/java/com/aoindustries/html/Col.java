@@ -39,7 +39,7 @@ import java.io.IOException;
  */
 @SuppressWarnings("deprecation")
 // TODO: <PC extends ColgroupContent<PC>>
-public class Col<PC extends Content> extends VoidElement<Col<PC>, PC> implements
+public class Col<PC extends ColgroupContent<PC>> extends VoidElement<Col<PC>, PC> implements
 	Attributes.Enum.Align<Col<PC>, Col.Align>,
 	// TODO: bgcolor (deprecated)
 	// TODO: char (deprecated)

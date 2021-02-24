@@ -41,17 +41,17 @@ public interface EmbeddedContent<C extends EmbeddedContent<C>> extends
 	//
 	// Content models:
 	//
-	// Inherited from Embedded_Interactive and Embedded_Palpable_Phrasing: Content,
+	// Inherited from Embedded_Interactive and Embedded_Palpable_Phrasing: Content
 	//
 	// Content types:
 	//
-	// Inherited from Embedded_Interactive: Contents.Embedded.Audio<PC>,
-	// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
-	// Inherited from Embedded_Interactive: Contents.Embedded.Embed<PC>,
-	// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<PC>,
-	// Inherited from Embedded_Interactive: Contents.Embedded.Img<PC>,
+	// Inherited from Embedded_Interactive: Contents.Embedded.Audio<PC>
+	// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>
+	// Inherited from Embedded_Interactive: Contents.Embedded.Embed<PC>
+	// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<PC>
+	// Inherited from Embedded_Interactive: Contents.Embedded.Img<PC>
 	// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
-	// Inherited from Embedded_Interactive: Contents.Embedded.Object<PC>,
+	// Inherited from Embedded_Interactive: Contents.Embedded.Object<PC>
 	Contents.Embedded.Picture<C>
 	// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
 	// Inherited from Embedded_Interactive: Contents.Embedded.Video<PC>

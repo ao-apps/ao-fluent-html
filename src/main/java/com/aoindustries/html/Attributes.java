@@ -4017,6 +4017,39 @@ public class Attributes {
 		}
 
 		/**
+		 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+		 */
+		public static interface Colspan<E extends Element<E, ?> & Colspan<E>> {
+
+			/**
+			 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+			 */
+			@Funnel
+			default E colspan(int colspan) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "colspan", colspan);
+			}
+
+			/**
+			 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+			 */
+			@Funnel
+			default E colspan(java.lang.Integer colspan) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "colspan", colspan);
+			}
+
+			/**
+			 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+			 *
+			 * @see #colspan(java.lang.Integer)
+			 */
+			default <Ex extends Throwable> E colspan(IOSupplierE<? extends java.lang.Integer, Ex> colspan) throws IOException, Ex {
+				return colspan((colspan == null) ? null : colspan.get());
+			}
+		}
+
+		/**
 		 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 		 */
 		public static interface Height<E extends Element<E, ?> & Height<E>> {
@@ -4185,6 +4218,39 @@ public class Attributes {
 			 */
 			default <Ex extends Throwable> E minlength(IOSupplierE<? extends java.lang.Integer, Ex> minlength) throws IOException, Ex {
 				return minlength((minlength == null) ? null : minlength.get());
+			}
+		}
+
+		/**
+		 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+		 */
+		public static interface Rowspan<E extends Element<E, ?> & Rowspan<E>> {
+
+			/**
+			 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+			 */
+			@Funnel
+			default E rowspan(int rowspan) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "rowspan", rowspan);
+			}
+
+			/**
+			 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+			 */
+			@Funnel
+			default E rowspan(java.lang.Integer rowspan) throws IOException {
+				@SuppressWarnings("unchecked") E element = (E)this;
+				return attribute(element, "rowspan", rowspan);
+			}
+
+			/**
+			 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+			 *
+			 * @see #rowspan(java.lang.Integer)
+			 */
+			default <Ex extends Throwable> E rowspan(IOSupplierE<? extends java.lang.Integer, Ex> rowspan) throws IOException, Ex {
+				return rowspan((rowspan == null) ? null : rowspan.get());
 			}
 		}
 

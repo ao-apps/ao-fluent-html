@@ -44,7 +44,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 // TODO: <PC extends TODO<PC>>
-public class Option<PC extends Content> extends Element<Option<PC>> implements
+public class Option<PC extends Content> extends Element<Option<PC>, PC> implements
 	Attributes.Boolean.Disabled<Option<PC>>,
 	Attributes.Text.Label<Option<PC>>,
 	Attributes.Boolean.Selected<Option<PC>>,
@@ -53,12 +53,12 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 	Attributes.Event.AlmostGlobal<Option<PC>>
 {
 
-	public Option(Document document) {
-		super(document);
+	public Option(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Option<PC> open() throws IOException {
+	protected Option<PC> writeOpen() throws IOException {
 		document.out.write("<option");
 		return this;
 	}
@@ -154,7 +154,6 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 		// Allow text markup from translations
 		MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, document.out);
 		document.out.write("</option>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 
@@ -186,7 +185,6 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 			);
 		}
 		document.out.write("</option>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 
@@ -195,6 +193,7 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 	 * Does not perform any translation markups.
 	 * This is well suited for use in a try-with-resources block.
 	 */
+	// TODO: __() method to end text?  Call it "ContentWriter"?
 	public MediaWriter text__() throws IOException {
 		document.out.write('>');
 		return new MediaWriter(
@@ -216,7 +215,6 @@ public class Option<PC extends Content> extends Element<Option<PC>> implements
 	 */
 	public PC __() throws IOException {
 		document.out.write("></option>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 }

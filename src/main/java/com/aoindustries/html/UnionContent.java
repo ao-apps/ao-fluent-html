@@ -45,9 +45,9 @@ public class UnionContent {
 	/**
 	 * Elements that are common to both {@link EmbeddedContent} and {@link InteractiveContent}.
 	 *
-	 * @param  <PC>  The parent content model this element is within
+	 * @param  <C>  This content model, which will be the parent content model of child elements
 	 */
-	public static interface Embedded_Interactive<PC extends Embedded_Interactive<PC>> extends
+	public static interface Embedded_Interactive<C extends Embedded_Interactive<C>> extends
 		//
 		// Content models:
 		//
@@ -55,12 +55,12 @@ public class UnionContent {
 		//
 		// Content types:
 		//
-		Contents.Embedded.Audio<PC>,
-		Contents.Embedded.Embed<PC>,
-		Contents.Embedded.Iframe<PC>,
-		Contents.Embedded.Img<PC>,
-		Contents.Embedded.Object<PC>,
-		Contents.Embedded.Video<PC>
+		Contents.Embedded.Audio<C>,
+		Contents.Embedded.Embed<C>,
+		Contents.Embedded.Iframe<C>,
+		Contents.Embedded.Img<C>,
+		Contents.Embedded.Object<C>,
+		Contents.Embedded.Video<C>
 	{
 	}
 
@@ -68,9 +68,9 @@ public class UnionContent {
 	 * Elements that are common to all three of {@link EmbeddedContent}, {@link PalpableContent}, and
 	 * {@link PhrasingContent}.
 	 *
-	 * @param  <PC>  The parent content model this element is within
+	 * @param  <C>  This content model, which will be the parent content model of child elements
 	 */
-	public static interface Embedded_Palpable_Phrasing<PC extends Embedded_Palpable_Phrasing<PC>> extends
+	public static interface Embedded_Palpable_Phrasing<C extends Embedded_Palpable_Phrasing<C>> extends
 		//
 		// Content models:
 		//
@@ -78,7 +78,7 @@ public class UnionContent {
 		//
 		// Content types:
 		//
-		Contents.Scripting.Canvas<PC>
+		Contents.Scripting.Canvas<C>
 		// TODO: MathML math
 		// TODO: SVG svg
 	{
@@ -87,13 +87,13 @@ public class UnionContent {
 	/**
 	 * Elements that are common to both {@link InteractiveContent} and {@link PhrasingContent}.
 	 *
-	 * @param  <PC>  The parent content model this element is within
+	 * @param  <C>  This content model, which will be the parent content model of child elements
 	 */
-	public static interface Interactive_Phrasing<PC extends Interactive_Phrasing<PC>> extends
+	public static interface Interactive_Phrasing<C extends Interactive_Phrasing<C>> extends
 		//
 		// Unions:
 		//
-		Embedded_Interactive<PC>,
+		Embedded_Interactive<C>,
 		//
 		// Content models:
 		//
@@ -101,17 +101,17 @@ public class UnionContent {
 		//
 		// Content types:
 		//
-		Contents.Text.A<PC>,
+		Contents.Text.A<C>,
 		// Inherited from Embedded_Interactive: Contents.Embedded.Audio<PC>
-		Contents.Forms.Button<PC>,
+		Contents.Forms.Button<C>,
 		// Inherited from Embedded_Interactive: Contents.Embedded.Embed<PC>
-		Contents.Forms.Input<PC>,
+		Contents.Forms.Input<C>,
 		// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<PC>
 		// Inherited from Embedded_Interactive: Contents.Embedded.Img<PC>
-		Contents.Forms.Label<PC>,
+		Contents.Forms.Label<C>,
 		// Inherited from Embedded_Interactive: Contents.Embedded.Object<PC>
-		Contents.Forms.Select<PC>,
-		Contents.Forms.Textarea<PC>
+		Contents.Forms.Select<C>,
+		Contents.Forms.Textarea<C>
 		// Inherited from Embedded_Interactive: Contents.Embedded.Video<PC>
 	{
 	}
@@ -119,9 +119,9 @@ public class UnionContent {
 	/**
 	 * Elements that are common to both {@link MetadataContent} and {@link PhrasingContent}.
 	 *
-	 * @param  <PC>  The parent content model this element is within
+	 * @param  <C>  This content model, which will be the parent content model of child elements
 	 */
-	public static interface Metadata_Phrasing<PC extends Metadata_Phrasing<PC>> extends
+	public static interface Metadata_Phrasing<C extends Metadata_Phrasing<C>> extends
 		//
 		// Content models:
 		//
@@ -129,25 +129,25 @@ public class UnionContent {
 		//
 		// Content types:
 		//
-		Contents.Metadata.Link<PC>,
-		Contents.Metadata.Meta<PC>,
-		Contents.Scripting.Noscript<PC>,
-		Contents.Scripting.Script<PC>,
-		Contents.Scripting.Template<PC>
+		Contents.Metadata.Link<C>,
+		Contents.Metadata.Meta<C>,
+		Contents.Scripting.Noscript<C>,
+		Contents.Scripting.Script<C>,
+		Contents.Scripting.Template<C>
 	{
 	}
 
 	/**
 	 * Elements that are common to both {@link PalpableContent} and {@link PhrasingContent}.
 	 *
-	 * @param  <PC>  The parent content model this element is within
+	 * @param  <C>  This content model, which will be the parent content model of child elements
 	 */
-	public static interface Palpable_Phrasing<PC extends Palpable_Phrasing<PC>> extends
+	public static interface Palpable_Phrasing<C extends Palpable_Phrasing<C>> extends
 		//
 		// Unions:
 		//
-		Embedded_Palpable_Phrasing<PC>,
-		Interactive_Phrasing<PC>,
+		Embedded_Palpable_Phrasing<C>,
+		Interactive_Phrasing<C>,
 		//
 		// Content models:
 		//
@@ -156,51 +156,51 @@ public class UnionContent {
 		// Content types:
 		//
 		// Inherited from Interactive_Phrasing: Contents.Text.A<PC>
-		Contents.Text.Abbr<PC>,
+		Contents.Text.Abbr<C>,
 		// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<PC>
-		Contents.Text.B<PC>,
-		Contents.Text.Bdi<PC>,
-		Contents.Text.Bdo<PC>,
+		Contents.Text.B<C>,
+		Contents.Text.Bdi<C>,
+		Contents.Text.Bdo<C>,
 		// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>
 		// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
-		Contents.Text.Cite<PC>,
-		Contents.Text.Code<PC>,
-		Contents.Text.Data<PC>,
-		Contents.Text.Dfn<PC>,
-		Contents.Text.Em<PC>,
+		Contents.Text.Cite<C>,
+		Contents.Text.Code<C>,
+		Contents.Text.Data<C>,
+		Contents.Text.Dfn<C>,
+		Contents.Text.Em<C>,
 		// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<PC>
-		Contents.Text.I<PC>,
+		Contents.Text.I<C>,
 		// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<PC>
 		// Inherited from Interactive_Phrasing: Contents.Embedded.Img<PC>
 		// Inherited from Interactive_Phrasing: Contents.Forms.Input<PC>
-		Contents.Edits.Ins<PC>,
-		Contents.Text.Kbd<PC>,
+		Contents.Edits.Ins<C>,
+		Contents.Text.Kbd<C>,
 		// Inherited from Interactive_Phrasing: Contents.Forms.Label<PC>
-		Contents.Embedded.Map<PC>,
-		Contents.Text.Mark<PC>,
+		Contents.Embedded.Map<C>,
+		Contents.Text.Mark<C>,
 		// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
-		Contents.Forms.Meter<PC>,
+		Contents.Forms.Meter<C>,
 		// Inherited from Interactive_Phrasing: Contents.Embedded.Object<PC>
-		Contents.Forms.Output<PC>,
-		Contents.Forms.Progress<PC>,
-		Contents.Text.Q<PC>,
-		Contents.Text.Ruby<PC>,
-		Contents.Text.S<PC>,
-		Contents.Text.Samp<PC>,
+		Contents.Forms.Output<C>,
+		Contents.Forms.Progress<C>,
+		Contents.Text.Q<C>,
+		Contents.Text.Ruby<C>,
+		Contents.Text.S<C>,
+		Contents.Text.Samp<C>,
 		// Inherited from Interactive_Phrasing: Contents.Forms.Select<PC>
-		Contents.Text.Small<PC>,
-		Contents.Text.Span<PC>,
-		Contents.Text.Strong<PC>,
-		Contents.Text.Sub<PC>,
-		Contents.Text.Sup<PC>,
+		Contents.Text.Small<C>,
+		Contents.Text.Span<C>,
+		Contents.Text.Strong<C>,
+		Contents.Text.Sub<C>,
+		Contents.Text.Sup<C>,
 		// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
 		// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<PC>
-		Contents.Text.Time<PC>,
-		Contents.Text.U<PC>,
-		Contents.Text.Var<PC>,
+		Contents.Text.Time<C>,
+		Contents.Text.U<C>,
+		Contents.Text.Var<C>,
 		// Inherited from Interactive_Phrasing: Contents.Embedded.Video<PC>
 		// TODO: autonomous custom elements
-		TextContent<PC> // that is not inter-element whitespace
+		TextContent<C> // that is not inter-element whitespace
 	{
 	}
 }

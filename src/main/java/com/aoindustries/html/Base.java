@@ -42,12 +42,12 @@ public class Base<PC extends MetadataContent<PC>> extends VoidElement<Base<PC>, 
 	// Not on <base>: Attributes.Event.AlmostGlobal<Base<PC>>
 {
 
-	public Base(Document document) {
-		super(document);
+	public Base(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Base<PC> open() throws IOException {
+	protected Base<PC> writeOpen() throws IOException {
 		document.out.write("<base");
 		return this;
 	}

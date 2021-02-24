@@ -31,10 +31,10 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Content> extends Element<E> {
+abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Content> extends Element<E, PC> {
 
-	public VoidElement(Document document) {
-		super(document);
+	protected VoidElement(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	/**
@@ -45,7 +45,6 @@ abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Conte
 	@SuppressWarnings("deprecation")
 	public PC __() throws IOException {
 		document.selfClose();
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 }

@@ -51,12 +51,12 @@ public class Col<PC extends Content> extends VoidElement<Col<PC>, PC> implements
 	Attributes.Event.AlmostGlobal<Col<PC>>
 {
 
-	public Col(Document document) {
-		super(document);
+	public Col(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Col<PC> open() throws IOException {
+	protected Col<PC> writeOpen() throws IOException {
 		document.out.write("<col");
 		return this;
 	}

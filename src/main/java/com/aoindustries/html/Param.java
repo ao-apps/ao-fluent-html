@@ -47,12 +47,12 @@ public class Param<PC extends Content> extends VoidElement<Param<PC>, PC> implem
 	// Not on <param>: Attributes.Event.AlmostGlobal<Param>
 {
 
-	public Param(Document document) {
-		super(document);
+	public Param(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Param<PC> open() throws IOException {
+	protected Param<PC> writeOpen() throws IOException {
 		document.out.write("<param");
 		return this;
 	}

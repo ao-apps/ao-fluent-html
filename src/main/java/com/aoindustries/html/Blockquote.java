@@ -22,8 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -36,84 +34,53 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class Blockquote<PC extends PalpableContent<PC>> extends Element<Blockquote<PC>> implements
+public class Blockquote<PC extends PalpableContent<PC>> extends
+	NormalTextElement<Blockquote<PC>, PC, Blockquote.BlockquoteContent<PC>, Blockquote.BlockquoteCloseableContent<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// TODO: cite
 	Attributes.Event.AlmostGlobal<Blockquote<PC>>
 {
 
-	public Blockquote(Document document) {
-		super(document);
+	public static class BlockquoteContent<PC extends PalpableContent<PC>> extends
+		NormalTextContent<PC, BlockquoteContent<PC>> implements
+		PhrasingContent<BlockquoteContent<PC>> {
+
+		protected BlockquoteContent(Blockquote<PC> element) {
+			super(element);
+		}
+	}
+
+	public static class BlockquoteCloseableContent<PC extends PalpableContent<PC>> extends
+		CloseableNormalTextContent<PC, BlockquoteCloseableContent<PC>> implements
+		PhrasingContent<BlockquoteCloseableContent<PC>> {
+
+		protected BlockquoteCloseableContent(Blockquote<PC> element) {
+			super(element);
+		}
+	}
+
+	public Blockquote(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Blockquote<PC> open() throws IOException {
+	protected Blockquote<PC> writeOpen() throws IOException {
 		document.out.write("<blockquote");
 		return this;
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable> PC __(IORunnableE<Ex> blockquote) throws IOException, Ex {
-		if(blockquote != null) {
-			document.out.write('>');
-			blockquote.run();
-			document.out.write("</blockquote>");
-		} else {
-			document.out.write("></blockquote>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected void writeClose() throws IOException {
+		document.out.write("</blockquote>");
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable, BlockquoteContent extends FlowContent<BlockquoteContent>> PC __(IOConsumerE<? super BlockquoteContent, Ex> blockquote) throws IOException, Ex {
-		if(blockquote != null) {
-			document.out.write('>');
-			@SuppressWarnings("unchecked") BlockquoteContent c = (BlockquoteContent)document;
-			blockquote.accept(c);
-			document.out.write("</blockquote>");
-		} else {
-			document.out.write("></blockquote>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected BlockquoteContent<PC> newC() {
+		return new BlockquoteContent<>(this);
 	}
 
-	/**
-	 * Writes a text body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 *
-	 * @see  Document#text(java.lang.Object)
-	 */
-	public PC __(Object text) throws IOException {
-		if(text != null) {
-			document.out.write('>');
-			document.text(text);
-			document.out.write("</blockquote>");
-		} else {
-			document.out.write("></blockquote>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
-	}
-
-	/**
-	 * Closes this element without any body.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public PC __() throws IOException {
-		document.out.write("></blockquote>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected BlockquoteCloseableContent<PC> newCC() {
+		return new BlockquoteCloseableContent<>(this);
 	}
 }

@@ -28,11 +28,11 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<PC extends HeadingContent<PC>> extends
+public interface HeadingContent<C extends HeadingContent<C>> extends
 	//
 	// Content models:
 	//
@@ -40,12 +40,12 @@ public interface HeadingContent<PC extends HeadingContent<PC>> extends
 	//
 	// Content types:
 	//
-	Contents.Sections.H1<PC>,
-	Contents.Sections.H2<PC>,
-	Contents.Sections.H3<PC>,
-	Contents.Sections.H4<PC>,
-	Contents.Sections.H5<PC>,
-	Contents.Sections.H6<PC>,
-	Contents.Sections.Hgroup<PC>
+	Contents.Sections.H1<C>,
+	Contents.Sections.H2<C>,
+	Contents.Sections.H3<C>,
+	Contents.Sections.H4<C>,
+	Contents.Sections.H5<C>,
+	Contents.Sections.H6<C>,
+	Contents.Sections.Hgroup<C>
 {
 }

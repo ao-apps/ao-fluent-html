@@ -46,12 +46,12 @@ public class Hr<PC extends FlowContent<PC>> extends VoidElement<Hr<PC>, PC> impl
 	Attributes.Event.AlmostGlobal<Hr<PC>>
 {
 
-	public Hr(Document document) {
-		super(document);
+	public Hr(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Hr<PC> open() throws IOException {
+	protected Hr<PC> writeOpen() throws IOException {
 		document.out.write("<hr");
 		return this;
 	}

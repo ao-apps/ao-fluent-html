@@ -58,12 +58,12 @@ public class Area<PC extends PhrasingContent<PC>> extends VoidElement<Area<PC>, 
 	Attributes.Event.AlmostGlobal<Area<PC>>
 {
 
-	public Area(Document document) {
-		super(document);
+	public Area(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Area<PC> open() throws IOException {
+	protected Area<PC> writeOpen() throws IOException {
 		document.out.write("<area");
 		return this;
 	}

@@ -49,7 +49,8 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-public class Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Element<Script<PC>> implements
+// TODO: Extend RawTextElement: https://html.spec.whatwg.org/#raw-text-elements
+public class Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Element<Script<PC>, PC> implements
 	Attributes.Boolean.Async<Script<PC>>,
 	Attributes.Enum.Charset<Script<PC>, Attributes.Enum.Charset.Value>,
 	Attributes.Boolean.Defer<Script<PC>>,
@@ -125,24 +126,24 @@ public class Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Eleme
 
 	private final String type;
 
-	public Script(Document document) {
-		super(document);
+	public Script(Document document, PC pc) {
+		super(document, pc);
 		this.type = null;
 	}
 
-	public Script(Document document, String type) {
-		super(document);
+	public Script(Document document, PC pc, String type) {
+		super(document, pc);
 		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public Script(Document document, Type type) {
-		super(document);
+	public Script(Document document, PC pc, Type type) {
+		super(document, pc);
 		this.type = (type == null) ? null : type.getContentType();
 	}
 
 	@Override
-	protected Script<PC> open() throws IOException {
+	protected Script<PC> writeOpen() throws IOException {
 		document.out.write("<script");
 		Script<PC> s = type();
 		assert s == this;
@@ -270,6 +271,7 @@ public class Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Eleme
 	 * {@link #__()} on {@link MediaWriter#close()}.
 	 * This is well suited for use in a try-with-resources block.
 	 */
+	// TODO: __() method to end text?  Call it "ContentWriter"?
 	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
@@ -294,7 +296,6 @@ public class Script<PC extends UnionContent.Metadata_Phrasing<PC>> extends Eleme
 			if(doCdata()) document.out.write("//]]>");
 			document.out.write("</script>");
 		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 }

@@ -60,12 +60,12 @@ public class Img<PC extends UnionContent.Embedded_Interactive<PC>> extends VoidE
 	// TODO: More events
 {
 
-	public Img(Document document) {
-		super(document);
+	public Img(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Img<PC> open() throws IOException {
+	protected Img<PC> writeOpen() throws IOException {
 		document.out.write("<img");
 		return this;
 	}

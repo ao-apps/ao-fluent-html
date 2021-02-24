@@ -79,12 +79,12 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 	private static final com.aoindustries.i18n.Resources RESOURCES =
 		com.aoindustries.i18n.Resources.getResources(Input.class);
 
-	public Input(Document document) {
-		super(document);
+	public Input(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected E open() throws IOException {
+	protected E writeOpen() throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
 		document.out.write("<input");
 		openWriteType();
@@ -227,19 +227,19 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 	{
 
 		private String type;
-		public Dynamic(Document document) {
-			super(document);
+		public Dynamic(Document document, PC pc) {
+			super(document, pc);
 			this.type = null;
 		}
 
-		public Dynamic(Document document, String type) {
-			super(document);
+		public Dynamic(Document document, PC pc, String type) {
+			super(document, pc);
 			type = Strings.trimNullIfEmpty(type);
 			this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 		}
 
-		public Dynamic(Document document, Type type) {
-			super(document);
+		public Dynamic(Document document, PC pc, Type type) {
+			super(document, pc);
 			this.type = (type == null) ? null : type.getValue();
 		}
 
@@ -451,8 +451,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Text.Value<Button<PC>>
 	{
 
-		public Button(Document document) {
-			super(document);
+		public Button(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -492,8 +492,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onchange<Checkbox<PC>>
 	{
 
-		public Checkbox(Document document) {
-			super(document);
+		public Checkbox(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -517,8 +517,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Color<PC>>
 	{
 
-		public Color(Document document) {
-			super(document);
+		public Color(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -591,8 +591,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Date<PC>>
 	{
 
-		public Date(Document document) {
-			super(document);
+		public Date(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -667,8 +667,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<DatetimeLocal<PC>>
 	{
 
-		public DatetimeLocal(Document document) {
-			super(document);
+		public DatetimeLocal(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -748,8 +748,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<Email<PC>> // Guessed (to match Placeholder)
 	{
 
-		public Email(Document document) {
-			super(document);
+		public Email(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -828,8 +828,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<File<PC>>
 	{
 
-		public File(Document document) {
-			super(document);
+		public File(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		/**
@@ -890,8 +890,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Text.Value<Hidden<PC>>
 	{
 
-		public Hidden(Document document) {
-			super(document);
+		public Hidden(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -919,8 +919,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Window.Onload<Image<PC>>
 	{
 
-		public Image(Document document) {
-			super(document);
+		public Image(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -994,8 +994,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Month<PC>>
 	{
 
-		public Month(Document document) {
-			super(document);
+		public Month(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1071,8 +1071,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Number<PC>>
 	{
 
-		public Number(Document document) {
-			super(document);
+		public Number(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1168,8 +1168,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<Password<PC>>
 	{
 
-		public Password(Document document) {
-			super(document);
+		public Password(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		/**
@@ -1239,8 +1239,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onchange<Radio<PC>>
 	{
 
-		public Radio(Document document) {
-			super(document);
+		public Radio(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -1263,8 +1263,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Range<PC>>
 	{
 
-		public Range(Document document) {
-			super(document);
+		public Range(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1331,8 +1331,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Text.Value<Reset<PC>>
 	{
 
-		public Reset(Document document) {
-			super(document);
+		public Reset(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -1381,8 +1381,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<Search<PC>> // Guessed (to match Placeholder)
 	{
 
-		public Search(Document document) {
-			super(document);
+		public Search(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1495,8 +1495,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Text.Value<Submit<PC>>
 	{
 
-		public Submit(Document document) {
-			super(document);
+		public Submit(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -1544,8 +1544,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<Tel<PC>> // Guessed (to match Placeholder)
 	{
 
-		public Tel(Document document) {
-			super(document);
+		public Tel(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1631,8 +1631,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<Text<PC>>
 	{
 
-		public Text(Document document) {
-			super(document);
+		public Text(Document document, PC pc) {
+			super(document, pc);
 		}
 
 		@Override
@@ -1656,8 +1656,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Time<PC>>
 	{
 
-		public Time(Document document) {
-			super(document);
+		public Time(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1735,8 +1735,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Onselect<Url<PC>> // Guessed (to match Placeholder)
 	{
 
-		public Url(Document document) {
-			super(document);
+		public Url(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,
@@ -1816,8 +1816,8 @@ public abstract class Input<E extends Input<E, PC>, PC extends UnionContent.Inte
 		Attributes.Event.Form.Oninput<Week<PC>>
 	{
 
-		public Week(Document document) {
-			super(document);
+		public Week(Document document, PC pc) {
+			super(document, pc);
 			if(document.doctype != Doctype.HTML5) {
 				throw new LocalizedIllegalArgumentException(
 					RESOURCES,

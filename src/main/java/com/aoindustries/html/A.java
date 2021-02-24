@@ -22,8 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -33,7 +31,10 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends Element<A<PC>> implements
+// TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
+//       the tabindex attribute specified.
+public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
+	TransparentElement<A<PC>, PC> implements
 	Attributes.Url.Href<A<PC>>,
 	// TODO: target
 	// TODO: download
@@ -46,79 +47,37 @@ public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends Element
 	Attributes.Event.AlmostGlobal<A<PC>>
 {
 
-	public A(Document document) {
-		super(document);
+	public A(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected A<PC> open() throws IOException {
+	protected A<PC> writeOpen() throws IOException {
 		document.out.write("<a");
 		return this;
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable> PC __(IORunnableE<Ex> a) throws IOException, Ex {
-		if(a != null) {
-			document.out.write('>');
-			a.run();
-			document.out.write("</a>");
-		} else {
-			document.out.write("></a>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected void writeClose() throws IOException {
+		document.out.write("</a>");
 	}
 
 	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	// TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
-	//       the tabindex attribute specified.
-	public <Ex extends Throwable> PC __(IOConsumerE<? super PC, Ex> a) throws IOException, Ex {
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		if(a != null) {
-			document.out.write('>');
-			a.accept(pc);
-			document.out.write("</a>");
-		} else {
-			document.out.write("></a>");
-		}
-		return pc;
-	}
-
-	/**
-	 * Writes a text body then closes this element.
+	 * Ends attributes, writes a text body, then closes this element.
+	 * <p>
+	 * Since {@link TextContent} is not a part of {@link UnionContent.Interactive_Phrasing},
+	 * strictly speaking text is not allowed in all possible content models.
+	 * However, since it is such a common operation, we've added it here.
+	 * </p>
 	 *
 	 * @return  The parent content model this element is within
 	 *
 	 * @see  Document#text(java.lang.Object)
 	 */
 	public PC __(Object text) throws IOException {
-		if(text != null) {
-			document.out.write('>');
-			document.text(text);
-			document.out.write("</a>");
-		} else {
-			document.out.write("></a>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
-	}
-
-	/**
-	 * Closes this element without any body.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public PC __() throws IOException {
-		document.out.write("></a>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
+		document.out.write('>');
+		document.text(text);
+		writeClose();
 		return pc;
 	}
 }

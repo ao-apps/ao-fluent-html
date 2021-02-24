@@ -28,39 +28,39 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">Phrasing content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PhrasingContent<PC extends PhrasingContent<PC>> extends
+public interface PhrasingContent<C extends PhrasingContent<C>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Metadata_Phrasing<PC>,
-	UnionContent.Palpable_Phrasing<PC>,
+	UnionContent.Metadata_Phrasing<C>,
+	UnionContent.Palpable_Phrasing<C>,
 	//
 	// Content models:
 	//
 	// Inherited from EmbeddedContent and Palpable_Phrasing: Content,
-	EmbeddedContent<PC>,
+	EmbeddedContent<C>,
 	//
 	// Content types:
 	//
 	// Inherited from Palpable_Phrasing: Contents.Text.A<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Abbr<PC>,
-	Contents.Embedded.Area<PC>, // if a descendent of map
+	Contents.Embedded.Area<C>, // if a descendent of map
 	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Audio<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.B<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Bdi<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Bdo<PC>,
-	Contents.Text.Br<PC>,
+	Contents.Text.Br<C>,
 	// Inherited from Palpable_Phrasing: Contents.Forms.Button<PC>,
 	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Scripting.Canvas<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Cite<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Code<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Data<PC>,
-	Contents.Forms.Datalist<PC>,
-	Contents.Edits.Del<PC>,
+	Contents.Forms.Datalist<C>,
+	Contents.Edits.Del<C>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Dfn<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Em<PC>,
 	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Embed<PC>,
@@ -88,7 +88,7 @@ public interface PhrasingContent<PC extends PhrasingContent<PC>> extends
 	// Inherited from Palpable_Phrasing: Contents.Text.Samp<PC>,
 	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Forms.Select<PC>,
-	Contents.Scripting.Slot<PC>,
+	Contents.Scripting.Slot<C>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Small<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Span<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Strong<PC>,
@@ -101,7 +101,7 @@ public interface PhrasingContent<PC extends PhrasingContent<PC>> extends
 	// Inherited from Palpable_Phrasing: Contents.Text.U<PC>,
 	// Inherited from Palpable_Phrasing: Contents.Text.Var<PC>,
 	// Inherited from EmbeddedContent and Palpable_Phrasing: Contents.Embedded.Video<PC>,
-	Contents.Text.Wbr<PC>
+	Contents.Text.Wbr<C>
 	// Inherited from Palpable_Phrasing: // TODO: autonomous custom elements
 	// Inherited from Palpable_Phrasing: TextContent<PC>
 {

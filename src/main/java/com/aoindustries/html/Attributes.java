@@ -138,7 +138,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Boolean() {}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
 			if(value) {
 				element.document.out.write(' ');
 				element.document.out.write(name);
@@ -156,7 +156,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
 		 */
-		public static interface Async<E extends Element<E> & Async<E>> {
+		public static interface Async<E extends Element<E, ?> & Async<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
@@ -189,7 +189,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
 		 */
-		public static interface Autofocus<E extends Element<E> & Autofocus<E>> {
+		public static interface Autofocus<E extends Element<E, ?> & Autofocus<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
@@ -230,7 +230,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
 		 */
-		public static interface Checked<E extends Element<E> & Checked<E>> {
+		public static interface Checked<E extends Element<E, ?> & Checked<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
@@ -263,7 +263,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
 		 */
-		public static interface Defer<E extends Element<E> & Defer<E>> {
+		public static interface Defer<E extends Element<E, ?> & Defer<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
@@ -296,7 +296,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
 		 */
-		public static interface Disabled<E extends Element<E> & Disabled<E>> {
+		public static interface Disabled<E extends Element<E, ?> & Disabled<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
@@ -329,7 +329,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
 		 */
-		public static interface Ismap<E extends Element<E> & Ismap<E>> {
+		public static interface Ismap<E extends Element<E, ?> & Ismap<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
@@ -362,7 +362,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
 		 */
-		public static interface Multiple<E extends Element<E> & Multiple<E>> {
+		public static interface Multiple<E extends Element<E, ?> & Multiple<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
@@ -406,7 +406,7 @@ public class Attributes {
 		 * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
 		 */
 		@Deprecated
-		public static interface Noshade<E extends Element<E> & Noshade<E>> {
+		public static interface Noshade<E extends Element<E, ?> & Noshade<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
@@ -458,7 +458,7 @@ public class Attributes {
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefreadonly">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * </ul>
 		 */
-		public static interface Readonly<E extends Element<E> & Readonly<E>> {
+		public static interface Readonly<E extends Element<E, ?> & Readonly<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
@@ -491,7 +491,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
 		 */
-		public static interface Selected<E extends Element<E> & Selected<E>> {
+		public static interface Selected<E extends Element<E, ?> & Selected<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
@@ -533,11 +533,11 @@ public class Attributes {
 		/** Make no instances. */
 		private Dimension() {}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, int pixels) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, int pixels) throws IOException {
 			return Integer.attribute(element, name, pixels);
 		}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.Integer pixels) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.Integer pixels) throws IOException {
 			return Integer.attribute(element, name, pixels);
 		}
 
@@ -545,7 +545,7 @@ public class Attributes {
 		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 		 */
 		@Deprecated
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.String pixelsOrPercent) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.String pixelsOrPercent) throws IOException {
 			return String.attribute(element, name, MarkupType.NONE, pixelsOrPercent, true, true);
 		}
 
@@ -555,7 +555,7 @@ public class Attributes {
 		 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
 		 * </ul>
 		 */
-		public static interface Coords<E extends Element<E> & Coords<E>> {
+		public static interface Coords<E extends Element<E, ?> & Coords<E>> {
 
 			/**
 			 * <ul>
@@ -839,7 +839,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 		 */
-		public static interface Width<E extends Element<E> & Width<E>> {
+		public static interface Width<E extends Element<E, ?> & Width<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
@@ -901,7 +901,7 @@ public class Attributes {
 		 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 		 */
 		@Deprecated
-		public static interface WidthHtml4Only<E extends Element<E> & WidthHtml4Only<E>> extends Width<E> {
+		public static interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> extends Width<E> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
@@ -1015,7 +1015,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Event() {}
 
-		static <E extends Element<E>, Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
+		static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
 			return Text.attribute(element, name, MarkupType.JAVASCRIPT, script, true, true, javaScriptInXhtmlAttributeEncoder);
 		}
 
@@ -1027,7 +1027,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
 			 */
-			public static interface Onafterprint<E extends Element<E> & Onafterprint<E>> {
+			public static interface Onafterprint<E extends Element<E, ?> & Onafterprint<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onafterprint.asp">HTML onafterprint Event Attribute</a>.
@@ -1068,7 +1068,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
 			 */
-			public static interface Onbeforeprint<E extends Element<E> & Onbeforeprint<E>> {
+			public static interface Onbeforeprint<E extends Element<E, ?> & Onbeforeprint<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
@@ -1109,7 +1109,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
 			 */
-			public static interface Onbeforeunload<E extends Element<E> & Onbeforeunload<E>> {
+			public static interface Onbeforeunload<E extends Element<E, ?> & Onbeforeunload<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
@@ -1156,7 +1156,7 @@ public class Attributes {
 			 * <li>See <a href="https://www.w3schools.com/tags/att_onerror.asp">HTML onerror Attribute</a>.</li>
 			 * </ul>
 			 */
-			public static interface Onerror<E extends Element<E> & Onerror<E>> {
+			public static interface Onerror<E extends Element<E, ?> & Onerror<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
@@ -1189,7 +1189,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
 			 */
-			public static interface Onhashchange<E extends Element<E> & Onhashchange<E>> {
+			public static interface Onhashchange<E extends Element<E, ?> & Onhashchange<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onhashchange.asp">HTML onhashchange Event Attribute</a>.
@@ -1230,7 +1230,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
 			 */
-			public static interface Onload<E extends Element<E> & Onload<E>> {
+			public static interface Onload<E extends Element<E, ?> & Onload<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onload.asp">HTML onload Event Attribute</a>.
@@ -1263,7 +1263,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
 			 */
-			public static interface Onmessage<E extends Element<E> & Onmessage<E>> {
+			public static interface Onmessage<E extends Element<E, ?> & Onmessage<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmessage.asp">HTML onmessage Event Attribute</a>.
@@ -1304,7 +1304,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
 			 */
-			public static interface Onoffline<E extends Element<E> & Onoffline<E>> {
+			public static interface Onoffline<E extends Element<E, ?> & Onoffline<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
@@ -1345,7 +1345,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
 			 */
-			public static interface Ononline<E extends Element<E> & Ononline<E>> {
+			public static interface Ononline<E extends Element<E, ?> & Ononline<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
@@ -1386,7 +1386,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
 			 */
-			public static interface Onpagehide<E extends Element<E> & Onpagehide<E>> {
+			public static interface Onpagehide<E extends Element<E, ?> & Onpagehide<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
@@ -1419,7 +1419,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
 			 */
-			public static interface Onpageshow<E extends Element<E> & Onpageshow<E>> {
+			public static interface Onpageshow<E extends Element<E, ?> & Onpageshow<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
@@ -1452,7 +1452,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
 			 */
-			public static interface Onpopstate<E extends Element<E> & Onpopstate<E>> {
+			public static interface Onpopstate<E extends Element<E, ?> & Onpopstate<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
@@ -1485,7 +1485,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
 			 */
-			public static interface Onresize<E extends Element<E> & Onresize<E>> {
+			public static interface Onresize<E extends Element<E, ?> & Onresize<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onresize.asp">HTML onresize Event Attribute</a>.
@@ -1526,7 +1526,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
 			 */
-			public static interface Onstorage<E extends Element<E> & Onstorage<E>> {
+			public static interface Onstorage<E extends Element<E, ?> & Onstorage<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
@@ -1559,7 +1559,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
 			 */
-			public static interface Onunload<E extends Element<E> & Onunload<E>> {
+			public static interface Onunload<E extends Element<E, ?> & Onunload<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
@@ -1598,7 +1598,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
 			 */
-			public static interface Onblur<E extends Element<E> & Onblur<E>> {
+			public static interface Onblur<E extends Element<E, ?> & Onblur<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
@@ -1634,7 +1634,7 @@ public class Attributes {
 			 * <li>See <a href="https://www.w3schools.com/jsref/event_onchange.asp">onchange Event</a>.</li>
 			 * </ul>
 			 */
-			public static interface Onchange<E extends Element<E> & Onchange<E>> {
+			public static interface Onchange<E extends Element<E, ?> & Onchange<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
@@ -1667,7 +1667,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
 			 */
-			public static interface Oncontextmenu<E extends Element<E> & Oncontextmenu<E>> {
+			public static interface Oncontextmenu<E extends Element<E, ?> & Oncontextmenu<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncontextmenu.asp">HTML oncontextmenu Event Attribute</a>.
@@ -1708,7 +1708,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
 			 */
-			public static interface Onfocus<E extends Element<E> & Onfocus<E>> {
+			public static interface Onfocus<E extends Element<E, ?> & Onfocus<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onfocus.asp">HTML onfocus Event Attribute</a>.
@@ -1744,7 +1744,7 @@ public class Attributes {
 			 * <li>See <a href="https://www.w3schools.com/jsref/event_oninput.asp">oninput Event</a>.</li>
 			 * </ul>
 			 */
-			public static interface Oninput<E extends Element<E> & Oninput<E>> {
+			public static interface Oninput<E extends Element<E, ?> & Oninput<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
@@ -1785,7 +1785,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
 			 */
-			public static interface Oninvalid<E extends Element<E> & Oninvalid<E>> {
+			public static interface Oninvalid<E extends Element<E, ?> & Oninvalid<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
@@ -1818,7 +1818,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
 			 */
-			public static interface Onreset<E extends Element<E> & Onreset<E>> {
+			public static interface Onreset<E extends Element<E, ?> & Onreset<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
@@ -1862,7 +1862,7 @@ public class Attributes {
 			 * <li>See <a href="https://www.w3schools.com/jsref/event_onsearch.asp">onsearch Event</a>.</li>
 			 * </ul>
 			 */
-			public static interface Onsearch<E extends Element<E> & Onsearch<E>> {
+			public static interface Onsearch<E extends Element<E, ?> & Onsearch<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
@@ -1899,7 +1899,7 @@ public class Attributes {
 			 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onselect">GlobalEventHandlers.onselect</a>.</li>
 			 * </ul>
 			 */
-			public static interface Onselect<E extends Element<E> & Onselect<E>> {
+			public static interface Onselect<E extends Element<E, ?> & Onselect<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
@@ -1936,7 +1936,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
 			 */
-			public static interface Onsubmit<E extends Element<E> & Onsubmit<E>> {
+			public static interface Onsubmit<E extends Element<E, ?> & Onsubmit<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
@@ -1973,7 +1973,7 @@ public class Attributes {
 			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
 			 * </blockquote>
 			 */
-			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+			public static interface AlmostGlobal<E extends Element<E, ?> & AlmostGlobal<E>> extends
 				Onblur<E>,
 				Onfocus<E>
 			{
@@ -1987,7 +1987,7 @@ public class Attributes {
 			 * </ul>
 			 */
 			@SuppressWarnings("MarkerInterface")
-			public static interface Global<E extends Element<E> & Global<E>> extends
+			public static interface Global<E extends Element<E, ?> & Global<E>> extends
 				Oncontextmenu<E>
 				// TODO: onautocomplete
 				// TODO: onautocompleteerror
@@ -2004,7 +2004,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
 			 */
-			public static interface Onkeydown<E extends Element<E> & Onkeydown<E>> {
+			public static interface Onkeydown<E extends Element<E, ?> & Onkeydown<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeydown.asp">HTML onkeydown Event Attribute</a>.
@@ -2037,7 +2037,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
 			 */
-			public static interface Onkeypress<E extends Element<E> & Onkeypress<E>> {
+			public static interface Onkeypress<E extends Element<E, ?> & Onkeypress<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
@@ -2070,7 +2070,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
 			 */
-			public static interface Onkeyup<E extends Element<E> & Onkeyup<E>> {
+			public static interface Onkeyup<E extends Element<E, ?> & Onkeyup<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
@@ -2107,7 +2107,7 @@ public class Attributes {
 			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
 			 * </blockquote>
 			 */
-			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+			public static interface AlmostGlobal<E extends Element<E, ?> & AlmostGlobal<E>> extends
 				Onkeydown<E>,
 				Onkeypress<E>,
 				Onkeyup<E>
@@ -2124,7 +2124,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 			 */
-			public static interface Onclick<E extends Element<E> & Onclick<E>> {
+			public static interface Onclick<E extends Element<E, ?> & Onclick<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
@@ -2157,7 +2157,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
 			 */
-			public static interface Ondblclick<E extends Element<E> & Ondblclick<E>> {
+			public static interface Ondblclick<E extends Element<E, ?> & Ondblclick<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
@@ -2190,7 +2190,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
 			 */
-			public static interface Onmousedown<E extends Element<E> & Onmousedown<E>> {
+			public static interface Onmousedown<E extends Element<E, ?> & Onmousedown<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
@@ -2226,7 +2226,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
 			 */
-			public static interface Onmousemove<E extends Element<E> & Onmousemove<E>> {
+			public static interface Onmousemove<E extends Element<E, ?> & Onmousemove<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
@@ -2259,7 +2259,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
 			 */
-			public static interface Onmouseout<E extends Element<E> & Onmouseout<E>> {
+			public static interface Onmouseout<E extends Element<E, ?> & Onmouseout<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
@@ -2292,7 +2292,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
 			 */
-			public static interface Onmouseover<E extends Element<E> & Onmouseover<E>> {
+			public static interface Onmouseover<E extends Element<E, ?> & Onmouseover<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
@@ -2325,7 +2325,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
 			 */
-			public static interface Onmouseup<E extends Element<E> & Onmouseup<E>> {
+			public static interface Onmouseup<E extends Element<E, ?> & Onmouseup<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onmouseup.asp">HTML onmouseup Event Attribute</a>.
@@ -2361,7 +2361,7 @@ public class Attributes {
 			 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
 			 */
 			@Deprecated
-			public static interface Onmousewheel<E extends Element<E> & Onmousewheel<E>> {
+			public static interface Onmousewheel<E extends Element<E, ?> & Onmousewheel<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
@@ -2403,7 +2403,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
 			 */
-			public static interface Onwheel<E extends Element<E> & Onwheel<E>> {
+			public static interface Onwheel<E extends Element<E, ?> & Onwheel<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
@@ -2448,7 +2448,7 @@ public class Attributes {
 			 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
 			 * </blockquote>
 			 */
-			public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+			public static interface AlmostGlobal<E extends Element<E, ?> & AlmostGlobal<E>> extends
 				Onclick<E>,
 				Ondblclick<E>,
 				Onmousedown<E>,
@@ -2463,7 +2463,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Mouse Events</a>.
 			 */
-			public static interface Global<E extends Element<E> & Global<E>> extends
+			public static interface Global<E extends Element<E, ?> & Global<E>> extends
 				Onmousewheel<E>,
 				Onwheel<E>
 			{
@@ -2479,7 +2479,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
 			 */
-			public static interface Ondrag<E extends Element<E> & Ondrag<E>> {
+			public static interface Ondrag<E extends Element<E, ?> & Ondrag<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
@@ -2520,7 +2520,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
 			 */
-			public static interface Ondragend<E extends Element<E> & Ondragend<E>> {
+			public static interface Ondragend<E extends Element<E, ?> & Ondragend<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
@@ -2561,7 +2561,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
 			 */
-			public static interface Ondragenter<E extends Element<E> & Ondragenter<E>> {
+			public static interface Ondragenter<E extends Element<E, ?> & Ondragenter<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
@@ -2604,7 +2604,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
 			 */
-			public static interface Ondragleave<E extends Element<E> & Ondragleave<E>> {
+			public static interface Ondragleave<E extends Element<E, ?> & Ondragleave<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
@@ -2645,7 +2645,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
 			 */
-			public static interface Ondragover<E extends Element<E> & Ondragover<E>> {
+			public static interface Ondragover<E extends Element<E, ?> & Ondragover<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragover.asp">HTML ondragover Event Attribute</a>.
@@ -2686,7 +2686,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
 			 */
-			public static interface Ondragstart<E extends Element<E> & Ondragstart<E>> {
+			public static interface Ondragstart<E extends Element<E, ?> & Ondragstart<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
@@ -2727,7 +2727,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
 			 */
-			public static interface Ondrop<E extends Element<E> & Ondrop<E>> {
+			public static interface Ondrop<E extends Element<E, ?> & Ondrop<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_ondrop.asp">HTML ondrop Event Attribute</a>.
@@ -2768,7 +2768,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
 			 */
-			public static interface Onscroll<E extends Element<E> & Onscroll<E>> {
+			public static interface Onscroll<E extends Element<E, ?> & Onscroll<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
@@ -2809,7 +2809,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Drag Events</a>.
 			 */
-			public static interface Global<E extends Element<E> & Global<E>> extends
+			public static interface Global<E extends Element<E, ?> & Global<E>> extends
 				Ondrag<E>,
 				Ondragend<E>,
 				Ondragenter<E>,
@@ -2830,7 +2830,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
 			 */
-			public static interface Oncopy<E extends Element<E> & Oncopy<E>> {
+			public static interface Oncopy<E extends Element<E, ?> & Oncopy<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
@@ -2863,7 +2863,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
 			 */
-			public static interface Oncut<E extends Element<E> & Oncut<E>> {
+			public static interface Oncut<E extends Element<E, ?> & Oncut<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
@@ -2896,7 +2896,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
 			 */
-			public static interface Onpaste<E extends Element<E> & Onpaste<E>> {
+			public static interface Onpaste<E extends Element<E, ?> & Onpaste<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/tags/ev_onpaste.asp">HTML onpaste Event Attribute</a>.
@@ -2929,7 +2929,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">Drag Events</a>.
 			 */
-			public static interface Global<E extends Element<E> & Global<E>> extends
+			public static interface Global<E extends Element<E, ?> & Global<E>> extends
 				Oncopy<E>,
 				Oncut<E>,
 				Onpaste<E>
@@ -2952,7 +2952,7 @@ public class Attributes {
 			/**
 			 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
 			 */
-			public static interface Onabort<E extends Element<E> & Onabort<E>> {
+			public static interface Onabort<E extends Element<E, ?> & Onabort<E>> {
 
 				/**
 				 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
@@ -3024,7 +3024,7 @@ public class Attributes {
 		 * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
 		 * </blockquote>
 		 */
-		public static interface AlmostGlobal<E extends Element<E> & AlmostGlobal<E>> extends
+		public static interface AlmostGlobal<E extends Element<E, ?> & AlmostGlobal<E>> extends
 			Form.AlmostGlobal<E>,
 			Keyboard.AlmostGlobal<E>,
 			Mouse.AlmostGlobal<E>
@@ -3064,7 +3064,7 @@ public class Attributes {
 		 */
 		@Deprecated
 		public static interface Align<
-			E extends Element<E> & Align<E, V>,
+			E extends Element<E, ?> & Align<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3135,7 +3135,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface Autocomplete<
-			E extends Element<E> & Autocomplete<E, V>,
+			E extends Element<E, ?> & Autocomplete<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3284,7 +3284,7 @@ public class Attributes {
 		 */
 		// TODO: Support java Charset, too
 		public static interface Charset<
-			E extends Element<E> & Charset<E, V>,
+			E extends Element<E, ?> & Charset<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3389,7 +3389,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface Capture<
-			E extends Element<E> & Capture<E, V>,
+			E extends Element<E, ?> & Capture<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3457,7 +3457,7 @@ public class Attributes {
 		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 		 */
 		public static interface Crossorigin<
-			E extends Element<E> & Crossorigin<E, V>,
+			E extends Element<E, ?> & Crossorigin<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3508,7 +3508,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface Dir<
-			E extends Element<E>, // TODO: How to use from Global?  Remove others?  & Dir<E, V>,
+			E extends Element<E, ?>, // TODO: How to use from Global?  Remove others?  & Dir<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3673,7 +3673,7 @@ public class Attributes {
 		 * </ul>
 		 */
 		public static interface HttpEquiv<
-			E extends Element<E> & HttpEquiv<E, V>,
+			E extends Element<E, ?> & HttpEquiv<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3731,7 +3731,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 		 */
 		public static interface Name<
-			E extends Element<E> & Name<E, V>,
+			E extends Element<E, ?> & Name<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3780,7 +3780,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_rel.asp">HTML rel Attribute</a>.
 		 */
 		public static interface Rel<
-			E extends Element<E> & Rel<E, V>,
+			E extends Element<E, ?> & Rel<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3828,7 +3828,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_shape.asp">HTML shape Attribute</a>.
 		 */
 		public static interface Shape<
-			E extends Element<E> & Shape<E, V>,
+			E extends Element<E, ?> & Shape<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3876,7 +3876,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_type.asp">HTML type Attribute</a>.
 		 */
 		public static interface Type<
-			E extends Element<E> & Type<E, V>,
+			E extends Element<E, ?> & Type<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3927,7 +3927,7 @@ public class Attributes {
 		 */
 		@Deprecated
 		public static interface Valign<
-			E extends Element<E> & Valign<E, V>,
+			E extends Element<E, ?> & Valign<E, V>,
 			V extends java.lang.Enum<V> & EnumSupplier
 		> {
 
@@ -3999,7 +3999,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Integer() {}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, int value) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, int value) throws IOException {
 			element.document.out.write(' ');
 			element.document.out.write(name);
 			element.document.out.write("=\"");
@@ -4008,7 +4008,7 @@ public class Attributes {
 			return element;
 		}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.Integer value) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.Integer value) throws IOException {
 			if(value != null) {
 				return attribute(element, name, value.intValue());
 			} else {
@@ -4019,7 +4019,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 		 */
-		public static interface Height<E extends Element<E> & Height<E>> {
+		public static interface Height<E extends Element<E, ?> & Height<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
@@ -4052,7 +4052,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
 		 */
-		public static interface HeightHtml5Only<E extends Element<E> & HeightHtml5Only<E>> extends Height<E> {
+		public static interface HeightHtml5Only<E extends Element<E, ?> & HeightHtml5Only<E>> extends Height<E> {
 
 			/**
 			 * {@inheritDoc}
@@ -4125,7 +4125,7 @@ public class Attributes {
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefmaxlength">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * </ul>
 		 */
-		public static interface Maxlength<E extends Element<E> & Maxlength<E>> {
+		public static interface Maxlength<E extends Element<E, ?> & Maxlength<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
@@ -4158,7 +4158,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
 		 */
-		public static interface Minlength<E extends Element<E> & Minlength<E>> {
+		public static interface Minlength<E extends Element<E, ?> & Minlength<E>> {
 
 			/**
 			 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
@@ -4191,7 +4191,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
 		 */
-		public static interface Size<E extends Element<E> & Size<E>> {
+		public static interface Size<E extends Element<E, ?> & Size<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
@@ -4227,7 +4227,7 @@ public class Attributes {
 		 * @deprecated  Not supported in HTML5.
 		 */
 		@Deprecated
-		public static interface SizeHtml4Only<E extends Element<E> & SizeHtml4Only<E>> extends Size<E> {
+		public static interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> extends Size<E> {
 
 			/**
 			 * @deprecated  Not supported in HTML5.
@@ -4288,7 +4288,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
 		 */
-		public static interface Span<E extends Element<E> & Span<E>> {
+		public static interface Span<E extends Element<E, ?> & Span<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
@@ -4324,7 +4324,7 @@ public class Attributes {
 		 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 		 * </blockquote>
 		 */
-		public static interface Tabindex<E extends Element<E> & Tabindex<E>> {
+		public static interface Tabindex<E extends Element<E, ?> & Tabindex<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
@@ -4385,7 +4385,7 @@ public class Attributes {
 		 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
 		 * </blockquote>
 		 */
-		public static interface TabindexHtml4<E extends Element<E> & TabindexHtml4<E>> extends Tabindex<E> {
+		public static interface TabindexHtml4<E extends Element<E, ?> & TabindexHtml4<E>> extends Tabindex<E> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
@@ -4430,7 +4430,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 		 */
-		public static interface Width<E extends Element<E> & Width<E>> {
+		public static interface Width<E extends Element<E, ?> & Width<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
@@ -4466,7 +4466,7 @@ public class Attributes {
 		 * The width attribute is new in HTML5.
 		 * </p>
 		 */
-		public static interface WidthHtml5Only<E extends Element<E> & WidthHtml5Only<E>> extends Width<E> {
+		public static interface WidthHtml5Only<E extends Element<E, ?> & WidthHtml5Only<E>> extends Width<E> {
 
 			/**
 			 * {@inheritDoc}
@@ -4547,7 +4547,7 @@ public class Attributes {
 		 */
 		// TODO: Remove trim and nullIfEmpty once all attributes have normalize methods
 		@SuppressWarnings("StringEquality")
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
 				if(value == NO_VALUE) { // Identity comparison for marker value
 					// Empty attribute
@@ -4577,7 +4577,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
 		 */
-		public static interface Hreflang<E extends Element<E> & Hreflang<E>> {
+		public static interface Hreflang<E extends Element<E, ?> & Hreflang<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
@@ -4621,7 +4621,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
 		 */
-		public static interface Usemap<E extends Element<E> & Usemap<E>> {
+		public static interface Usemap<E extends Element<E, ?> & Usemap<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
@@ -4672,7 +4672,7 @@ public class Attributes {
 		/**
 		 * @param value  The attribute value, {@link #NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 		 */
-		static <E extends Element<E>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
+		static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			// TODO: Assert is valid attribute name by doctype
 			while(value instanceof IOSupplierE<?, ?>) {
 				@SuppressWarnings("unchecked") IOSupplierE<?, Ex> supplier = (IOSupplierE<?, Ex>)value;
@@ -4725,7 +4725,7 @@ public class Attributes {
 		/**
 		 * An arbitrary attribute.
 		 */
-		public static interface Attribute<E extends Element<E> & Attribute<E>> {
+		public static interface Attribute<E extends Element<E, ?> & Attribute<E>> {
 
 			/**
 			 * An arbitrary attribute.
@@ -4772,7 +4772,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
 		 */
-		public static interface Accept<E extends Element<E> & Accept<E>> {
+		public static interface Accept<E extends Element<E, ?> & Accept<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
@@ -4805,7 +4805,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
 		 */
-		public static interface Alt<E extends Element<E> & Alt<E>> {
+		public static interface Alt<E extends Element<E, ?> & Alt<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
@@ -4842,7 +4842,7 @@ public class Attributes {
 		 * </blockquote>
 		 */
 		// TODO: Move to String?
-		public static interface Class<E extends Element<E> & Class<E>> {
+		public static interface Class<E extends Element<E, ?> & Class<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
@@ -4887,7 +4887,7 @@ public class Attributes {
 		 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 		 * </blockquote>
 		 */
-		public static interface ClassNoHtml4<E extends Element<E> & ClassNoHtml4<E>> extends Class<E> {
+		public static interface ClassNoHtml4<E extends Element<E, ?> & ClassNoHtml4<E>> extends Class<E> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
@@ -4958,7 +4958,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
 		 */
-		public static interface Content<E extends Element<E> & Content<E>> {
+		public static interface Content<E extends Element<E, ?> & Content<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
@@ -4996,7 +4996,7 @@ public class Attributes {
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 		 * </ul>
 		 */
-		public static interface Data<E extends Element<E> & Data<E>> {
+		public static interface Data<E extends Element<E, ?> & Data<E>> {
 
 			/**
 			 * <p>
@@ -5354,7 +5354,7 @@ public class Attributes {
 		 * </blockquote>
 		 */
 		// TODO: Move to String?
-		public static interface Id<E extends Element<E> & Id<E>> {
+		public static interface Id<E extends Element<E, ?> & Id<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
@@ -5400,7 +5400,7 @@ public class Attributes {
 		 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 		 * </blockquote>
 		 */
-		public static interface IdNoHtml4<E extends Element<E> & IdNoHtml4<E>> extends Id<E> {
+		public static interface IdNoHtml4<E extends Element<E, ?> & IdNoHtml4<E>> extends Id<E> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
@@ -5472,7 +5472,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 		 */
-		public static interface Label<E extends Element<E> & Label<E>> {
+		public static interface Label<E extends Element<E, ?> & Label<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
@@ -5509,7 +5509,7 @@ public class Attributes {
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * </ul>
 		 */
-		public static interface List<E extends Element<E> & List<E>> {
+		public static interface List<E extends Element<E, ?> & List<E>> {
 
 			/**
 			 * <ul>
@@ -5563,7 +5563,7 @@ public class Attributes {
 		 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 		 */
 		// TODO: Any sort of comments allowed in media queries?  MarkupType?
-		public static interface Media<E extends Element<E> & Media<E>> {
+		public static interface Media<E extends Element<E, ?> & Media<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
@@ -5596,7 +5596,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 		 */
-		public static interface Name<E extends Element<E> & Name<E>> {
+		public static interface Name<E extends Element<E, ?> & Name<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
@@ -5630,7 +5630,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
 		 */
-		public static interface Placeholder<E extends Element<E> & Placeholder<E>> {
+		public static interface Placeholder<E extends Element<E, ?> & Placeholder<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
@@ -5675,7 +5675,7 @@ public class Attributes {
 		 * </blockquote>
 		 */
 		// TODO: cssInXmlAttributeEncoder
-		public static interface Style<E extends Element<E> & Style<E>> {
+		public static interface Style<E extends Element<E, ?> & Style<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
@@ -5721,7 +5721,7 @@ public class Attributes {
 		 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 		 * </blockquote>
 		 */
-		public static interface StyleNoHtml4<E extends Element<E> & StyleNoHtml4<E>> extends Style<E> {
+		public static interface StyleNoHtml4<E extends Element<E, ?> & StyleNoHtml4<E>> extends Style<E> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
@@ -5795,7 +5795,7 @@ public class Attributes {
 		 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 		 * </blockquote>
 		 */
-		public static interface Title<E extends Element<E> & Title<E>> {
+		public static interface Title<E extends Element<E, ?> & Title<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
@@ -5840,7 +5840,7 @@ public class Attributes {
 		 * In HTML 4.01, the title attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 		 * </blockquote>
 		 */
-		public static interface TitleNoHtml4<E extends Element<E> & TitleNoHtml4<E>> extends Title<E> {
+		public static interface TitleNoHtml4<E extends Element<E, ?> & TitleNoHtml4<E>> extends Title<E> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
@@ -5911,7 +5911,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 		 */
-		public static interface Value<E extends Element<E> & Value<E>> {
+		public static interface Value<E extends Element<E, ?> & Value<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
@@ -5952,7 +5952,7 @@ public class Attributes {
 		/** Make no instances. */
 		private Url() {}
 
-		static <E extends Element<E>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
+		static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
 			if(url != null) {
 				element.document.out.write(' ');
 				element.document.out.write(name);
@@ -5967,7 +5967,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
 		 */
-		public static interface Href<E extends Element<E> & Href<E>> {
+		public static interface Href<E extends Element<E, ?> & Href<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
@@ -5991,7 +5991,7 @@ public class Attributes {
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
 		 */
-		public static interface Src<E extends Element<E> & Src<E>> {
+		public static interface Src<E extends Element<E, ?> & Src<E>> {
 
 			/**
 			 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
@@ -6019,7 +6019,7 @@ public class Attributes {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.</li>
 	 * </ul>
 	 */
-	public static interface Global<E extends Element<E> & Global<E>> extends
+	public static interface Global<E extends Element<E, ?> & Global<E>> extends
 		// TODO: accesskey
 		// TODO: autocapitalize
 		Text.Class<E>,

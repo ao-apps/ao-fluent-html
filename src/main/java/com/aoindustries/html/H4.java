@@ -22,8 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -33,83 +31,52 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class H4<PC extends HeadingContent<PC>> extends Element<H4<PC>> implements
+public class H4<PC extends HeadingContent<PC>> extends
+	NormalTextElement<H4<PC>, PC, H4.H4Content<PC>, H4.H4CloseableContent<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<H4<PC>>
 {
 
-	public H4(Document document) {
-		super(document);
+	public static class H4Content<PC extends HeadingContent<PC>> extends
+		NormalTextContent<PC, H4Content<PC>> implements
+		PhrasingContent<H4Content<PC>> {
+
+		protected H4Content(H4<PC> element) {
+			super(element);
+		}
+	}
+
+	public static class H4CloseableContent<PC extends HeadingContent<PC>> extends
+		CloseableNormalTextContent<PC, H4CloseableContent<PC>> implements
+		PhrasingContent<H4CloseableContent<PC>> {
+
+		protected H4CloseableContent(H4<PC> element) {
+			super(element);
+		}
+	}
+
+	public H4(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected H4<PC> open() throws IOException {
+	protected H4<PC> writeOpen() throws IOException {
 		document.out.write("<h4");
 		return this;
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable> PC __(IORunnableE<Ex> h4) throws IOException, Ex {
-		if(h4 != null) {
-			document.out.write('>');
-			h4.run();
-			document.out.write("</h4>");
-		} else {
-			document.out.write("></h4>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected void writeClose() throws IOException {
+		document.out.write("</h4>");
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable, PContent extends PhrasingContent<PContent>> PC __(IOConsumerE<? super PContent, Ex> h4) throws IOException, Ex {
-		if(h4 != null) {
-			document.out.write('>');
-			@SuppressWarnings("unchecked") PContent c = (PContent)document;
-			h4.accept(c);
-			document.out.write("</h4>");
-		} else {
-			document.out.write("></h4>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected H4Content<PC> newC() {
+		return new H4Content<>(this);
 	}
 
-	/**
-	 * Writes a text body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 *
-	 * @see  Document#text(java.lang.Object)
-	 */
-	public PC __(Object text) throws IOException {
-		if(text != null) {
-			document.out.write('>');
-			document.text(text);
-			document.out.write("</h4>");
-		} else {
-			document.out.write("></h4>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
-	}
-
-	/**
-	 * Closes this element without any body.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public PC __() throws IOException {
-		document.out.write("></h4>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected H4CloseableContent<PC> newCC() {
+		return new H4CloseableContent<>(this);
 	}
 }

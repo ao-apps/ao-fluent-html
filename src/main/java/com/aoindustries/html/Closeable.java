@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2021  AO Industries, Inc.
+ * Copyright (C) 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,31 +25,32 @@ package com.aoindustries.html;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#elements-2">13.1.2 Elements</a>.
+ * When the content of an element is closed, the element's ending tag is written then the enclosing content model is
+ * returned.
+ *
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Should every element have a __() closing method?
-abstract public class Element<E extends Element<E, PC>, PC extends Content> implements
-	// Allow any arbitrary attributes
-	Attributes.Text.Attribute<E>,
-	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Global<E>
-{
+public interface Closeable<PC extends Content> extends java.io.Closeable {
 
-	protected final Document document;
-	protected final PC pc;
-
-	protected Element(Document document, PC pc) {
-		this.document = document;
-		this.pc = pc;
+	/**
+	 * Closes the content and ends the parent tag.
+	 * This is for use in try-with-resources, and simply calls {@link #__()}.
+	 *
+	 * @see  #__()
+	 */
+	@Override
+	default void close() throws IOException {
+		__();
 	}
 
 	/**
-	 * Writes the beginning of the opening tag.
+	 * Closes the content and ends the parent tag.
 	 *
-	 * @return  The element instance to use.
-	 *          This may substitute the element with a different instance, when appropriate.
+	 * @return  The parent content model this element is within
+	 *
+	 * @see  #close()
 	 */
-	abstract protected E writeOpen() throws IOException;
+	PC __() throws IOException;
 }

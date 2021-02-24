@@ -22,8 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -33,83 +31,52 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class P<PC extends PalpableContent<PC>> extends Element<P<PC>> implements
+public class P<PC extends PalpableContent<PC>> extends
+	NormalTextElement<P<PC>, PC, P.PContent<PC>, P.PCloseableContent<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<P<PC>>
 {
 
-	public P(Document document) {
-		super(document);
+	public static class PContent<PC extends PalpableContent<PC>> extends
+		NormalTextContent<PC, PContent<PC>> implements
+		PhrasingContent<PContent<PC>> {
+
+		protected PContent(P<PC> element) {
+			super(element);
+		}
+	}
+
+	public static class PCloseableContent<PC extends PalpableContent<PC>> extends
+		CloseableNormalTextContent<PC, PCloseableContent<PC>> implements
+		PhrasingContent<PCloseableContent<PC>> {
+
+		protected PCloseableContent(P<PC> element) {
+			super(element);
+		}
+	}
+
+	public P(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected P<PC> open() throws IOException {
+	protected P<PC> writeOpen() throws IOException {
 		document.out.write("<p");
 		return this;
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable> PC __(IORunnableE<Ex> p) throws IOException, Ex {
-		if(p != null) {
-			document.out.write('>');
-			p.run();
-			document.out.write("</p>");
-		} else {
-			document.out.write("></p>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected void writeClose() throws IOException {
+		document.out.write("</p>");
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable, PContent extends PhrasingContent<PContent>> PC __(IOConsumerE<? super PContent, Ex> p) throws IOException, Ex {
-		if(p != null) {
-			document.out.write('>');
-			@SuppressWarnings("unchecked") PContent c = (PContent)document;
-			p.accept(c);
-			document.out.write("</p>");
-		} else {
-			document.out.write("></p>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected PContent<PC> newC() {
+		return new PContent<>(this);
 	}
 
-	/**
-	 * Writes a text body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 *
-	 * @see  Document#text(java.lang.Object)
-	 */
-	public PC __(Object text) throws IOException {
-		if(text != null) {
-			document.out.write('>');
-			document.text(text);
-			document.out.write("</p>");
-		} else {
-			document.out.write("></p>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
-	}
-
-	/**
-	 * Closes this element without any body.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public PC __() throws IOException {
-		document.out.write("></p>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected PCloseableContent<PC> newCC() {
+		return new PCloseableContent<>(this);
 	}
 }

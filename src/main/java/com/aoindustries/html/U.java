@@ -22,8 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -33,83 +31,52 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class U<PC extends UnionContent.Palpable_Phrasing<PC>> extends Element<U<PC>> implements
+public class U<PC extends UnionContent.Palpable_Phrasing<PC>> extends
+	NormalTextElement<U<PC>, PC, U.UContent<PC>, U.UCloseableContent<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<U<PC>>
 {
 
-	public U(Document document) {
-		super(document);
+	public static class UContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends
+		NormalTextContent<PC, UContent<PC>> implements
+		PhrasingContent<UContent<PC>> {
+
+		protected UContent(U<PC> element) {
+			super(element);
+		}
+	}
+
+	public static class UCloseableContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends
+		CloseableNormalTextContent<PC, UCloseableContent<PC>> implements
+		PhrasingContent<UCloseableContent<PC>> {
+
+		protected UCloseableContent(U<PC> element) {
+			super(element);
+		}
+	}
+
+	public U(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected U<PC> open() throws IOException {
+	protected U<PC> writeOpen() throws IOException {
 		document.out.write("<u");
 		return this;
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable> PC __(IORunnableE<Ex> u) throws IOException, Ex {
-		if(u != null) {
-			document.out.write('>');
-			u.run();
-			document.out.write("</u>");
-		} else {
-			document.out.write("></u>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected void writeClose() throws IOException {
+		document.out.write("</u>");
 	}
 
-	/**
-	 * Invokes the body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public <Ex extends Throwable, UContent extends PhrasingContent<UContent>> PC __(IOConsumerE<? super UContent, Ex> u) throws IOException, Ex {
-		if(u != null) {
-			document.out.write('>');
-			@SuppressWarnings("unchecked") UContent c = (UContent)document;
-			u.accept(c);
-			document.out.write("</u>");
-		} else {
-			document.out.write("></u>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected UContent<PC> newC() {
+		return new UContent<>(this);
 	}
 
-	/**
-	 * Writes a text body then closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 *
-	 * @see  Document#text(java.lang.Object)
-	 */
-	public PC __(Object text) throws IOException {
-		if(text != null) {
-			document.out.write('>');
-			document.text(text);
-			document.out.write("</u>");
-		} else {
-			document.out.write("></u>");
-		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
-	}
-
-	/**
-	 * Closes this element without any body.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public PC __() throws IOException {
-		document.out.write("></u>");
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
-		return pc;
+	@Override
+	protected UCloseableContent<PC> newCC() {
+		return new UCloseableContent<>(this);
 	}
 }

@@ -47,12 +47,12 @@ public class Meta<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	// Not on <meta>: Attributes.Event.AlmostGlobal<Meta>
 {
 
-	public Meta(Document document) {
-		super(document);
+	public Meta(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Meta<PC> open() throws IOException {
+	protected Meta<PC> writeOpen() throws IOException {
 		document.out.write("<meta");
 		return this;
 	}

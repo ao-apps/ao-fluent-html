@@ -28,21 +28,21 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#flow_content">Flow content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface FlowContent<PC extends FlowContent<PC>> extends
+public interface FlowContent<C extends FlowContent<C>> extends
 	//
 	// Content models:
 	//
 	// Inherited from PalpableContent and PhrasingContent: Content
 	// Inherited from PalpableContent: SectioningContent<PC>
 	// Inherited from PalpableContent: HeadingContent<PC>
-	PhrasingContent<PC>,
+	PhrasingContent<C>,
 	// Inherited from PhrasingContent: EmbeddedContent<PC>
 	// Inherited from PalpableContent: InteractiveContent<PC>
-	PalpableContent<PC>,
+	PalpableContent<C>,
 	//
 	// Content types:
 	//
@@ -67,7 +67,7 @@ public interface FlowContent<PC extends FlowContent<PC>> extends
 	// Inherited from PhrasingContent: Contents.Edits.Del<PC>
 	// Inherited from PalpableContent: Contents.Interactive.Details<PC>
 	// Inherited from PalpableContent and PhrasingContent: Contents.Text.Dfn<PC>
-	Contents.Interactive.Dialog<PC>,
+	Contents.Interactive.Dialog<C>,
 	// Inherited from PalpableContent: Contents.Grouping.Div<PC>
 	// Inherited from PalpableContent: Contents.Grouping.Dl<PC>
 	// Inherited from PalpableContent and PhrasingContent: Contents.Text.Em<PC>
@@ -84,7 +84,7 @@ public interface FlowContent<PC extends FlowContent<PC>> extends
 	// Inherited from PalpableContent: Contents.Sections.H6<PC>
 	// Inherited from PalpableContent: Contents.Sections.Header<PC>
 	// Inherited from PalpableContent: Contents.Sections.Hgroup<PC>
-	Contents.Grouping.Hr<PC>
+	Contents.Grouping.Hr<C>
 	// Inherited from PalpableContent and PhrasingContent: Contents.Text.I<PC>
 	// Inherited from PalpableContent and PhrasingContent: Contents.Embedded.Iframe<PC>
 	// Inherited from PalpableContent and PhrasingContent: Contents.Embedded.Img<PC>

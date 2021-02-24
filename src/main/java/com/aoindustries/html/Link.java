@@ -68,12 +68,12 @@ public class Link<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	private static final com.aoindustries.i18n.Resources RESOURCES =
 		com.aoindustries.i18n.Resources.getResources(Link.class);
 
-	public Link(Document document) {
-		super(document);
+	public Link(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Link<PC> open() throws IOException {
+	protected Link<PC> writeOpen() throws IOException {
 		document.out.write("<link");
 		return this;
 	}
@@ -392,7 +392,6 @@ public class Link<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		if(rel == null && itemprop == null) {
 			throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 }

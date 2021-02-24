@@ -28,11 +28,11 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#sectioning_content">Sectioning content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SectioningContent<PC extends SectioningContent<PC>> extends
+public interface SectioningContent<C extends SectioningContent<C>> extends
 	//
 	// Content models:
 	//
@@ -40,9 +40,9 @@ public interface SectioningContent<PC extends SectioningContent<PC>> extends
 	//
 	// Content types:
 	//
-	Contents.Sections.Article<PC>,
-	Contents.Sections.Aside<PC>,
-	Contents.Sections.Nav<PC>,
-	Contents.Sections.Section<PC>
+	Contents.Sections.Article<C>,
+	Contents.Sections.Aside<C>,
+	Contents.Sections.Nav<C>,
+	Contents.Sections.Section<C>
 {
 }

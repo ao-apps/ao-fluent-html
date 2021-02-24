@@ -31,21 +31,28 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/#text-content">3.2.5.2.5 Phrasing content / Text</a>.
  *
- * @param  <PC>  The parent content model this text is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Separate Whitespace? https://html.spec.whatwg.org/#inter-element-whitespace
 //       Could skip encoding (but verified when assertions enabled)
-public interface TextContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends Content {
+public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extends Content {
 
 	/**
 	 * Writes the given text with proper encoding.
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	PC text(char ch) throws IOException;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default C text(char ch) throws IOException {
+		getDocument().text(ch);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 
 	// TODO: codePoint?
 
@@ -54,16 +61,30 @@ public interface TextContent<PC extends UnionContent.Palpable_Phrasing<PC>> exte
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	PC text(char[] cbuf) throws IOException;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default C text(char[] cbuf) throws IOException {
+		getDocument().text(cbuf);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 
 	/**
 	 * Writes the given text with proper encoding.
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	PC text(char[] cbuf, int offset, int len) throws IOException;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default C text(char[] cbuf, int offset, int len) throws IOException {
+		getDocument().text(cbuf, offset, len);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 
 	// TODO: text(CharSequence)?
 	// TODO: text(CharSequence, int, int)?
@@ -73,24 +94,45 @@ public interface TextContent<PC extends UnionContent.Palpable_Phrasing<PC>> exte
 	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	PC text(Object text) throws IOException;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default C text(Object text) throws IOException {
+		getDocument().text(text);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 
 	/**
 	 * Writes the given text with proper encoding.
 	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	<Ex extends Throwable> PC text(IOSupplierE<?, Ex> text) throws IOException, Ex;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default <Ex extends Throwable> C text(IOSupplierE<?, Ex> text) throws IOException, Ex {
+		getDocument().text(text);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 
 	/**
 	 * Writes the given text with proper encoding.
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	<Ex extends Throwable> PC text(MediaWritable<Ex> text) throws IOException, Ex;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default <Ex extends Throwable> C text(MediaWritable<Ex> text) throws IOException, Ex {
+		getDocument().text(text);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 
 	/**
 	 * Writes the given text with proper encoding.
@@ -101,12 +143,23 @@ public interface TextContent<PC extends UnionContent.Palpable_Phrasing<PC>> exte
 	 *
 	 * @return  A new writer that may be used for arbitrary text
 	 */
-	MediaWriter text() throws IOException;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	// TODO: __() method to end text?  Call it "ContentWriter"?
+	default MediaWriter text() throws IOException {
+		return getDocument().text();
+	}
 
 	/**
 	 * This is {@code '\n'} on all platforms.  If a different newline is required,
 	 * such as {@code "\r\n"} for email, filter the output.
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// TODO: Separate Whitespace?
-	PC nl() throws IOException;
+	// Note: Must be implemented in Document to avoid infinite recursion
+	default C nl() throws IOException {
+		getDocument().nl();
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
 }

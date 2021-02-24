@@ -28,15 +28,15 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content">Metadata content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MetadataContent<PC extends MetadataContent<PC>> extends
+public interface MetadataContent<C extends MetadataContent<C>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Metadata_Phrasing<PC>,
+	UnionContent.Metadata_Phrasing<C>,
 	//
 	// Content models:
 	//
@@ -44,13 +44,13 @@ public interface MetadataContent<PC extends MetadataContent<PC>> extends
 	//
 	// Content types:
 	//
-	Contents.Metadata.Base<PC>,
+	Contents.Metadata.Base<C>,
 	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<PC>,
 	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<PC>,
 	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<PC>,
 	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<PC>,
-	Contents.Metadata.Style<PC>,
+	Contents.Metadata.Style<C>,
 	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<PC>, // WHATWG only
-	Contents.Metadata.Title<PC>
+	Contents.Metadata.Title<C>
 {
 }

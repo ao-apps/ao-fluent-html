@@ -50,7 +50,8 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>> implements
+// TODO: Extend RawTextElement: https://html.spec.whatwg.org/#raw-text-elements
+public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>, PC> implements
 	Attributes.Text.Media<Style<PC>>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	Attributes.Text.ClassNoHtml4<Style<PC>>,
@@ -101,24 +102,24 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>> im
 
 	private final String type;
 
-	public Style(Document document) {
-		super(document);
+	public Style(Document document, PC pc) {
+		super(document, pc);
 		this.type = null;
 	}
 
-	public Style(Document document, String type) {
-		super(document);
+	public Style(Document document, PC pc, String type) {
+		super(document, pc);
 		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public Style(Document document, Type type) {
-		super(document);
+	public Style(Document document, PC pc, Type type) {
+		super(document, pc);
 		this.type = (type == null) ? null : type.getContentType();
 	}
 
 	@Override
-	protected Style<PC> open() throws IOException {
+	protected Style<PC> writeOpen() throws IOException {
 		document.out.write("<style");
 		return type();
 	}
@@ -232,6 +233,7 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>> im
 	 * {@link #__()} on {@link MediaWriter#close()}.
 	 * This is well suited for use in a try-with-resources block.
 	 */
+	// TODO: __() method to end text?  Call it "ContentWriter"?
 	public MediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
@@ -255,7 +257,6 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>> im
 			if(doCdata()) document.out.write("/*]]>*/");
 			document.out.write("</style>");
 		}
-		@SuppressWarnings("unchecked") PC pc = (PC)document;
 		return pc;
 	}
 }

@@ -28,16 +28,16 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#embedded_content">Embedded content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface EmbeddedContent<PC extends EmbeddedContent<PC>> extends
+public interface EmbeddedContent<C extends EmbeddedContent<C>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Embedded_Interactive<PC>,
-	UnionContent.Embedded_Palpable_Phrasing<PC>,
+	UnionContent.Embedded_Interactive<C>,
+	UnionContent.Embedded_Palpable_Phrasing<C>,
 	//
 	// Content models:
 	//
@@ -52,7 +52,7 @@ public interface EmbeddedContent<PC extends EmbeddedContent<PC>> extends
 	// Inherited from Embedded_Interactive: Contents.Embedded.Img<PC>,
 	// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
 	// Inherited from Embedded_Interactive: Contents.Embedded.Object<PC>,
-	Contents.Embedded.Picture<PC>
+	Contents.Embedded.Picture<C>
 	// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
 	// Inherited from Embedded_Interactive: Contents.Embedded.Video<PC>
 {

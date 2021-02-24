@@ -39,12 +39,12 @@ public class Br<PC extends PhrasingContent<PC>> extends VoidElement<Br<PC>, PC>
 	// Not on <br>: Attributes.Event.AlmostGlobal<Br>
 {
 
-	public Br(Document document) {
-		super(document);
+	public Br(Document document, PC pc) {
+		super(document, pc);
 	}
 
 	@Override
-	protected Br<PC> open() throws IOException {
+	protected Br<PC> writeOpen() throws IOException {
 		document.out.write("<br");
 		return this;
 	}

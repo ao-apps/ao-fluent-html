@@ -28,15 +28,15 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#interactive_content">Interactive content</a>.</li>
  * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <C>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface InteractiveContent<PC extends InteractiveContent<PC>> extends
+public interface InteractiveContent<C extends InteractiveContent<C>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Interactive_Phrasing<PC>,
+	UnionContent.Interactive_Phrasing<C>,
 	//
 	// Content models:
 	//
@@ -47,13 +47,13 @@ public interface InteractiveContent<PC extends InteractiveContent<PC>> extends
 	// Inherited from Interactive_Phrasing: Contents.Text.A<PC>, // if the href attribute is present
 	// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<PC>, // if the controls attribute is present
 	// Inherited from Interactive_Phrasing: Contents.Forms.Button<PC>,
-	Contents.Interactive.Details<PC>,
+	Contents.Interactive.Details<C>,
 	// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<PC>,
 	// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<PC>,
 	// Inherited from Interactive_Phrasing: Contents.Embedded.Img<PC>, // if the usemap attribute is present
 	// Inherited from Interactive_Phrasing: Contents.Forms.Input<PC>, // if type attribute is not in the hidden state
 	// Inherited from Interactive_Phrasing: Contents.Forms.Label<PC>,
-	Contents.Grouping.Menu<PC> // (MDN only) if the type attribute is in the toolbar state
+	Contents.Grouping.Menu<C> // (MDN only) if the type attribute is in the toolbar state
 	// Inherited from Interactive_Phrasing: Contents.Embedded.Object<PC>, // if the usemap attribute is present
 	// Inherited from Interactive_Phrasing: Contents.Forms.Select<PC>,
 	// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<PC>

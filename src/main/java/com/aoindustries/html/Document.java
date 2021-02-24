@@ -300,6 +300,12 @@ public class Document implements
 	}
 
 	@Override
+	public Document nl() throws IOException {
+		out.write('\n');
+		return this;
+	}
+
+	@Override
 	public Document text(char ch) throws IOException {
 		encodeTextInXhtml(ch, out);
 		return this;
@@ -369,12 +375,6 @@ public class Document implements
 			textInXhtmlEncoder,
 			new NoCloseWriter(out)
 		);
-	}
-
-	@Override
-	public Document nl() throws IOException {
-		out.write('\n');
-		return this;
 	}
 
 	// TODO: A set of per-type methods, like xml(), script(), style(), ...

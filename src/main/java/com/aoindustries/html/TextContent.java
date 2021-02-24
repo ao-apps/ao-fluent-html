@@ -35,8 +35,6 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Separate Whitespace? https://html.spec.whatwg.org/#inter-element-whitespace
-//       Could skip encoding (but verified when assertions enabled)
 public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
 
 	/**
@@ -147,19 +145,5 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	// TODO: __() method to end text?  Call it "ContentWriter"?
 	default MediaWriter text() throws IOException {
 		return getDocument().text();
-	}
-
-	/**
-	 * This is {@code '\n'} on all platforms.  If a different newline is required,
-	 * such as {@code "\r\n"} for email, filter the output.
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	// TODO: Separate Whitespace?
-	// Note: Must be implemented in Document to avoid infinite recursion
-	default C nl() throws IOException {
-		getDocument().nl();
-		@SuppressWarnings("unchecked") C c = (C)this;
-		return c;
 	}
 }

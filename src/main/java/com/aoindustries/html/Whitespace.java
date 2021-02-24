@@ -25,29 +25,22 @@ package com.aoindustries.html;
 import java.io.IOException;
 
 /**
- * The methods common to all content models.
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#content-models">3.2.5 Content models</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#content-models:space-characters">3.2.5 Content models / ASCII whitespace</a>.
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent object this whitespace is within
  *
  * @author  AO Industries, Inc.
  */
-public interface Content<C extends Content<C>> extends Whitespace<C> {
+public interface Whitespace<PC> {
 
 	/**
-	 * Gets the document for the current content model.  The document can be used to
-	 * perform raw output or write elements not expected in the current context.
+	 * Writes a newline, TODO: optionally followed by tab indentation.
+	 * <p>
+	 * This is {@code '\n'} on all platforms.  If a different newline is required,
+	 * such as {@code "\r\n"} for email, filter the output.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	Document getDocument();
-
-	// Note: Must be implemented in Document to avoid infinite recursion
-	@Override
-	default C nl() throws IOException {
-		getDocument().nl();
-		@SuppressWarnings("unchecked") C c = (C)this;
-		return c;
-	}
+	PC nl() throws IOException;
 }

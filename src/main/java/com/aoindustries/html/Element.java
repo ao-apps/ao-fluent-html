@@ -27,10 +27,13 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/#elements-2">13.1.2 Elements</a>.
  *
+ * @param  <PC>  The parent content model this element is within
+ *
  * @author  AO Industries, Inc.
  */
 // TODO: Should every element have a __() closing method?
 abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> implements
+	Whitespace<E>,
 	// Allow any arbitrary attributes
 	Attributes.Text.Attribute<E>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
@@ -43,6 +46,13 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	protected Element(Document document, PC pc) {
 		this.document = document;
 		this.pc = pc;
+	}
+
+	@Override
+	public E nl() throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.nl();
+		return element;
 	}
 
 	/**

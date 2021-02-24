@@ -43,7 +43,7 @@ public class Blockquote<PC extends PalpableContent<PC>> extends
 
 	public static class BlockquoteContent<PC extends PalpableContent<PC>> extends
 		NormalTextContent<PC, BlockquoteContent<PC>> implements
-		PhrasingContent<BlockquoteContent<PC>> {
+		FlowContent<BlockquoteContent<PC>> {
 
 		protected BlockquoteContent(Blockquote<PC> element) {
 			super(element);
@@ -52,7 +52,7 @@ public class Blockquote<PC extends PalpableContent<PC>> extends
 
 	public static class BlockquoteCloseableContent<PC extends PalpableContent<PC>> extends
 		CloseableNormalTextContent<PC, BlockquoteCloseableContent<PC>> implements
-		PhrasingContent<BlockquoteCloseableContent<PC>> {
+		FlowContent<BlockquoteCloseableContent<PC>> {
 
 		protected BlockquoteCloseableContent(Blockquote<PC> element) {
 			super(element);

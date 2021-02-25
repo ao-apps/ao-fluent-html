@@ -25,7 +25,6 @@ package com.aoindustries.html;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
-import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.io.ContentType;
@@ -199,6 +198,7 @@ public class Script<PC extends ScriptSupportingContent<PC>> extends Element<Scri
 		if(!didBody) {
 			document.out.write('>');
 			if(doCdata()) document.out.write("//<![CDATA[");
+			document.incDepth();
 			document.nl();
 			didBody = true;
 		}
@@ -248,7 +248,7 @@ public class Script<PC extends ScriptSupportingContent<PC>> extends Element<Scri
 	// TODO: Consolidate with AttributeWriter?
 	@FunctionalInterface
 	public static interface ScriptWriter<Ex extends Throwable> {
-		void writeScript(MediaWriter script) throws IOException, Ex;
+		void writeScript(DocumentMediaWriter script) throws IOException, Ex;
 	}
 
 	public <Ex extends Throwable> Script<PC> out(ScriptWriter<Ex> script) throws IOException, Ex {
@@ -256,8 +256,8 @@ public class Script<PC extends ScriptSupportingContent<PC>> extends Element<Scri
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();
 			script.writeScript(
-				new MediaWriter(
-					document.encodingContext,
+				new DocumentMediaWriter(
+					document,
 					encoder,
 					new NoCloseWriter(document.out)
 				)
@@ -268,14 +268,14 @@ public class Script<PC extends ScriptSupportingContent<PC>> extends Element<Scri
 
 	/**
 	 * Writes the script, automatically closing the script via
-	 * {@link #__()} on {@link MediaWriter#close()}.
+	 * {@link #__()} on {@link DocumentMediaWriter#close()}.
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	// TODO: __() method to end text?  Call it "ContentWriter"?
-	public MediaWriter out__() throws IOException {
+	public DocumentMediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
-		return new MediaWriter(document.encodingContext, encoder, document.out) {
+		return new DocumentMediaWriter(document, encoder) {
 			@Override
 			public void close() throws IOException {
 				__();
@@ -292,6 +292,7 @@ public class Script<PC extends ScriptSupportingContent<PC>> extends Element<Scri
 		if(!didBody) {
 			document.out.write("></script>");
 		} else {
+			document.decDepth();
 			document.nl();
 			if(doCdata()) document.out.write("//]]>");
 			document.out.write("</script>");

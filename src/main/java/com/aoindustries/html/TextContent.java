@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.MediaWritable;
-import com.aoindustries.encoding.MediaWriter;
+import com.aoindustries.encoding.TextWriter;
 import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
@@ -35,10 +35,10 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C> {
+public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C>, TextWriter<C> {
 
 	/**
-	 * Writes the given text with proper encoding.
+	 * {@inheritDoc}
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
@@ -46,6 +46,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default C text(char ch) throws IOException {
 		getDocument().text(ch);
 		@SuppressWarnings("unchecked") C c = (C)this;
@@ -55,7 +56,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	// TODO: codePoint?
 
 	/**
-	 * Writes the given text with proper encoding.
+	 * {@inheritDoc}
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
@@ -63,6 +64,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default C text(char[] cbuf) throws IOException {
 		getDocument().text(cbuf);
 		@SuppressWarnings("unchecked") C c = (C)this;
@@ -70,7 +72,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	}
 
 	/**
-	 * Writes the given text with proper encoding.
+	 * {@inheritDoc}
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
@@ -78,6 +80,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default C text(char[] cbuf, int offset, int len) throws IOException {
 		getDocument().text(cbuf, offset, len);
 		@SuppressWarnings("unchecked") C c = (C)this;
@@ -88,7 +91,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	// TODO: text(CharSequence, int, int)?
 
 	/**
-	 * Writes the given text with proper encoding.
+	 * {@inheritDoc}
 	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
@@ -96,6 +99,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default C text(Object text) throws IOException {
 		getDocument().text(text);
 		@SuppressWarnings("unchecked") C c = (C)this;
@@ -103,7 +107,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	}
 
 	/**
-	 * Writes the given text with proper encoding.
+	 * {@inheritDoc}
 	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
@@ -111,6 +115,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default <Ex extends Throwable> C text(IOSupplierE<?, Ex> text) throws IOException, Ex {
 		getDocument().text(text);
 		@SuppressWarnings("unchecked") C c = (C)this;
@@ -118,7 +123,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	}
 
 	/**
-	 * Writes the given text with proper encoding.
+	 * {@inheritDoc}
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
@@ -126,6 +131,7 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default <Ex extends Throwable> C text(MediaWritable<Ex> text) throws IOException, Ex {
 		getDocument().text(text);
 		@SuppressWarnings("unchecked") C c = (C)this;
@@ -133,17 +139,15 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	}
 
 	/**
-	 * Writes the given text with proper encoding.
-	 * This is well suited for use in a try-with-resources block.
+	 * {@inheritDoc}
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
-	 *
-	 * @return  A new writer that may be used for arbitrary text
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	// TODO: __() method to end text?  Call it "ContentWriter"?
-	default MediaWriter text() throws IOException {
+	@Override
+	default DocumentMediaWriter text() throws IOException {
 		return getDocument().text();
 	}
 }

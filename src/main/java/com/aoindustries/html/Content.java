@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.WhitespaceWriter;
 import java.io.IOException;
 
 /**
@@ -35,7 +36,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface Content<C extends Content<C>> extends Whitespace<C> {
+public interface Content<C extends Content<C>> extends WhitespaceWriter<C> {
 
 	/**
 	 * Gets the document for the current content model.  The document can be used to
@@ -47,6 +48,58 @@ public interface Content<C extends Content<C>> extends Whitespace<C> {
 	@Override
 	default C nl() throws IOException {
 		getDocument().nl();
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default C nl(int depthOffset) throws IOException {
+		getDocument().nl(depthOffset);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default boolean getIndent() {
+		return getDocument().getIndent();
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default C setIndent(boolean indent) {
+		getDocument().setIndent(indent);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default int getDepth() {
+		return getDocument().getDepth();
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default C setDepth(int depth) {
+		getDocument().setDepth(depth);
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default C incDepth() {
+		getDocument().incDepth();
+		@SuppressWarnings("unchecked") C c = (C)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default C decDepth() {
+		getDocument().decDepth();
 		@SuppressWarnings("unchecked") C c = (C)this;
 		return c;
 	}

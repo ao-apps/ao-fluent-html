@@ -64,6 +64,7 @@ public class Contents {
 		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface Html extends Content<com.aoindustries.html.Document> {
 			// TODO
+			// TODO: Html tag will not indent
 		}
 	}
 
@@ -84,6 +85,7 @@ public class Contents {
 		// TODO: <C extends HtmlContent<C>>
 		public static interface Head<C extends Content<C>> extends Content<C> {
 			// TODO
+			// TODO: Head tag will not indent
 		}
 
 		/**
@@ -341,6 +343,7 @@ public class Contents {
 		// TODO: <C extends HtmlContent<C>>
 		public static interface Body<C extends Content<C>> extends Content<C> {
 			// TODO
+			// TODO: Body tag will not indent
 		}
 
 		/**
@@ -944,6 +947,7 @@ public class Contents {
 		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface Pre<C extends PalpableContent<C>> extends Content<C> {
 			// TODO
+			// TODO: Set indentation depth back to zero before invoking body
 		}
 
 		/**
@@ -3184,6 +3188,7 @@ public class Contents {
 		@SuppressWarnings("MarkerInterface") // TODO
 		public static interface Textarea<C extends UnionContent.Interactive_Phrasing<C>> extends Content<C> {
 			// TODO
+			// TODO: Set indentation depth back to zero before invoking body
 		}
 
 		/**

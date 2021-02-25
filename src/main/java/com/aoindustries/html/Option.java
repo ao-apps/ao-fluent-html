@@ -23,7 +23,6 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.MediaWritable;
-import com.aoindustries.encoding.MediaWriter;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
 import com.aoindustries.io.NoCloseWriter;
@@ -149,11 +148,17 @@ public class Option<PC extends Content<PC>> extends Element<Option<PC>, PC> impl
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
-		document.out.write('>');
-		// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
-		// Allow text markup from translations
-		MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, document.out);
-		document.out.write("</option>");
+		if(text != null) {
+			document.out.write('>');
+			document.incDepth();
+			// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
+			// Allow text markup from translations
+			MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, document.out);
+			document.decDepth();
+			document.out.write("</option>");
+		} else {
+			document.out.write("></option>");
+		}
 		return pc;
 	}
 
@@ -174,17 +179,22 @@ public class Option<PC extends Content<PC>> extends Element<Option<PC>, PC> impl
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC text__(MediaWritable<Ex> text) throws IOException, Ex {
-		document.out.write('>');
 		if(text != null) {
+			document.out.write('>');
+			// TODO: Should this set depth back to zero?  Pre and TextArea will need to.
+			document.incDepth();
 			text.writeTo(
-				new MediaWriter(
-					document.encodingContext,
+				new DocumentMediaWriter(
+					document,
 					textInXhtmlEncoder,
 					new NoCloseWriter(document.out)
 				)
 			);
+			document.decDepth();
+			document.out.write("</option>");
+		} else {
+			document.out.write("></option>");
 		}
-		document.out.write("</option>");
 		return pc;
 	}
 
@@ -194,15 +204,14 @@ public class Option<PC extends Content<PC>> extends Element<Option<PC>, PC> impl
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	// TODO: __() method to end text?  Call it "ContentWriter"?
-	public MediaWriter text__() throws IOException {
+	public DocumentMediaWriter text__() throws IOException {
 		document.out.write('>');
-		return new MediaWriter(
-			document.encodingContext,
-			textInXhtmlEncoder,
-			document.out
-		) {
+		// TODO: Should this set depth back to zero?  Pre and TextArea will need to.
+		document.incDepth();
+		return new DocumentMediaWriter(document, textInXhtmlEncoder) {
 			@Override
 			public void close() throws IOException {
+				document.decDepth();
 				document.out.write("</option>");
 			}
 		};

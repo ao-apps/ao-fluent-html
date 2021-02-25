@@ -79,6 +79,7 @@ abstract public class NormalElement<
 
 		@Override
 		public PC __() throws IOException {
+			element.document.decDepth();
 			element.writeClose(false);
 			return element.pc;
 		}
@@ -101,7 +102,9 @@ abstract public class NormalElement<
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
 		if(body != null) {
 			document.out.write('>');
+			document.incDepth();
 			body.run();
+			document.decDepth();
 			writeClose(false);
 		} else {
 			writeClose(true);
@@ -119,7 +122,9 @@ abstract public class NormalElement<
 	public <Ex extends Throwable> PC __(IOConsumerE<? super C, Ex> body) throws IOException, Ex {
 		if(body != null) {
 			document.out.write('>');
+			document.incDepth();
 			body.accept(newC());
+			document.decDepth();
 			writeClose(false);
 		} else {
 			writeClose(true);
@@ -150,6 +155,7 @@ abstract public class NormalElement<
 	 */
 	public CC content() throws IOException {
 		document.out.write('>');
+		document.incDepth();
 		return newCC();
 	}
 

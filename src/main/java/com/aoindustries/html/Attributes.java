@@ -58,6 +58,8 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: Skip the space before attribute name after element had nl() called?
+//       This may require more tracking than it's worth, especially considerting the potential for direct unsafe writes.
 // TODO: We should probably be using long/Long for integer values.
 // TODO: Review which attributes should be trimmed and/or nullIfEmpty
 public class Attributes {
@@ -4751,6 +4753,10 @@ public class Attributes {
 					element.document.out.write(name);
 					element.document.out.write("=\"");
 					writer.writeTo(
+						// Not using DocumentMediaWriter for three reasons:
+						// 1) Newlines and tabs should be encoded within the attribute, not written directly out
+						// 2) The attribute content should have its own indentation scope and settings
+						// 3) Attribute value indentation should be off by default always
 						new MediaWriter(element.document.encodingContext, encoder, element.document.out) {
 							@Override
 							public void close() throws IOException {

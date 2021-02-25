@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.WhitespaceWriter;
 import java.io.IOException;
 
 /**
@@ -33,7 +34,7 @@ import java.io.IOException;
  */
 // TODO: Should every element have a __() closing method?
 abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> implements
-	Whitespace<E>,
+	WhitespaceWriter<E>,
 	// Allow any arbitrary attributes
 	Attributes.Text.Attribute<E>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
@@ -48,10 +49,103 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 		this.pc = pc;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#nl()}.
+	 * </p>
+	 */
 	@Override
 	public E nl() throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
 		document.nl();
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#nl(int)}.
+	 * </p>
+	 */
+	@Override
+	public E nl(int depthOffset) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.nl(depthOffset);
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#getIndent()}.
+	 * </p>
+	 */
+	@Override
+	public boolean getIndent() {
+		return document.getIndent();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#setIndent(boolean)}.
+	 * </p>
+	 */
+	@Override
+	public E setIndent(boolean indent) {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.setIndent(indent);
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#getDepth()}.
+	 * </p>
+	 */
+	@Override
+	public int getDepth() {
+		return document.getDepth();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#setDepth(int)}.
+	 * </p>
+	 */
+	@Override
+	public E setDepth(int depth) {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.setDepth(depth);
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#incDepth()}.
+	 * </p>
+	 */
+	@Override
+	public E incDepth() {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.incDepth();
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#decDepth()}.
+	 * </p>
+	 */
+	@Override
+	public E decDepth() {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.decDepth();
 		return element;
 	}
 

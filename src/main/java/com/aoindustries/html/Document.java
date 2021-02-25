@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -209,10 +210,8 @@ public class Document implements
 	 *       Or, access to it will be provided either directly or through methods named "unsafe".
 	 * </p>
 	 */
-
 	// TODO: Wrap this writer in XhtmlValidator if is not already validating XHTML?
-	// TODO:     If wrapping, consider uses of this losing access to this wrapping, such as NoCloseWriter
-
+	//       If wrapping, consider uses of this losing access to this wrapping, such as NoCloseWriter
 	// TODO: Make this be a ChainWriter?  This might be incorrect as it would encourage using html.out instead of elements and attributes
 	public final Writer out;
 
@@ -299,9 +298,120 @@ public class Document implements
 		return this;
 	}
 
+	/**
+	 * Is indenting enabled?
+	 */
+	// Matches MediaWriter.indent
+	private boolean indent;
+
+	/**
+	 * Current indentation level.
+	 */
+	// Matches MediaWriter.depth
+	private int depth;
+
+	// Matches MediaWriter.START_NL_LENGTH
+	private static final int START_NL_LENGTH = 8;
+
+	/**
+	 * Newline combined with any number of {@link #INDENT} characters.
+	 * Doubled in size as-needed.
+	 */
+	// Matches MediaWriter.nlAndIndent
+	private String nlAndIndent = new String(new char[] {
+		NL,     INDENT, INDENT, INDENT,
+		INDENT, INDENT, INDENT, INDENT
+	});
+	{
+		assert nlAndIndent.length() == START_NL_LENGTH : "Starts at length " + START_NL_LENGTH;
+	}
+
+	// Matches MediaWriter.nl()
 	@Override
 	public Document nl() throws IOException {
-		out.write('\n');
+		return nl(0);
+	}
+
+	// Matches MediaWriter.nl(int)
+	@Override
+	public Document nl(int depthOffset) throws IOException {
+		if(getIndent()) {
+			int d = getDepth();
+			assert d >= 0;
+			d += depthOffset
+				// Make room for the beginning newline
+				+ 1; 
+			if(d > 1) {
+				String ni = nlAndIndent;
+				int niLen = ni.length();
+				// Expand in size as-needed
+				if(d > niLen) {
+					do {
+						int bigger = niLen << 1;
+						if(bigger < niLen) throw new ArithmeticException("integer overflow");
+						niLen = bigger;
+					} while(d > niLen);
+					char[] newChars = new char[niLen];
+					newChars[0] = MediaWriter.NL;
+					Arrays.fill(newChars, 1, niLen, MediaWriter.INDENT);
+					nlAndIndent = ni = new String(newChars);
+				}
+				out.write(ni, 0, d);
+			} else {
+				out.write(MediaWriter.NL);
+			}
+		} else {
+			out.write(MediaWriter.NL);
+		}
+		return this;
+	}
+
+	// Matches MediaWriter.getIndent()
+	@Override
+	public boolean getIndent() {
+		return indent;
+	}
+
+	// Matches MediaWriter.setIndent(int)
+	@Override
+	public Document setIndent(boolean indent) {
+		this.indent = indent;
+		return this;
+	}
+
+	// Matches MediaWriter.getDepth()
+	@Override
+	public int getDepth() {
+		return depth;
+	}
+
+	// Matches MediaWriter.setDepth(int)
+	@Override
+	public Document setDepth(int depth) {
+		if(depth < 0) throw new IllegalArgumentException("depth < 0: " + depth);
+		this.depth = depth;
+		return this;
+	}
+
+	// Matches MediaWriter.incDepth()
+	@Override
+	public Document incDepth() {
+		if(getIndent()) {
+			int d = ++depth;
+			if(d < 0) depth = Integer.MAX_VALUE;
+		}
+		assert depth >= 0;
+		return this;
+	}
+
+	// Matches MediaWriter.decDepth()
+	@Override
+	public Document decDepth() {
+		if(getIndent()) {
+			int d = --depth;
+			if(d < 0) depth = 0;
+		}
+		assert depth >= 0;
 		return this;
 	}
 
@@ -361,7 +471,7 @@ public class Document implements
 	@Override
 	public <Ex extends Throwable> Document text(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
-			try (MediaWriter _out = text()) {
+			try (DocumentMediaWriter _out = text()) {
 				text.writeTo(_out);
 			}
 		}
@@ -369,9 +479,9 @@ public class Document implements
 	}
 
 	@Override
-	public MediaWriter text() throws IOException {
-		return new MediaWriter(
-			encodingContext,
+	public DocumentMediaWriter text() throws IOException {
+		return new DocumentMediaWriter(
+			this,
 			textInXhtmlEncoder,
 			new NoCloseWriter(out)
 		);

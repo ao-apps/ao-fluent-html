@@ -25,7 +25,6 @@ package com.aoindustries.html;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.MediaEncoder;
 import com.aoindustries.encoding.MediaType;
-import com.aoindustries.encoding.MediaWriter;
 import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
@@ -163,6 +162,7 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>, PC
 		if(!didBody) {
 			document.out.write('>');
 			if(doCdata()) document.out.write("/*<![CDATA[*/");
+			document.incDepth();
 			didBody = true;
 		}
 	}
@@ -210,7 +210,7 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>, PC
 	// TODO: Consolidate with AttributeWriter?
 	@FunctionalInterface
 	public static interface StyleWriter<Ex extends Throwable> {
-		void writeStyle(MediaWriter style) throws IOException, Ex;
+		void writeStyle(DocumentMediaWriter style) throws IOException, Ex;
 	}
 
 	public <Ex extends Throwable> Style<PC> out(StyleWriter<Ex> style) throws IOException, Ex {
@@ -218,8 +218,8 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>, PC
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			startBody();
 			style.writeStyle(
-				new MediaWriter(
-					document.encodingContext,
+				new DocumentMediaWriter(
+					document,
 					encoder,
 					new NoCloseWriter(document.out)
 				)
@@ -230,14 +230,14 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>, PC
 
 	/**
 	 * Writes the style, automatically closing the style via
-	 * {@link #__()} on {@link MediaWriter#close()}.
+	 * {@link #__()} on {@link DocumentMediaWriter#close()}.
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	// TODO: __() method to end text?  Call it "ContentWriter"?
-	public MediaWriter out__() throws IOException {
+	public DocumentMediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		startBody();
-		return new MediaWriter(document.encodingContext, encoder, document.out) {
+		return new DocumentMediaWriter(document, encoder) {
 			@Override
 			public void close() throws IOException {
 				__();
@@ -254,6 +254,7 @@ public class Style<PC extends MetadataContent<PC>> extends Element<Style<PC>, PC
 		if(!didBody) {
 			document.out.write("></style>");
 		} else {
+			document.decDepth();
 			if(doCdata()) document.out.write("/*]]>*/");
 			document.out.write("</style>");
 		}

@@ -53,16 +53,16 @@ public class GoogleAnalytics {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
 			document.link(Link.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
 			document.link(Link.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
-			// + "<!-- Global site tag (gtag.js) - Google Analytics -->\n"
+			// .out.write("<!-- Global site tag (gtag.js) - Google Analytics -->").nl()
 			// TODO: Attribute streaming src
 			document
 				.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trimmedId)).__().nl()
-				.script().out(script ->
-					script.append("window.dataLayer = window.dataLayer || [];\n"
-					+ "function gtag(){dataLayer.push(arguments);}\n"
-					+ "gtag(\"js\", new Date());\n"
-					// + "\n"
-					+ "gtag(\"config\", ").text(trimmedId).append(");")
+				.script().out(script -> script
+					.append("window.dataLayer = window.dataLayer || [];").nl()
+					.append("function gtag(){dataLayer.push(arguments);}").nl()
+					.append("gtag(\"js\", new Date());").nl()
+					// .nl()
+					.append("gtag(\"config\", ").text(trimmedId).append(");")
 				).__().nl();
 		}
 	}
@@ -78,13 +78,13 @@ public class GoogleAnalytics {
 	public static void writeAnalyticsJs(Document document, String trackingId) throws IOException {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
-			document.script().out(script ->
-				script.append("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){\n"
-					+ "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n"
-					+ "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n"
-					+ "})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");\n"
-					+ "ga(\"create\",").text(trimmedId).append(",\"auto\");\n"
-					+ "ga(\"send\",\"pageview\");")
+			document.script().out(script -> script
+				.append("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){").nl()
+				.append("(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),").nl()
+				.append("m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)").nl()
+				.append("})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");").nl()
+				.append("ga(\"create\",").text(trimmedId).append(",\"auto\");").nl()
+				.append("ga(\"send\",\"pageview\");")
 			).__().nl();
 		}
 	}

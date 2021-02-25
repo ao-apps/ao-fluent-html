@@ -78,7 +78,9 @@ abstract public class NormalTextElement<
 	public PC __(Object text) throws IOException {
 		if(text != null) {
 			document.out.write('>');
+			document.incDepth();
 			document.text(text);
+			document.decDepth();
 			writeClose(false);
 		} else {
 			writeClose(true);

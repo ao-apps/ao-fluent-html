@@ -92,6 +92,7 @@ public class Attributes {
 	 * or checking preconditions, only the funnel methods need to be overridden.
 	 * </p>
 	 */
+	// TODO: Move to own file and use for *_factory classes, too?
 	@Retention(RetentionPolicy.SOURCE)
 	@Target(ElementType.METHOD)
 	static @interface Funnel {
@@ -1150,7 +1151,7 @@ public class Attributes {
 			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 			//       https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclose
 			//       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-			
+
 			/**
 			 * <ul>
 			 * <li>See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.</li>
@@ -1934,7 +1935,7 @@ public class Attributes {
 			// TODO: onshow: https://www.w3schools.com/tags/ev_onshow.asp
 			//               https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 			//               (removed from HTML 5?)
-			
+
 			/**
 			 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
 			 */

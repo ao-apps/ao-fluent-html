@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020  AO Industries, Inc.
+ * Copyright (C) 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -37,7 +37,7 @@ import java.io.Serializable;
  * Minimal implementation of a circle class for similarity to {@link Rectangle}.
  * Methods are implemented via {@link Ellipse2D}.
  *
- * @see Area.Shape#CIRCLE
+ * @see AREA.Shape#CIRCLE
  *
  * @author  AO Industries, Inc.
  */

@@ -31,11 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/#text-content">3.2.5.2.5 Phrasing content / Text</a>.
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extends Content<C>, TextWriter<C> {
+public interface TextContent<__ extends UnionContent.Palpable_Phrasing<__>> extends Content<__>, TextWriter<__> {
 
 	/**
 	 * {@inheritDoc}
@@ -47,9 +47,9 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C text(char ch) throws IOException {
+	default __ text(char ch) throws IOException {
 		getDocument().text(ch);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -65,9 +65,9 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C text(char[] cbuf) throws IOException {
+	default __ text(char[] cbuf) throws IOException {
 		getDocument().text(cbuf);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -81,9 +81,9 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C text(char[] cbuf, int offset, int len) throws IOException {
+	default __ text(char[] cbuf, int offset, int len) throws IOException {
 		getDocument().text(cbuf, offset, len);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -100,9 +100,9 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C text(Object text) throws IOException {
+	default __ text(Object text) throws IOException {
 		getDocument().text(text);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -116,9 +116,9 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default <Ex extends Throwable> C text(IOSupplierE<?, Ex> text) throws IOException, Ex {
+	default <Ex extends Throwable> __ text(IOSupplierE<?, Ex> text) throws IOException, Ex {
 		getDocument().text(text);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -132,9 +132,9 @@ public interface TextContent<C extends UnionContent.Palpable_Phrasing<C>> extend
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default <Ex extends Throwable> C text(MediaWritable<Ex> text) throws IOException, Ex {
+	default <Ex extends Throwable> __ text(MediaWritable<Ex> text) throws IOException, Ex {
 		getDocument().text(text);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 

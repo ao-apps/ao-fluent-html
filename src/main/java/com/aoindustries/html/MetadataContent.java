@@ -28,30 +28,30 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content">Metadata content</a>.</li>
  * </ul>
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MetadataContent<C extends MetadataContent<C>> extends
+public interface MetadataContent<__ extends MetadataContent<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Metadata_Phrasing<C>,
+	UnionContent.Metadata_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Metadata_Phrasing: Content<C>
-	// Inherited from Metadata_Phrasing: ScriptSupportingContent<C>
+	// Inherited from Metadata_Phrasing: Content<__>
+	// Inherited from Metadata_Phrasing: ScriptSupportingContent<__>
 	//
 	// Content types:
 	//
-	Contents.Metadata.Base<C>,
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Link<C>
-	// Inherited from Metadata_Phrasing: Contents.Metadata.Meta<C>
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Noscript<C>
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Script<C>
-	Contents.Metadata.Style<C>,
-	// Inherited from Metadata_Phrasing: Contents.Scripting.Template<C> // WHATWG only
-	Contents.Metadata.Title<C>
+	BASE_factory<__>,
+	// Inherited from Metadata_Phrasing: LINK_factory<__>
+	// Inherited from Metadata_Phrasing: META_factory<__>
+	// Inherited from Metadata_Phrasing: NOSCRIPT_factory<__>
+	// Inherited from Metadata_Phrasing: SCRIPT_factory<__>
+	STYLE_factory<__>,
+	// Inherited from Metadata_Phrasing: TEMPLATE_factory<__> // WHATWG only
+	TITLE_factory<__>
 {
 }

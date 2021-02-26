@@ -32,28 +32,10 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class P<PC extends PalpableContent<PC>> extends
-	NormalTextElement<P<PC>, PC, P.PContent<PC>, P.PCloseableContent<PC>> implements
+	NormalText<P<PC>, PC, P__<PC>, P_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<P<PC>>
 {
-
-	public static class PContent<PC extends PalpableContent<PC>> extends
-		NormalTextContent<PC, PContent<PC>> implements
-		PhrasingContent<PContent<PC>> {
-
-		protected PContent(P<PC> element) {
-			super(element);
-		}
-	}
-
-	public static class PCloseableContent<PC extends PalpableContent<PC>> extends
-		CloseableNormalTextContent<PC, PCloseableContent<PC>> implements
-		PhrasingContent<PCloseableContent<PC>> {
-
-		protected PCloseableContent(P<PC> element) {
-			super(element);
-		}
-	}
 
 	public P(Document document, PC pc) {
 		super(document, pc);
@@ -71,12 +53,12 @@ public class P<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected PContent<PC> newC() {
-		return new PContent<>(this);
+	protected P__<PC> new__() {
+		return new P__<>(this);
 	}
 
 	@Override
-	protected PCloseableContent<PC> newCC() {
-		return new PCloseableContent<>(this);
+	protected P_c<PC> new_c() {
+		return new P_c<>(this);
 	}
 }

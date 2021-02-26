@@ -28,32 +28,32 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#embedded_content">Embedded content</a>.</li>
  * </ul>
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface EmbeddedContent<C extends EmbeddedContent<C>> extends
+public interface EmbeddedContent<__ extends EmbeddedContent<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Embedded_Interactive<C>,
-	UnionContent.Embedded_Palpable_Phrasing<C>,
+	UnionContent.Embedded_Interactive<__>,
+	UnionContent.Embedded_Palpable_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Embedded_Interactive and Embedded_Palpable_Phrasing: Content<C>
+	// Inherited from Embedded_Interactive and Embedded_Palpable_Phrasing: Content<__>
 	//
 	// Content types:
 	//
-	// Inherited from Embedded_Interactive: Contents.Embedded.Audio<C>
-	// Inherited from Embedded_Palpable_Phrasing: Contents.Scripting.Canvas<C>
-	// Inherited from Embedded_Interactive: Contents.Embedded.Embed<C>
-	// Inherited from Embedded_Interactive: Contents.Embedded.Iframe<C>
-	// Inherited from Embedded_Interactive: Contents.Embedded.Img<C>
+	// Inherited from Embedded_Interactive: AUDIO_factory<__>
+	// Inherited from Embedded_Palpable_Phrasing: CANVAS_factory<__>
+	// Inherited from Embedded_Interactive: EMBED_factory<__>
+	// Inherited from Embedded_Interactive: IFRAME_factory<__>
+	// Inherited from Embedded_Interactive: IMG_factory<__>
 	// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
-	// Inherited from Embedded_Interactive: Contents.Embedded.Object<C>
-	Contents.Embedded.Picture<C>
+	// Inherited from Embedded_Interactive: OBJECT_factory<__>
+	PICTURE_factory<__>
 	// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
-	// Inherited from Embedded_Interactive: Contents.Embedded.Video<C>
+	// Inherited from Embedded_Interactive: VIDEO_factory<__>
 {
 }

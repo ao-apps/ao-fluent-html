@@ -35,29 +35,11 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class Q<PC extends UnionContent.Palpable_Phrasing<PC>> extends
-	NormalTextElement<Q<PC>, PC, Q.QContent<PC>, Q.QCloseableContent<PC>> implements
+	NormalText<Q<PC>, PC, Q__<PC>, Q_c<PC>> implements
 	// TODO: cite
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<Q<PC>>
 {
-
-	public static class QContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends
-		NormalTextContent<PC, QContent<PC>> implements
-		PhrasingContent<QContent<PC>> {
-
-		protected QContent(Q<PC> element) {
-			super(element);
-		}
-	}
-
-	public static class QCloseableContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends
-		CloseableNormalTextContent<PC, QCloseableContent<PC>> implements
-		PhrasingContent<QCloseableContent<PC>> {
-
-		protected QCloseableContent(Q<PC> element) {
-			super(element);
-		}
-	}
 
 	public Q(Document document, PC pc) {
 		super(document, pc);
@@ -75,12 +57,12 @@ public class Q<PC extends UnionContent.Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected QContent<PC> newC() {
-		return new QContent<>(this);
+	protected Q__<PC> new__() {
+		return new Q__<>(this);
 	}
 
 	@Override
-	protected QCloseableContent<PC> newCC() {
-		return new QCloseableContent<>(this);
+	protected Q_c<PC> new_c() {
+		return new Q_c<>(this);
 	}
 }

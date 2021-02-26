@@ -28,35 +28,35 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#interactive_content">Interactive content</a>.</li>
  * </ul>
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface InteractiveContent<C extends InteractiveContent<C>> extends
+public interface InteractiveContent<__ extends InteractiveContent<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Interactive_Phrasing<C>,
+	UnionContent.Interactive_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Interactive_Phrasing: Content<C>
+	// Inherited from Interactive_Phrasing: Content<__>
 	//
 	// Content types:
 	//
-	// Inherited from Interactive_Phrasing: Contents.Text.A<C> // if the href attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Audio<C> // if the controls attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Forms.Button<C>
-	Contents.Interactive.Details<C>,
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Embed<C>
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Iframe<C>
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Img<C> // if the usemap attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Forms.Input<C> // if type attribute is not in the hidden state
-	// Inherited from Interactive_Phrasing: Contents.Forms.Label<C>
-	Contents.Grouping.Menu<C> // (MDN only) if the type attribute is in the toolbar state
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Object<C> // if the usemap attribute is present
-	// Inherited from Interactive_Phrasing: Contents.Forms.Select<C>
-	// Inherited from Interactive_Phrasing: Contents.Forms.Textarea<C>
-	// Inherited from Interactive_Phrasing: Contents.Embedded.Video<C> // if the controls attribute is present
+	// Inherited from Interactive_Phrasing: A_factory<__> // if the href attribute is present
+	// Inherited from Interactive_Phrasing: AUDIO_factory<__> // if the controls attribute is present
+	// Inherited from Interactive_Phrasing: BUTTON_factory<__>
+	DETAILS_factory<__>,
+	// Inherited from Interactive_Phrasing: EMBED_factory<__>
+	// Inherited from Interactive_Phrasing: IFRAME_factory<__>
+	// Inherited from Interactive_Phrasing: IMG_factory<__> // if the usemap attribute is present
+	// Inherited from Interactive_Phrasing: INPUT_factory<__> // if type attribute is not in the hidden state
+	// Inherited from Interactive_Phrasing: LABEL_factory<__>
+	MENU_factory<__> // (MDN only) if the type attribute is in the toolbar state
+	// Inherited from Interactive_Phrasing: OBJECT_factory<__> // if the usemap attribute is present
+	// Inherited from Interactive_Phrasing: SELECT_factory<__>
+	// Inherited from Interactive_Phrasing: TEXTAREA_factory<__>
+	// Inherited from Interactive_Phrasing: VIDEO_factory<__> // if the controls attribute is present
 {
 }

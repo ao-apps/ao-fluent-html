@@ -28,98 +28,98 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#palpable_content">Palpable content</a>.</li>
  * </ul>
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PalpableContent<C extends PalpableContent<C>> extends
+public interface PalpableContent<__ extends PalpableContent<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Palpable_Phrasing<C>,
+	UnionContent.Palpable_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from HeadingContent, InteractiveContent, SectioningContent, and Palpable_Phrasing: Content<C>
-	SectioningContent<C>,
-	HeadingContent<C>,
-	InteractiveContent<C>,
+	// Inherited from HeadingContent, InteractiveContent, SectioningContent, and Palpable_Phrasing: Content<__>
+	SectioningContent<__>,
+	HeadingContent<__>,
+	InteractiveContent<__>,
 	//
 	// Content types:
 	//
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Text.A<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Abbr<C>
-	Contents.Sections.Address<C>,
-	// Inherited from SectioningContent: Contents.Sections.Article<C>
-	// Inherited from SectioningContent: Contents.Sections.Aside<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Audio<C> // if the controls attribute is present
-	// Inherited from Palpable_Phrasing: Contents.Text.B<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Bdi<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Bdo<C>
-	Contents.Grouping.Blockquote<C>,
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Button<C>
-	// Inherited from Palpable_Phrasing: Contents.Scripting.Canvas<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Cite<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Code<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Data<C>
-	// Inherited from InteractiveContent: Contents.Interactive.Details<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Dfn<C>
-	Contents.Grouping.Div<C>,
-	Contents.Grouping.Dl<C>, // if childen contain at least one name/value pair
-	// Inherited from Palpable_Phrasing: Contents.Text.Em<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Embed<C>
-	Contents.Forms.Fieldset<C>,
-	Contents.Grouping.Figure<C>,
-	Contents.Sections.Footer<C>,
-	Contents.Forms.Form<C>,
-	// Inherited from HeadingContent: Contents.Sections.H1<C>
-	// Inherited from HeadingContent: Contents.Sections.H2<C>
-	// Inherited from HeadingContent: Contents.Sections.H3<C>
-	// Inherited from HeadingContent: Contents.Sections.H4<C>
-	// Inherited from HeadingContent: Contents.Sections.H5<C>
-	// Inherited from HeadingContent: Contents.Sections.H6<C>
-	Contents.Sections.Header<C>,
-	// Inherited from HeadingContent: Contents.Sections.Hgroup<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.I<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Iframe<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Img<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Input<C> // if type attribute is not in the hidden state
-	// Inherited from Palpable_Phrasing: Contents.Edits.Ins<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Kbd<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Label<C>
-	Contents.Grouping.Main<C>,
-	// Inherited from Palpable_Phrasing: Contents.Embedded.Map<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Mark<C>
+	// Inherited from InteractiveContent and Palpable_Phrasing: A_factory<__>
+	// Inherited from Palpable_Phrasing: ABBR_factory<__>
+	ADDRESS_factory<__>,
+	// Inherited from SectioningContent: ARTICLE_factory<__>
+	// Inherited from SectioningContent: ASIDE_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: AUDIO_factory<__> // if the controls attribute is present
+	// Inherited from Palpable_Phrasing: B_factory<__>
+	// Inherited from Palpable_Phrasing: BDI_factory<__>
+	// Inherited from Palpable_Phrasing: BDO_factory<__>
+	BLOCKQUOTE_factory<__>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: BUTTON_factory<__>
+	// Inherited from Palpable_Phrasing: CANVAS_factory<__>
+	// Inherited from Palpable_Phrasing: CITE_factory<__>
+	// Inherited from Palpable_Phrasing: CODE_factory<__>
+	// Inherited from Palpable_Phrasing: DATA_factory<__>
+	// Inherited from InteractiveContent: DETAILS_factory<__>
+	// Inherited from Palpable_Phrasing: DFN_factory<__>
+	DIV_factory<__>,
+	DL_factory<__>, // if childen contain at least one name/value pair
+	// Inherited from Palpable_Phrasing: EM_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: EMBED_factory<__>
+	FIELDSET_factory<__>,
+	FIGURE_factory<__>,
+	FOOTER_factory<__>,
+	FORM_factory<__>,
+	// Inherited from HeadingContent: H1_factory<__>
+	// Inherited from HeadingContent: H2_factory<__>
+	// Inherited from HeadingContent: H3_factory<__>
+	// Inherited from HeadingContent: H4_factory<__>
+	// Inherited from HeadingContent: H5_factory<__>
+	// Inherited from HeadingContent: H6_factory<__>
+	HEADER_factory<__>,
+	// Inherited from HeadingContent: HGROUP_factory<__>
+	// Inherited from Palpable_Phrasing: I_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: IFRAME_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: IMG_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: INPUT_factory<__> // if type attribute is not in the hidden state
+	// Inherited from Palpable_Phrasing: INS_factory<__>
+	// Inherited from Palpable_Phrasing: KBD_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: LABEL_factory<__>
+	MAIN_factory<__>,
+	// Inherited from Palpable_Phrasing: MAP_factory<__>
+	// Inherited from Palpable_Phrasing: MARK_factory<__>
 	// Inherited from Palpable_Phrasing: // TODO: MathML math
-	// Inherited from InteractiveContent: Contents.Grouping.Menu<C> // if children include at least one li
-	// Inherited from Palpable_Phrasing: Contents.Forms.Meter<C>
-	// Inherited from SectioningContent: Contents.Sections.Nav<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Object<C>
-	Contents.Grouping.Ol<C>, // if children include at least one li
-	// Inherited from Palpable_Phrasing: Contents.Forms.Output<C>
-	Contents.Grouping.P<C>,
-	Contents.Grouping.Pre<C>,
-	// Inherited from Palpable_Phrasing: Contents.Forms.Progress<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Q<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Ruby<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.S<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Samp<C>
-	// Inherited from SectioningContent: Contents.Sections.Section<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Select<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Small<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Span<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Strong<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Sub<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Sup<C>
+	// Inherited from InteractiveContent: MENU_factory<__> // if children include at least one li
+	// Inherited from Palpable_Phrasing: METER_factory<__>
+	// Inherited from SectioningContent: NAV_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: OBJECT_factory<__>
+	OL_factory<__>, // if children include at least one li
+	// Inherited from Palpable_Phrasing: OUTPUT_factory<__>
+	P_factory<__>,
+	PRE_factory<__>,
+	// Inherited from Palpable_Phrasing: PROGRESS_factory<__>
+	// Inherited from Palpable_Phrasing: Q_factory<__>
+	// Inherited from Palpable_Phrasing: RUBY_factory<__>
+	// Inherited from Palpable_Phrasing: S_factory<__>
+	// Inherited from Palpable_Phrasing: SAMP_factory<__>
+	// Inherited from SectioningContent: SECTION_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: SELECT_factory<__>
+	// Inherited from Palpable_Phrasing: SMALL_factory<__>
+	// Inherited from Palpable_Phrasing: SPAN_factory<__>
+	// Inherited from Palpable_Phrasing: STRONG_factory<__>
+	// Inherited from Palpable_Phrasing: SUB_factory<__>
+	// Inherited from Palpable_Phrasing: SUP_factory<__>
 	// Inherited from Palpable_Phrasing: // TODO: SVG svg
-	Contents.Tabular.Table<C>,
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Forms.Textarea<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.Time<C>
-	// Inherited from Palpable_Phrasing: Contents.Text.U<C>
-	Contents.Grouping.Ul<C> // if children include at least one li
-	// Inherited from Palpable_Phrasing: Contents.Text.Var<C>
-	// Inherited from InteractiveContent and Palpable_Phrasing: Contents.Embedded.Video<C>
-	// Inherited from Palpable_Phrasing: // TODO: autonomous custom elements
-	// Inherited from Palpable_Phrasing: TextContent<C> // that is not inter-element whitespace
+	TABLE_factory<__>,
+	// Inherited from InteractiveContent and Palpable_Phrasing: TEXTAREA_factory<__>
+	// Inherited from Palpable_Phrasing: TIME_factory<__>
+	// Inherited from Palpable_Phrasing: U_factory<__>
+	UL_factory<__> // if children include at least one li
+	// Inherited from Palpable_Phrasing: VAR_factory<__>
+	// Inherited from InteractiveContent and Palpable_Phrasing: VIDEO_factory<__>
+	// Inherited from Palpable_Phrasing: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// Inherited from Palpable_Phrasing: TextContent<__> // that is not inter-element whitespace
 {
 }

@@ -32,28 +32,10 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class H3<PC extends HeadingContent<PC>> extends
-	NormalTextElement<H3<PC>, PC, H3.H3Content<PC>, H3.H3CloseableContent<PC>> implements
+	NormalText<H3<PC>, PC, H3__<PC>, H3_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<H3<PC>>
 {
-
-	public static class H3Content<PC extends HeadingContent<PC>> extends
-		NormalTextContent<PC, H3Content<PC>> implements
-		PhrasingContent<H3Content<PC>> {
-
-		protected H3Content(H3<PC> element) {
-			super(element);
-		}
-	}
-
-	public static class H3CloseableContent<PC extends HeadingContent<PC>> extends
-		CloseableNormalTextContent<PC, H3CloseableContent<PC>> implements
-		PhrasingContent<H3CloseableContent<PC>> {
-
-		protected H3CloseableContent(H3<PC> element) {
-			super(element);
-		}
-	}
 
 	public H3(Document document, PC pc) {
 		super(document, pc);
@@ -71,12 +53,12 @@ public class H3<PC extends HeadingContent<PC>> extends
 	}
 
 	@Override
-	protected H3Content<PC> newC() {
-		return new H3Content<>(this);
+	protected H3__<PC> new__() {
+		return new H3__<>(this);
 	}
 
 	@Override
-	protected H3CloseableContent<PC> newCC() {
-		return new H3CloseableContent<>(this);
+	protected H3_c<PC> new_c() {
+		return new H3_c<>(this);
 	}
 }

@@ -32,11 +32,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides</a>.</li>
  * </ul>
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Content<C extends Content<C>> extends WhitespaceWriter<C> {
+public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 
 	/**
 	 * Gets the document for the current content model.  The document can be used to
@@ -46,17 +46,17 @@ public interface Content<C extends Content<C>> extends WhitespaceWriter<C> {
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C nl() throws IOException {
+	default __ nl() throws IOException {
 		getDocument().nl();
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C nl(int depthOffset) throws IOException {
+	default __ nl(int depthOffset) throws IOException {
 		getDocument().nl(depthOffset);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -68,9 +68,9 @@ public interface Content<C extends Content<C>> extends WhitespaceWriter<C> {
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C setIndent(boolean indent) {
+	default __ setIndent(boolean indent) {
 		getDocument().setIndent(indent);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
@@ -82,25 +82,25 @@ public interface Content<C extends Content<C>> extends WhitespaceWriter<C> {
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C setDepth(int depth) {
+	default __ setDepth(int depth) {
 		getDocument().setDepth(depth);
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C incDepth() {
+	default __ incDepth() {
 		getDocument().incDepth();
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default C decDepth() {
+	default __ decDepth() {
 		getDocument().decDepth();
-		@SuppressWarnings("unchecked") C c = (C)this;
+		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
 }

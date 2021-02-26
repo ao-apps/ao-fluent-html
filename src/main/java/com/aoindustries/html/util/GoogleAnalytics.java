@@ -25,7 +25,7 @@ package com.aoindustries.html.util;
 
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Document;
-import com.aoindustries.html.Link;
+import com.aoindustries.html.LINK;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.net.URIEncoder;
 import java.io.IOException;
@@ -51,8 +51,8 @@ public class GoogleAnalytics {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
-			document.link(Link.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
-			document.link(Link.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(Link.Crossorigin.ANONYMOUS).__().nl();
+			document.link(LINK.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
+			document.link(LINK.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(LINK.Crossorigin.ANONYMOUS).__().nl();
 			// .out.write("<!-- Global site tag (gtag.js) - Google Analytics -->").nl()
 			// TODO: Attribute streaming src
 			document

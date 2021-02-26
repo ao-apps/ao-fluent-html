@@ -56,8 +56,8 @@ public class Document implements
 	//
 	// Content models:
 	//
-	// Inherited from ColgroupContent, FlowContent, MetadataContent, TableContent, and TrContent: Content<Document>
-	ColgroupContent<Document>,
+	// Inherited from COLGROUP_content, FlowContent, MetadataContent, TABLE_content, and TR_content: Content<Document>
+	COLGROUP_content<Document>,
 	MetadataContent<Document>,
 	FlowContent<Document>,
 	// Inherited from FlowContent: SectioningContent<Document>
@@ -66,128 +66,127 @@ public class Document implements
 	// Inherited from FlowContent: EmbeddedContent<Document>
 	// Inherited from FlowContent: InteractiveContent<Document>
 	// Inherited from FlowContent: PalpableContent<Document>
-	// Inherited from FlowContent, MetadataContent, TableContent, and TrContent: ScriptSupportingContent<Document>
-	TableContent<Document>,
-	TrContent<Document>,
-	// Inherited from TableContent: TbodyTheadTfootContent<Document>
+	// Inherited from FlowContent, MetadataContent, TABLE_content, and TR_content: ScriptSupportingContent<Document>
+	TABLE_content<Document>,
+	TR_content<Document>,
 	//
 	// Content types:
 	//
-	Contents.Document.Html,
-	Contents.Metadata.Head<Document>,
-	// Inherited from MetadataContent: Contents.Metadata.Title<Document>
-	// Inherited from MetadataContent: Contents.Metadata.Base<Document>
-	// Inherited from FlowContent and MetadataContent: Contents.Metadata.Link<Document>
-	// Inherited from FlowContent and MetadataContent: Contents.Metadata.Meta<Document>
-	// Inherited from MetadataContent: Contents.Metadata.Style<Document>
-	Contents.Sections.Body<Document>,
-	// Inherited from FlowContent: Contents.Sections.Article<Document>
-	// Inherited from FlowContent: Contents.Sections.Section<Document>
-	// Inherited from FlowContent: Contents.Sections.Nav<Document>
-	// Inherited from FlowContent: Contents.Sections.Aside<Document>
-	// Inherited from FlowContent: Contents.Sections.H1<Document>
-	// Inherited from FlowContent: Contents.Sections.H2<Document>
-	// Inherited from FlowContent: Contents.Sections.H3<Document>
-	// Inherited from FlowContent: Contents.Sections.H4<Document>
-	// Inherited from FlowContent: Contents.Sections.H5<Document>
-	// Inherited from FlowContent: Contents.Sections.H6<Document>
-	// Inherited from FlowContent: Contents.Sections.Hgroup<Document>
-	// Inherited from FlowContent: Contents.Sections.Header<Document>
-	// Inherited from FlowContent: Contents.Sections.Footer<Document>
-	// Inherited from FlowContent: Contents.Sections.Address<Document>
-	// Inherited from FlowContent: Contents.Grouping.P<Document>
-	// Inherited from FlowContent: Contents.Grouping.Hr<Document>
-	// Inherited from FlowContent: Contents.Grouping.Pre<Document>
-	// Inherited from FlowContent: Contents.Grouping.Blockquote<Document>
-	// Inherited from FlowContent: Contents.Grouping.Ol<Document>
-	// Inherited from FlowContent: Contents.Grouping.Ul<Document>
-	// Inherited from FlowContent: Contents.Grouping.Menu<Document>
-	Contents.Grouping.Li<Document>,
-	// Inherited from FlowContent: Contents.Grouping.Dl<Document>
-	Contents.Grouping.Dt<Document>,
-	Contents.Grouping.Dd<Document>,
-	// Inherited from FlowContent: Contents.Grouping.Figure<Document>
-	Contents.Grouping.Figcaption<Document>,
-	// Inherited from FlowContent: Contents.Grouping.Main<Document>
-	// Inherited from FlowContent: Contents.Grouping.Div<Document>
-	// Inherited from FlowContent: Contents.Text.A<Document>
-	// Inherited from FlowContent: Contents.Text.Em<Document>
-	// Inherited from FlowContent: Contents.Text.Strong<Document>
-	// Inherited from FlowContent: Contents.Text.Small<Document>
-	// Inherited from FlowContent: Contents.Text.S<Document>
-	// Inherited from FlowContent: Contents.Text.Cite<Document>
-	// Inherited from FlowContent: Contents.Text.Q<Document>
-	// Inherited from FlowContent: Contents.Text.Dfn<Document>
-	// Inherited from FlowContent: Contents.Text.Abbr<Document>
-	// Inherited from FlowContent: Contents.Text.Ruby<Document>
-	Contents.Text.Rt<Document>,
-	Contents.Text.Rp<Document>,
-	// Inherited from FlowContent: Contents.Text.Data<Document>
-	// Inherited from FlowContent: Contents.Text.Time<Document>
-	// Inherited from FlowContent: Contents.Text.Code<Document>
-	// Inherited from FlowContent: Contents.Text.Var<Document>
-	// Inherited from FlowContent: Contents.Text.Samp<Document>
-	// Inherited from FlowContent: Contents.Text.Kbd<Document>
-	// Inherited from FlowContent: Contents.Text.Sub<Document>
-	// Inherited from FlowContent: Contents.Text.Sup<Document>
-	// Inherited from FlowContent: Contents.Text.I<Document>
-	// Inherited from FlowContent: Contents.Text.B<Document>
-	// Inherited from FlowContent: Contents.Text.U<Document>
-	// Inherited from FlowContent: Contents.Text.Mark<Document>
-	// Inherited from FlowContent: Contents.Text.Bdi<Document>
-	// Inherited from FlowContent: Contents.Text.Bdo<Document>
-	// Inherited from FlowContent: Contents.Text.Span<Document>
-	// Inherited from FlowContent: Contents.Text.Br<Document>
-	// Inherited from FlowContent: Contents.Text.Wbr<Document>
-	// Inherited from FlowContent: Contents.Edits.Ins<Document>
-	// Inherited from FlowContent: Contents.Edits.Del<Document>
-	// Inherited from FlowContent: Contents.Embedded.Picture<Document>
-	Contents.Embedded.Source<Document>,
-	// Inherited from FlowContent: Contents.Embedded.Img<Document>
-	// Inherited from FlowContent: Contents.Embedded.Iframe<Document>
-	// Inherited from FlowContent: Contents.Embedded.Embed<Document>
-	// Inherited from FlowContent: Contents.Embedded.Object<Document>
-	Contents.Embedded.Param<Document>,
-	// Inherited from FlowContent: Contents.Embedded.Video<Document>
-	// Inherited from FlowContent: Contents.Embedded.Audio<Document>
-	Contents.Embedded.Track<Document>,
-	// Inherited from FlowContent: Contents.Embedded.Map<Document>
-	// Inherited from FlowContent: Contents.Embedded.Area<Document>
+	HTML_factory,
+	HEAD_factory<Document>,
+	// Inherited from MetadataContent: TITLE_factory<Document>
+	// Inherited from MetadataContent: BASE_factory<Document>
+	// Inherited from FlowContent and MetadataContent: LINK_factory<Document>
+	// Inherited from FlowContent and MetadataContent: META_factory<Document>
+	// Inherited from MetadataContent: STYLE_factory<Document>
+	BODY_factory<Document>,
+	// Inherited from FlowContent: ARTICLE_factory<Document>
+	// Inherited from FlowContent: SECTION_factory<Document>
+	// Inherited from FlowContent: NAV_factory<Document>
+	// Inherited from FlowContent: ASIDE_factory<Document>
+	// Inherited from FlowContent: H1_factory<Document>
+	// Inherited from FlowContent: H2_factory<Document>
+	// Inherited from FlowContent: H3_factory<Document>
+	// Inherited from FlowContent: H4_factory<Document>
+	// Inherited from FlowContent: H5_factory<Document>
+	// Inherited from FlowContent: H6_factory<Document>
+	// Inherited from FlowContent: HGROUP_factory<Document>
+	// Inherited from FlowContent: HEADER_factory<Document>
+	// Inherited from FlowContent: FOOTER_factory<Document>
+	// Inherited from FlowContent: ADDRESS_factory<Document>
+	// Inherited from FlowContent: P_factory<Document>
+	// Inherited from FlowContent: HR_factory<Document>
+	// Inherited from FlowContent: PRE_factory<Document>
+	// Inherited from FlowContent: BLOCKQUOTE_factory<Document>
+	// Inherited from FlowContent: OL_factory<Document>
+	// Inherited from FlowContent: UL_factory<Document>
+	// Inherited from FlowContent: MENU_factory<Document>
+	LI_factory<Document>,
+	// Inherited from FlowContent: DL_factory<Document>
+	DT_factory<Document>,
+	DD_factory<Document>,
+	// Inherited from FlowContent: FIGURE_factory<Document>
+	FIGCAPTION_factory<Document>,
+	// Inherited from FlowContent: MAIN_factory<Document>
+	// Inherited from FlowContent: DIV_factory<Document>
+	// Inherited from FlowContent: A_factory<Document>
+	// Inherited from FlowContent: EM_factory<Document>
+	// Inherited from FlowContent: STRONG_factory<Document>
+	// Inherited from FlowContent: SMALL_factory<Document>
+	// Inherited from FlowContent: S_factory<Document>
+	// Inherited from FlowContent: CITE_factory<Document>
+	// Inherited from FlowContent: Q_factory<Document>
+	// Inherited from FlowContent: DFN_factory<Document>
+	// Inherited from FlowContent: ABBR_factory<Document>
+	// Inherited from FlowContent: RUBY_factory<Document>
+	RT_factory<Document>,
+	RP_factory<Document>,
+	// Inherited from FlowContent: DATA_factory<Document>
+	// Inherited from FlowContent: TIME_factory<Document>
+	// Inherited from FlowContent: CODE_factory<Document>
+	// Inherited from FlowContent: VAR_factory<Document>
+	// Inherited from FlowContent: SAMP_factory<Document>
+	// Inherited from FlowContent: KBD_factory<Document>
+	// Inherited from FlowContent: SUB_factory<Document>
+	// Inherited from FlowContent: SUP_factory<Document>
+	// Inherited from FlowContent: I_factory<Document>
+	// Inherited from FlowContent: B_factory<Document>
+	// Inherited from FlowContent: U_factory<Document>
+	// Inherited from FlowContent: MARK_factory<Document>
+	// Inherited from FlowContent: BDI_factory<Document>
+	// Inherited from FlowContent: BDO_factory<Document>
+	// Inherited from FlowContent: SPAN_factory<Document>
+	// Inherited from FlowContent: BR_factory<Document>
+	// Inherited from FlowContent: WBR_factory<Document>
+	// Inherited from FlowContent: INS_factory<Document>
+	// Inherited from FlowContent: DEL_factory<Document>
+	// Inherited from FlowContent: PICTURE_factory<Document>
+	SOURCE_factory<Document>,
+	// Inherited from FlowContent: IMG_factory<Document>
+	// Inherited from FlowContent: IFRAME_factory<Document>
+	// Inherited from FlowContent: EMBED_factory<Document>
+	// Inherited from FlowContent: OBJECT_factory<Document>
+	PARAM_factory<Document>,
+	// Inherited from FlowContent: VIDEO_factory<Document>
+	// Inherited from FlowContent: AUDIO_factory<Document>
+	TRACK_factory<Document>,
+	// Inherited from FlowContent: MAP_factory<Document>
+	// Inherited from FlowContent: AREA_factory<Document>
 	// Inherited from FlowContent: // TODO: MathML math
 	// Inherited from FlowContent: // TODO: SVG svg
-	// Inherited from FlowContent: Contents.Tabular.Table<Document>
-	// Inherited from TableContent: Contents.Tabular.Caption<Document>
-	// Inherited from TableContent: Contents.Tabular.Colgroup<Document>
-	// Inherited from ColgroupContent: Contents.Tabular.Col<Document>
-	// Inherited from TableContent: Contents.Tabular.Tbody<Document>
-	// Inherited from TableContent: Contents.Tabular.Thead<Document>
-	// Inherited from TableContent: Contents.Tabular.Tfoot<Document>
-	// Inherited from TableContent: Contents.Tabular.Tr<Document>
-	// Inherited from TrContent: Contents.Tabular.Td<Document>
-	// Inherited from TrContent: Contents.Tabular.Th<Document>
-	// Inherited from FlowContent: Contents.Forms.Form<Document>
-	// Inherited from FlowContent: Contents.Forms.Label<Document>
-	// Inherited from FlowContent: Contents.Forms.Input<Document>
-	// Inherited from FlowContent: Contents.Forms.Button<Document>
-	// Inherited from FlowContent: Contents.Forms.Select<Document>
-	// Inherited from FlowContent: Contents.Forms.Datalist<Document>
-	Contents.Forms.Optgroup<Document>,
-	Contents.Forms.Option<Document>,
-	// Inherited from FlowContent: Contents.Forms.Textarea<Document>
-	// Inherited from FlowContent: Contents.Forms.Output<Document>
-	// Inherited from FlowContent: Contents.Forms.Progress<Document>
-	// Inherited from FlowContent: Contents.Forms.Meter<Document>
-	// Inherited from FlowContent: Contents.Forms.Fieldset<Document>
-	Contents.Forms.Legend<Document>,
-	// Inherited from FlowContent: Contents.Interactive.Details<Document>
-	Contents.Interactive.Summary<Document>
-	// Inherited from FlowContent: Contents.Interactive.Dialog<Document>
-	// Inherited from FlowContent, MetadataContent, TableContent, and TrContent: Contents.Scripting.Script<Document>
-	// Inherited from FlowContent and MetadataContent: Contents.Scripting.Noscript<Document>
-	// Inherited from ColgroupContent, FlowContent, MetadataContent, TableContent, and TrContent: Contents.Scripting.Template<Document>
-	// Inherited from FlowContent: Contents.Scripting.Slot<Document>
-	// Inherited from FlowContent: Contents.Scripting.Canvas<Document>
-	// Inherited from FlowContent: // TODO: autonomous custom elements
+	// Inherited from FlowContent: TABLE_factory<Document>
+	// Inherited from TABLE_content: CAPTION_factory<Document>
+	// Inherited from TABLE_content: COLGROUP_factory<Document>
+	// Inherited from COLGROUP_content: COL_factory<Document>
+	// Inherited from TABLE_content: TBODY_factory<Document>
+	// Inherited from TABLE_content: THEAD_factory<Document>
+	// Inherited from TABLE_content: TFOOT_factory<Document>
+	// Inherited from TABLE_content: TR_factory<Document>
+	// Inherited from TR_content: TD_factory<Document>
+	// Inherited from TR_content: TH_factory<Document>
+	// Inherited from FlowContent: FORM_factory<Document>
+	// Inherited from FlowContent: LABEL_factory<Document>
+	// Inherited from FlowContent: INPUT_factory<Document>
+	// Inherited from FlowContent: BUTTON_factory<Document>
+	// Inherited from FlowContent: SELECT_factory<Document>
+	// Inherited from FlowContent: DATALIST_factory<Document>
+	OPTGROUP_factory<Document>,
+	OPTION_factory<Document>,
+	// Inherited from FlowContent: TEXTAREA_factory<Document>
+	// Inherited from FlowContent: OUTPUT_factory<Document>
+	// Inherited from FlowContent: PROGRESS_factory<Document>
+	// Inherited from FlowContent: METER_factory<Document>
+	// Inherited from FlowContent: FIELDSET_factory<Document>
+	LEGEND_factory<Document>,
+	// Inherited from FlowContent: DETAILS_factory<Document>
+	SUMMARY_factory<Document>
+	// Inherited from FlowContent: DIALOG_factory<Document>
+	// Inherited from FlowContent, MetadataContent, TABLE_content, and TR_content: SCRIPT_factory<Document>
+	// Inherited from FlowContent and MetadataContent: NOSCRIPT_factory<Document>
+	// Inherited from COLGROUP_content, FlowContent, MetadataContent, TABLE_content, and TR_content: TEMPLATE_factory<Document>
+	// Inherited from FlowContent: SLOT_factory<Document>
+	// Inherited from FlowContent: CANVAS_factory<Document>
+	// Inherited from FlowContent: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
 	// Inherited from FlowContent: TextContent<Document>
 	// TODO: Whitespace?
 {
@@ -340,7 +339,7 @@ public class Document implements
 			assert d >= 0;
 			d += depthOffset
 				// Make room for the beginning newline
-				+ 1; 
+				+ 1;
 			if(d > 1) {
 				String ni = nlAndIndent;
 				int niLen = ni.length();

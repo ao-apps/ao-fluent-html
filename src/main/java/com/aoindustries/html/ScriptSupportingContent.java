@@ -25,23 +25,23 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/#script-supporting-elements">3.2.5.2.9 Script-supporting elements</a>.
  *
- * @param  <C>  This content model, which will be the parent content model of child elements
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface ScriptSupportingContent<C extends ScriptSupportingContent<C>> extends
+public interface ScriptSupportingContent<__ extends ScriptSupportingContent<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Colgroup_ScriptSupporting<C>,
+	UnionContent.Colgroup_ScriptSupporting<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Colgroup_ScriptSupporting: Content<C>
+	// Inherited from Colgroup_ScriptSupporting: Content<__>
 	//
 	// Content types:
 	//
-	Contents.Scripting.Script<C>
-	// Inherited from Colgroup_ScriptSupporting: Contents.Scripting.Template<C>
+	SCRIPT_factory<__>
+	// Inherited from Colgroup_ScriptSupporting: TEMPLATE_factory<__>
 {
 }

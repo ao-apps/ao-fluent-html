@@ -32,28 +32,10 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class I<PC extends UnionContent.Palpable_Phrasing<PC>> extends
-	NormalTextElement<I<PC>, PC, I.IContent<PC>, I.ICloseableContent<PC>> implements
+	NormalText<I<PC>, PC, I__<PC>, I_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	Attributes.Event.AlmostGlobal<I<PC>>
 {
-
-	public static class IContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends
-		NormalTextContent<PC, IContent<PC>> implements
-		PhrasingContent<IContent<PC>> {
-
-		protected IContent(I<PC> element) {
-			super(element);
-		}
-	}
-
-	public static class ICloseableContent<PC extends UnionContent.Palpable_Phrasing<PC>> extends
-		CloseableNormalTextContent<PC, ICloseableContent<PC>> implements
-		PhrasingContent<ICloseableContent<PC>> {
-
-		protected ICloseableContent(I<PC> element) {
-			super(element);
-		}
-	}
 
 	public I(Document document, PC pc) {
 		super(document, pc);
@@ -71,12 +53,12 @@ public class I<PC extends UnionContent.Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected IContent<PC> newC() {
-		return new IContent<>(this);
+	protected I__<PC> new__() {
+		return new I__<>(this);
 	}
 
 	@Override
-	protected ICloseableContent<PC> newCC() {
-		return new ICloseableContent<>(this);
+	protected I_c<PC> new_c() {
+		return new I_c<>(this);
 	}
 }

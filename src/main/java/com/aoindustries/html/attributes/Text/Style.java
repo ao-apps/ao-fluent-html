@@ -50,8 +50,7 @@ public interface Style<E extends Element<E, ?> & Style<E>> {
 	@Attributes.Funnel
 	default E style(Object style) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		// TODO: MarkupType.CSS
-		return Attributes.Text.attribute(element, "style", MarkupType.JAVASCRIPT, style, true, true, textInXhtmlAttributeEncoder);
+		return Attributes.Text.attribute(element, "style", MarkupType.CSS, style, true, true, textInXhtmlAttributeEncoder);
 	}
 
 	/**
@@ -65,8 +64,7 @@ public interface Style<E extends Element<E, ?> & Style<E>> {
 	@Attributes.Funnel
 	default E style(Object ... style) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		// TODO: MarkupType.CSS
-		return Attributes.Text.attribute(element, "style", MarkupType.JAVASCRIPT, style, ";", true, true, textInXhtmlAttributeEncoder);
+		return Attributes.Text.attribute(element, "style", MarkupType.CSS, style, ";", true, true, textInXhtmlAttributeEncoder);
 	}
 
 	/**

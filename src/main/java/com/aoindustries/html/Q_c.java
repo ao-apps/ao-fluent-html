@@ -25,7 +25,7 @@ package com.aoindustries.html;
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
  * @param  <PC>  The parent content model this element is within

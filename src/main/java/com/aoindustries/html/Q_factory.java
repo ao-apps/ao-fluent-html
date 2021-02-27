@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
@@ -42,7 +42,7 @@ public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	 * Opens a new q element.
 	 * <ul>
 	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 */
 	default Q<__> q() throws IOException {
@@ -55,7 +55,7 @@ public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	 * Creates a q element with no attributes and the given body.
 	 * <ul>
 	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -68,7 +68,7 @@ public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	 * Creates a q element with no attributes and the given body.
 	 * <ul>
 	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -81,7 +81,7 @@ public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	 * Creates a q element with no attributes and a text body.
 	 * <ul>
 	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -94,7 +94,7 @@ public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	 * Creates an empty q element with no attributes.
 	 * <ul>
 	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element - HTML: HyperText Markup Language</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements

@@ -23,16 +23,31 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
+@SuppressWarnings("deprecation")
 public class TABLE<PC extends PalpableContent<PC>> extends
 	Normal<TABLE<PC>, PC, TABLE__<PC>, TABLE_c<PC>> implements
+	com.aoindustries.html.attributes.Enum.Align<TABLE<PC>, TABLE.Align>,
+	// TODO: bgcolor (deprecated)
+	com.aoindustries.html.attributes.Integer.Border<TABLE<PC>>,
+	com.aoindustries.html.attributes.Dimension.Cellpadding<TABLE<PC>>,
+	com.aoindustries.html.attributes.Dimension.Cellspacing<TABLE<PC>>,
+	// TODO: frame (deprecated)
+	// TODO: rules (deprecated)
+	// TODO: summary (deprecated)
+	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<TABLE<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	AlmostGlobalAttributes<TABLE<PC>>
 {
@@ -60,5 +75,45 @@ public class TABLE<PC extends PalpableContent<PC>> extends
 	@Override
 	protected TABLE_c<PC> new_c() {
 		return new TABLE_c<>(this);
+	}
+
+	/**
+	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-align">&lt;table&gt;: The Table element / align</a>.
+	 *
+	 * @deprecated  The align attribute of &lt;table&gt; is not supported in HTML5. Use CSS instead.
+	 */
+	@Deprecated
+	public enum Align implements Function<Document, String> {
+
+		/**
+		 * the table is displayed on the left side of the document
+		 */
+		LEFT("left"),
+
+		/**
+		 * the table is displayed in the center of the document
+		 */
+		CENTER("center"),
+
+		/**
+		 * the table is displayed on the right side of the document
+		 */
+		RIGHT("right");
+
+		private final String value;
+
+		private Align(String value) {
+			this.value = value;
+		}
+
+		@Override
+		public String toString() {
+			return value;
+		}
+
+		@Override
+		public String apply(Document document) {
+			return value;
+		}
 	}
 }

@@ -28,7 +28,11 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+ * </ul>
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

@@ -30,7 +30,11 @@ import java.io.IOException;
 
 // TODO: SVG svg: 4.8.17 SVG: https://html.spec.whatwg.org/#svg-0
 /**
- * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+ * </ul>
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -40,9 +44,11 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 
 	/**
 	 * Opens a new table element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
-	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+	 * </ul>
 	 */
 	default TABLE<__> table() throws IOException {
 		@SuppressWarnings(value = "unchecked")
@@ -52,9 +58,11 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 
 	/**
 	 * Creates a table element with no attributes and the given body.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
-	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -64,9 +72,11 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 
 	/**
 	 * Creates a table element with no attributes and the given body.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
-	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -76,9 +86,11 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 
 	/**
 	 * Creates an empty table element with no attributes.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.
-	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+	 * </ul>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */

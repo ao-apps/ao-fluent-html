@@ -82,4 +82,21 @@ public interface TFOOT_factory<__ extends TABLE_content<__>> extends Content<__>
 	default __ tfoot__() throws IOException {
 		return tfoot().__();
 	}
+
+	/**
+	 * Creates a tfoot element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default TFOOT_c<__> tfoot_c() throws IOException {
+		return tfoot()._c();
+	}
 }

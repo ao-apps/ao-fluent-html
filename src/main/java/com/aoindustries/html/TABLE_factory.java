@@ -97,4 +97,23 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	default __ table__() throws IOException {
 		return table().__();
 	}
+
+	/**
+	 * Creates a table element with no attributes then begins element content
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
+	 * </ul>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default TABLE_c<__> table_c() throws IOException {
+		return table()._c();
+	}
 }

@@ -94,4 +94,21 @@ public interface B_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	default __ b__() throws IOException {
 		return b().__();
 	}
+
+	/**
+	 * Creates a b element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default B_c<__> b_c() throws IOException {
+		return b()._c();
+	}
 }

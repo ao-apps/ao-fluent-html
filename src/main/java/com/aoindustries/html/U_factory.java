@@ -94,4 +94,21 @@ public interface U_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	default __ u__() throws IOException {
 		return u().__();
 	}
+
+	/**
+	 * Creates a u element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-u-element">4.5.22 The u element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default U_c<__> u_c() throws IOException {
+		return u()._c();
+	}
 }

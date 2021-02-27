@@ -94,4 +94,21 @@ public interface H1_factory<__ extends HeadingContent<__>> extends Content<__> {
 	default __ h1__() throws IOException {
 		return h1().__();
 	}
+
+	/**
+	 * Creates an h1 element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default H1_c<__> h1_c() throws IOException {
+		return h1()._c();
+	}
 }

@@ -102,4 +102,22 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	default __ blockquote__() throws IOException {
 		return blockquote().__();
 	}
+
+	/**
+	 * Creates a blockquote element with no attributes then begins element content
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
+	 * </ul>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default BLOCKQUOTE_c<__> blockquote_c() throws IOException {
+		return blockquote()._c();
+	}
 }

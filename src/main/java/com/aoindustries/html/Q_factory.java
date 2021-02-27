@@ -102,4 +102,22 @@ public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extend
 	default __ q__() throws IOException {
 		return q().__();
 	}
+
+	/**
+	 * Creates a q element with no attributes then begins element content
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
+	 * </ul>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default Q_c<__> q_c() throws IOException {
+		return q()._c();
+	}
 }

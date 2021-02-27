@@ -94,4 +94,21 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	default __ p__() throws IOException {
 		return p().__();
 	}
+
+	/**
+	 * Creates a p element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default P_c<__> p_c() throws IOException {
+		return p()._c();
+	}
 }

@@ -59,6 +59,20 @@ public interface Class<E extends Element<E, ?> & Class<E>> {
 	 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
 	 *
+	 * @param  clazz  Multiple classes will be space-separated.
+	 */
+	@Attributes.Funnel
+	default E clazz(Object ... clazz) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		return Attributes.Text.attribute(element, "class", MarkupType.NONE, clazz, " ", true, true, textInXhtmlAttributeEncoder);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+	 * <blockquote>
+	 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+	 * </blockquote>
+	 *
 	 * @see #clazz(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E clazz(IOSupplierE<?, Ex> clazz) throws IOException, Ex {

@@ -345,6 +345,96 @@ public class Attributes {
 			}
 			return element;
 		}
+
+		/**
+		 * @param values  The attribute values, {@link Attributes#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
+		 * @param separator  The separator to use between non-null values.  Written directly (not through the encoder).
+		 *                   Not written when a value is {@link Attributes#NO_VALUE}.
+		 */
+		@SuppressWarnings("AssignmentToForLoopParameter")
+		public static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object[] values, java.lang.String separator, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
+			if(values != null) {
+				Writer out = element.document.out;
+				boolean attr = false;
+				boolean val = false;
+				for(Object value : values) {
+					// TODO: Assert is valid attribute name by doctype
+					while(value instanceof IOSupplierE<?, ?>) {
+						@SuppressWarnings("unchecked") IOSupplierE<?, Ex> supplier = (IOSupplierE<?, Ex>)value;
+						value = supplier.get();
+					}
+					if(value != null) {
+						if(value instanceof MediaWritable<?>) {
+							@SuppressWarnings("unchecked") MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
+							if(val) {
+								assert attr;
+								if(separator != null) out.write(separator);
+							} else {
+								if(!attr) {
+									out.write(' ');
+									out.write(name);
+									attr = true;
+								}
+								out.write("=\"");
+								val = true;
+							}
+							writer.writeTo(
+								// Not using DocumentMediaWriter for three reasons:
+								// 1) Newlines and tabs should be encoded within the attribute, not written directly out
+								// 2) The attribute content should have its own indentation scope and settings
+								// 3) Attribute value indentation should be off by default always
+								new MediaWriter(element.document.encodingContext, encoder, out) {
+									@Override
+									public void close() throws IOException {
+										// Do not close underlying writer
+									}
+								}
+							);
+						} else {
+							if(value == NO_VALUE) { // Identity comparison for marker value
+								// Empty attribute
+								if(!attr) {
+									out.write(' ');
+									out.write(name);
+									attr = true;
+								}
+								// TODO: When serialization is XML, set equal to attribute name or empty?
+							} else {
+								if(trim) {
+									if(nullIfEmpty) {
+										value = Coercion.trimNullIfEmpty(value);
+									} else {
+										value = Coercion.trim(value);
+									}
+								} else if(nullIfEmpty) {
+									value = Coercion.nullIfEmpty(value);
+								}
+								if(value != null) {
+									if(val) {
+										assert attr;
+										if(separator != null) out.write(separator);
+									} else {
+										if(!attr) {
+											out.write(' ');
+											out.write(name);
+											attr = true;
+										}
+										out.write("=\"");
+										val = true;
+									}
+									MarkupCoercion.write(value, markupType, true, encoder, false, out);
+								}
+							}
+						}
+					}
+				}
+				if(val) {
+					assert attr;
+					out.write('"');
+				}
+			}
+			return element;
+		}
 	}
 
 	/**

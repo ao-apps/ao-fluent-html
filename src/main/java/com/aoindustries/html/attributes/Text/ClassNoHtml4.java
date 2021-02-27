@@ -67,6 +67,27 @@ public interface ClassNoHtml4<E extends Element<E, ?> & ClassNoHtml4<E>> extends
 	 * <blockquote>
 	 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
+	 */
+	@Override
+	@Attributes.Funnel
+	default E clazz(Object ... clazz) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		if(element.getDocument().doctype != Doctype.HTML5) {
+			throw new LocalizedIllegalArgumentException(
+				RESOURCES,
+				"invalidGlobalAttributeForDoctype",
+				element.getDocument().doctype,
+				"class"
+			);
+		}
+		return Class.super.clazz(clazz);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
+	 * <blockquote>
+	 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+	 * </blockquote>
 	 *
 	 * @see #clazz(java.lang.Object)
 	 */

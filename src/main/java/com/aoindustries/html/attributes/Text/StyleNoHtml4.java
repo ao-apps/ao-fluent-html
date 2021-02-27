@@ -67,6 +67,27 @@ public interface StyleNoHtml4<E extends Element<E, ?> & StyleNoHtml4<E>> extends
 	 * <blockquote>
 	 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
+	 */
+	@Override
+	@Attributes.Funnel
+	default E style(Object ... style) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		if(element.getDocument().doctype != Doctype.HTML5) {
+			throw new LocalizedIllegalArgumentException(
+				RESOURCES,
+				"invalidGlobalAttributeForDoctype",
+				element.getDocument().doctype,
+				"style"
+			);
+		}
+		return Style.super.style(style);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+	 * <blockquote>
+	 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
+	 * </blockquote>
 	 *
 	 * @see #style(java.lang.Object)
 	 */

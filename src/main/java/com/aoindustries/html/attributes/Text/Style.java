@@ -60,6 +60,21 @@ public interface Style<E extends Element<E, ?> & Style<E>> {
 	 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
 	 *
+	 * @param  style  Multiple styles will be semicolon-separated.
+	 */
+	@Attributes.Funnel
+	default E style(Object ... style) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		// TODO: MarkupType.CSS
+		return Attributes.Text.attribute(element, "style", MarkupType.JAVASCRIPT, style, ";", true, true, textInXhtmlAttributeEncoder);
+	}
+
+	/**
+	 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
+	 * <blockquote>
+	 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
+	 * </blockquote>
+	 *
 	 * @see #style(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E style(IOSupplierE<?, Ex> style) throws IOException, Ex {

@@ -22,9 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * <ul>
@@ -39,15 +38,15 @@ import java.io.IOException;
  */
 @SuppressWarnings("deprecation")
 public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, PC> implements
-	Attributes.Enum.Align<COL<PC>, COL.Align>,
+	com.aoindustries.html.attributes.Enum.Align<COL<PC>, COL.Align>,
 	// TODO: bgcolor (deprecated)
 	// TODO: char (deprecated)
 	// TODO: charoff (deprecated)
-	Attributes.Integer.Span<COL<PC>>,
-	Attributes.Enum.Valign<COL<PC>, COL.Valign>,
-	Attributes.Dimension.WidthHtml4Only<COL<PC>>,
+	com.aoindustries.html.attributes.Integer.Span<COL<PC>>,
+	com.aoindustries.html.attributes.Enum.Valign<COL<PC>, COL.Valign>,
+	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<COL<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<COL<PC>>
+	AlmostGlobalAttributes<COL<PC>>
 {
 
 	public COL(Document document, PC pc) {
@@ -66,7 +65,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 	 * @deprecated  The align attribute of &lt;col&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Attributes.Enum.EnumSupplier {
+	public enum Align implements Function<Document, String> {
 
 		/**
 		 * Left-align content
@@ -105,7 +104,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}
@@ -116,7 +115,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 	 * @deprecated  The valign attribute of &lt;col&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Valign implements Attributes.Enum.EnumSupplier {
+	public enum Valign implements Function<Document, String> {
 
 		/**
 		 * Top-align content
@@ -150,7 +149,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}

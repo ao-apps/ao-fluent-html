@@ -22,9 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * <ul>
@@ -38,10 +37,10 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidElement<META<PC>, PC> implements
-	Attributes.Enum.Charset<META<PC>, Attributes.Enum.Charset.Value>,
-	Attributes.Text.Content<META<PC>>,
-	Attributes.Enum.HttpEquiv<META<PC>, META.HttpEquiv>,
-	Attributes.Enum.Name<META<PC>, META.Name>
+	com.aoindustries.html.attributes.Enum.Charset<META<PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
+	com.aoindustries.html.attributes.Text.Content<META<PC>>,
+	com.aoindustries.html.attributes.Enum.HttpEquiv<META<PC>, META.HttpEquiv>,
+	com.aoindustries.html.attributes.Enum.Name<META<PC>, META.Name>
 	// TODO: scheme
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <meta>: Attributes.Event.AlmostGlobal<META<PC>>
@@ -63,7 +62,7 @@ public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
 	 * </ul>
 	 */
-	public enum HttpEquiv implements Attributes.Enum.EnumSupplier {
+	public enum HttpEquiv implements Function<Document, String> {
 		/**
 		 * Defines the default language of the page.
 		 * It can be overridden by the lang attribute on any element.
@@ -114,7 +113,7 @@ public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		 * where <code>IANAcharset</code> is the <i>preferred MIME name</i> for a character set as
 		 * <a href="https://www.iana.org/assignments/character-sets">defined by the IANA</a>.
 		 *
-		 * @deprecated  Do not use this value, as it is obsolete. Use the {@link Attributes.Enum.Charset charset}
+		 * @deprecated  Do not use this value, as it is obsolete. Use the {@link com.aoindustries.html.attributes.Enum.Charset charset}
 		 *              attribute on the {@link META &lt;meta&gt;} element.
 		 */
 		@Deprecated
@@ -138,11 +137,11 @@ public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		 * <ul>
 		 * <li>
 		 *   The number of seconds until the page should be reloaded
-		 *   - only if the {@link Attributes.Text.Content content} attribute contains a positive integer.
+		 *   - only if the {@link com.aoindustries.html.attributes.Text.Content content} attribute contains a positive integer.
 		 * </li>
 		 * <li>
 		 *   The number of seconds until the page should redirect to another
-		 *   - only if the {@link Attributes.Text.Content content} attribute contains a
+		 *   - only if the {@link com.aoindustries.html.attributes.Text.Content content} attribute contains a
 		 *   positive integer followed by the string '<code>;url=</code>', and a valid URL.
 		 * </li>
 		 * </ul>
@@ -162,23 +161,23 @@ public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		@Deprecated
 		SET_COOKIE("set-cookie");
 
-		private final java.lang.String value;
+		private final String value;
 
-		private HttpEquiv(java.lang.String value) {
+		private HttpEquiv(String value) {
 			this.value = value;
 		}
 
 		@Override
-		public java.lang.String toString() {
+		public String toString() {
 			return value;
 		}
 
 		@Override
-		public java.lang.String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 
-		public java.lang.String getValue() {
+		public String getValue() {
 			return value;
 		}
 	}
@@ -189,7 +188,7 @@ public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-name">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
 	 * </ul>
 	 */
-	public enum Name implements Attributes.Enum.EnumSupplier {
+	public enum Name implements Function<Document, String> {
 		/**
 		 * <code>application-name</code> which defines the name of the application running in the web page.
 		 */
@@ -307,23 +306,23 @@ public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		 */
 		APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE("apple-mobile-web-app-status-bar-style");
 
-		private final java.lang.String value;
+		private final String value;
 
-		private Name(java.lang.String value) {
+		private Name(String value) {
 			this.value = value;
 		}
 
 		@Override
-		public java.lang.String toString() {
+		public String toString() {
 			return value;
 		}
 
 		@Override
-		public java.lang.String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 
-		public java.lang.String getValue() {
+		public String getValue() {
 			return value;
 		}
 	}

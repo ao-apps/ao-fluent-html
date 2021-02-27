@@ -33,9 +33,9 @@ import java.io.IOException;
  */
 public class COLGROUP<PC extends TABLE_content<PC>> extends
 	Normal<COLGROUP<PC>, PC, COLGROUP__<PC>, COLGROUP_c<PC>> implements
-	Attributes.Integer.Span<COLGROUP<PC>>,
+	com.aoindustries.html.attributes.Integer.Span<COLGROUP<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<COLGROUP<PC>>
+	AlmostGlobalAttributes<COLGROUP<PC>>
 {
 
 	public COLGROUP(Document document, PC pc) {

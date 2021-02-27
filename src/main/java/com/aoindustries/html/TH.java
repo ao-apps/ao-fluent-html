@@ -34,13 +34,13 @@ import java.io.IOException;
 // TODO: Flow content, but with no header, footer, sectioning content, or heading content descendants.
 public class TH<PC extends TR_content<PC>> extends
 	NormalText<TH<PC>, PC, TH__<PC>, TH_c<PC>> implements
-	Attributes.Integer.Colspan<TH<PC>>,
-	Attributes.Integer.Rowspan<TH<PC>>,
+	com.aoindustries.html.attributes.Integer.Colspan<TH<PC>>,
+	com.aoindustries.html.attributes.Integer.Rowspan<TH<PC>>,
 	// TODO: headers
 	// TODO: scope
 	// TODO: abbr
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<TH<PC>>
+	AlmostGlobalAttributes<TH<PC>>
 {
 
 	public TH(Document document, PC pc) {

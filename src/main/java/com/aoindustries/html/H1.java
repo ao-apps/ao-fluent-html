@@ -34,7 +34,7 @@ import java.io.IOException;
 public class H1<PC extends HeadingContent<PC>> extends
 	NormalText<H1<PC>, PC, H1__<PC>, H1_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<H1<PC>>
+	AlmostGlobalAttributes<H1<PC>>
 {
 
 	public H1(Document document, PC pc) {

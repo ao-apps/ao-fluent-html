@@ -39,9 +39,9 @@ import java.io.IOException;
  */
 // TODO: <PC extends ObjectContent<PC>>
 public class PARAM<PC extends Content<PC>> extends VoidElement<PARAM<PC>, PC> implements
-	Attributes.Text.Name<PARAM<PC>>,
+	com.aoindustries.html.attributes.Text.Name<PARAM<PC>>,
 	// TODO: type (deprecated)
-	Attributes.Text.Value<PARAM<PC>>
+	com.aoindustries.html.attributes.Text.Value<PARAM<PC>>
 	// TODO: valuetype (deprecated)
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <param>: Attributes.Event.AlmostGlobal<PARAM<PC>>

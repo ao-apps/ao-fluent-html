@@ -64,7 +64,7 @@ public interface A_factory<__ extends UnionContent.Interactive_Phrasing<__>> ext
 	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
-	default<Ex extends Throwable> A<__> a(IOSupplierE<? extends java.lang.String, Ex> href) throws IOException, Ex {
+	default<Ex extends Throwable> A<__> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
 		return a().href(href);
 	}
 

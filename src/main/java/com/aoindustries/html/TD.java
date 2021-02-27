@@ -33,11 +33,11 @@ import java.io.IOException;
  */
 public class TD<PC extends TR_content<PC>> extends
 	NormalText<TD<PC>, PC, TD__<PC>, TD_c<PC>> implements
-	Attributes.Integer.Colspan<TD<PC>>,
-	Attributes.Integer.Rowspan<TD<PC>>,
+	com.aoindustries.html.attributes.Integer.Colspan<TD<PC>>,
+	com.aoindustries.html.attributes.Integer.Rowspan<TD<PC>>,
 	// TODO: headers
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<TD<PC>>
+	AlmostGlobalAttributes<TD<PC>>
 {
 
 	public TD(Document document, PC pc) {

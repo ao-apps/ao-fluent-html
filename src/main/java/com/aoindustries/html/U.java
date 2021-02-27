@@ -34,7 +34,7 @@ import java.io.IOException;
 public class U<PC extends UnionContent.Palpable_Phrasing<PC>> extends
 	NormalText<U<PC>, PC, U__<PC>, U_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<U<PC>>
+	AlmostGlobalAttributes<U<PC>>
 {
 
 	public U(Document document, PC pc) {

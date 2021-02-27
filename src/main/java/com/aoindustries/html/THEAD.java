@@ -34,7 +34,7 @@ import java.io.IOException;
 public class THEAD<PC extends TABLE_content<PC>> extends
 	Normal<THEAD<PC>, PC, THEAD__<PC>, THEAD_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<THEAD<PC>>
+	AlmostGlobalAttributes<THEAD<PC>>
 {
 
 	public THEAD(Document document, PC pc) {

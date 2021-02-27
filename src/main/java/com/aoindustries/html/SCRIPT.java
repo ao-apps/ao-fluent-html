@@ -50,21 +50,21 @@ import java.util.Locale;
  */
 // TODO: Extend RawTextElement: https://html.spec.whatwg.org/#raw-text-elements
 public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRIPT<PC>, PC> implements
-	Attributes.Boolean.Async<SCRIPT<PC>>,
-	Attributes.Enum.Charset<SCRIPT<PC>, Attributes.Enum.Charset.Value>,
-	Attributes.Boolean.Defer<SCRIPT<PC>>,
-	Attributes.Url.Src<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Boolean.Async<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Enum.Charset<SCRIPT<PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
+	com.aoindustries.html.attributes.Boolean.Defer<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Url.Src<SCRIPT<PC>>,
 	// TODO: type
 	// TODO: xmlSpace
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Text.ClassNoHtml4<SCRIPT<PC>>,
-	Attributes.Text.IdNoHtml4<SCRIPT<PC>>,
-	Attributes.Text.StyleNoHtml4<SCRIPT<PC>>,
-	Attributes.Text.TitleNoHtml4<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Text.ClassNoHtml4<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Text.IdNoHtml4<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Text.StyleNoHtml4<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Text.TitleNoHtml4<SCRIPT<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <script>: Attributes.Event.AlmostGlobal<SCRIPT<PC>>
-	Attributes.Event.Window.Onerror<SCRIPT<PC>>,
-	Attributes.Event.Window.Onload<SCRIPT<PC>>
+	com.aoindustries.html.attributes.event.window.Onerror<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.event.window.Onload<SCRIPT<PC>>
 {
 
 	/**

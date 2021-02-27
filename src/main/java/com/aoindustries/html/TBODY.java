@@ -34,7 +34,7 @@ import java.io.IOException;
 public class TBODY<PC extends TABLE_content<PC>> extends
 	Normal<TBODY<PC>, PC, TBODY__<PC>, TBODY_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<TBODY<PC>>
+	AlmostGlobalAttributes<TBODY<PC>>
 {
 
 	public TBODY(Document document, PC pc) {

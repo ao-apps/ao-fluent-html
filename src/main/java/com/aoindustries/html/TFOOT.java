@@ -34,7 +34,7 @@ import java.io.IOException;
 public class TFOOT<PC extends TABLE_content<PC>> extends
 	Normal<TFOOT<PC>, PC, TFOOT__<PC>, TFOOT_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<TFOOT<PC>>
+	AlmostGlobalAttributes<TFOOT<PC>>
 {
 
 	public TFOOT(Document document, PC pc) {

@@ -34,7 +34,7 @@ import java.io.IOException;
 public class P<PC extends PalpableContent<PC>> extends
 	NormalText<P<PC>, PC, P__<PC>, P_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<P<PC>>
+	AlmostGlobalAttributes<P<PC>>
 {
 
 	public P(Document document, PC pc) {

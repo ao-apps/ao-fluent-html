@@ -36,9 +36,9 @@ import java.io.IOException;
 abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> implements
 	WhitespaceWriter<E>,
 	// Allow any arbitrary attributes
-	Attributes.Text.Attribute<E>,
+	com.aoindustries.html.attributes.Text.Attribute<E>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Global<E>
+	GlobalAttributes<E>
 {
 
 	protected final Document document;
@@ -47,6 +47,10 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	protected Element(Document document, PC pc) {
 		this.document = document;
 		this.pc = pc;
+	}
+
+	public Document getDocument() {
+		return document;
 	}
 
 	/**

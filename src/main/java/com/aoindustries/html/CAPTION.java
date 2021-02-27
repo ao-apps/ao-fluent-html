@@ -35,7 +35,7 @@ import java.io.IOException;
 public class CAPTION<PC extends TABLE_content<PC>> extends
 	NormalText<CAPTION<PC>, PC, CAPTION__<PC>, CAPTION_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<CAPTION<PC>>
+	AlmostGlobalAttributes<CAPTION<PC>>
 {
 
 	public CAPTION(Document document, PC pc) {

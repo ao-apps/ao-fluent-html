@@ -44,12 +44,12 @@ import java.io.IOException;
  */
 // TODO: <PC extends TODO<PC>>
 public class OPTION<PC extends Content<PC>> extends Element<OPTION<PC>, PC> implements
-	Attributes.Boolean.Disabled<OPTION<PC>>,
-	Attributes.Text.Label<OPTION<PC>>,
-	Attributes.Boolean.Selected<OPTION<PC>>,
-	Attributes.Text.Value<OPTION<PC>>,
+	com.aoindustries.html.attributes.Boolean.Disabled<OPTION<PC>>,
+	com.aoindustries.html.attributes.Text.Label<OPTION<PC>>,
+	com.aoindustries.html.attributes.Boolean.Selected<OPTION<PC>>,
+	com.aoindustries.html.attributes.Text.Value<OPTION<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<OPTION<PC>>
+	AlmostGlobalAttributes<OPTION<PC>>
 {
 
 	public OPTION(Document document, PC pc) {
@@ -75,7 +75,7 @@ public class OPTION<PC extends Content<PC>> extends Element<OPTION<PC>, PC> impl
 	@Deprecated
 	@Override
 	public OPTION<PC> label(Object label) throws IOException {
-		return Attributes.Text.Label.super.label(label);
+		return com.aoindustries.html.attributes.Text.Label.super.label(label);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class OPTION<PC extends Content<PC>> extends Element<OPTION<PC>, PC> impl
 	@Deprecated
 	@Override
 	public <Ex extends Throwable> OPTION<PC> label(IOSupplierE<?, Ex> label) throws IOException, Ex {
-		return Attributes.Text.Label.super.label(label);
+		return com.aoindustries.html.attributes.Text.Label.super.label(label);
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class OPTION<PC extends Content<PC>> extends Element<OPTION<PC>, PC> impl
 	@Deprecated
 	@Override
 	public <Ex extends Throwable> OPTION<PC> label(MediaWritable<Ex> label) throws IOException, Ex {
-		return Attributes.Text.Label.super.label(label);
+		return com.aoindustries.html.attributes.Text.Label.super.label(label);
 	}
 
 	/**

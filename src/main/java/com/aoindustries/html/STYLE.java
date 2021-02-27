@@ -51,16 +51,16 @@ import java.util.Locale;
  */
 // TODO: Extend RawTextElement: https://html.spec.whatwg.org/#raw-text-elements
 public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC> implements
-	Attributes.Text.Media<STYLE<PC>>,
+	com.aoindustries.html.attributes.Text.Media<STYLE<PC>>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Text.ClassNoHtml4<STYLE<PC>>,
-	Attributes.Text.IdNoHtml4<STYLE<PC>>,
-	Attributes.Text.StyleNoHtml4<STYLE<PC>>,
-	Attributes.Text.TitleNoHtml4<STYLE<PC>>,
+	com.aoindustries.html.attributes.Text.ClassNoHtml4<STYLE<PC>>,
+	com.aoindustries.html.attributes.Text.IdNoHtml4<STYLE<PC>>,
+	com.aoindustries.html.attributes.Text.StyleNoHtml4<STYLE<PC>>,
+	com.aoindustries.html.attributes.Text.TitleNoHtml4<STYLE<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// Not on <style>: Attributes.Event.AlmostGlobal<STYLE<PC>>
-	Attributes.Event.Window.Onerror<LINK<PC>>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
-	Attributes.Event.Window.Onload<LINK<PC>>
+	com.aoindustries.html.attributes.event.window.Onerror<LINK<PC>>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
+	com.aoindustries.html.attributes.event.window.Onload<LINK<PC>>
 {
 
 	/**

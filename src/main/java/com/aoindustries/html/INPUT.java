@@ -24,7 +24,6 @@ package com.aoindustries.html;
 
 import com.aoindustries.collections.AoCollections;
 import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
@@ -34,6 +33,7 @@ import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * <p>
@@ -53,9 +53,9 @@ import java.util.Map;
  * @author  AO Industries, Inc.
  */
 public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Interactive_Phrasing<PC>> extends VoidElement<E, PC> implements
-	Attributes.Boolean.Autofocus<E>,
+	com.aoindustries.html.attributes.Boolean.Autofocus<E>,
 	// TODO: dirname
-	Attributes.Boolean.Disabled<E>,
+	com.aoindustries.html.attributes.Boolean.Disabled<E>,
 	// TODO: form
 	// TODO: formaction
 	// TODO: formenctype
@@ -65,15 +65,15 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	// TODO: inputmode here or global?
 	// TODO: max
 	// TODO: min
-	Attributes.Text.Name<E>,
+	com.aoindustries.html.attributes.Text.Name<E>,
 	// TODO: pattern
 	// TODO: required
 	// TODO: step
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Integer.TabindexHtml4<E>,
+	com.aoindustries.html.attributes.Integer.TabindexHtml4<E>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<E>,
-	Attributes.Event.Form.Oninvalid<E>
+	AlmostGlobalAttributes<E>,
+	com.aoindustries.html.attributes.event.form.Oninvalid<E>
 {
 
 	private static final com.aoindustries.i18n.Resources RESOURCES =
@@ -102,7 +102,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.
 	 * </p>
 	 */
-	public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+	public enum Autocomplete implements Function<Document, String> {
 		OFF("off"),
 		ON("on"),
 		NAME("name"),
@@ -160,23 +160,23 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		URL("url"),
 		PHOTO("photo");
 
-		private final java.lang.String value;
+		private final String value;
 
-		private Autocomplete(java.lang.String value) {
+		private Autocomplete(String value) {
 			this.value = value;
 		}
 
 		@Override
-		public java.lang.String toString() {
+		public String toString() {
 			return value;
 		}
 
 		@Override
-		public java.lang.String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 
-		public java.lang.String getValue() {
+		public String getValue() {
 			return value;
 		}
 	}
@@ -198,32 +198,32 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 */
 	@SuppressWarnings("deprecation")
 	public static class Dynamic<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Dynamic<PC>, PC> implements
-		Attributes.Text.Accept<Dynamic<PC>>,
-		Attributes.Enum.Align<Dynamic<PC>, Image.Align>,
-		Attributes.Text.Alt<Dynamic<PC>>,
-		Attributes.Enum.Autocomplete<Dynamic<PC>, INPUT.Autocomplete>,
-		Attributes.Enum.Capture<Dynamic<PC>, File.Capture>,
-		Attributes.Boolean.Checked<Dynamic<PC>>,
-		Attributes.Integer.HeightHtml5Only<Dynamic<PC>>,
-		Attributes.Text.List<Dynamic<PC>>,
-		Attributes.Integer.Maxlength<Dynamic<PC>>,
-		Attributes.Integer.Minlength<Dynamic<PC>>,
-		Attributes.Boolean.Multiple<Dynamic<PC>>,
-		Attributes.Text.Placeholder<Dynamic<PC>>,
-		Attributes.Boolean.Readonly<Dynamic<PC>>,
-		Attributes.Integer.Size<Dynamic<PC>>,
-		Attributes.Url.Src<Dynamic<PC>>,
-		Attributes.Enum.Type<Dynamic<PC>, Dynamic.Type>,
-		Attributes.Text.Value<Dynamic<PC>>,
-		Attributes.Integer.WidthHtml5Only<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Text.Accept<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Enum.Align<Dynamic<PC>, Image.Align>,
+		com.aoindustries.html.attributes.Text.Alt<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Dynamic<PC>, INPUT.Autocomplete>,
+		com.aoindustries.html.attributes.Enum.Capture<Dynamic<PC>, File.Capture>,
+		com.aoindustries.html.attributes.Boolean.Checked<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Integer.HeightHtml5Only<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Text.List<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Boolean.Multiple<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Integer.Size<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Url.Src<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Enum.Type<Dynamic<PC>, Dynamic.Type>,
+		com.aoindustries.html.attributes.Text.Value<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Integer.WidthHtml5Only<Dynamic<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Media.Onabort<Dynamic<PC>>,
-		Attributes.Event.Window.Onerror<Dynamic<PC>>,
-		Attributes.Event.Window.Onload<Dynamic<PC>>,
-		Attributes.Event.Form.Onchange<Dynamic<PC>>,
-		Attributes.Event.Form.Oninput<Dynamic<PC>>,
-		Attributes.Event.Form.Onsearch<Dynamic<PC>>,
-		Attributes.Event.Form.Onselect<Dynamic<PC>>
+		com.aoindustries.html.attributes.event.media.Onabort<Dynamic<PC>>,
+		com.aoindustries.html.attributes.event.window.Onerror<Dynamic<PC>>,
+		com.aoindustries.html.attributes.event.window.Onload<Dynamic<PC>>,
+		com.aoindustries.html.attributes.event.form.Onchange<Dynamic<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Dynamic<PC>>,
+		com.aoindustries.html.attributes.event.form.Onsearch<Dynamic<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Dynamic<PC>>
 	{
 
 		private String type;
@@ -258,7 +258,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		/**
 		 * See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.
 		 */
-		public enum Type implements Attributes.Enum.EnumSupplier {
+		public enum Type implements Function<Document, String> {
 			BUTTON("button") {
 				/**
 				 * @see Button#value(java.lang.Object)
@@ -324,7 +324,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public String get(Serialization serialization, Doctype doctype) {
+			public String apply(Document document) {
 				return value;
 			}
 
@@ -448,7 +448,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Button<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Button<PC>, PC> implements
-		Attributes.Text.Value<Button<PC>>
+		com.aoindustries.html.attributes.Text.Value<Button<PC>>
 	{
 
 		public Button(Document document, PC pc) {
@@ -486,10 +486,10 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Checkbox<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Checkbox<PC>, PC> implements
-		Attributes.Boolean.Checked<Checkbox<PC>>,
-		Attributes.Text.Value<Checkbox<PC>>,
+		com.aoindustries.html.attributes.Boolean.Checked<Checkbox<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Checkbox<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Checkbox<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Checkbox<PC>>
 	{
 
 		public Checkbox(Document document, PC pc) {
@@ -508,13 +508,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Color<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Color<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Color<PC>, Color.Autocomplete>,
-		Attributes.Text.List<Color<PC>>,
-		Attributes.Boolean.Readonly<Color<PC>>, // Guessed
-		Attributes.Text.Value<Color<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Color<PC>, Color.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Color<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Color<PC>>, // Guessed
+		com.aoindustries.html.attributes.Text.Value<Color<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Color<PC>>,
-		Attributes.Event.Form.Oninput<Color<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Color<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Color<PC>>
 	{
 
 		public Color(Document document, PC pc) {
@@ -539,7 +539,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON);
 
@@ -550,13 +550,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -582,13 +582,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Date<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Date<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Date<PC>, Date.Autocomplete>,
-		Attributes.Text.List<Date<PC>>,
-		Attributes.Boolean.Readonly<Date<PC>>, // Guessed
-		Attributes.Text.Value<Date<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Date<PC>, Date.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Date<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Date<PC>>, // Guessed
+		com.aoindustries.html.attributes.Text.Value<Date<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Date<PC>>,
-		Attributes.Event.Form.Oninput<Date<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Date<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Date<PC>>
 	{
 
 		public Date(Document document, PC pc) {
@@ -613,7 +613,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			CC_EXP(INPUT.Autocomplete.CC_EXP),
@@ -626,13 +626,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -658,13 +658,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class DatetimeLocal<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<DatetimeLocal<PC>, PC> implements
-		Attributes.Enum.Autocomplete<DatetimeLocal<PC>, DatetimeLocal.Autocomplete>,
-		Attributes.Text.List<DatetimeLocal<PC>>,
-		Attributes.Boolean.Readonly<DatetimeLocal<PC>>, // Guessed
-		Attributes.Text.Value<DatetimeLocal<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<DatetimeLocal<PC>, DatetimeLocal.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<DatetimeLocal<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<DatetimeLocal<PC>>, // Guessed
+		com.aoindustries.html.attributes.Text.Value<DatetimeLocal<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<DatetimeLocal<PC>>,
-		Attributes.Event.Form.Oninput<DatetimeLocal<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<DatetimeLocal<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<DatetimeLocal<PC>>
 	{
 
 		public DatetimeLocal(Document document, PC pc) {
@@ -689,7 +689,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			BDAY(INPUT.Autocomplete.BDAY);
@@ -701,13 +701,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -733,19 +733,19 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Email<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Email<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Email<PC>, Email.Autocomplete>,
-		Attributes.Text.List<Email<PC>>,
-		Attributes.Integer.Maxlength<Email<PC>>,
-		Attributes.Integer.Minlength<Email<PC>>,
-		Attributes.Boolean.Multiple<Email<PC>>,
-		Attributes.Text.Placeholder<Email<PC>>,
-		Attributes.Boolean.Readonly<Email<PC>>,
-		Attributes.Integer.Size<Email<PC>>,
-		Attributes.Text.Value<Email<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Email<PC>, Email.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Email<PC>>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Email<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Email<PC>>,
+		com.aoindustries.html.attributes.Boolean.Multiple<Email<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Email<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Email<PC>>,
+		com.aoindustries.html.attributes.Integer.Size<Email<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Email<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Email<PC>>,
-		Attributes.Event.Form.Oninput<Email<PC>>,
-		Attributes.Event.Form.Onselect<Email<PC>> // Guessed (to match Placeholder)
+		com.aoindustries.html.attributes.event.form.Onchange<Email<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Email<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Email<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Email(Document document, PC pc) {
@@ -770,7 +770,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			EMAIL(INPUT.Autocomplete.EMAIL),
@@ -784,13 +784,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -819,13 +819,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class File<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<File<PC>, PC> implements
-		Attributes.Text.Accept<File<PC>>,
-		Attributes.Enum.Capture<File<PC>, File.Capture>,
-		Attributes.Boolean.Multiple<File<PC>>,
-		// Does not support value per https://www.w3schools.com/tags/att_input_value.asp: Attributes.Text.Value<File>
+		com.aoindustries.html.attributes.Text.Accept<File<PC>>,
+		com.aoindustries.html.attributes.Enum.Capture<File<PC>, File.Capture>,
+		com.aoindustries.html.attributes.Boolean.Multiple<File<PC>>,
+		// Does not support value per https://www.w3schools.com/tags/att_input_value.asp: com.aoindustries.html.attributes.Text.Value<File>
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<File<PC>>,
-		Attributes.Event.Form.Onselect<File<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<File<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<File<PC>>
 	{
 
 		public File(Document document, PC pc) {
@@ -835,7 +835,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		/**
 		 * See <a href="https://www.w3.org/TR/mediacapture-streams/#dom-videofacingmodeenum">Media Capture and Streams: VideoFacingModeEnum</a>.
 		 */
-		public enum Capture implements Attributes.Enum.EnumSupplier {
+		public enum Capture implements Function<Document, String> {
 
 			/**
 			 * The source is facing toward the user (a self-view camera).
@@ -869,7 +869,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public String get(Serialization serialization, Doctype doctype) {
+			public String apply(Document document) {
 				return value;
 			}
 		}
@@ -886,8 +886,8 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Hidden<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Hidden<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Hidden<PC>, INPUT.Autocomplete>,
-		Attributes.Text.Value<Hidden<PC>>
+		com.aoindustries.html.attributes.Enum.Autocomplete<Hidden<PC>, INPUT.Autocomplete>,
+		com.aoindustries.html.attributes.Text.Value<Hidden<PC>>
 	{
 
 		public Hidden(Document document, PC pc) {
@@ -907,16 +907,16 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 */
 	@SuppressWarnings("deprecation")
 	public static class Image<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Image<PC>, PC> implements
-		Attributes.Enum.Align<Image<PC>, Image.Align>,
-		Attributes.Text.Alt<Image<PC>>,
-		Attributes.Integer.HeightHtml5Only<Image<PC>>,
-		Attributes.Url.Src<Image<PC>>,
-		Attributes.Text.Value<Image<PC>>,
-		Attributes.Integer.WidthHtml5Only<Image<PC>>,
+		com.aoindustries.html.attributes.Enum.Align<Image<PC>, Image.Align>,
+		com.aoindustries.html.attributes.Text.Alt<Image<PC>>,
+		com.aoindustries.html.attributes.Integer.HeightHtml5Only<Image<PC>>,
+		com.aoindustries.html.attributes.Url.Src<Image<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Image<PC>>,
+		com.aoindustries.html.attributes.Integer.WidthHtml5Only<Image<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Media.Onabort<Image<PC>>,
-		Attributes.Event.Window.Onerror<Image<PC>>,
-		Attributes.Event.Window.Onload<Image<PC>>
+		com.aoindustries.html.attributes.event.media.Onabort<Image<PC>>,
+		com.aoindustries.html.attributes.event.window.Onerror<Image<PC>>,
+		com.aoindustries.html.attributes.event.window.Onload<Image<PC>>
 	{
 
 		public Image(Document document, PC pc) {
@@ -934,7 +934,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 * @deprecated  The align attribute of &lt;input&gt; is not supported in HTML5. Use CSS instead.
 		 */
 		@Deprecated
-		public enum Align implements Attributes.Enum.EnumSupplier {
+		public enum Align implements Function<Document, String> {
 
 			/**
 			 * Left-aligns the image (this is default)
@@ -973,7 +973,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public String get(Serialization serialization, Doctype doctype) {
+			public String apply(Document document) {
 				return value;
 			}
 		}
@@ -985,13 +985,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Month<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Month<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Month<PC>, Month.Autocomplete>,
-		Attributes.Text.List<Month<PC>>,
-		Attributes.Boolean.Readonly<Month<PC>>, // Guessed
-		Attributes.Text.Value<Month<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Month<PC>, Month.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Month<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Month<PC>>, // Guessed
+		com.aoindustries.html.attributes.Text.Value<Month<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Month<PC>>,
-		Attributes.Event.Form.Oninput<Month<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Month<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Month<PC>>
 	{
 
 		public Month(Document document, PC pc) {
@@ -1016,7 +1016,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			CC_EXP(INPUT.Autocomplete.CC_EXP),
@@ -1030,13 +1030,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1062,13 +1062,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Number<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Number<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Number<PC>, Number.Autocomplete>,
-		Attributes.Text.List<Number<PC>>,
-		Attributes.Boolean.Readonly<Number<PC>>,
-		Attributes.Text.Value<Number<PC>>, // TODO: Review types (this and others), perhaps Attributes.Number or similar?
+		com.aoindustries.html.attributes.Enum.Autocomplete<Number<PC>, Number.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Number<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Number<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Number<PC>>, // TODO: Review types (this and others), perhaps Attributes.Number or similar?
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Number<PC>>,
-		Attributes.Event.Form.Oninput<Number<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Number<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Number<PC>>
 	{
 
 		public Number(Document document, PC pc) {
@@ -1093,7 +1093,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			ONE_TIME_CODE(INPUT.Autocomplete.ONE_TIME_CODE),
@@ -1123,13 +1123,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1155,17 +1155,17 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Password<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Password<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Password<PC>, Password.Autocomplete>,
-		Attributes.Integer.Maxlength<Password<PC>>,
-		Attributes.Integer.Minlength<Password<PC>>,
-		Attributes.Text.Placeholder<Password<PC>>,
-		Attributes.Boolean.Readonly<Password<PC>>,
-		Attributes.Integer.Size<Password<PC>>,
-		Attributes.Text.Value<Password<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Password<PC>, Password.Autocomplete>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Password<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Password<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Password<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Password<PC>>,
+		com.aoindustries.html.attributes.Integer.Size<Password<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Password<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Password<PC>>,
-		Attributes.Event.Form.Oninput<Password<PC>>,
-		Attributes.Event.Form.Onselect<Password<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Password<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Password<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Password<PC>>
 	{
 
 		public Password(Document document, PC pc) {
@@ -1182,7 +1182,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			NEW_PASSWORD(INPUT.Autocomplete.NEW_PASSWORD),
@@ -1201,13 +1201,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1233,10 +1233,10 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Radio<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Radio<PC>, PC> implements
-		Attributes.Boolean.Checked<Radio<PC>>,
-		Attributes.Text.Value<Radio<PC>>,
+		com.aoindustries.html.attributes.Boolean.Checked<Radio<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Radio<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Radio<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Radio<PC>>
 	{
 
 		public Radio(Document document, PC pc) {
@@ -1255,12 +1255,12 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Range<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Range<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Range<PC>, Range.Autocomplete>,
-		Attributes.Text.List<Range<PC>>,
-		Attributes.Text.Value<Range<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Range<PC>, Range.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Range<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Range<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Range<PC>>,
-		Attributes.Event.Form.Oninput<Range<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Range<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Range<PC>>
 	{
 
 		public Range(Document document, PC pc) {
@@ -1285,7 +1285,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON);
 
@@ -1296,13 +1296,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1328,7 +1328,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Reset<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Reset<PC>, PC> implements
-		Attributes.Text.Value<Reset<PC>>
+		com.aoindustries.html.attributes.Text.Value<Reset<PC>>
 	{
 
 		public Reset(Document document, PC pc) {
@@ -1366,19 +1366,19 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Search<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Search<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Search<PC>, Search.Autocomplete>,
-		Attributes.Text.List<Search<PC>>,
-		Attributes.Integer.Maxlength<Search<PC>>,
-		Attributes.Integer.Minlength<Search<PC>>,
-		Attributes.Text.Placeholder<Search<PC>>,
-		Attributes.Boolean.Readonly<Search<PC>>,
-		Attributes.Integer.Size<Search<PC>>,
-		Attributes.Text.Value<Search<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Search<PC>, Search.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Search<PC>>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Search<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Search<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Search<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Search<PC>>,
+		com.aoindustries.html.attributes.Integer.Size<Search<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Search<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Search<PC>>,
-		Attributes.Event.Form.Oninput<Search<PC>>,
-		Attributes.Event.Form.Onsearch<Search<PC>>,
-		Attributes.Event.Form.Onselect<Search<PC>> // Guessed (to match Placeholder)
+		com.aoindustries.html.attributes.event.form.Onchange<Search<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Search<PC>>,
+		com.aoindustries.html.attributes.event.form.Onsearch<Search<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Search<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Search(Document document, PC pc) {
@@ -1403,7 +1403,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			NAME(INPUT.Autocomplete.NAME),
@@ -1460,13 +1460,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1492,7 +1492,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Submit<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Submit<PC>, PC> implements
-		Attributes.Text.Value<Submit<PC>>
+		com.aoindustries.html.attributes.Text.Value<Submit<PC>>
 	{
 
 		public Submit(Document document, PC pc) {
@@ -1530,18 +1530,18 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Tel<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Tel<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Tel<PC>, Tel.Autocomplete>,
-		Attributes.Text.List<Tel<PC>>,
-		Attributes.Integer.Maxlength<Tel<PC>>,
-		Attributes.Integer.Minlength<Tel<PC>>,
-		Attributes.Text.Placeholder<Tel<PC>>,
-		Attributes.Boolean.Readonly<Tel<PC>>, // Guessed
-		Attributes.Integer.Size<Tel<PC>>,
-		Attributes.Text.Value<Tel<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Tel<PC>, Tel.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Tel<PC>>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Tel<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Tel<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Tel<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Tel<PC>>, // Guessed
+		com.aoindustries.html.attributes.Integer.Size<Tel<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Tel<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Tel<PC>>,
-		Attributes.Event.Form.Oninput<Tel<PC>>,
-		Attributes.Event.Form.Onselect<Tel<PC>> // Guessed (to match Placeholder)
+		com.aoindustries.html.attributes.event.form.Onchange<Tel<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Tel<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Tel<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Tel(Document document, PC pc) {
@@ -1566,7 +1566,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			TEL(INPUT.Autocomplete.TEL),
@@ -1585,13 +1585,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1617,18 +1617,18 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Text<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Text<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Text<PC>, INPUT.Autocomplete>,
-		Attributes.Integer.Maxlength<Text<PC>>,
-		Attributes.Integer.Minlength<Text<PC>>,
-		Attributes.Text.List<Text<PC>>,
-		Attributes.Text.Placeholder<Text<PC>>,
-		Attributes.Boolean.Readonly<Text<PC>>,
-		Attributes.Integer.Size<Text<PC>>,
-		Attributes.Text.Value<Text<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Text<PC>, INPUT.Autocomplete>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Text<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Text<PC>>,
+		com.aoindustries.html.attributes.Text.List<Text<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Text<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Text<PC>>,
+		com.aoindustries.html.attributes.Integer.Size<Text<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Text<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Text<PC>>,
-		Attributes.Event.Form.Oninput<Text<PC>>,
-		Attributes.Event.Form.Onselect<Text<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Text<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Text<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Text<PC>>
 	{
 
 		public Text(Document document, PC pc) {
@@ -1647,13 +1647,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Time<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Time<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Time<PC>, Time.Autocomplete>,
-		Attributes.Text.List<Time<PC>>,
-		Attributes.Boolean.Readonly<Time<PC>>, // Guessed
-		Attributes.Text.Value<Time<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Time<PC>, Time.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Time<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Time<PC>>, // Guessed
+		com.aoindustries.html.attributes.Text.Value<Time<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Time<PC>>,
-		Attributes.Event.Form.Oninput<Time<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Time<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Time<PC>>
 	{
 
 		public Time(Document document, PC pc) {
@@ -1678,7 +1678,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON);
 
@@ -1689,13 +1689,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1721,18 +1721,18 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Url<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Url<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Url<PC>, Url.Autocomplete>,
-		Attributes.Text.List<Url<PC>>,
-		Attributes.Integer.Maxlength<Url<PC>>,
-		Attributes.Integer.Minlength<Url<PC>>,
-		Attributes.Text.Placeholder<Url<PC>>,
-		Attributes.Boolean.Readonly<Url<PC>>,
-		Attributes.Integer.Size<Url<PC>>,
-		Attributes.Text.Value<Url<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Url<PC>, Url.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Url<PC>>,
+		com.aoindustries.html.attributes.Integer.Maxlength<Url<PC>>,
+		com.aoindustries.html.attributes.Integer.Minlength<Url<PC>>,
+		com.aoindustries.html.attributes.Text.Placeholder<Url<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Url<PC>>,
+		com.aoindustries.html.attributes.Integer.Size<Url<PC>>,
+		com.aoindustries.html.attributes.Text.Value<Url<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Url<PC>>,
-		Attributes.Event.Form.Oninput<Url<PC>>,
-		Attributes.Event.Form.Onselect<Url<PC>> // Guessed (to match Placeholder)
+		com.aoindustries.html.attributes.event.form.Onchange<Url<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Url<PC>>,
+		com.aoindustries.html.attributes.event.form.Onselect<Url<PC>> // Guessed (to match Placeholder)
 	{
 
 		public Url(Document document, PC pc) {
@@ -1757,7 +1757,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			EMAIL(INPUT.Autocomplete.EMAIL),
@@ -1775,13 +1775,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {
@@ -1807,13 +1807,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Week<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Week<PC>, PC> implements
-		Attributes.Enum.Autocomplete<Week<PC>, Week.Autocomplete>,
-		Attributes.Text.List<Week<PC>>,
-		Attributes.Boolean.Readonly<Week<PC>>, // Guessed
-		Attributes.Text.Value<Week<PC>>,
+		com.aoindustries.html.attributes.Enum.Autocomplete<Week<PC>, Week.Autocomplete>,
+		com.aoindustries.html.attributes.Text.List<Week<PC>>,
+		com.aoindustries.html.attributes.Boolean.Readonly<Week<PC>>, // Guessed
+		com.aoindustries.html.attributes.Text.Value<Week<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-		Attributes.Event.Form.Onchange<Week<PC>>,
-		Attributes.Event.Form.Oninput<Week<PC>>
+		com.aoindustries.html.attributes.event.form.Onchange<Week<PC>>,
+		com.aoindustries.html.attributes.event.form.Oninput<Week<PC>>
 	{
 
 		public Week(Document document, PC pc) {
@@ -1838,7 +1838,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		 *
 		 * @see INPUT.Autocomplete
 		 */
-		public enum Autocomplete implements Attributes.Enum.EnumSupplier {
+		public enum Autocomplete implements Function<Document, String> {
 			OFF(INPUT.Autocomplete.OFF),
 			ON(INPUT.Autocomplete.ON),
 			CC_EXP(INPUT.Autocomplete.CC_EXP),
@@ -1851,13 +1851,13 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 			}
 
 			@Override
-			public java.lang.String toString() {
+			public String toString() {
 				return value.toString();
 			}
 
 			@Override
-			public java.lang.String get(Serialization serialization, Doctype doctype) {
-				return value.get(serialization, doctype);
+			public String apply(Document document) {
+				return value.apply(document);
 			}
 
 			public INPUT.Autocomplete getValue() {

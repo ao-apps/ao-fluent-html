@@ -33,6 +33,7 @@ import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * <ul>
@@ -48,21 +49,21 @@ import java.io.IOException;
 public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidElement<LINK<PC>, PC> implements
 	// TODO: as
 	// TODO: charset
-	Attributes.Enum.Crossorigin<LINK<PC>, LINK.Crossorigin>,
+	com.aoindustries.html.attributes.Enum.Crossorigin<LINK<PC>, LINK.Crossorigin>,
 	// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-disabled
-	Attributes.Boolean.Disabled<LINK<PC>>,
-	Attributes.Url.Href<LINK<PC>>,
-	Attributes.String.Hreflang<LINK<PC>>,
-	Attributes.Text.Media<LINK<PC>>,
-	Attributes.Enum.Rel<LINK<PC>, LINK.Rel>,
+	com.aoindustries.html.attributes.Boolean.Disabled<LINK<PC>>,
+	com.aoindustries.html.attributes.Url.Href<LINK<PC>>,
+	com.aoindustries.html.attributes.String.Hreflang<LINK<PC>>,
+	com.aoindustries.html.attributes.Text.Media<LINK<PC>>,
+	com.aoindustries.html.attributes.Enum.Rel<LINK<PC>, LINK.Rel>,
 	// TODO: rev
 	// TODO: sizes
 	// TODO: target (not standardizes per MDN)
 	// TODO: type
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<LINK<PC>>,
-	Attributes.Event.Window.Onerror<LINK<PC>>,
-	Attributes.Event.Window.Onload<LINK<PC>>
+	AlmostGlobalAttributes<LINK<PC>>,
+	com.aoindustries.html.attributes.event.window.Onerror<LINK<PC>>,
+	com.aoindustries.html.attributes.event.window.Onload<LINK<PC>>
 {
 
 	private static final com.aoindustries.i18n.Resources RESOURCES =
@@ -81,7 +82,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 	 */
-	public enum Crossorigin implements Attributes.Enum.EnumSupplier {
+	public enum Crossorigin implements Function<Document, String> {
 		ANONYMOUS(
 			Attributes.NO_VALUE,
 			"anonymous"
@@ -105,11 +106,11 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
-			if(serialization == Serialization.SGML) {
+		public String apply(Document document) {
+			if(document.serialization == Serialization.SGML) {
 				return sgml;
 			} else {
-				assert serialization == Serialization.XML;
+				assert document.serialization == Serialization.XML;
 				return xml;
 			}
 		}
@@ -156,7 +157,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Rel implements Attributes.Enum.EnumSupplier {
+	public enum Rel implements Function<Document, String> {
 		ALTERNATE("alternate"),
 		/**
 		 * @deprecated
@@ -241,7 +242,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}
@@ -276,7 +277,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 			}
-			Attributes.Enum.Rel.super.rel(rel);
+			com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 		}
 		return this;
 	}
@@ -295,7 +296,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	 */
 	@Override
 	public <Ex extends Throwable> LINK<PC> rel(Suppliers.String<Ex> rel) throws IOException, Ex {
-		return Attributes.Enum.Rel.super.rel(rel);
+		return com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 	}
 
 	/**
@@ -312,7 +313,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	 */
 	@Override
 	public LINK<PC> rel(Rel rel) throws IOException {
-		return Attributes.Enum.Rel.super.rel(rel);
+		return com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 	}
 
 	/**
@@ -329,7 +330,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	 */
 	@Override
 	public <Ex extends Throwable> LINK<PC> rel(IOSupplierE<? extends Rel, Ex> rel) throws IOException, Ex {
-		return Attributes.Enum.Rel.super.rel(rel);
+		return com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 	}
 
 	private String type;

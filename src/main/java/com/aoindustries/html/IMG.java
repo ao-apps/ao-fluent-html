@@ -22,9 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * <ul>
@@ -38,25 +37,25 @@ import java.io.IOException;
  */
 @SuppressWarnings("deprecation")
 public class IMG<PC extends UnionContent.Embedded_Interactive<PC>> extends VoidElement<IMG<PC>, PC> implements
-	Attributes.Enum.Align<IMG<PC>, IMG.Align>,
-	Attributes.Text.Alt<IMG<PC>>,
+	com.aoindustries.html.attributes.Enum.Align<IMG<PC>, IMG.Align>,
+	com.aoindustries.html.attributes.Text.Alt<IMG<PC>>,
 	// TODO: border
 	// TODO: crossorigin
-	Attributes.Integer.Height<IMG<PC>>,
+	com.aoindustries.html.attributes.Integer.Height<IMG<PC>>,
 	// TODO: hspace
-	Attributes.Boolean.Ismap<IMG<PC>>,
+	com.aoindustries.html.attributes.Boolean.Ismap<IMG<PC>>,
 	// TODO: longdesc
 	// TODO: sizes
-	Attributes.Url.Src<IMG<PC>>,
+	com.aoindustries.html.attributes.Url.Src<IMG<PC>>,
 	// TODO: srcset
-	Attributes.String.Usemap<IMG<PC>>,
+	com.aoindustries.html.attributes.String.Usemap<IMG<PC>>,
 	// TODO: vspace
-	Attributes.Integer.Width<IMG<PC>>,
+	com.aoindustries.html.attributes.Integer.Width<IMG<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<IMG<PC>>,
-	Attributes.Event.Media.Onabort<IMG<PC>>,
-	Attributes.Event.Window.Onerror<IMG<PC>>,
-	Attributes.Event.Window.Onload<IMG<PC>>
+	AlmostGlobalAttributes<IMG<PC>>,
+	com.aoindustries.html.attributes.event.media.Onabort<IMG<PC>>,
+	com.aoindustries.html.attributes.event.window.Onerror<IMG<PC>>,
+	com.aoindustries.html.attributes.event.window.Onload<IMG<PC>>
 	// TODO: More events
 {
 
@@ -76,7 +75,7 @@ public class IMG<PC extends UnionContent.Embedded_Interactive<PC>> extends VoidE
 	 * @deprecated  The align attribute of &lt;img&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Attributes.Enum.EnumSupplier {
+	public enum Align implements Function<Document, String> {
 
 		/**
 		 * Align the image to the left
@@ -115,7 +114,7 @@ public class IMG<PC extends UnionContent.Embedded_Interactive<PC>> extends VoidE
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}

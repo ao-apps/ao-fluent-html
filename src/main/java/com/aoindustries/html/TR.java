@@ -34,7 +34,7 @@ import java.io.IOException;
 public class TR<PC extends UnionContent.TBODY_THEAD_TFOOT<PC>> extends
 	Normal<TR<PC>, PC, TR__<PC>, TR_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<TR<PC>>
+	AlmostGlobalAttributes<TR<PC>>
 {
 
 	public TR(Document document, PC pc) {

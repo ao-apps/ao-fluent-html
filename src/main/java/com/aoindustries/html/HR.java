@@ -22,9 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * <ul>
@@ -38,12 +37,12 @@ import java.io.IOException;
  */
 @SuppressWarnings("deprecation")
 public class HR<PC extends FlowContent<PC>> extends VoidElement<HR<PC>, PC> implements
-	Attributes.Enum.Align<HR<PC>, HR.Align>,
-	Attributes.Boolean.Noshade<HR<PC>>,
-	Attributes.Integer.SizeHtml4Only<HR<PC>>,
-	Attributes.Dimension.Width<HR<PC>>,
+	com.aoindustries.html.attributes.Enum.Align<HR<PC>, HR.Align>,
+	com.aoindustries.html.attributes.Boolean.Noshade<HR<PC>>,
+	com.aoindustries.html.attributes.Integer.SizeHtml4Only<HR<PC>>,
+	com.aoindustries.html.attributes.Dimension.Width<HR<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<HR<PC>>
+	AlmostGlobalAttributes<HR<PC>>
 {
 
 	public HR(Document document, PC pc) {
@@ -62,7 +61,7 @@ public class HR<PC extends FlowContent<PC>> extends VoidElement<HR<PC>, PC> impl
 	 * @deprecated  The align attribute of &lt;hr&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Attributes.Enum.EnumSupplier {
+	public enum Align implements Function<Document, String> {
 
 		/**
 		 * Left-aligns the horizontal line
@@ -91,7 +90,7 @@ public class HR<PC extends FlowContent<PC>> extends VoidElement<HR<PC>, PC> impl
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}

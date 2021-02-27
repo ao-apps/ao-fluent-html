@@ -34,7 +34,7 @@ import java.io.IOException;
 public class TABLE<PC extends PalpableContent<PC>> extends
 	Normal<TABLE<PC>, PC, TABLE__<PC>, TABLE_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<TABLE<PC>>
+	AlmostGlobalAttributes<TABLE<PC>>
 {
 
 	public TABLE(Document document, PC pc) {

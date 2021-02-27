@@ -22,9 +22,8 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * <ul>
@@ -38,24 +37,24 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, PC> implements
-	Attributes.Text.Alt<AREA<PC>>,
-	Attributes.Dimension.Coords<AREA<PC>>,
+	com.aoindustries.html.attributes.Text.Alt<AREA<PC>>,
+	com.aoindustries.html.attributes.Dimension.Coords<AREA<PC>>,
 	// TODO: download
-	Attributes.Url.Href<AREA<PC>>,
-	Attributes.String.Hreflang<AREA<PC>>,
-	Attributes.Text.Media<AREA<PC>>,
+	com.aoindustries.html.attributes.Url.Href<AREA<PC>>,
+	com.aoindustries.html.attributes.String.Hreflang<AREA<PC>>,
+	com.aoindustries.html.attributes.Text.Media<AREA<PC>>,
 	// TODO: name? (MDN only)
 	// TODO: nohref
 	// TODO: ping
 	// TODO: referrerpolicy
-	Attributes.Enum.Rel<AREA<PC>, AREA.Rel>,
-	Attributes.Enum.Shape<AREA<PC>, AREA.Shape>,
+	com.aoindustries.html.attributes.Enum.Rel<AREA<PC>, AREA.Rel>,
+	com.aoindustries.html.attributes.Enum.Shape<AREA<PC>, AREA.Shape>,
 	// TODO: target
 	// TODO: type (deprecated since definition is in conflict and doesn't do anything?)
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	Attributes.Integer.TabindexHtml4<AREA<PC>>,
+	com.aoindustries.html.attributes.Integer.TabindexHtml4<AREA<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<AREA<PC>>
+	AlmostGlobalAttributes<AREA<PC>>
 {
 
 	public AREA(Document document, PC pc) {
@@ -75,7 +74,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Rel implements Attributes.Enum.EnumSupplier {
+	public enum Rel implements Function<Document, String> {
 		ALTERNATE("alternate"),
 		/**
 		 * @deprecated
@@ -134,7 +133,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}
@@ -145,7 +144,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_area_shape.asp">HTML area shape Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Shape implements Attributes.Enum.EnumSupplier {
+	public enum Shape implements Function<Document, String> {
 		DEFAULT("default"),
 		RECT("rect"),
 		CIRCLE("circle"),
@@ -163,7 +162,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 		}
 
 		@Override
-		public String get(Serialization serialization, Doctype doctype) {
+		public String apply(Document document) {
 			return value;
 		}
 	}

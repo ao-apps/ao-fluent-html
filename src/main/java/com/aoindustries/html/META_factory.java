@@ -92,7 +92,7 @@ public interface META_factory<__ extends UnionContent.Metadata_Phrasing<__>> ext
 	 * @see #meta()
 	 * @see com.aoindustries.html.META#charset(java.lang.Enum)
 	 */
-	default META<__> meta(Attributes.Enum.Charset.Value charset) throws IOException {
+	default META<__> meta(com.aoindustries.html.attributes.Enum.Charset.Value charset) throws IOException {
 		return meta().charset(charset);
 	}
 	// No meta__(), since either name, http-equiv, or itemprop is required (TODO: confirm itemprop-only metas?)

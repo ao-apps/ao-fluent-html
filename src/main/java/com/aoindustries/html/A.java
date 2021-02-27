@@ -35,16 +35,16 @@ import java.io.IOException;
 //       the tabindex attribute specified.
 public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
 	TransparentElement<A<PC>, PC> implements
-	Attributes.Url.Href<A<PC>>,
+	com.aoindustries.html.attributes.Url.Href<A<PC>>,
 	// TODO: target
 	// TODO: download
 	// TODO: ping
 	// TODO: rel
-	Attributes.String.Hreflang<A<PC>>,
+	com.aoindustries.html.attributes.String.Hreflang<A<PC>>,
 	// TODO: type
 	// TODO: referrerpolicy
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	Attributes.Event.AlmostGlobal<A<PC>>
+	AlmostGlobalAttributes<A<PC>>
 {
 
 	public A(Document document, PC pc) {

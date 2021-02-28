@@ -58,10 +58,10 @@ public class GoogleAnalytics {
 			document
 				.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trimmedId)).__().nl()
 				.script().out(script -> script
-					.append("window.dataLayer = window.dataLayer || [];").nl()
-					.append("function gtag(){dataLayer.push(arguments);}").nl()
-					.append("gtag(\"js\", new Date());").nl()
-					// .nl()
+					.append("window.dataLayer = window.dataLayer || [];").nli()
+					.append("function gtag(){dataLayer.push(arguments);}").nli()
+					.append("gtag(\"js\", new Date());").nli() // .nl()
+					// .nli()
 					.append("gtag(\"config\", ").text(trimmedId).append(");")
 				).__().nl();
 		}
@@ -79,11 +79,11 @@ public class GoogleAnalytics {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
 			document.script().out(script -> script
-				.append("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){").nl()
-				.append("(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),").nl()
-				.append("m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)").nl()
-				.append("})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");").nl()
-				.append("ga(\"create\",").text(trimmedId).append(",\"auto\");").nl()
+				.append("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){").nli()
+				.append("(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),").nli()
+				.append("m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)").nli()
+				.append("})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");").nli()
+				.append("ga(\"create\",").text(trimmedId).append(",\"auto\");").nli()
 				.append("ga(\"send\",\"pageview\");")
 			).__().nl();
 		}

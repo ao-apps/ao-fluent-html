@@ -198,8 +198,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 		if(!didBody) {
 			document.out.write('>');
 			if(doCdata()) document.out.write("//<![CDATA[");
-			document.incDepth();
-			document.nl();
+			document.incDepth().nli();
 			didBody = true;
 		}
 	}
@@ -292,8 +291,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 		if(!didBody) {
 			document.out.write("></script>");
 		} else {
-			document.decDepth();
-			document.nl();
+			document.decDepth().nli();
 			if(doCdata()) document.out.write("//]]>");
 			document.out.write("</script>");
 		}

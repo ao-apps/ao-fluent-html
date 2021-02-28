@@ -69,13 +69,52 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#nl(int)}.
+	 * Delegates to {@link Document#nli()}.
 	 * </p>
 	 */
 	@Override
-	public E nl(int depthOffset) throws IOException {
+	public E nli() throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		document.nl(depthOffset);
+		document.nli();
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#nli(int)}.
+	 * </p>
+	 */
+	@Override
+	public E nli(int depthOffset) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.nli(depthOffset);
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#indent()}.
+	 * </p>
+	 */
+	@Override
+	public E indent() throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.indent();
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#indent(int)}.
+	 * </p>
+	 */
+	@Override
+	public E indent(int depthOffset) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.indent(depthOffset);
 		return element;
 	}
 

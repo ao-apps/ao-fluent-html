@@ -129,17 +129,38 @@ public class DocumentMediaWriter extends MediaWriter {
 
 	// TODO: comments
 
-	// Not delegating to Document.nl(), because the newlines and tabs themselves may need to be encoded.
+	// Not delegating to Document.nl(), because the newlines themselves may need to be encoded.
 	@Override
 	public DocumentMediaWriter nl() throws IOException {
 		super.nl();
 		return this;
 	}
 
-	// Not delegating to Document.nl(int), because the newlines and tabs themselves may need to be encoded.
+	// Not delegating to Document.nli(), because the newlines and tabs themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter nl(int depthOffset) throws IOException {
-		super.nl(depthOffset);
+	public DocumentMediaWriter nli() throws IOException {
+		super.nli();
+		return this;
+	}
+
+	// Not delegating to Document.nli(int), because the newlines and tabs themselves may need to be encoded.
+	@Override
+	public DocumentMediaWriter nli(int depthOffset) throws IOException {
+		super.nli(depthOffset);
+		return this;
+	}
+
+	// Not delegating to Document.indent(), because the tabs themselves may need to be encoded.
+	@Override
+	public DocumentMediaWriter indent() throws IOException {
+		super.indent();
+		return this;
+	}
+
+	// Not delegating to Document.indent(int), because the tabs themselves may need to be encoded.
+	@Override
+	public DocumentMediaWriter indent(int depthOffset) throws IOException {
+		super.indent(depthOffset);
 		return this;
 	}
 

@@ -54,8 +54,32 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
-	default __ nl(int depthOffset) throws IOException {
-		getDocument().nl(depthOffset);
+	default __ nli() throws IOException {
+		getDocument().nli();
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ nli(int depthOffset) throws IOException {
+		getDocument().nli(depthOffset);
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ indent() throws IOException {
+		getDocument().indent();
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ indent(int depthOffset) throws IOException {
+		getDocument().indent(depthOffset);
 		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}

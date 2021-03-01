@@ -33,6 +33,7 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 // TODO: Should every element have a __() closing method?
+//       Should every element implement Closeable, even if does not have a specific __()?
 abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> implements
 	WhitespaceWriter<E>,
 	// Allow any arbitrary attributes

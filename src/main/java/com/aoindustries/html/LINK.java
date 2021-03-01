@@ -58,7 +58,7 @@ public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidEle
 	com.aoindustries.html.attributes.Enum.Rel<LINK<PC>, LINK.Rel>,
 	// TODO: rev
 	// TODO: sizes
-	// TODO: target (not standardizes per MDN)
+	// TODO: target (not standardized per MDN)
 	// TODO: type
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	AlmostGlobalAttributes<LINK<PC>>,

@@ -22,14 +22,125 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import com.aoindustries.io.function.IOSupplierE;
+import java.io.IOException;
+
 /**
- * See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+ * </ul>
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new form element.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 */
+	default FORM<__> form() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new FORM<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Opens a new form element with the given action attribute.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 */
+	default FORM<__> form(String action) throws IOException {
+		return form().action(action);
+	}
+
+	/**
+	 * Opens a new form element with the given action attribute.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 */
+	default<Ex extends Throwable> FORM<__> form(IOSupplierE<? extends String, Ex> action) throws IOException, Ex {
+		return form().action(action);
+	}
+
+	/**
+	 * Creates a form element with no attributes and the given body.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ form__(IORunnableE<Ex> form) throws IOException, Ex {
+		return form().__(form);
+	}
+
+	/**
+	 * Creates a form element with no attributes and the given body.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ form__(IOConsumerE<? super FORM__<__>, Ex> form) throws IOException, Ex {
+		return form().__(form);
+	}
+
+	/**
+	 * Creates a form element with no attributes and a text body.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ form__(Object text) throws IOException {
+		return form().__(text);
+	}
+
+	/**
+	 * Creates an empty form element with no attributes.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ form__() throws IOException {
+		return form().__();
+	}
+
+	/**
+	 * Creates a form element with no attributes then begins element content
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+	 * </ul>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default FORM_c<__> form_c() throws IOException {
+		return form()._c();
+	}
 }

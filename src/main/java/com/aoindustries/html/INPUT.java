@@ -56,12 +56,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	com.aoindustries.html.attributes.Boolean.Autofocus<E>,
 	// TODO: dirname
 	com.aoindustries.html.attributes.Boolean.Disabled<E>,
-	// TODO: form
-	// TODO: formaction
-	// TODO: formenctype
-	// TODO: formmethod
-	// TODO: formnovalidate
-	// TODO: formtarget
+	// TODO: form (only type "submit" and "image"?)
 	// TODO: inputmode here or global?
 	// TODO: max
 	// TODO: min
@@ -204,6 +199,11 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 		com.aoindustries.html.attributes.Enum.Autocomplete<Dynamic<PC>, INPUT.Autocomplete>,
 		com.aoindustries.html.attributes.Enum.Capture<Dynamic<PC>, File.Capture>,
 		com.aoindustries.html.attributes.Boolean.Checked<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Url.Formaction<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Enum.Formenctype<Dynamic<PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
+		com.aoindustries.html.attributes.Enum.Formmethod<Dynamic<PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
+		com.aoindustries.html.attributes.Boolean.Formnovalidate<Dynamic<PC>>,
+		com.aoindustries.html.attributes.Enum.Formtarget<Dynamic<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 		com.aoindustries.html.attributes.Integer.HeightHtml5Only<Dynamic<PC>>,
 		com.aoindustries.html.attributes.Text.List<Dynamic<PC>>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Dynamic<PC>>,
@@ -901,7 +901,10 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image">&lt;input type="image"&gt;</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.</li>
+	 * </ul>
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
@@ -909,6 +912,11 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	public static class Image<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Image<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Align<Image<PC>, Image.Align>,
 		com.aoindustries.html.attributes.Text.Alt<Image<PC>>,
+		com.aoindustries.html.attributes.Url.Formaction<Image<PC>>,
+		com.aoindustries.html.attributes.Enum.Formenctype<Image<PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
+		com.aoindustries.html.attributes.Enum.Formmethod<Image<PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
+		com.aoindustries.html.attributes.Boolean.Formnovalidate<Image<PC>>,
+		com.aoindustries.html.attributes.Enum.Formtarget<Image<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 		com.aoindustries.html.attributes.Integer.HeightHtml5Only<Image<PC>>,
 		com.aoindustries.html.attributes.Url.Src<Image<PC>>,
 		com.aoindustries.html.attributes.Text.Value<Image<PC>>,
@@ -1487,11 +1495,19 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	}
 
 	/**
-	 * See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit">&lt;input type="submit"&gt;</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
+	 * </ul>
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	public static class Submit<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Submit<PC>, PC> implements
+		com.aoindustries.html.attributes.Url.Formaction<Submit<PC>>,
+		com.aoindustries.html.attributes.Enum.Formenctype<Submit<PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
+		com.aoindustries.html.attributes.Enum.Formmethod<Submit<PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
+		com.aoindustries.html.attributes.Boolean.Formnovalidate<Submit<PC>>,
+		com.aoindustries.html.attributes.Enum.Formtarget<Submit<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 		com.aoindustries.html.attributes.Text.Value<Submit<PC>>
 	{
 

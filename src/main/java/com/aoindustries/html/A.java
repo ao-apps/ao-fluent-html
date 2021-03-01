@@ -36,7 +36,7 @@ import java.io.IOException;
 public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
 	TransparentElement<A<PC>, PC> implements
 	com.aoindustries.html.attributes.Url.Href<A<PC>>,
-	// TODO: target
+	com.aoindustries.html.attributes.Enum.Target<A<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: download
 	// TODO: ping
 	// TODO: rel

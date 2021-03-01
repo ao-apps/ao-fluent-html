@@ -49,7 +49,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	// TODO: referrerpolicy
 	com.aoindustries.html.attributes.Enum.Rel<AREA<PC>, AREA.Rel>,
 	com.aoindustries.html.attributes.Enum.Shape<AREA<PC>, AREA.Shape>,
-	// TODO: target
+	com.aoindustries.html.attributes.Enum.Target<AREA<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: type (deprecated since definition is in conflict and doesn't do anything?)
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	com.aoindustries.html.attributes.Integer.TabindexHtml4<AREA<PC>>,

@@ -22,29 +22,61 @@
  */
 package com.aoindustries.html;
 
+import org.junit.Test;
+
 /**
- * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
- *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @see  Document
  *
  * @author  AO Industries, Inc.
  */
-public interface TR_content<__ extends TR_content<__>> extends
-	//
-	// Unions:
-	//
-	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>,
-	//
-	// Factories:
-	//
-	TD_factory<__>,
-	TH_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
-{
+public class DocumentTest {
+
+	@Test
+	public void testUnions() {
+		UnionContentTest.testUnions(
+			Document.class,
+			//
+			// Unions:
+			//
+			UnionContentTest.getAllUnions()
+		);
+	}
+
+	@Test
+	public void testContentModels() {
+		ContentModelTest.testContentModels(
+			Document.class,
+			//
+			// Content models:
+			//
+			ContentModelTest.getAllContentModels()
+		);
+	}
+
+	@Test
+	public void testElementContentModels() {
+		ElementContentModelTest.testElementContentModels(
+			Document.class,
+			//
+			// Per-element content models:
+			//
+			ElementContentModelTest.getAllElementContentModels()
+		);
+	}
+
+	@Test
+	public void testFactories() {
+		FactoryTest.testFactories(
+			Document.class,
+			//
+			// Factories:
+			//
+			FactoryTest.getAllFactories()
+		);
+	}
+
+	@Test
+	public void testNoImplementInherited() {
+		InheritanceTests.testNoImplementInherited(Document.class);
+	}
 }

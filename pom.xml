@@ -119,6 +119,12 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 											<includes>element-list, package-list</includes>
 											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/aocode-public</outputDirectory>
 										</artifactItem>
+										<!-- Test Direct -->
+										<artifactItem>
+											<groupId>junit</groupId><artifactId>junit</artifactId><classifier>javadoc</classifier>
+											<includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/junit/junit</outputDirectory>
+										</artifactItem>
 									</artifactItems>
 								</configuration>
 							</execution>
@@ -148,6 +154,11 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 								<offlineLink>
 									<url>https://aoindustries.com/aocode-public/apidocs/</url>
 									<location>${project.build.directory}/offlineLinks/com.aoindustries/aocode-public</location>
+								</offlineLink>
+								<!-- Test Direct -->
+								<offlineLink>
+									<url>https://junit.org/junit4/javadoc/latest/</url>
+									<location>${project.build.directory}/offlineLinks/junit/junit</location>
 								</offlineLink>
 								<!-- Java SE -->
 								<offlineLink>
@@ -187,6 +198,18 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-tlds</artifactId><version>1.2.0${POST-SNAPSHOT}</version>
 			</dependency>
+			<!-- Test Direct -->
+			<dependency>
+				<groupId>junit</groupId><artifactId>junit</artifactId><version>4.13.2</version>
+			</dependency>
+			<!-- Test Transitive -->
+			<dependency>
+				<groupId>org.hamcrest</groupId><artifactId>hamcrest</artifactId><version>2.2</version>
+			</dependency>
+			<dependency>
+				<!-- Shim for junit 4.13.2 -->
+				<groupId>org.hamcrest</groupId><artifactId>hamcrest-core</artifactId><version>2.2</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -206,6 +229,11 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId>
+		</dependency>
+		<!-- Test Direct -->
+		<dependency>
+			<groupId>junit</groupId><artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

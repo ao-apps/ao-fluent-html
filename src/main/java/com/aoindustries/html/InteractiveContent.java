@@ -36,27 +36,28 @@ public interface InteractiveContent<__ extends InteractiveContent<__>> extends
 	//
 	// Unions:
 	//
+	// Inherited: UnionContent.Embedded_Interactive<__>
 	UnionContent.Interactive_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Interactive_Phrasing: Content<__>
+	// Inherited: Content<__>
 	//
-	// Content types:
+	// Factories:
 	//
-	// Inherited from Interactive_Phrasing: A_factory<__> // if the href attribute is present
-	// Inherited from Interactive_Phrasing: AUDIO_factory<__> // if the controls attribute is present
-	// Inherited from Interactive_Phrasing: BUTTON_factory<__>
+	// Inherited: A_factory<__> // if the href attribute is present
+	// Inherited: AUDIO_factory<__> // if the controls attribute is present
+	// Inherited: BUTTON_factory<__>
 	DETAILS_factory<__>,
-	// Inherited from Interactive_Phrasing: EMBED_factory<__>
-	// Inherited from Interactive_Phrasing: IFRAME_factory<__>
-	// Inherited from Interactive_Phrasing: IMG_factory<__> // if the usemap attribute is present
-	// Inherited from Interactive_Phrasing: INPUT_factory<__> // if type attribute is not in the hidden state
-	// Inherited from Interactive_Phrasing: LABEL_factory<__>
+	// Inherited: EMBED_factory<__>
+	// Inherited: IFRAME_factory<__>
+	// Inherited: IMG_factory<__> // if the usemap attribute is present
+	// Inherited: INPUT_factory<__> // if type attribute is not in the hidden state
+	// Inherited: LABEL_factory<__>
 	MENU_factory<__> // (MDN only) if the type attribute is in the toolbar state
-	// Inherited from Interactive_Phrasing: OBJECT_factory<__> // if the usemap attribute is present
-	// Inherited from Interactive_Phrasing: SELECT_factory<__>
-	// Inherited from Interactive_Phrasing: TEXTAREA_factory<__>
-	// Inherited from Interactive_Phrasing: VIDEO_factory<__> // if the controls attribute is present
+	// Inherited: OBJECT_factory<__> // if the usemap attribute is present
+	// Inherited: SELECT_factory<__>
+	// Inherited: TEXTAREA_factory<__>
+	// Inherited: VIDEO_factory<__> // if the controls attribute is present
 {
 }

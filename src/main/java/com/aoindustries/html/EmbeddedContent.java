@@ -41,19 +41,19 @@ public interface EmbeddedContent<__ extends EmbeddedContent<__>> extends
 	//
 	// Content models:
 	//
-	// Inherited from Embedded_Interactive and Embedded_Palpable_Phrasing: Content<__>
+	// Inherited: Content<__>
 	//
-	// Content types:
+	// Factories:
 	//
-	// Inherited from Embedded_Interactive: AUDIO_factory<__>
-	// Inherited from Embedded_Palpable_Phrasing: CANVAS_factory<__>
-	// Inherited from Embedded_Interactive: EMBED_factory<__>
-	// Inherited from Embedded_Interactive: IFRAME_factory<__>
-	// Inherited from Embedded_Interactive: IMG_factory<__>
-	// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
-	// Inherited from Embedded_Interactive: OBJECT_factory<__>
+	// Inherited: AUDIO_factory<__>
+	// Inherited: CANVAS_factory<__>
+	// Inherited: EMBED_factory<__>
+	// Inherited: IFRAME_factory<__>
+	// Inherited: IMG_factory<__>
+	// Inherited: // TODO: MathML math
+	// Inherited: OBJECT_factory<__>
 	PICTURE_factory<__>
-	// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
-	// Inherited from Embedded_Interactive: VIDEO_factory<__>
+	// Inherited: // TODO: SVG svg
+	// Inherited: VIDEO_factory<__>
 {
 }

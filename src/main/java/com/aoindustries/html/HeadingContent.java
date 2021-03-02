@@ -36,9 +36,9 @@ public interface HeadingContent<__ extends HeadingContent<__>> extends
 	//
 	// Content models:
 	//
-	Content<__>,
+	// Inherited: Content<__>,
 	//
-	// Content types:
+	// Factories:
 	//
 	H1_factory<__>,
 	H2_factory<__>,

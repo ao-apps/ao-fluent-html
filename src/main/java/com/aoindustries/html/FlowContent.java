@@ -34,105 +34,115 @@ package com.aoindustries.html;
  */
 public interface FlowContent<__ extends FlowContent<__>> extends
 	//
+	// Unions:
+	//
+	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>
+	// Inherited: UnionContent.Embedded_Interactive<__>
+	// Inherited: UnionContent.Embedded_Palpable_Phrasing<__>
+	// Inherited: UnionContent.Interactive_Phrasing<__>
+	// Inherited: UnionContent.Metadata_Phrasing<__>
+	// Inherited: UnionContent.Palpable_Phrasing<__>
+	//
 	// Content models:
 	//
-	// Inherited from PalpableContent and PhrasingContent: Content<__>
-	// Inherited from PalpableContent: SectioningContent<__>
-	// Inherited from PalpableContent: HeadingContent<__>
+	// Inherited: Content<__>
+	// Inherited: SectioningContent<__>
+	// Inherited: HeadingContent<__>
 	PhrasingContent<__>,
-	// Inherited from PhrasingContent: EmbeddedContent<__>
-	// Inherited from PalpableContent: InteractiveContent<__>
+	// Inherited: EmbeddedContent<__>
+	// Inherited: InteractiveContent<__>
 	PalpableContent<__>,
+	// Inherited: ScriptSupportingContent<__>
+	// Inherited: TextContent<__>
 	//
-	// Content types:
+	// Factories:
 	//
-	// Inherited from PalpableContent and PhrasingContent: A_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: ABBR_factory<__>
-	// Inherited from PalpableContent: ADDRESS_factory<__>
-	// Inherited from PhrasingContent: AREA_factory<__> // if a descendent of map
-	// Inherited from PalpableContent: ARTICLE_factory<__>
-	// Inherited from PalpableContent: ASIDE_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: AUDIO_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: B_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: BDI_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: BDO_factory<__>
-	// Inherited from PalpableContent: BLOCKQUOTE_factory<__>
-	// Inherited from PhrasingContent: BR_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: BUTTON_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: CANVAS_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: CITE_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: CODE_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: DATA_factory<__>
-	// Inherited from PhrasingContent: DATALIST_factory<__>
-	// Inherited from PhrasingContent: DEL_factory<__>
-	// Inherited from PalpableContent: DETAILS_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: DFN_factory<__>
+	// Inherited: A_factory<__>
+	// Inherited: ABBR_factory<__>
+	// Inherited: ADDRESS_factory<__>
+	// Inherited: AREA_factory<__> // if a descendent of map
+	// Inherited: ARTICLE_factory<__>
+	// Inherited: ASIDE_factory<__>
+	// Inherited: AUDIO_factory<__>
+	// Inherited: B_factory<__>
+	// Inherited: BDI_factory<__>
+	// Inherited: BDO_factory<__>
+	// Inherited: BLOCKQUOTE_factory<__>
+	// Inherited: BR_factory<__>
+	// Inherited: BUTTON_factory<__>
+	// Inherited: CANVAS_factory<__>
+	// Inherited: CITE_factory<__>
+	// Inherited: CODE_factory<__>
+	// Inherited: DATA_factory<__>
+	// Inherited: DATALIST_factory<__>
+	// Inherited: DEL_factory<__>
+	// Inherited: DETAILS_factory<__>
+	// Inherited: DFN_factory<__>
 	DIALOG_factory<__>,
-	// Inherited from PalpableContent: DIV_factory<__>
-	// Inherited from PalpableContent: DL_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: EM_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: EMBED_factory<__>
-	// Inherited from PalpableContent: FIELDSET_factory<__>
-	// Inherited from PalpableContent: FIGURE_factory<__>
-	// Inherited from PalpableContent: FOOTER_factory<__>
-	// Inherited from PalpableContent: FORM_factory<__>
-	// Inherited from PalpableContent: H1_factory<__>
-	// Inherited from PalpableContent: H2_factory<__>
-	// Inherited from PalpableContent: H3_factory<__>
-	// Inherited from PalpableContent: H4_factory<__>
-	// Inherited from PalpableContent: H5_factory<__>
-	// Inherited from PalpableContent: H6_factory<__>
-	// Inherited from PalpableContent: HEADER_factory<__>
-	// Inherited from PalpableContent: HGROUP_factory<__>
+	// Inherited: DIV_factory<__>
+	// Inherited: DL_factory<__>
+	// Inherited: EM_factory<__>
+	// Inherited: EMBED_factory<__>
+	// Inherited: FIELDSET_factory<__>
+	// Inherited: FIGURE_factory<__>
+	// Inherited: FOOTER_factory<__>
+	// Inherited: FORM_factory<__>
+	// Inherited: H1_factory<__>
+	// Inherited: H2_factory<__>
+	// Inherited: H3_factory<__>
+	// Inherited: H4_factory<__>
+	// Inherited: H5_factory<__>
+	// Inherited: H6_factory<__>
+	// Inherited: HEADER_factory<__>
+	// Inherited: HGROUP_factory<__>
 	HR_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: I_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: IFRAME_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: IMG_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: INPUT_factory<__>
-	// Inherited from PhrasingContent and PalpableContent: INS_factory<__>
-	// Inherited from PhrasingContent and PalpableContent: KBD_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: LABEL_factory<__>
-	// Inherited from PhrasingContent: LINK_factory<__> // if it is allowed in body
-	// Inherited from PalpableContent: MAIN_factory<__> // if it is a hierarchically correct main element
-	// Inherited from PalpableContent and PhrasingContent: MAP_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: MARK_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: // TODO: MathML math
-	// Inherited from PalpableContent: MENU_factory<__>
-	// Inherited from PhrasingContent: META_factory<__> // if the itemprop attribute is present
-	// Inherited from PalpableContent and PhrasingContent: METER_factory<__>
-	// Inherited from PalpableContent: NAV_factory<__>
-	// Inherited from PhrasingContent: NOSCRIPT_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: OBJECT_factory<__>
-	// Inherited from PalpableContent: OL_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: OUTPUT_factory<__>
-	// Inherited from PalpableContent: P_factory<__>
-	// Inherited from PhrasingContent: PICTURE_factory<__>
-	// Inherited from PalpableContent: PRE_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: PROGRESS_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: Q_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: RUBY_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: S_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: SAMP_factory<__>
-	// Inherited from PhrasingContent: SCRIPT_factory<__>
-	// Inherited from PalpableContent: SECTION_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: SELECT_factory<__>
-	// Inherited from PhrasingContent: SLOT_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: SMALL_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: SPAN_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: STRONG_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: SUB_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: SUP_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: // TODO: SVG svg
-	// Inherited from PalpableContent: TABLE_factory<__>
-	// Inherited from PhrasingContent: TEMPLATE_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: TEXTAREA_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: TIME_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: U_factory<__>
-	// Inherited from PalpableContent: UL_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: VAR_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: VIDEO_factory<__>
-	// Inherited from PhrasingContent: WBR_factory<__>
-	// Inherited from PalpableContent and PhrasingContent: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
-	// Inherited from PalpableContent and PhrasingContent: TextContent<__>
+	// Inherited: I_factory<__>
+	// Inherited: IFRAME_factory<__>
+	// Inherited: IMG_factory<__>
+	// Inherited: INPUT_factory<__>
+	// Inherited: INS_factory<__>
+	// Inherited: KBD_factory<__>
+	// Inherited: LABEL_factory<__>
+	// Inherited: LINK_factory<__> // if it is allowed in body
+	// Inherited: MAIN_factory<__> // if it is a hierarchically correct main element
+	// Inherited: MAP_factory<__>
+	// Inherited: MARK_factory<__>
+	// Inherited: // TODO: MathML math
+	// Inherited: MENU_factory<__>
+	// Inherited: META_factory<__> // if the itemprop attribute is present
+	// Inherited: METER_factory<__>
+	// Inherited: NAV_factory<__>
+	// Inherited: NOSCRIPT_factory<__>
+	// Inherited: OBJECT_factory<__>
+	// Inherited: OL_factory<__>
+	// Inherited: OUTPUT_factory<__>
+	// Inherited: P_factory<__>
+	// Inherited: PICTURE_factory<__>
+	// Inherited: PRE_factory<__>
+	// Inherited: PROGRESS_factory<__>
+	// Inherited: Q_factory<__>
+	// Inherited: RUBY_factory<__>
+	// Inherited: S_factory<__>
+	// Inherited: SAMP_factory<__>
+	// Inherited: SCRIPT_factory<__>
+	// Inherited: SECTION_factory<__>
+	// Inherited: SELECT_factory<__>
+	// Inherited: SLOT_factory<__>
+	// Inherited: SMALL_factory<__>
+	// Inherited: SPAN_factory<__>
+	// Inherited: STRONG_factory<__>
+	// Inherited: SUB_factory<__>
+	// Inherited: SUP_factory<__>
+	// Inherited: // TODO: SVG svg
+	// Inherited: TABLE_factory<__>
+	// Inherited: TEMPLATE_factory<__>
+	// Inherited: TEXTAREA_factory<__>
+	// Inherited: TIME_factory<__>
+	// Inherited: U_factory<__>
+	// Inherited: UL_factory<__>
+	// Inherited: VAR_factory<__>
+	// Inherited: VIDEO_factory<__>
+	// Inherited: WBR_factory<__>
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
 {
 }

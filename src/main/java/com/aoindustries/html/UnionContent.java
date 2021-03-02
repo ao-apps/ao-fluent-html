@@ -34,6 +34,7 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: No longer use inner classes, and just name Union_..._...
 public class UnionContent {
 
 	/** Make no instances. */
@@ -44,13 +45,14 @@ public class UnionContent {
 	 *
 	 * @param  <__>  This content model, which will be the parent content model of child elements
 	 */
-	public static interface Colgroup_ScriptSupporting<__ extends Colgroup_ScriptSupporting<__>> extends
+	@SuppressWarnings("MarkerInterface")
+	public static interface COLGROUP_ScriptSupporting<__ extends COLGROUP_ScriptSupporting<__>> extends
 		//
 		// Content models:
 		//
-		Content<__>,
+		// Inherited: Content<__>,
 		//
-		// Content types:
+		// Factories:
 		//
 		TEMPLATE_factory<__>
 	{
@@ -65,9 +67,9 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		Content<__>,
+		// Inherited: Content<__>,
 		//
-		// Content types:
+		// Factories:
 		//
 		AUDIO_factory<__>,
 		EMBED_factory<__>,
@@ -84,13 +86,14 @@ public class UnionContent {
 	 *
 	 * @param  <__>  This content model, which will be the parent content model of child elements
 	 */
+	@SuppressWarnings("MarkerInterface")
 	public static interface Embedded_Palpable_Phrasing<__ extends Embedded_Palpable_Phrasing<__>> extends
 		//
 		// Content models:
 		//
-		Content<__>,
+		// Inherited: Content<__>,
 		//
-		// Content types:
+		// Factories:
 		//
 		CANVAS_factory<__>
 		// TODO: MathML math
@@ -111,22 +114,22 @@ public class UnionContent {
 		//
 		// Content models:
 		//
-		// Inherited from Embedded_Interactive: Content<__>
+		// Inherited: Content<__>
 		//
-		// Content types:
+		// Factories:
 		//
 		A_factory<__>,
-		// Inherited from Embedded_Interactive: AUDIO_factory<__>
+		// Inherited: AUDIO_factory<__>
 		BUTTON_factory<__>,
-		// Inherited from Embedded_Interactive: EMBED_factory<__>
+		// Inherited: EMBED_factory<__>
 		INPUT_factory<__>,
-		// Inherited from Embedded_Interactive: IFRAME_factory<__>
-		// Inherited from Embedded_Interactive: IMG_factory<__>
+		// Inherited: IFRAME_factory<__>
+		// Inherited: IMG_factory<__>
 		LABEL_factory<__>,
-		// Inherited from Embedded_Interactive: OBJECT_factory<__>
+		// Inherited: OBJECT_factory<__>
 		SELECT_factory<__>,
 		TEXTAREA_factory<__>
-		// Inherited from Embedded_Interactive: VIDEO_factory<__>
+		// Inherited: VIDEO_factory<__>
 	{
 	}
 
@@ -137,18 +140,22 @@ public class UnionContent {
 	 */
 	public static interface Metadata_Phrasing<__ extends Metadata_Phrasing<__>> extends
 		//
+		// Unions:
+		//
+		// Inherited: COLGROUP_ScriptSupporting<__>
+		//
 		// Content models:
 		//
-		// Inherited from ScriptSupportingContent: Content<__>
+		// Inherited: Content<__>
 		ScriptSupportingContent<__>,
 		//
-		// Content types:
+		// Factories:
 		//
 		LINK_factory<__>,
 		META_factory<__>,
 		NOSCRIPT_factory<__>
-		// Inherited from ScriptSupportingContent: SCRIPT_factory<__>
-		// Inherited from ScriptSupportingContent: TEMPLATE_factory<__>
+		// Inherited: SCRIPT_factory<__>
+		// Inherited: TEMPLATE_factory<__>
 	{
 	}
 
@@ -161,61 +168,62 @@ public class UnionContent {
 		//
 		// Unions:
 		//
+		// Inherited: Embedded_Interactive<__>,
 		Embedded_Palpable_Phrasing<__>,
 		Interactive_Phrasing<__>,
 		//
 		// Content models:
 		//
-		// Inherited from Embedded_Palpable_Phrasing and Interactive_Phrasing: Content<__>
+		// Inherited: Content<__>
+		TextContent<__>, // that is not inter-element whitespace
 		//
-		// Content types:
+		// Factories:
 		//
-		// Inherited from Interactive_Phrasing: A_factory<__>
+		// Inherited: A_factory<__>
 		ABBR_factory<__>,
-		// Inherited from Interactive_Phrasing: AUDIO_factory<__>
+		// Inherited: AUDIO_factory<__>
 		B_factory<__>,
 		BDI_factory<__>,
 		BDO_factory<__>,
-		// Inherited from Interactive_Phrasing: BUTTON_factory<__>
-		// Inherited from Embedded_Palpable_Phrasing: CANVAS_factory<__>
+		// Inherited: BUTTON_factory<__>
+		// Inherited: CANVAS_factory<__>
 		CITE_factory<__>,
 		CODE_factory<__>,
 		DATA_factory<__>,
 		DFN_factory<__>,
 		EM_factory<__>,
-		// Inherited from Interactive_Phrasing: EMBED_factory<__>
+		// Inherited: EMBED_factory<__>
 		I_factory<__>,
-		// Inherited from Interactive_Phrasing: IFRAME_factory<__>
-		// Inherited from Interactive_Phrasing: IMG_factory<__>
-		// Inherited from Interactive_Phrasing: INPUT_factory<__>
+		// Inherited: IFRAME_factory<__>
+		// Inherited: IMG_factory<__>
+		// Inherited: INPUT_factory<__>
 		INS_factory<__>,
 		KBD_factory<__>,
-		// Inherited from Interactive_Phrasing: LABEL_factory<__>
+		// Inherited: LABEL_factory<__>
 		MAP_factory<__>,
 		MARK_factory<__>,
-		// Inherited from Embedded_Palpable_Phrasing: // TODO: MathML math
+		// Inherited: // TODO: MathML math
 		METER_factory<__>,
-		// Inherited from Interactive_Phrasing: OBJECT_factory<__>
+		// Inherited: OBJECT_factory<__>
 		OUTPUT_factory<__>,
 		PROGRESS_factory<__>,
 		Q_factory<__>,
 		RUBY_factory<__>,
 		S_factory<__>,
 		SAMP_factory<__>,
-		// Inherited from Interactive_Phrasing: SELECT_factory<__>
+		// Inherited: SELECT_factory<__>
 		SMALL_factory<__>,
 		SPAN_factory<__>,
 		STRONG_factory<__>,
 		SUB_factory<__>,
 		SUP_factory<__>,
-		// Inherited from Embedded_Palpable_Phrasing: // TODO: SVG svg
-		// Inherited from Interactive_Phrasing: TEXTAREA_factory<__>
+		// Inherited: // TODO: SVG svg
+		// Inherited: TEXTAREA_factory<__>
 		TIME_factory<__>,
 		U_factory<__>,
-		VAR_factory<__>,
-		// Inherited from Interactive_Phrasing: VIDEO_factory<__>
+		VAR_factory<__>
+		// Inherited: VIDEO_factory<__>
 		// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
-		TextContent<__> // that is not inter-element whitespace
 	{
 	}
 
@@ -233,16 +241,20 @@ public class UnionContent {
 	 */
 	public static interface TBODY_THEAD_TFOOT<__ extends TBODY_THEAD_TFOOT<__>> extends
 		//
+		// Unions:
+		//
+		// Inherited: COLGROUP_ScriptSupporting<__>
+		//
 		// Content models:
 		//
-		// Inherited from ScriptSupportingContent: Content<__>
+		// Inherited: Content<__>
 		ScriptSupportingContent<__>,
 		//
-		// Content types:
+		// Factories:
 		//
 		TR_factory<__>
-		// Inherited from ScriptSupportingContent: SCRIPT_factory<__>
-		// Inherited from ScriptSupportingContent: TEMPLATE_factory<__>
+		// Inherited: SCRIPT_factory<__>
+		// Inherited: TEMPLATE_factory<__>
 	{
 	}
 }

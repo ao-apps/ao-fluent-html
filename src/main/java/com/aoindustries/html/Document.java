@@ -53,141 +53,157 @@ import java.util.Arrays;
  */
 public class Document implements
 	//
+	// Unions:
+	//
+	// Inherited: UnionContent.COLGROUP_ScriptSupporting<Document>
+	// Inherited: UnionContent.Embedded_Interactive<Document>
+	// Inherited: UnionContent.Embedded_Palpable_Phrasing<Document>
+	// Inherited: UnionContent.Interactive_Phrasing<Document>
+	// Inherited: UnionContent.Metadata_Phrasing<Document>
+	// Inherited: UnionContent.Palpable_Phrasing<Document>
+	// Inherited: UnionContent.TBODY_THEAD_TFOOT<Document>
+	//
 	// Content models:
 	//
-	// Inherited from COLGROUP_content, FlowContent, MetadataContent, TABLE_content, and TR_content: Content<Document>
-	COLGROUP_content<Document>,
+	// Inherited: Content<Document>
 	MetadataContent<Document>,
 	FlowContent<Document>,
-	// Inherited from FlowContent: SectioningContent<Document>
-	// Inherited from FlowContent: HeadingContent<Document>
-	// Inherited from FlowContent: PhrasingContent<Document>
-	// Inherited from FlowContent: EmbeddedContent<Document>
-	// Inherited from FlowContent: InteractiveContent<Document>
-	// Inherited from FlowContent: PalpableContent<Document>
-	// Inherited from FlowContent, MetadataContent, TABLE_content, and TR_content: ScriptSupportingContent<Document>
+	// Inherited: SectioningContent<Document>
+	// Inherited: HeadingContent<Document>
+	// Inherited: PhrasingContent<Document>
+	// Inherited: EmbeddedContent<Document>
+	// Inherited: InteractiveContent<Document>
+	// Inherited: PalpableContent<Document>
+	// Inherited: ScriptSupportingContent<Document>
+	// Inherited: TextContent<Document>
+	//
+	// Per-element content models:
+	//
+	COLGROUP_content<Document>,
 	TABLE_content<Document>,
 	TR_content<Document>,
 	//
-	// Content types:
+	// Factories:
 	//
 	HTML_factory,
 	HEAD_factory<Document>,
-	// Inherited from MetadataContent: TITLE_factory<Document>
-	// Inherited from MetadataContent: BASE_factory<Document>
-	// Inherited from FlowContent and MetadataContent: LINK_factory<Document>
-	// Inherited from FlowContent and MetadataContent: META_factory<Document>
-	// Inherited from MetadataContent: STYLE_factory<Document>
+	// Inherited: TITLE_factory<Document>
+	// Inherited: BASE_factory<Document>
+	// Inherited: LINK_factory<Document>
+	// Inherited: META_factory<Document>
+	// Inherited: STYLE_factory<Document>
 	BODY_factory<Document>,
-	// Inherited from FlowContent: ARTICLE_factory<Document>
-	// Inherited from FlowContent: SECTION_factory<Document>
-	// Inherited from FlowContent: NAV_factory<Document>
-	// Inherited from FlowContent: ASIDE_factory<Document>
-	// Inherited from FlowContent: H1_factory<Document>
-	// Inherited from FlowContent: H2_factory<Document>
-	// Inherited from FlowContent: H3_factory<Document>
-	// Inherited from FlowContent: H4_factory<Document>
-	// Inherited from FlowContent: H5_factory<Document>
-	// Inherited from FlowContent: H6_factory<Document>
-	// Inherited from FlowContent: HGROUP_factory<Document>
-	// Inherited from FlowContent: HEADER_factory<Document>
-	// Inherited from FlowContent: FOOTER_factory<Document>
-	// Inherited from FlowContent: ADDRESS_factory<Document>
-	// Inherited from FlowContent: P_factory<Document>
-	// Inherited from FlowContent: HR_factory<Document>
-	// Inherited from FlowContent: PRE_factory<Document>
-	// Inherited from FlowContent: BLOCKQUOTE_factory<Document>
-	// Inherited from FlowContent: OL_factory<Document>
-	// Inherited from FlowContent: UL_factory<Document>
-	// Inherited from FlowContent: MENU_factory<Document>
+	// Inherited: ARTICLE_factory<Document>
+	// Inherited: SECTION_factory<Document>
+	// Inherited: NAV_factory<Document>
+	// Inherited: ASIDE_factory<Document>
+	// Inherited: H1_factory<Document>
+	// Inherited: H2_factory<Document>
+	// Inherited: H3_factory<Document>
+	// Inherited: H4_factory<Document>
+	// Inherited: H5_factory<Document>
+	// Inherited: H6_factory<Document>
+	// Inherited: HGROUP_factory<Document>
+	// Inherited: HEADER_factory<Document>
+	// Inherited: FOOTER_factory<Document>
+	// Inherited: ADDRESS_factory<Document>
+	// Inherited: P_factory<Document>
+	// Inherited: HR_factory<Document>
+	// Inherited: PRE_factory<Document>
+	// Inherited: BLOCKQUOTE_factory<Document>
+	// Inherited: OL_factory<Document>
+	// Inherited: UL_factory<Document>
+	// Inherited: MENU_factory<Document>
 	LI_factory<Document>,
-	// Inherited from FlowContent: DL_factory<Document>
+	// Inherited: DL_factory<Document>
 	DT_factory<Document>,
 	DD_factory<Document>,
-	// Inherited from FlowContent: FIGURE_factory<Document>
+	// Inherited: FIGURE_factory<Document>
 	FIGCAPTION_factory<Document>,
-	// Inherited from FlowContent: MAIN_factory<Document>
-	// Inherited from FlowContent: DIV_factory<Document>
-	// Inherited from FlowContent: A_factory<Document>
-	// Inherited from FlowContent: EM_factory<Document>
-	// Inherited from FlowContent: STRONG_factory<Document>
-	// Inherited from FlowContent: SMALL_factory<Document>
-	// Inherited from FlowContent: S_factory<Document>
-	// Inherited from FlowContent: CITE_factory<Document>
-	// Inherited from FlowContent: Q_factory<Document>
-	// Inherited from FlowContent: DFN_factory<Document>
-	// Inherited from FlowContent: ABBR_factory<Document>
-	// Inherited from FlowContent: RUBY_factory<Document>
+	// Inherited: MAIN_factory<Document>
+	// Inherited: DIV_factory<Document>
+	// Inherited: A_factory<Document>
+	// Inherited: EM_factory<Document>
+	// Inherited: STRONG_factory<Document>
+	// Inherited: SMALL_factory<Document>
+	// Inherited: S_factory<Document>
+	// Inherited: CITE_factory<Document>
+	// Inherited: Q_factory<Document>
+	// Inherited: DFN_factory<Document>
+	// Inherited: ABBR_factory<Document>
+	// Inherited: RUBY_factory<Document>
 	RT_factory<Document>,
 	RP_factory<Document>,
-	// Inherited from FlowContent: DATA_factory<Document>
-	// Inherited from FlowContent: TIME_factory<Document>
-	// Inherited from FlowContent: CODE_factory<Document>
-	// Inherited from FlowContent: VAR_factory<Document>
-	// Inherited from FlowContent: SAMP_factory<Document>
-	// Inherited from FlowContent: KBD_factory<Document>
-	// Inherited from FlowContent: SUB_factory<Document>
-	// Inherited from FlowContent: SUP_factory<Document>
-	// Inherited from FlowContent: I_factory<Document>
-	// Inherited from FlowContent: B_factory<Document>
-	// Inherited from FlowContent: U_factory<Document>
-	// Inherited from FlowContent: MARK_factory<Document>
-	// Inherited from FlowContent: BDI_factory<Document>
-	// Inherited from FlowContent: BDO_factory<Document>
-	// Inherited from FlowContent: SPAN_factory<Document>
-	// Inherited from FlowContent: BR_factory<Document>
-	// Inherited from FlowContent: WBR_factory<Document>
-	// Inherited from FlowContent: INS_factory<Document>
-	// Inherited from FlowContent: DEL_factory<Document>
-	// Inherited from FlowContent: PICTURE_factory<Document>
+	// Inherited: DATA_factory<Document>
+	// Inherited: TIME_factory<Document>
+	// Inherited: CODE_factory<Document>
+	// Inherited: VAR_factory<Document>
+	// Inherited: SAMP_factory<Document>
+	// Inherited: KBD_factory<Document>
+	// Inherited: SUB_factory<Document>
+	// Inherited: SUP_factory<Document>
+	// Inherited: I_factory<Document>
+	// Inherited: B_factory<Document>
+	// Inherited: U_factory<Document>
+	// Inherited: MARK_factory<Document>
+	// Inherited: BDI_factory<Document>
+	// Inherited: BDO_factory<Document>
+	// Inherited: SPAN_factory<Document>
+	// Inherited: BR_factory<Document>
+	// Inherited: WBR_factory<Document>
+	// Inherited: INS_factory<Document>
+	// Inherited: DEL_factory<Document>
+	// Inherited: PICTURE_factory<Document>
 	SOURCE_factory<Document>,
-	// Inherited from FlowContent: IMG_factory<Document>
-	// Inherited from FlowContent: IFRAME_factory<Document>
-	// Inherited from FlowContent: EMBED_factory<Document>
-	// Inherited from FlowContent: OBJECT_factory<Document>
+	// Inherited: IMG_factory<Document>
+	// Inherited: IFRAME_factory<Document>
+	// Inherited: EMBED_factory<Document>
+	// Inherited: OBJECT_factory<Document>
 	PARAM_factory<Document>,
-	// Inherited from FlowContent: VIDEO_factory<Document>
-	// Inherited from FlowContent: AUDIO_factory<Document>
+	// Inherited: VIDEO_factory<Document>
+	// Inherited: AUDIO_factory<Document>
 	TRACK_factory<Document>,
-	// Inherited from FlowContent: MAP_factory<Document>
-	// Inherited from FlowContent: AREA_factory<Document>
-	// Inherited from FlowContent: // TODO: MathML math
-	// Inherited from FlowContent: // TODO: SVG svg
-	// Inherited from FlowContent: TABLE_factory<Document>
-	// Inherited from TABLE_content: CAPTION_factory<Document>
-	// Inherited from TABLE_content: COLGROUP_factory<Document>
-	// Inherited from COLGROUP_content: COL_factory<Document>
-	// Inherited from TABLE_content: TBODY_factory<Document>
-	// Inherited from TABLE_content: THEAD_factory<Document>
-	// Inherited from TABLE_content: TFOOT_factory<Document>
-	// Inherited from TABLE_content: TR_factory<Document>
-	// Inherited from TR_content: TD_factory<Document>
-	// Inherited from TR_content: TH_factory<Document>
-	// Inherited from FlowContent: FORM_factory<Document>
-	// Inherited from FlowContent: LABEL_factory<Document>
-	// Inherited from FlowContent: INPUT_factory<Document>
-	// Inherited from FlowContent: BUTTON_factory<Document>
-	// Inherited from FlowContent: SELECT_factory<Document>
-	// Inherited from FlowContent: DATALIST_factory<Document>
+	// Inherited: MAP_factory<Document>
+	// Inherited: AREA_factory<Document>
+	// Inherited: // TODO: MathML math
+	// Inherited: // TODO: SVG svg
+	// Inherited: TABLE_factory<Document>
+	// Inherited: CAPTION_factory<Document>
+	// Inherited: COLGROUP_factory<Document>
+	// Inherited: COL_factory<Document>
+	// Inherited: TBODY_factory<Document>
+	// Inherited: THEAD_factory<Document>
+	// Inherited: TFOOT_factory<Document>
+	// Inherited: TR_factory<Document>
+	// Inherited: TD_factory<Document>
+	// Inherited: TH_factory<Document>
+	// Inherited: FORM_factory<Document>
+	// Inherited: LABEL_factory<Document>
+	// Inherited: INPUT_factory<Document>
+	// Inherited: BUTTON_factory<Document>
+	// Inherited: SELECT_factory<Document>
+	// Inherited: DATALIST_factory<Document>
 	OPTGROUP_factory<Document>,
 	OPTION_factory<Document>,
-	// Inherited from FlowContent: TEXTAREA_factory<Document>
-	// Inherited from FlowContent: OUTPUT_factory<Document>
-	// Inherited from FlowContent: PROGRESS_factory<Document>
-	// Inherited from FlowContent: METER_factory<Document>
-	// Inherited from FlowContent: FIELDSET_factory<Document>
+	// Inherited: TEXTAREA_factory<Document>
+	// Inherited: OUTPUT_factory<Document>
+	// Inherited: PROGRESS_factory<Document>
+	// Inherited: METER_factory<Document>
+	// Inherited: FIELDSET_factory<Document>
 	LEGEND_factory<Document>,
-	// Inherited from FlowContent: DETAILS_factory<Document>
+	// Inherited: DETAILS_factory<Document>
 	SUMMARY_factory<Document>
-	// Inherited from FlowContent: DIALOG_factory<Document>
-	// Inherited from FlowContent, MetadataContent, TABLE_content, and TR_content: SCRIPT_factory<Document>
-	// Inherited from FlowContent and MetadataContent: NOSCRIPT_factory<Document>
-	// Inherited from COLGROUP_content, FlowContent, MetadataContent, TABLE_content, and TR_content: TEMPLATE_factory<Document>
-	// Inherited from FlowContent: SLOT_factory<Document>
-	// Inherited from FlowContent: CANVAS_factory<Document>
-	// Inherited from FlowContent: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
-	// Inherited from FlowContent: TextContent<Document>
-	// TODO: Whitespace?
+	// Inherited: DIALOG_factory<Document>
+	// Inherited: SCRIPT_factory<Document>
+	// Inherited: NOSCRIPT_factory<Document>
+	// Inherited: TEMPLATE_factory<Document>
+	// Inherited: SLOT_factory<Document>
+	// Inherited: CANVAS_factory<Document>
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	//
+	// Others:
+	//
+	// Inherited: WhitespaceWriter<Document>
 {
 
 	/**

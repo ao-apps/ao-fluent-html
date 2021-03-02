@@ -36,9 +36,9 @@ public interface SectioningContent<__ extends SectioningContent<__>> extends
 	//
 	// Content models:
 	//
-	Content<__>,
+	// Inherited: Content<__>,
 	//
-	// Content types:
+	// Factories:
 	//
 	ARTICLE_factory<__>,
 	ASIDE_factory<__>,

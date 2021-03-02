@@ -36,74 +36,78 @@ public interface PhrasingContent<__ extends PhrasingContent<__>> extends
 	//
 	// Unions:
 	//
+	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>
+	// Inherited: UnionContent.Embedded_Interactive<__>
+	// Inherited: UnionContent.Embedded_Palpable_Phrasing<__>
+	// Inherited: UnionContent.Interactive_Phrasing<__>
 	UnionContent.Metadata_Phrasing<__>,
 	UnionContent.Palpable_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from EmbeddedContent and Palpable_Phrasing: Content<__>
+	// Inherited: Content<__>
 	EmbeddedContent<__>,
-	// Inherited from Metadata_Phrasing: ScriptSupportingContent<__>
+	// Inherited: ScriptSupportingContent<__>
+	// Inherited: TextContent<__>
 	//
-	// Content types:
+	// Factories:
 	//
-	// Inherited from Palpable_Phrasing: A_factory<__>
-	// Inherited from Palpable_Phrasing: ABBR_factory<__>
+	// Inherited: A_factory<__>
+	// Inherited: ABBR_factory<__>
 	AREA_factory<__>, // if a descendent of map
-	// Inherited from EmbeddedContent and Palpable_Phrasing: AUDIO_factory<__>
-	// Inherited from Palpable_Phrasing: B_factory<__>
-	// Inherited from Palpable_Phrasing: BDI_factory<__>
-	// Inherited from Palpable_Phrasing: BDO_factory<__>
+	// Inherited: AUDIO_factory<__>
+	// Inherited: B_factory<__>
+	// Inherited: BDI_factory<__>
+	// Inherited: BDO_factory<__>
 	BR_factory<__>,
-	// Inherited from Palpable_Phrasing: BUTTON_factory<__>
-	// Inherited from EmbeddedContent and Palpable_Phrasing: CANVAS_factory<__>
-	// Inherited from Palpable_Phrasing: CITE_factory<__>
-	// Inherited from Palpable_Phrasing: CODE_factory<__>
-	// Inherited from Palpable_Phrasing: DATA_factory<__>
+	// Inherited: BUTTON_factory<__>
+	// Inherited: CANVAS_factory<__>
+	// Inherited: CITE_factory<__>
+	// Inherited: CODE_factory<__>
+	// Inherited: DATA_factory<__>
 	DATALIST_factory<__>,
 	DEL_factory<__>,
-	// Inherited from Palpable_Phrasing: DFN_factory<__>
-	// Inherited from Palpable_Phrasing: EM_factory<__>
-	// Inherited from EmbeddedContent and Palpable_Phrasing: EMBED_factory<__>
-	// Inherited from Palpable_Phrasing: I_factory<__>
-	// Inherited from EmbeddedContent and Palpable_Phrasing: IFRAME_factory<__>
-	// Inherited from EmbeddedContent and Palpable_Phrasing: IMG_factory<__>
-	// Inherited from Palpable_Phrasing: INPUT_factory<__>
-	// Inherited from Palpable_Phrasing: INS_factory<__>
-	// Inherited from Palpable_Phrasing: KBD_factory<__>
-	// Inherited from Palpable_Phrasing: LABEL_factory<__>
-	// Inherited from Metadata_Phrasing: LINK_factory<__> // if it is allowed in body
-	// Inherited from Palpable_Phrasing: MAP_factory<__>
-	// Inherited from Palpable_Phrasing: MARK_factory<__>
-	// Inherited from Palpable_Phrasing: // TODO: MathML math
-	// Inherited from Metadata_Phrasing: META_factory<__> // if the itemprop attribute is present
-	// Inherited from Palpable_Phrasing: METER_factory<__>
-	// Inherited from Metadata_Phrasing: NOSCRIPT_factory<__>
-	// Inherited from EmbeddedContent and Palpable_Phrasing: OBJECT_factory<__>
-	// Inherited from Palpable_Phrasing: OUTPUT_factory<__>
-	// Inherited from EmbeddedContent: PICTURE_factory<__>
-	// Inherited from Palpable_Phrasing: PROGRESS_factory<__>
-	// Inherited from Palpable_Phrasing: Q_factory<__>
-	// Inherited from Palpable_Phrasing: RUBY_factory<__>
-	// Inherited from Palpable_Phrasing: S_factory<__>
-	// Inherited from Palpable_Phrasing: SAMP_factory<__>
-	// Inherited from Metadata_Phrasing: SCRIPT_factory<__>
-	// Inherited from Palpable_Phrasing: SELECT_factory<__>
+	// Inherited: DFN_factory<__>
+	// Inherited: EM_factory<__>
+	// Inherited: EMBED_factory<__>
+	// Inherited: I_factory<__>
+	// Inherited: IFRAME_factory<__>
+	// Inherited: IMG_factory<__>
+	// Inherited: INPUT_factory<__>
+	// Inherited: INS_factory<__>
+	// Inherited: KBD_factory<__>
+	// Inherited: LABEL_factory<__>
+	// Inherited: LINK_factory<__> // if it is allowed in body
+	// Inherited: MAP_factory<__>
+	// Inherited: MARK_factory<__>
+	// Inherited: // TODO: MathML math
+	// Inherited: META_factory<__> // if the itemprop attribute is present
+	// Inherited: METER_factory<__>
+	// Inherited: NOSCRIPT_factory<__>
+	// Inherited: OBJECT_factory<__>
+	// Inherited: OUTPUT_factory<__>
+	// Inherited: PICTURE_factory<__>
+	// Inherited: PROGRESS_factory<__>
+	// Inherited: Q_factory<__>
+	// Inherited: RUBY_factory<__>
+	// Inherited: S_factory<__>
+	// Inherited: SAMP_factory<__>
+	// Inherited: SCRIPT_factory<__>
+	// Inherited: SELECT_factory<__>
 	SLOT_factory<__>,
-	// Inherited from Palpable_Phrasing: SMALL_factory<__>
-	// Inherited from Palpable_Phrasing: SPAN_factory<__>
-	// Inherited from Palpable_Phrasing: STRONG_factory<__>
-	// Inherited from Palpable_Phrasing: SUB_factory<__>
-	// Inherited from Palpable_Phrasing: SUP_factory<__>
-	// Inherited from Palpable_Phrasing: // TODO: SVG svg
-	// Inherited from Metadata_Phrasing: TEMPLATE_factory<__>
-	// Inherited from Palpable_Phrasing: TEXTAREA_factory<__>
-	// Inherited from Palpable_Phrasing: TIME_factory<__>
-	// Inherited from Palpable_Phrasing: U_factory<__>
-	// Inherited from Palpable_Phrasing: VAR_factory<__>
-	// Inherited from EmbeddedContent and Palpable_Phrasing: VIDEO_factory<__>
+	// Inherited: SMALL_factory<__>
+	// Inherited: SPAN_factory<__>
+	// Inherited: STRONG_factory<__>
+	// Inherited: SUB_factory<__>
+	// Inherited: SUP_factory<__>
+	// Inherited: // TODO: SVG svg
+	// Inherited: TEMPLATE_factory<__>
+	// Inherited: TEXTAREA_factory<__>
+	// Inherited: TIME_factory<__>
+	// Inherited: U_factory<__>
+	// Inherited: VAR_factory<__>
+	// Inherited: VIDEO_factory<__>
 	WBR_factory<__>
-	// Inherited from Palpable_Phrasing: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
-	// Inherited from Palpable_Phrasing: TextContent<__>
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
 {
 }

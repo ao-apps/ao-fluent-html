@@ -33,15 +33,15 @@ public interface COLGROUP_content<__ extends COLGROUP_content<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.Colgroup_ScriptSupporting<__>,
+	UnionContent.COLGROUP_ScriptSupporting<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Colgroup_ScriptSupporting: Content<__>
+	// Inherited: Content<__>
 	//
-	// Content types:
+	// Factories:
 	//
 	COL_factory<__>
-	// Inherited from Colgroup_ScriptSupporting: TEMPLATE_factory<__>
+	// Inherited: TEMPLATE_factory<__>
 {
 }

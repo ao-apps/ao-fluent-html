@@ -42,23 +42,24 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	//
 	// Unions:
 	//
+	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>,
 	UnionContent.TBODY_THEAD_TFOOT<__>,
 	//
 	// Content models:
 	//
-	// Inherited from TBODY_THEAD_TFOOT: Content<__>
-	// Inherited from TBODY_THEAD_TFOOT: ScriptSupportingContent<__>
+	// Inherited: Content<__>
+	// Inherited: ScriptSupportingContent<__>
 	//
-	// Content types:
+	// Factories:
 	//
 	CAPTION_factory<__>,
 	COLGROUP_factory<__>,
 	THEAD_factory<__>,
 	TBODY_factory<__>,
-	// Inherited from TBODY_THEAD_TFOOT: TR_factory<__>
+	// Inherited: TR_factory<__>
 	TFOOT_factory<__>
-	// Inherited from TBODY_THEAD_TFOOT: SCRIPT_factory<__>
-	// Inherited from TBODY_THEAD_TFOOT: TEMPLATE_factory<__>
+	// Inherited: SCRIPT_factory<__>
+	// Inherited: TEMPLATE_factory<__>
 {
 
 	/**
@@ -100,4 +101,6 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	default __ tr__() throws IOException {
 		return UnionContent.TBODY_THEAD_TFOOT.super.tr__();
 	}
+
+	// TODO: Create a test to ensure all methods of TBODY_THEAD_TFOOT have been overridden and deprecated
 }

@@ -36,22 +36,23 @@ public interface MetadataContent<__ extends MetadataContent<__>> extends
 	//
 	// Unions:
 	//
+	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>
 	UnionContent.Metadata_Phrasing<__>,
 	//
 	// Content models:
 	//
-	// Inherited from Metadata_Phrasing: Content<__>
-	// Inherited from Metadata_Phrasing: ScriptSupportingContent<__>
+	// Inherited: Content<__>
+	// Inherited: ScriptSupportingContent<__>
 	//
-	// Content types:
+	// Factories:
 	//
 	BASE_factory<__>,
-	// Inherited from Metadata_Phrasing: LINK_factory<__>
-	// Inherited from Metadata_Phrasing: META_factory<__>
-	// Inherited from Metadata_Phrasing: NOSCRIPT_factory<__>
-	// Inherited from Metadata_Phrasing: SCRIPT_factory<__>
+	// Inherited: LINK_factory<__>
+	// Inherited: META_factory<__>
+	// Inherited: NOSCRIPT_factory<__>
+	// Inherited: SCRIPT_factory<__>
 	STYLE_factory<__>,
-	// Inherited from Metadata_Phrasing: TEMPLATE_factory<__> // WHATWG only
+	// Inherited: TEMPLATE_factory<__> // WHATWG only
 	TITLE_factory<__>
 {
 }

@@ -42,8 +42,8 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	//
 	// Unions:
 	//
-	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>,
-	UnionContent.TBODY_THEAD_TFOOT<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>,
+	Union_TBODY_THEAD_TFOOT<__>,
 	//
 	// Content models:
 	//
@@ -69,7 +69,7 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	@Deprecated
 	@Override
 	default TR<__> tr() throws IOException {
-		return UnionContent.TBODY_THEAD_TFOOT.super.tr();
+		return Union_TBODY_THEAD_TFOOT.super.tr();
 	}
 
 	/**
@@ -79,7 +79,7 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	@Deprecated
 	@Override
 	default <Ex extends Throwable> __ tr__(IORunnableE<Ex> tr) throws IOException, Ex {
-		return UnionContent.TBODY_THEAD_TFOOT.super.tr__(tr);
+		return Union_TBODY_THEAD_TFOOT.super.tr__(tr);
 	}
 
 	/**
@@ -89,7 +89,7 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	@Deprecated
 	@Override
 	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
-		return UnionContent.TBODY_THEAD_TFOOT.super.tr__(tr);
+		return Union_TBODY_THEAD_TFOOT.super.tr__(tr);
 	}
 
 	/**
@@ -99,7 +99,7 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	@Deprecated
 	@Override
 	default __ tr__() throws IOException {
-		return UnionContent.TBODY_THEAD_TFOOT.super.tr__();
+		return Union_TBODY_THEAD_TFOOT.super.tr__();
 	}
 
 	// TODO: Create a test to ensure all methods of TBODY_THEAD_TFOOT have been overridden and deprecated

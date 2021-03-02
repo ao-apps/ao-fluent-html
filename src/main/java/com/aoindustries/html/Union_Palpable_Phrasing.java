@@ -23,37 +23,71 @@
 package com.aoindustries.html;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#embedded-content-2">3.2.5.2.6 Embedded content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#embedded_content">Embedded content</a>.</li>
- * </ul>
+ * Elements that are common to both {@link PalpableContent} and {@link PhrasingContent}.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface EmbeddedContent<__ extends EmbeddedContent<__>> extends
+public interface Union_Palpable_Phrasing<__ extends Union_Palpable_Phrasing<__>> extends
 	//
 	// Unions:
 	//
-	Union_Embedded_Interactive<__>,
+	// Inherited: Embedded_Interactive<__>,
 	Union_Embedded_Palpable_Phrasing<__>,
+	Union_Interactive_Phrasing<__>,
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
+	TextContent<__>, // that is not inter-element whitespace
 	//
 	// Factories:
 	//
+	// Inherited: A_factory<__>
+	ABBR_factory<__>,
 	// Inherited: AUDIO_factory<__>
+	B_factory<__>,
+	BDI_factory<__>,
+	BDO_factory<__>,
+	// Inherited: BUTTON_factory<__>
 	// Inherited: CANVAS_factory<__>
+	CITE_factory<__>,
+	CODE_factory<__>,
+	DATA_factory<__>,
+	DFN_factory<__>,
+	EM_factory<__>,
 	// Inherited: EMBED_factory<__>
+	I_factory<__>,
 	// Inherited: IFRAME_factory<__>
 	// Inherited: IMG_factory<__>
+	// Inherited: INPUT_factory<__>
+	INS_factory<__>,
+	KBD_factory<__>,
+	// Inherited: LABEL_factory<__>
+	MAP_factory<__>,
+	MARK_factory<__>,
 	// Inherited: // TODO: MathML math
+	METER_factory<__>,
 	// Inherited: OBJECT_factory<__>
-	PICTURE_factory<__>
+	OUTPUT_factory<__>,
+	PROGRESS_factory<__>,
+	Q_factory<__>,
+	RUBY_factory<__>,
+	S_factory<__>,
+	SAMP_factory<__>,
+	// Inherited: SELECT_factory<__>
+	SMALL_factory<__>,
+	SPAN_factory<__>,
+	STRONG_factory<__>,
+	SUB_factory<__>,
+	SUP_factory<__>,
 	// Inherited: // TODO: SVG svg
+	// Inherited: TEXTAREA_factory<__>
+	TIME_factory<__>,
+	U_factory<__>,
+	VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
+	// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
 {
 }

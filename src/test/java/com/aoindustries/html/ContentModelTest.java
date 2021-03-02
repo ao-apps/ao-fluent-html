@@ -22,9 +22,6 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.collections.AoArrays;
-import com.aoindustries.lang.reflect.Classes;
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -56,41 +53,12 @@ public class ContentModelTest {
 	}
 
 	static void testContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		// Check parameters
-		for(Class<? extends Content> iface : expected) {
-			Assert.assertTrue(iface.isInterface());
-			Assert.assertTrue(iface.getName().endsWith("Content"));
-		}
-		// First make sure has all the expected
-		for(Class<? extends Content> iface : expected) {
-			Assert.assertTrue(
-				clazz.getName() + " must be assignable to " + iface.getName(),
-				iface.isAssignableFrom(clazz)
-			);
-		}
-		// Next make sure no unexpected by pattern
-		for(Class<? extends Content> iface : Classes.getAllClasses(clazz, Content.class)) {
-			Assert.assertTrue(iface.isAssignableFrom(clazz));
-			if(iface != clazz) {
-				Assert.assertTrue(iface.isInterface());
-				if(iface.getName().endsWith("Content")) {
-					Assert.assertNotEquals(
-						clazz.getName() + " may not implement " + iface.getName(),
-						-1,
-						AoArrays.indexOf(expected, iface)
-					);
-				}
-			}
-		}
-		// Next make sure no unexpected versus master list
-		for(Class<? extends Content> iface : getAllContentModels()) {
-			if(iface != clazz && AoArrays.indexOf(expected, iface) == -1) {
-				Assert.assertFalse(
-					clazz.getName() + " may not be assignable to " + iface.getName(),
-					iface.isAssignableFrom(clazz)
-				);
-			}
-		}
+		InheritanceTests.testInterfaces(
+			iface -> iface.getSimpleName().endsWith("Content"),
+			getAllContentModels(),
+			clazz,
+			expected
+		);
 	}
 
 	@Test

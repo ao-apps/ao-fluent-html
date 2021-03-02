@@ -87,7 +87,7 @@ public class SectioningContentTest {
 	@Test
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getName() + ".getAllContentModels()",
+			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), SectioningContent.class)
 		);

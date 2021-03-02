@@ -31,7 +31,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class U<PC extends UnionContent.Palpable_Phrasing<PC>> extends
+public class U<PC extends Union_Palpable_Phrasing<PC>> extends
 	NormalText<U<PC>, PC, U__<PC>, U_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	AlmostGlobalAttributes<U<PC>>

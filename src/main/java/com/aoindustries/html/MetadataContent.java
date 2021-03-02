@@ -36,8 +36,8 @@ public interface MetadataContent<__ extends MetadataContent<__>> extends
 	//
 	// Unions:
 	//
-	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>
-	UnionContent.Metadata_Phrasing<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	Union_Metadata_Phrasing<__>,
 	//
 	// Content models:
 	//

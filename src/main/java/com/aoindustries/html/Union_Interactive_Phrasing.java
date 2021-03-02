@@ -23,17 +23,35 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+ * Elements that are common to both {@link InteractiveContent} and {@link PhrasingContent}.
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public class THEAD__<PC extends TABLE_content<PC>> extends
-	Normal__<PC, THEAD__<PC>> implements
-	Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
-
-	protected THEAD__(THEAD<PC> element) {
-		super(element);
-	}
+public interface Union_Interactive_Phrasing<__ extends Union_Interactive_Phrasing<__>> extends
+	//
+	// Unions:
+	//
+	Union_Embedded_Interactive<__>,
+	//
+	// Content models:
+	//
+	// Inherited: Content<__>
+	//
+	// Factories:
+	//
+	A_factory<__>,
+	// Inherited: AUDIO_factory<__>
+	BUTTON_factory<__>,
+	// Inherited: EMBED_factory<__>
+	INPUT_factory<__>,
+	// Inherited: IFRAME_factory<__>
+	// Inherited: IMG_factory<__>
+	LABEL_factory<__>,
+	// Inherited: OBJECT_factory<__>
+	SELECT_factory<__>,
+	TEXTAREA_factory<__>
+	// Inherited: VIDEO_factory<__>
+{
 }

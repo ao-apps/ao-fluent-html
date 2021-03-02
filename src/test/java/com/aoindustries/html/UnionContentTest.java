@@ -22,13 +22,10 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.collections.AoArrays;
-import com.aoindustries.lang.reflect.Classes;
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Tests {@link UnionContent} interfaces,
+ * Tests <code>Union_*</code> interfaces,
  * which confirm a class implements the expected set of interfaces.
  *
  * @author  AO Industries, Inc.
@@ -37,56 +34,27 @@ import org.junit.Test;
 public class UnionContentTest {
 
 	/**
-	 * Gets the set of all {@link UnionContent} interfaces.
+	 * Gets the set of all <code>Union_*</code> interfaces.
 	 */
 	static Class<? extends Content>[] getAllUnions() {
 		return new Class[] {
-			UnionContent.COLGROUP_ScriptSupporting.class,
-			UnionContent.Embedded_Interactive.class,
-			UnionContent.Embedded_Palpable_Phrasing.class,
-			UnionContent.Interactive_Phrasing.class,
-			UnionContent.Metadata_Phrasing.class,
-			UnionContent.Palpable_Phrasing.class,
-			UnionContent.TBODY_THEAD_TFOOT.class
+			Union_COLGROUP_ScriptSupporting.class,
+			Union_Embedded_Interactive.class,
+			Union_Embedded_Palpable_Phrasing.class,
+			Union_Interactive_Phrasing.class,
+			Union_Metadata_Phrasing.class,
+			Union_Palpable_Phrasing.class,
+			Union_TBODY_THEAD_TFOOT.class
 		};
 	}
 
 	static void testUnions(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		// Check parameters
-		for(Class<? extends Content> iface : expected) {
-			Assert.assertTrue(iface.isInterface());
-			Assert.assertTrue(iface.getEnclosingClass() == UnionContent.class);
-		}
-		// First make sure has all the expected
-		for(Class<? extends Content> iface : expected) {
-			Assert.assertTrue(
-				clazz.getName() + " must be assignable to " + iface.getName(),
-				iface.isAssignableFrom(clazz)
-			);
-		}
-		// Next make sure no unexpected by pattern
-		for(Class<? extends Content> iface : Classes.getAllClasses(clazz, Content.class)) {
-			Assert.assertTrue(iface.isAssignableFrom(clazz));
-			if(iface != clazz) {
-				Assert.assertTrue(iface.isInterface());
-				if(iface.getEnclosingClass() == UnionContent.class) {
-					Assert.assertNotEquals(
-						clazz.getName() + " may not implement " + iface.getName(),
-						-1,
-						AoArrays.indexOf(expected, iface)
-					);
-				}
-			}
-		}
-		// Next make sure no unexpected versus master list
-		for(Class<? extends Content> iface : getAllUnions()) {
-			if(iface != clazz && AoArrays.indexOf(expected, iface) == -1) {
-				Assert.assertFalse(
-					clazz.getName() + " may not be assignable to " + iface.getName(),
-					iface.isAssignableFrom(clazz)
-				);
-			}
-		}
+		InheritanceTests.testInterfaces(
+			iface -> iface.getSimpleName().startsWith("Union_"),
+			getAllUnions(),
+			clazz,
+			expected
+		);
 	}
 
 	@Test

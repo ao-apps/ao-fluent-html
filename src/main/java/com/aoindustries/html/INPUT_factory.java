@@ -37,7 +37,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface INPUT_factory<__ extends UnionContent.Interactive_Phrasing<__>> extends Content<__> {
+public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
 
 	/**
 	 * Specialized input implementations.
@@ -49,7 +49,7 @@ public interface INPUT_factory<__ extends UnionContent.Interactive_Phrasing<__>>
 	 *
 	 * @param  <__>  This content model, which will be the parent content model of child elements
 	 */
-	public static class Type<__ extends UnionContent.Interactive_Phrasing<__>> {
+	public static class Type<__ extends Union_Interactive_Phrasing<__>> {
 
 		private final Document document;
 		private final __ pc;

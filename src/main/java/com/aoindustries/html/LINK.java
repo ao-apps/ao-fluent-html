@@ -46,7 +46,7 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
-public class LINK<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidElement<LINK<PC>, PC> implements
+public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LINK<PC>, PC> implements
 	// TODO: as
 	// TODO: charset
 	com.aoindustries.html.attributes.Enum.Crossorigin<LINK<PC>, LINK.Crossorigin>,

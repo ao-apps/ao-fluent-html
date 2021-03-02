@@ -35,7 +35,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface TextContent<__ extends UnionContent.Palpable_Phrasing<__>> extends Content<__>, TextWriter<__> {
+public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Content<__>, TextWriter<__> {
 
 	/**
 	 * {@inheritDoc}

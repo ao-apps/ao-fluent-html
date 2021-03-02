@@ -29,7 +29,7 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class I_c<PC extends UnionContent.Palpable_Phrasing<PC>> extends
+public class I_c<PC extends Union_Palpable_Phrasing<PC>> extends
 	NormalText_c<PC, I_c<PC>> implements
 	PhrasingContent<I_c<PC>> {
 

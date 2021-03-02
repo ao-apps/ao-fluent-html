@@ -33,7 +33,7 @@ public interface COLGROUP_content<__ extends COLGROUP_content<__>> extends
 	//
 	// Unions:
 	//
-	UnionContent.COLGROUP_ScriptSupporting<__>,
+	Union_COLGROUP_ScriptSupporting<__>,
 	//
 	// Content models:
 	//

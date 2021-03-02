@@ -32,7 +32,7 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class Q__<PC extends UnionContent.Palpable_Phrasing<PC>> extends
+public class Q__<PC extends Union_Palpable_Phrasing<PC>> extends
 	NormalText__<PC, Q__<PC>> implements
 	PhrasingContent<Q__<PC>> {
 

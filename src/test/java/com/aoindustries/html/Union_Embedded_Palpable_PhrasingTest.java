@@ -27,7 +27,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see UnionContent.Embedded_Palpable_Phrasing
+ * @see Union_Embedded_Palpable_Phrasing
  *
  * @author  AO Industries, Inc.
  */
@@ -37,8 +37,7 @@ public class Union_Embedded_Palpable_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(
-			UnionContent.Embedded_Palpable_Phrasing.class
+		UnionContentTest.testUnions(Union_Embedded_Palpable_Phrasing.class
 			//
 			// Unions:
 			//
@@ -49,8 +48,7 @@ public class Union_Embedded_Palpable_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			UnionContent.Embedded_Palpable_Phrasing.class,
+		ContentModelTest.testContentModels(Union_Embedded_Palpable_Phrasing.class,
 			//
 			// Content models:
 			//
@@ -61,8 +59,7 @@ public class Union_Embedded_Palpable_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			UnionContent.Embedded_Palpable_Phrasing.class
+		ElementContentModelTest.testElementContentModels(Union_Embedded_Palpable_Phrasing.class
 			//
 			// Per-element content models:
 			//
@@ -73,8 +70,7 @@ public class Union_Embedded_Palpable_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(
-			UnionContent.Embedded_Palpable_Phrasing.class,
+		FactoryTest.testFactories(Union_Embedded_Palpable_Phrasing.class,
 			//
 			// Factories:
 			//
@@ -86,10 +82,10 @@ public class Union_Embedded_Palpable_PhrasingTest {
 
 	@Test
 	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getName() + ".getAllUnions()",
+		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), UnionContent.Embedded_Palpable_Phrasing.class)
+			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Embedded_Palpable_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(UnionContent.Embedded_Palpable_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Union_Embedded_Palpable_Phrasing.class);
 	}
 }

@@ -31,6 +31,6 @@ package com.aoindustries.html;
  */
 // TODO
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface OBJECT_factory<__ extends UnionContent.Embedded_Interactive<__>> extends Content<__> {
+public interface OBJECT_factory<__ extends Union_Embedded_Interactive<__>> extends Content<__> {
 	// TODO
 }

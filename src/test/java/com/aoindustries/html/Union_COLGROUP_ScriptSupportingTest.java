@@ -27,7 +27,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see UnionContent.COLGROUP_ScriptSupporting
+ * @see Union_COLGROUP_ScriptSupporting
  *
  * @author  AO Industries, Inc.
  */
@@ -37,8 +37,7 @@ public class Union_COLGROUP_ScriptSupportingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(
-			UnionContent.COLGROUP_ScriptSupporting.class
+		UnionContentTest.testUnions(Union_COLGROUP_ScriptSupporting.class
 			//
 			// Unions:
 			//
@@ -49,8 +48,7 @@ public class Union_COLGROUP_ScriptSupportingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			UnionContent.COLGROUP_ScriptSupporting.class,
+		ContentModelTest.testContentModels(Union_COLGROUP_ScriptSupporting.class,
 			//
 			// Content models:
 			//
@@ -61,8 +59,7 @@ public class Union_COLGROUP_ScriptSupportingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			UnionContent.COLGROUP_ScriptSupporting.class
+		ElementContentModelTest.testElementContentModels(Union_COLGROUP_ScriptSupporting.class
 			//
 			// Per-element content models:
 			//
@@ -73,8 +70,7 @@ public class Union_COLGROUP_ScriptSupportingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(
-			UnionContent.COLGROUP_ScriptSupporting.class,
+		FactoryTest.testFactories(Union_COLGROUP_ScriptSupporting.class,
 			//
 			// Factories:
 			//
@@ -84,10 +80,10 @@ public class Union_COLGROUP_ScriptSupportingTest {
 
 	@Test
 	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getName() + ".getAllUnions()",
+		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), UnionContent.COLGROUP_ScriptSupporting.class)
+			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_COLGROUP_ScriptSupporting.class)
 		);
-		InheritanceTests.testNoImplementInherited(UnionContent.COLGROUP_ScriptSupporting.class);
+		InheritanceTests.testNoImplementInherited(Union_COLGROUP_ScriptSupporting.class);
 	}
 }

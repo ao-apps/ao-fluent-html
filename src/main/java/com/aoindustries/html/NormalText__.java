@@ -36,7 +36,7 @@ package com.aoindustries.html;
 public abstract class NormalText__<
 	PC extends Content<PC>,
 	__ extends NormalText__<PC, __>
-> extends Normal__<PC, __> implements UnionContent.Palpable_Phrasing<__> {
+> extends Normal__<PC, __> implements Union_Palpable_Phrasing<__> {
 
 	protected NormalText__(NormalText<?, PC, __, ?> element) {
 		super(element);

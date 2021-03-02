@@ -30,6 +30,6 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface EMBED_factory<__ extends UnionContent.Embedded_Interactive<__>> extends Content<__> {
+public interface EMBED_factory<__ extends Union_Embedded_Interactive<__>> extends Content<__> {
 	// TODO
 }

@@ -55,13 +55,13 @@ public class Document implements
 	//
 	// Unions:
 	//
-	// Inherited: UnionContent.COLGROUP_ScriptSupporting<Document>
-	// Inherited: UnionContent.Embedded_Interactive<Document>
-	// Inherited: UnionContent.Embedded_Palpable_Phrasing<Document>
-	// Inherited: UnionContent.Interactive_Phrasing<Document>
-	// Inherited: UnionContent.Metadata_Phrasing<Document>
-	// Inherited: UnionContent.Palpable_Phrasing<Document>
-	// Inherited: UnionContent.TBODY_THEAD_TFOOT<Document>
+	// Inherited: Union_COLGROUP_ScriptSupporting<Document>
+	// Inherited: Union_Embedded_Interactive<Document>
+	// Inherited: Union_Embedded_Palpable_Phrasing<Document>
+	// Inherited: Union_Interactive_Phrasing<Document>
+	// Inherited: Union_Metadata_Phrasing<Document>
+	// Inherited: Union_Palpable_Phrasing<Document>
+	// Inherited: Union_TBODY_THEAD_TFOOT<Document>
 	//
 	// Content models:
 	//

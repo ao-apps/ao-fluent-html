@@ -34,7 +34,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface IMG_factory<__ extends UnionContent.Embedded_Interactive<__>> extends Content<__> {
+public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends Content<__> {
 
 	/**
 	 * Opens a new img element.

@@ -31,7 +31,7 @@ package com.aoindustries.html;
  */
 public class THEAD_c<PC extends TABLE_content<PC>> extends
 	Normal_c<PC, THEAD_c<PC>> implements
-	UnionContent.TBODY_THEAD_TFOOT<THEAD_c<PC>> {
+	Union_TBODY_THEAD_TFOOT<THEAD_c<PC>> {
 
 	protected THEAD_c(THEAD<PC> element) {
 		super(element);

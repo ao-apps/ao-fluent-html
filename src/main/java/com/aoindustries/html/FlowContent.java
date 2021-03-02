@@ -36,12 +36,12 @@ public interface FlowContent<__ extends FlowContent<__>> extends
 	//
 	// Unions:
 	//
-	// Inherited: UnionContent.COLGROUP_ScriptSupporting<__>
-	// Inherited: UnionContent.Embedded_Interactive<__>
-	// Inherited: UnionContent.Embedded_Palpable_Phrasing<__>
-	// Inherited: UnionContent.Interactive_Phrasing<__>
-	// Inherited: UnionContent.Metadata_Phrasing<__>
-	// Inherited: UnionContent.Palpable_Phrasing<__>
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	// Inherited: Union_Embedded_Interactive<__>
+	// Inherited: Union_Embedded_Palpable_Phrasing<__>
+	// Inherited: Union_Interactive_Phrasing<__>
+	// Inherited: Union_Metadata_Phrasing<__>
+	// Inherited: Union_Palpable_Phrasing<__>
 	//
 	// Content models:
 	//

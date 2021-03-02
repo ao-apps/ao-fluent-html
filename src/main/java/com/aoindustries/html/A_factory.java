@@ -34,7 +34,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface A_factory<__ extends UnionContent.Interactive_Phrasing<__>> extends Content<__> {
+public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
 
 	/**
 	 * Opens a new a element.

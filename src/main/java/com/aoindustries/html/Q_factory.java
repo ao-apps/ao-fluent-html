@@ -36,7 +36,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface Q_factory<__ extends UnionContent.Palpable_Phrasing<__>> extends Content<__> {
+public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
 
 	/**
 	 * Opens a new q element.

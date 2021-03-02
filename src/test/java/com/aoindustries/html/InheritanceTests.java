@@ -22,9 +22,11 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.collections.AoArrays;
 import com.aoindustries.lang.reflect.Classes;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 import org.junit.Assert;
 
 /**
@@ -36,6 +38,49 @@ import org.junit.Assert;
 class InheritanceTests {
 
 	private InheritanceTests() {}
+
+	static void testInterfaces(
+		Predicate<? super Class<? extends Content>> filter,
+		Class<? extends Content>[] all,
+		Class<? extends Content> clazz,
+		Class<? extends Content> ... expected
+	) {
+		// Check parameters
+		for(Class<? extends Content> iface : expected) {
+			Assert.assertTrue(iface.isInterface());
+			Assert.assertTrue(filter.test(iface));
+		}
+		// First make sure has all the expected
+		for(Class<? extends Content> iface : expected) {
+			Assert.assertTrue(
+				clazz.getSimpleName() + " must be assignable to " + iface.getSimpleName(),
+				iface.isAssignableFrom(clazz)
+			);
+		}
+		// Next make sure no unexpected by pattern
+		for(Class<? extends Content> iface : Classes.getAllClasses(clazz, Content.class)) {
+			Assert.assertTrue(iface.isAssignableFrom(clazz));
+			if(iface != clazz) {
+				Assert.assertTrue(iface.isInterface());
+				if(filter.test(iface)) {
+					Assert.assertNotEquals(
+						clazz.getSimpleName() + " may not implement " + iface.getSimpleName(),
+						-1,
+						AoArrays.indexOf(expected, iface)
+					);
+				}
+			}
+		}
+		// Next make sure no unexpected versus master list
+		for(Class<? extends Content> iface : all) {
+			if(iface != clazz && AoArrays.indexOf(expected, iface) == -1) {
+				Assert.assertFalse(
+					clazz.getSimpleName() + " may not be assignable to " + iface.getSimpleName(),
+					iface.isAssignableFrom(clazz)
+				);
+			}
+		}
+	}
 
 	/**
 	 * Makes sure no class or interface directly implements an interface that is also inherited.
@@ -57,7 +102,7 @@ class InheritanceTests {
 				Class<? extends Content> contentIface = iface.asSubclass(Content.class);
 				//System.out.println("Direct interface: " + contentIface);
 				Assert.assertFalse(
-					clazz.getName() + " may not both directly implement and inherit " + contentIface.getName() + " - comment-out direct implements to be inherited-only.",
+					clazz.getSimpleName() + " may not both directly implement and inherit " + contentIface.getSimpleName() + " - comment-out direct implements to be inherited-only.",
 					inherited.contains(contentIface)
 				);
 				testNoImplementInherited(contentIface);

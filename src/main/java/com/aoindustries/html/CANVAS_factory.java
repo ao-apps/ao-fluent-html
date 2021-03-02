@@ -30,6 +30,6 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface CANVAS_factory<__ extends UnionContent.Embedded_Palpable_Phrasing<__>> extends Content<__> {
+public interface CANVAS_factory<__ extends Union_Embedded_Palpable_Phrasing<__>> extends Content<__> {
 	// TODO
 }

@@ -27,7 +27,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see UnionContent.Metadata_Phrasing
+ * @see Union_Metadata_Phrasing
  *
  * @author  AO Industries, Inc.
  */
@@ -37,20 +37,18 @@ public class Union_Metadata_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(
-			UnionContent.Metadata_Phrasing.class,
+		UnionContentTest.testUnions(Union_Metadata_Phrasing.class,
 			//
 			// Unions:
 			//
-			UnionContent.COLGROUP_ScriptSupporting.class
+			Union_COLGROUP_ScriptSupporting.class
 		);
 	}
 
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			UnionContent.Metadata_Phrasing.class,
+		ContentModelTest.testContentModels(Union_Metadata_Phrasing.class,
 			//
 			// Content models:
 			//
@@ -62,8 +60,7 @@ public class Union_Metadata_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			UnionContent.Metadata_Phrasing.class
+		ElementContentModelTest.testElementContentModels(Union_Metadata_Phrasing.class
 			//
 			// Per-element content models:
 			//
@@ -74,8 +71,7 @@ public class Union_Metadata_PhrasingTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(
-			UnionContent.Metadata_Phrasing.class,
+		FactoryTest.testFactories(Union_Metadata_Phrasing.class,
 			//
 			// Factories:
 			//
@@ -89,10 +85,10 @@ public class Union_Metadata_PhrasingTest {
 
 	@Test
 	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getName() + ".getAllUnions()",
+		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), UnionContent.Metadata_Phrasing.class)
+			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(UnionContent.Metadata_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Union_Metadata_Phrasing.class);
 	}
 }

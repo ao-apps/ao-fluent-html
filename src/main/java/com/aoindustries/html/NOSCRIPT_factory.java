@@ -30,6 +30,6 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface NOSCRIPT_factory<__ extends UnionContent.Metadata_Phrasing<__>> extends Content<__> {
+public interface NOSCRIPT_factory<__ extends Union_Metadata_Phrasing<__>> extends Content<__> {
 	// TODO
 }

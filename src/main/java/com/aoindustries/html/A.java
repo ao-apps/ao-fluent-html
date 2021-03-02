@@ -33,7 +33,7 @@ import java.io.IOException;
  */
 // TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 //       the tabindex attribute specified.
-public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
+public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	TransparentElement<A<PC>, PC> implements
 	com.aoindustries.html.attributes.Url.Href<A<PC>>,
 	com.aoindustries.html.attributes.Enum.Target<A<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
@@ -65,7 +65,7 @@ public class A<PC extends UnionContent.Interactive_Phrasing<PC>> extends
 	/**
 	 * Ends attributes, writes a text body, then closes this element.
 	 * <p>
-	 * Since {@link TextContent} is not a part of {@link UnionContent.Interactive_Phrasing},
+	 * Since {@link TextContent} is not a part of {@link Union_Interactive_Phrasing},
 	 * strictly speaking text is not allowed in all possible content models.
 	 * However, since it is such a common operation, we've added it here.
 	 * </p>

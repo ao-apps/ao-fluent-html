@@ -33,7 +33,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface TR_factory<__ extends UnionContent.TBODY_THEAD_TFOOT<__>> extends Content<__> {
+public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Content<__> {
 
 	/**
 	 * Opens a new tr element.

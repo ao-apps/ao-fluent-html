@@ -30,6 +30,6 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface TEMPLATE_factory<__ extends UnionContent.COLGROUP_ScriptSupporting<__>> extends Content<__> {
+public interface TEMPLATE_factory<__ extends Union_COLGROUP_ScriptSupporting<__>> extends Content<__> {
 	// TODO
 }

@@ -27,7 +27,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see UnionContent.Embedded_Interactive
+ * @see Union_Embedded_Interactive
  *
  * @author  AO Industries, Inc.
  */
@@ -37,8 +37,7 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(
-			UnionContent.Embedded_Interactive.class
+		UnionContentTest.testUnions(Union_Embedded_Interactive.class
 			//
 			// Unions:
 			//
@@ -49,8 +48,7 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			UnionContent.Embedded_Interactive.class,
+		ContentModelTest.testContentModels(Union_Embedded_Interactive.class,
 			//
 			// Content models:
 			//
@@ -61,8 +59,7 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			UnionContent.Embedded_Interactive.class
+		ElementContentModelTest.testElementContentModels(Union_Embedded_Interactive.class
 			//
 			// Per-element content models:
 			//
@@ -73,8 +70,7 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(
-			UnionContent.Embedded_Interactive.class,
+		FactoryTest.testFactories(Union_Embedded_Interactive.class,
 			//
 			// Factories:
 			//
@@ -89,10 +85,10 @@ public class Union_Embedded_InteractiveTest {
 
 	@Test
 	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getName() + ".getAllUnions()",
+		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), UnionContent.Embedded_Interactive.class)
+			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Embedded_Interactive.class)
 		);
-		InheritanceTests.testNoImplementInherited(UnionContent.Embedded_Interactive.class);
+		InheritanceTests.testNoImplementInherited(Union_Embedded_Interactive.class);
 	}
 }

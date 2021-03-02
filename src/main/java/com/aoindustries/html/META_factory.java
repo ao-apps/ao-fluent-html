@@ -35,7 +35,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface META_factory<__ extends UnionContent.Metadata_Phrasing<__>> extends Content<__> {
+public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Content<__> {
 
 	/**
 	 * Opens a new meta element.

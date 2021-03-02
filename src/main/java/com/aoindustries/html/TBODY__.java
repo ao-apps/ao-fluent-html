@@ -31,7 +31,7 @@ package com.aoindustries.html;
  */
 public class TBODY__<PC extends TABLE_content<PC>> extends
 	Normal__<PC, TBODY__<PC>> implements
-	UnionContent.TBODY_THEAD_TFOOT<TBODY__<PC>> {
+	Union_TBODY_THEAD_TFOOT<TBODY__<PC>> {
 
 	protected TBODY__(TBODY<PC> element) {
 		super(element);

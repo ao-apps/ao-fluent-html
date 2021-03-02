@@ -41,12 +41,12 @@ public class FlowContentTest {
 			//
 			// Unions:
 			//
-			UnionContent.COLGROUP_ScriptSupporting.class,
-			UnionContent.Embedded_Interactive.class,
-			UnionContent.Embedded_Palpable_Phrasing.class,
-			UnionContent.Interactive_Phrasing.class,
-			UnionContent.Metadata_Phrasing.class,
-			UnionContent.Palpable_Phrasing.class
+			Union_COLGROUP_ScriptSupporting.class,
+			Union_Embedded_Interactive.class,
+			Union_Embedded_Palpable_Phrasing.class,
+			Union_Interactive_Phrasing.class,
+			Union_Metadata_Phrasing.class,
+			Union_Palpable_Phrasing.class
 		);
 	}
 
@@ -183,7 +183,7 @@ public class FlowContentTest {
 	@Test
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getName() + ".getAllContentModels()",
+			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), FlowContent.class)
 		);

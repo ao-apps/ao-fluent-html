@@ -27,7 +27,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see UnionContent.TBODY_THEAD_TFOOT
+ * @see Union_TBODY_THEAD_TFOOT
  *
  * @author  AO Industries, Inc.
  */
@@ -37,20 +37,18 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(
-			UnionContent.TBODY_THEAD_TFOOT.class,
+		UnionContentTest.testUnions(Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Unions:
 			//
-			UnionContent.COLGROUP_ScriptSupporting.class
+			Union_COLGROUP_ScriptSupporting.class
 		);
 	}
 
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			UnionContent.TBODY_THEAD_TFOOT.class,
+		ContentModelTest.testContentModels(Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Content models:
 			//
@@ -62,8 +60,7 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			UnionContent.TBODY_THEAD_TFOOT.class
+		ElementContentModelTest.testElementContentModels(Union_TBODY_THEAD_TFOOT.class
 			//
 			// Per-element content models:
 			//
@@ -74,8 +71,7 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(
-			UnionContent.TBODY_THEAD_TFOOT.class,
+		FactoryTest.testFactories(Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Factories:
 			//
@@ -87,10 +83,10 @@ public class Union_TBODY_THEAD_TFOOTTest {
 
 	@Test
 	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getName() + ".getAllUnions()",
+		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), UnionContent.TBODY_THEAD_TFOOT.class)
+			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_TBODY_THEAD_TFOOT.class)
 		);
-		InheritanceTests.testNoImplementInherited(UnionContent.TBODY_THEAD_TFOOT.class);
+		InheritanceTests.testNoImplementInherited(Union_TBODY_THEAD_TFOOT.class);
 	}
 }

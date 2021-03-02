@@ -36,7 +36,7 @@ import java.util.function.Function;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class IMG<PC extends UnionContent.Embedded_Interactive<PC>> extends VoidElement<IMG<PC>, PC> implements
+public class IMG<PC extends Union_Embedded_Interactive<PC>> extends VoidElement<IMG<PC>, PC> implements
 	com.aoindustries.html.attributes.Enum.Align<IMG<PC>, IMG.Align>,
 	com.aoindustries.html.attributes.Text.Alt<IMG<PC>>,
 	// TODO: border

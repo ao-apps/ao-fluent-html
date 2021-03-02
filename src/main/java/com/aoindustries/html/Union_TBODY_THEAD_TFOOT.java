@@ -23,17 +23,32 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+ * Elements that are common to all three of {@link TBODY}, {@link THEAD}, and {@link TFOOT}.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.</li>
+ * </ul>
  *
- * @param  <PC>  The parent content model this element is within
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public class THEAD__<PC extends TABLE_content<PC>> extends
-	Normal__<PC, THEAD__<PC>> implements
-	Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
-
-	protected THEAD__(THEAD<PC> element) {
-		super(element);
-	}
+public interface Union_TBODY_THEAD_TFOOT<__ extends Union_TBODY_THEAD_TFOOT<__>> extends
+	//
+	// Unions:
+	//
+	// Inherited: COLGROUP_ScriptSupporting<__>
+	//
+	// Content models:
+	//
+	// Inherited: Content<__>
+	ScriptSupportingContent<__>,
+	//
+	// Factories:
+	//
+	TR_factory<__>
+	// Inherited: SCRIPT_factory<__>
+	// Inherited: TEMPLATE_factory<__>
+{
 }

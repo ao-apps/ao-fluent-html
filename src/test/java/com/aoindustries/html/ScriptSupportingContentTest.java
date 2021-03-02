@@ -41,7 +41,7 @@ public class ScriptSupportingContentTest {
 			//
 			// Unions:
 			//
-			UnionContent.COLGROUP_ScriptSupporting.class
+			Union_COLGROUP_ScriptSupporting.class
 		);
 	}
 
@@ -85,7 +85,7 @@ public class ScriptSupportingContentTest {
 	@Test
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getName() + ".getAllContentModels()",
+			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), ScriptSupportingContent.class)
 		);

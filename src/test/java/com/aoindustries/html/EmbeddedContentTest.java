@@ -41,8 +41,8 @@ public class EmbeddedContentTest {
 			//
 			// Unions:
 			//
-			UnionContent.Embedded_Interactive.class,
-			UnionContent.Embedded_Palpable_Phrasing.class
+			Union_Embedded_Interactive.class,
+			Union_Embedded_Palpable_Phrasing.class
 		);
 	}
 
@@ -94,7 +94,7 @@ public class EmbeddedContentTest {
 	@Test
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getName() + ".getAllContentModels()",
+			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), EmbeddedContent.class)
 		);

@@ -36,7 +36,7 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
-public class META<PC extends UnionContent.Metadata_Phrasing<PC>> extends VoidElement<META<PC>, PC> implements
+public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<META<PC>, PC> implements
 	com.aoindustries.html.attributes.Enum.Charset<META<PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
 	com.aoindustries.html.attributes.Text.Content<META<PC>>,
 	com.aoindustries.html.attributes.Enum.HttpEquiv<META<PC>, META.HttpEquiv>,

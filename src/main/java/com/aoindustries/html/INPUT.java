@@ -52,7 +52,7 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
-public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Interactive_Phrasing<PC>> extends VoidElement<E, PC> implements
+public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive_Phrasing<PC>> extends VoidElement<E, PC> implements
 	com.aoindustries.html.attributes.Boolean.Autofocus<E>,
 	// TODO: dirname
 	com.aoindustries.html.attributes.Boolean.Disabled<E>,
@@ -192,7 +192,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	@SuppressWarnings("deprecation")
-	public static class Dynamic<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Dynamic<PC>, PC> implements
+	public static class Dynamic<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Dynamic<PC>, PC> implements
 		com.aoindustries.html.attributes.Text.Accept<Dynamic<PC>>,
 		com.aoindustries.html.attributes.Enum.Align<Dynamic<PC>, Image.Align>,
 		com.aoindustries.html.attributes.Text.Alt<Dynamic<PC>>,
@@ -447,7 +447,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Button<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Button<PC>, PC> implements
+	public static class Button<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Button<PC>, PC> implements
 		com.aoindustries.html.attributes.Text.Value<Button<PC>>
 	{
 
@@ -485,7 +485,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Checkbox<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Checkbox<PC>, PC> implements
+	public static class Checkbox<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Checkbox<PC>, PC> implements
 		com.aoindustries.html.attributes.Boolean.Checked<Checkbox<PC>>,
 		com.aoindustries.html.attributes.Text.Value<Checkbox<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -507,7 +507,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Color<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Color<PC>, PC> implements
+	public static class Color<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Color<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Color<PC>, Color.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Color<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<Color<PC>>, // Guessed
@@ -581,7 +581,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Date<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Date<PC>, PC> implements
+	public static class Date<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Date<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Date<PC>, Date.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Date<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<Date<PC>>, // Guessed
@@ -657,7 +657,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class DatetimeLocal<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<DatetimeLocal<PC>, PC> implements
+	public static class DatetimeLocal<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<DatetimeLocal<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<DatetimeLocal<PC>, DatetimeLocal.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<DatetimeLocal<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<DatetimeLocal<PC>>, // Guessed
@@ -732,7 +732,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Email<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Email<PC>, PC> implements
+	public static class Email<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Email<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Email<PC>, Email.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Email<PC>>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Email<PC>>,
@@ -818,7 +818,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class File<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<File<PC>, PC> implements
+	public static class File<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<File<PC>, PC> implements
 		com.aoindustries.html.attributes.Text.Accept<File<PC>>,
 		com.aoindustries.html.attributes.Enum.Capture<File<PC>, File.Capture>,
 		com.aoindustries.html.attributes.Boolean.Multiple<File<PC>>,
@@ -885,7 +885,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Hidden<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Hidden<PC>, PC> implements
+	public static class Hidden<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Hidden<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Hidden<PC>, INPUT.Autocomplete>,
 		com.aoindustries.html.attributes.Text.Value<Hidden<PC>>
 	{
@@ -909,7 +909,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 * @param  <PC>  The parent content model this element is within
 	 */
 	@SuppressWarnings("deprecation")
-	public static class Image<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Image<PC>, PC> implements
+	public static class Image<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Image<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Align<Image<PC>, Image.Align>,
 		com.aoindustries.html.attributes.Text.Alt<Image<PC>>,
 		com.aoindustries.html.attributes.Url.Formaction<Image<PC>>,
@@ -992,7 +992,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Month<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Month<PC>, PC> implements
+	public static class Month<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Month<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Month<PC>, Month.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Month<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<Month<PC>>, // Guessed
@@ -1069,7 +1069,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Number<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Number<PC>, PC> implements
+	public static class Number<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Number<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Number<PC>, Number.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Number<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<Number<PC>>,
@@ -1162,7 +1162,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Password<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Password<PC>, PC> implements
+	public static class Password<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Password<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Password<PC>, Password.Autocomplete>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Password<PC>>,
 		com.aoindustries.html.attributes.Integer.Minlength<Password<PC>>,
@@ -1240,7 +1240,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Radio<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Radio<PC>, PC> implements
+	public static class Radio<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Radio<PC>, PC> implements
 		com.aoindustries.html.attributes.Boolean.Checked<Radio<PC>>,
 		com.aoindustries.html.attributes.Text.Value<Radio<PC>>,
 		// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
@@ -1262,7 +1262,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Range<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Range<PC>, PC> implements
+	public static class Range<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Range<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Range<PC>, Range.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Range<PC>>,
 		com.aoindustries.html.attributes.Text.Value<Range<PC>>,
@@ -1335,7 +1335,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Reset<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Reset<PC>, PC> implements
+	public static class Reset<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Reset<PC>, PC> implements
 		com.aoindustries.html.attributes.Text.Value<Reset<PC>>
 	{
 
@@ -1373,7 +1373,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Search<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Search<PC>, PC> implements
+	public static class Search<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Search<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Search<PC>, Search.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Search<PC>>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Search<PC>>,
@@ -1502,7 +1502,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Submit<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Submit<PC>, PC> implements
+	public static class Submit<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Submit<PC>, PC> implements
 		com.aoindustries.html.attributes.Url.Formaction<Submit<PC>>,
 		com.aoindustries.html.attributes.Enum.Formenctype<Submit<PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
 		com.aoindustries.html.attributes.Enum.Formmethod<Submit<PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
@@ -1545,7 +1545,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Tel<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Tel<PC>, PC> implements
+	public static class Tel<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Tel<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Tel<PC>, Tel.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Tel<PC>>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Tel<PC>>,
@@ -1632,7 +1632,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Text<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Text<PC>, PC> implements
+	public static class Text<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Text<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Text<PC>, INPUT.Autocomplete>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Text<PC>>,
 		com.aoindustries.html.attributes.Integer.Minlength<Text<PC>>,
@@ -1662,7 +1662,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Time<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Time<PC>, PC> implements
+	public static class Time<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Time<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Time<PC>, Time.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Time<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<Time<PC>>, // Guessed
@@ -1736,7 +1736,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Url<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Url<PC>, PC> implements
+	public static class Url<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Url<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Url<PC>, Url.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Url<PC>>,
 		com.aoindustries.html.attributes.Integer.Maxlength<Url<PC>>,
@@ -1822,7 +1822,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends UnionContent.Inte
 	 *
 	 * @param  <PC>  The parent content model this element is within
 	 */
-	public static class Week<PC extends UnionContent.Interactive_Phrasing<PC>> extends INPUT<Week<PC>, PC> implements
+	public static class Week<PC extends Union_Interactive_Phrasing<PC>> extends INPUT<Week<PC>, PC> implements
 		com.aoindustries.html.attributes.Enum.Autocomplete<Week<PC>, Week.Autocomplete>,
 		com.aoindustries.html.attributes.Text.List<Week<PC>>,
 		com.aoindustries.html.attributes.Boolean.Readonly<Week<PC>>, // Guessed

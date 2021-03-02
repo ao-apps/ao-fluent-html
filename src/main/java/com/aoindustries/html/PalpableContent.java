@@ -36,10 +36,10 @@ public interface PalpableContent<__ extends PalpableContent<__>> extends
 	//
 	// Unions:
 	//
-	// Inherited: UnionContent.Embedded_Interactive<__>
-	// Inherited: UnionContent.Embedded_Palpable_Phrasing<__>
-	// Inherited: UnionContent.Interactive_Phrasing<__>
-	UnionContent.Palpable_Phrasing<__>,
+	// Inherited: Union_Embedded_Interactive<__>
+	// Inherited: Union_Embedded_Palpable_Phrasing<__>
+	// Inherited: Union_Interactive_Phrasing<__>
+	Union_Palpable_Phrasing<__>,
 	//
 	// Content models:
 	//

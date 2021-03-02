@@ -33,7 +33,7 @@ public interface ScriptSupportingContent<__ extends ScriptSupportingContent<__>>
 	//
 	// Unions:
 	//
-	UnionContent.COLGROUP_ScriptSupporting<__>,
+	Union_COLGROUP_ScriptSupporting<__>,
 	//
 	// Content models:
 	//

@@ -33,7 +33,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public interface U_factory<__ extends UnionContent.Palpable_Phrasing<__>> extends Content<__> {
+public interface U_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
 
 	/**
 	 * Opens a new u element.

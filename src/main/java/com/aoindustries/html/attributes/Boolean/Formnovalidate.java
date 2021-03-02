@@ -32,7 +32,7 @@ import java.io.IOException;
  * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formnovalidate">4.10.18.6 Form submission attributes</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate">&lt;button&gt;: The Button element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formnovalidate">&lt;input type="submit"&gt;</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="button"&gt;</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="image"&gt;</a>.</li>
  * </ul>
  *
  * @author  AO Industries, Inc.
@@ -44,7 +44,7 @@ public interface Formnovalidate<E extends Element<E, ?> & Formnovalidate<E>> {
 	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formnovalidate">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate">&lt;button&gt;: The Button element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formnovalidate">&lt;input type="submit"&gt;</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="button"&gt;</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="image"&gt;</a>.</li>
 	 * </ul>
 	 */
 	@Attributes.Funnel
@@ -58,7 +58,7 @@ public interface Formnovalidate<E extends Element<E, ?> & Formnovalidate<E>> {
 	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formnovalidate">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate">&lt;button&gt;: The Button element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formnovalidate">&lt;input type="submit"&gt;</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="button"&gt;</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="image"&gt;</a>.</li>
 	 * </ul>
 	 *
 	 * @see #formnovalidate(boolean)
@@ -72,7 +72,7 @@ public interface Formnovalidate<E extends Element<E, ?> & Formnovalidate<E>> {
 	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formnovalidate">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate">&lt;button&gt;: The Button element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formnovalidate">&lt;input type="submit"&gt;</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="button"&gt;</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="image"&gt;</a>.</li>
 	 * </ul>
 	 *
 	 * @see #formnovalidate(java.lang.Boolean)

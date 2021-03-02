@@ -31,7 +31,7 @@ import java.io.IOException;
  * <ul>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction">&lt;button&gt;: The Button element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formaction">&lt;input type="submit"&gt;</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="button"&gt;</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="image"&gt;</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/att_formaction.asp">HTML formaction Attribute</a>.</li>
  * </ul>
  *
@@ -43,7 +43,7 @@ public interface Formaction<E extends Element<E, ?> & Formaction<E>> {
 	 * <ul>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction">&lt;button&gt;: The Button element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formaction">&lt;input type="submit"&gt;</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="button"&gt;</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="image"&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_formaction.asp">HTML formaction Attribute</a>.</li>
 	 * </ul>
 	 */
@@ -57,7 +57,7 @@ public interface Formaction<E extends Element<E, ?> & Formaction<E>> {
 	 * <ul>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction">&lt;button&gt;: The Button element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formaction">&lt;input type="submit"&gt;</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="button"&gt;</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="image"&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_formaction.asp">HTML formaction Attribute</a>.</li>
 	 * </ul>
 	 *

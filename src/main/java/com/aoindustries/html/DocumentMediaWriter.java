@@ -36,6 +36,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: Take parent context <PC> and implement a __() to close?
 public class DocumentMediaWriter extends MediaWriter {
 
 	private final Document document;

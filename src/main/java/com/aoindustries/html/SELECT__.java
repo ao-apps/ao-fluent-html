@@ -23,30 +23,17 @@
 package com.aoindustries.html;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#heading-content">3.2.5.2.4 Heading content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<__ extends HeadingContent<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>,
+public class SELECT__<PC extends Union_Interactive_Phrasing<PC>> extends
+	Normal__<PC, SELECT__<PC>> implements
+	SELECT_content<SELECT__<PC>> {
 
-	//
-	// Factories:
-	//
-	H1_factory<__>,
-	H2_factory<__>,
-	H3_factory<__>,
-	H4_factory<__>,
-	H5_factory<__>,
-	H6_factory<__>,
-	HGROUP_factory<__>
-{
+	protected SELECT__(SELECT<PC> element) {
+		super(element);
+	}
 }

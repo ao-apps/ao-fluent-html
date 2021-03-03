@@ -23,30 +23,17 @@
 package com.aoindustries.html;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#heading-content">3.2.5.2.4 Heading content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<__ extends HeadingContent<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>,
+public class DATALIST_c<PC extends PhrasingContent<PC>> extends
+	NormalText_c<PC, DATALIST_c<PC>> implements
+	DATALIST_content<DATALIST_c<PC>> {
 
-	//
-	// Factories:
-	//
-	H1_factory<__>,
-	H2_factory<__>,
-	H3_factory<__>,
-	H4_factory<__>,
-	H5_factory<__>,
-	H6_factory<__>,
-	HGROUP_factory<__>
-{
+	protected DATALIST_c(DATALIST<PC> element) {
+		super(element);
+	}
 }

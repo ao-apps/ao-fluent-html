@@ -39,6 +39,9 @@ public class ElementContentModelTest {
 	static Class<? extends Content>[] getAllElementContentModels() {
 		return new Class[] {
 			COLGROUP_content.class,
+			DATALIST_content.class,
+			OPTGROUP_content.class,
+			SELECT_content.class,
 			TABLE_content.class,
 			TR_content.class
 		};

@@ -58,11 +58,12 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 	com.aoindustries.html.attributes.Boolean.Disabled<E>,
 	// TODO: form (only type "submit" and "image"?)
 	// TODO: inputmode here or global?
+	// TODO: list
 	// TODO: max
 	// TODO: min
 	com.aoindustries.html.attributes.Text.Name<E>,
 	// TODO: pattern
-	// TODO: required
+	com.aoindustries.html.attributes.Boolean.Required<E>,
 	// TODO: step
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
 	com.aoindustries.html.attributes.Integer.TabindexHtml4<E>,

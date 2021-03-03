@@ -42,6 +42,7 @@ public interface FlowContent<__ extends FlowContent<__>> extends
 	// Inherited: Union_Interactive_Phrasing<__>
 	// Inherited: Union_Metadata_Phrasing<__>
 	// Inherited: Union_Palpable_Phrasing<__>
+
 	//
 	// Content models:
 	//
@@ -54,6 +55,7 @@ public interface FlowContent<__ extends FlowContent<__>> extends
 	PalpableContent<__>,
 	// Inherited: ScriptSupportingContent<__>
 	// Inherited: TextContent<__>
+
 	//
 	// Factories:
 	//

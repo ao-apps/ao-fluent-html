@@ -34,11 +34,13 @@ public interface Union_Metadata_Phrasing<__ extends Union_Metadata_Phrasing<__>>
 	// Unions:
 	//
 	// Inherited: COLGROUP_ScriptSupporting<__>
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
 	ScriptSupportingContent<__>,
+
 	//
 	// Factories:
 	//

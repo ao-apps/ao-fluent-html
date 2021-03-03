@@ -56,12 +56,14 @@ public class Document implements
 	// Unions:
 	//
 	// Inherited: Union_COLGROUP_ScriptSupporting<Document>
+	// Inherited: Union_DATALIST_OPTGROUP<Document>
 	// Inherited: Union_Embedded_Interactive<Document>
 	// Inherited: Union_Embedded_Palpable_Phrasing<Document>
 	// Inherited: Union_Interactive_Phrasing<Document>
 	// Inherited: Union_Metadata_Phrasing<Document>
 	// Inherited: Union_Palpable_Phrasing<Document>
 	// Inherited: Union_TBODY_THEAD_TFOOT<Document>
+
 	//
 	// Content models:
 	//
@@ -76,12 +78,17 @@ public class Document implements
 	// Inherited: PalpableContent<Document>
 	// Inherited: ScriptSupportingContent<Document>
 	// Inherited: TextContent<Document>
+
 	//
 	// Per-element content models:
 	//
 	COLGROUP_content<Document>,
+	DATALIST_content<Document>,
+	// Inherited: OPTGROUP_content<Document>,
+	SELECT_content<Document>,
 	TABLE_content<Document>,
 	TR_content<Document>,
+
 	//
 	// Factories:
 	//
@@ -183,8 +190,8 @@ public class Document implements
 	// Inherited: BUTTON_factory<Document>
 	// Inherited: SELECT_factory<Document>
 	// Inherited: DATALIST_factory<Document>
-	OPTGROUP_factory<Document>,
-	OPTION_factory<Document>,
+	// Inherited: OPTGROUP_factory<Document>,
+	// Inherited: OPTION_factory<Document>,
 	// Inherited: TEXTAREA_factory<Document>
 	// Inherited: OUTPUT_factory<Document>
 	// Inherited: PROGRESS_factory<Document>

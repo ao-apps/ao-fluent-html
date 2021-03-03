@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
  *
@@ -29,8 +33,70 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends SelectContent<__>>
-@SuppressWarnings(value = "MarkerInterface") // TODO
-public interface OPTGROUP_factory<__ extends Content<__>> extends Content<__> {
-	// TODO
+public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content<__> {
+
+	/**
+	 * Opens a new optgroup element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
+	 * </p>
+	 */
+	default OPTGROUP<__> optgroup() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new OPTGROUP<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates an optgroup element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ optgroup__(IORunnableE<Ex> optgroup) throws IOException, Ex {
+		return optgroup().__(optgroup);
+	}
+
+	/**
+	 * Creates an optgroup element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<__>, Ex> optgroup) throws IOException, Ex {
+		return optgroup().__(optgroup);
+	}
+
+	/**
+	 * Creates an empty optgroup element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ optgroup__() throws IOException {
+		return optgroup().__();
+	}
+
+	/**
+	 * Creates an optgroup element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default OPTGROUP_c<__> optgroup_c() throws IOException {
+		return optgroup()._c();
+	}
 }

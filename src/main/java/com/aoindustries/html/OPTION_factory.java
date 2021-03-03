@@ -34,8 +34,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends TODO<__>>
-public interface OPTION_factory<__ extends Content<__>> extends Content<__> {
+public interface OPTION_factory<__ extends Union_DATALIST_OPTGROUP<__>> extends Content<__> {
 
 	/**
 	 * Opens a new option element.

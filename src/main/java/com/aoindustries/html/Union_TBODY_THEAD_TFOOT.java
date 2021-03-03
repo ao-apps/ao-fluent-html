@@ -39,11 +39,13 @@ public interface Union_TBODY_THEAD_TFOOT<__ extends Union_TBODY_THEAD_TFOOT<__>>
 	// Unions:
 	//
 	// Inherited: COLGROUP_ScriptSupporting<__>
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
 	ScriptSupportingContent<__>,
+
 	//
 	// Factories:
 	//

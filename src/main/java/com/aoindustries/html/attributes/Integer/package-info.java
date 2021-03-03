@@ -35,3 +35,5 @@
  * @see  com.aoindustries.html.Attributes.Integer
  */
 package com.aoindustries.html.attributes.Integer;
+
+// TODO: Implement "unsigned long" (and other types) where appropriate: https://heycam.github.io/webidl/#idl-unsigned-long

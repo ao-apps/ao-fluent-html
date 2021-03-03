@@ -34,11 +34,13 @@ public interface TR_content<__ extends TR_content<__>> extends
 	// Unions:
 	//
 	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
 	ScriptSupportingContent<__>,
+
 	//
 	// Factories:
 	//

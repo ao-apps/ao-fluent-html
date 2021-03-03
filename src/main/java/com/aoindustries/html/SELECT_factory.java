@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
  *
@@ -29,7 +33,70 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new select element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * </p>
+	 */
+	default SELECT<__> select() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new SELECT<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a select element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ select__(IORunnableE<Ex> select) throws IOException, Ex {
+		return select().__(select);
+	}
+
+	/**
+	 * Creates a select element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ select__(IOConsumerE<? super SELECT__<__>, Ex> select) throws IOException, Ex {
+		return select().__(select);
+	}
+
+	/**
+	 * Creates an empty select element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ select__() throws IOException {
+		return select().__();
+	}
+
+	/**
+	 * Creates a select element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default SELECT_c<__> select_c() throws IOException {
+		return select()._c();
+	}
 }

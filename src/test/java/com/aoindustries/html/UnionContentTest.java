@@ -39,6 +39,7 @@ public class UnionContentTest {
 	static Class<? extends Content>[] getAllUnions() {
 		return new Class[] {
 			Union_COLGROUP_ScriptSupporting.class,
+			Union_DATALIST_OPTGROUP.class,
 			Union_Embedded_Interactive.class,
 			Union_Embedded_Palpable_Phrasing.class,
 			Union_Interactive_Phrasing.class,

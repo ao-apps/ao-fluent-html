@@ -23,30 +23,22 @@
 package com.aoindustries.html;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#heading-content">3.2.5.2.4 Heading content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
- * </ul>
+ * Elements that are common to both {@link DATALIST} and {@link OPTGROUP}.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<__ extends HeadingContent<__>> extends
+@SuppressWarnings("MarkerInterface")
+public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>,
+	// Inherited: Content<__>
 
 	//
 	// Factories:
 	//
-	H1_factory<__>,
-	H2_factory<__>,
-	H3_factory<__>,
-	H4_factory<__>,
-	H5_factory<__>,
-	H6_factory<__>,
-	HGROUP_factory<__>
+	OPTION_factory<__>
 {
 }

@@ -40,6 +40,7 @@ public interface PalpableContent<__ extends PalpableContent<__>> extends
 	// Inherited: Union_Embedded_Palpable_Phrasing<__>
 	// Inherited: Union_Interactive_Phrasing<__>
 	Union_Palpable_Phrasing<__>,
+
 	//
 	// Content models:
 	//
@@ -48,6 +49,7 @@ public interface PalpableContent<__ extends PalpableContent<__>> extends
 	HeadingContent<__>,
 	InteractiveContent<__>,
 	// Inherited: TextContent<__> // that is not inter-element whitespace
+
 	//
 	// Factories:
 	//

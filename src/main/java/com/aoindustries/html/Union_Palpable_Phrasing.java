@@ -36,11 +36,13 @@ public interface Union_Palpable_Phrasing<__ extends Union_Palpable_Phrasing<__>>
 	// Inherited: Embedded_Interactive<__>,
 	Union_Embedded_Palpable_Phrasing<__>,
 	Union_Interactive_Phrasing<__>,
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
 	TextContent<__>, // that is not inter-element whitespace
+
 	//
 	// Factories:
 	//

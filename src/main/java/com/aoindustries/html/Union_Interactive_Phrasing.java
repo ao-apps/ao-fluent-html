@@ -34,10 +34,12 @@ public interface Union_Interactive_Phrasing<__ extends Union_Interactive_Phrasin
 	// Unions:
 	//
 	Union_Embedded_Interactive<__>,
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
+
 	//
 	// Factories:
 	//

@@ -38,10 +38,12 @@ public interface EmbeddedContent<__ extends EmbeddedContent<__>> extends
 	//
 	Union_Embedded_Interactive<__>,
 	Union_Embedded_Palpable_Phrasing<__>,
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
+
 	//
 	// Factories:
 	//

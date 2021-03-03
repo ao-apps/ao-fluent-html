@@ -23,31 +23,30 @@
 package com.aoindustries.html;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#phrasing-content">3.2.5.2.5 Phrasing content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">Phrasing content</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PhrasingContent<__ extends PhrasingContent<__>> extends
+public interface DATALIST_content<__ extends DATALIST_content<__>> extends
 	//
 	// Unions:
 	//
 	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	Union_DATALIST_OPTGROUP<__>,
 	// Inherited: Union_Embedded_Interactive<__>
 	// Inherited: Union_Embedded_Palpable_Phrasing<__>
 	// Inherited: Union_Interactive_Phrasing<__>
-	Union_Metadata_Phrasing<__>,
-	Union_Palpable_Phrasing<__>,
+	// Inherited: Union_Metadata_Phrasing<__>
+	// Inherited: Union_Palpable_Phrasing<__>
 
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
-	EmbeddedContent<__>,
+	// Inherited: EmbeddedContent<__>
+	PhrasingContent<__>
 	// Inherited: ScriptSupportingContent<__>
 	// Inherited: TextContent<__>
 
@@ -56,19 +55,19 @@ public interface PhrasingContent<__ extends PhrasingContent<__>> extends
 	//
 	// Inherited: A_factory<__>
 	// Inherited: ABBR_factory<__>
-	AREA_factory<__>, // if a descendent of map
+	// Inherited: AREA_factory<__> // if a descendent of map
 	// Inherited: AUDIO_factory<__>
 	// Inherited: B_factory<__>
 	// Inherited: BDI_factory<__>
 	// Inherited: BDO_factory<__>
-	BR_factory<__>,
+	// Inherited: BR_factory<__>
 	// Inherited: BUTTON_factory<__>
 	// Inherited: CANVAS_factory<__>
 	// Inherited: CITE_factory<__>
 	// Inherited: CODE_factory<__>
 	// Inherited: DATA_factory<__>
-	DATALIST_factory<__>,
-	DEL_factory<__>,
+	// Inherited: DATALIST_factory<__>
+	// Inherited: DEL_factory<__>
 	// Inherited: DFN_factory<__>
 	// Inherited: EM_factory<__>
 	// Inherited: EMBED_factory<__>
@@ -87,6 +86,7 @@ public interface PhrasingContent<__ extends PhrasingContent<__>> extends
 	// Inherited: METER_factory<__>
 	// Inherited: NOSCRIPT_factory<__>
 	// Inherited: OBJECT_factory<__>
+	// Inherited: OPTION_factory<__>
 	// Inherited: OUTPUT_factory<__>
 	// Inherited: PICTURE_factory<__>
 	// Inherited: PROGRESS_factory<__>
@@ -96,7 +96,7 @@ public interface PhrasingContent<__ extends PhrasingContent<__>> extends
 	// Inherited: SAMP_factory<__>
 	// Inherited: SCRIPT_factory<__>
 	// Inherited: SELECT_factory<__>
-	SLOT_factory<__>,
+	// Inherited: SLOT_factory<__>
 	// Inherited: SMALL_factory<__>
 	// Inherited: SPAN_factory<__>
 	// Inherited: STRONG_factory<__>
@@ -109,7 +109,7 @@ public interface PhrasingContent<__ extends PhrasingContent<__>> extends
 	// Inherited: U_factory<__>
 	// Inherited: VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
-	WBR_factory<__>
+	// Inherited: WBR_factory<__>
 	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
 {
 }

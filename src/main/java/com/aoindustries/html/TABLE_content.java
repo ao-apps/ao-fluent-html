@@ -44,11 +44,13 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	//
 	// Inherited: Union_COLGROUP_ScriptSupporting<__>,
 	Union_TBODY_THEAD_TFOOT<__>,
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
 	// Inherited: ScriptSupportingContent<__>
+
 	//
 	// Factories:
 	//

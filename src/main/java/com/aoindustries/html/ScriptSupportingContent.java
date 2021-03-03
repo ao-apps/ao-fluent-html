@@ -34,10 +34,12 @@ public interface ScriptSupportingContent<__ extends ScriptSupportingContent<__>>
 	// Unions:
 	//
 	Union_COLGROUP_ScriptSupporting<__>,
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
+
 	//
 	// Factories:
 	//

@@ -38,10 +38,12 @@ public interface InteractiveContent<__ extends InteractiveContent<__>> extends
 	//
 	// Inherited: Union_Embedded_Interactive<__>
 	Union_Interactive_Phrasing<__>,
+
 	//
 	// Content models:
 	//
 	// Inherited: Content<__>
+
 	//
 	// Factories:
 	//

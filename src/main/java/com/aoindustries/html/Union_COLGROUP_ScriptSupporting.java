@@ -35,6 +35,7 @@ public interface Union_COLGROUP_ScriptSupporting<__ extends Union_COLGROUP_Scrip
 	// Content models:
 	//
 	// Inherited: Content<__>,
+
 	//
 	// Factories:
 	//

@@ -31,7 +31,7 @@ package com.aoindustries.html;
  */
 public class OPTGROUP__<PC extends SELECT_content<PC>> extends
 	Normal__<PC, OPTGROUP__<PC>> implements
-	PhrasingContent<OPTGROUP__<PC>> {
+	OPTGROUP_content<OPTGROUP__<PC>> {
 
 	protected OPTGROUP__(OPTGROUP<PC> element) {
 		super(element);

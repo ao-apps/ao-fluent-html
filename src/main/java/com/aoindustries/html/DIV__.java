@@ -23,22 +23,17 @@
 package com.aoindustries.html;
 
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
+public class DIV__<PC extends Union_DL_Palpable<PC>> extends
+	NormalText__<PC, DIV__<PC>> implements
+	DIV_content<DIV__<PC>> {
 
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
-{
+	protected DIV__(DIV<PC> element) {
+		super(element);
+	}
 }

@@ -37,7 +37,8 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(Union_Embedded_Interactive.class
+		UnionContentTest.testUnions(
+			Union_Embedded_Interactive.class
 			//
 			// Unions:
 			//
@@ -48,7 +49,8 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(Union_Embedded_Interactive.class,
+		ContentModelTest.testContentModels(
+			Union_Embedded_Interactive.class,
 			//
 			// Content models:
 			//
@@ -59,7 +61,8 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(Union_Embedded_Interactive.class
+		ElementContentModelTest.testElementContentModels(
+			Union_Embedded_Interactive.class
 			//
 			// Per-element content models:
 			//
@@ -70,7 +73,8 @@ public class Union_Embedded_InteractiveTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(Union_Embedded_Interactive.class,
+		FactoryTest.testFactories(
+			Union_Embedded_Interactive.class,
 			//
 			// Factories:
 			//

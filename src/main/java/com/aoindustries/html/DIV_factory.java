@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
  *
@@ -29,7 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
-public interface DIV_factory<__ extends PalpableContent<__>> extends Content<__> {
-	// TODO
+public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<__> {
+
+	/**
+	 * Opens a new div element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 */
+	default DIV<__> div() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new DIV<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a div element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ div__(IORunnableE<Ex> div) throws IOException, Ex {
+		return div().__(div);
+	}
+
+	/**
+	 * Creates a div element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<__>, Ex> div) throws IOException, Ex {
+		return div().__(div);
+	}
+
+	/**
+	 * Creates a div element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ div__(Object text) throws IOException {
+		return div().__(text);
+	}
+
+	/**
+	 * Creates an empty div element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ div__() throws IOException {
+		return div().__();
+	}
+
+	/**
+	 * Creates a div element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default DIV_c<__> div_c() throws IOException {
+		return div()._c();
+	}
 }

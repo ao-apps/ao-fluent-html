@@ -22,23 +22,43 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
+public class DL<PC extends PalpableContent<PC>> extends
+	Normal<DL<PC>, PC, DL__<PC>, DL_c<PC>> implements
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	AlmostGlobalAttributes<DL<PC>>
 {
+
+	public DL(Document document, PC pc) {
+		super(document, pc);
+	}
+
+	@Override
+	protected DL<PC> writeOpen() throws IOException {
+		document.out.write("<dl");
+		return this;
+	}
+
+	@Override
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></dl>" : "</dl>");
+	}
+
+	@Override
+	protected DL__<PC> new__() {
+		return new DL__<>(this);
+	}
+
+	@Override
+	protected DL_c<PC> new_c() {
+		return new DL_c<>(this);
+	}
 }

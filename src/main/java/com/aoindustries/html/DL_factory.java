@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
  *
@@ -29,7 +33,70 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new dl element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * </p>
+	 */
+	default DL<__> dl() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new DL<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a dl element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ dl__(IORunnableE<Ex> dl) throws IOException, Ex {
+		return dl().__(dl);
+	}
+
+	/**
+	 * Creates a dl element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ dl__(IOConsumerE<? super DL__<__>, Ex> dl) throws IOException, Ex {
+		return dl().__(dl);
+	}
+
+	/**
+	 * Creates an empty dl element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ dl__() throws IOException {
+		return dl().__();
+	}
+
+	/**
+	 * Creates a dl element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default DL_c<__> dl_c() throws IOException {
+		return dl()._c();
+	}
 }

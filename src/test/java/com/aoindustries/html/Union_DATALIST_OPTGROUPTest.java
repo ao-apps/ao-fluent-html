@@ -37,7 +37,8 @@ public class Union_DATALIST_OPTGROUPTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(Union_DATALIST_OPTGROUP.class
+		UnionContentTest.testUnions(
+			Union_DATALIST_OPTGROUP.class
 			//
 			// Unions:
 			//
@@ -48,7 +49,8 @@ public class Union_DATALIST_OPTGROUPTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(Union_DATALIST_OPTGROUP.class,
+		ContentModelTest.testContentModels(
+			Union_DATALIST_OPTGROUP.class,
 			//
 			// Content models:
 			//
@@ -59,7 +61,8 @@ public class Union_DATALIST_OPTGROUPTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(Union_DATALIST_OPTGROUP.class
+		ElementContentModelTest.testElementContentModels(
+			Union_DATALIST_OPTGROUP.class
 			//
 			// Per-element content models:
 			//
@@ -70,7 +73,8 @@ public class Union_DATALIST_OPTGROUPTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(Union_DATALIST_OPTGROUP.class,
+		FactoryTest.testFactories(
+			Union_DATALIST_OPTGROUP.class,
 			//
 			// Factories:
 			//

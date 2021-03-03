@@ -37,7 +37,8 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
-		UnionContentTest.testUnions(Union_TBODY_THEAD_TFOOT.class,
+		UnionContentTest.testUnions(
+			Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Unions:
 			//
@@ -48,7 +49,8 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
-		ContentModelTest.testContentModels(Union_TBODY_THEAD_TFOOT.class,
+		ContentModelTest.testContentModels(
+			Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Content models:
 			//
@@ -60,7 +62,8 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(Union_TBODY_THEAD_TFOOT.class
+		ElementContentModelTest.testElementContentModels(
+			Union_TBODY_THEAD_TFOOT.class
 			//
 			// Per-element content models:
 			//
@@ -71,7 +74,8 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
-		FactoryTest.testFactories(Union_TBODY_THEAD_TFOOT.class,
+		FactoryTest.testFactories(
+			Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Factories:
 			//

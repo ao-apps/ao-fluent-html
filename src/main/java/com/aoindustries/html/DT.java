@@ -22,23 +22,44 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-dt-element">4.4.10 The dt element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
+// TODO: Flow content, but with no header, footer, sectioning content, or heading content descendants.
+public class DT<PC extends Union_DIV_DL<PC>> extends
+	NormalText<DT<PC>, PC, DT__<PC>, DT_c<PC>> implements
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	AlmostGlobalAttributes<DT<PC>>
 {
+
+	public DT(Document document, PC pc) {
+		super(document, pc);
+	}
+
+	@Override
+	protected DT<PC> writeOpen() throws IOException {
+		document.out.write("<dt");
+		return this;
+	}
+
+	@Override
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></dt>" : "</dt>");
+	}
+
+	@Override
+	protected DT__<PC> new__() {
+		return new DT__<>(this);
+	}
+
+	@Override
+	protected DT_c<PC> new_c() {
+		return new DT_c<>(this);
+	}
 }

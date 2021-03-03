@@ -22,23 +22,43 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
+public class DD<PC extends Union_DIV_DL<PC>> extends
+	NormalText<DD<PC>, PC, DD__<PC>, DD_c<PC>> implements
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	AlmostGlobalAttributes<DD<PC>>
 {
+
+	public DD(Document document, PC pc) {
+		super(document, pc);
+	}
+
+	@Override
+	protected DD<PC> writeOpen() throws IOException {
+		document.out.write("<dd");
+		return this;
+	}
+
+	@Override
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></dd>" : "</dd>");
+	}
+
+	@Override
+	protected DD__<PC> new__() {
+		return new DD__<>(this);
+	}
+
+	@Override
+	protected DD_c<PC> new_c() {
+		return new DD_c<>(this);
+	}
 }

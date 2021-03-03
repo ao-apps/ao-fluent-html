@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
  *
@@ -29,8 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends TODO<__>>
-@SuppressWarnings(value = "MarkerInterface") // TODO
-public interface DD_factory<__ extends Content<__>> extends Content<__> {
-	// TODO
+public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
+
+	/**
+	 * Opens a new dd element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * </p>
+	 */
+	default DD<__> dd() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new DD<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a dd element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ dd__(IORunnableE<Ex> dd) throws IOException, Ex {
+		return dd().__(dd);
+	}
+
+	/**
+	 * Creates a dd element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ dd__(IOConsumerE<? super DD__<__>, Ex> dd) throws IOException, Ex {
+		return dd().__(dd);
+	}
+
+	/**
+	 * Creates a dd element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ dd__(Object text) throws IOException {
+		return dd().__(text);
+	}
+
+	/**
+	 * Creates an empty dd element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ dd__() throws IOException {
+		return dd().__();
+	}
+
+	/**
+	 * Creates a dd element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default DD_c<__> dd_c() throws IOException {
+		return dd()._c();
+	}
 }

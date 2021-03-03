@@ -23,14 +23,14 @@
 package com.aoindustries.html;
 
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * Elements that are common to both {@link DL_content} and {@link PalpableContent}.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
+public interface Union_DL_Palpable<__ extends Union_DL_Palpable<__>> extends
 	//
 	// Content models:
 	//
@@ -39,6 +39,6 @@ public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>>
 	//
 	// Factories:
 	//
-	OPTION_factory<__>
+	DIV_factory<__>
 {
 }

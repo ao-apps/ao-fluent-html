@@ -41,6 +41,7 @@ public class PalpableContentTest {
 			//
 			// Unions:
 			//
+			Union_DL_Palpable.class,
 			Union_Embedded_Interactive.class,
 			Union_Embedded_Palpable_Phrasing.class,
 			Union_Interactive_Phrasing.class,

@@ -40,6 +40,8 @@ public class ElementContentModelTest {
 		return new Class[] {
 			COLGROUP_content.class,
 			DATALIST_content.class,
+			DIV_content.class,
+			DL_content.class,
 			OPTGROUP_content.class,
 			SELECT_content.class,
 			TABLE_content.class,

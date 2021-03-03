@@ -27,24 +27,22 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_Palpable_Phrasing
+ * @see Union_DIV_DL
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_Palpable_PhrasingTest {
+public class Union_DIV_DLTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testUnions() {
 		UnionContentTest.testUnions(
-			Union_Palpable_Phrasing.class,
+			Union_DIV_DL.class
 			//
 			// Unions:
 			//
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class
+			// NOne
 		);
 	}
 
@@ -52,12 +50,11 @@ public class Union_Palpable_PhrasingTest {
 	@SuppressWarnings("unchecked")
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
-			Union_Palpable_Phrasing.class,
+			Union_DIV_DL.class,
 			//
 			// Content models:
 			//
-			Content.class,
-			TextContent.class
+			Content.class
 		);
 	}
 
@@ -65,7 +62,7 @@ public class Union_Palpable_PhrasingTest {
 	@SuppressWarnings("unchecked")
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
-			Union_Palpable_Phrasing.class
+			Union_DIV_DL.class
 			//
 			// Per-element content models:
 			//
@@ -77,55 +74,12 @@ public class Union_Palpable_PhrasingTest {
 	@SuppressWarnings("unchecked")
 	public void testFactories() {
 		FactoryTest.testFactories(
-			Union_Palpable_Phrasing.class,
+			Union_DIV_DL.class,
 			//
 			// Factories:
 			//
-			A_factory.class,
-			ABBR_factory.class,
-			AUDIO_factory.class,
-			B_factory.class,
-			BDI_factory.class,
-			BDO_factory.class,
-			BUTTON_factory.class,
-			CANVAS_factory.class,
-			CITE_factory.class,
-			CODE_factory.class,
-			DATA_factory.class,
-			DFN_factory.class,
-			EM_factory.class,
-			EMBED_factory.class,
-			I_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
-			INPUT_factory.class,
-			INS_factory.class,
-			KBD_factory.class,
-			LABEL_factory.class,
-			MAP_factory.class,
-			MARK_factory.class,
-			// TODO: MathML math
-			METER_factory.class,
-			OBJECT_factory.class,
-			OUTPUT_factory.class,
-			PROGRESS_factory.class,
-			Q_factory.class,
-			RUBY_factory.class,
-			S_factory.class,
-			SAMP_factory.class,
-			SELECT_factory.class,
-			SMALL_factory.class,
-			SPAN_factory.class,
-			STRONG_factory.class,
-			SUB_factory.class,
-			SUP_factory.class,
-			// TODO: SVG svg
-			TEXTAREA_factory.class,
-			TIME_factory.class,
-			U_factory.class,
-			VAR_factory.class,
-			VIDEO_factory.class
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+			DD_factory.class,
+			DT_factory.class
 		);
 	}
 
@@ -133,8 +87,8 @@ public class Union_Palpable_PhrasingTest {
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Palpable_Phrasing.class)
+			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DIV_DL.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_Palpable_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Union_DIV_DL.class);
 	}
 }

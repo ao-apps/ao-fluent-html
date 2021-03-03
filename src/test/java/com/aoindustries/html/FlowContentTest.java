@@ -42,6 +42,7 @@ public class FlowContentTest {
 			// Unions:
 			//
 			Union_COLGROUP_ScriptSupporting.class,
+			Union_DL_Palpable.class,
 			Union_Embedded_Interactive.class,
 			Union_Embedded_Palpable_Phrasing.class,
 			Union_Interactive_Phrasing.class,
@@ -59,13 +60,13 @@ public class FlowContentTest {
 			// Content models:
 			//
 			Content.class,
-			SectioningContent.class,
-			HeadingContent.class,
-			PhrasingContent.class,
 			EmbeddedContent.class,
+			HeadingContent.class,
 			InteractiveContent.class,
 			PalpableContent.class,
+			PhrasingContent.class,
 			ScriptSupportingContent.class,
+			SectioningContent.class,
 			TextContent.class
 		);
 	}

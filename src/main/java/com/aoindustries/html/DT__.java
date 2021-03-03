@@ -23,22 +23,17 @@
 package com.aoindustries.html;
 
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-dt-element">4.4.10 The dt element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
+public class DT__<PC extends Union_DIV_DL<PC>> extends
+	NormalText__<PC, DT__<PC>> implements
+	FlowContent<DT__<PC>> {
 
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
-{
+	protected DT__(DT<PC> element) {
+		super(element);
+	}
 }

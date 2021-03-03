@@ -40,6 +40,8 @@ public class UnionContentTest {
 		return new Class[] {
 			Union_COLGROUP_ScriptSupporting.class,
 			Union_DATALIST_OPTGROUP.class,
+			Union_DIV_DL.class,
+			Union_DL_Palpable.class,
 			Union_Embedded_Interactive.class,
 			Union_Embedded_Palpable_Phrasing.class,
 			Union_Interactive_Phrasing.class,

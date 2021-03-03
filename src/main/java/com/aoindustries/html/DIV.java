@@ -22,23 +22,43 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
+public class DIV<PC extends Union_DL_Palpable<PC>> extends
+	NormalText<DIV<PC>, PC, DIV__<PC>, DIV_c<PC>> implements
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	AlmostGlobalAttributes<DIV<PC>>
 {
+
+	public DIV(Document document, PC pc) {
+		super(document, pc);
+	}
+
+	@Override
+	protected DIV<PC> writeOpen() throws IOException {
+		document.out.write("<div");
+		return this;
+	}
+
+	@Override
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></div>" : "</div>");
+	}
+
+	@Override
+	protected DIV__<PC> new__() {
+		return new DIV__<>(this);
+	}
+
+	@Override
+	protected DIV_c<PC> new_c() {
+		return new DIV_c<>(this);
+	}
 }

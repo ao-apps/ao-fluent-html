@@ -23,22 +23,17 @@
 package com.aoindustries.html;
 
 /**
- * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
+ * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
+public class DL_c<PC extends PalpableContent<PC>> extends
+	Normal_c<PC, DL_c<PC>> implements
+	DL_content<DL_c<PC>> {
 
-	//
-	// Factories:
-	//
-	OPTION_factory<__>
-{
+	protected DL_c(DL<PC> element) {
+		super(element);
+	}
 }

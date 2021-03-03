@@ -57,6 +57,8 @@ public class Document implements
 	//
 	// Inherited: Union_COLGROUP_ScriptSupporting<Document>
 	// Inherited: Union_DATALIST_OPTGROUP<Document>
+	// Inherited: Union_DIV_DL<Document>
+	// Inherited: Union_DL_Palpable<Document>
 	// Inherited: Union_Embedded_Interactive<Document>
 	// Inherited: Union_Embedded_Palpable_Phrasing<Document>
 	// Inherited: Union_Interactive_Phrasing<Document>
@@ -69,7 +71,7 @@ public class Document implements
 	//
 	// Inherited: Content<Document>
 	MetadataContent<Document>,
-	FlowContent<Document>,
+	// Inherited: FlowContent<Document>,
 	// Inherited: SectioningContent<Document>
 	// Inherited: HeadingContent<Document>
 	// Inherited: PhrasingContent<Document>
@@ -84,6 +86,8 @@ public class Document implements
 	//
 	COLGROUP_content<Document>,
 	DATALIST_content<Document>,
+	DIV_content<Document>,
+	DL_content<Document>,
 	// Inherited: OPTGROUP_content<Document>,
 	SELECT_content<Document>,
 	TABLE_content<Document>,
@@ -123,8 +127,8 @@ public class Document implements
 	// Inherited: MENU_factory<Document>
 	LI_factory<Document>,
 	// Inherited: DL_factory<Document>
-	DT_factory<Document>,
-	DD_factory<Document>,
+	// Inherited: DT_factory<Document>,
+	// Inherited: DD_factory<Document>,
 	// Inherited: FIGURE_factory<Document>
 	FIGCAPTION_factory<Document>,
 	// Inherited: MAIN_factory<Document>

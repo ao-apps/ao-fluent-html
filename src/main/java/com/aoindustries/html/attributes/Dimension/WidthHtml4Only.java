@@ -22,13 +22,10 @@
  */
 package com.aoindustries.html.attributes.Dimension;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import java.io.IOException;
 
 /**
@@ -51,13 +48,6 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 	@Attributes.Funnel
 	default E width(int pixels) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"width"
-			);
-		}
 		return Width.super.width(pixels);
 	}
 
@@ -71,13 +61,6 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 	@Attributes.Funnel
 	default E width(Integer pixels) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"width"
-			);
-		}
 		return Width.super.width(pixels);
 	}
 
@@ -91,13 +74,6 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E width(IOSupplierE<? extends Integer, Ex> pixels) throws IOException, Ex {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"width"
-			);
-		}
 		return Width.super.width(pixels);
 	}
 
@@ -111,13 +87,6 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 	@Attributes.Funnel
 	default E width(String pixelsOrPercent) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"width"
-			);
-		}
 		return Width.super.width(pixelsOrPercent);
 	}
 
@@ -133,13 +102,6 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E width(Suppliers.String<Ex> pixelsOrPercent) throws IOException, Ex {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"width"
-			);
-		}
 		return Width.super.width(pixelsOrPercent);
 	}
 }

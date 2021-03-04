@@ -22,12 +22,9 @@
  */
 package com.aoindustries.html.attributes.Integer;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Element;
 import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import java.io.IOException;
 
 /**
@@ -49,13 +46,6 @@ public interface Border<E extends Element<E, ?> & Border<E>> {
 	@Attributes.Funnel
 	default E border(int border) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"border"
-			);
-		}
 		return Attributes.Dimension.attribute(element, "border", border);
 	}
 
@@ -68,13 +58,6 @@ public interface Border<E extends Element<E, ?> & Border<E>> {
 	@Attributes.Funnel
 	default E border(Integer border) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"border"
-			);
-		}
 		return Attributes.Dimension.attribute(element, "border", border);
 	}
 

@@ -22,11 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Document;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -56,13 +53,6 @@ public interface Align<
 	@Attributes.Funnel
 	default E align(String align) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"align"
-			);
-		}
 		return Attributes.String.attribute(element, "align", MarkupType.NONE, align, true, true);
 	}
 

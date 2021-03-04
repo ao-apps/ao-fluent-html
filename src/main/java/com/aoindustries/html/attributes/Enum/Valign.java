@@ -22,14 +22,11 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.util.function.Function;
@@ -56,13 +53,6 @@ public interface Valign<
 	@Attributes.Funnel
 	default E valign(String valign) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"valign"
-			);
-		}
 		return Attributes.String.attribute(element, "valign", MarkupType.NONE, valign, true, true);
 	}
 

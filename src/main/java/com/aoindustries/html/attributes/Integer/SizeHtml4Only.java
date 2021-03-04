@@ -22,12 +22,9 @@
  */
 package com.aoindustries.html.attributes.Integer;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Element;
 import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import java.io.IOException;
 
 /**
@@ -48,13 +45,6 @@ public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> exten
 	@Attributes.Funnel
 	default E size(int size) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"size"
-			);
-		}
 		return Size.super.size(size);
 	}
 
@@ -66,13 +56,6 @@ public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> exten
 	@Attributes.Funnel
 	default E size(Integer size) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"size"
-			);
-		}
 		return Size.super.size(size);
 	}
 
@@ -85,13 +68,6 @@ public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> exten
 	@Override
 	default <Ex extends Throwable> E size(IOSupplierE<? extends Integer, Ex> size) throws IOException, Ex {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"size"
-			);
-		}
 		return Size.super.size(size);
 	}
 }

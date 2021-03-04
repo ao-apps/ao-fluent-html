@@ -22,12 +22,9 @@
  */
 package com.aoindustries.html.attributes.Boolean;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Element;
 import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import java.io.IOException;
 
 /**
@@ -49,13 +46,6 @@ public interface Noshade<E extends Element<E, ?> & Noshade<E>> {
 	@Attributes.Funnel
 	default E noshade(boolean noshade) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"noshade"
-			);
-		}
 		return Attributes.Boolean.attribute(element, "noshade", noshade);
 	}
 

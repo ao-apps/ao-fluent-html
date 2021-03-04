@@ -22,13 +22,10 @@
  */
 package com.aoindustries.html.attributes.Dimension;
 
-import com.aoindustries.encoding.Doctype;
 import com.aoindustries.html.Attributes;
-import static com.aoindustries.html.Attributes.RESOURCES;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import java.io.IOException;
 
 /**
@@ -50,13 +47,6 @@ public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
 	@Attributes.Funnel
 	default E cellpadding(int pixels) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"cellpadding"
-			);
-		}
 		return Attributes.Dimension.attribute(element, "cellpadding", pixels);
 	}
 
@@ -69,13 +59,6 @@ public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
 	@Attributes.Funnel
 	default E cellpadding(Integer pixels) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"cellpadding"
-			);
-		}
 		return Attributes.Dimension.attribute(element, "cellpadding", pixels);
 	}
 
@@ -99,13 +82,6 @@ public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
 	@Attributes.Funnel
 	default E cellpadding(String pixelsOrPercent) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"cellpadding"
-			);
-		}
 		return Attributes.Dimension.attribute(element, "cellpadding", pixelsOrPercent);
 	}
 
@@ -119,14 +95,6 @@ public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
 	@Deprecated
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E cellpadding(Suppliers.String<Ex> pixelsOrPercent) throws IOException, Ex {
-		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype == Doctype.HTML5) {
-			throw new LocalizedIllegalArgumentException(
-				RESOURCES,
-				"notSupportedInHtml5",
-				"cellpadding"
-			);
-		}
 		return cellpadding((pixelsOrPercent == null) ? null : pixelsOrPercent.get());
 	}
 }

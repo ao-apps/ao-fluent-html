@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
 /**
@@ -47,5 +48,28 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 		@SuppressWarnings(value = "unchecked")
 		__ pc = (__) this;
 		return new IMG<>(getDocument(), pc).writeOpen();
+	}
+
+
+	/**
+	 * Opens a new img element with the given src attribute.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
+	 * </ul>
+	 */
+	default IMG<__> img(String src) throws IOException {
+		return img().src(src);
+	}
+
+	/**
+	 * Opens a new img element with the given src attribute.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
+	 * </ul>
+	 */
+	default<Ex extends Throwable> IMG<__> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
+		return img().src(src);
 	}
 }

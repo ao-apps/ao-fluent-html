@@ -36,24 +36,32 @@ public interface Colspan<E extends Element<E, ?> & Colspan<E>> {
 
 	/**
 	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+	 *
+	 * @param  colspan  Will not write the attribute when is {@code 1}.
 	 */
 	@Attributes.Funnel
 	default E colspan(int colspan) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		return Attributes.Integer.attribute(element, "colspan", colspan);
+		if(colspan != 1) Attributes.Integer.attribute(element, "colspan", colspan);
+		return element;
 	}
 
 	/**
 	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+	 *
+	 * @param  colspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 */
 	@Attributes.Funnel
 	default E colspan(Integer colspan) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		return Attributes.Integer.attribute(element, "colspan", colspan);
+		if(colspan != null && colspan != 1) Attributes.Integer.attribute(element, "colspan", colspan);
+		return element;
 	}
 
 	/**
 	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+	 *
+	 * @param  colspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 *
 	 * @see #colspan(java.lang.Integer)
 	 */

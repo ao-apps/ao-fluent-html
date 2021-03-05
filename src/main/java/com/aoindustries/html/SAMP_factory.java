@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
  *
@@ -29,7 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new samp element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
+	 * </p>
+	 */
+	default SAMP<__> samp() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new SAMP<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a samp element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ samp__(IORunnableE<Ex> samp) throws IOException, Ex {
+		return samp().__(samp);
+	}
+
+	/**
+	 * Creates a samp element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ samp__(IOConsumerE<? super SAMP__<__>, Ex> samp) throws IOException, Ex {
+		return samp().__(samp);
+	}
+
+	/**
+	 * Creates a samp element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ samp__(Object text) throws IOException {
+		return samp().__(text);
+	}
+
+	/**
+	 * Creates an empty samp element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ samp__() throws IOException {
+		return samp().__();
+	}
+
+	/**
+	 * Creates a samp element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default SAMP_c<__> samp_c() throws IOException {
+		return samp()._c();
+	}
 }

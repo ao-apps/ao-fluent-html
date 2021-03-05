@@ -136,12 +136,12 @@ public interface Autocomplete<
 						out.write(" autocomplete=\"");
 						didOne = true;
 					} else {
-						out.write(' ');
+						out.append(' ');
 					}
 					encodeTextInXhtmlAttribute(trimmed, out);
 				}
 			}
-			if(didOne) out.write('"');
+			if(didOne) out.append('"');
 		}
 		return element;
 	}
@@ -176,12 +176,12 @@ public interface Autocomplete<
 						out.write(" autocomplete=\"");
 						didOne = true;
 					} else {
-						out.write(' ');
+						out.append(' ');
 					}
 					encodeTextInXhtmlAttribute(value.apply(element.getDocument()), out);
 				}
 			}
-			if(didOne) out.write('"');
+			if(didOne) out.append('"');
 		}
 		return element;
 	}

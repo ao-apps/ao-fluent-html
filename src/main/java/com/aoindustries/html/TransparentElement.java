@@ -58,7 +58,7 @@ abstract public class TransparentElement<
 	 */
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
 		if(body != null) {
-			document.out.write('>');
+			document.out.append('>');
 			document.incDepth();
 			body.run();
 			document.decDepth();
@@ -76,7 +76,7 @@ abstract public class TransparentElement<
 	 */
 	public <Ex extends Throwable> PC __(IOConsumerE<? super PC, Ex> body) throws IOException, Ex {
 		if(body != null) {
-			document.out.write('>');
+			document.out.append('>');
 			document.incDepth();
 			body.accept(pc);
 			document.decDepth();

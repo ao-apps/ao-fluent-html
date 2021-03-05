@@ -59,7 +59,7 @@ abstract public class Normal<
 	 */
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
 		if(body != null) {
-			document.out.write('>');
+			document.out.append('>');
 			document.incDepth();
 			body.run();
 			document.decDepth();
@@ -79,7 +79,7 @@ abstract public class Normal<
 	 */
 	public <Ex extends Throwable> PC __(IOConsumerE<? super __, Ex> body) throws IOException, Ex {
 		if(body != null) {
-			document.out.write('>');
+			document.out.append('>');
 			document.incDepth();
 			body.accept(new__());
 			document.decDepth();
@@ -112,7 +112,7 @@ abstract public class Normal<
 	 * @see  #new_c()
 	 */
 	public _c _c() throws IOException {
-		document.out.write('>');
+		document.out.append('>');
 		document.incDepth();
 		return new_c();
 	}

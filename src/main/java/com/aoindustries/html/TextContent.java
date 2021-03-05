@@ -47,6 +47,38 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 */
 	// Note: Must be implemented in Document to avoid infinite recursion
 	@Override
+	default __ nbsp() throws IOException {
+		getDocument().nbsp();
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Does not perform any translation markups.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ nbsp(int count) throws IOException {
+		getDocument().nbsp(count);
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Does not perform any translation markups.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
 	default __ text(char ch) throws IOException {
 		getDocument().text(ch);
 		@SuppressWarnings("unchecked") __ c = (__)this;

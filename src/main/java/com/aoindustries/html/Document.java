@@ -29,6 +29,8 @@ import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
+import static com.aoindustries.encoding.WhitespaceWriter.NL;
+import com.aoindustries.encoding.WriterUtil;
 import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Throwables;
@@ -38,7 +40,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -336,39 +337,10 @@ public class Document implements
 	// Matches MediaWriter.depth
 	private int depth;
 
-	// Matches MediaWriter.START_NLI_LENGTH
-	private static final int START_NLI_LENGTH = 8;
-
-	/**
-	 * Newline combined with any number of {@link #INDENT} characters.
-	 * Doubled in size as-needed.
-	 */
-	// Matches MediaWriter.nliChars
-	private String nliChars = new String(new char[] {
-		NL,     INDENT, INDENT, INDENT,
-		INDENT, INDENT, INDENT, INDENT
-	});
-	{
-		assert nliChars.length() == START_NLI_LENGTH : "Starts at length " + START_NLI_LENGTH;
-	}
-
-	/**
-	 * Any number of {@link #INDENT} characters.
-	 * Doubled in size as-needed.
-	 */
-	// Matches MediaWriter.indentChars
-	private String indentChars = new String(new char[] {
-		INDENT, INDENT, INDENT, INDENT,
-		INDENT, INDENT, INDENT, INDENT
-	});
-	{
-		assert nliChars.length() == START_NLI_LENGTH : "Starts at length " + START_NLI_LENGTH;
-	}
-
 	// Matches MediaWriter.nl()
 	@Override
 	public Document nl() throws IOException {
-		out.write(NL);
+		out.append(NL);
 		return this;
 	}
 
@@ -382,32 +354,9 @@ public class Document implements
 	@Override
 	public Document nli(int depthOffset) throws IOException {
 		if(getIndent()) {
-			int d = getDepth();
-			assert d >= 0;
-			d += depthOffset
-				// Make room for the beginning newline
-				+ 1;
-			if(d > 1) {
-				String nli = nliChars;
-				int nliLen = nli.length();
-				// Expand in size as-needed
-				if(d > nliLen) {
-					do {
-						int bigger = nliLen << 1;
-						if(bigger < nliLen) throw new ArithmeticException("integer overflow");
-						nliLen = bigger;
-					} while(d > nliLen);
-					char[] newChars = new char[nliLen];
-					newChars[0] = NL;
-					Arrays.fill(newChars, 1, nliLen, INDENT);
-					nliChars = nli = new String(newChars);
-				}
-				out.write(nli, 0, d);
-			} else {
-				out.write(NL);
-			}
+			WriterUtil.nli(out, getDepth() + depthOffset);
 		} else {
-			out.write(NL);
+			out.append(NL);
 		}
 		return this;
 	}
@@ -422,27 +371,7 @@ public class Document implements
 	@Override
 	public Document indent(int depthOffset) throws IOException {
 		if(getIndent()) {
-			int d = getDepth();
-			assert d >= 0;
-			d += depthOffset;
-			if(d > 1) {
-				String i = indentChars;
-				int iLen = i.length();
-				// Expand in size as-needed
-				if(d > iLen) {
-					do {
-						int bigger = iLen << 1;
-						if(bigger < iLen) throw new ArithmeticException("integer overflow");
-						iLen = bigger;
-					} while(d > iLen);
-					char[] newChars = new char[iLen];
-					Arrays.fill(newChars, 0, iLen, INDENT);
-					indentChars = i = new String(newChars);
-				}
-				out.write(i, 0, d);
-			} else if(d == 1) {
-				out.write(INDENT);
-			}
+			WriterUtil.indent(out, getDepth() + depthOffset);
 		}
 		return this;
 	}
@@ -493,6 +422,32 @@ public class Document implements
 			if(d < 0) depth = 0;
 		}
 		assert depth >= 0;
+		return this;
+	}
+
+	// Matches MediaWriter.sp()
+	@Override
+	public Document sp() throws IOException {
+		out.append(SPACE);
+		return this;
+	}
+
+	// Matches MediaWriter.sp(int)
+	@Override
+	public Document sp(int count) throws IOException {
+		WriterUtil.sp(out, count);
+		return this;
+	}
+
+	@Override
+	public Document nbsp() throws IOException {
+		out.append(NBSP);
+		return this;
+	}
+
+	@Override
+	public Document nbsp(int count) throws IOException {
+		WriterUtil.nbsp(out, count);
 		return this;
 	}
 

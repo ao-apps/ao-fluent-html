@@ -76,7 +76,7 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	 */
 	public PC __(Object text) throws IOException {
 		if(text != null) {
-			document.out.write('>');
+			document.out.append('>');
 			document.incDepth();
 			document.text(text);
 			document.decDepth();

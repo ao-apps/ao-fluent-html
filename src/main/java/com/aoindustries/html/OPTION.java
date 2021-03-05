@@ -148,7 +148,7 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 			}
 		}
 		if(text != null) {
-			document.out.write('>');
+			document.out.append('>');
 			document.incDepth();
 			// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
 			// Allow text markup from translations
@@ -179,7 +179,7 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 */
 	public <Ex extends Throwable> PC text__(MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
-			document.out.write('>');
+			document.out.append('>');
 			// TODO: Should this set depth back to zero?  Pre and TextArea will need to.
 			document.incDepth();
 			text.writeTo(
@@ -204,7 +204,7 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 */
 	// TODO: __() method to end text?  Call it "ContentWriter"?
 	public DocumentMediaWriter text__() throws IOException {
-		document.out.write('>');
+		document.out.append('>');
 		// TODO: Should this set depth back to zero?  Pre and TextArea will need to.
 		document.incDepth();
 		return new DocumentMediaWriter(document, textInXhtmlEncoder) {

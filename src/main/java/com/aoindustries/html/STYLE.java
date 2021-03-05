@@ -137,7 +137,7 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 		} else {
 			document.out.write(" type=\"");
 			encodeTextInXhtmlAttribute(type, document.out);
-			document.out.write('"');
+			document.out.append('"');
 		}
 		return this;
 	}
@@ -160,7 +160,7 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
-			document.out.write('>');
+			document.out.append('>');
 			if(doCdata()) document.out.write("/*<![CDATA[*/");
 			document.incDepth();
 			didBody = true;

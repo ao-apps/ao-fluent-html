@@ -382,7 +382,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 				this.type = type;
 				document.out.write(" type=\"");
 				encodeTextInXhtmlAttribute(type, document.out);
-				document.out.write('"');
+				document.out.append('"');
 			}
 			return this;
 		}
@@ -417,7 +417,7 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 				this.type = type.value;
 				document.out.write(" type=\"");
 				document.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
-				document.out.write('"');
+				document.out.append('"');
 			}
 			return this;
 		}

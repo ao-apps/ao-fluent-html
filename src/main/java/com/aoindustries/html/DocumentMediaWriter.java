@@ -64,71 +64,22 @@ public class DocumentMediaWriter extends MediaWriter {
 	}
 
 	@Override
-	public DocumentMediaWriter text(char ch) throws IOException {
-		super.text(ch);
-		return this;
-	}
-
-	// TODO: codePoint?
-
-	@Override
-	public DocumentMediaWriter text(char[] cbuf) throws IOException {
-		super.text(cbuf);
+	public DocumentMediaWriter append(char c) throws IOException {
+		super.append(c);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter text(char[] cbuf, int offset, int len) throws IOException {
-		super.text(cbuf, offset, len);
-		return this;
-	}
-
-	// TODO: text(CharSequence)?
-	// TODO: text(CharSequence, int, int)?
-
-	@Override
-	public DocumentMediaWriter text(Object text) throws IOException {
-		super.text(text);
+	public DocumentMediaWriter append(CharSequence csq) throws IOException {
+		super.append(csq);
 		return this;
 	}
 
 	@Override
-	public <Ex extends Throwable> DocumentMediaWriter text(IOSupplierE<?,Ex> text) throws IOException, Ex {
-		super.text(text);
+	public DocumentMediaWriter append(CharSequence csq, int start, int end) throws IOException {
+		super.append(csq, start, end);
 		return this;
 	}
-
-	@Override
-	public <Ex extends Throwable> DocumentMediaWriter text(MediaWritable<Ex> text) throws IOException, Ex {
-		try (DocumentMediaWriter tw = text()) {
-			if(text != null) {
-				text.writeTo(tw);
-			}
-		}
-		return this;
-	}
-
-	@Override
-	public DocumentMediaWriter text() throws IOException {
-		DocumentMediaWriter tw = getTextWriter();
-		if(tw != this) textWriter.getEncoder().writePrefixTo(this);
-		return new DocumentMediaWriter(
-			document,
-			tw.getEncoder(),
-			tw.out
-		) {
-			@Override
-			public void close() throws IOException {
-				if(tw != this) textWriter.getEncoder().writeSuffixTo(this);
-			}
-		};
-	}
-
-	// TODO: A set of per-type methods, like xml(), script(), style(), ...
-
-	// TODO: A set of out() methods that take MediaType and value
-
-	// TODO: comments
 
 	// Not delegating to Document.nl(), because the newlines themselves may need to be encoded.
 	@Override
@@ -234,4 +185,98 @@ public class DocumentMediaWriter extends MediaWriter {
 		document.decDepth();
 		return this;
 	}
+
+	// Not delegating to Document.sp(), because the spaces themselves may need to be encoded.
+	@Override
+	public DocumentMediaWriter sp() throws IOException {
+		super.sp();
+		return this;
+	}
+
+	// Not delegating to Document.sp(int), because the spaces themselves may need to be encoded.
+	@Override
+	public DocumentMediaWriter sp(int count) throws IOException {
+		super.sp(count);
+		return this;
+	}
+
+	@Override
+	public DocumentMediaWriter nbsp() throws IOException {
+		super.nbsp();
+		return this;
+	}
+
+	@Override
+	public DocumentMediaWriter nbsp(int count) throws IOException {
+		super.nbsp(count);
+		return this;
+	}
+
+	@Override
+	public DocumentMediaWriter text(char ch) throws IOException {
+		super.text(ch);
+		return this;
+	}
+
+	// TODO: codePoint?
+
+	@Override
+	public DocumentMediaWriter text(char[] cbuf) throws IOException {
+		super.text(cbuf);
+		return this;
+	}
+
+	@Override
+	public DocumentMediaWriter text(char[] cbuf, int offset, int len) throws IOException {
+		super.text(cbuf, offset, len);
+		return this;
+	}
+
+	// TODO: text(CharSequence)?
+	// TODO: text(CharSequence, int, int)?
+
+	@Override
+	public DocumentMediaWriter text(Object text) throws IOException {
+		super.text(text);
+		return this;
+	}
+
+	@Override
+	public <Ex extends Throwable> DocumentMediaWriter text(IOSupplierE<?,Ex> text) throws IOException, Ex {
+		super.text(text);
+		return this;
+	}
+
+	@Override
+	public <Ex extends Throwable> DocumentMediaWriter text(MediaWritable<Ex> text) throws IOException, Ex {
+		try (DocumentMediaWriter tw = text()) {
+			if(text != null) {
+				text.writeTo(tw);
+			}
+		}
+		return this;
+	}
+
+	@Override
+	public DocumentMediaWriter text() throws IOException {
+		DocumentMediaWriter tw = getTextWriter();
+		if(tw != this) textWriter.getEncoder().writePrefixTo(this);
+		return new DocumentMediaWriter(
+			document,
+			tw.getEncoder(),
+			tw.out
+		) {
+			@Override
+			public void close() throws IOException {
+				if(tw != this) textWriter.getEncoder().writeSuffixTo(this);
+			}
+		};
+	}
+
+	// TODO: A set of per-type methods, like xml(), script(), style(), ...
+
+	// TODO: A set of out() methods that take MediaType and value
+
+	// TODO: comments
+
 }

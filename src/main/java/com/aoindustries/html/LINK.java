@@ -33,6 +33,7 @@ import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -145,7 +146,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 			}
 			document.out.write(" itemprop=\"");
 			Coercion.write(itemprop, textInXhtmlAttributeEncoder, document.out);
-			document.out.write('"');
+			document.out.append('"');
 		}
 		return this;
 	}
@@ -356,7 +357,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 		) {
 			document.out.write(" type=\"");
 			encodeTextInXhtmlAttribute(type, document.out);
-			document.out.write('"');
+			document.out.append('"');
 		}
 		return this;
 	}
@@ -385,9 +386,10 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 			&& rel != null
 			&& rel.equalsIgnoreCase(Rel.STYLESHEET.toString())
 		) {
-			document.out.write(" type=\"");
-			document.out.write(ContentType.CSS);
-			document.out.write('"');
+			Writer out = document.out;
+			out.write(" type=\"");
+			out.write(ContentType.CSS);
+			out.append('"');
 		}
 		super.__();
 		if(rel == null && itemprop == null) {

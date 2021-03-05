@@ -166,7 +166,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 		} else {
 			document.out.write(" type=\"");
 			encodeTextInXhtmlAttribute(type, document.out);
-			document.out.write('"');
+			document.out.append('"');
 		}
 		return this;
 	}
@@ -196,7 +196,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 
 	protected void startBody() throws IOException {
 		if(!didBody) {
-			document.out.write('>');
+			document.out.append('>');
 			if(doCdata()) document.out.write("//<![CDATA[");
 			document.incDepth().nli();
 			didBody = true;

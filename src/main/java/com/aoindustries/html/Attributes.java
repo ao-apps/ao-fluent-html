@@ -138,12 +138,11 @@ public class Attributes {
 		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
 			if(value) {
 				Writer out = element.document.out;
-				out.write(' ');
-				out.write(name);
+				out.append(' ').write(name);
 				if(element.document.serialization == Serialization.XML) {
 					out.write("=\"");
 					out.write(name);
-					out.write('"');
+					out.append('"');
 				} else {
 					assert element.document.serialization == Serialization.SGML;
 				}
@@ -216,11 +215,10 @@ public class Attributes {
 
 		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, int value) throws IOException {
 			Writer out = element.document.out;
-			out.write(' ');
-			out.write(name);
+			out.append(' ').write(name);
 			out.write("=\"");
 			out.write(java.lang.Integer.toString(value));
-			out.write('"');
+			out.append('"');
 			return element;
 		}
 
@@ -252,15 +250,12 @@ public class Attributes {
 			if(value != null) {
 				if(value == NO_VALUE) { // Identity comparison for marker value
 					// Empty attribute
-					Writer out = element.document.out;
-					out.write(' ');
-					out.write(name);
+					element.document.out.append(' ').write(name);
 				} else {
 					if(trim) value = value.trim(); // TODO: These trims should all be from Strings?
 					if(!nullIfEmpty || !value.isEmpty()) {
 						Writer out = element.document.out;
-						out.write(' ');
-						out.write(name);
+						out.append(' ').write(name);
 						out.write("=\"");
 						if(markupType == null || markupType == MarkupType.NONE) {
 							// Short-cut additional type checks done by Coercion, since we already have a String
@@ -268,7 +263,7 @@ public class Attributes {
 						} else {
 							MarkupCoercion.write(value, markupType, true, textInXhtmlAttributeEncoder, false, out);
 						}
-						out.write('"');
+						out.append('"');
 					}
 				}
 			}
@@ -299,8 +294,7 @@ public class Attributes {
 				if(value instanceof MediaWritable<?>) {
 					@SuppressWarnings("unchecked") MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
 					Writer out = element.document.out;
-					out.write(' ');
-					out.write(name);
+					out.append(' ').write(name);
 					out.write("=\"");
 					writer.writeTo(
 						// Not using DocumentMediaWriter for three reasons:
@@ -314,13 +308,11 @@ public class Attributes {
 							}
 						}
 					);
-					out.write('"');
+					out.append('"');
 				} else {
 					if(value == NO_VALUE) { // Identity comparison for marker value
 						// Empty attribute
-						Writer out = element.document.out;
-						out.write(' ');
-						out.write(name);
+						element.document.out.append(' ').write(name);
 						// TODO: When serialization is XML, set equal to attribute name or empty?
 					} else {
 						if(trim) {
@@ -334,11 +326,10 @@ public class Attributes {
 						}
 						if(value != null) {
 							Writer out = element.document.out;
-							out.write(' ');
-							out.write(name);
+							out.append(' ').write(name);
 							out.write("=\"");
 							MarkupCoercion.write(value, markupType, true, encoder, false, out);
-							out.write('"');
+							out.append('"');
 						}
 					}
 				}
@@ -371,8 +362,7 @@ public class Attributes {
 								if(separator != null) out.write(separator);
 							} else {
 								if(!attr) {
-									out.write(' ');
-									out.write(name);
+									out.append(' ').write(name);
 									attr = true;
 								}
 								out.write("=\"");
@@ -394,8 +384,7 @@ public class Attributes {
 							if(value == NO_VALUE) { // Identity comparison for marker value
 								// Empty attribute
 								if(!attr) {
-									out.write(' ');
-									out.write(name);
+									out.append(' ').write(name);
 									attr = true;
 								}
 								// TODO: When serialization is XML, set equal to attribute name or empty?
@@ -415,8 +404,7 @@ public class Attributes {
 										if(separator != null) out.write(separator);
 									} else {
 										if(!attr) {
-											out.write(' ');
-											out.write(name);
+											out.append(' ').write(name);
 											attr = true;
 										}
 										out.write("=\"");
@@ -430,7 +418,7 @@ public class Attributes {
 				}
 				if(val) {
 					assert attr;
-					out.write('"');
+					out.append('"');
 				}
 			}
 			return element;
@@ -451,12 +439,11 @@ public class Attributes {
 		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
 			if(url != null) {
 				Writer out = element.document.out;
-				out.write(' ');
-				out.write(name);
+				out.append(' ').write(name);
 				out.write("=\"");
 				// TODO: UrlInXhtmlAttributeEncoder once RFC 3987 supported
 				textInXhtmlAttributeEncoder.write(url, out);
-				out.write('"');
+				out.append('"');
 			}
 			return element;
 		}

@@ -194,6 +194,32 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#sp()}.
+	 * </p>
+	 */
+	@Override
+	public E sp() throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.sp();
+		return element;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Delegates to {@link Document#sp(int)}.
+	 * </p>
+	 */
+	@Override
+	public E sp(int count) throws IOException {
+		@SuppressWarnings("unchecked") E element = (E)this;
+		document.sp(count);
+		return element;
+	}
+
+	/**
 	 * Writes the beginning of the opening tag.
 	 *
 	 * @return  The element instance to use.

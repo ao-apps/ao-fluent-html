@@ -127,4 +127,20 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		@SuppressWarnings("unchecked") __ c = (__)this;
 		return c;
 	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ sp() throws IOException {
+		getDocument().sp();
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ sp(int count) throws IOException {
+		getDocument().sp(count);
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
 }

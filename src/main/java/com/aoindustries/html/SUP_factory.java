@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
  *
@@ -29,7 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface SUP_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new sup element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
+	 * </p>
+	 */
+	default SUP<__> sup() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new SUP<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a sup element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ sup__(IORunnableE<Ex> sup) throws IOException, Ex {
+		return sup().__(sup);
+	}
+
+	/**
+	 * Creates a sup element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default<Ex extends Throwable> __ sup__(IOConsumerE<? super SUP__<__>, Ex> sup) throws IOException, Ex {
+		return sup().__(sup);
+	}
+
+	/**
+	 * Creates a sup element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ sup__(Object text) throws IOException {
+		return sup().__(text);
+	}
+
+	/**
+	 * Creates an empty sup element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ sup__() throws IOException {
+		return sup().__();
+	}
+
+	/**
+	 * Creates a sup element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default SUP_c<__> sup_c() throws IOException {
+		return sup()._c();
+	}
 }

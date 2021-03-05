@@ -22,31 +22,46 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#heading-content">3.2.5.2.4 Heading content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<__ extends HeadingContent<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-
-	//
-	// Factories:
-	//
-	H1_factory<__>,
-	H2_factory<__>,
-	H3_factory<__>,
-	H4_factory<__>,
-	H5_factory<__>,
-	H6_factory<__>,
-	HGROUP_factory<__>
+public class OL<PC extends PalpableContent<PC>> extends
+	Normal<OL<PC>, PC, OL__<PC>, OL_c<PC>> implements
+	// TOOD: reversed
+	// TODO: start
+	// TODO: type
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	AlmostGlobalAttributes<OL<PC>>
 {
+
+	public OL(Document document, PC pc) {
+		super(document, pc);
+	}
+
+	@Override
+	protected OL<PC> writeOpen() throws IOException {
+		document.out.write("<ol");
+		return this;
+	}
+
+	@Override
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></ol>" : "</ol>");
+	}
+
+	@Override
+	protected OL__<PC> new__() {
+		return new OL__<>(this);
+	}
+
+	@Override
+	protected OL_c<PC> new_c() {
+		return new OL_c<>(this);
+	}
 }

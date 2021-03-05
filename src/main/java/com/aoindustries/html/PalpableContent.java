@@ -71,7 +71,7 @@ public interface PalpableContent<__ extends PalpableContent<__>> extends
 	// Inherited: DATA_factory<__>
 	// Inherited: DETAILS_factory<__>
 	// Inherited: DFN_factory<__>
-	// Inherited: DIV_factory<__>,
+	// Inherited: DIV_factory<__>
 	DL_factory<__>, // if childen contain at least one name/value pair
 	// Inherited: EM_factory<__>
 	// Inherited: EMBED_factory<__>

@@ -22,31 +22,44 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#heading-content">3.2.5.2.4 Heading content</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#the-li-element">4.4.8 The li element</a>.
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<__ extends HeadingContent<__>> extends
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-
-	//
-	// Factories:
-	//
-	H1_factory<__>,
-	H2_factory<__>,
-	H3_factory<__>,
-	H4_factory<__>,
-	H5_factory<__>,
-	H6_factory<__>,
-	HGROUP_factory<__>
+public class LI<PC extends ListContent<PC>> extends
+	NormalText<LI<PC>, PC, LI__<PC>, LI_c<PC>> implements
+	// TODO: value (If the element is not a child of an ul or menu element)
+	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
+	AlmostGlobalAttributes<LI<PC>>
 {
+
+	public LI(Document document, PC pc) {
+		super(document, pc);
+	}
+
+	@Override
+	protected LI<PC> writeOpen() throws IOException {
+		document.out.write("<li");
+		return this;
+	}
+
+	@Override
+	protected void writeClose(boolean closeAttributes) throws IOException {
+		document.out.write(closeAttributes ? "></li>" : "</li>");
+	}
+
+	@Override
+	protected LI__<PC> new__() {
+		return new LI__<>(this);
+	}
+
+	@Override
+	protected LI_c<PC> new_c() {
+		return new LI_c<>(this);
+	}
 }

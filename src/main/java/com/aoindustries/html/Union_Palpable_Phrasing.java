@@ -33,7 +33,7 @@ public interface Union_Palpable_Phrasing<__ extends Union_Palpable_Phrasing<__>>
 	//
 	// Unions:
 	//
-	// Inherited: Embedded_Interactive<__>,
+	// Inherited: Embedded_Interactive<__>
 	Union_Embedded_Palpable_Phrasing<__>,
 	Union_Interactive_Phrasing<__>,
 

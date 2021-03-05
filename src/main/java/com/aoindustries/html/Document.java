@@ -70,15 +70,16 @@ public class Document implements
 	// Content models:
 	//
 	// Inherited: Content<Document>
-	MetadataContent<Document>,
-	// Inherited: FlowContent<Document>,
-	// Inherited: SectioningContent<Document>
-	// Inherited: HeadingContent<Document>
-	// Inherited: PhrasingContent<Document>
 	// Inherited: EmbeddedContent<Document>
+	// Inherited: FlowContent<Document>
+	// Inherited: HeadingContent<Document>
 	// Inherited: InteractiveContent<Document>
+	ListContent<Document>,
+	MetadataContent<Document>,
 	// Inherited: PalpableContent<Document>
+	// Inherited: PhrasingContent<Document>
 	// Inherited: ScriptSupportingContent<Document>
+	// Inherited: SectioningContent<Document>
 	// Inherited: TextContent<Document>
 
 	//
@@ -88,7 +89,7 @@ public class Document implements
 	DATALIST_content<Document>,
 	DIV_content<Document>,
 	DL_content<Document>,
-	// Inherited: OPTGROUP_content<Document>,
+	// Inherited: OPTGROUP_content<Document>
 	SELECT_content<Document>,
 	TABLE_content<Document>,
 	TR_content<Document>,
@@ -125,10 +126,10 @@ public class Document implements
 	// Inherited: OL_factory<Document>
 	// Inherited: UL_factory<Document>
 	// Inherited: MENU_factory<Document>
-	LI_factory<Document>,
+	// Inherited: LI_factory<Document>
 	// Inherited: DL_factory<Document>
-	// Inherited: DT_factory<Document>,
-	// Inherited: DD_factory<Document>,
+	// Inherited: DT_factory<Document>
+	// Inherited: DD_factory<Document>
 	// Inherited: FIGURE_factory<Document>
 	FIGCAPTION_factory<Document>,
 	// Inherited: MAIN_factory<Document>
@@ -194,8 +195,8 @@ public class Document implements
 	// Inherited: BUTTON_factory<Document>
 	// Inherited: SELECT_factory<Document>
 	// Inherited: DATALIST_factory<Document>
-	// Inherited: OPTGROUP_factory<Document>,
-	// Inherited: OPTION_factory<Document>,
+	// Inherited: OPTGROUP_factory<Document>
+	// Inherited: OPTION_factory<Document>
 	// Inherited: TEXTAREA_factory<Document>
 	// Inherited: OUTPUT_factory<Document>
 	// Inherited: PROGRESS_factory<Document>

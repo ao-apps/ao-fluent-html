@@ -42,7 +42,7 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
 	Union_TBODY_THEAD_TFOOT<__>,
 
 	//

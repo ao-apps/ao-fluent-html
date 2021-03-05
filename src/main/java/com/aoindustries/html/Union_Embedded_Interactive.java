@@ -33,7 +33,7 @@ public interface Union_Embedded_Interactive<__ extends Union_Embedded_Interactiv
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>,
+	// Inherited: Content<__>
 
 	//
 	// Factories:

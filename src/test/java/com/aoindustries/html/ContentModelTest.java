@@ -43,6 +43,7 @@ public class ContentModelTest {
 			FlowContent.class,
 			HeadingContent.class,
 			InteractiveContent.class,
+			ListContent.class,
 			MetadataContent.class,
 			PalpableContent.class,
 			PhrasingContent.class,

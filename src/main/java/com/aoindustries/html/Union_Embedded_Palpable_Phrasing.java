@@ -35,7 +35,7 @@ public interface Union_Embedded_Palpable_Phrasing<__ extends Union_Embedded_Palp
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>,
+	// Inherited: Content<__>
 
 	//
 	// Factories:

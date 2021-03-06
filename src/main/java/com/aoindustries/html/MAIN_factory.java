@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
  *
@@ -29,7 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new main element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
+	 * </p>
+	 */
+	default MAIN<__> main() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new MAIN<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a main element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ main__(IORunnableE<Ex> main) throws IOException, Ex {
+		return main().__(main);
+	}
+
+	/**
+	 * Creates a main element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ main__(IOConsumerE<? super MAIN__<__>, Ex> main) throws IOException, Ex {
+		return main().__(main);
+	}
+
+	/**
+	 * Creates a main element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ main__(Object text) throws IOException {
+		return main().__(text);
+	}
+
+	/**
+	 * Creates an empty main element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ main__() throws IOException {
+		return main().__();
+	}
+
+	/**
+	 * Creates a main element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default MAIN_c<__> main_c() throws IOException {
+		return main()._c();
+	}
 }

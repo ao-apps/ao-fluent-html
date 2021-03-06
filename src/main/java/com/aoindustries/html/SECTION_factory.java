@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
  *
@@ -29,7 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface SECTION_factory<__ extends SectioningContent<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new section element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
+	 * </p>
+	 */
+	default SECTION<__> section() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new SECTION<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a section element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ section__(IORunnableE<Ex> section) throws IOException, Ex {
+		return section().__(section);
+	}
+
+	/**
+	 * Creates a section element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ section__(IOConsumerE<? super SECTION__<__>, Ex> section) throws IOException, Ex {
+		return section().__(section);
+	}
+
+	/**
+	 * Creates a section element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ section__(Object text) throws IOException {
+		return section().__(text);
+	}
+
+	/**
+	 * Creates an empty section element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ section__() throws IOException {
+		return section().__();
+	}
+
+	/**
+	 * Creates a section element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default SECTION_c<__> section_c() throws IOException {
+		return section()._c();
+	}
 }

@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
  *
@@ -29,7 +33,82 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface NAV_factory<__ extends SectioningContent<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new nav element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
+	 * </p>
+	 */
+	default NAV<__> nav() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__) this;
+		return new NAV<>(getDocument(), pc).writeOpen();
+	}
+
+	/**
+	 * Creates a nav element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ nav__(IORunnableE<Ex> nav) throws IOException, Ex {
+		return nav().__(nav);
+	}
+
+	/**
+	 * Creates a nav element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ nav__(IOConsumerE<? super NAV__<__>, Ex> nav) throws IOException, Ex {
+		return nav().__(nav);
+	}
+
+	/**
+	 * Creates a nav element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ nav__(Object text) throws IOException {
+		return nav().__(text);
+	}
+
+	/**
+	 * Creates an empty nav element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ nav__() throws IOException {
+		return nav().__();
+	}
+
+	/**
+	 * Creates a nav element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default NAV_c<__> nav_c() throws IOException {
+		return nav()._c();
+	}
 }

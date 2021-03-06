@@ -31,11 +31,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class H6<PC extends HeadingContent<PC>> extends
-	NormalText<H6<PC>, PC, H6__<PC>, H6_c<PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<H6<PC>>
-{
+public class H6<PC extends HeadingContent<PC>> extends H<H6<PC>, PC, H6__<PC>, H6_c<PC>> {
 
 	public H6(Document document, PC pc) {
 		super(document, pc);
@@ -60,5 +56,10 @@ public class H6<PC extends HeadingContent<PC>> extends
 	@Override
 	protected H6_c<PC> new_c() {
 		return new H6_c<>(this);
+	}
+
+	@Override
+	public int getRank() {
+		return 6;
 	}
 }

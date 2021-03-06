@@ -29,9 +29,7 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class H3__<PC extends HeadingContent<PC>> extends
-	NormalText__<PC, H3__<PC>>
-	implements PhrasingContent<H3__<PC>> {
+public class H3__<PC extends HeadingContent<PC>> extends H__<PC, H3__<PC>> {
 
 	protected H3__(H3<PC> element) {
 		super(element);

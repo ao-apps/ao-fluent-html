@@ -26,12 +26,16 @@ package com.aoindustries.html;
  * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
  * @param  <PC>  The parent content model this element is within
+ * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public class H6_c<PC extends HeadingContent<PC>> extends H_c<PC, H6_c<PC>> {
+public abstract class H__<
+	PC extends HeadingContent<PC>,
+	__ extends H__<PC, __>
+> extends NormalText__<PC, __> implements PhrasingContent<__> {
 
-	protected H6_c(H6<PC> element) {
+	protected H__(H<?, PC, __, ?> element) {
 		super(element);
 	}
 }

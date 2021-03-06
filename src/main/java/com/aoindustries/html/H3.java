@@ -31,11 +31,7 @@ import java.io.IOException;
  *
  * @author  AO Industries, Inc.
  */
-public class H3<PC extends HeadingContent<PC>> extends
-	NormalText<H3<PC>, PC, H3__<PC>, H3_c<PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<H3<PC>>
-{
+public class H3<PC extends HeadingContent<PC>> extends H<H3<PC>, PC, H3__<PC>, H3_c<PC>> {
 
 	public H3(Document document, PC pc) {
 		super(document, pc);
@@ -60,5 +56,10 @@ public class H3<PC extends HeadingContent<PC>> extends
 	@Override
 	protected H3_c<PC> new_c() {
 		return new H3_c<>(this);
+	}
+
+	@Override
+	public int getRank() {
+		return 3;
 	}
 }

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.util.function.Function;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
@@ -39,7 +40,7 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	com.aoindustries.html.attributes.Enum.Target<A<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: download
 	// TODO: ping
-	// TODO: rel
+	com.aoindustries.html.attributes.Enum.Rel<A<PC>, A.Rel>,
 	com.aoindustries.html.attributes.String.Hreflang<A<PC>>,
 	// TODO: type
 	// TODO: referrerpolicy
@@ -85,5 +86,77 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 			writeClose(true);
 		}
 		return pc;
+	}
+
+	/**
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel">HTML Standard</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_a_rel.asp">HTML a rel Attribute</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.</li>
+	 * </ul>
+	 */
+	public enum Rel implements Function<Document, String> {
+		ALTERNATE("alternate"),
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		ARCHIVES("archives"), // MDN only
+		AUTHOR("author"), // w3schools, MDN only
+		BOOKMARK("bookmark"),
+		EXTERNAL("external"),
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		FIRST("first"), // MDN only
+		HELP("help"), // w3schools, MDN only
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		INDEX("index"), // MDN only
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		LAST("last"), // MDN only
+		LICENSE("license"), // w3schools, MDN only
+		NEXT("next"),
+		NOFOLLOW("nofollow"),
+		NOOPENER("noopener"),
+		NOREFERRER("noreferrer"),
+		// TODO: opener?
+		PREV("prev"), // w3schools, MDN only
+		SEARCH("search"),
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		SIDEBAR("sidebar"), // MDN only
+		TAG("tag"),
+		/**
+		 * @deprecated
+		 */
+		@Deprecated
+		UP("up"); // MDN only
+
+		private final String value;
+		// TODO: Verify values by doctype
+
+		private Rel(String value) {
+			this.value = value;
+		}
+
+		@Override
+		public String toString() {
+			return value;
+		}
+
+		@Override
+		public String apply(Document document) {
+			return value;
+		}
 	}
 }

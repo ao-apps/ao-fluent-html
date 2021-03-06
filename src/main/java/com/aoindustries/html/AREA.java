@@ -47,7 +47,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	// TODO: nohref
 	// TODO: ping
 	// TODO: referrerpolicy
-	com.aoindustries.html.attributes.Enum.Rel<AREA<PC>, AREA.Rel>,
+	com.aoindustries.html.attributes.Enum.Rel<AREA<PC>, A.Rel>,
 	com.aoindustries.html.attributes.Enum.Shape<AREA<PC>, AREA.Shape>,
 	com.aoindustries.html.attributes.Enum.Target<AREA<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: type (deprecated since definition is in conflict and doesn't do anything?)
@@ -65,77 +65,6 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	protected AREA<PC> writeOpen() throws IOException {
 		document.out.write("<area");
 		return this;
-	}
-
-	/**
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel">HTML Standard</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.</li>
-	 * </ul>
-	 */
-	public enum Rel implements Function<Document, String> {
-		ALTERNATE("alternate"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		ARCHIVES("archives"), // MDN only
-		AUTHOR("author"), // w3schools, MDN only
-		BOOKMARK("bookmark"),
-		EXTERNAL("external"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		FIRST("first"), // MDN only
-		HELP("help"), // w3schools, MDN only
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		INDEX("index"), // MDN only
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		LAST("last"), // MDN only
-		LICENSE("license"), // w3schools, MDN only
-		NEXT("next"),
-		NOFOLLOW("nofollow"),
-		NOOPENER("noopener"),
-		NOREFERRER("noreferrer"),
-		// TODO: opener?
-		PREV("prev"), // w3schools, MDN only
-		SEARCH("search"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		SIDEBAR("sidebar"), // MDN only
-		TAG("tag"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		UP("up"); // MDN only
-
-		private final String value;
-		// TODO: Verify values by doctype
-
-		private Rel(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(Document document) {
-			return value;
-		}
 	}
 
 	/**

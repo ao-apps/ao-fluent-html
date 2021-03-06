@@ -55,7 +55,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ code__(IORunnableE<Ex> code) throws IOException, Ex {
+	default <Ex extends Throwable> __ code__(IORunnableE<Ex> code) throws IOException, Ex {
 		return code().__(code);
 	}
 
@@ -67,7 +67,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ code__(IOConsumerE<? super CODE__<__>, Ex> code) throws IOException, Ex {
+	default <Ex extends Throwable> __ code__(IOConsumerE<? super CODE__<__>, Ex> code) throws IOException, Ex {
 		return code().__(code);
 	}
 

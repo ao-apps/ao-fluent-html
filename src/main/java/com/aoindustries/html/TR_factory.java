@@ -55,7 +55,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ tr__(IORunnableE<Ex> tr) throws IOException, Ex {
+	default <Ex extends Throwable> __ tr__(IORunnableE<Ex> tr) throws IOException, Ex {
 		return tr().__(tr);
 	}
 
@@ -67,7 +67,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
+	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
 		return tr().__(tr);
 	}
 

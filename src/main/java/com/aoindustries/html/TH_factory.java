@@ -55,7 +55,7 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ th__(IORunnableE<Ex> th) throws IOException, Ex {
+	default <Ex extends Throwable> __ th__(IORunnableE<Ex> th) throws IOException, Ex {
 		return th().__(th);
 	}
 
@@ -67,7 +67,7 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ th__(IOConsumerE<? super TH__<__>, Ex> th) throws IOException, Ex {
+	default <Ex extends Throwable> __ th__(IOConsumerE<? super TH__<__>, Ex> th) throws IOException, Ex {
 		return th().__(th);
 	}
 

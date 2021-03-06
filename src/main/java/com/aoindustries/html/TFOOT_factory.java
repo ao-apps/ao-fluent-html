@@ -55,7 +55,7 @@ public interface TFOOT_factory<__ extends TABLE_content<__>> extends Content<__>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ tfoot__(IORunnableE<Ex> tfoot) throws IOException, Ex {
+	default <Ex extends Throwable> __ tfoot__(IORunnableE<Ex> tfoot) throws IOException, Ex {
 		return tfoot().__(tfoot);
 	}
 
@@ -67,7 +67,7 @@ public interface TFOOT_factory<__ extends TABLE_content<__>> extends Content<__>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ tfoot__(IOConsumerE<? super TFOOT__<__>, Ex> tfoot) throws IOException, Ex {
+	default <Ex extends Throwable> __ tfoot__(IOConsumerE<? super TFOOT__<__>, Ex> tfoot) throws IOException, Ex {
 		return tfoot().__(tfoot);
 	}
 

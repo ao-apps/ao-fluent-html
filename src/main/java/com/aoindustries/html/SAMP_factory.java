@@ -55,7 +55,7 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ samp__(IORunnableE<Ex> samp) throws IOException, Ex {
+	default <Ex extends Throwable> __ samp__(IORunnableE<Ex> samp) throws IOException, Ex {
 		return samp().__(samp);
 	}
 
@@ -67,7 +67,7 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ samp__(IOConsumerE<? super SAMP__<__>, Ex> samp) throws IOException, Ex {
+	default <Ex extends Throwable> __ samp__(IOConsumerE<? super SAMP__<__>, Ex> samp) throws IOException, Ex {
 		return samp().__(samp);
 	}
 

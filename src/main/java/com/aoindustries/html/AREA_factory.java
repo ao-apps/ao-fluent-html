@@ -70,7 +70,7 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> AREA<__> area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
+	default <Ex extends Throwable> AREA<__> area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
 		return area().shape(AREA.Shape.RECT).coords(rect);
 	}
 
@@ -94,7 +94,7 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> AREA<__> area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
+	default <Ex extends Throwable> AREA<__> area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
 		return area().shape(AREA.Shape.CIRCLE).coords(circle);
 	}
 
@@ -118,7 +118,7 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> AREA<__> area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
+	default <Ex extends Throwable> AREA<__> area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
 		return area().shape(AREA.Shape.POLY).coords(poly);
 	}
 
@@ -156,7 +156,7 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> AREA<__> area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
+	default <Ex extends Throwable> AREA<__> area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
 		return area(shape == null ? null : shape.get());
 	}
 }

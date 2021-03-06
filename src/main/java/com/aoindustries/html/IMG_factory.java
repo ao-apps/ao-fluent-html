@@ -69,7 +69,7 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> IMG<__> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
+	default <Ex extends Throwable> IMG<__> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
 		return img().src(src);
 	}
 }

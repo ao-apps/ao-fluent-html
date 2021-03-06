@@ -55,7 +55,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ span__(IORunnableE<Ex> span) throws IOException, Ex {
+	default <Ex extends Throwable> __ span__(IORunnableE<Ex> span) throws IOException, Ex {
 		return span().__(span);
 	}
 
@@ -67,7 +67,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ span__(IOConsumerE<? super SPAN__<__>, Ex> span) throws IOException, Ex {
+	default <Ex extends Throwable> __ span__(IOConsumerE<? super SPAN__<__>, Ex> span) throws IOException, Ex {
 		return span().__(span);
 	}
 

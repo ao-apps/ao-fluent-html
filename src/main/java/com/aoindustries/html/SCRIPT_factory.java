@@ -75,7 +75,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> SCRIPT<__> script(Suppliers.String<Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> SCRIPT<__> script(Suppliers.String<Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
@@ -101,7 +101,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> SCRIPT<__> script(IOSupplierE<? extends SCRIPT.Type, Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> SCRIPT<__> script(IOSupplierE<? extends SCRIPT.Type, Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 }

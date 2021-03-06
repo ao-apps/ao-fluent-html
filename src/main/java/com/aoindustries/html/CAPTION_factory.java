@@ -55,7 +55,7 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ caption__(IORunnableE<Ex> caption) throws IOException, Ex {
+	default <Ex extends Throwable> __ caption__(IORunnableE<Ex> caption) throws IOException, Ex {
 		return caption().__(caption);
 	}
 
@@ -67,7 +67,7 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ caption__(IOConsumerE<? super CAPTION__<__>, Ex> caption) throws IOException, Ex {
+	default <Ex extends Throwable> __ caption__(IOConsumerE<? super CAPTION__<__>, Ex> caption) throws IOException, Ex {
 		return caption().__(caption);
 	}
 

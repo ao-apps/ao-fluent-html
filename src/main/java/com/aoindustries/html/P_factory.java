@@ -55,7 +55,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ p__(IORunnableE<Ex> p) throws IOException, Ex {
+	default <Ex extends Throwable> __ p__(IORunnableE<Ex> p) throws IOException, Ex {
 		return p().__(p);
 	}
 
@@ -67,7 +67,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ p__(IOConsumerE<? super P__<__>, Ex> p) throws IOException, Ex {
+	default <Ex extends Throwable> __ p__(IOConsumerE<? super P__<__>, Ex> p) throws IOException, Ex {
 		return p().__(p);
 	}
 

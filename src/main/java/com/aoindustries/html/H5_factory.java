@@ -55,7 +55,7 @@ public interface H5_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ h5__(IORunnableE<Ex> h5) throws IOException, Ex {
+	default <Ex extends Throwable> __ h5__(IORunnableE<Ex> h5) throws IOException, Ex {
 		return h5().__(h5);
 	}
 
@@ -67,7 +67,7 @@ public interface H5_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ h5__(IOConsumerE<? super H5__<__>, Ex> h5) throws IOException, Ex {
+	default <Ex extends Throwable> __ h5__(IOConsumerE<? super H5__<__>, Ex> h5) throws IOException, Ex {
 		return h5().__(h5);
 	}
 

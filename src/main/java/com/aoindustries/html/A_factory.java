@@ -64,7 +64,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
-	default<Ex extends Throwable> A<__> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
+	default <Ex extends Throwable> A<__> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
 		return a().href(href);
 	}
 
@@ -76,7 +76,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ a__(IORunnableE<Ex> a) throws IOException, Ex {
+	default <Ex extends Throwable> __ a__(IORunnableE<Ex> a) throws IOException, Ex {
 		return a().__(a);
 	}
 
@@ -89,7 +89,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	// TODO: How to limit content to not have interactive elements?
-	default<Ex extends Throwable> __ a__(IOConsumerE<? super __, Ex> a) throws IOException, Ex {
+	default <Ex extends Throwable> __ a__(IOConsumerE<? super __, Ex> a) throws IOException, Ex {
 		return a().__(a);
 	}
 

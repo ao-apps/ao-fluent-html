@@ -60,7 +60,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ blockquote__(IORunnableE<Ex> blockquote) throws IOException, Ex {
+	default <Ex extends Throwable> __ blockquote__(IORunnableE<Ex> blockquote) throws IOException, Ex {
 		return blockquote().__(blockquote);
 	}
 
@@ -73,7 +73,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ blockquote__(IOConsumerE<? super BLOCKQUOTE__<__>, Ex> blockquote) throws IOException, Ex {
+	default <Ex extends Throwable> __ blockquote__(IOConsumerE<? super BLOCKQUOTE__<__>, Ex> blockquote) throws IOException, Ex {
 		return blockquote().__(blockquote);
 	}
 

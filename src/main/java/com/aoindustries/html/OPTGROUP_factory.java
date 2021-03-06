@@ -55,7 +55,7 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ optgroup__(IORunnableE<Ex> optgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ optgroup__(IORunnableE<Ex> optgroup) throws IOException, Ex {
 		return optgroup().__(optgroup);
 	}
 
@@ -67,7 +67,7 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<__>, Ex> optgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<__>, Ex> optgroup) throws IOException, Ex {
 		return optgroup().__(optgroup);
 	}
 

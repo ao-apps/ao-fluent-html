@@ -55,7 +55,7 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ tbody__(IORunnableE<Ex> tbody) throws IOException, Ex {
+	default <Ex extends Throwable> __ tbody__(IORunnableE<Ex> tbody) throws IOException, Ex {
 		return tbody().__(tbody);
 	}
 
@@ -67,7 +67,7 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ tbody__(IOConsumerE<? super TBODY__<__>, Ex> tbody) throws IOException, Ex {
+	default <Ex extends Throwable> __ tbody__(IOConsumerE<? super TBODY__<__>, Ex> tbody) throws IOException, Ex {
 		return tbody().__(tbody);
 	}
 

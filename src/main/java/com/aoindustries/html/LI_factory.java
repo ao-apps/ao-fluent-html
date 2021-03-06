@@ -55,7 +55,7 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ li__(IORunnableE<Ex> li) throws IOException, Ex {
+	default <Ex extends Throwable> __ li__(IORunnableE<Ex> li) throws IOException, Ex {
 		return li().__(li);
 	}
 
@@ -67,7 +67,7 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ li__(IOConsumerE<? super LI__<__>, Ex> li) throws IOException, Ex {
+	default <Ex extends Throwable> __ li__(IOConsumerE<? super LI__<__>, Ex> li) throws IOException, Ex {
 		return li().__(li);
 	}
 

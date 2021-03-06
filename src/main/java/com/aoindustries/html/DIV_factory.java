@@ -55,7 +55,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ div__(IORunnableE<Ex> div) throws IOException, Ex {
+	default <Ex extends Throwable> __ div__(IORunnableE<Ex> div) throws IOException, Ex {
 		return div().__(div);
 	}
 
@@ -67,7 +67,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<__>, Ex> div) throws IOException, Ex {
+	default <Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<__>, Ex> div) throws IOException, Ex {
 		return div().__(div);
 	}
 

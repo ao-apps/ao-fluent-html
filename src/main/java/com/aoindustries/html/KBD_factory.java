@@ -55,7 +55,7 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ kbd__(IORunnableE<Ex> kbd) throws IOException, Ex {
+	default <Ex extends Throwable> __ kbd__(IORunnableE<Ex> kbd) throws IOException, Ex {
 		return kbd().__(kbd);
 	}
 
@@ -67,7 +67,7 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ kbd__(IOConsumerE<? super KBD__<__>, Ex> kbd) throws IOException, Ex {
+	default <Ex extends Throwable> __ kbd__(IOConsumerE<? super KBD__<__>, Ex> kbd) throws IOException, Ex {
 		return kbd().__(kbd);
 	}
 

@@ -55,7 +55,7 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ sub__(IORunnableE<Ex> sub) throws IOException, Ex {
+	default <Ex extends Throwable> __ sub__(IORunnableE<Ex> sub) throws IOException, Ex {
 		return sub().__(sub);
 	}
 
@@ -67,7 +67,7 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ sub__(IOConsumerE<? super SUB__<__>, Ex> sub) throws IOException, Ex {
+	default <Ex extends Throwable> __ sub__(IOConsumerE<? super SUB__<__>, Ex> sub) throws IOException, Ex {
 		return sub().__(sub);
 	}
 

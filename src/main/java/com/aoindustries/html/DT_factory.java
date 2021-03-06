@@ -55,7 +55,7 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ dt__(IORunnableE<Ex> dt) throws IOException, Ex {
+	default <Ex extends Throwable> __ dt__(IORunnableE<Ex> dt) throws IOException, Ex {
 		return dt().__(dt);
 	}
 
@@ -67,7 +67,7 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ dt__(IOConsumerE<? super DT__<__>, Ex> dt) throws IOException, Ex {
+	default <Ex extends Throwable> __ dt__(IOConsumerE<? super DT__<__>, Ex> dt) throws IOException, Ex {
 		return dt().__(dt);
 	}
 

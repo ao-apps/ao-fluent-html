@@ -55,7 +55,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ thead__(IORunnableE<Ex> thead) throws IOException, Ex {
+	default <Ex extends Throwable> __ thead__(IORunnableE<Ex> thead) throws IOException, Ex {
 		return thead().__(thead);
 	}
 
@@ -67,7 +67,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ thead__(IOConsumerE<? super THEAD__<__>, Ex> thead) throws IOException, Ex {
+	default <Ex extends Throwable> __ thead__(IOConsumerE<? super THEAD__<__>, Ex> thead) throws IOException, Ex {
 		return thead().__(thead);
 	}
 

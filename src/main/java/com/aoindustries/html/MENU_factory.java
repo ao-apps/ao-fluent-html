@@ -55,7 +55,7 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ menu__(IORunnableE<Ex> menu) throws IOException, Ex {
+	default <Ex extends Throwable> __ menu__(IORunnableE<Ex> menu) throws IOException, Ex {
 		return menu().__(menu);
 	}
 
@@ -67,7 +67,7 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<__>, Ex> menu) throws IOException, Ex {
+	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<__>, Ex> menu) throws IOException, Ex {
 		return menu().__(menu);
 	}
 

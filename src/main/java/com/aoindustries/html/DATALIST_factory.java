@@ -55,7 +55,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ datalist__(IORunnableE<Ex> datalist) throws IOException, Ex {
+	default <Ex extends Throwable> __ datalist__(IORunnableE<Ex> datalist) throws IOException, Ex {
 		return datalist().__(datalist);
 	}
 
@@ -67,7 +67,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ datalist__(IOConsumerE<? super DATALIST__<__>, Ex> datalist) throws IOException, Ex {
+	default <Ex extends Throwable> __ datalist__(IOConsumerE<? super DATALIST__<__>, Ex> datalist) throws IOException, Ex {
 		return datalist().__(datalist);
 	}
 

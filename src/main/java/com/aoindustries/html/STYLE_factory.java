@@ -75,7 +75,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> STYLE<__> style(Suppliers.String<Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> STYLE<__> style(Suppliers.String<Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 
@@ -101,7 +101,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> STYLE<__> style(IOSupplierE<? extends STYLE.Type, Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> STYLE<__> style(IOSupplierE<? extends STYLE.Type, Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 	// TODO: style__() - go directly to out, since no attributes? Lambda versions, too

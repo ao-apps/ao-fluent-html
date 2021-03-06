@@ -55,7 +55,7 @@ public interface U_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ u__(IORunnableE<Ex> u) throws IOException, Ex {
+	default <Ex extends Throwable> __ u__(IORunnableE<Ex> u) throws IOException, Ex {
 		return u().__(u);
 	}
 
@@ -67,7 +67,7 @@ public interface U_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ u__(IOConsumerE<? super U__<__>, Ex> u) throws IOException, Ex {
+	default <Ex extends Throwable> __ u__(IOConsumerE<? super U__<__>, Ex> u) throws IOException, Ex {
 		return u().__(u);
 	}
 

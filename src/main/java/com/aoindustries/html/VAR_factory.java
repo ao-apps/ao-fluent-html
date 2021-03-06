@@ -55,7 +55,7 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ var__(IORunnableE<Ex> var) throws IOException, Ex {
+	default <Ex extends Throwable> __ var__(IORunnableE<Ex> var) throws IOException, Ex {
 		return var().__(var);
 	}
 
@@ -67,7 +67,7 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ var__(IOConsumerE<? super VAR__<__>, Ex> var) throws IOException, Ex {
+	default <Ex extends Throwable> __ var__(IOConsumerE<? super VAR__<__>, Ex> var) throws IOException, Ex {
 		return var().__(var);
 	}
 

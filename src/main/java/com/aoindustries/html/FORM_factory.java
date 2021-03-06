@@ -70,7 +70,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
-	default<Ex extends Throwable> FORM<__> form(IOSupplierE<? extends String, Ex> action) throws IOException, Ex {
+	default <Ex extends Throwable> FORM<__> form(IOSupplierE<? extends String, Ex> action) throws IOException, Ex {
 		return form().action(action);
 	}
 
@@ -83,7 +83,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ form__(IORunnableE<Ex> form) throws IOException, Ex {
+	default <Ex extends Throwable> __ form__(IORunnableE<Ex> form) throws IOException, Ex {
 		return form().__(form);
 	}
 
@@ -96,7 +96,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ form__(IOConsumerE<? super FORM__<__>, Ex> form) throws IOException, Ex {
+	default <Ex extends Throwable> __ form__(IOConsumerE<? super FORM__<__>, Ex> form) throws IOException, Ex {
 		return form().__(form);
 	}
 

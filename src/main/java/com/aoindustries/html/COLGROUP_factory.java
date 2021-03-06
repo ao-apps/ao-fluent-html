@@ -55,7 +55,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ colgroup__(IORunnableE<Ex> colgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ colgroup__(IORunnableE<Ex> colgroup) throws IOException, Ex {
 		return colgroup().__(colgroup);
 	}
 
@@ -67,7 +67,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ colgroup__(IOConsumerE<? super COLGROUP__<__>, Ex> colgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ colgroup__(IOConsumerE<? super COLGROUP__<__>, Ex> colgroup) throws IOException, Ex {
 		return colgroup().__(colgroup);
 	}
 

@@ -55,7 +55,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ select__(IORunnableE<Ex> select) throws IOException, Ex {
+	default <Ex extends Throwable> __ select__(IORunnableE<Ex> select) throws IOException, Ex {
 		return select().__(select);
 	}
 
@@ -67,7 +67,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default<Ex extends Throwable> __ select__(IOConsumerE<? super SELECT__<__>, Ex> select) throws IOException, Ex {
+	default <Ex extends Throwable> __ select__(IOConsumerE<? super SELECT__<__>, Ex> select) throws IOException, Ex {
 		return select().__(select);
 	}
 

@@ -240,7 +240,8 @@ public class Document implements
 	// TODO: Wrap this writer in XhtmlValidator if is not already validating XHTML?
 	//       If wrapping, consider uses of this losing access to this wrapping, such as NoCloseWriter
 	// TODO: Make this be a ChainWriter?  This might be incorrect as it would encourage using html.out instead of elements and attributes
-	public final Writer out;
+	@SuppressWarnings("PublicField") // TODO: Should this be final again?  Will we always need setOut, such as opening and closing tag separate processing in legacy taglibs?
+	public Writer out;
 
 	public Document(EncodingContext encodingContext, Serialization serialization, Doctype doctype, Writer out) {
 		this.encodingContext = encodingContext;
@@ -288,6 +289,14 @@ public class Document implements
 	 */
 	public Document(ChainWriter out) {
 		this(out.getEncodingContext(), out.getPrintWriter());
+	}
+
+	/**
+	 * Replaces the writer this document is writing to.
+	 * May be set to {@code null}, but must be set to a non-null value again before any additional writes.
+	 */
+	public void setOut(Writer out) {
+		this.out = out;
 	}
 
 	/**

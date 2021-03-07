@@ -317,18 +317,6 @@ public class Document implements
 		return this;
 	}
 
-	/**
-	 * @see Serialization#selfClose(java.lang.Appendable)
-	 *
-	 * @deprecated  Please use specific tag implementations
-	 */
-	// TODO: Remove this method once no longer used
-	@Deprecated
-	public Document selfClose() throws IOException {
-		serialization.selfClose(out);
-		return this;
-	}
-
 	@Override
 	public Document getDocument() {
 		return this;

@@ -44,7 +44,7 @@ abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Conte
 	 */
 	@SuppressWarnings("deprecation")
 	public PC __() throws IOException {
-		document.selfClose();
+		document.serialization.selfClose(document.out);
 		return pc;
 	}
 }

@@ -98,10 +98,17 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
 	 * </p>
+	 * <p>
+	 * Since {@link TextContent} is not a part of {@link Union_Interactive_Phrasing},
+	 * strictly speaking text is not allowed in all possible content models that can apply to <code>&lt;a&gt;</code>.
+	 * However, since it is such a common operation, we've added it here.
+	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @throws  IllegalStateException when {@code text != null} and current content model does not allow text
 	 */
-	default __ a__(Object text) throws IOException {
+	default __ a__(Object text) throws IOException, IllegalStateException {
 		return a().__(text);
 	}
 

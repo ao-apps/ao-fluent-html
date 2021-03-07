@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.lang.LocalizedIllegalStateException;
 import java.io.IOException;
 import java.util.function.Function;
 
@@ -48,6 +49,8 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	AlmostGlobalAttributes<A<PC>>
 {
 
+	private static final com.aoindustries.i18n.Resources RESOURCES = com.aoindustries.i18n.Resources.getResources(A.class);
+
 	public A(Document document, PC pc) {
 		super(document, pc);
 	}
@@ -67,16 +70,19 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	 * Ends attributes, writes a text body, then closes this element.
 	 * <p>
 	 * Since {@link TextContent} is not a part of {@link Union_Interactive_Phrasing},
-	 * strictly speaking text is not allowed in all possible content models.
+	 * strictly speaking text is not allowed in all possible content models that can apply to <code>&lt;a&gt;</code>.
 	 * However, since it is such a common operation, we've added it here.
 	 * </p>
 	 *
 	 * @return  The parent content model this element is within
 	 *
 	 * @see  Document#text(java.lang.Object)
+	 *
+	 * @throws  IllegalStateException when {@code text != null} and current content model does not allow text
 	 */
-	public PC __(Object text) throws IOException {
+	public PC __(Object text) throws IOException, IllegalStateException {
 		if(text != null) {
+			if(!(pc instanceof TextContent)) throw new LocalizedIllegalStateException(RESOURCES, "contentModelNotAllowText", (pc == null) ? "null" : pc.getClass().getName());
 			document.out.append('>');
 			document.incDepth();
 			document.text(text);

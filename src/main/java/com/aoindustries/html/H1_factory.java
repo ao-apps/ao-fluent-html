@@ -43,8 +43,9 @@ public interface H1_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 */
 	default H1<__> h1() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new H1<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new H1<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-section-element">4.3.3 The section element</a>.
@@ -42,14 +43,24 @@ public class SECTION<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected SECTION<PC> writeOpen() throws IOException {
-		document.out.write("<section");
+	protected SECTION<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<select", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></section>" : "</section>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></section>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</section>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

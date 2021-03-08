@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.
@@ -42,14 +43,24 @@ public class TBODY<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected TBODY<PC> writeOpen() throws IOException {
-		document.out.write("<tbody");
+	protected TBODY<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<tbody", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></tbody>" : "</tbody>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></tbody>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</tbody>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

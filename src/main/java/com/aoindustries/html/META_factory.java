@@ -47,8 +47,9 @@ public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 */
 	default META<__> meta() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new META<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new META<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

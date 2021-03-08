@@ -46,8 +46,9 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	 */
 	default IMG<__> img() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new IMG<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new IMG<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 

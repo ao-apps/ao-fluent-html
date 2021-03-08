@@ -30,6 +30,7 @@ import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.i18n.Resources;
+import com.aoindustries.io.NoCloseWriter;
 import com.aoindustries.io.function.IOSupplierE;
 import com.aoindustries.lang.Coercion;
 import com.aoindustries.lang.LocalizedIllegalArgumentException;
@@ -50,8 +51,6 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Skip the space before attribute name after element had nl() called?
-//       This may require more tracking than it's worth, especially considerting the potential for direct unsafe writes.
 // TODO: We should probably be using long/Long for integer values.
 // TODO: Review which attributes should be trimmed and/or nullIfEmpty
 public class Attributes {
@@ -137,14 +136,21 @@ public class Attributes {
 
 		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
 			if(value) {
-				Writer out = element.document.out;
-				out.append(' ').write(name);
-				if(element.document.serialization == Serialization.XML) {
+				Document document = element.document;
+				Writer out = document.getUnsafe(null);
+				if(document.getAtnl()) {
+					document.autoIndent(out, 1);
+					document.clearAtnl();
+				} else {
+					out.append(' ');
+				}
+				out.write(name);
+				if(document.serialization == Serialization.XML) {
 					out.write("=\"");
 					out.write(name);
 					out.append('"');
 				} else {
-					assert element.document.serialization == Serialization.SGML;
+					assert document.serialization == Serialization.SGML;
 				}
 			}
 			return element;
@@ -214,8 +220,15 @@ public class Attributes {
 		private Integer() {}
 
 		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, int value) throws IOException {
-			Writer out = element.document.out;
-			out.append(' ').write(name);
+			Document document = element.document;
+			Writer out = document.getUnsafe(null);
+			if(document.getAtnl()) {
+				document.autoIndent(out, 1);
+				document.clearAtnl();
+			} else {
+				out.append(' ');
+			}
+			out.write(name);
 			out.write("=\"");
 			out.write(java.lang.Integer.toString(value));
 			out.append('"');
@@ -250,12 +263,27 @@ public class Attributes {
 			if(value != null) {
 				if(value == NO_VALUE) { // Identity comparison for marker value
 					// Empty attribute
-					element.document.out.append(' ').write(name);
+					Document document = element.document;
+					Writer out = document.getUnsafe(null);
+					if(document.getAtnl()) {
+						document.autoIndent(out, 1);
+						document.clearAtnl();
+					} else {
+						out.append(' ');
+					}
+					out.write(name);
 				} else {
 					if(trim) value = value.trim(); // TODO: These trims should all be from Strings?
 					if(!nullIfEmpty || !value.isEmpty()) {
-						Writer out = element.document.out;
-						out.append(' ').write(name);
+						Document document = element.document;
+						Writer out = document.getUnsafe(null);
+						if(document.getAtnl()) {
+							document.autoIndent(out, 1);
+							document.clearAtnl();
+						} else {
+							out.append(' ');
+						}
+						out.write(name);
 						out.write("=\"");
 						if(markupType == null || markupType == MarkupType.NONE) {
 							// Short-cut additional type checks done by Coercion, since we already have a String
@@ -293,26 +321,36 @@ public class Attributes {
 			if(value != null) {
 				if(value instanceof MediaWritable<?>) {
 					@SuppressWarnings("unchecked") MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
-					Writer out = element.document.out;
-					out.append(' ').write(name);
+					Document document = element.document;
+					Writer out = document.getUnsafe(null);
+					if(document.getAtnl()) {
+						document.autoIndent(out, 1);
+						document.clearAtnl();
+					} else {
+						out.append(' ');
+					}
+					out.write(name);
 					out.write("=\"");
 					writer.writeTo(
 						// Not using DocumentMediaWriter for three reasons:
 						// 1) Newlines and tabs should be encoded within the attribute, not written directly out
 						// 2) The attribute content should have its own indentation scope and settings
 						// 3) Attribute value indentation should be off by default always
-						new MediaWriter(element.document.encodingContext, encoder, out) {
-							@Override
-							public void close() throws IOException {
-								// Do not close underlying writer
-							}
-						}
+						new MediaWriter(document.encodingContext, encoder, new NoCloseWriter(out))
 					);
 					out.append('"');
 				} else {
 					if(value == NO_VALUE) { // Identity comparison for marker value
 						// Empty attribute
-						element.document.out.append(' ').write(name);
+						Document document = element.document;
+						Writer out = document.getUnsafe(null);
+						if(document.getAtnl()) {
+							document.autoIndent(out, 1);
+							document.clearAtnl();
+						} else {
+							out.append(' ');
+						}
+						out.write(name);
 						// TODO: When serialization is XML, set equal to attribute name or empty?
 					} else {
 						if(trim) {
@@ -325,8 +363,15 @@ public class Attributes {
 							value = Coercion.nullIfEmpty(value);
 						}
 						if(value != null) {
-							Writer out = element.document.out;
-							out.append(' ').write(name);
+							Document document = element.document;
+							Writer out = document.getUnsafe(null);
+							if(document.getAtnl()) {
+								document.autoIndent(out, 1);
+								document.clearAtnl();
+							} else {
+								out.append(' ');
+							}
+							out.write(name);
 							out.write("=\"");
 							MarkupCoercion.write(value, markupType, true, encoder, false, out);
 							out.append('"');
@@ -345,7 +390,8 @@ public class Attributes {
 		@SuppressWarnings("AssignmentToForLoopParameter")
 		public static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object[] values, java.lang.String separator, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			if(values != null) {
-				Writer out = element.document.out;
+				Document document = element.document;
+				Writer out = document.getUnsafe(null);
 				boolean attr = false;
 				boolean val = false;
 				for(Object value : values) {
@@ -362,7 +408,13 @@ public class Attributes {
 								if(separator != null) out.write(separator);
 							} else {
 								if(!attr) {
-									out.append(' ').write(name);
+									if(document.getAtnl()) {
+										document.autoIndent(out, 1);
+										document.clearAtnl();
+									} else {
+										out.append(' ');
+									}
+									out.write(name);
 									attr = true;
 								}
 								out.write("=\"");
@@ -373,18 +425,19 @@ public class Attributes {
 								// 1) Newlines and tabs should be encoded within the attribute, not written directly out
 								// 2) The attribute content should have its own indentation scope and settings
 								// 3) Attribute value indentation should be off by default always
-								new MediaWriter(element.document.encodingContext, encoder, out) {
-									@Override
-									public void close() throws IOException {
-										// Do not close underlying writer
-									}
-								}
+								new MediaWriter(document.encodingContext, encoder, new NoCloseWriter(out))
 							);
 						} else {
 							if(value == NO_VALUE) { // Identity comparison for marker value
 								// Empty attribute
 								if(!attr) {
-									out.append(' ').write(name);
+									if(document.getAtnl()) {
+										document.autoIndent(out, 1);
+										document.clearAtnl();
+									} else {
+										out.append(' ');
+									}
+									out.write(name);
 									attr = true;
 								}
 								// TODO: When serialization is XML, set equal to attribute name or empty?
@@ -404,7 +457,13 @@ public class Attributes {
 										if(separator != null) out.write(separator);
 									} else {
 										if(!attr) {
-											out.append(' ').write(name);
+											if(document.getAtnl()) {
+												document.autoIndent(out, 1);
+												document.clearAtnl();
+											} else {
+												out.append(' ');
+											}
+											out.write(name);
 											attr = true;
 										}
 										out.write("=\"");
@@ -438,8 +497,15 @@ public class Attributes {
 
 		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
 			if(url != null) {
-				Writer out = element.document.out;
-				out.append(' ').write(name);
+				Document document = element.document;
+				Writer out = document.getUnsafe(null);
+				if(document.getAtnl()) {
+					document.autoIndent(out, 1);
+					document.clearAtnl();
+				} else {
+					out.append(' ');
+				}
+				out.write(name);
 				out.write("=\"");
 				// TODO: UrlInXhtmlAttributeEncoder once RFC 3987 supported
 				textInXhtmlAttributeEncoder.write(url, out);

@@ -51,19 +51,18 @@ public class GoogleAnalytics {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
-			document.link(LINK.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__().nl();
-			document.link(LINK.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(LINK.Crossorigin.ANONYMOUS).__().nl();
-			// .out.write("<!-- Global site tag (gtag.js) - Google Analytics -->").nl()
+			document.link(LINK.Rel.DNS_PREFETCH).href("https://www.google-analytics.com").__();
+			document.link(LINK.Rel.PRECONNECT).href("https://www.google-analytics.com").crossorigin(LINK.Crossorigin.ANONYMOUS).__();
+			// .out.write("<!-- Global site tag (gtag.js) - Google Analytics -->").autoNl()
 			// TODO: Attribute streaming src
 			document
-				.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trimmedId)).__().nl()
-				.script().out(script -> script
+				.script().async(true).src("https://www.googletagmanager.com/gtag/js?id=" + URIEncoder.encodeURIComponent(trimmedId)).__()
+				.script().out(script -> script.indent()
 					.append("window.dataLayer = window.dataLayer || [];").nli()
 					.append("function gtag(){dataLayer.push(arguments);}").nli()
-					.append("gtag(\"js\", new Date());").nli() // .nl()
-					// .nli()
+					.append("gtag(\"js\", new Date());").nli()
 					.append("gtag(\"config\", ").text(trimmedId).append(");")
-				).__().nl();
+				).__();
 		}
 	}
 
@@ -78,14 +77,14 @@ public class GoogleAnalytics {
 	public static void writeAnalyticsJs(Document document, String trackingId) throws IOException {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
-			document.script().out(script -> script
+			document.script().out(script -> script.indent()
 				.append("(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){").nli()
 				.append("(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),").nli()
 				.append("m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)").nli()
 				.append("})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");").nli()
 				.append("ga(\"create\",").text(trimmedId).append(",\"auto\");").nli()
 				.append("ga(\"send\",\"pageview\");")
-			).__().nl();
+			).__();
 		}
 	}
 }

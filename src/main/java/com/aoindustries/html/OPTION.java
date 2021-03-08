@@ -31,6 +31,7 @@ import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -56,8 +57,8 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	}
 
 	@Override
-	protected OPTION<PC> writeOpen() throws IOException {
-		document.out.write("<option");
+	protected OPTION<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<option", false);
 		return this;
 	}
 
@@ -147,18 +148,32 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
-		if(text != null) {
-			document.out.append('>');
-			document.incDepth();
-			// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
-			// Allow text markup from translations
-			MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, document.out);
-			document.decDepth();
-			document.out.write("</option>");
+		if(text == null) {
+			return __();
 		} else {
-			document.out.write("></option>");
+			Writer out = document.getUnsafe(null);
+			document.autoIndent(out).unsafe(out, '>').incDepth();
+			boolean oldAutonli = document.getAutonli();
+			if(oldAutonli) document.setAutonli(false);
+			boolean oldIndent = document.getIndent();
+			if(oldIndent) document.setIndent(false);
+			try {
+				// TODO: Only allow markup when the value has been set (auto-set value from text like ao-taglib?)
+				// Allow text markup from translations
+				MarkupCoercion.write(text, MarkupType.TEXT, true, textInXhtmlEncoder, false, out);
+			} finally {
+				document
+					.setIndent(oldIndent)
+					.setAutonli(oldAutonli);
+			}
+			document
+				// Set in "unsafe" below: .clearAtnl() // Unknown, safe to assume not at newline
+				.decDepth()
+				// Assumed not at newline: .autoIndent()
+				.unsafe(out, "</option>", false)
+				.autoNl(out);
+			return pc;
 		}
-		return pc;
 	}
 
 	/**
@@ -178,23 +193,36 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC text__(MediaWritable<Ex> text) throws IOException, Ex {
-		if(text != null) {
-			document.out.append('>');
-			// TODO: Should this set depth back to zero?  Pre and TextArea will need to.
-			document.incDepth();
-			text.writeTo(
-				new DocumentMediaWriter(
-					document,
-					textInXhtmlEncoder,
-					new NoCloseWriter(document.out)
-				)
-			);
-			document.decDepth();
-			document.out.write("</option>");
+		if(text == null) {
+			return __();
 		} else {
-			document.out.write("></option>");
+			Writer out = document.getUnsafe(null);
+			document.autoIndent(out).unsafe(out, '>').incDepth();
+			boolean oldAutonli = document.getAutonli();
+			if(oldAutonli) document.setAutonli(false);
+			boolean oldIndent = document.getIndent();
+			if(oldIndent) document.setIndent(false);
+			try {
+				text.writeTo(
+					new DocumentMediaWriter(
+						document,
+						textInXhtmlEncoder,
+						new NoCloseWriter(out)
+					)
+				);
+			} finally {
+				document
+					.setIndent(oldIndent)
+					.setAutonli(oldAutonli);
+			}
+			document
+				// Set in "unsafe" below: .clearAtnl() // Unknown, safe to assume not at newline
+				.decDepth()
+				// Assumed not at newline: .autoIndent()
+				.unsafe(out, "</option>", false).
+				autoNl(out);
+			return pc;
 		}
-		return pc;
 	}
 
 	/**
@@ -202,16 +230,27 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 * Does not perform any translation markups.
 	 * This is well suited for use in a try-with-resources block.
 	 */
-	// TODO: __() method to end text?  Call it "ContentWriter"?
+	// TODO: __() method on DocumentMediaWriter to end text?  Call it "ContentWriter"?
 	public DocumentMediaWriter text__() throws IOException {
-		document.out.append('>');
-		// TODO: Should this set depth back to zero?  Pre and TextArea will need to.
-		document.incDepth();
-		return new DocumentMediaWriter(document, textInXhtmlEncoder) {
+		Writer out = document.getUnsafe(null);
+		document.autoIndent(out).unsafe(out, '>').incDepth();
+		boolean oldAutonli = document.getAutonli();
+		if(oldAutonli) document.setAutonli(false);
+		boolean oldIndent = document.getIndent();
+		if(oldIndent) document.setIndent(false);
+		return new DocumentMediaWriter(document, textInXhtmlEncoder, out) {
 			@Override
 			public void close() throws IOException {
-				document.decDepth();
-				document.out.write("</option>");
+				// Get a new "out", just in case changed before closing, such as in legacy JSP taglibs
+				Writer out = document.getUnsafe(null);
+				document
+					.setIndent(oldIndent)
+					.setAutonli(oldAutonli)
+					// Set in "unsafe" below: .clearAtnl() // Unknown, safe to assume not at newline
+					.decDepth()
+					// Assumed not at newline: .autoIndent()
+					.unsafe(out, "</option>", false)
+					.autoNl(out);
 			}
 		};
 	}
@@ -222,7 +261,8 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
-		document.out.write("></option>");
+		Writer out = document.getUnsafe(null);
+		document.autoIndent(out).unsafe(out, "></option>", false).autoNl(out);
 		return pc;
 	}
 }

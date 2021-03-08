@@ -43,8 +43,9 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 */
 	default TBODY<__> tbody() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new TBODY<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TBODY<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

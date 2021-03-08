@@ -43,8 +43,9 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 */
 	default OPTGROUP<__> optgroup() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new OPTGROUP<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new OPTGROUP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

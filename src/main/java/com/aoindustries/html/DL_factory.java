@@ -43,8 +43,9 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 */
 	default DL<__> dl() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new DL<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new DL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

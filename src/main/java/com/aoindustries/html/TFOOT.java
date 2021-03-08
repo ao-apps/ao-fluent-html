@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.
@@ -42,14 +43,24 @@ public class TFOOT<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected TFOOT<PC> writeOpen() throws IOException {
-		document.out.write("<tfoot");
+	protected TFOOT<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<tfoot", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></tfoot>" : "</tfoot>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></tfoot>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</tfoot>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

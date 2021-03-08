@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -62,9 +63,14 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	}
 
 	@Override
-	protected AREA<PC> writeOpen() throws IOException {
-		document.out.write("<area");
+	protected AREA<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<area", false);
 		return this;
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 	}
 
 	/**

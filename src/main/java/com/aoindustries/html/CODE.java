@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
@@ -42,14 +43,14 @@ public class CODE<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected CODE<PC> writeOpen() throws IOException {
-		document.out.write("<code");
+	protected CODE<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<code", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></code>" : "</code>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></code>" : "</code>", false);
 	}
 
 	@Override

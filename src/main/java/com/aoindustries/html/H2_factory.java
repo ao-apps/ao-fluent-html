@@ -43,8 +43,9 @@ public interface H2_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 */
 	default H2<__> h2() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new H2<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new H2<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

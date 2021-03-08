@@ -49,8 +49,9 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 */
 	default SCRIPT<__> script() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new SCRIPT<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new SCRIPT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**
@@ -63,8 +64,9 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 */
 	default SCRIPT<__> script(String type) throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new SCRIPT<>(getDocument(), pc, type).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
 	/**
@@ -89,8 +91,9 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 */
 	default SCRIPT<__> script(SCRIPT.Type type) throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new SCRIPT<>(getDocument(), pc, type).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

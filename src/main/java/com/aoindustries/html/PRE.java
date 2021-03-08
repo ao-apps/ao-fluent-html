@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-pre-element">4.4.3 The pre element</a>.
@@ -37,7 +38,7 @@ public class PRE<PC extends PalpableContent<PC>> extends
 	AlmostGlobalAttributes<PRE<PC>>
 {
 
-	// TODO: Disable autonl, too, once feature added
+	private boolean oldAutonli;
 	private boolean oldIndent;
 
 	public PRE(Document document, PC pc) {
@@ -45,17 +46,30 @@ public class PRE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected PRE<PC> writeOpen() throws IOException {
-		oldIndent = document.getIndent();
-		if(oldIndent) document.setIndent(false);
-		document.out.write("<pre");
+	protected PRE<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<pre", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></pre>" : "</pre>");
-		if(oldIndent) document.setIndent(true);
+	protected void doBeforeBody(Writer out) throws IOException {
+		oldAutonli = document.getAutonli();
+		if(oldAutonli) document.setAutonli(false);
+		oldIndent = document.getIndent();
+		if(oldIndent) document.setIndent(false);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document
+			.setIndent(oldIndent)
+			.setAutonli(oldAutonli);
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></pre>", false);
+		} else {
+			document.unsafe(out, "</pre>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

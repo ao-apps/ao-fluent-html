@@ -118,22 +118,30 @@ public interface Autocomplete<
 	@Attributes.Funnel
 	default E autocomplete(String ... autocomplete) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype != Doctype.HTML5) {
+		Document document = element.getDocument();
+		if(document.doctype != Doctype.HTML5) {
 			throw new LocalizedIllegalArgumentException(
 				RESOURCES,
 				"onlySupportedInHtml5",
-				element.getDocument().doctype,
+				document.doctype,
 				"autocomplete"
 			);
 		}
 		if(autocomplete != null) {
-			Writer out = element.getDocument().out;
+			Writer out = document.getUnsafe(null);
 			boolean didOne = false;
 			for(String value : autocomplete) {
 				String trimmed = Strings.trimNullIfEmpty(value);
 				if(trimmed != null) {
 					if(!didOne) {
-						out.write(" autocomplete=\"");
+						if(document.getAtnl()) {
+							// Can't access: document.autoIndent(out, 1);
+							document.autoIndent(1);
+							out.write("autocomplete=\"");
+							document.clearAtnl();
+						} else {
+							out.write(" autocomplete=\"");
+						}
 						didOne = true;
 					} else {
 						out.append(' ');
@@ -159,26 +167,34 @@ public interface Autocomplete<
 	@SuppressWarnings("unchecked") // generic varargs
 	default E autocomplete(V ... autocomplete) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		if(element.getDocument().doctype != Doctype.HTML5) {
+		Document document = element.getDocument();
+		if(document.doctype != Doctype.HTML5) {
 			throw new LocalizedIllegalArgumentException(
 				RESOURCES,
 				"onlySupportedInHtml5",
-				element.getDocument().doctype,
+				document.doctype,
 				"autocomplete"
 			);
 		}
 		if(autocomplete != null) {
-			Writer out = element.getDocument().out;
+			Writer out = document.getUnsafe(null);
 			boolean didOne = false;
 			for(V value : autocomplete) {
 				if(value != null) {
 					if(!didOne) {
-						out.write(" autocomplete=\"");
+						if(document.getAtnl()) {
+							// Can't access: document.autoIndent(out, 1);
+							document.autoIndent(1);
+							out.write("autocomplete=\"");
+							document.clearAtnl();
+						} else {
+							out.write(" autocomplete=\"");
+						}
 						didOne = true;
 					} else {
 						out.append(' ');
 					}
-					encodeTextInXhtmlAttribute(value.apply(element.getDocument()), out);
+					encodeTextInXhtmlAttribute(value.apply(document), out);
 				}
 			}
 			if(didOne) out.append('"');

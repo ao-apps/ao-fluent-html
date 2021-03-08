@@ -25,6 +25,7 @@ package com.aoindustries.html;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -52,9 +53,14 @@ public class PARAM<PC extends Content<PC>> extends VoidElement<PARAM<PC>, PC> im
 	}
 
 	@Override
-	protected PARAM<PC> writeOpen() throws IOException {
-		document.out.write("<param");
+	protected PARAM<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<param", false);
 		return this;
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 	}
 
 	/**

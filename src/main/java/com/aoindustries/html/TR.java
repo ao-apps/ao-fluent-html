@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
@@ -42,14 +43,24 @@ public class TR<PC extends Union_TBODY_THEAD_TFOOT<PC>> extends
 	}
 
 	@Override
-	protected TR<PC> writeOpen() throws IOException {
-		document.out.write("<tr");
+	protected TR<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<tr", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></tr>" : "</tr>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></tr>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</tr>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

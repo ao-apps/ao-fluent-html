@@ -22,7 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#void-elements">13.1.2 Elements / Void elements</a>.
@@ -44,7 +46,31 @@ abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Conte
 	 */
 	@SuppressWarnings("deprecation")
 	public PC __() throws IOException {
-		document.serialization.selfClose(document.out);
+		Writer out = document.getUnsafe(null);
+		if(document.getAtnl()) {
+			document.autoIndent(out);
+			if(document.serialization == Serialization.SGML) {
+				out.append('>');
+			} else {
+				assert document.serialization == Serialization.XML;
+				out.write("/>");
+			}
+			document.clearAtnl();
+		} else {
+			document.serialization.selfClose(out);
+		}
+		assert !document.getAtnl();
+		doAfterElement(out);
 		return pc;
+	}
+
+	/**
+	 * Called after the element is closed.
+	 * <p>
+	 * An common use is expected to be invoking {@link Document#autoNl(java.io.Writer)}.
+	 * </p>
+	 */
+	protected void doAfterElement(Writer out) throws IOException {
+		// Do nothing
 	}
 }

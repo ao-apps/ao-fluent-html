@@ -43,8 +43,9 @@ public interface SUP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 */
 	default SUP<__> sup() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new SUP<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new SUP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

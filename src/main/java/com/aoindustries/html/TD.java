@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-td-element">4.9.9 The td element</a>.
@@ -45,14 +46,14 @@ public class TD<PC extends TR_content<PC>> extends
 	}
 
 	@Override
-	protected TD<PC> writeOpen() throws IOException {
-		document.out.write("<td");
+	protected TD<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<td", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></td>" : "</td>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></td>" : "</td>", false).autoNl(out);
 	}
 
 	@Override

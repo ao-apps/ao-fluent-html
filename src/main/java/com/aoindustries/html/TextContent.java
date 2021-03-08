@@ -119,11 +119,43 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 		return c;
 	}
 
-	// TODO: text(CharSequence)?
-	// TODO: text(CharSequence, int, int)?
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Does not perform any translation markups.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ text(CharSequence csq) throws IOException {
+		getDocument().text(csq);
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
 
 	/**
 	 * {@inheritDoc}
+	 * <p>
+	 * Does not perform any translation markups.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	// Note: Must be implemented in Document to avoid infinite recursion
+	@Override
+	default __ text(CharSequence csq, int start, int end) throws IOException {
+		getDocument().text(csq, start, end);
+		@SuppressWarnings("unchecked") __ c = (__)this;
+		return c;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * When no knowledge of what will be written, calls {@link #clearAtnl()} to be safe.
+	 * </p>
 	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
@@ -141,6 +173,9 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * {@inheritDoc}
 	 * <p>
+	 * When no knowledge of what will be written, calls {@link #clearAtnl()} to be safe.
+	 * </p>
+	 * <p>
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
 	 *
@@ -157,6 +192,9 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * {@inheritDoc}
 	 * <p>
+	 * With no knowledge of what will be written, calls {@link #clearAtnl()} to be safe.
+	 * </p>
+	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>
 	 *
@@ -172,6 +210,9 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 
 	/**
 	 * {@inheritDoc}
+	 * <p>
+	 * With no knowledge of what will be written, calls {@link #clearAtnl()} to be safe.
+	 * </p>
 	 * <p>
 	 * Does not perform any translation markups.
 	 * </p>

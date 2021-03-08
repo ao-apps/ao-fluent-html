@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
@@ -45,14 +46,24 @@ public class OL<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected OL<PC> writeOpen() throws IOException {
-		document.out.write("<ol");
+	protected OL<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<ol", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></ol>" : "</ol>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></ol>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</ol>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

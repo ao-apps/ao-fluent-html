@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
@@ -38,14 +39,14 @@ public class H5<PC extends HeadingContent<PC>> extends H<H5<PC>, PC, H5__<PC>, H
 	}
 
 	@Override
-	protected H5<PC> writeOpen() throws IOException {
-		document.out.write("<h5");
+	protected H5<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<h5", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></h5>" : "</h5>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></h5>" : "</h5>", false).autoNl(out);
 	}
 
 	@Override

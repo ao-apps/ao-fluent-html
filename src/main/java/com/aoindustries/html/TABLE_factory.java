@@ -52,8 +52,9 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	 */
 	default TABLE<__> table() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new TABLE<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TABLE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

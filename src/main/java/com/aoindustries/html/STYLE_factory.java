@@ -49,8 +49,9 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 */
 	default STYLE<__> style() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new STYLE<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new STYLE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**
@@ -63,8 +64,9 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 */
 	default STYLE<__> style(String type) throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new STYLE<>(getDocument(), pc, type).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
 	/**
@@ -89,8 +91,9 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 */
 	default STYLE<__> style(STYLE.Type type) throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new STYLE<>(getDocument(), pc, type).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

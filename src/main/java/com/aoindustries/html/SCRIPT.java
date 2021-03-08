@@ -36,6 +36,7 @@ import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.Locale;
 
 /**
@@ -142,8 +143,8 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	}
 
 	@Override
-	protected SCRIPT<PC> writeOpen() throws IOException {
-		document.out.write("<script");
+	protected SCRIPT<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<script", false);
 		SCRIPT<PC> s = type();
 		assert s == this;
 		return this;
@@ -156,17 +157,35 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	 */
 	@SuppressWarnings("deprecation")
 	protected SCRIPT<PC> type() throws IOException {
+		Writer out = document.getUnsafe(null);
 		// TODO: Check didBody here and other attributes, perhaps in some central attribute registry that detects duplicate attributes, too
 		if(
 			type == null
 			|| type.equals(ContentType.JAVASCRIPT)
 			|| type.equals(ContentType.JAVASCRIPT_OLD)
 		) {
-			document.doctype.scriptType(document.out);
+			String typeAttr = document.doctype.getScriptType();
+			int len = typeAttr.length();
+			if(len > 0) {
+				if(document.getAtnl()) {
+					assert typeAttr.charAt(0) == ' ';
+					document.autoIndent(out, 1);
+					out.write(typeAttr, 1, len - 1);
+					document.clearAtnl();
+				} else {
+					out.write(typeAttr);
+				}
+			}
 		} else {
-			document.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, document.out);
-			document.out.append('"');
+			if(document.getAtnl()) {
+				document.autoIndent(out, 1);
+				out.write("type=\"");
+				document.clearAtnl();
+			} else {
+				out.write(" type=\"");
+			}
+			encodeTextInXhtmlAttribute(type, out);
+			out.append('"');
 		}
 		return this;
 	}
@@ -194,11 +213,12 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 
 	private boolean didBody;
 
-	protected void startBody() throws IOException {
+	protected void startBody(Writer out) throws IOException {
 		if(!didBody) {
-			document.out.append('>');
-			if(doCdata()) document.out.write("//<![CDATA[");
-			document.incDepth().nli();
+			document
+				.autoIndent(out)
+				.unsafe(out, doCdata() ? (">//<![CDATA[" + NL) : (">" + NL), true)
+				.incDepth();
 			didBody = true;
 		}
 	}
@@ -225,7 +245,8 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 		}
 		script = Coercion.nullIfEmpty(script);
 		if(script != null) {
-			startBody();
+			Writer out = document.getUnsafe(null);
+			startBody(out);
 			// Allow text markup from translations
 			MediaType mediaType = getMediaType();
 			MarkupCoercion.write(
@@ -234,8 +255,9 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 				true,
 				getMediaEncoder(mediaType),
 				false,
-				document.out
+				out
 			);
+			document.clearAtnl(); // Unknown, safe to assume not at newline
 		}
 		return this;
 	}
@@ -253,14 +275,16 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	public <Ex extends Throwable> SCRIPT<PC> out(ScriptWriter<Ex> script) throws IOException, Ex {
 		if(script != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
-			startBody();
+			Writer out = document.getUnsafe(null);
+			startBody(out);
 			script.writeScript(
 				new DocumentMediaWriter(
 					document,
 					encoder,
-					new NoCloseWriter(document.out)
+					new NoCloseWriter(out)
 				)
 			);
+			document.clearAtnl(); // Unknown, safe to assume not at newline
 		}
 		return this;
 	}
@@ -273,8 +297,9 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	// TODO: __() method to end text?  Call it "ContentWriter"?
 	public DocumentMediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
-		startBody();
-		return new DocumentMediaWriter(document, encoder) {
+		Writer out = document.getUnsafe(null);
+		startBody(out);
+		return new DocumentMediaWriter(document, encoder, out) {
 			@Override
 			public void close() throws IOException {
 				__();
@@ -288,13 +313,13 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
+		Writer out = document.getUnsafe(null);
 		if(!didBody) {
-			document.out.write("></script>");
+			document.autoIndent(out).unsafe(out, "></script>", false);
 		} else {
-			document.decDepth().nli();
-			if(doCdata()) document.out.write("//]]>");
-			document.out.write("</script>");
+			document.decDepth().nli(out).unsafe(out, doCdata() ? "//]]></script>" : "</script>", false);
 		}
+		document.autoNl(out);
 		return pc;
 	}
 }

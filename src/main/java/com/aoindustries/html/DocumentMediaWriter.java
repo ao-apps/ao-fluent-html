@@ -47,7 +47,7 @@ public class DocumentMediaWriter extends MediaWriter {
 	}
 
 	public DocumentMediaWriter(Document document, MediaEncoder encoder) {
-		this(document, encoder, document.out);
+		this(document, encoder, document.getUnsafe(null));
 	}
 
 	public Document getDocument() {
@@ -232,8 +232,17 @@ public class DocumentMediaWriter extends MediaWriter {
 		return this;
 	}
 
-	// TODO: text(CharSequence)?
-	// TODO: text(CharSequence, int, int)?
+	@Override
+	public DocumentMediaWriter text(CharSequence csq) throws IOException {
+		super.text(csq);
+		return this;
+	}
+
+	@Override
+	public DocumentMediaWriter text(CharSequence csq, int start, int end) throws IOException {
+		super.text(csq, start, end);
+		return this;
+	}
 
 	@Override
 	public DocumentMediaWriter text(Object text) throws IOException {

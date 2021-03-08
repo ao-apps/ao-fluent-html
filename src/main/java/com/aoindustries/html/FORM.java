@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -56,14 +57,24 @@ public class FORM<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected FORM<PC> writeOpen() throws IOException {
-		document.out.write("<form");
+	protected FORM<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<form", false); // TODO: Is whitespace around <form> ok? autoIndent() instead like SELECT?
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></form>" : "</form>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></form>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</form>", false);
+		}
+		document.autoNl(out); // TODO: Is whitespace around <form> ok? No final autoNl() like SELECT?
 	}
 
 	@Override

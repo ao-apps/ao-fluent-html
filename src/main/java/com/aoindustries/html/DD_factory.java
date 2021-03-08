@@ -43,8 +43,9 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 */
 	default DD<__> dd() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new DD<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new DD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

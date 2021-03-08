@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
@@ -42,14 +43,14 @@ public class DD<PC extends Union_DIV_DL<PC>> extends
 	}
 
 	@Override
-	protected DD<PC> writeOpen() throws IOException {
-		document.out.write("<dd");
+	protected DD<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<dd", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></dd>" : "</dd>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></dd>" : "</dd>", false).autoNl(out);
 	}
 
 	@Override

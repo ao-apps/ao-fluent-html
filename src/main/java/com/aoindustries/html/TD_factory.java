@@ -43,8 +43,9 @@ public interface TD_factory<__ extends TR_content<__>> extends Content<__> {
 	 */
 	default TD<__> td() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new TD<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

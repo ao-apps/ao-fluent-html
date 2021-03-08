@@ -24,6 +24,7 @@ package com.aoindustries.html;
 
 import com.aoindustries.lang.LocalizedIllegalStateException;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -56,14 +57,14 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected A<PC> writeOpen() throws IOException {
-		document.out.write("<a");
+	protected A<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<a", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></a>" : "</a>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></a>" : "</a>", false);
 	}
 
 	/**
@@ -77,19 +78,18 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	 * @return  The parent content model this element is within
 	 *
 	 * @see  Document#text(java.lang.Object)
+	 * @see  NormalText#__(java.lang.Object)
 	 *
 	 * @throws  IllegalStateException when {@code text != null} and current content model does not allow text
 	 */
 	public PC __(Object text) throws IOException, IllegalStateException {
+		Writer out = document.getUnsafe(null);
 		if(text != null) {
 			if(!(pc instanceof TextContent)) throw new LocalizedIllegalStateException(RESOURCES, "contentModelNotAllowText", (pc == null) ? "null" : pc.getClass().getName());
-			document.out.append('>');
-			document.incDepth();
-			document.text(text);
-			document.decDepth();
-			writeClose(false);
+			document.autoIndent(out).unsafe(out, '>').incDepth().text(out, text).decDepth();
+			writeClose(out, false);
 		} else {
-			writeClose(true);
+			writeClose(out, true);
 		}
 		return pc;
 	}

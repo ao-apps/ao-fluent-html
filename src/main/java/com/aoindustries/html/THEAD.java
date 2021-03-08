@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
@@ -42,14 +43,24 @@ public class THEAD<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected THEAD<PC> writeOpen() throws IOException {
-		document.out.write("<thead");
+	protected THEAD<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<thead", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></thead>" : "</thead>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></thead>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</thead>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

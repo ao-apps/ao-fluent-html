@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-optgroup-element">4.10.9 The optgroup element</a>.
@@ -44,14 +45,24 @@ public class OPTGROUP<PC extends SELECT_content<PC>> extends
 	}
 
 	@Override
-	protected OPTGROUP<PC> writeOpen() throws IOException {
-		document.out.write("<optgroup");
+	protected OPTGROUP<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<optgroup", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></optgroup>" : "</optgroup>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></optgroup>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</optgroup>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

@@ -43,8 +43,9 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 */
 	default SELECT<__> select() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new SELECT<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new SELECT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

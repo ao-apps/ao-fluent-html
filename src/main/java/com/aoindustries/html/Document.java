@@ -29,10 +29,12 @@ import com.aoindustries.encoding.MediaWritable;
 import com.aoindustries.encoding.Serialization;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import static com.aoindustries.encoding.TextInXhtmlEncoder.textInXhtmlEncoder;
-import static com.aoindustries.encoding.WhitespaceWriter.NL;
 import com.aoindustries.encoding.WriterUtil;
 import com.aoindustries.io.NoCloseWriter;
+import com.aoindustries.io.Writable;
 import com.aoindustries.io.function.IOSupplierE;
+import com.aoindustries.lang.Coercion;
+import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
@@ -40,6 +42,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -224,6 +227,8 @@ public class Document implements
 	 */
 	public static final Charset ENCODING = StandardCharsets.UTF_8;
 
+	static final com.aoindustries.i18n.Resources RESOURCES = com.aoindustries.i18n.Resources.getResources(Document.class);
+
 	public final EncodingContext encodingContext;
 	// TODO: Remove this and just use encodingContext?
 	public final Serialization serialization;
@@ -233,16 +238,38 @@ public class Document implements
 	/**
 	 * Writer for raw output.
 	 * <p>
-	 * TODO: This field will possibly become "protected" (or deprecated to minimize direct usage) once the full set of HTML tags have been implemented.
-	 *       Or, access to it will be provided either directly or through methods named "unsafe".
+	 * TODO: This field will possibly become "protected" once the full set of HTML tags have been implemented.
 	 * </p>
+	 *
+	 * @deprecated  Direct use of this output may throw-off the automatic newlines and indentation.  Please use any of the
+	 *              {@code unsafe(…)} methods.
+	 *
+	 * @see  #unsafe()
+	 * @see  #unsafe(java.lang.CharSequence)
+	 * @see  #unsafe(com.aoindustries.io.function.IOSupplierE)
+	 * @see  #unsafe(java.lang.Object)
+	 * @see  #unsafe(com.aoindustries.io.Writable)
+	 * @see  #unsafe(char)
+	 * @see  #unsafe(char[])
+	 * @see  #unsafe(java.lang.CharSequence, int, int)
+	 * @see  #unsafe(char[], int, int)
+	 * @see  #getUnsafe()
+	 * @see  #getUnsafe(java.lang.Boolean)
+	 * @see  #setOut(java.io.Writer)
 	 */
 	// TODO: Wrap this writer in XhtmlValidator if is not already validating XHTML?
 	//       If wrapping, consider uses of this losing access to this wrapping, such as NoCloseWriter
 	// TODO: Make this be a ChainWriter?  This might be incorrect as it would encourage using html.out instead of elements and attributes
+	@Deprecated
 	@SuppressWarnings("PublicField") // TODO: Should this be final again?  Will we always need setOut, such as opening and closing tag separate processing in legacy taglibs?
 	public Writer out;
 
+	/**
+	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+	 *              Not doing so may result in {@link IllegalStateException}.
+	 *
+	 * @see  #setOut(java.io.Writer)
+	 */
 	public Document(EncodingContext encodingContext, Serialization serialization, Doctype doctype, Writer out) {
 		this.encodingContext = encodingContext;
 		this.serialization = serialization;
@@ -250,6 +277,12 @@ public class Document implements
 		this.out = out;
 	}
 
+	/**
+	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+	 *              Not doing so may result in {@link IllegalStateException}.
+	 *
+	 * @see  #setOut(java.io.Writer)
+	 */
 	public Document(Serialization serialization, Doctype doctype, Writer out) {
 		this(
 			new EncodingContext() {
@@ -268,6 +301,12 @@ public class Document implements
 		);
 	}
 
+	/**
+	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+	 *              Not doing so may result in {@link IllegalStateException}.
+	 *
+	 * @see  #setOut(java.io.Writer)
+	 */
 	public Document(EncodingContext encodingContext, Writer out) {
 		this(
 			encodingContext,
@@ -278,6 +317,10 @@ public class Document implements
 	}
 
 	/**
+	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+	 *              Not doing so may result in {@link IllegalStateException}.
+	 *
+	 * @see  #setOut(java.io.Writer)
 	 * @see  EncodingContext#DEFAULT
 	 */
 	public Document(Writer out) {
@@ -293,27 +336,309 @@ public class Document implements
 
 	/**
 	 * Replaces the writer this document is writing to.
-	 * May be set to {@code null}, but must be set to a non-null value again before any additional writes.
+	 *
+	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+	 *              Not doing so may result in {@link IllegalStateException}.
+	 *
+	 * @see  #getUnsafe()
+	 * @see  #getUnsafe(java.lang.Boolean)
 	 */
 	public void setOut(Writer out) {
 		this.out = out;
 	}
 
+	// <editor-fold desc="Unsafe">
+	@Override
+	public Writer getUnsafe(Boolean endsNewline) throws IllegalStateException {
+		Writer unsafe = out;
+		if(unsafe == null) throw new LocalizedIllegalStateException(RESOURCES, "getUnsafe.noOut");
+		if(endsNewline != null) setAtnl(endsNewline);
+		return unsafe;
+	}
+
+	@Override
+	public Writer getUnsafe() throws IllegalStateException {
+		return getUnsafe(false);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(char ch) throws IOException {
+		return unsafe(getUnsafe(null), ch);
+	}
+
+	Document unsafe(Writer out, char ch) throws IOException {
+		out.append(ch);
+		return setAtnl(ch == NL);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(char[] cbuf) throws IOException {
+		if(cbuf != null) {
+			int len = cbuf.length;
+			if(len > 0) {
+				unsafe(
+					getUnsafe(null),
+					cbuf,
+					cbuf[len - 1] == NL
+				);
+			}
+		}
+		return this;
+	}
+
+	/**
+	 * Performs raw output of a non-empty array.
+	 *
+	 * @param  endsNewline  Declares the array ends in a newline.
+	 *                      Calls {@link #setAtnl(boolean)} after the write.
+	 *                      This is an optimization that is verified when assertions are enabled.
+	 *
+	 * @return  {@code this} document
+	 */
+	Document unsafe(Writer out, char[] cbuf, boolean endsNewline) throws IOException {
+		assert cbuf.length > 0;
+		out.write(cbuf);
+		assert endsNewline == (cbuf[cbuf.length - 1] == NL);
+		return setAtnl(endsNewline);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(char[] cbuf, int offset, int len) throws IOException {
+		if(cbuf != null && len > 0) {
+			unsafe(
+				getUnsafe(null),
+				cbuf,
+				offset,
+				len,
+				cbuf[offset + len - 1] == NL
+			);
+		}
+		return this;
+	}
+
+	/**
+	 * Performs raw output of a non-empty array.
+	 *
+	 * @param  endsNewline  Declares the array ends in a newline.
+	 *                      Calls {@link #setAtnl(boolean)} after the write.
+	 *                      This is an optimization that is verified when assertions are enabled.
+	 *
+	 * @return  {@code this} document
+	 */
+	Document unsafe(Writer out, char[] cbuf, int offset, int len, boolean endsNewline) throws IOException {
+		assert len > 0;
+		out.write(cbuf, offset, len);
+		assert endsNewline == (cbuf[offset + len - 1] == NL);
+		return setAtnl(endsNewline);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(CharSequence csq) throws IOException {
+		if(csq != null) {
+			int len = csq.length();
+			if(len > 0) {
+				unsafe(
+					getUnsafe(null),
+					csq,
+					csq.charAt(len - 1) == NL
+				);
+			}
+		}
+		return this;
+	}
+
+	/**
+	 * Performs raw output of a non-empty sequence.
+	 *
+	 * @param  endsNewline  Declares the sequence ends in a newline.
+	 *                      Calls {@link #setAtnl(boolean)} after the write.
+	 *                      This is an optimization that is verified when assertions are enabled.
+	 *
+	 * @return  {@code this} document
+	 */
+	Document unsafe(Writer out, CharSequence csq, boolean endsNewline) throws IOException {
+		assert csq.length() > 0;
+		out.append(csq);
+		assert endsNewline == (csq.charAt(csq.length() - 1) == NL);
+		return setAtnl(endsNewline);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(CharSequence csq, int start, int end) throws IOException {
+		if(csq != null && end > start) {
+			unsafe(
+				getUnsafe(null),
+				csq,
+				start,
+				end,
+				csq.charAt(end - 1) == NL
+			);
+		}
+		return this;
+	}
+
+	/**
+	 * Performs raw output of a non-empty sequence.
+	 *
+	 * @param  endsNewline  Declares the sequence ends in a newline.
+	 *                      Calls {@link #setAtnl(boolean)} after the write.
+	 *                      This is an optimization that is verified when assertions are enabled.
+	 *
+	 * @return  {@code this} document
+	 */
+	Document unsafe(Writer out, CharSequence csq, int start, int end, boolean endsNewline) throws IOException {
+		assert end > start;
+		out.append(csq, start, end);
+		assert endsNewline == (csq.charAt(end - 1) == NL);
+		return setAtnl(endsNewline);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(Object unsafe) throws IOException {
+		return unsafe(getUnsafe(null), unsafe);
+	}
+
+	@SuppressWarnings("UseSpecificCatch")
+	Document unsafe(Writer out, Object unsafe) throws IOException {
+		// Support Optional
+		while(unsafe instanceof Optional) {
+			unsafe = ((Optional<?>)unsafe).orElse(null);
+		}
+		while(unsafe instanceof IOSupplierE<?, ?>) {
+			try {
+				unsafe = ((IOSupplierE<?, ?>)unsafe).get();
+			} catch(Throwable t) {
+				throw Throwables.wrap(t, IOException.class, IOException::new);
+			}
+		}
+		if(unsafe != null) {
+			if(unsafe instanceof char[]) {
+				char[] cbuf = (char[])unsafe;
+				int len = cbuf.length;
+				if(len > 0) {
+					return unsafe(
+						out,
+						cbuf,
+						cbuf[len - 1] == NL
+					);
+				} else {
+					// Nothing to write
+					return this;
+				}
+			}
+			if(unsafe instanceof CharSequence) {
+				CharSequence csq = (CharSequence)unsafe;
+				int len = csq.length();
+				if(len > 0) {
+					return unsafe(
+						out,
+						csq,
+						csq.charAt(len - 1) == NL
+					);
+				} else {
+					// Nothing to write
+					return this;
+				}
+			}
+			if(unsafe instanceof Writable) {
+				return unsafe(out, (Writable)unsafe);
+			}
+			// Allow no markup from translations
+			Coercion.write(unsafe, out);
+			clearAtnl(); // Unknown, safe to assume not at newline
+		}
+		return this;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public <Ex extends Throwable> Document unsafe(IOSupplierE<?, Ex> unsafe) throws IOException, Ex {
+		return unsafe(getUnsafe(null), unsafe);
+	}
+
+	<Ex extends Throwable> Document unsafe(Writer out, IOSupplierE<?, Ex> unsafe) throws IOException, Ex {
+		return unsafe(out, (unsafe == null) ? null : unsafe.get());
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document unsafe(Writable unsafe) throws IOException {
+		return unsafe(getUnsafe(null), unsafe);
+	}
+
+	Document unsafe(Writer out, Writable unsafe) throws IOException {
+		if(unsafe != null) {
+			if(unsafe.isFastToString()) {
+				String str = unsafe.toString();
+				int len = str.length();
+				if(len > 0) {
+					unsafe(
+						out,
+						str,
+						str.charAt(len - 1) == NL
+					);
+				}
+			} else {
+				try (Writer _out = unsafe(out)) {
+					unsafe.writeTo(_out);
+				}
+			}
+		}
+		return this;
+	}
+
+	@Override
+	public Writer unsafe() throws IOException {
+		return unsafe(getUnsafe(null));
+	}
+
+	Writer unsafe(Writer out) throws IOException {
+		clearAtnl(); // Unknown, safe to assume not at newline
+		return new NoCloseWriter(out);
+	}
+
+	// TODO: Include a new interface similar to TextContent called "Unsafe" that Content would also extend?
+	// </editor-fold>
+
 	/**
 	 * @see Doctype#xmlDeclaration(com.aoindustries.encoding.Serialization, java.lang.String, java.lang.Appendable)
 	 */
-	// TODO: Define here only since depends on both serialization and doctype
 	public Document xmlDeclaration(String documentEncoding) throws IOException {
-		doctype.xmlDeclaration(serialization, documentEncoding, out);
+		if(doctype.xmlDeclaration(serialization, documentEncoding, getUnsafe(null))) {
+			setAtnl();
+		}
 		return this;
 	}
 
 	/**
 	 * @see Doctype#doctype(com.aoindustries.encoding.Serialization, java.lang.Appendable)
 	 */
-	// TODO: Define here only since depends on both serialization and doctype
 	public Document doctype() throws IOException {
-		doctype.doctype(serialization, out);
+		if(doctype.doctype(serialization, getUnsafe(null))) {
+			setAtnl();
+		}
 		return this;
 	}
 
@@ -321,6 +646,153 @@ public class Document implements
 	public Document getDocument() {
 		return this;
 	}
+
+	// <editor-fold desc="Automatic Newline and Indentation">
+	/**
+	 * Is automatic newline and indenting enabled?
+	 */
+	private boolean autonli;
+
+	@Override
+	public boolean getAutonli() {
+		return autonli;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document setAutonli(boolean autonli) {
+		this.autonli = autonli;
+		return this;
+	}
+
+	/**
+	 * Is the output currently at a newline?
+	 */
+	private boolean atnl;
+
+	@Override
+	public boolean getAtnl() {
+		return atnl;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document setAtnl() {
+		this.atnl = true;
+		return this;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document setAtnl(boolean atnl) {
+		this.atnl = atnl;
+		return this;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document clearAtnl() {
+		this.atnl = false;
+		return this;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document autoNl() throws IOException {
+		return autoNl(getUnsafe(null));
+	}
+
+	Document autoNl(Writer out) throws IOException {
+		if(getAutonli() && !getAtnl()) {
+			out.append(NL);
+			setAtnl();
+		}
+		return this;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document autoNli() throws IOException {
+		return autoNli(getUnsafe(null), 0);
+	}
+
+	Document autoNli(Writer out) throws IOException {
+		return autoNli(out, 0);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document autoNli(int depthOffset) throws IOException {
+		return autoNli(getUnsafe(null), depthOffset);
+	}
+
+	Document autoNli(Writer out, int depthOffset) throws IOException {
+		if(getAutonli()) {
+			if(getAtnl()) {
+				// Already at newline, indentation only
+				int d;
+				if(getIndent() && (d = getDepth() + depthOffset) > 0) {
+					WriterUtil.indent(out, d);
+					clearAtnl();
+				}
+			} else {
+				// Combined newline and indentation
+				int d;
+				if(getIndent() && (d = getDepth() + depthOffset) > 0) {
+					WriterUtil.nli(out, d);
+					// Already not at newline: clearAtnl();
+				} else {
+					out.append(NL);
+					setAtnl();
+				}
+			}
+		}
+		return this;
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document autoIndent() throws IOException {
+		return autoIndent(getUnsafe(null), 0);
+	}
+
+	Document autoIndent(Writer out) throws IOException {
+		return autoIndent(out, 0);
+	}
+
+	/**
+	 * @return  {@code this} document
+	 */
+	@Override
+	public Document autoIndent(int depthOffset) throws IOException {
+		return autoIndent(getUnsafe(null), depthOffset);
+	}
+
+	Document autoIndent(Writer out, int depthOffset) throws IOException {
+		int d;
+		if(getAutonli() && getIndent() && getAtnl() && (d = getDepth() + depthOffset) > 0) {
+			WriterUtil.indent(out, d);
+			clearAtnl();
+		}
+		return this;
+	}
+	// </editor-fold>
 
 	/**
 	 * Is indenting enabled?
@@ -337,23 +809,39 @@ public class Document implements
 	// Matches MediaWriter.nl()
 	@Override
 	public Document nl() throws IOException {
+		return nl(getUnsafe(null));
+	}
+
+	Document nl(Writer out) throws IOException {
 		out.append(NL);
+		setAtnl();
 		return this;
 	}
 
 	// Matches MediaWriter.nli()
 	@Override
 	public Document nli() throws IOException {
-		return nli(0);
+		return nli(getUnsafe(null), 0);
+	}
+
+	Document nli(Writer out) throws IOException {
+		return nli(out, 0);
 	}
 
 	// Matches MediaWriter.nli(int)
 	@Override
 	public Document nli(int depthOffset) throws IOException {
-		if(getIndent()) {
-			WriterUtil.nli(out, getDepth() + depthOffset);
+		return nli(getUnsafe(null), depthOffset);
+	}
+
+	Document nli(Writer out, int depthOffset) throws IOException {
+		int d;
+		if(getIndent() && (d = getDepth() + depthOffset) > 0) {
+			WriterUtil.nli(out, d);
+			clearAtnl();
 		} else {
 			out.append(NL);
+			setAtnl();
 		}
 		return this;
 	}
@@ -361,14 +849,24 @@ public class Document implements
 	// Matches MediaWriter.indent()
 	@Override
 	public Document indent() throws IOException {
-		return indent(0);
+		return indent(getUnsafe(null), 0);
+	}
+
+	Document indent(Writer out) throws IOException {
+		return indent(out, 0);
 	}
 
 	// Matches MediaWriter.indent(int)
 	@Override
 	public Document indent(int depthOffset) throws IOException {
-		if(getIndent()) {
-			WriterUtil.indent(out, getDepth() + depthOffset);
+		return indent(getUnsafe(null), depthOffset);
+	}
+
+	Document indent(Writer out, int depthOffset) throws IOException {
+		int d;
+		if(getIndent() && (d = getDepth() + depthOffset) > 0) {
+			WriterUtil.indent(out, d);
+			clearAtnl();
 		}
 		return this;
 	}
@@ -425,32 +923,67 @@ public class Document implements
 	// Matches MediaWriter.sp()
 	@Override
 	public Document sp() throws IOException {
+		return sp(getUnsafe(null));
+	}
+
+	Document sp(Writer out) throws IOException {
 		out.append(SPACE);
+		clearAtnl();
 		return this;
 	}
 
 	// Matches MediaWriter.sp(int)
 	@Override
 	public Document sp(int count) throws IOException {
-		WriterUtil.sp(out, count);
+		return sp(getUnsafe(null), count);
+	}
+
+	Document sp(Writer out, int count) throws IOException {
+		if(count > 0) {
+			WriterUtil.sp(out, count);
+			clearAtnl();
+		}
 		return this;
 	}
 
 	@Override
 	public Document nbsp() throws IOException {
+		return nbsp(getUnsafe(null));
+	}
+
+	Document nbsp(Writer out) throws IOException {
 		out.append(NBSP);
+		clearAtnl();
 		return this;
 	}
 
 	@Override
 	public Document nbsp(int count) throws IOException {
-		WriterUtil.nbsp(out, count);
+		return nbsp(getUnsafe(null), count);
+	}
+
+	Document nbsp(Writer out, int count) throws IOException {
+		if(count > 0) {
+			WriterUtil.nbsp(out, count);
+			clearAtnl();
+		}
 		return this;
 	}
 
 	@Override
 	public Document text(char ch) throws IOException {
-		encodeTextInXhtml(ch, out);
+		return text(getUnsafe(null), ch);
+	}
+
+	Document text(Writer out, char ch) throws IOException {
+		if(ch == NL) {
+			out.write(NL);
+			setAtnl();
+		} else {
+			autoIndent(out);
+			encodeTextInXhtml(ch, out);
+			clearAtnl();
+		}
 		return this;
 	}
 
@@ -458,22 +991,118 @@ public class Document implements
 
 	@Override
 	public Document text(char[] cbuf) throws IOException {
-		encodeTextInXhtml(cbuf, out);
+		return text(getUnsafe(null), cbuf);
+	}
+
+	Document text(Writer out, char[] cbuf) throws IOException {
+		if(cbuf != null) {
+			int len = cbuf.length;
+			if(len > 0) {
+				if(cbuf[len - 1] == NL) {
+					if(len == 1) {
+						out.write(NL);
+					} else {
+						autoIndent(out);
+						encodeTextInXhtml(cbuf, out);
+					}
+					setAtnl();
+				} else {
+					autoIndent(out);
+					encodeTextInXhtml(cbuf, out);
+					clearAtnl();
+				}
+			}
+		}
 		return this;
 	}
 
 	@Override
 	public Document text(char[] cbuf, int offset, int len) throws IOException {
-		encodeTextInXhtml(cbuf, offset, len, out);
+		return text(getUnsafe(null), cbuf, offset, len);
+	}
+
+	Document text(Writer out, char[] cbuf, int offset, int len) throws IOException {
+		if(cbuf != null && len > 0) {
+			if(cbuf[offset + len - 1] == NL) {
+				if(len == 1) {
+					out.write(NL);
+				} else {
+					autoIndent(out);
+					encodeTextInXhtml(cbuf, offset, len, out);
+				}
+				setAtnl();
+			} else {
+				autoIndent(out);
+				encodeTextInXhtml(cbuf, offset, len, out);
+				clearAtnl();
+			}
+		}
 		return this;
 	}
 
-	// TODO: text(CharSequence)?
-	// TODO: text(CharSequence, int, int)?
+	@Override
+	public Document text(CharSequence csq) throws IOException {
+		return text(getUnsafe(null), csq);
+	}
+
+	Document text(Writer out, CharSequence csq) throws IOException {
+		if(csq != null) {
+			int len = csq.length();
+			if(len > 0) {
+				if(csq.charAt(len - 1) == NL) {
+					if(len == 1) {
+						out.write(NL);
+					} else {
+						autoIndent(out);
+						encodeTextInXhtml(csq, out);
+					}
+					setAtnl();
+				} else {
+					autoIndent(out);
+					encodeTextInXhtml(csq, out);
+					clearAtnl();
+				}
+			}
+		}
+		return this;
+	}
 
 	@Override
-	@SuppressWarnings("UseSpecificCatch")
+	public Document text(CharSequence csq, int start, int end) throws IOException {
+		return text(getUnsafe(null), csq, start, end);
+	}
+
+	Document text(Writer out, CharSequence csq, int start, int end) throws IOException {
+		if(csq != null && end > start) {
+			int last = end - 1;
+			if(csq.charAt(last) == NL) {
+				if(start == last) {
+					out.write(NL);
+				} else {
+					autoIndent(out);
+					encodeTextInXhtml(csq, start, end, out);
+				}
+				setAtnl();
+			} else {
+				autoIndent(out);
+				encodeTextInXhtml(csq, start, end, out);
+				clearAtnl();
+			}
+		}
+		return this;
+	}
+
+	@Override
 	public Document text(Object text) throws IOException {
+		return text(getUnsafe(null), text);
+	}
+
+	@SuppressWarnings("UseSpecificCatch")
+	Document text(Writer out, Object text) throws IOException {
+		// Support Optional
+		while(text instanceof Optional) {
+			text = ((Optional<?>)text).orElse(null);
+		}
 		while(text instanceof IOSupplierE<?, ?>) {
 			try {
 				text = ((IOSupplierE<?, ?>)text).get();
@@ -481,30 +1110,51 @@ public class Document implements
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
 		}
-		if(text instanceof char[]) {
-			return text((char[])text);
-		}
-		if(text instanceof MediaWritable) {
-			try {
-				return text((MediaWritable<?>)text);
-			} catch(Throwable t) {
-				throw Throwables.wrap(t, IOException.class, IOException::new);
+		if(text != null) {
+			if(text instanceof char[]) {
+				return text(out, (char[])text);
 			}
+			if(text instanceof CharSequence) {
+				return text(out, (CharSequence)text);
+			}
+			if(text instanceof Writable) {
+				Writable writable = (Writable)text;
+				if(writable.isFastToString()) {
+					return text(out, writable.toString());
+				}
+			}
+			if(text instanceof MediaWritable) {
+				try {
+					return text(out, (MediaWritable<?>)text);
+				} catch(Throwable t) {
+					throw Throwables.wrap(t, IOException.class, IOException::new);
+				}
+			}
+			// Allow text markup from translations
+			autoIndent(out);
+			MarkupCoercion.write(text, MarkupType.XHTML, false, textInXhtmlEncoder, false, out);
+			clearAtnl(); // Unknown, safe to assume not at newline
 		}
-		// Allow text markup from translations
-		MarkupCoercion.write(text, MarkupType.XHTML, false, textInXhtmlEncoder, false, out);
 		return this;
 	}
 
 	@Override
 	public <Ex extends Throwable> Document text(IOSupplierE<?, Ex> text) throws IOException, Ex {
-		return text((text == null) ? null : text.get());
+		return text(getUnsafe(null), text);
+	}
+
+	<Ex extends Throwable> Document text(Writer out, IOSupplierE<?, Ex> text) throws IOException, Ex {
+		return text(out, (text == null) ? null : text.get());
 	}
 
 	@Override
 	public <Ex extends Throwable> Document text(MediaWritable<Ex> text) throws IOException, Ex {
+		return text(getUnsafe(null), text);
+	}
+
+	<Ex extends Throwable> Document text(Writer out, MediaWritable<Ex> text) throws IOException, Ex {
 		if(text != null) {
-			try (DocumentMediaWriter _out = text()) {
+			try (DocumentMediaWriter _out = text(out)) {
 				text.writeTo(_out);
 			}
 		}
@@ -513,6 +1163,12 @@ public class Document implements
 
 	@Override
 	public DocumentMediaWriter text() throws IOException {
+		return text(getUnsafe(null));
+	}
+
+	DocumentMediaWriter text(Writer out) throws IOException {
+		autoIndent(out);
+		clearAtnl(); // Unknown, safe to assume not at newline
 		return new DocumentMediaWriter(
 			this,
 			textInXhtmlEncoder,

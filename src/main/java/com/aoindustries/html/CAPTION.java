@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-caption-element">4.9.2 The caption element</a>.
@@ -43,14 +44,24 @@ public class CAPTION<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected CAPTION<PC> writeOpen() throws IOException {
-		document.out.write("<caption");
+	protected CAPTION<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<caption", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></caption>" : "</caption>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></caption>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</caption>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

@@ -43,8 +43,9 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 */
 	default DATALIST<__> datalist() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new DATALIST<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new DATALIST<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -47,8 +48,13 @@ public class BASE<PC extends MetadataContent<PC>> extends VoidElement<BASE<PC>, 
 	}
 
 	@Override
-	protected BASE<PC> writeOpen() throws IOException {
-		document.out.write("<base");
+	protected BASE<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<base", false);
 		return this;
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 	}
 }

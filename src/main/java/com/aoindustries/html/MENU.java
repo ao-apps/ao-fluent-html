@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-menu-element">4.4.7 The menu element</a>.
@@ -42,14 +43,24 @@ public class MENU<PC extends InteractiveContent<PC>> extends
 	}
 
 	@Override
-	protected MENU<PC> writeOpen() throws IOException {
-		document.out.write("<menu");
+	protected MENU<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<menu", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></menu>" : "</menu>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></menu>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</menu>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

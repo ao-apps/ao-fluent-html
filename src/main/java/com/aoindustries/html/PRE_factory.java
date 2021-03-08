@@ -43,8 +43,9 @@ public interface PRE_factory<__ extends PalpableContent<__>> extends Content<__>
 	 */
 	default PRE<__> pre() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new PRE<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new PRE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

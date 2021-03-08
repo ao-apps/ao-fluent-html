@@ -48,8 +48,9 @@ public interface PARAM_factory<__ extends Content<__>> extends Content<__> {
 	 */
 	default PARAM<__> param() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new PARAM<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new PARAM<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

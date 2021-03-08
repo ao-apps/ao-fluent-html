@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-nav-element">4.3.4 The nav element</a>.
@@ -42,14 +43,24 @@ public class NAV<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected NAV<PC> writeOpen() throws IOException {
-		document.out.write("<nav");
+	protected NAV<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<nav", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></nav>" : "</nav>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></nav>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</nav>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

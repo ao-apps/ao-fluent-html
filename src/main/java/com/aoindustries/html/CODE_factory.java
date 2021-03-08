@@ -43,8 +43,9 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 */
 	default CODE<__> code() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new CODE<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new CODE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

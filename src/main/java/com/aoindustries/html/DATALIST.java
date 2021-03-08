@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
@@ -42,14 +43,24 @@ public class DATALIST<PC extends PhrasingContent<PC>> extends
 	}
 
 	@Override
-	protected DATALIST<PC> writeOpen() throws IOException {
-		document.out.write("<datalist");
+	protected DATALIST<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<datalist", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></datalist>" : "</datalist>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></datalist>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</datalist>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

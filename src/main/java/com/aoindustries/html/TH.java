@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-th-element">4.9.10 The th element</a>.
@@ -48,14 +49,14 @@ public class TH<PC extends TR_content<PC>> extends
 	}
 
 	@Override
-	protected TH<PC> writeOpen() throws IOException {
-		document.out.write("<th");
+	protected TH<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<th", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></th>" : "</th>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></th>" : "</th>", false).autoNl(out);
 	}
 
 	@Override

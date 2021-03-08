@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2021-02-24T22:50:07-06:00"
+		dateModified="2021-03-06T23:34:43-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -50,7 +50,9 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				<ul>
 					<li>Renamed <code>Html</code> to <code>Document</code>.</li>
 					<li>Implemented element content with self-referential generics optimized for lambda bodies.</li>
-					<li>Implemented tab indentation.</li>
+					<li>Implemented automatic newline and tab indentation.</li>
+					<li>The output <code>Writer</code> may now be replaced.</li>
+					<li>Deprecated <code>Document.out</code> in favor a series of <code>unsafe(…)</code> methods.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

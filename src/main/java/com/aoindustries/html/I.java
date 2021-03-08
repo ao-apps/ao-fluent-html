@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
@@ -42,14 +43,14 @@ public class I<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected I<PC> writeOpen() throws IOException {
-		document.out.write("<i");
+	protected I<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<i", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></i>" : "</i>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></i>" : "</i>", false);
 	}
 
 	@Override

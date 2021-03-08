@@ -43,8 +43,9 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 */
 	default MENU<__> menu() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new MENU<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new MENU<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

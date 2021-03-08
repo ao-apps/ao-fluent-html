@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
@@ -49,14 +50,23 @@ public class SELECT<PC extends Union_Interactive_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SELECT<PC> writeOpen() throws IOException {
-		document.out.write("<select");
+	protected SELECT<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<select", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></select>" : "</select>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></select>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</select>", false);
+		}
 	}
 
 	@Override

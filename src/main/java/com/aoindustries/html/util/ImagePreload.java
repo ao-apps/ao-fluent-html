@@ -42,7 +42,7 @@ public class ImagePreload {
 	 *             (not &amp;amp;)
 	 */
 	public static void writeImagePreloadScript(String url, Document document) throws IOException {
-		document.script().out(script -> script
+		document.script().out(script -> script.indent()
 			.append("var img=new Image();").nli()
 			.append("img.src=").text(url).append(';')
 		).__();

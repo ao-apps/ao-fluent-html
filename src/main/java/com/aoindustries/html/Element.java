@@ -24,6 +24,7 @@ package com.aoindustries.html;
 
 import com.aoindustries.encoding.WhitespaceWriter;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#elements-2">13.1.2 Elements</a>.
@@ -225,5 +226,5 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	 * @return  The element instance to use.
 	 *          This may substitute the element with a different instance, when appropriate.
 	 */
-	abstract protected E writeOpen() throws IOException;
+	abstract protected E writeOpen(Writer out) throws IOException;
 }

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -46,14 +47,24 @@ public class BLOCKQUOTE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected BLOCKQUOTE<PC> writeOpen() throws IOException {
-		document.out.write("<blockquote");
+	protected BLOCKQUOTE<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<blockquote", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></blockquote>" : "</blockquote>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></blockquote>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</blockquote>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

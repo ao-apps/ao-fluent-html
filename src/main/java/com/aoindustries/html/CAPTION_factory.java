@@ -43,8 +43,9 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 */
 	default CAPTION<__> caption() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new CAPTION<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new CAPTION<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

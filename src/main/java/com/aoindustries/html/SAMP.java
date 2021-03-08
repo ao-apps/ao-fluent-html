@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-samp-element">4.5.17 The samp element</a>.
@@ -42,14 +43,14 @@ public class SAMP<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SAMP<PC> writeOpen() throws IOException {
-		document.out.write("<samp");
+	protected SAMP<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<samp", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></samp>" : "</samp>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></samp>" : "</samp>", false);
 	}
 
 	@Override

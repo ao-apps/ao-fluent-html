@@ -43,8 +43,9 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 */
 	default VAR<__> var() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new VAR<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new VAR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

@@ -31,6 +31,7 @@ import com.aoindustries.lang.LocalizedIllegalStateException;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
@@ -80,14 +81,14 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 	}
 
 	@Override
-	protected E writeOpen() throws IOException {
+	protected E writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<input", false);
+		openWriteType(out);
 		@SuppressWarnings("unchecked") E element = (E)this;
-		document.out.write("<input");
-		openWriteType();
 		return element;
 	}
 
-	protected abstract void openWriteType() throws IOException;
+	protected abstract void openWriteType(Writer out) throws IOException;
 
 	/**
 	 * <p>
@@ -245,7 +246,8 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
 			// Write the type now, if already set
 			String t = this.type;
 			if(t != null) {
@@ -371,8 +373,8 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 				}
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
-						Resources.PACKAGE_RESOURCES,
-						"Document.duplicateAttribute",
+						Document.RESOURCES,
+						"duplicateAttribute",
 						"input",
 						"type",
 						this.type,
@@ -380,9 +382,16 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 					);
 				}
 				this.type = type;
-				document.out.write(" type=\"");
-				encodeTextInXhtmlAttribute(type, document.out);
-				document.out.append('"');
+				Writer out = document.getUnsafe(null);
+				if(document.getAtnl()) {
+					document.autoIndent(out, 1);
+					out.write("type=\"");
+					document.clearAtnl();
+				} else {
+					out.write(" type=\"");
+				}
+				encodeTextInXhtmlAttribute(type, out);
+				out.append('"');
 			}
 			return this;
 		}
@@ -395,8 +404,8 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 			if(type != null) {
 				if(this.type != null) {
 					throw new LocalizedIllegalStateException(
-						Resources.PACKAGE_RESOURCES,
-						"Document.duplicateAttribute",
+						Document.RESOURCES,
+						"duplicateAttribute",
 						"input",
 						"type",
 						this.type,
@@ -415,9 +424,16 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 					);
 				}
 				this.type = type.value;
-				document.out.write(" type=\"");
-				document.out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
-				document.out.append('"');
+				Writer out = document.getUnsafe(null);
+				if(document.getAtnl()) {
+					document.autoIndent(out, 1);
+					out.write("type=\"");
+					document.clearAtnl();
+				} else {
+					out.write(" type=\"");
+				}
+				out.write(type.value); // No encoding, is a known safe value.  TODO: Assert this above in static initializer?
+				out.append('"');
 			}
 			return this;
 		}
@@ -457,8 +473,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"button\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"button\"");
 		}
 
 		/**
@@ -498,8 +515,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"checkbox\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"checkbox\"");
 		}
 	}
 
@@ -572,8 +590,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"color\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"color\"");
 		}
 	}
 
@@ -648,8 +667,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"date\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"date\"");
 		}
 	}
 
@@ -723,8 +743,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"datetime-local\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"datetime-local\"");
 		}
 	}
 
@@ -806,8 +827,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"email\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"email\"");
 		}
 	}
 
@@ -876,8 +898,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"file\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"file\"");
 		}
 	}
 
@@ -896,8 +919,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"hidden\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"hidden\"");
 		}
 	}
 
@@ -933,8 +957,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"image\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"image\"");
 		}
 
 		/**
@@ -1060,8 +1085,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"month\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"month\"");
 		}
 	}
 
@@ -1153,8 +1179,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"number\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"number\"");
 		}
 	}
 
@@ -1231,8 +1258,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"password\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"password\"");
 		}
 	}
 
@@ -1253,8 +1281,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"radio\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"radio\"");
 		}
 	}
 
@@ -1326,8 +1355,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"range\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"range\"");
 		}
 	}
 
@@ -1345,8 +1375,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"reset\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"reset\"");
 		}
 
 		/**
@@ -1490,8 +1521,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"search\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"search\"");
 		}
 	}
 
@@ -1517,8 +1549,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"submit\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"submit\"");
 		}
 
 		/**
@@ -1623,8 +1656,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"tel\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"tel\"");
 		}
 	}
 
@@ -1653,8 +1687,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"text\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"text\"");
 		}
 	}
 
@@ -1727,8 +1762,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"time\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"time\"");
 		}
 	}
 
@@ -1813,8 +1849,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"url\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"url\"");
 		}
 	}
 
@@ -1889,8 +1926,9 @@ public abstract class INPUT<E extends INPUT<E, PC>, PC extends Union_Interactive
 		}
 
 		@Override
-		protected void openWriteType() throws IOException {
-			document.out.write(" type=\"week\"");
+		protected void openWriteType(Writer out) throws IOException {
+			assert !document.getAtnl();
+			out.write(" type=\"week\"");
 		}
 	}
 }

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-main-element">4.4.14 The main element</a>.
@@ -43,14 +44,24 @@ public class MAIN<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected MAIN<PC> writeOpen() throws IOException {
-		document.out.write("<main");
+	protected MAIN<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<main", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></main>" : "</main>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></main>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</main>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

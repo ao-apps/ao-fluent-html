@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
@@ -42,14 +43,14 @@ public class SUB<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SUB<PC> writeOpen() throws IOException {
-		document.out.write("<sub");
+	protected SUB<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<sub", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></sub>" : "</sub>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></sub>" : "</sub>", false);
 	}
 
 	@Override

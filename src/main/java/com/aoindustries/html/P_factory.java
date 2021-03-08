@@ -43,8 +43,9 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 */
 	default P<__> p() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new P<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new P<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

@@ -75,8 +75,8 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	}
 
 	@Override
-	protected LINK<PC> writeOpen() throws IOException {
-		document.out.write("<link");
+	protected LINK<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<link", false);
 		return this;
 	}
 
@@ -132,8 +132,8 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 		if(itemprop != null) {
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(
-					Resources.PACKAGE_RESOURCES,
-					"Document.duplicateAttribute",
+					Document.RESOURCES,
+					"duplicateAttribute",
 					"link",
 					"itemprop",
 					Coercion.toString(this.itemprop),
@@ -144,9 +144,16 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 			}
-			document.out.write(" itemprop=\"");
-			Coercion.write(itemprop, textInXhtmlAttributeEncoder, document.out);
-			document.out.append('"');
+			Writer out = document.getUnsafe(null);
+			if(document.getAtnl()) {
+				document.autoIndent(out, 1);
+				out.write("itemprop=\"");
+				document.clearAtnl();
+			} else {
+				out.write(" itemprop=\"");
+			}
+			Coercion.write(itemprop, textInXhtmlAttributeEncoder, out);
+			out.append('"');
 		}
 		return this;
 	}
@@ -266,8 +273,8 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 		if(rel != null) {
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
-					Resources.PACKAGE_RESOURCES,
-					"Document.duplicateAttribute",
+					Document.RESOURCES,
+					"duplicateAttribute",
 					"link",
 					"rel",
 					Coercion.toString(this.rel),
@@ -355,9 +362,16 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 				&& ContentType.CSS.equalsIgnoreCase(type)
 			)
 		) {
-			document.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, document.out);
-			document.out.append('"');
+			Writer out = document.getUnsafe(null);
+			if(document.getAtnl()) {
+				document.autoIndent(out, 1);
+				out.write("type=\"");
+				document.clearAtnl();
+			} else {
+				out.write(" type=\"");
+			}
+			encodeTextInXhtmlAttribute(type, out);
+			out.append('"');
 		}
 		return this;
 	}
@@ -386,15 +400,23 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 			&& rel != null
 			&& rel.equalsIgnoreCase(Rel.STYLESHEET.toString())
 		) {
-			Writer out = document.out;
-			out.write(" type=\"");
-			out.write(ContentType.CSS);
-			out.append('"');
+			Writer out = document.getUnsafe(null);
+			if(document.getAtnl()) {
+				document.autoIndent(out, 1);
+				out.write("type=\"" + ContentType.CSS + '"');
+				document.clearAtnl();
+			} else {
+				out.write(" type=\"" + ContentType.CSS + '"');
+			}
 		}
-		super.__();
+		return super.__();
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 		if(rel == null && itemprop == null) {
 			throw new LocalizedIllegalStateException(RESOURCES, "relOrItemprop");
 		}
-		return pc;
 	}
 }

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -54,9 +55,14 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 	}
 
 	@Override
-	protected COL<PC> writeOpen() throws IOException {
-		document.out.write("<col");
+	protected COL<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<col", false);
 		return this;
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 	}
 
 	/**

@@ -43,8 +43,9 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 */
 	default LI<__> li() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new LI<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new LI<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

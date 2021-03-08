@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
@@ -42,14 +43,24 @@ public class ARTICLE<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected ARTICLE<PC> writeOpen() throws IOException {
-		document.out.write("<article");
+	protected ARTICLE<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<article", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></article>" : "</article>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></article>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</article>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

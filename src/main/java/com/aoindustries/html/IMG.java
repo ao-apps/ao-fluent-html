@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -64,8 +65,8 @@ public class IMG<PC extends Union_Embedded_Interactive<PC>> extends VoidElement<
 	}
 
 	@Override
-	protected IMG<PC> writeOpen() throws IOException {
-		document.out.write("<img");
+	protected IMG<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<img", false);
 		return this;
 	}
 

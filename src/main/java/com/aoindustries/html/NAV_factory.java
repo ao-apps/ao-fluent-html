@@ -43,8 +43,9 @@ public interface NAV_factory<__ extends SectioningContent<__>> extends Content<_
 	 */
 	default NAV<__> nav() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new NAV<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new NAV<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

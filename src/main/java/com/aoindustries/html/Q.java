@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -46,14 +47,14 @@ public class Q<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected Q<PC> writeOpen() throws IOException {
-		document.out.write("<q");
+	protected Q<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<q", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></q>" : "</q>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></q>" : "</q>", false);
 	}
 
 	@Override

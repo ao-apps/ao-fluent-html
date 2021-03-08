@@ -67,7 +67,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Dynamic<__> dynamic() throws IOException {
-			return new INPUT.Dynamic<>(document, pc).writeOpen();
+			return new INPUT.Dynamic<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -79,7 +79,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Dynamic<__> dynamic(String type) throws IOException {
-			return new INPUT.Dynamic<>(document, pc, type).writeOpen();
+			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -104,7 +104,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Dynamic<__> dynamic(INPUT.Dynamic.Type type) throws IOException {
-			return new INPUT.Dynamic<>(document, pc, type).writeOpen();
+			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -129,7 +129,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Button<__> button() throws IOException {
-			return new INPUT.Button<>(document, pc).writeOpen();
+			return new INPUT.Button<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -141,7 +141,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Checkbox<__> checkbox() throws IOException {
-			return new INPUT.Checkbox<>(document, pc).writeOpen();
+			return new INPUT.Checkbox<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -153,7 +153,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Color<__> color() throws IOException {
-			return new INPUT.Color<>(document, pc).writeOpen();
+			return new INPUT.Color<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -165,7 +165,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Date<__> date() throws IOException {
-			return new INPUT.Date<>(document, pc).writeOpen();
+			return new INPUT.Date<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -177,7 +177,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.DatetimeLocal<__> datetimeLocal() throws IOException {
-			return new INPUT.DatetimeLocal<>(document, pc).writeOpen();
+			return new INPUT.DatetimeLocal<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -189,7 +189,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Email<__> email() throws IOException {
-			return new INPUT.Email<>(document, pc).writeOpen();
+			return new INPUT.Email<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -201,7 +201,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.File<__> file() throws IOException {
-			return new INPUT.File<>(document, pc).writeOpen();
+			return new INPUT.File<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -213,7 +213,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Hidden<__> hidden() throws IOException {
-			return new INPUT.Hidden<>(document, pc).writeOpen();
+			return new INPUT.Hidden<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -225,7 +225,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Image<__> image() throws IOException {
-			return new INPUT.Image<>(document, pc).writeOpen();
+			return new INPUT.Image<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -237,7 +237,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Month<__> month() throws IOException {
-			return new INPUT.Month<>(document, pc).writeOpen();
+			return new INPUT.Month<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -249,7 +249,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Number<__> number() throws IOException {
-			return new INPUT.Number<>(document, pc).writeOpen();
+			return new INPUT.Number<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -261,7 +261,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Password<__> password() throws IOException {
-			return new INPUT.Password<>(document, pc).writeOpen();
+			return new INPUT.Password<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -273,7 +273,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Radio<__> radio() throws IOException {
-			return new INPUT.Radio<>(document, pc).writeOpen();
+			return new INPUT.Radio<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -285,7 +285,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Range<__> range() throws IOException {
-			return new INPUT.Range<>(document, pc).writeOpen();
+			return new INPUT.Range<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -297,7 +297,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Reset<__> reset() throws IOException {
-			return new INPUT.Reset<>(document, pc).writeOpen();
+			return new INPUT.Reset<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -309,7 +309,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Search<__> search() throws IOException {
-			return new INPUT.Search<>(document, pc).writeOpen();
+			return new INPUT.Search<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -321,7 +321,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Submit<__> submit() throws IOException {
-			return new INPUT.Submit<>(document, pc).writeOpen();
+			return new INPUT.Submit<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -378,7 +378,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Tel<__> tel() throws IOException {
-			return new INPUT.Tel<>(document, pc).writeOpen();
+			return new INPUT.Tel<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -390,7 +390,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Text<__> text() throws IOException {
-			return new INPUT.Text<>(document, pc).writeOpen();
+			return new INPUT.Text<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -402,7 +402,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Time<__> time() throws IOException {
-			return new INPUT.Time<>(document, pc).writeOpen();
+			return new INPUT.Time<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -414,7 +414,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Url<__> url() throws IOException {
-			return new INPUT.Url<>(document, pc).writeOpen();
+			return new INPUT.Url<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
 		/**
@@ -426,7 +426,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * </ul>
 		 */
 		public INPUT.Week<__> week() throws IOException {
-			return new INPUT.Week<>(document, pc).writeOpen();
+			return new INPUT.Week<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 	}
 
@@ -440,7 +440,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 	 */
 	default Type<__> input() {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
+		__ pc = (__)this;
 		return new Type<>(getDocument(), pc);
 	}
 }

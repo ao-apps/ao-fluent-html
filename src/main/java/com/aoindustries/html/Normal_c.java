@@ -51,8 +51,9 @@ public abstract class Normal_c<
 
 	@Override
 	public PC __() throws IOException {
-		element.document.decDepth();
-		element.writeClose(false);
+		Document document = element.document;
+		document.decDepth();
+		element.writeClose(document.getUnsafe(null), false);
 		return element.pc;
 	}
 }

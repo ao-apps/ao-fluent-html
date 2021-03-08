@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-li-element">4.4.8 The li element</a>.
@@ -43,14 +44,14 @@ public class LI<PC extends ListContent<PC>> extends
 	}
 
 	@Override
-	protected LI<PC> writeOpen() throws IOException {
-		document.out.write("<li");
+	protected LI<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<li", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></li>" : "</li>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></li>" : "</li>", false).autoNl(out);
 	}
 
 	@Override

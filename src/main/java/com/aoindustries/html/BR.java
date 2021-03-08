@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <ul>
@@ -44,8 +45,13 @@ public class BR<PC extends PhrasingContent<PC>> extends VoidElement<BR<PC>, PC>
 	}
 
 	@Override
-	protected BR<PC> writeOpen() throws IOException {
-		document.out.write("<br");
+	protected BR<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<br", false);
 		return this;
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 	}
 }

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -57,14 +58,24 @@ public class TABLE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected TABLE<PC> writeOpen() throws IOException {
-		document.out.write("<table");
+	protected TABLE<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<table", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></table>" : "</table>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></table>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</table>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

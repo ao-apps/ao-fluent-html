@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
@@ -42,14 +43,14 @@ public class SPAN<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SPAN<PC> writeOpen() throws IOException {
-		document.out.write("<span");
+	protected SPAN<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<span", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></span>" : "</span>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></span>" : "</span>", false);
 	}
 
 	@Override

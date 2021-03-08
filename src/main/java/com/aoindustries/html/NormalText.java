@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * A normal element that can have textual content.
@@ -56,14 +57,14 @@ abstract public class NormalText<
 	 * @see  Document#text(java.lang.Object)
 	 */
 	public PC __(Object text) throws IOException {
+		Writer out = document.getUnsafe(null);
 		if(text != null) {
-			document.out.append('>');
-			document.incDepth();
-			document.text(text);
-			document.decDepth();
-			writeClose(false);
+			document.autoIndent(out).unsafe(out, '>').incDepth();
+			doBeforeBody(out);
+			document.text(out, text).decDepth();
+			writeClose(out, false);
 		} else {
-			writeClose(true);
+			writeClose(out, true);
 		}
 		return pc;
 	}

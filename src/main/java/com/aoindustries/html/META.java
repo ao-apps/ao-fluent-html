@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.function.Function;
 
 /**
@@ -51,9 +52,14 @@ public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<ME
 	}
 
 	@Override
-	protected META<PC> writeOpen() throws IOException {
-		document.out.write("<meta");
+	protected META<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<meta", false);
 		return this;
+	}
+
+	@Override
+	protected void doAfterElement(Writer out) throws IOException {
+		document.autoNl(out);
 	}
 
 	/**

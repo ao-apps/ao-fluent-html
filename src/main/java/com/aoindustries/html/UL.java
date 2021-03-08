@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-ul-element">4.4.6 The ul element</a>.
@@ -42,14 +43,24 @@ public class UL<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected UL<PC> writeOpen() throws IOException {
-		document.out.write("<ul");
+	protected UL<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<ul", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></ul>" : "</ul>");
+	protected void doBeforeBody(Writer out) throws IOException {
+		document.autoNl(out);
+	}
+
+	@Override
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		if(closeAttributes) {
+			document.autoIndent(out).unsafe(out, "></ul>", false);
+		} else {
+			document.autoNli(out).unsafe(out, "</ul>", false);
+		}
+		document.autoNl(out);
 	}
 
 	@Override

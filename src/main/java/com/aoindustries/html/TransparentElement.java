@@ -25,6 +25,7 @@ package com.aoindustries.html;
 import com.aoindustries.io.function.IOConsumerE;
 import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#transparent-content-models">3.2.5.3 Transparent content models</a>.
@@ -49,7 +50,7 @@ abstract public class TransparentElement<
 	 * @param  closeAttributes  When {@code true}, must end attributes with {@code '>'} before writing the closing tag.
 	 *                          These are expected to be combined to a single write.
 	 */
-	abstract protected void writeClose(boolean closeAttributes) throws IOException;
+	abstract protected void writeClose(Writer out, boolean closeAttributes) throws IOException;
 
 	/**
 	 * Ends attributes, invokes the body, then closes this element.
@@ -57,14 +58,14 @@ abstract public class TransparentElement<
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
+		Writer out = document.getUnsafe(null);
 		if(body != null) {
-			document.out.append('>');
-			document.incDepth();
+			document.autoIndent(out).unsafe(out, '>').incDepth();
 			body.run();
 			document.decDepth();
-			writeClose(false);
+			writeClose(out, false);
 		} else {
-			writeClose(true);
+			writeClose(out, true);
 		}
 		return pc;
 	}
@@ -75,14 +76,14 @@ abstract public class TransparentElement<
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(IOConsumerE<? super PC, Ex> body) throws IOException, Ex {
+		Writer out = document.getUnsafe(null);
 		if(body != null) {
-			document.out.append('>');
-			document.incDepth();
+			document.autoIndent(out).unsafe(out, '>').incDepth();
 			body.accept(pc);
 			document.decDepth();
-			writeClose(false);
+			writeClose(out, false);
 		} else {
-			writeClose(true);
+			writeClose(out, true);
 		}
 		return pc;
 	}
@@ -93,7 +94,7 @@ abstract public class TransparentElement<
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
-		writeClose(true);
+		writeClose(document.getUnsafe(null), true);
 		return pc;
 	}
 }

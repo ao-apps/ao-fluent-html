@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-var-element">4.5.16 The var element</a>.
@@ -42,14 +43,14 @@ public class VAR<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected VAR<PC> writeOpen() throws IOException {
-		document.out.write("<var");
+	protected VAR<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<var", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></var>" : "</var>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></var>" : "</var>", false);
 	}
 
 	@Override

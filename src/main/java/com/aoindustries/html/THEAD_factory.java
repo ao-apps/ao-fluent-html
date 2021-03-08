@@ -43,8 +43,9 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 */
 	default THEAD<__> thead() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new THEAD<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new THEAD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

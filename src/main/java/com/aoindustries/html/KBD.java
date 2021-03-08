@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-kbd-element">4.5.18 The kbd element</a>.
@@ -42,14 +43,14 @@ public class KBD<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected KBD<PC> writeOpen() throws IOException {
-		document.out.write("<kbd");
+	protected KBD<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<kbd", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></kbd>" : "</kbd>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></kbd>" : "</kbd>", false);
 	}
 
 	@Override

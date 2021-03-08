@@ -47,8 +47,9 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 */
 	default BLOCKQUOTE<__> blockquote() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new BLOCKQUOTE<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new BLOCKQUOTE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

@@ -37,6 +37,7 @@ import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.i18n.MarkupCoercion;
 import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Locale;
 
 /**
@@ -118,8 +119,8 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	}
 
 	@Override
-	protected STYLE<PC> writeOpen() throws IOException {
-		document.out.write("<style");
+	protected STYLE<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<style", false);
 		return type();
 	}
 
@@ -129,15 +130,33 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	 * @see Doctype#styleType(java.lang.Appendable)
 	 */
 	protected STYLE<PC> type() throws IOException {
+		Writer out = document.getUnsafe(null);
 		if(
 			type == null
 			|| type.equals(ContentType.CSS)
 		) {
-			document.doctype.styleType(document.out);
+			String typeAttr = document.doctype.getStyleType();
+			int len = typeAttr.length();
+			if(len > 0) {
+				if(document.getAtnl()) {
+					assert typeAttr.charAt(0) == ' ';
+					document.autoIndent(out, 1);
+					out.write(typeAttr, 1, len - 1);
+					document.clearAtnl();
+				} else {
+					out.write(typeAttr);
+				}
+			}
 		} else {
-			document.out.write(" type=\"");
-			encodeTextInXhtmlAttribute(type, document.out);
-			document.out.append('"');
+			if(document.getAtnl()) {
+				document.autoIndent(out, 1);
+				out.write("type=\"");
+				document.clearAtnl();
+			} else {
+				out.write(" type=\"");
+			}
+			encodeTextInXhtmlAttribute(type, out);
+			out.append('"');
 		}
 		return this;
 	}
@@ -158,11 +177,12 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 
 	private boolean didBody;
 
-	protected void startBody() throws IOException {
+	protected void startBody(Writer out) throws IOException {
 		if(!didBody) {
-			document.out.append('>');
-			if(doCdata()) document.out.write("/*<![CDATA[*/");
-			document.incDepth();
+			document
+				.autoIndent(out)
+				.unsafe(out, doCdata() ? (">/*<![CDATA[*/" + NL) : (">" + NL), true)
+				.incDepth();
 			didBody = true;
 		}
 	}
@@ -187,7 +207,8 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 		}
 		style = Coercion.nullIfEmpty(style);
 		if(style != null) {
-			startBody();
+			Writer out = document.getUnsafe(null);
+			startBody(out);
 			// Allow text markup from translations
 			MediaType mediaType = getMediaType();
 			MarkupCoercion.write(
@@ -197,8 +218,9 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 				true,
 				getMediaEncoder(mediaType),
 				false,
-				document.out
+				out
 			);
+			document.clearAtnl(); // Unknown, safe to assume not at newline
 		}
 		return this;
 	}
@@ -216,14 +238,16 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	public <Ex extends Throwable> STYLE<PC> out(StyleWriter<Ex> style) throws IOException, Ex {
 		if(style != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
-			startBody();
+			Writer out = document.getUnsafe(null);
+			startBody(out);
 			style.writeStyle(
 				new DocumentMediaWriter(
 					document,
 					encoder,
-					new NoCloseWriter(document.out)
+					new NoCloseWriter(out)
 				)
 			);
+			document.clearAtnl(); // Unknown, safe to assume not at newline
 		}
 		return this;
 	}
@@ -236,8 +260,9 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	// TODO: __() method to end text?  Call it "ContentWriter"?
 	public DocumentMediaWriter out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
-		startBody();
-		return new DocumentMediaWriter(document, encoder) {
+		Writer out = document.getUnsafe(null);
+		startBody(out);
+		return new DocumentMediaWriter(document, encoder, out) {
 			@Override
 			public void close() throws IOException {
 				__();
@@ -251,13 +276,13 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
+		Writer out = document.getUnsafe(null);
 		if(!didBody) {
-			document.out.write("></style>");
+			document.autoIndent(out).unsafe(out, "></style>", false);
 		} else {
-			document.decDepth();
-			if(doCdata()) document.out.write("/*]]>*/");
-			document.out.write("</style>");
+			document.decDepth().nli(out).unsafe(out, doCdata() ? "/*]]>*/</style>" : "</style>", false);
 		}
+		document.autoNl(out);
 		return pc;
 	}
 }

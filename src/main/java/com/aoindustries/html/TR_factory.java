@@ -43,8 +43,9 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 */
 	default TR<__> tr() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new TR<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#the-dt-element">4.4.10 The dt element</a>.
@@ -43,14 +44,14 @@ public class DT<PC extends Union_DIV_DL<PC>> extends
 	}
 
 	@Override
-	protected DT<PC> writeOpen() throws IOException {
-		document.out.write("<dt");
+	protected DT<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<dt", false);
 		return this;
 	}
 
 	@Override
-	protected void writeClose(boolean closeAttributes) throws IOException {
-		document.out.write(closeAttributes ? "></dt>" : "</dt>");
+	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
+		document.unsafe(out, closeAttributes ? "></dt>" : "</dt>", false).autoNl(out);
 	}
 
 	@Override

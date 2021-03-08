@@ -25,6 +25,7 @@ package com.aoindustries.html;
 import com.aoindustries.io.function.IOConsumerE;
 import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/#normal-elements">13.1.2 Elements / Normal elements</a>.
@@ -48,9 +49,21 @@ abstract public class Normal<
 	}
 
 	/**
+	 * Called after opening tag is completed, {@linkplain Document#incDepth() indentation depth is increased},
+	 * and before the body is invoked.
+	 * <p>
+	 * An common use-case is to call {@link Document#autoNl()} to begin body on the next line.
+	 * </p>
+	 */
+	@SuppressWarnings("NoopMethodInAbstractClass")
+	protected void doBeforeBody(Writer out) throws IOException {
+		// Do nothing by default
+	}
+
+	/**
 	 * Writes the closing tag.
 	 */
-	abstract protected void writeClose(boolean closeAttributes) throws IOException;
+	abstract protected void writeClose(Writer out, boolean closeAttributes) throws IOException;
 
 	/**
 	 * Ends attributes, invokes the body, then closes this element.
@@ -58,14 +71,15 @@ abstract public class Normal<
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
+		Writer out = document.getUnsafe(null);
 		if(body != null) {
-			document.out.append('>');
-			document.incDepth();
+			document.autoIndent(out).unsafe(out, '>').incDepth();
+			doBeforeBody(out);
 			body.run();
 			document.decDepth();
-			writeClose(false);
+			writeClose(out, false);
 		} else {
-			writeClose(true);
+			writeClose(out, true);
 		}
 		return pc;
 	}
@@ -78,14 +92,15 @@ abstract public class Normal<
 	 * @see  #new__()
 	 */
 	public <Ex extends Throwable> PC __(IOConsumerE<? super __, Ex> body) throws IOException, Ex {
+		Writer out = document.getUnsafe(null);
 		if(body != null) {
-			document.out.append('>');
-			document.incDepth();
+			document.autoIndent(out).unsafe(out, '>').incDepth();
+			doBeforeBody(out);
 			body.accept(new__());
 			document.decDepth();
-			writeClose(false);
+			writeClose(out, false);
 		} else {
-			writeClose(true);
+			writeClose(out, true);
 		}
 		return pc;
 	}
@@ -96,7 +111,7 @@ abstract public class Normal<
 	 * @return  The parent content model this element is within
 	 */
 	public PC __() throws IOException {
-		writeClose(true);
+		writeClose(document.getUnsafe(null), true);
 		return pc;
 	}
 
@@ -112,8 +127,9 @@ abstract public class Normal<
 	 * @see  #new_c()
 	 */
 	public _c _c() throws IOException {
-		document.out.append('>');
-		document.incDepth();
+		Writer out = document.getUnsafe(null);
+		document.autoIndent(out).unsafe(out, '>').incDepth();
+		doBeforeBody(out);
 		return new_c();
 	}
 

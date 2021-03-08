@@ -43,8 +43,9 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 */
 	default TH<__> th() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new TH<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TH<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

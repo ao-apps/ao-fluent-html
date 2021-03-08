@@ -45,8 +45,9 @@ public interface BR_factory<__ extends PhrasingContent<__>> extends Content<__> 
 	 */
 	default BR<__> br() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new BR<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new BR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

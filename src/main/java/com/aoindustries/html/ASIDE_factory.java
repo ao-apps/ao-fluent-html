@@ -43,8 +43,9 @@ public interface ASIDE_factory<__ extends SectioningContent<__>> extends Content
 	 */
 	default ASIDE<__> aside() throws IOException {
 		@SuppressWarnings(value = "unchecked")
-		__ pc = (__) this;
-		return new ASIDE<>(getDocument(), pc).writeOpen();
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new ASIDE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
 	/**

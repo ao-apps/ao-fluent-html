@@ -44,7 +44,7 @@ public class SECTION<PC extends SectioningContent<PC>> extends
 
 	@Override
 	protected SECTION<PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<select", false);
+		document.autoNli(out).unsafe(out, "<section", false);
 		return this;
 	}
 

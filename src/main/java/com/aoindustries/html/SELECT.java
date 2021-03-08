@@ -32,6 +32,8 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: indent before, and newline after?  Review whitespace rules.  (this decision will affect FORM, too)
+//       https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
 public class SELECT<PC extends Union_Interactive_Phrasing<PC>> extends
 	Normal<SELECT<PC>, PC, SELECT__<PC>, SELECT_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp

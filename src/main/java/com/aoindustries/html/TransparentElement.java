@@ -35,6 +35,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
+// TODO: Extend Normal?
 abstract public class TransparentElement<
 	E  extends TransparentElement<E, PC>,
 	PC extends Content<PC>
@@ -50,6 +51,7 @@ abstract public class TransparentElement<
 	 * @param  closeAttributes  When {@code true}, must end attributes with {@code '>'} before writing the closing tag.
 	 *                          These are expected to be combined to a single write.
 	 */
+	// TODO: Shared abstract base with Normal?  Extend Normal?
 	abstract protected void writeClose(Writer out, boolean closeAttributes) throws IOException;
 
 	/**
@@ -57,6 +59,7 @@ abstract public class TransparentElement<
 	 *
 	 * @return  The parent content model this element is within
 	 */
+	// TODO: Shared abstract base with Normal?  Extend Normal?
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
 		Writer out = document.getUnsafe(null);
 		if(body != null) {
@@ -75,6 +78,7 @@ abstract public class TransparentElement<
 	 *
 	 * @return  The parent content model this element is within
 	 */
+	// TODO: Shared abstract base with Normal?  Extend Normal?
 	public <Ex extends Throwable> PC __(IOConsumerE<? super PC, Ex> body) throws IOException, Ex {
 		Writer out = document.getUnsafe(null);
 		if(body != null) {
@@ -93,6 +97,7 @@ abstract public class TransparentElement<
 	 *
 	 * @return  The parent content model this element is within
 	 */
+	// TODO: Shared abstract base with Normal?  Extend Normal?
 	public PC __() throws IOException {
 		writeClose(document.getUnsafe(null), true);
 		return pc;

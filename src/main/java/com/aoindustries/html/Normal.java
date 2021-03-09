@@ -62,6 +62,9 @@ abstract public class Normal<
 
 	/**
 	 * Writes the closing tag.
+	 *
+	 * @param  closeAttributes  When {@code true}, must end attributes with {@code '>'} before writing the closing tag.
+	 *                          These are expected to be combined to a single write.
 	 */
 	abstract protected void writeClose(Writer out, boolean closeAttributes) throws IOException;
 

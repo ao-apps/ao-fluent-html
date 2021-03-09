@@ -29,8 +29,8 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class B_c<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText_c<PC, B_c<PC>>
+public class B_c<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText_c<PC, B_c<PC>>
 	implements PhrasingContent<B_c<PC>> {
 
 	protected B_c(B<PC> element) {

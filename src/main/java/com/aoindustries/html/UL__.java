@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class UL__<PC extends PalpableContent<PC>> extends
-	Normal__<PC, UL__<PC>> implements
-	ListContent<UL__<PC>> {
+public class UL__<PC extends PalpableContent<PC>>
+	extends Normal__<PC, UL__<PC>>
+	implements ListContent<UL__<PC>> {
 
 	protected UL__(UL<PC> element) {
 		super(element);

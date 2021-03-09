@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class KBD__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, KBD__<PC>> implements
-	PhrasingContent<KBD__<PC>> {
+public class KBD__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, KBD__<PC>>
+	implements PhrasingContent<KBD__<PC>> {
 
 	protected KBD__(KBD<PC> element) {
 		super(element);

@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class NAV__<PC extends SectioningContent<PC>> extends
-	NormalText__<PC, NAV__<PC>> implements
-	FlowContent<NAV__<PC>> {
+public class NAV__<PC extends SectioningContent<PC>>
+	extends NormalText__<PC, NAV__<PC>>
+	implements FlowContent<NAV__<PC>> {
 
 	protected NAV__(NAV<PC> element) {
 		super(element);

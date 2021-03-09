@@ -33,9 +33,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class TABLE_c<PC extends PalpableContent<PC>> extends
-	Normal_c<PC, TABLE_c<PC>> implements
-	TABLE_content<TABLE_c<PC>> {
+public class TABLE_c<PC extends PalpableContent<PC>>
+	extends Normal_c<PC, TABLE_c<PC>>
+	implements TABLE_content<TABLE_c<PC>> {
 
 	protected TABLE_c(TABLE<PC> element) {
 		super(element);

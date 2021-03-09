@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class TFOOT__<PC extends TABLE_content<PC>> extends
-	Normal__<PC, TFOOT__<PC>> implements
-	Union_TBODY_THEAD_TFOOT<TFOOT__<PC>> {
+public class TFOOT__<PC extends TABLE_content<PC>>
+	extends Normal__<PC, TFOOT__<PC>>
+	implements Union_TBODY_THEAD_TFOOT<TFOOT__<PC>> {
 
 	protected TFOOT__(TFOOT<PC> element) {
 		super(element);

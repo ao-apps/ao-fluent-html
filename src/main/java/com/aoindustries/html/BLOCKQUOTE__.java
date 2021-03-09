@@ -32,8 +32,8 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class BLOCKQUOTE__<PC extends PalpableContent<PC>> extends
-	NormalText__<PC, BLOCKQUOTE__<PC>>
+public class BLOCKQUOTE__<PC extends PalpableContent<PC>>
+	extends NormalText__<PC, BLOCKQUOTE__<PC>>
 	implements FlowContent<BLOCKQUOTE__<PC>> {
 
 	protected BLOCKQUOTE__(BLOCKQUOTE<PC> element) {

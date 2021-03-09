@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class ARTICLE__<PC extends SectioningContent<PC>> extends
-	NormalText__<PC, ARTICLE__<PC>> implements
-	FlowContent<ARTICLE__<PC>> {
+public class ARTICLE__<PC extends SectioningContent<PC>>
+	extends NormalText__<PC, ARTICLE__<PC>>
+	implements FlowContent<ARTICLE__<PC>> {
 
 	protected ARTICLE__(ARTICLE<PC> element) {
 		super(element);

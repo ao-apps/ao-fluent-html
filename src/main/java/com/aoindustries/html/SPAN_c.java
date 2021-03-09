@@ -30,8 +30,8 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public class SPAN_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, SPAN_c<PC>> implements
-	PhrasingContent<SPAN_c<PC>> {
+	extends NormalText_c<PC, SPAN_c<PC>>
+	implements PhrasingContent<SPAN_c<PC>> {
 
 	protected SPAN_c(SPAN<PC> element) {
 		super(element);

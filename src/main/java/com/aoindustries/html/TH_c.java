@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class TH_c<PC extends TR_content<PC>> extends
-	NormalText_c<PC, TH_c<PC>> implements
-	FlowContent<TH_c<PC>> {
+public class TH_c<PC extends TR_content<PC>>
+	extends NormalText_c<PC, TH_c<PC>>
+	implements FlowContent<TH_c<PC>> {
 
 	protected TH_c(TH<PC> element) {
 		super(element);

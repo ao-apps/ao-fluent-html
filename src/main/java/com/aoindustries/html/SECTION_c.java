@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class SECTION_c<PC extends SectioningContent<PC>> extends
-	NormalText_c<PC, SECTION_c<PC>> implements
-	FlowContent<SECTION_c<PC>> {
+public class SECTION_c<PC extends SectioningContent<PC>>
+	extends NormalText_c<PC, SECTION_c<PC>>
+	implements FlowContent<SECTION_c<PC>> {
 
 	protected SECTION_c(SECTION<PC> element) {
 		super(element);

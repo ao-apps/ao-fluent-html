@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class MAIN__<PC extends PalpableContent<PC>> extends
-	NormalText__<PC, MAIN__<PC>> implements
-	FlowContent<MAIN__<PC>> {
+public class MAIN__<PC extends PalpableContent<PC>>
+	extends NormalText__<PC, MAIN__<PC>>
+	implements FlowContent<MAIN__<PC>> {
 
 	protected MAIN__(MAIN<PC> element) {
 		super(element);

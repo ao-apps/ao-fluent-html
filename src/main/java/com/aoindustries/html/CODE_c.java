@@ -30,8 +30,8 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public class CODE_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, CODE_c<PC>> implements
-	PhrasingContent<CODE_c<PC>> {
+	extends NormalText_c<PC, CODE_c<PC>>
+	implements PhrasingContent<CODE_c<PC>> {
 
 	protected CODE_c(CODE<PC> element) {
 		super(element);

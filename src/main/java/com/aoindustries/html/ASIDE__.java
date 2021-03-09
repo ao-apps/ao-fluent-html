@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class ASIDE__<PC extends SectioningContent<PC>> extends
-	NormalText__<PC, ASIDE__<PC>> implements
-	FlowContent<ASIDE__<PC>> {
+public class ASIDE__<PC extends SectioningContent<PC>>
+	extends NormalText__<PC, ASIDE__<PC>>
+	implements FlowContent<ASIDE__<PC>> {
 
 	protected ASIDE__(ASIDE<PC> element) {
 		super(element);

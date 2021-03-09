@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class CODE__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, CODE__<PC>> implements
-	PhrasingContent<CODE__<PC>> {
+public class CODE__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, CODE__<PC>>
+	implements PhrasingContent<CODE__<PC>> {
 
 	protected CODE__(CODE<PC> element) {
 		super(element);

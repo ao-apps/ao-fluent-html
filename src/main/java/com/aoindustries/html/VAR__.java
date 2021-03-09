@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class VAR__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, VAR__<PC>> implements
-	PhrasingContent<VAR__<PC>> {
+public class VAR__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, VAR__<PC>>
+	implements PhrasingContent<VAR__<PC>> {
 
 	protected VAR__(VAR<PC> element) {
 		super(element);

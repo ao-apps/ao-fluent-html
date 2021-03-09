@@ -30,8 +30,8 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public class SUP_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, SUP_c<PC>> implements
-	PhrasingContent<SUP_c<PC>> {
+	extends NormalText_c<PC, SUP_c<PC>>
+	implements PhrasingContent<SUP_c<PC>> {
 
 	protected SUP_c(SUP<PC> element) {
 		super(element);

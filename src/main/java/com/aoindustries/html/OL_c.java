@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class OL_c<PC extends PalpableContent<PC>> extends
-	Normal_c<PC, OL_c<PC>> implements
-	ListContent<OL_c<PC>> {
+public class OL_c<PC extends PalpableContent<PC>>
+	extends Normal_c<PC, OL_c<PC>>
+	implements ListContent<OL_c<PC>> {
 
 	protected OL_c(OL<PC> element) {
 		super(element);

@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class TR_c<PC extends Union_TBODY_THEAD_TFOOT<PC>> extends
-	Normal_c<PC, TR_c<PC>> implements
-	TR_content<TR_c<PC>> {
+public class TR_c<PC extends Union_TBODY_THEAD_TFOOT<PC>>
+	extends Normal_c<PC, TR_c<PC>>
+	implements TR_content<TR_c<PC>> {
 
 	protected TR_c(TR<PC> element) {
 		super(element);

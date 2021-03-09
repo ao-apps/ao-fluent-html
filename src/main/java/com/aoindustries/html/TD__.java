@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class TD__<PC extends TR_content<PC>> extends
-	NormalText__<PC, TD__<PC>> implements
-	FlowContent<TD__<PC>> {
+public class TD__<PC extends TR_content<PC>>
+	extends NormalText__<PC, TD__<PC>>
+	implements FlowContent<TD__<PC>> {
 
 	protected TD__(TD<PC> element) {
 		super(element);

@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class DIV_c<PC extends Union_DL_Palpable<PC>> extends
-	NormalText_c<PC, DIV_c<PC>> implements
-	DIV_content<DIV_c<PC>> {
+public class DIV_c<PC extends Union_DL_Palpable<PC>>
+	extends NormalText_c<PC, DIV_c<PC>>
+	implements DIV_content<DIV_c<PC>> {
 
 	protected DIV_c(DIV<PC> element) {
 		super(element);

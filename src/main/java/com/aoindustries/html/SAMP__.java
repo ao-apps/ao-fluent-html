@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class SAMP__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, SAMP__<PC>> implements
-	PhrasingContent<SAMP__<PC>> {
+public class SAMP__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, SAMP__<PC>>
+	implements PhrasingContent<SAMP__<PC>> {
 
 	protected SAMP__(SAMP<PC> element) {
 		super(element);

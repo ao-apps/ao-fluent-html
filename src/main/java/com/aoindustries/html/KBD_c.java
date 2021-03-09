@@ -30,8 +30,8 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public class KBD_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, KBD_c<PC>> implements
-	PhrasingContent<KBD_c<PC>> {
+	extends NormalText_c<PC, KBD_c<PC>>
+	implements PhrasingContent<KBD_c<PC>> {
 
 	protected KBD_c(KBD<PC> element) {
 		super(element);

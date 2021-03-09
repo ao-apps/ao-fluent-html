@@ -32,9 +32,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class Q__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, Q__<PC>> implements
-	PhrasingContent<Q__<PC>> {
+public class Q__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, Q__<PC>>
+	implements PhrasingContent<Q__<PC>> {
 
 	protected Q__(Q<PC> element) {
 		super(element);

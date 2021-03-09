@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class DD__<PC extends Union_DIV_DL<PC>> extends
-	NormalText__<PC, DD__<PC>> implements
-	FlowContent<DD__<PC>> {
+public class DD__<PC extends Union_DIV_DL<PC>>
+	extends NormalText__<PC, DD__<PC>>
+	implements FlowContent<DD__<PC>> {
 
 	protected DD__(DD<PC> element) {
 		super(element);

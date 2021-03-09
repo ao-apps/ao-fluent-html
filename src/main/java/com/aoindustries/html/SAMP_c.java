@@ -30,8 +30,8 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public class SAMP_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, SAMP_c<PC>> implements
-	PhrasingContent<SAMP_c<PC>> {
+	extends NormalText_c<PC, SAMP_c<PC>>
+	implements PhrasingContent<SAMP_c<PC>> {
 
 	protected SAMP_c(SAMP<PC> element) {
 		super(element);

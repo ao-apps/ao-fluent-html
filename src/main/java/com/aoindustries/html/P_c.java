@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class P_c<PC extends PalpableContent<PC>> extends
-	NormalText_c<PC, P_c<PC>> implements
-	PhrasingContent<P_c<PC>> {
+public class P_c<PC extends PalpableContent<PC>>
+	extends NormalText_c<PC, P_c<PC>>
+	implements PhrasingContent<P_c<PC>> {
 
 	protected P_c(P<PC> element) {
 		super(element);

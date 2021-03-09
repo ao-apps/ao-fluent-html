@@ -32,8 +32,8 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class FORM__<PC extends PalpableContent<PC>> extends
-	NormalText__<PC, FORM__<PC>>
+public class FORM__<PC extends PalpableContent<PC>>
+	extends NormalText__<PC, FORM__<PC>>
 	implements FlowContent<FORM__<PC>> {
 
 	protected FORM__(FORM<PC> element) {

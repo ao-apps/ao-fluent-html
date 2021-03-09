@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class DATALIST__<PC extends PhrasingContent<PC>> extends
-	NormalText__<PC, DATALIST__<PC>> implements
-	DATALIST_content<DATALIST__<PC>> {
+public class DATALIST__<PC extends PhrasingContent<PC>>
+	extends NormalText__<PC, DATALIST__<PC>>
+	implements DATALIST_content<DATALIST__<PC>> {
 
 	protected DATALIST__(DATALIST<PC> element) {
 		super(element);

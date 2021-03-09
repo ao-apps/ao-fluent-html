@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class COLGROUP_c<PC extends TABLE_content<PC>> extends
-	Normal_c<PC, COLGROUP_c<PC>> implements
-	COLGROUP_content<COLGROUP_c<PC>> {
+public class COLGROUP_c<PC extends TABLE_content<PC>>
+	extends Normal_c<PC, COLGROUP_c<PC>>
+	implements COLGROUP_content<COLGROUP_c<PC>> {
 
 	protected COLGROUP_c(COLGROUP<PC> element) {
 		super(element);

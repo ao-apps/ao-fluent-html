@@ -30,8 +30,8 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public class VAR_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, VAR_c<PC>> implements
-	PhrasingContent<VAR_c<PC>> {
+	extends NormalText_c<PC, VAR_c<PC>>
+	implements PhrasingContent<VAR_c<PC>> {
 
 	protected VAR_c(VAR<PC> element) {
 		super(element);

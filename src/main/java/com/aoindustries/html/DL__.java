@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class DL__<PC extends PalpableContent<PC>> extends
-	Normal__<PC, DL__<PC>> implements
-	DL_content<DL__<PC>> {
+public class DL__<PC extends PalpableContent<PC>>
+	extends Normal__<PC, DL__<PC>>
+	implements DL_content<DL__<PC>> {
 
 	protected DL__(DL<PC> element) {
 		super(element);

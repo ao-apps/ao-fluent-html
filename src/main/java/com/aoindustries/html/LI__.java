@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class LI__<PC extends ListContent<PC>> extends
-	NormalText__<PC, LI__<PC>> implements
-	FlowContent<LI__<PC>> {
+public class LI__<PC extends ListContent<PC>>
+	extends NormalText__<PC, LI__<PC>>
+	implements FlowContent<LI__<PC>> {
 
 	protected LI__(LI<PC> element) {
 		super(element);

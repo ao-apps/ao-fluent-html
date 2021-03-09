@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class THEAD__<PC extends TABLE_content<PC>> extends
-	Normal__<PC, THEAD__<PC>> implements
-	Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
+public class THEAD__<PC extends TABLE_content<PC>>
+	extends Normal__<PC, THEAD__<PC>>
+	implements Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
 
 	protected THEAD__(THEAD<PC> element) {
 		super(element);

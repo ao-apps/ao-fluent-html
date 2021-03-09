@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class SELECT_c<PC extends Union_Interactive_Phrasing<PC>> extends
-	Normal_c<PC, SELECT_c<PC>> implements
-	SELECT_content<SELECT_c<PC>> {
+public class SELECT_c<PC extends Union_Interactive_Phrasing<PC>>
+	extends Normal_c<PC, SELECT_c<PC>>
+	implements SELECT_content<SELECT_c<PC>> {
 
 	protected SELECT_c(SELECT<PC> element) {
 		super(element);

@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class SPAN__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, SPAN__<PC>> implements
-	PhrasingContent<SPAN__<PC>> {
+public class SPAN__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, SPAN__<PC>>
+	implements PhrasingContent<SPAN__<PC>> {
 
 	protected SPAN__(SPAN<PC> element) {
 		super(element);

@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class SUP__<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText__<PC, SUP__<PC>> implements
-	PhrasingContent<SUP__<PC>> {
+public class SUP__<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText__<PC, SUP__<PC>>
+	implements PhrasingContent<SUP__<PC>> {
 
 	protected SUP__(SUP<PC> element) {
 		super(element);

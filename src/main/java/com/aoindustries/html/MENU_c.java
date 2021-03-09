@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class MENU_c<PC extends InteractiveContent<PC>> extends
-	Normal_c<PC, MENU_c<PC>> implements
-	ListContent<MENU_c<PC>> {
+public class MENU_c<PC extends InteractiveContent<PC>>
+	extends Normal_c<PC, MENU_c<PC>>
+	implements ListContent<MENU_c<PC>> {
 
 	protected MENU_c(MENU<PC> element) {
 		super(element);

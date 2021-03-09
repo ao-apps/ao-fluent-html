@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class CAPTION_c<PC extends TABLE_content<PC>> extends
-	NormalText_c<PC, CAPTION_c<PC>> implements
-	FlowContent<CAPTION_c<PC>> {
+public class CAPTION_c<PC extends TABLE_content<PC>>
+	extends NormalText_c<PC, CAPTION_c<PC>>
+	implements FlowContent<CAPTION_c<PC>> {
 
 	protected CAPTION_c(CAPTION<PC> element) {
 		super(element);

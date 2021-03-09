@@ -29,9 +29,9 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-public class OPTGROUP__<PC extends SELECT_content<PC>> extends
-	Normal__<PC, OPTGROUP__<PC>> implements
-	OPTGROUP_content<OPTGROUP__<PC>> {
+public class OPTGROUP__<PC extends SELECT_content<PC>>
+	extends Normal__<PC, OPTGROUP__<PC>>
+	implements OPTGROUP_content<OPTGROUP__<PC>> {
 
 	protected OPTGROUP__(OPTGROUP<PC> element) {
 		super(element);

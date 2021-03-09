@@ -42,7 +42,7 @@ public interface FOOTER_factory<__ extends PalpableContent<__>> extends Content<
 	 * </p>
 	 */
 	default FOOTER<__> footer() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new FOOTER<>(document, pc).writeOpen(document.getUnsafe(null));

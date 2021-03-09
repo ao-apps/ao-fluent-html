@@ -42,7 +42,7 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * </p>
 	 */
 	default DT<__> dt() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new DT<>(document, pc).writeOpen(document.getUnsafe(null));

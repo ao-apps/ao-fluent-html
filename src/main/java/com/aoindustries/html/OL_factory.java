@@ -42,7 +42,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * </p>
 	 */
 	default OL<__> ol() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new OL<>(document, pc).writeOpen(document.getUnsafe(null));

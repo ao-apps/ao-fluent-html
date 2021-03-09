@@ -42,7 +42,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	 * </p>
 	 */
 	default HEADER<__> header() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new HEADER<>(document, pc).writeOpen(document.getUnsafe(null));

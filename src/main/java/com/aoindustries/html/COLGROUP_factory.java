@@ -42,7 +42,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 * </p>
 	 */
 	default COLGROUP<__> colgroup() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new COLGROUP<>(document, pc).writeOpen(document.getUnsafe(null));

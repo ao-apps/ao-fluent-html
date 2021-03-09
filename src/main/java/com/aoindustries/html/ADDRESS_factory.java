@@ -42,7 +42,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	 * </p>
 	 */
 	default ADDRESS<__> address() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new ADDRESS<>(document, pc).writeOpen(document.getUnsafe(null));

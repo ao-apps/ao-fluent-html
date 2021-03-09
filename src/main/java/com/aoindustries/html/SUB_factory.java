@@ -42,7 +42,7 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * </p>
 	 */
 	default SUB<__> sub() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SUB<>(document, pc).writeOpen(document.getUnsafe(null));

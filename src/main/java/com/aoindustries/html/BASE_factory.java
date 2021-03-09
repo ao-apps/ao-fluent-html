@@ -42,7 +42,7 @@ public interface BASE_factory<__ extends MetadataContent<__>> extends Content<__
 	 * </ul>
 	 */
 	default BASE<__> base() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new BASE<>(document, pc).writeOpen(document.getUnsafe(null));

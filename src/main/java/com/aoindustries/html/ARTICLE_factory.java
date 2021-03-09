@@ -42,7 +42,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	 * </p>
 	 */
 	default ARTICLE<__> article() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new ARTICLE<>(document, pc).writeOpen(document.getUnsafe(null));

@@ -439,7 +439,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 	 * </ul>
 	 */
 	default Type<__> input() {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		return new Type<>(getDocument(), pc);
 	}

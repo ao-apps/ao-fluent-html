@@ -42,7 +42,7 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * </p>
 	 */
 	default KBD<__> kbd() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new KBD<>(document, pc).writeOpen(document.getUnsafe(null));

@@ -43,7 +43,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * </p>
 	 */
 	default A<__> a() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new A<>(document, pc).writeOpen(document.getUnsafe(null));

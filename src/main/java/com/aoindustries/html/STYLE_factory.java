@@ -48,7 +48,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * @see Doctype#styleType(java.lang.Appendable)
 	 */
 	default STYLE<__> style() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new STYLE<>(document, pc).writeOpen(document.getUnsafe(null));
@@ -63,7 +63,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * </ul>
 	 */
 	default STYLE<__> style(String type) throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
@@ -90,7 +90,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * </ul>
 	 */
 	default STYLE<__> style(STYLE.Type type) throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));

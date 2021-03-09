@@ -42,7 +42,7 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * </p>
 	 */
 	default SAMP<__> samp() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SAMP<>(document, pc).writeOpen(document.getUnsafe(null));

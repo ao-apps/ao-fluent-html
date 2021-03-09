@@ -46,7 +46,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * </ul>
 	 */
 	default Q<__> q() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new Q<>(document, pc).writeOpen(document.getUnsafe(null));

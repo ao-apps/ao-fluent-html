@@ -47,7 +47,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * </ul>
 	 */
 	default FORM<__> form() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new FORM<>(document, pc).writeOpen(document.getUnsafe(null));

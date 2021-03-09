@@ -42,7 +42,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	 * </p>
 	 */
 	default DEL<__> del() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new DEL<>(document, pc).writeOpen(document.getUnsafe(null));

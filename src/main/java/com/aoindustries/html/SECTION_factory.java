@@ -42,7 +42,7 @@ public interface SECTION_factory<__ extends SectioningContent<__>> extends Conte
 	 * </p>
 	 */
 	default SECTION<__> section() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SECTION<>(document, pc).writeOpen(document.getUnsafe(null));

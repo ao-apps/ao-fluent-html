@@ -42,7 +42,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * </p>
 	 */
 	default SPAN<__> span() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SPAN<>(document, pc).writeOpen(document.getUnsafe(null));

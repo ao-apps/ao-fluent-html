@@ -47,7 +47,7 @@ public interface LINK_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 */
 	// TODO: Variants of Link by Rel, with per-implementation attributes like Input?
 	default LINK<__> link() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new LINK<>(document, pc).writeOpen(document.getUnsafe(null));

@@ -44,7 +44,7 @@ public interface OPTION_factory<__ extends Union_DATALIST_OPTGROUP<__>> extends 
 	 * </ul>
 	 */
 	default OPTION<__> option() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new OPTION<>(document, pc).writeOpen(document.getUnsafe(null));

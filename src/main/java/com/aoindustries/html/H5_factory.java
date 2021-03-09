@@ -42,7 +42,7 @@ public interface H5_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * </p>
 	 */
 	default H5<__> h5() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new H5<>(document, pc).writeOpen(document.getUnsafe(null));

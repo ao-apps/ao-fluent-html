@@ -42,7 +42,7 @@ public interface TFOOT_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * </p>
 	 */
 	default TFOOT<__> tfoot() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new TFOOT<>(document, pc).writeOpen(document.getUnsafe(null));

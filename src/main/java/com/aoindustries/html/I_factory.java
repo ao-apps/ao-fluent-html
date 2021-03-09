@@ -42,7 +42,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * </p>
 	 */
 	default I<__> i() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new I<>(document, pc).writeOpen(document.getUnsafe(null));

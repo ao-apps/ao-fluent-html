@@ -45,7 +45,7 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * </ul>
 	 */
 	default AREA<__> area() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new AREA<>(document, pc).writeOpen(document.getUnsafe(null));

@@ -42,7 +42,7 @@ public interface H4_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * </p>
 	 */
 	default H4<__> h4() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new H4<>(document, pc).writeOpen(document.getUnsafe(null));

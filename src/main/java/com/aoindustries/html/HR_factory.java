@@ -44,7 +44,7 @@ public interface HR_factory<__ extends FlowContent<__>> extends Content<__> {
 	 * </ul>
 	 */
 	default HR<__> hr() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new HR<>(document, pc).writeOpen(document.getUnsafe(null));

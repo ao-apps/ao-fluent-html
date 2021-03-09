@@ -42,7 +42,7 @@ public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__
 	 * </p>
 	 */
 	default MAIN<__> main() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new MAIN<>(document, pc).writeOpen(document.getUnsafe(null));

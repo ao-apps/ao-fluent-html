@@ -42,7 +42,7 @@ public interface H6_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * </p>
 	 */
 	default H6<__> h6() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new H6<>(document, pc).writeOpen(document.getUnsafe(null));

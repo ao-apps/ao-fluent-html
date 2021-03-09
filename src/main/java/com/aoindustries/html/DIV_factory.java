@@ -42,7 +42,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 * </p>
 	 */
 	default DIV<__> div() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new DIV<>(document, pc).writeOpen(document.getUnsafe(null));

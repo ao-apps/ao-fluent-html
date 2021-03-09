@@ -42,7 +42,7 @@ public interface UL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * </p>
 	 */
 	default UL<__> ul() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new UL<>(document, pc).writeOpen(document.getUnsafe(null));

@@ -48,7 +48,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * @see Doctype#scriptType(java.lang.Appendable)
 	 */
 	default SCRIPT<__> script() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SCRIPT<>(document, pc).writeOpen(document.getUnsafe(null));
@@ -63,7 +63,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * </ul>
 	 */
 	default SCRIPT<__> script(String type) throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
@@ -90,7 +90,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * </ul>
 	 */
 	default SCRIPT<__> script(SCRIPT.Type type) throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));

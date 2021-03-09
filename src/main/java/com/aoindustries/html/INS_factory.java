@@ -42,7 +42,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * </p>
 	 */
 	default INS<__> ins() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new INS<>(document, pc).writeOpen(document.getUnsafe(null));

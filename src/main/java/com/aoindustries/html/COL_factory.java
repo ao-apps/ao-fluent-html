@@ -46,7 +46,7 @@ public interface COL_factory<__ extends COLGROUP_content<__>> extends Content<__
 	 * </ul>
 	 */
 	default COL<__> col() throws IOException {
-		@SuppressWarnings(value = "unchecked")
+		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new COL<>(document, pc).writeOpen(document.getUnsafe(null));

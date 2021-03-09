@@ -22,14 +22,95 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
- * See <a href="https://html.spec.whatwg.org/#the-meter-element">4.10.14 The meter element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
+// TODO: The value attribute must be specified, create convenience methods that set the value (like A.href)
 public interface METER_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new meter element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
+	 * </p>
+	 */
+	default METER<__> meter() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new METER<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a meter element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ meter__(IORunnableE<Ex> meter) throws IOException, Ex {
+		return meter().__(meter);
+	}
+
+	/**
+	 * Creates a meter element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ meter__(IOConsumerE<? super METER__<__>, Ex> meter) throws IOException, Ex {
+		return meter().__(meter);
+	}
+
+	/**
+	 * Creates a meter element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ meter__(Object text) throws IOException {
+		return meter().__(text);
+	}
+
+	/**
+	 * Creates an empty meter element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ meter__() throws IOException {
+		return meter().__();
+	}
+
+	/**
+	 * Creates a meter element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default METER_c<__> meter_c() throws IOException {
+		return meter()._c();
+	}
 }

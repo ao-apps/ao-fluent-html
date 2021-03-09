@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

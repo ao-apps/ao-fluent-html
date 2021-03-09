@@ -33,7 +33,7 @@ import java.util.function.Function;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
  * </ul>
  *
@@ -46,7 +46,7 @@ public interface Formenctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
@@ -58,7 +58,7 @@ public interface Formenctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
@@ -69,7 +69,7 @@ public interface Formenctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
@@ -80,7 +80,7 @@ public interface Formenctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */

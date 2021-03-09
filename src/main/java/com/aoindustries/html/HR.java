@@ -28,7 +28,7 @@ import java.util.function.Function;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">4.4.2 The hr element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
  * </ul>
  *

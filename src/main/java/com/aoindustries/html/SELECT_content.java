@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

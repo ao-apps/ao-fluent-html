@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	/**
 	 * Opens a new colgroup element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 */
 	default COLGROUP<__> colgroup() throws IOException {
@@ -51,7 +51,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	/**
 	 * Creates a colgroup element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	/**
 	 * Creates a colgroup element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	/**
 	 * Creates an empty colgroup element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	/**
 	 * Creates a colgroup element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-colgroup-element">4.9.3 The colgroup element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

@@ -28,14 +28,14 @@ import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
  *
  * @author  AO Industries, Inc.
  */
 public interface Rowspan<E extends Element<E, ?> & Rowspan<E>> {
 
 	/**
-	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
 	 *
 	 * @param  rowspan  Will not write the attribute when is {@code 1}.
 	 */
@@ -47,7 +47,7 @@ public interface Rowspan<E extends Element<E, ?> & Rowspan<E>> {
 	}
 
 	/**
-	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
 	 *
 	 * @param  rowspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 */
@@ -59,7 +59,7 @@ public interface Rowspan<E extends Element<E, ?> & Rowspan<E>> {
 	}
 
 	/**
-	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
 	 *
 	 * @param  rowspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 *

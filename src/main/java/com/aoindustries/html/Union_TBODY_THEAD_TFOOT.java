@@ -25,9 +25,9 @@ package com.aoindustries.html;
 /**
  * Elements that are common to all three of {@link TBODY}, {@link THEAD}, and {@link TFOOT}.
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-tbody-element">4.9.5 The tbody element</a>.</li>
- * <li>See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.</li>
- * <li>See <a href="https://html.spec.whatwg.org/#the-tfoot-element">4.9.7 The tfoot element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element">4.9.7 The tfoot element</a>.</li>
  * </ul>
  *
  * @param  <__>  This content model, which will be the parent content model of child elements

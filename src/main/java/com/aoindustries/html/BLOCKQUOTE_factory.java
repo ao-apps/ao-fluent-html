@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
  * </ul>
  *
@@ -41,7 +41,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	/**
 	 * Opens a new blockquote element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 */
@@ -55,7 +55,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	/**
 	 * Creates a blockquote element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -68,7 +68,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	/**
 	 * Creates a blockquote element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -81,7 +81,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	/**
 	 * Creates a blockquote element with no attributes and a text body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -94,7 +94,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	/**
 	 * Creates an empty blockquote element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -107,7 +107,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	/**
 	 * Creates a blockquote element with no attributes then begins element content
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 *

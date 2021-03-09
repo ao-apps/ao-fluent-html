@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	/**
 	 * Opens a new header element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
 	 * </p>
 	 */
 	default HEADER<__> header() throws IOException {
@@ -51,7 +51,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	/**
 	 * Creates a header element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	/**
 	 * Creates a header element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	/**
 	 * Creates a header element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	/**
 	 * Creates an empty header element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface HEADER_factory<__ extends PalpableContent<__>> extends Content<
 	/**
 	 * Creates a header element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-header-element">4.3.8 The header element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

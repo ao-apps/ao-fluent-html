@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

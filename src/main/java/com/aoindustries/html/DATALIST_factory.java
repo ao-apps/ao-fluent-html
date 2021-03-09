@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	/**
 	 * Opens a new datalist element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 */
 	default DATALIST<__> datalist() throws IOException {
@@ -51,7 +51,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	/**
 	 * Creates a datalist element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	/**
 	 * Creates a datalist element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	/**
 	 * Creates a datalist element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	/**
 	 * Creates an empty datalist element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	/**
 	 * Creates a datalist element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

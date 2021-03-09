@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface B_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Opens a new b element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
 	 * </p>
 	 */
 	default B<__> b() throws IOException {
@@ -51,7 +51,7 @@ public interface B_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a b element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface B_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a b element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface B_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a b element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface B_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an empty b element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface B_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a b element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-b-element">4.5.21 The b element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

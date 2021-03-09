@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-html-element">4.1.1 The html element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
  * @author  AO Industries, Inc.
  */

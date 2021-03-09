@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	/**
 	 * Opens a new article element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
 	 * </p>
 	 */
 	default ARTICLE<__> article() throws IOException {
@@ -51,7 +51,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	/**
 	 * Creates an article element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	/**
 	 * Creates an article element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	/**
 	 * Creates an article element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	/**
 	 * Creates an empty article element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface ARTICLE_factory<__ extends SectioningContent<__>> extends Conte
 	/**
 	 * Creates an article element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-article-element">4.3.2 The article element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

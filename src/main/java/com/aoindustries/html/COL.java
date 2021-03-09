@@ -28,7 +28,7 @@ import java.util.function.Function;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-col-element">4.9.4 The col element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-col-element">4.9.4 The col element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
  * </ul>

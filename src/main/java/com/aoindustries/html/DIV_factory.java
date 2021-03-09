@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	/**
 	 * Opens a new div element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 */
 	default DIV<__> div() throws IOException {
@@ -51,7 +51,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	/**
 	 * Creates a div element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	/**
 	 * Creates a div element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	/**
 	 * Creates a div element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	/**
 	 * Creates an empty div element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	/**
 	 * Creates a div element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

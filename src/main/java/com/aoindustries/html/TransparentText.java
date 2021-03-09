@@ -28,7 +28,7 @@ import java.io.Writer;
 /**
  * A transparent element that can have textual content.
  * <p>
- * See <a href="https://html.spec.whatwg.org/#transparent-content-models">3.2.5.3 Transparent content models</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/dom.html#transparent-content-models">3.2.5.3 Transparent content models</a>.
  * </p>
  *
  * @param  <PC>  The parent content model this element is within,

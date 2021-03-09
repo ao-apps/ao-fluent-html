@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-li-element">4.4.8 The li element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

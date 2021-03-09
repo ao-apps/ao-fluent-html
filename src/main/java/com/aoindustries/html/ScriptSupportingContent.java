@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#script-supporting-elements">3.2.5.2.9 Script-supporting elements</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/dom.html#script-supporting-elements">3.2.5.2.9 Script-supporting elements</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

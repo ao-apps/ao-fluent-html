@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
@@ -41,7 +41,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Opens a new q element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 */
@@ -55,7 +55,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a q element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -68,7 +68,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a q element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -81,7 +81,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a q element with no attributes and a text body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -94,7 +94,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an empty q element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
@@ -107,7 +107,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates a q element with no attributes then begins element content
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *

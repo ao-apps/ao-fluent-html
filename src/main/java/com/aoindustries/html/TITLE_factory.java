@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-title-element">4.2.2 The title element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">4.2.2 The title element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

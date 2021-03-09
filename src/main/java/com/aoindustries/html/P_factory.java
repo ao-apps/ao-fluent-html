@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	/**
 	 * Opens a new p element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 */
 	default P<__> p() throws IOException {
@@ -51,7 +51,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	/**
 	 * Creates a p element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	/**
 	 * Creates a p element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	/**
 	 * Creates a p element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	/**
 	 * Creates an empty p element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	/**
 	 * Creates a p element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-p-element">4.4.1 The p element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-figure-element">4.4.12 The figure element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">4.4.12 The figure element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

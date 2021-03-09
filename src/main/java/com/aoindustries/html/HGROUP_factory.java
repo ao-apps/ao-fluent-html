@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-hgroup-element">4.3.7 The hgroup element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">4.3.7 The hgroup element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

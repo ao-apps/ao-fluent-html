@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#transparent-content-models">3.2.5.3 Transparent content models</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/dom.html#transparent-content-models">3.2.5.3 Transparent content models</a>.
  * <p>
  * Due to limitations in Java generics, this content model does not directly reflect the parent content
  * model, despite this being a transparent content model.  Rather, it includes only the content model that

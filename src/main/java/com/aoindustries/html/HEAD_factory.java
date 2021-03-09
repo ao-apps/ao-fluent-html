@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-head-element">4.2.1 The head element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-head-element">4.2.1 The head element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

@@ -41,7 +41,7 @@ import java.util.Locale;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
  * </ul>
  *
@@ -49,7 +49,7 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Extend RawTextElement: https://html.spec.whatwg.org/#raw-text-elements
+// TODO: Extend RawTextElement: https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements
 public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRIPT<PC>, PC> implements
 	com.aoindustries.html.attributes.Boolean.Async<SCRIPT<PC>>,
 	com.aoindustries.html.attributes.Enum.Charset<SCRIPT<PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,

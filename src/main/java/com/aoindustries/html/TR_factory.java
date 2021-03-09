@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	/**
 	 * Opens a new tr element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 */
 	default TR<__> tr() throws IOException {
@@ -51,7 +51,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	/**
 	 * Creates a tr element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	/**
 	 * Creates a tr element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	/**
 	 * Creates an empty tr element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	/**
 	 * Creates a tr element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

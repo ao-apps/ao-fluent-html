@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	/**
 	 * Opens a new dd element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 */
 	default DD<__> dd() throws IOException {
@@ -51,7 +51,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	/**
 	 * Creates a dd element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	/**
 	 * Creates a dd element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	/**
 	 * Creates a dd element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	/**
 	 * Creates an empty dd element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	/**
 	 * Creates a dd element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dd-element">4.4.11 The dd element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

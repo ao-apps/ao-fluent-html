@@ -26,7 +26,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
  * </ul>
  *
@@ -39,7 +39,7 @@ public interface OPTION_factory<__ extends Union_DATALIST_OPTGROUP<__>> extends 
 	/**
 	 * Opens a new option element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
 	 * </ul>
 	 */
@@ -53,7 +53,7 @@ public interface OPTION_factory<__ extends Union_DATALIST_OPTGROUP<__>> extends 
 	/**
 	 * Creates an empty option element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-option-element">4.10.10 The option element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
 	 * </ul>
 	 *

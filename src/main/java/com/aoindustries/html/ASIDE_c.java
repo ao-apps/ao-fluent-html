@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-aside-element">4.3.5 The aside element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

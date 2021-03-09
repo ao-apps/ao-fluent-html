@@ -24,7 +24,7 @@ package com.aoindustries.html;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#metadata-content">3.2.5.2.1 Metadata content</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#metadata-content">3.2.5.2.1 Metadata content</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content">Metadata content</a>.</li>
  * </ul>
  *

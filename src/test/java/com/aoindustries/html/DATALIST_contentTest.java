@@ -144,7 +144,7 @@ public class DATALIST_contentTest {
 			VAR_factory.class,
 			VIDEO_factory.class,
 			WBR_factory.class
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 		);
 	}
 

@@ -28,14 +28,14 @@ import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
  *
  * @author  AO Industries, Inc.
  */
 public interface Colspan<E extends Element<E, ?> & Colspan<E>> {
 
 	/**
-	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
 	 *
 	 * @param  colspan  Will not write the attribute when is {@code 1}.
 	 */
@@ -47,7 +47,7 @@ public interface Colspan<E extends Element<E, ?> & Colspan<E>> {
 	}
 
 	/**
-	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
 	 *
 	 * @param  colspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 */
@@ -59,7 +59,7 @@ public interface Colspan<E extends Element<E, ?> & Colspan<E>> {
 	}
 
 	/**
-	 * See <a href="https://html.spec.whatwg.org/#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-colspan">4.9.11 Attributes common to td and th elements / colspan</a>.
 	 *
 	 * @param  colspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 *

@@ -215,7 +215,7 @@ public class Document implements
 	// Inherited: TEMPLATE_factory<Document>
 	// Inherited: SLOT_factory<Document>
 	// Inherited: CANVAS_factory<Document>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 	//
 	// Others:
 	//

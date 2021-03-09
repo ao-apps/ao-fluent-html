@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	/**
 	 * Opens a new address element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 */
 	default ADDRESS<__> address() throws IOException {
@@ -51,7 +51,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	/**
 	 * Creates an address element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	/**
 	 * Creates an address element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	/**
 	 * Creates an address element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	/**
 	 * Creates an empty address element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	/**
 	 * Creates an address element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

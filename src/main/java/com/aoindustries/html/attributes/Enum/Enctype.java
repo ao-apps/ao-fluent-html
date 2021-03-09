@@ -34,7 +34,7 @@ import java.util.function.Function;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
  * </ul>
@@ -48,7 +48,7 @@ public interface Enctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
@@ -61,7 +61,7 @@ public interface Enctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
@@ -73,7 +73,7 @@ public interface Enctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
@@ -85,7 +85,7 @@ public interface Enctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
@@ -97,7 +97,7 @@ public interface Enctype<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
@@ -106,7 +106,7 @@ public interface Enctype<
 		X_WWW_FORM_URLENCODED(ContentType.X_WWW_FORM_URLENCODED),
 		FORM_DATA(ContentType.FORM_DATA),
 		/**
-		 * See <a href="https://html.spec.whatwg.org/#plain-text-form-data">4.10.21.8 Plain text form data</a>.
+		 * See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#plain-text-form-data">4.10.21.8 Plain text form data</a>.
 		 */
 		TEXT(ContentType.TEXT);
 

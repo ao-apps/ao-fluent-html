@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

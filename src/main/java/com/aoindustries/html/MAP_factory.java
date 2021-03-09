@@ -28,7 +28,7 @@ import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -39,7 +39,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Opens a new map element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 */
 	default MAP<__> map() throws IOException {
@@ -52,7 +52,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Opens a new map element with the given name attribute.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 */
 	default MAP<__> map(String name) throws IOException {
@@ -62,7 +62,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Opens a new map element with the given name attribute.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 */
 	default <Ex extends Throwable> MAP<__> map(IOSupplierE<? extends String, Ex> name) throws IOException, Ex {
@@ -72,7 +72,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates a map element the given name attribute and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -84,7 +84,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates a map element the given name attribute and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -96,7 +96,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates a map element the given name attribute and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -108,7 +108,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates an empty map element the given name attribute.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -120,7 +120,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates a map element the given name attribute then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

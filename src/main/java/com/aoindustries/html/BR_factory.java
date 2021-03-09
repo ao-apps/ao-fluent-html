@@ -26,7 +26,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">4.5.27 The br element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
  * </ul>
  *
@@ -39,7 +39,7 @@ public interface BR_factory<__ extends PhrasingContent<__>> extends Content<__> 
 	/**
 	 * Opens a new br element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">4.5.27 The br element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
 	 * </ul>
 	 */
@@ -53,7 +53,7 @@ public interface BR_factory<__ extends PhrasingContent<__>> extends Content<__> 
 	/**
 	 * Creates a br element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">4.5.27 The br element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
 	 * </ul>
 	 *

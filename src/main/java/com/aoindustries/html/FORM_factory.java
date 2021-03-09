@@ -29,7 +29,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *
@@ -42,7 +42,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Opens a new form element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
@@ -56,7 +56,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Opens a new form element with the given action attribute.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
@@ -67,7 +67,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Opens a new form element with the given action attribute.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
@@ -78,7 +78,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Creates a form element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 *
@@ -91,7 +91,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Creates a form element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 *
@@ -104,7 +104,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Creates a form element with no attributes and a text body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 *
@@ -117,7 +117,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Creates an empty form element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 *
@@ -130,7 +130,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	/**
 	 * Creates a form element with no attributes then begins element content
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 *

@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
  * </ul>
@@ -42,7 +42,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 	/**
 	 * Specialized input implementations.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 	 * </ul>
@@ -61,7 +61,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * </ul>
@@ -72,7 +72,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
@@ -84,7 +84,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
@@ -97,7 +97,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
@@ -109,7 +109,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
@@ -122,7 +122,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.</li>
@@ -134,7 +134,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.</li>
@@ -146,7 +146,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.</li>
@@ -158,7 +158,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.</li>
@@ -170,7 +170,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.</li>
@@ -182,7 +182,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.</li>
@@ -194,7 +194,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.</li>
@@ -206,7 +206,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.</li>
@@ -218,7 +218,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.</li>
@@ -230,7 +230,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.</li>
@@ -242,7 +242,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.</li>
@@ -254,7 +254,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.</li>
@@ -266,7 +266,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.</li>
@@ -278,7 +278,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.</li>
@@ -290,7 +290,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.</li>
@@ -302,7 +302,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.</li>
@@ -314,7 +314,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
@@ -326,7 +326,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
@@ -341,7 +341,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
@@ -356,7 +356,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
@@ -371,7 +371,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.</li>
@@ -383,7 +383,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.</li>
@@ -395,7 +395,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.</li>
@@ -407,7 +407,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.</li>
@@ -419,7 +419,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 
 		/**
 		 * <ul>
-		 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+		 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 		 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.</li>
@@ -433,7 +433,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 	/**
 	 * Specialized input implementations.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-input-element">4.10.5 The input element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/input.html#the-input-element">4.10.5 The input element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 	 * </ul>

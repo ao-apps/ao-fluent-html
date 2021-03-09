@@ -27,7 +27,7 @@ import java.io.Writer;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
  * </ul>

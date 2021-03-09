@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-ruby-element">4.5.10 The ruby element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">4.5.10 The ruby element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

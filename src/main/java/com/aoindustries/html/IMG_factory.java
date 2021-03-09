@@ -27,7 +27,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">4.8.3 The img element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
  * </ul>
  *
@@ -40,7 +40,7 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	/**
 	 * Opens a new img element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">4.8.3 The img element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
 	 */
@@ -55,7 +55,7 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	/**
 	 * Opens a new img element with the given src attribute.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">4.8.3 The img element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
 	 */
@@ -66,7 +66,7 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	/**
 	 * Opens a new img element with the given src attribute.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-img-element">4.8.3 The img element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">4.8.3 The img element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
 	 */

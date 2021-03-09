@@ -31,7 +31,7 @@ import java.io.Writer;
 /**
  * The methods common to all content models.
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#content-models">3.2.5 Content models</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#content-models">3.2.5 Content models</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides</a>.</li>
  * </ul>
  *

@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	/**
 	 * Opens a new thead element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 */
 	default THEAD<__> thead() throws IOException {
@@ -51,7 +51,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	/**
 	 * Creates a thead element with no attributes and the given head.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	/**
 	 * Creates a thead element with no attributes and the given head.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	/**
 	 * Creates an empty thead element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	/**
 	 * Creates a thead element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-thead-element">4.9.6 The thead element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

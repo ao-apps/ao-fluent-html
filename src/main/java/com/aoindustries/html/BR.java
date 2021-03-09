@@ -27,7 +27,7 @@ import java.io.Writer;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-br-element">4.5.27 The br element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">4.5.27 The br element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
  * </ul>
  *

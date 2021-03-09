@@ -28,7 +28,7 @@ import java.awt.Shape;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-area-element">4.8.14 The area element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">4.8.14 The area element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

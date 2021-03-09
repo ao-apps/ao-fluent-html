@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	/**
 	 * Opens a new select element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 */
 	default SELECT<__> select() throws IOException {
@@ -51,7 +51,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	/**
 	 * Creates a select element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	/**
 	 * Creates a select element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	/**
 	 * Creates an empty select element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	/**
 	 * Creates a select element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-select-element">4.10.7 The select element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

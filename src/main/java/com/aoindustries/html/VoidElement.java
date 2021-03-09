@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#void-elements">13.1.2 Elements / Void elements</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#void-elements">13.1.2 Elements / Void elements</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

@@ -29,9 +29,9 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#attr-blockquote-cite">4.4.4 The blockquote element / cite</a>.</li>
- * <li>See <a href="https://html.spec.whatwg.org/#attr-q-cite">4.5.7 The q element / cite</a>.</li>
- * <li>See <a href="https://html.spec.whatwg.org/#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#attr-blockquote-cite">4.4.4 The blockquote element / cite</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-q-cite">4.5.7 The q element / cite</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/edits.html#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
  * </ul>
  *
  * @author  AO Industries, Inc.
@@ -40,9 +40,9 @@ public interface Cite<E extends Element<E, ?> & Cite<E>> {
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-blockquote-cite">4.4.4 The blockquote element / cite</a>.</li>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-q-cite">4.5.7 The q element / cite</a>.</li>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#attr-blockquote-cite">4.4.4 The blockquote element / cite</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-q-cite">4.5.7 The q element / cite</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/edits.html#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
 	 * </ul>
 	 */
 	@Attributes.Funnel
@@ -53,9 +53,9 @@ public interface Cite<E extends Element<E, ?> & Cite<E>> {
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-blockquote-cite">4.4.4 The blockquote element / cite</a>.</li>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-q-cite">4.5.7 The q element / cite</a>.</li>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#attr-blockquote-cite">4.4.4 The blockquote element / cite</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-q-cite">4.5.7 The q element / cite</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/edits.html#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
 	 * </ul>
 	 *
 	 * @see #cite(java.lang.String)

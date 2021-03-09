@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Opens a new span element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
 	 * </p>
 	 */
 	default SPAN<__> span() throws IOException {
@@ -51,7 +51,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a span element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a span element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a span element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates an empty span element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface SPAN_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a span element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-span-element">4.5.26 The span element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

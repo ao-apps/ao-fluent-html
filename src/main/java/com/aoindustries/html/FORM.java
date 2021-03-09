@@ -27,7 +27,7 @@ import java.io.Writer;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-form-element">4.10.3 The form element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *

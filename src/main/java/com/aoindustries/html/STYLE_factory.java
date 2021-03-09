@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
  * </ul>
  *
@@ -41,7 +41,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	/**
 	 * Opens a new style element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * </ul>
 	 *
@@ -57,7 +57,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	/**
 	 * Opens a new style element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
@@ -72,7 +72,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	/**
 	 * Opens a new style element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
@@ -84,7 +84,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	/**
 	 * Opens a new style element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
@@ -99,7 +99,7 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	/**
 	 * Opens a new style element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>

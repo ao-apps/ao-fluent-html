@@ -26,7 +26,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">4.4.2 The hr element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
  * </ul>
  *
@@ -39,7 +39,7 @@ public interface HR_factory<__ extends FlowContent<__>> extends Content<__> {
 	/**
 	 * Opens a new hr element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">4.4.2 The hr element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
 	 * </ul>
 	 */
@@ -53,7 +53,7 @@ public interface HR_factory<__ extends FlowContent<__>> extends Content<__> {
 	/**
 	 * Creates an empty hr element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-hr-element">4.4.2 The hr element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">4.4.2 The hr element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
 	 * </ul>
 	 *

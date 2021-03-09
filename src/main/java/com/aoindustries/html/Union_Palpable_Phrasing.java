@@ -90,6 +90,6 @@ public interface Union_Palpable_Phrasing<__ extends Union_Palpable_Phrasing<__>>
 	U_factory<__>,
 	VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
-	// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

@@ -125,7 +125,7 @@ public class Union_Palpable_PhrasingTest {
 			U_factory.class,
 			VAR_factory.class,
 			VIDEO_factory.class
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 		);
 	}
 

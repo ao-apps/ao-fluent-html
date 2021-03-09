@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-source-element">4.8.2 The source element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element">4.8.2 The source element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

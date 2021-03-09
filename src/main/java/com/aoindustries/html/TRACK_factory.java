@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-track-element">4.8.11 The track element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">4.8.11 The track element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

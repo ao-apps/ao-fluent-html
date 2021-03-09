@@ -24,7 +24,7 @@ package com.aoindustries.html;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#flow-content">3.2.5.2.2 Flow content</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#flow-content">3.2.5.2.2 Flow content</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#flow_content">Flow content</a>.</li>
  * </ul>
  *
@@ -146,6 +146,6 @@ public interface FlowContent<__ extends FlowContent<__>> extends
 	// Inherited: VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
 	// Inherited: WBR_factory<__>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

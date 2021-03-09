@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-fieldset-element">4.10.15 The fieldset element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">4.10.15 The fieldset element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

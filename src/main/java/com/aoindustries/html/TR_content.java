@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-tr-element">4.9.8 The tr element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-datalist-element">4.10.8 The datalist element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -110,6 +110,6 @@ public interface DATALIST_content<__ extends DATALIST_content<__>> extends
 	// Inherited: VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
 	// Inherited: WBR_factory<__>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

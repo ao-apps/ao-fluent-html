@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Opens a new ins element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
 	 * </p>
 	 */
 	default INS<__> ins() throws IOException {
@@ -51,7 +51,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates an ins element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates an ins element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates an ins element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates an empty ins element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	/**
 	 * Creates an ins element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

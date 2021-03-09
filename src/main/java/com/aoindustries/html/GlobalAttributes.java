@@ -24,7 +24,7 @@ package com.aoindustries.html;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#global-attributes">3.2.6 Global attributes</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes">3.2.6 Global attributes</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attributes</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/ref_standardattributes.asp">HTML Global attributes</a>.</li>
  * </ul>

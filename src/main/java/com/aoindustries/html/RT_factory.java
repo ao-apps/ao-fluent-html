@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-rt-element">4.5.11 The rt element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element">4.5.11 The rt element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

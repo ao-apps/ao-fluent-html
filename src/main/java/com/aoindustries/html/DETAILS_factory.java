@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-details-element">4.11.1 The details element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">4.11.1 The details element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

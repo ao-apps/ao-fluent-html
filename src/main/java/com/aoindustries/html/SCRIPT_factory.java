@@ -28,7 +28,7 @@ import java.io.IOException;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
  * </ul>
  *
@@ -41,7 +41,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	/**
 	 * Opens a new script element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * </ul>
 	 *
@@ -57,7 +57,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	/**
 	 * Opens a new script element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
@@ -72,7 +72,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	/**
 	 * Opens a new script element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
@@ -84,7 +84,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	/**
 	 * Opens a new script element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
@@ -99,7 +99,7 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	/**
 	 * Opens a new script element of the given type.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-script-element">4.12.1 The script element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>

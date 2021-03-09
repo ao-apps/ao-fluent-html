@@ -33,7 +33,7 @@ import java.util.function.Function;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
  * </ul>
@@ -47,7 +47,7 @@ public interface Method<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
@@ -60,7 +60,7 @@ public interface Method<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
@@ -72,7 +72,7 @@ public interface Method<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
@@ -84,7 +84,7 @@ public interface Method<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
@@ -96,7 +96,7 @@ public interface Method<
 
 	/**
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method">4.10.18.6 Form submission attributes</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>

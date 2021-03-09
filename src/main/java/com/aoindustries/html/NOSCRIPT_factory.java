@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-noscript-element">4.12.2 The noscript element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">4.12.2 The noscript element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

@@ -29,7 +29,7 @@ import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#text-content">3.2.5.2.5 Phrasing content / Text</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/dom.html#text-content">3.2.5.2.5 Phrasing content / Text</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

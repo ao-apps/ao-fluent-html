@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Opens a new ol element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 */
 	default OL<__> ol() throws IOException {
@@ -51,7 +51,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates an ol element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates an ol element with no attributes and the given foot.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates an empty ol element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates an ol element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-ol-element">4.4.5 The ol element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

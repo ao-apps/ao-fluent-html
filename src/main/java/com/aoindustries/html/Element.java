@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#elements-2">13.1.2 Elements</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#elements-2">13.1.2 Elements</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *

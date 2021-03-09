@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-slot-element">4.12.4 The slot element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">4.12.4 The slot element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

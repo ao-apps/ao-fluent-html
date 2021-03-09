@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-div-element">4.4.15 The div element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -147,6 +147,6 @@ public interface DIV_content<__ extends DIV_content<__>> extends
 	// Inherited: VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
 	// Inherited: WBR_factory<__>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

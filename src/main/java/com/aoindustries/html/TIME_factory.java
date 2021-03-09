@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-time-element">4.5.14 The time element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">4.5.14 The time element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

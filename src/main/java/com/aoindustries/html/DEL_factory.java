@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	/**
 	 * Opens a new del element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
 	 */
 	default DEL<__> del() throws IOException {
@@ -51,7 +51,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	/**
 	 * Creates a del element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	/**
 	 * Creates a del element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	/**
 	 * Creates an empty del element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	/**
 	 * Creates a del element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

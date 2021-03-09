@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Opens a new code element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 */
 	default CODE<__> code() throws IOException {
@@ -51,7 +51,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a code element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a code element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a code element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates an empty code element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	/**
 	 * Creates a code element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-code-element">4.5.15 The code element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

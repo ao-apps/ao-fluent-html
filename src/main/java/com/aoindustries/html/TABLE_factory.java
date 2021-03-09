@@ -26,12 +26,12 @@ import com.aoindustries.io.function.IOConsumerE;
 import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
-// TODO: MathML math: 4.8.16 MathML: https://html.spec.whatwg.org/#mathml
+// TODO: MathML math: 4.8.16 MathML: https://html.spec.whatwg.org/multipage/embedded-content-other.html#mathml
 
-// TODO: SVG svg: 4.8.17 SVG: https://html.spec.whatwg.org/#svg-0
+// TODO: SVG svg: 4.8.17 SVG: https://html.spec.whatwg.org/multipage/embedded-content-other.html#svg-0
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
@@ -45,7 +45,7 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	/**
 	 * Opens a new table element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
@@ -60,7 +60,7 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	/**
 	 * Creates a table element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
@@ -74,7 +74,7 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	/**
 	 * Creates a table element with no attributes and the given body.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
@@ -88,7 +88,7 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	/**
 	 * Creates an empty table element with no attributes.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
@@ -102,7 +102,7 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	/**
 	 * Creates a table element with no attributes then begins element content
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-table-element">4.9.1 The table element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>

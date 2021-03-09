@@ -157,7 +157,7 @@ public class PalpableContentTest {
 			UL_factory.class, // if children include at least one li
 			VAR_factory.class,
 			VIDEO_factory.class
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 		);
 	}
 

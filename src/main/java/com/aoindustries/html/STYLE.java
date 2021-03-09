@@ -42,7 +42,7 @@ import java.util.Locale;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-style-element">4.2.6 The style element</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
  * </ul>
  *
@@ -50,7 +50,7 @@ import java.util.Locale;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Extend RawTextElement: https://html.spec.whatwg.org/#raw-text-elements
+// TODO: Extend RawTextElement: https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements
 public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC> implements
 	com.aoindustries.html.attributes.Text.Media<STYLE<PC>>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp

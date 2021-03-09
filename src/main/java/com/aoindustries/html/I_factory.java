@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Opens a new i element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 */
 	default I<__> i() throws IOException {
@@ -51,7 +51,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an i element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an i element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an i element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an empty i element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -99,7 +99,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	/**
 	 * Creates an i element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-i-element">4.5.20 The i element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

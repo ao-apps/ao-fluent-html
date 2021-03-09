@@ -28,7 +28,7 @@ import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -39,7 +39,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Opens a new a element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
 	default A<__> a() throws IOException {
@@ -52,7 +52,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Opens a new a element with the given href attribute.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
 	default A<__> a(String href) throws IOException {
@@ -62,7 +62,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Opens a new a element with the given href attribute.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
 	default <Ex extends Throwable> A<__> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
@@ -72,7 +72,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Creates an a element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -84,7 +84,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Creates an a element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -97,7 +97,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Creates an a element with no attributes and a text body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 * <p>
 	 * Since {@link TextContent} is not a part of {@link Union_Interactive_Phrasing},
@@ -116,7 +116,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Creates an empty a element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -128,7 +128,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	/**
 	 * Creates an a element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-a-element">4.5.1 The a element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

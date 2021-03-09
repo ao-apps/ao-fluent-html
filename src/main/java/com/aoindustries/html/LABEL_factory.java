@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-label-element">4.10.4 The label element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">4.10.4 The label element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

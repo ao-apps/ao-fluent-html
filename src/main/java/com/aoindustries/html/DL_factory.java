@@ -27,7 +27,7 @@ import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -38,7 +38,7 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Opens a new dl element.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 */
 	default DL<__> dl() throws IOException {
@@ -51,7 +51,7 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates a dl element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -63,7 +63,7 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates a dl element with no attributes and the given body.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -75,7 +75,7 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates an empty dl element with no attributes.
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -87,7 +87,7 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	/**
 	 * Creates a dl element with no attributes then begins element content
 	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/#the-dl-element">4.4.9 The dl element</a>.
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 *
 	 * @return  The content model of this element, which will be the parent content model of child elements.

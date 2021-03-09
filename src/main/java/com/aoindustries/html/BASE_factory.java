@@ -25,7 +25,7 @@ package com.aoindustries.html;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
@@ -36,7 +36,7 @@ public interface BASE_factory<__ extends MetadataContent<__>> extends Content<__
 	/**
 	 * Opens a new base element.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
 	 * </ul>
@@ -51,7 +51,7 @@ public interface BASE_factory<__ extends MetadataContent<__>> extends Content<__
 	/**
 	 * Shortcut to create a base with href only.
 	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/#the-base-element">4.2.3 The base element</a>.</li>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
 	 * </ul>

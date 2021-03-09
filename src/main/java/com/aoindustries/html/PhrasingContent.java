@@ -24,7 +24,7 @@ package com.aoindustries.html;
 
 /**
  * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#phrasing-content">3.2.5.2.5 Phrasing content</a>.</li>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#phrasing-content">3.2.5.2.5 Phrasing content</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">Phrasing content</a>.</li>
  * </ul>
  *
@@ -110,6 +110,6 @@ public interface PhrasingContent<__ extends PhrasingContent<__>> extends
 	// Inherited: VAR_factory<__>
 	// Inherited: VIDEO_factory<__>
 	WBR_factory<__>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/#custom-elements
+	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

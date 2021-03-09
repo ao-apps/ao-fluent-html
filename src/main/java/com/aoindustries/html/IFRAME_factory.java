@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-iframe-element">4.8.5 The iframe element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element">4.8.5 The iframe element</a>.
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

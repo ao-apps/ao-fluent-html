@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
  *
@@ -29,7 +33,83 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new address element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * </p>
+	 */
+	default ADDRESS<__> address() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new ADDRESS<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates an address element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ address__(IORunnableE<Ex> address) throws IOException, Ex {
+		return address().__(address);
+	}
+
+	/**
+	 * Creates an address element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ address__(IOConsumerE<? super ADDRESS__<__>, Ex> address) throws IOException, Ex {
+		return address().__(address);
+	}
+
+	/**
+	 * Creates an address element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ address__(Object text) throws IOException {
+		return address().__(text);
+	}
+
+	/**
+	 * Creates an empty address element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ address__() throws IOException {
+		return address().__();
+	}
+
+	/**
+	 * Creates an address element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-address-element">4.3.10 The address element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default ADDRESS_c<__> address_c() throws IOException {
+		return address()._c();
+	}
 }

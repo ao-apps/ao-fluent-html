@@ -39,7 +39,7 @@ import java.io.Writer;
 abstract public class Normal<
 	E  extends Normal<E, PC, __, _c>,
 	PC extends Content<PC>,
-	__ extends Normal__<PC, __>,
+	__ extends Content<__>, // Transparent can have any: Normal__<PC, __>,
 	// Would prefer "_c extends __ & Closeable<PC>", but "a type variable may not be followed by other bounds"
 	_c extends Normal_c<PC, _c>
 > extends Element<E, PC> {

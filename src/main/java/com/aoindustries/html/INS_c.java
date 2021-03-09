@@ -23,32 +23,20 @@
 package com.aoindustries.html;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#transparent-content-models">3.2.5.3 Transparent content models</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
+ * </ul>
  *
- * @param  <PC>  The parent content model this element is within,
- *               which may also be the parent content model of child elements
- * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-abstract public class Transparent<
-	E  extends Transparent<E, PC, _c>,
-	PC extends Content<PC>,
-	// Would prefer "_c extends PC & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	_c extends Transparent_c<PC, _c>
-> extends Normal<E, PC, PC, _c> {
+public class Q_c<PC extends Union_Palpable_Phrasing<PC>>
+	extends NormalText_c<PC, Q_c<PC>> implements
+	PhrasingContent<Q_c<PC>> {
 
-	protected Transparent(Document document, PC pc) {
-		super(document, pc);
-	}
-
-	/**
-	 * Uses the parent context directly, instead of an element-specific uncloseable content model.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	@Override
-	final protected PC new__() {
-		return pc;
+	protected Q_c(Q<PC> element) {
+		super(element);
 	}
 }

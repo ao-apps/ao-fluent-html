@@ -37,7 +37,7 @@ import java.util.function.Function;
 // TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 //       the tabindex attribute specified.
 public class A<PC extends Union_Interactive_Phrasing<PC>> extends
-	Transparent<A<PC>, PC> implements
+	Transparent<A<PC>, PC, A_c<PC>> implements
 	com.aoindustries.html.attributes.Url.Href<A<PC>>,
 	com.aoindustries.html.attributes.Enum.Target<A<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: download
@@ -164,5 +164,10 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 		public String apply(Document document) {
 			return value;
 		}
+	}
+
+	@Override
+	protected A_c<PC> new_c() {
+		return new A_c<>(this);
 	}
 }

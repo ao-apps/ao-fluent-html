@@ -22,51 +22,29 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
-import java.io.Writer;
-
 /**
- * A normal element that can have textual content.
- * <p>
- * See <a href="https://html.spec.whatwg.org/#normal-elements">13.1.2 Elements / Normal elements</a>.
- * </p>
+ * See <a href="https://html.spec.whatwg.org/#transparent-content-models">3.2.5.3 Transparent content models</a>.
  *
  * @param  <PC>  The parent content model this element is within
- * @param  <__>  This content model, which will be the parent content model of child elements
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-abstract public class NormalText<
-	E  extends NormalText<E, PC, __, _c>,
+public abstract class Transparent_c<
 	PC extends Content<PC>,
-	__ extends NormalText__<PC, __>,
-	// Would prefer "_c extends __ & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	_c extends NormalText_c<PC, _c>
-> extends Normal<E, PC, __, _c> {
+	_c extends Transparent_c<PC, _c>
+> extends Normal_c<PC, _c> {
 
-	protected NormalText(Document document, PC pc) {
-		super(document, pc);
+	protected Transparent_c(Transparent<?, PC, _c> element) {
+		super(element);
 	}
 
 	/**
-	 * Ends attributes, writes a text body, then closes this element.
+	 * Gets the parent content model, which may also be used for creating child elements.
 	 *
 	 * @return  The parent content model this element is within
-	 *
-	 * @see  Document#text(java.lang.Object)
 	 */
-	// Matches TransparentText.__(Object)
-	public PC __(Object text) throws IOException {
-		Writer out = document.getUnsafe(null);
-		if(text != null) {
-			document.autoIndent(out).unsafe(out, '>').incDepth();
-			doBeforeBody(out);
-			document.text(out, text).decDepth();
-			writeClose(out, false);
-		} else {
-			writeClose(out, true);
-		}
-		return pc;
+	public PC pc() {
+		return element.pc;
 	}
 }

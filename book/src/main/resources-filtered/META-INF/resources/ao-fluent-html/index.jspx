@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
-Copyright (C) 2019, 2020  AO Industries, Inc.
+Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -34,7 +34,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2019-10-27T16:59:13-0500"
-		dateModified="2020-03-24T14:01:33-05:00"
+		dateModified="2021-03-09T08:00:06-06:00"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -78,8 +78,12 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				<li>Supports HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.</li>
 				<li>Supports both SGML and XML serializations.</li>
 				<li>Fluent API.</li>
+				<li>Also supports lambda element content, which makes it easier to code and debug than a strict fluent-only approach.</li>
+				<li>Context-aware compiler and code assistance through extensive use of the interface hierachy along with bounded self-referential generics.</li>
+				<li>Everything is <core:link book="/ao-encoding" page="/index.jspx">encoded and safe by default</core:link>, with <code>unsafe(…)</code> methods allowing raw output.</li>
+				<li>Optional automatic newline and tab indentation.</li>
+				<li>Optimized streaming implementation, including attributes.</li>
 				<li>Integrates with AO in-context translation tools.</li>
-				<li>Streaming implementation, including attributes.</li>
 				<li>Stupid fast (TODO: benchmark).</li>
 				<li>Separate module for use in a Servlet environment.</li>
 			</ul>

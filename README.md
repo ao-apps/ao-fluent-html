@@ -43,8 +43,12 @@ rewriting everything.
 * Supports HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.
 * Supports both SGML and XML serializations.
 * Fluent API.
+* Also supports lambda element content, which makes it easier to code and debug than a strict fluent-only approach.
+* Context-aware compiler and code assistance through extensive use of the interface hierachy along with bounded self-referential generics.
+* Everything is [encoded and safe by default](https://github.com/aoindustries/ao-encoding), with <code>unsafe(…)</code> methods allowing raw output.
+* Optional automatic newline and tab indentation.
+* Optimized streaming implementation, including attributes.
 * Integrates with AO in-context translation tools.
-* Streaming implementation, including attributes.
 * Stupid fast (TODO: benchmark).
 * Separate module for use in a Servlet environment.
 

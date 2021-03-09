@@ -27,9 +27,20 @@ package com.aoindustries.html;
  * <p>
  * See <a href="https://html.spec.whatwg.org/#transparent-content-models">3.2.5.3 Transparent content models</a>.
  * </p>
+ * <p>
+ * Due to limitations in Java generics, this content model does not directly reflect the parent content
+ * model, despite this being a transparent content model.  Rather, it includes only the content model that
+ * always applies to this element type.
+ * </p>
+ * <p><em>
+ * For the full, context-aware content model, which will likely include more elements,
+ * {@linkplain Transparent_c#pc() use the parent content model directly}.
+ * </em></p>
  *
  * @param  <PC>  The parent content model this element is within
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
+ *
+ * @see  Transparent_c#pc()
  *
  * @author  AO Industries, Inc.
  */

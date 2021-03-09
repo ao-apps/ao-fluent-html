@@ -134,9 +134,19 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * @return  The content model of this element, which will be the parent content model of child elements.
 	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
 	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *          <p>
+	 *          Due to limitations in Java generics, this content model does not directly reflect the parent content
+	 *          model, despite this being a transparent content model.  Rather, it includes only the content model that
+	 *          always applies to this element type.
+	 *          </p>
+	 *          <p><em>
+	 *          For the full, context-aware content model, which will likely include more elements,
+	 *          {@linkplain Transparent_c#pc() use the parent content model directly}.
+	 *          </em></p>
 	 *
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
+	 * @see  Transparent_c#pc()
 	 */
 	default A_c<__> a_c() throws IOException {
 		return a()._c();

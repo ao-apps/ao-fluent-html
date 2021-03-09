@@ -23,20 +23,17 @@
 package com.aoindustries.html;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/#the-q-element">4.5.7 The q element</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Q_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, Q_c<PC>> implements
-	PhrasingContent<Q_c<PC>> {
+public class INS_c<PC extends Union_Palpable_Phrasing<PC>>
+	extends TransparentText_c<PC, INS_c<PC>>
+	implements Union_Palpable_Phrasing<INS_c<PC>> {
 
-	protected Q_c(Q<PC> element) {
+	protected INS_c(INS<PC> element) {
 		super(element);
 	}
 }

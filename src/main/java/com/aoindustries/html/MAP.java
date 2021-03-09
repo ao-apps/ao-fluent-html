@@ -26,37 +26,36 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+ * See <a href="https://html.spec.whatwg.org/#the-map-element">4.8.13 The map element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class INS<PC extends Union_Palpable_Phrasing<PC>> extends
-	TransparentText<INS<PC>, PC, INS_c<PC>> implements
-	// TODO: cite
-	// TODO: datetime
+public class MAP<PC extends Union_Palpable_Phrasing<PC>> extends
+	TransparentText<MAP<PC>, PC, MAP_c<PC>> implements
+	com.aoindustries.html.attributes.Text.Name<MAP<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<INS<PC>>
+	AlmostGlobalAttributes<MAP<PC>>
 {
 
-	public INS(Document document, PC pc) {
+	public MAP(Document document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected INS<PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<ins", false);
+	protected MAP<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<map", false);
 		return this;
 	}
 
 	@Override
 	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></ins>" : "</ins>", false);
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></map>" : "</map>", false);
 	}
 
 	@Override
-	protected INS_c<PC> new_c() {
-		return new INS_c<>(this);
+	protected MAP_c<PC> new_c() {
+		return new MAP_c<>(this);
 	}
 }

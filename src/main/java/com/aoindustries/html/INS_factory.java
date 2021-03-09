@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
  *
@@ -29,7 +33,83 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
 public interface INS_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
-	// TODO
+
+	/**
+	 * Opens a new ins element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * </p>
+	 */
+	default INS<__> ins() throws IOException {
+		@SuppressWarnings(value = "unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new INS<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates an ins element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ ins__(IORunnableE<Ex> ins) throws IOException, Ex {
+		return ins().__(ins);
+	}
+
+	/**
+	 * Creates an ins element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ ins__(IOConsumerE<? super __, Ex> ins) throws IOException, Ex {
+		return ins().__(ins);
+	}
+
+	/**
+	 * Creates an ins element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ ins__(Object text) throws IOException {
+		return ins().__(text);
+	}
+
+	/**
+	 * Creates an empty ins element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default __ ins__() throws IOException {
+		return ins().__();
+	}
+
+	/**
+	 * Creates an ins element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	default INS_c<__> ins_c() throws IOException {
+		return ins()._c();
+	}
 }

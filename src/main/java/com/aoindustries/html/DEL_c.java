@@ -22,41 +22,18 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
-import java.io.Writer;
-
 /**
- * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+ * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class INS<PC extends Union_Palpable_Phrasing<PC>> extends
-	TransparentText<INS<PC>, PC, INS_c<PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<INS<PC>>,
-	// TODO: datetime
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<INS<PC>>
-{
+public class DEL_c<PC extends PhrasingContent<PC>>
+	extends Transparent_c<PC, DEL_c<PC>>
+	implements PhrasingContent<DEL_c<PC>> {
 
-	public INS(Document document, PC pc) {
-		super(document, pc);
-	}
-
-	@Override
-	protected INS<PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<ins", false);
-		return this;
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></ins>" : "</ins>", false);
-	}
-
-	@Override
-	protected INS_c<PC> new_c() {
-		return new INS_c<>(this);
+	protected DEL_c(DEL<PC> element) {
+		super(element);
 	}
 }

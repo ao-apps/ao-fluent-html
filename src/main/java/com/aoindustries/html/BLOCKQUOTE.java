@@ -38,7 +38,7 @@ import java.io.Writer;
 public class BLOCKQUOTE<PC extends PalpableContent<PC>> extends
 	NormalText<BLOCKQUOTE<PC>, PC, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// TODO: cite
+	com.aoindustries.html.attributes.Url.Cite<BLOCKQUOTE<PC>>,
 	AlmostGlobalAttributes<BLOCKQUOTE<PC>>
 {
 

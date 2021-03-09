@@ -26,37 +26,37 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/#the-ins-element">4.7.1 The ins element</a>.
+ * See <a href="https://html.spec.whatwg.org/#the-del-element">4.7.2 The del element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class INS<PC extends Union_Palpable_Phrasing<PC>> extends
-	TransparentText<INS<PC>, PC, INS_c<PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<INS<PC>>,
+public class DEL<PC extends PhrasingContent<PC>> extends
+	Transparent<DEL<PC>, PC, DEL_c<PC>> implements
+	com.aoindustries.html.attributes.Url.Cite<DEL<PC>>,
 	// TODO: datetime
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<INS<PC>>
+	AlmostGlobalAttributes<DEL<PC>>
 {
 
-	public INS(Document document, PC pc) {
+	public DEL(Document document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected INS<PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<ins", false);
+	protected DEL<PC> writeOpen(Writer out) throws IOException {
+		document.autoIndent(out).unsafe(out, "<del", false);
 		return this;
 	}
 
 	@Override
 	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></ins>" : "</ins>", false);
+		document.autoIndent(out).unsafe(out, closeAttributes ? "></del>" : "</del>", false);
 	}
 
 	@Override
-	protected INS_c<PC> new_c() {
-		return new INS_c<>(this);
+	protected DEL_c<PC> new_c() {
+		return new DEL_c<>(this);
 	}
 }

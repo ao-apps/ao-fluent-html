@@ -37,7 +37,7 @@ import java.io.Writer;
  */
 public class Q<PC extends Union_Palpable_Phrasing<PC>> extends
 	NormalText<Q<PC>, PC, Q__<PC>, Q_c<PC>> implements
-	// TODO: cite
+	com.aoindustries.html.attributes.Url.Cite<Q<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	AlmostGlobalAttributes<Q<PC>>
 {

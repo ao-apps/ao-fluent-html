@@ -36,12 +36,12 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 // TODO: Extend Normal?
-abstract public class TransparentElement<
-	E  extends TransparentElement<E, PC>,
+abstract public class Transparent<
+	E  extends Transparent<E, PC>,
 	PC extends Content<PC>
 > extends Element<E, PC> {
 
-	protected TransparentElement(Document document, PC pc) {
+	protected Transparent(Document document, PC pc) {
 		super(document, pc);
 	}
 

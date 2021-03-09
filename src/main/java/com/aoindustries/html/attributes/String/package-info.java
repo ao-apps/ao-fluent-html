@@ -35,4 +35,5 @@
  * @see  com.aoindustries.html.Attributes.String
  */
 // TODO: Move some non-streamable attributes from Text to here, such as id and name
+//       Or, just use "text" for all, since text types are already optimized for String, but are still streamble
 package com.aoindustries.html.attributes.String;

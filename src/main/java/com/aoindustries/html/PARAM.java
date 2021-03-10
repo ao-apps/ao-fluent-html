@@ -45,7 +45,7 @@ public class PARAM<PC extends Content<PC>> extends VoidElement<PARAM<PC>, PC> im
 	com.aoindustries.html.attributes.Text.Value<PARAM<PC>>
 	// TODO: valuetype (deprecated)
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <param>: Attributes.Event.AlmostGlobal<PARAM<PC>>
+	// Not on <param>: AlmostGlobalAttributes<PARAM<PC>>
 {
 
 	public PARAM(Document document, PC pc) {

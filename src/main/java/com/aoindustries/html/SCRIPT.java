@@ -63,7 +63,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	com.aoindustries.html.attributes.Text.StyleNoHtml4<SCRIPT<PC>>,
 	com.aoindustries.html.attributes.Text.TitleNoHtml4<SCRIPT<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <script>: Attributes.Event.AlmostGlobal<SCRIPT<PC>>
+	// Not on <script>: AlmostGlobalAttributes<SCRIPT<PC>>
 	com.aoindustries.html.attributes.event.window.Onerror<SCRIPT<PC>>,
 	com.aoindustries.html.attributes.event.window.Onload<SCRIPT<PC>>
 {

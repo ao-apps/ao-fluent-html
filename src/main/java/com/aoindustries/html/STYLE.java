@@ -59,7 +59,7 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	com.aoindustries.html.attributes.Text.StyleNoHtml4<STYLE<PC>>,
 	com.aoindustries.html.attributes.Text.TitleNoHtml4<STYLE<PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <style>: Attributes.Event.AlmostGlobal<STYLE<PC>>
+	// Not on <style>: AlmostGlobalAttributes<STYLE<PC>>
 	com.aoindustries.html.attributes.event.window.Onerror<LINK<PC>>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
 	com.aoindustries.html.attributes.event.window.Onload<LINK<PC>>
 {

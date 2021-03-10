@@ -40,7 +40,7 @@ public class BASE<PC extends MetadataContent<PC>> extends VoidElement<BASE<PC>, 
 	com.aoindustries.html.attributes.Url.Href<BASE<PC>>,
 	com.aoindustries.html.attributes.Enum.Target<BASE<PC>, com.aoindustries.html.attributes.Enum.Target.Value>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <base>: Attributes.Event.AlmostGlobal<BASE<PC>>
+	// Not on <base>: AlmostGlobalAttributes<BASE<PC>>
 {
 
 	public BASE(Document document, PC pc) {

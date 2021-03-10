@@ -44,7 +44,7 @@ public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<ME
 	com.aoindustries.html.attributes.Enum.Name<META<PC>, META.Name>
 	// TODO: scheme
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <meta>: Attributes.Event.AlmostGlobal<META<PC>>
+	// Not on <meta>: AlmostGlobalAttributes<META<PC>>
 {
 
 	public META(Document document, PC pc) {

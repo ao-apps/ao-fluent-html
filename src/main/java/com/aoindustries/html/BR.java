@@ -37,7 +37,7 @@ import java.io.Writer;
  */
 public class BR<PC extends PhrasingContent<PC>> extends VoidElement<BR<PC>, PC>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: Attributes.Event.AlmostGlobal<BR>
+	// Not on <br>: AlmostGlobalAttributes<BR<PC>>
 {
 
 	public BR(Document document, PC pc) {

@@ -42,6 +42,7 @@ public class ElementContentModelTest {
 			DATALIST_content.class,
 			DIV_content.class,
 			DL_content.class,
+			HTML_content.class,
 			OPTGROUP_content.class,
 			SELECT_content.class,
 			TABLE_content.class,

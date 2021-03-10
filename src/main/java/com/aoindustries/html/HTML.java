@@ -26,22 +26,20 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
+ * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class PRE<PC extends PalpableContent<PC>> extends
-	NormalText<PRE<PC>, PC, PRE__<PC>, PRE_c<PC>> implements
+@SuppressWarnings("deprecation")
+public class HTML<PC extends Content<PC>/* TODO? Document */> extends
+	Normal<HTML<PC>, PC, HTML__<PC>, HTML_c<PC>>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<PRE<PC>>
+	// Not on <html>: AlmostGlobalAttributes<HTML<PC>>
 {
 
-	private boolean oldAutonli;
-	private boolean oldIndent;
-
-	public PRE(Document document, PC pc) {
+	public HTML(Document document, PC pc) {
 		super(document, pc);
 	}
 
@@ -56,39 +54,33 @@ public class PRE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected PRE<PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<pre", false);
+	protected HTML<PC> writeOpen(Writer out) throws IOException {
+		document.autoNli(out).unsafe(out, "<html", false);
 		return this;
 	}
 
 	@Override
 	protected void doBeforeBody(Writer out) throws IOException {
-		oldAutonli = document.getAutonli();
-		if(oldAutonli) document.setAutonli(false);
-		oldIndent = document.getIndent();
-		if(oldIndent) document.setIndent(false);
+		document.autoNl(out);
 	}
 
 	@Override
 	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document
-			.setIndent(oldIndent)
-			.setAutonli(oldAutonli);
 		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></pre>", false);
+			document.autoIndent(out).unsafe(out, "></html>", false);
 		} else {
-			document.unsafe(out, "</pre>", false);
+			document.autoNli(out).unsafe(out, "</html>", false);
 		}
 		document.autoNl(out);
 	}
 
 	@Override
-	protected PRE__<PC> new__() {
-		return new PRE__<>(this);
+	protected HTML__<PC> new__() {
+		return new HTML__<>(this);
 	}
 
 	@Override
-	protected PRE_c<PC> new_c() {
-		return new PRE_c<>(this);
+	protected HTML_c<PC> new_c() {
+		return new HTML_c<>(this);
 	}
 }

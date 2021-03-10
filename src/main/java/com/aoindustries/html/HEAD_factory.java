@@ -29,9 +29,8 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends HTML_content<__>>
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface HEAD_factory<__ extends Content<__>> extends Content<__> {
+public interface HEAD_factory<__ extends HTML_content<__>> extends Content<__> {
 	// TODO
 	// TODO: Head tag will not indent
 }

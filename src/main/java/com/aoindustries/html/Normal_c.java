@@ -52,7 +52,7 @@ public abstract class Normal_c<
 	@Override
 	public PC __() throws IOException {
 		Document document = element.document;
-		document.decDepth();
+		if(element.isContentIndented()) document.decDepth();
 		element.writeClose(document.getUnsafe(null), false);
 		return element.pc;
 	}

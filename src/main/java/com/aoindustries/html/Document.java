@@ -93,6 +93,7 @@ public class Document implements
 	DATALIST_content<Document>,
 	DIV_content<Document>,
 	DL_content<Document>,
+	HTML_content<Document>,
 	// Inherited: OPTGROUP_content<Document>
 	SELECT_content<Document>,
 	TABLE_content<Document>,
@@ -101,14 +102,14 @@ public class Document implements
 	//
 	// Factories:
 	//
-	HTML_factory,
-	HEAD_factory<Document>,
+	HTML_factory<Document>,
+	// Inherited: HEAD_factory<Document>
 	// Inherited: TITLE_factory<Document>
 	// Inherited: BASE_factory<Document>
 	// Inherited: LINK_factory<Document>
 	// Inherited: META_factory<Document>
 	// Inherited: STYLE_factory<Document>
-	BODY_factory<Document>,
+	// Inherited: BODY_factory<Document>
 	// Inherited: ARTICLE_factory<Document>
 	// Inherited: SECTION_factory<Document>
 	// Inherited: NAV_factory<Document>

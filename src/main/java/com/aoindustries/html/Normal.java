@@ -49,8 +49,17 @@ abstract public class Normal<
 	}
 
 	/**
-	 * Called after opening tag is completed, {@linkplain Document#incDepth() indentation depth is increased},
-	 * and before the body is invoked.
+	 * Determines if this element has indented content.
+	 *
+	 * @return {@code true} - defaults to indenting
+	 */
+	protected boolean isContentIndented() {
+		return true;
+	}
+
+	/**
+	 * Called after opening tag is completed, {@linkplain Document#incDepth() indentation depth is increased}
+	 * (if {@link #isContentIndented()}), and before the body is invoked.
 	 * <p>
 	 * An common use-case is to call {@link Document#autoNl()} to begin body on the next line.
 	 * </p>
@@ -76,10 +85,12 @@ abstract public class Normal<
 	public <Ex extends Throwable> PC __(IORunnableE<Ex> body) throws IOException, Ex {
 		Writer out = document.getUnsafe(null);
 		if(body != null) {
-			document.autoIndent(out).unsafe(out, '>').incDepth();
+			document.autoIndent(out).unsafe(out, '>');
+			boolean contentIndented = isContentIndented();
+			if(contentIndented) document.incDepth();
 			doBeforeBody(out);
 			body.run();
-			document.decDepth();
+			if(contentIndented) document.decDepth();
 			writeClose(out, false);
 		} else {
 			writeClose(out, true);
@@ -97,10 +108,12 @@ abstract public class Normal<
 	public <Ex extends Throwable> PC __(IOConsumerE<? super __, Ex> body) throws IOException, Ex {
 		Writer out = document.getUnsafe(null);
 		if(body != null) {
-			document.autoIndent(out).unsafe(out, '>').incDepth();
+			document.autoIndent(out).unsafe(out, '>');
+			boolean contentIndented = isContentIndented();
+			if(contentIndented) document.incDepth();
 			doBeforeBody(out);
 			body.accept(new__());
-			document.decDepth();
+			if(contentIndented) document.decDepth();
 			writeClose(out, false);
 		} else {
 			writeClose(out, true);
@@ -131,7 +144,8 @@ abstract public class Normal<
 	 */
 	public _c _c() throws IOException {
 		Writer out = document.getUnsafe(null);
-		document.autoIndent(out).unsafe(out, '>').incDepth();
+		document.autoIndent(out).unsafe(out, '>');
+		if(isContentIndented()) document.incDepth();
 		doBeforeBody(out);
 		return new_c();
 	}

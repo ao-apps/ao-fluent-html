@@ -60,9 +60,12 @@ abstract public class NormalText<
 	public PC __(Object text) throws IOException {
 		Writer out = document.getUnsafe(null);
 		if(text != null) {
-			document.autoIndent(out).unsafe(out, '>').incDepth();
+			document.autoIndent(out).unsafe(out, '>');
+			boolean contentIndented = isContentIndented();
+			if(contentIndented) document.incDepth();
 			doBeforeBody(out);
-			document.text(out, text).decDepth();
+			document.text(out, text);
+			if(contentIndented) document.decDepth();
 			writeClose(out, false);
 		} else {
 			writeClose(out, true);

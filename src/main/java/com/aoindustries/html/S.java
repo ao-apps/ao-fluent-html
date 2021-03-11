@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">4.5.5 The s element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class S<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<S<PC>, PC, S__<PC>, S_c<PC>> implements
+public class S<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, S<D, PC>, S__<D, PC>, S_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<S<PC>>
+	AlmostGlobalAttributes<S<D, PC>>
 {
 
-	public S(Document document, PC pc) {
+	public S(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected S<PC> writeOpen(Writer out) throws IOException {
+	protected S<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<s", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class S<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected S__<PC> new__() {
+	protected S__<D, PC> new__() {
 		return new S__<>(this);
 	}
 
 	@Override
-	protected S_c<PC> new_c() {
+	protected S_c<D, PC> new_c() {
 		return new S_c<>(this);
 	}
 }

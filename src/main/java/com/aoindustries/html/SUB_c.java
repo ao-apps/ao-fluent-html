@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SUB_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, SUB_c<PC>>
-	implements PhrasingContent<SUB_c<PC>> {
+public class SUB_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, SUB_c<D, PC>>
+	implements PhrasingContent<D, SUB_c<D, PC>> {
 
-	protected SUB_c(SUB<PC> element) {
+	protected SUB_c(SUB<D, PC> element) {
 		super(element);
 	}
 }

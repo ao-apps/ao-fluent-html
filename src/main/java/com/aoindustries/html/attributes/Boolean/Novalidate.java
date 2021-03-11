@@ -34,9 +34,11 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/att_novalidate.asp">HTML novalidate Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Novalidate<E extends Element<E, ?> & Novalidate<E>> {
+public interface Novalidate<E extends Element<?, ?, E> & Novalidate<E>> {
 
 	/**
 	 * <ul>
@@ -70,6 +72,8 @@ public interface Novalidate<E extends Element<E, ?> & Novalidate<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-novalidate">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_novalidate.asp">HTML novalidate Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #novalidate(java.lang.Boolean)
 	 */

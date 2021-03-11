@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DIV<PC extends Union_DL_Palpable<PC>> extends
-	NormalText<DIV<PC>, PC, DIV__<PC>, DIV_c<PC>> implements
+public class DIV<
+	D  extends AnyDocument<D>,
+	PC extends Union_DL_Palpable<D, PC>
+> extends
+	NormalText<D, PC, DIV<D, PC>, DIV__<D, PC>, DIV_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DIV<PC>>
+	AlmostGlobalAttributes<DIV<D, PC>>
 {
 
-	public DIV(Document document, PC pc) {
+	public DIV(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DIV<PC> writeOpen(Writer out) throws IOException {
+	protected DIV<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<div", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class DIV<PC extends Union_DL_Palpable<PC>> extends
 	}
 
 	@Override
-	protected DIV__<PC> new__() {
+	protected DIV__<D, PC> new__() {
 		return new DIV__<>(this);
 	}
 
 	@Override
-	protected DIV_c<PC> new_c() {
+	protected DIV_c<D, PC> new_c() {
 		return new DIV_c<>(this);
 	}
 }

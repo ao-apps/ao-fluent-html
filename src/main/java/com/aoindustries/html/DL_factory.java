@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface DL_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new dl element.
@@ -41,10 +45,10 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 */
-	default DL<__> dl() throws IOException {
+	default DL<D, __> dl() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ dl__(IOConsumerE<? super DL__<__>, Ex> dl) throws IOException, Ex {
+	default <Ex extends Throwable> __ dl__(IOConsumerE<? super DL__<D, __>, Ex> dl) throws IOException, Ex {
 		return dl().__(dl);
 	}
 
@@ -97,7 +105,7 @@ public interface DL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DL_c<__> dl_c() throws IOException {
+	default DL_c<D, __> dl_c() throws IOException {
 		return dl()._c();
 	}
 }

@@ -29,9 +29,11 @@ package com.aoindustries.html;
  * All HTML elements, EXCEPT: &lt;base&gt;, &lt;bdo&gt;, &lt;br&gt;, &lt;head&gt;, &lt;html&gt;, &lt;iframe&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface AlmostGlobalAttributes<E extends Element<E, ?> & AlmostGlobalAttributes<E>> extends
+public interface AlmostGlobalAttributes<E extends Element<?, ?, E> & AlmostGlobalAttributes<E>> extends
 	// Form
 	com.aoindustries.html.attributes.event.form.Onblur<E>,
 	com.aoindustries.html.attributes.event.form.Onfocus<E>,

@@ -36,9 +36,11 @@ import java.io.IOException;
  * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Title<E extends Element<E, ?> & Title<E>> {
+public interface Title<E extends Element<?, ?, E> & Title<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_title.asp">HTML Global title Attribute</a>.
@@ -58,6 +60,8 @@ public interface Title<E extends Element<E, ?> & Title<E>> {
 	 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #title(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E title(IOSupplierE<?, Ex> title) throws IOException, Ex {
@@ -69,6 +73,8 @@ public interface Title<E extends Element<E, ?> & Title<E>> {
 	 * <blockquote>
 	 * In HTML5, the title attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #title(java.lang.Object)
 	 */

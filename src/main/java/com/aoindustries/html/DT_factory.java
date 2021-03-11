@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
+public interface DT_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_DIV_DL<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new dt element.
@@ -41,10 +45,10 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
 	 * </p>
 	 */
-	default DT<__> dt() throws IOException {
+	default DT<D, __> dt() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ dt__(IOConsumerE<? super DT__<__>, Ex> dt) throws IOException, Ex {
+	default <Ex extends Throwable> __ dt__(IOConsumerE<? super DT__<D, __>, Ex> dt) throws IOException, Ex {
 		return dt().__(dt);
 	}
 
@@ -109,7 +117,7 @@ public interface DT_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DT_c<__> dt_c() throws IOException {
+	default DT_c<D, __> dt_c() throws IOException {
 		return dt()._c();
 	}
 }

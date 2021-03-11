@@ -33,11 +33,15 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface FORM_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new form element.
@@ -46,10 +50,10 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
-	default FORM<__> form() throws IOException {
+	default FORM<D, __> form() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new FORM<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -60,7 +64,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 */
-	default FORM<__> form(String action) throws IOException {
+	default FORM<D, __> form(String action) throws IOException {
 		return form().action(action);
 	}
 
@@ -70,8 +74,10 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> FORM<__> form(IOSupplierE<? extends String, Ex> action) throws IOException, Ex {
+	default <Ex extends Throwable> FORM<D, __> form(IOSupplierE<? extends String, Ex> action) throws IOException, Ex {
 		return form().action(action);
 	}
 
@@ -81,6 +87,8 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -95,9 +103,11 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ form__(IOConsumerE<? super FORM__<__>, Ex> form) throws IOException, Ex {
+	default <Ex extends Throwable> __ form__(IOConsumerE<? super FORM__<D, __>, Ex> form) throws IOException, Ex {
 		return form().__(form);
 	}
 
@@ -141,7 +151,7 @@ public interface FORM_factory<__ extends PalpableContent<__>> extends Content<__
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default FORM_c<__> form_c() throws IOException {
+	default FORM_c<D, __> form_c() throws IOException {
 		return form()._c();
 	}
 }

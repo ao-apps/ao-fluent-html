@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class CITE_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, CITE_c<PC>>
-	implements PhrasingContent<CITE_c<PC>> {
+public class CITE_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, CITE_c<D, PC>>
+	implements PhrasingContent<D, CITE_c<D, PC>> {
 
-	protected CITE_c(CITE<PC> element) {
+	protected CITE_c(CITE<D, PC> element) {
 		super(element);
 	}
 }

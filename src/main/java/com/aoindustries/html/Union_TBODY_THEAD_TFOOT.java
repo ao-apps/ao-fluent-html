@@ -30,27 +30,31 @@ package com.aoindustries.html;
  * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element">4.9.7 The tfoot element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Union_TBODY_THEAD_TFOOT<__ extends Union_TBODY_THEAD_TFOOT<__>> extends
+public interface Union_TBODY_THEAD_TFOOT<
+	D  extends AnyDocument<D>,
+	__ extends Union_TBODY_THEAD_TFOOT<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: COLGROUP_ScriptSupporting<__>
+	// Inherited: COLGROUP_ScriptSupporting<D, __>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>,
+	// Inherited: Content<D, __>
+	ScriptSupportingContent<D, __>,
 
 	//
 	// Factories:
 	//
-	TR_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	TR_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 }

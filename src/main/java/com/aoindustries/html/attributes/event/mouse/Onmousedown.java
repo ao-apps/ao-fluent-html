@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onmousedown<E extends Element<E, ?> & Onmousedown<E>> {
+public interface Onmousedown<E extends Element<?, ?, E> & Onmousedown<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onmousedown<E extends Element<E, ?> & Onmousedown<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onmousedown(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onmousedown(IOSupplierE<?, Ex> onmousedown) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onmousedown<E extends Element<E, ?> & Onmousedown<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmousedown.asp">HTML onmousedown Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onmousedown(java.lang.Object)
 	 */

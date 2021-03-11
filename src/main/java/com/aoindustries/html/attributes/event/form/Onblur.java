@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onblur<E extends Element<E, ?> & Onblur<E>> {
+public interface Onblur<E extends Element<?, ?, E> & Onblur<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onblur<E extends Element<E, ?> & Onblur<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onblur(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onblur(IOSupplierE<?, Ex> onblur) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onblur<E extends Element<E, ?> & Onblur<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onblur.asp">HTML onblur Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onblur(java.lang.Object)
 	 */

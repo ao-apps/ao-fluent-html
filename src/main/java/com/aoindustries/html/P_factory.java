@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface P_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new p element.
@@ -41,10 +45,10 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 */
-	default P<__> p() throws IOException {
+	default P<D, __> p() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new P<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ p__(IOConsumerE<? super P__<__>, Ex> p) throws IOException, Ex {
+	default <Ex extends Throwable> __ p__(IOConsumerE<? super P__<D, __>, Ex> p) throws IOException, Ex {
 		return p().__(p);
 	}
 
@@ -109,7 +117,7 @@ public interface P_factory<__ extends PalpableContent<__>> extends Content<__> {
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default P_c<__> p_c() throws IOException {
+	default P_c<D, __> p_c() throws IOException {
 		return p()._c();
 	}
 }

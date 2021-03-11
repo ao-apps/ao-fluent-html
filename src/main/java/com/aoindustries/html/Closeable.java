@@ -28,11 +28,15 @@ import java.io.IOException;
  * When the content of an element is closed, the element's ending tag is written then the enclosing content model is
  * returned.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public interface Closeable<PC extends Content<PC>> extends java.io.Closeable {
+public interface Closeable<
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>
+> extends java.io.Closeable {
 
 	/**
 	 * Closes the content and ends the parent tag.

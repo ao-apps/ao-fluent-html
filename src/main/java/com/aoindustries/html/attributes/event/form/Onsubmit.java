@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onsubmit<E extends Element<E, ?> & Onsubmit<E>> {
+public interface Onsubmit<E extends Element<?, ?, E> & Onsubmit<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onsubmit<E extends Element<E, ?> & Onsubmit<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onsubmit(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onsubmit(IOSupplierE<?, Ex> onsubmit) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onsubmit<E extends Element<E, ?> & Onsubmit<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onsubmit.asp">HTML onsubmit Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onsubmit(java.lang.Object)
 	 */

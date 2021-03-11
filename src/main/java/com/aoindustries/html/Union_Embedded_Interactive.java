@@ -25,24 +25,28 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link EmbeddedContent} and {@link InteractiveContent}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Union_Embedded_Interactive<__ extends Union_Embedded_Interactive<__>> extends
+public interface Union_Embedded_Interactive<
+	D  extends AnyDocument<D>,
+	__ extends Union_Embedded_Interactive<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	AUDIO_factory<__>,
-	EMBED_factory<__>,
-	IFRAME_factory<__>,
-	IMG_factory<__>,
-	OBJECT_factory<__>,
-	VIDEO_factory<__>
+	AUDIO_factory<D, __>,
+	EMBED_factory<D, __>,
+	IFRAME_factory<D, __>,
+	IMG_factory<D, __>,
+	OBJECT_factory<D, __>,
+	VIDEO_factory<D, __>
 {
 }

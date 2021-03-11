@@ -28,31 +28,35 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: indent before, and newline after?  Review whitespace rules.  (this decision will affect FORM, too)
 //       https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
-public class SELECT<PC extends Union_Interactive_Phrasing<PC>> extends
-	Normal<SELECT<PC>, PC, SELECT__<PC>, SELECT_c<PC>> implements
+public class SELECT<
+	D  extends AnyDocument<D>,
+	PC extends Union_Interactive_Phrasing<D, PC>
+> extends
+	Normal<D, PC, SELECT<D, PC>, SELECT__<D, PC>, SELECT_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// TODO: autocomplete
-	com.aoindustries.html.attributes.Boolean.Disabled<SELECT<PC>>,
+	com.aoindustries.html.attributes.Boolean.Disabled<SELECT<D, PC>>,
 	// TODO: form
-	com.aoindustries.html.attributes.Boolean.Multiple<SELECT<PC>>,
-	com.aoindustries.html.attributes.Text.Name<SELECT<PC>>,
-	com.aoindustries.html.attributes.Boolean.Required<SELECT<PC>>,
-	com.aoindustries.html.attributes.Integer.Size<SELECT<PC>>,
-	AlmostGlobalAttributes<SELECT<PC>>
+	com.aoindustries.html.attributes.Boolean.Multiple<SELECT<D, PC>>,
+	com.aoindustries.html.attributes.Text.Name<SELECT<D, PC>>,
+	com.aoindustries.html.attributes.Boolean.Required<SELECT<D, PC>>,
+	com.aoindustries.html.attributes.Integer.Size<SELECT<D, PC>>,
+	AlmostGlobalAttributes<SELECT<D, PC>>
 {
 
-	public SELECT(Document document, PC pc) {
+	public SELECT(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected SELECT<PC> writeOpen(Writer out) throws IOException {
+	protected SELECT<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<select", false);
 		return this;
 	}
@@ -72,12 +76,12 @@ public class SELECT<PC extends Union_Interactive_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SELECT__<PC> new__() {
+	protected SELECT__<D, PC> new__() {
 		return new SELECT__<>(this);
 	}
 
 	@Override
-	protected SELECT_c<PC> new_c() {
+	protected SELECT_c<D, PC> new_c() {
 		return new SELECT_c<>(this);
 	}
 }

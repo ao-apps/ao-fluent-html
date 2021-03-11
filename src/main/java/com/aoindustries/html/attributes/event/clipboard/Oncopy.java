@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Oncopy<E extends Element<E, ?> & Oncopy<E>> {
+public interface Oncopy<E extends Element<?, ?, E> & Oncopy<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Oncopy<E extends Element<E, ?> & Oncopy<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #oncopy(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E oncopy(IOSupplierE<?, Ex> oncopy) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Oncopy<E extends Element<E, ?> & Oncopy<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oncopy.asp">HTML oncopy Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #oncopy(java.lang.Object)
 	 */

@@ -28,24 +28,28 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class OPTGROUP<PC extends SELECT_content<PC>> extends
-	Normal<OPTGROUP<PC>, PC, OPTGROUP__<PC>, OPTGROUP_c<PC>> implements
+public class OPTGROUP<
+	D  extends AnyDocument<D>,
+	PC extends SELECT_content<D, PC>
+> extends
+	Normal<D, PC, OPTGROUP<D, PC>, OPTGROUP__<D, PC>, OPTGROUP_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	com.aoindustries.html.attributes.Boolean.Disabled<OPTGROUP<PC>>,
-	com.aoindustries.html.attributes.Text.Label<OPTGROUP<PC>>,
-	AlmostGlobalAttributes<OPTGROUP<PC>>
+	com.aoindustries.html.attributes.Boolean.Disabled<OPTGROUP<D, PC>>,
+	com.aoindustries.html.attributes.Text.Label<OPTGROUP<D, PC>>,
+	AlmostGlobalAttributes<OPTGROUP<D, PC>>
 {
 
-	public OPTGROUP(Document document, PC pc) {
+	public OPTGROUP(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected OPTGROUP<PC> writeOpen(Writer out) throws IOException {
+	protected OPTGROUP<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<optgroup", false);
 		return this;
 	}
@@ -66,12 +70,12 @@ public class OPTGROUP<PC extends SELECT_content<PC>> extends
 	}
 
 	@Override
-	protected OPTGROUP__<PC> new__() {
+	protected OPTGROUP__<D, PC> new__() {
 		return new OPTGROUP__<>(this);
 	}
 
 	@Override
-	protected OPTGROUP_c<PC> new_c() {
+	protected OPTGROUP_c<D, PC> new_c() {
 		return new OPTGROUP_c<>(this);
 	}
 }

@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ondragstart<E extends Element<E, ?> & Ondragstart<E>> {
+public interface Ondragstart<E extends Element<?, ?, E> & Ondragstart<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Ondragstart<E extends Element<E, ?> & Ondragstart<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ondragstart(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ondragstart(IOSupplierE<?, Ex> ondragstart) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Ondragstart<E extends Element<E, ?> & Ondragstart<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragstart.asp">HTML ondragstart Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ondragstart(java.lang.Object)
 	 */

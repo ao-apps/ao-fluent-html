@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">4.10.13 The progress element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PROGRESS_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface PROGRESS_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new progress element.
@@ -41,10 +45,10 @@ public interface PROGRESS_factory<__ extends Union_Palpable_Phrasing<__>> extend
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">4.10.13 The progress element</a>.
 	 * </p>
 	 */
-	default PROGRESS<__> progress() throws IOException {
+	default PROGRESS<D, __> progress() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new PROGRESS<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface PROGRESS_factory<__ extends Union_Palpable_Phrasing<__>> extend
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">4.10.13 The progress element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface PROGRESS_factory<__ extends Union_Palpable_Phrasing<__>> extend
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">4.10.13 The progress element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ progress__(IOConsumerE<? super PROGRESS__<__>, Ex> progress) throws IOException, Ex {
+	default <Ex extends Throwable> __ progress__(IOConsumerE<? super PROGRESS__<D, __>, Ex> progress) throws IOException, Ex {
 		return progress().__(progress);
 	}
 
@@ -109,7 +117,7 @@ public interface PROGRESS_factory<__ extends Union_Palpable_Phrasing<__>> extend
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default PROGRESS_c<__> progress_c() throws IOException {
+	default PROGRESS_c<D, __> progress_c() throws IOException {
 		return progress()._c();
 	}
 }

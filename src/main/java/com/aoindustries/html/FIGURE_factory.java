@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">4.4.12 The figure element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface FIGURE_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface FIGURE_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

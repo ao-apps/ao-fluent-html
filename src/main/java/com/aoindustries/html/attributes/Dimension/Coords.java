@@ -42,9 +42,11 @@ import java.util.Objects;
  * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Coords<E extends Element<E, ?> & Coords<E>> {
+public interface Coords<E extends Element<?, ?, E> & Coords<E>> {
 
 	/**
 	 * <ul>
@@ -64,6 +66,8 @@ public interface Coords<E extends Element<E, ?> & Coords<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #coords(java.lang.String)
 	 */
@@ -123,6 +127,8 @@ public interface Coords<E extends Element<E, ?> & Coords<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #coords(java.awt.Rectangle)
 	 */
@@ -203,6 +209,8 @@ public interface Coords<E extends Element<E, ?> & Coords<E>> {
 	 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #coords(com.aoindustries.html.Circle)
 	 */
 	@SuppressWarnings("overloads")
@@ -279,6 +287,8 @@ public interface Coords<E extends Element<E, ?> & Coords<E>> {
 	 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #coords(java.awt.Polygon)
 	 */
 	@SuppressWarnings("overloads")
@@ -317,6 +327,8 @@ public interface Coords<E extends Element<E, ?> & Coords<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-coords">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_coords.asp">HTML coords Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #coords(java.awt.Shape)
 	 */

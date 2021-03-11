@@ -31,21 +31,25 @@ import java.io.Writer;
  * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BR<PC extends PhrasingContent<PC>> extends VoidElement<BR<PC>, PC>
+public class BR<
+	D  extends AnyDocument<D>,
+	PC extends PhrasingContent<D, PC>
+> extends VoidElement<D, PC, BR<D, PC>>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: AlmostGlobalAttributes<BR<PC>>
+	// Not on <br>: AlmostGlobalAttributes<BR<D, PC>>
 {
 
-	public BR(Document document, PC pc) {
+	public BR(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected BR<PC> writeOpen(Writer out) throws IOException {
+	protected BR<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<br", false);
 		return this;
 	}

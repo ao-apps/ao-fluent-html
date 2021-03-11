@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -34,11 +34,14 @@ import java.util.function.Function;
 /**
  * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Crossorigin<
-	E extends Element<E, ?> & Crossorigin<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Crossorigin<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -52,6 +55,8 @@ public interface Crossorigin<
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #crossorigin(java.lang.String)
 	 */
@@ -72,6 +77,8 @@ public interface Crossorigin<
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #crossorigin(java.lang.Enum)
 	 */

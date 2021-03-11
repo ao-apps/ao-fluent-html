@@ -28,20 +28,24 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class PRE<PC extends PalpableContent<PC>> extends
-	NormalText<PRE<PC>, PC, PRE__<PC>, PRE_c<PC>> implements
+public class PRE<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, PRE<D, PC>, PRE__<D, PC>, PRE_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<PRE<PC>>
+	AlmostGlobalAttributes<PRE<D, PC>>
 {
 
 	private boolean oldAutonli;
 	private boolean oldIndent;
 
-	public PRE(Document document, PC pc) {
+	public PRE(D document, PC pc) {
 		super(document, pc);
 	}
 
@@ -56,7 +60,7 @@ public class PRE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected PRE<PC> writeOpen(Writer out) throws IOException {
+	protected PRE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<pre", false);
 		return this;
 	}
@@ -83,12 +87,12 @@ public class PRE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected PRE__<PC> new__() {
+	protected PRE__<D, PC> new__() {
 		return new PRE__<>(this);
 	}
 
 	@Override
-	protected PRE_c<PC> new_c() {
+	protected PRE_c<D, PC> new_c() {
 		return new PRE_c<>(this);
 	}
 }

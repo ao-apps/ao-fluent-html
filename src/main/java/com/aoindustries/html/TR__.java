@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TR__<PC extends Union_TBODY_THEAD_TFOOT<PC>>
-	extends Normal__<PC, TR__<PC>>
-	implements TR_content<TR__<PC>> {
+public class TR__<
+	D  extends AnyDocument<D>,
+	PC extends Union_TBODY_THEAD_TFOOT<D, PC>
+>
+	extends Normal__<D, PC, TR__<D, PC>>
+	implements TR_content<D, TR__<D, PC>> {
 
-	protected TR__(TR<PC> element) {
+	protected TR__(TR<D, PC> element) {
 		super(element);
 	}
 }

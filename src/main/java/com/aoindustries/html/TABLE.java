@@ -33,32 +33,36 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class TABLE<PC extends PalpableContent<PC>> extends
-	Normal<TABLE<PC>, PC, TABLE__<PC>, TABLE_c<PC>> implements
-	com.aoindustries.html.attributes.Enum.Align<TABLE<PC>, TABLE.Align>,
+public class TABLE<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	Normal<D, PC, TABLE<D, PC>, TABLE__<D, PC>, TABLE_c<D, PC>> implements
+	com.aoindustries.html.attributes.Enum.Align<TABLE<D, PC>, TABLE.Align>,
 	// TODO: bgcolor (deprecated)
-	com.aoindustries.html.attributes.Integer.Border<TABLE<PC>>,
-	com.aoindustries.html.attributes.Dimension.Cellpadding<TABLE<PC>>,
-	com.aoindustries.html.attributes.Dimension.Cellspacing<TABLE<PC>>,
+	com.aoindustries.html.attributes.Integer.Border<TABLE<D, PC>>,
+	com.aoindustries.html.attributes.Dimension.Cellpadding<TABLE<D, PC>>,
+	com.aoindustries.html.attributes.Dimension.Cellspacing<TABLE<D, PC>>,
 	// TODO: frame (deprecated)
 	// TODO: rules (deprecated)
 	// TODO: summary (deprecated)
-	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<TABLE<PC>>,
+	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<TABLE<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TABLE<PC>>
+	AlmostGlobalAttributes<TABLE<D, PC>>
 {
 
-	public TABLE(Document document, PC pc) {
+	public TABLE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected TABLE<PC> writeOpen(Writer out) throws IOException {
+	protected TABLE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<table", false);
 		return this;
 	}
@@ -79,12 +83,12 @@ public class TABLE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected TABLE__<PC> new__() {
+	protected TABLE__<D, PC> new__() {
 		return new TABLE__<>(this);
 	}
 
 	@Override
-	protected TABLE_c<PC> new_c() {
+	protected TABLE_c<D, PC> new_c() {
 		return new TABLE_c<>(this);
 	}
 
@@ -94,7 +98,7 @@ public class TABLE<PC extends PalpableContent<PC>> extends
 	 * @deprecated  The align attribute of &lt;table&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Function<Document, String> {
+	public enum Align implements Function<AnyDocument<?>, String> {
 
 		/**
 		 * the table is displayed on the left side of the document
@@ -123,7 +127,7 @@ public class TABLE<PC extends PalpableContent<PC>> extends
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}

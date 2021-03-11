@@ -36,11 +36,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface TABLE_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new table element.
@@ -50,10 +54,10 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
 	 */
-	default TABLE<__> table() throws IOException {
+	default TABLE<D, __> table() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new TABLE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -64,6 +68,8 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">&lt;table&gt;: The Table element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -79,9 +85,11 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ table__(IOConsumerE<? super TABLE__<__>, Ex> table) throws IOException, Ex {
+	default <Ex extends Throwable> __ table__(IOConsumerE<? super TABLE__<D, __>, Ex> table) throws IOException, Ex {
 		return table().__(table);
 	}
 
@@ -114,7 +122,7 @@ public interface TABLE_factory<__ extends PalpableContent<__>> extends Content<_
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default TABLE_c<__> table_c() throws IOException {
+	default TABLE_c<D, __> table_c() throws IOException {
 		return table()._c();
 	}
 }

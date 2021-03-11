@@ -28,24 +28,28 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class INS<PC extends Union_Palpable_Phrasing<PC>> extends
-	TransparentText<INS<PC>, PC, INS_c<PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<INS<PC>>,
+public class INS<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	TransparentText<D, PC, INS<D, PC>, INS_c<D, PC>> implements
+	com.aoindustries.html.attributes.Url.Cite<INS<D, PC>>,
 	// TODO: datetime
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<INS<PC>>
+	AlmostGlobalAttributes<INS<D, PC>>
 {
 
-	public INS(Document document, PC pc) {
+	public INS(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected INS<PC> writeOpen(Writer out) throws IOException {
+	protected INS<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<ins", false);
 		return this;
 	}
@@ -56,7 +60,7 @@ public class INS<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected INS_c<PC> new_c() {
+	protected INS_c<D, PC> new_c() {
 		return new INS_c<>(this);
 	}
 }

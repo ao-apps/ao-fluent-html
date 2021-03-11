@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_action.asp">HTML action Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Action<E extends Element<E, ?> & Action<E>> {
+public interface Action<E extends Element<?, ?, E> & Action<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_action.asp">HTML action Attribute</a>.
@@ -45,6 +47,8 @@ public interface Action<E extends Element<E, ?> & Action<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_action.asp">HTML action Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #action(java.lang.String)
 	 */

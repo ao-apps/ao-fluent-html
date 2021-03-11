@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<__> {
+public interface COLGROUP_factory<
+	D  extends AnyDocument<D>,
+	__ extends TABLE_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new colgroup element.
@@ -41,10 +45,10 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 */
-	default COLGROUP<__> colgroup() throws IOException {
+	default COLGROUP<D, __> colgroup() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new COLGROUP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ colgroup__(IOConsumerE<? super COLGROUP__<__>, Ex> colgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ colgroup__(IOConsumerE<? super COLGROUP__<D, __>, Ex> colgroup) throws IOException, Ex {
 		return colgroup().__(colgroup);
 	}
 
@@ -97,7 +105,7 @@ public interface COLGROUP_factory<__ extends TABLE_content<__>> extends Content<
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default COLGROUP_c<__> colgroup_c() throws IOException {
+	default COLGROUP_c<D, __> colgroup_c() throws IOException {
 		return colgroup()._c();
 	}
 }

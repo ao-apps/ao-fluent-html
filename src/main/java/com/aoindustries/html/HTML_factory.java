@@ -29,9 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
+ * @param  <D>   This document type
+ * @param  <__>  This content model, which will be the parent content model of child elements
+ *
  * @author  AO Industries, Inc.
  */
-public interface HTML_factory<__ extends Content<__>/* TODO? Document */> extends Content<__/* TODO? Document */> {
+public interface HTML_factory<
+	D  extends AnyDocument<D>,
+	__ extends Content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new html element.
@@ -39,10 +45,10 @@ public interface HTML_factory<__ extends Content<__>/* TODO? Document */> extend
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
 	 * </p>
 	 */
-	default HTML<__> html() throws IOException {
+	default HTML<D, __> html() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new HTML<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -51,6 +57,8 @@ public interface HTML_factory<__ extends Content<__>/* TODO? Document */> extend
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -64,9 +72,11 @@ public interface HTML_factory<__ extends Content<__>/* TODO? Document */> extend
 	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ html__(IOConsumerE<? super HTML__<__>, Ex> html) throws IOException, Ex {
+	default <Ex extends Throwable> __ html__(IOConsumerE<? super HTML__<D, __>, Ex> html) throws IOException, Ex {
 		return html().__(html);
 	}
 
@@ -95,7 +105,7 @@ public interface HTML_factory<__ extends Content<__>/* TODO? Document */> extend
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default HTML_c<__> html_c() throws IOException {
+	default HTML_c<D, __> html_c() throws IOException {
 		return html()._c();
 	}
 }

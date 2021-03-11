@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class OUTPUT__<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText__<PC, OUTPUT__<PC>>
-	implements PhrasingContent<OUTPUT__<PC>> {
+public class OUTPUT__<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText__<D, PC, OUTPUT__<D, PC>>
+	implements PhrasingContent<D, OUTPUT__<D, PC>> {
 
-	protected OUTPUT__(OUTPUT<PC> element) {
+	protected OUTPUT__(OUTPUT<D, PC> element) {
 		super(element);
 	}
 }

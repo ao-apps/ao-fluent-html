@@ -25,20 +25,23 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/dom.html#transparent-content-models">3.2.5.3 Transparent content models</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within,
  *               which may also be the parent content model of child elements
+ * @param  <E>   This element type
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 abstract public class Transparent<
-	E  extends Transparent<E, PC, _c>,
-	PC extends Content<PC>,
-	// Would prefer "_c extends PC & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	_c extends Transparent_c<PC, _c>
-> extends Normal<E, PC, PC, _c> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	E  extends Transparent<D, PC, E, _c>,
+	// Would prefer "_c extends PC & Closeable<D, PC>", but "a type variable may not be followed by other bounds"
+	_c extends Transparent_c<D, PC, _c>
+> extends Normal<D, PC, E, PC, _c> {
 
-	protected Transparent(Document document, PC pc) {
+	protected Transparent(D document, PC pc) {
 		super(document, pc);
 	}
 

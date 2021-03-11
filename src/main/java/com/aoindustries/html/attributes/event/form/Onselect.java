@@ -35,9 +35,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onselect">GlobalEventHandlers.onselect</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onselect<E extends Element<E, ?> & Onselect<E>> {
+public interface Onselect<E extends Element<?, ?, E> & Onselect<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
@@ -51,6 +53,8 @@ public interface Onselect<E extends Element<E, ?> & Onselect<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onselect(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onselect(IOSupplierE<?, Ex> onselect) throws IOException, Ex {
@@ -59,6 +63,8 @@ public interface Onselect<E extends Element<E, ?> & Onselect<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onselect.asp">HTML onselect Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onselect(java.lang.Object)
 	 */

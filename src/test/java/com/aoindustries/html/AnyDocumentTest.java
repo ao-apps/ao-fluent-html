@@ -25,16 +25,16 @@ package com.aoindustries.html;
 import org.junit.Test;
 
 /**
- * @see  Document
+ * @see  AnyDocument
  *
  * @author  AO Industries, Inc.
  */
-public class DocumentTest {
+public class AnyDocumentTest {
 
 	@Test
 	public void testUnions() {
 		UnionContentTest.testUnions(
-			Document.class,
+			AnyDocument.class,
 			//
 			// Unions:
 			//
@@ -45,7 +45,7 @@ public class DocumentTest {
 	@Test
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
-			Document.class,
+			AnyDocument.class,
 			//
 			// Content models:
 			//
@@ -56,7 +56,7 @@ public class DocumentTest {
 	@Test
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
-			Document.class,
+			AnyDocument.class,
 			//
 			// Per-element content models:
 			//
@@ -67,7 +67,7 @@ public class DocumentTest {
 	@Test
 	public void testFactories() {
 		FactoryTest.testFactories(
-			Document.class,
+			AnyDocument.class,
 			//
 			// Factories:
 			//
@@ -77,6 +77,6 @@ public class DocumentTest {
 
 	@Test
 	public void testNoImplementInherited() {
-		InheritanceTests.testNoImplementInherited(Document.class);
+		InheritanceTests.testNoImplementInherited(AnyDocument.class);
 	}
 }

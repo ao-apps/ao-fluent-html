@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface CITE_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface CITE_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new cite element.
@@ -41,10 +45,10 @@ public interface CITE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
 	 * </p>
 	 */
-	default CITE<__> cite() throws IOException {
+	default CITE<D, __> cite() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new CITE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface CITE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface CITE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ cite__(IOConsumerE<? super CITE__<__>, Ex> cite) throws IOException, Ex {
+	default <Ex extends Throwable> __ cite__(IOConsumerE<? super CITE__<D, __>, Ex> cite) throws IOException, Ex {
 		return cite().__(cite);
 	}
 
@@ -109,7 +117,7 @@ public interface CITE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default CITE_c<__> cite_c() throws IOException {
+	default CITE_c<D, __> cite_c() throws IOException {
 		return cite()._c();
 	}
 }

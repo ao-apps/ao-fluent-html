@@ -28,34 +28,38 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#embedded_content">Embedded content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface EmbeddedContent<__ extends EmbeddedContent<__>> extends
+public interface EmbeddedContent<
+	D  extends AnyDocument<D>,
+	__ extends EmbeddedContent<D, __>
+> extends
 	//
 	// Unions:
 	//
-	Union_Embedded_Interactive<__>,
-	Union_Embedded_Palpable_Phrasing<__>,
+	Union_Embedded_Interactive<D, __>,
+	Union_Embedded_Palpable_Phrasing<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	// Inherited: AUDIO_factory<__>
-	// Inherited: CANVAS_factory<__>
-	// Inherited: EMBED_factory<__>
-	// Inherited: IFRAME_factory<__>
-	// Inherited: IMG_factory<__>
+	// Inherited: AUDIO_factory<D, __>
+	// Inherited: CANVAS_factory<D, __>
+	// Inherited: EMBED_factory<D, __>
+	// Inherited: IFRAME_factory<D, __>
+	// Inherited: IMG_factory<D, __>
 	// Inherited: // TODO: MathML math
-	// Inherited: OBJECT_factory<__>
-	PICTURE_factory<__>
+	// Inherited: OBJECT_factory<D, __>
+	PICTURE_factory<D, __>
 	// Inherited: // TODO: SVG svg
-	// Inherited: VIDEO_factory<__>
+	// Inherited: VIDEO_factory<D, __>
 {
 }

@@ -30,11 +30,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
+public interface A_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Interactive_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new a element.
@@ -42,10 +46,10 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
-	default A<__> a() throws IOException {
+	default A<D, __> a() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new A<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -55,7 +59,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
 	 */
-	default A<__> a(String href) throws IOException {
+	default A<D, __> a(String href) throws IOException {
 		return a().href(href);
 	}
 
@@ -64,8 +68,10 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> A<__> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
+	default <Ex extends Throwable> A<D, __> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
 		return a().href(href);
 	}
 
@@ -74,6 +80,8 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -86,6 +94,8 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -148,7 +158,7 @@ public interface A_factory<__ extends Union_Interactive_Phrasing<__>> extends Co
 	 * @see  Closeable#close()
 	 * @see  Transparent_c#pc()
 	 */
-	default A_c<__> a_c() throws IOException {
+	default A_c<D, __> a_c() throws IOException {
 		return a()._c();
 	}
 }

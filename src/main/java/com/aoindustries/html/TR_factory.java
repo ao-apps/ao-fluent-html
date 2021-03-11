@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Content<__> {
+public interface TR_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_TBODY_THEAD_TFOOT<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new tr element.
@@ -41,10 +45,10 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 */
-	default TR<__> tr() throws IOException {
+	default TR<D, __> tr() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new TR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
+	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<D, __>, Ex> tr) throws IOException, Ex {
 		return tr().__(tr);
 	}
 
@@ -97,7 +105,7 @@ public interface TR_factory<__ extends Union_TBODY_THEAD_TFOOT<__>> extends Cont
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default TR_c<__> tr_c() throws IOException {
+	default TR_c<D, __> tr_c() throws IOException {
 		return tr()._c();
 	}
 }

@@ -34,9 +34,11 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/jsref/event_onsearch.asp">onsearch Event</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onsearch<E extends Element<E, ?> & Onsearch<E>> {
+public interface Onsearch<E extends Element<?, ?, E> & Onsearch<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
@@ -50,6 +52,8 @@ public interface Onsearch<E extends Element<E, ?> & Onsearch<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onsearch(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onsearch(IOSupplierE<?, Ex> onsearch) throws IOException, Ex {
@@ -58,6 +62,8 @@ public interface Onsearch<E extends Element<E, ?> & Onsearch<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onsearch.asp">HTML onsearch Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onsearch(java.lang.Object)
 	 */

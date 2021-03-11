@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onclick<E extends Element<E, ?> & Onclick<E>> {
+public interface Onclick<E extends Element<?, ?, E> & Onclick<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onclick<E extends Element<E, ?> & Onclick<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onclick(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onclick(IOSupplierE<?, Ex> onclick) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onclick<E extends Element<E, ?> & Onclick<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onclick.asp">HTML onclick Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onclick(java.lang.Object)
 	 */

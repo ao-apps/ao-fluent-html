@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
+public interface SELECT_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Interactive_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new select element.
@@ -41,10 +45,10 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 */
-	default SELECT<__> select() throws IOException {
+	default SELECT<D, __> select() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SELECT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ select__(IOConsumerE<? super SELECT__<__>, Ex> select) throws IOException, Ex {
+	default <Ex extends Throwable> __ select__(IOConsumerE<? super SELECT__<D, __>, Ex> select) throws IOException, Ex {
 		return select().__(select);
 	}
 
@@ -97,7 +105,7 @@ public interface SELECT_factory<__ extends Union_Interactive_Phrasing<__>> exten
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default SELECT_c<__> select_c() throws IOException {
+	default SELECT_c<D, __> select_c() throws IOException {
 		return select()._c();
 	}
 }

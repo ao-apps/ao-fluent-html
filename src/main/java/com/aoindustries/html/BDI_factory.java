@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface BDI_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface BDI_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new bdi element.
@@ -41,10 +45,10 @@ public interface BDI_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
 	 * </p>
 	 */
-	default BDI<__> bdi() throws IOException {
+	default BDI<D, __> bdi() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new BDI<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface BDI_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface BDI_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ bdi__(IOConsumerE<? super BDI__<__>, Ex> bdi) throws IOException, Ex {
+	default <Ex extends Throwable> __ bdi__(IOConsumerE<? super BDI__<D, __>, Ex> bdi) throws IOException, Ex {
 		return bdi().__(bdi);
 	}
 
@@ -109,7 +117,7 @@ public interface BDI_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default BDI_c<__> bdi_c() throws IOException {
+	default BDI_c<D, __> bdi_c() throws IOException {
 		return bdi()._c();
 	}
 }

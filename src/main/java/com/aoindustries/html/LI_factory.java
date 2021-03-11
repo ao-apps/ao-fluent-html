@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
+public interface LI_factory<
+	D  extends AnyDocument<D>,
+	__ extends ListContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new li element.
@@ -41,10 +45,10 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
 	 * </p>
 	 */
-	default LI<__> li() throws IOException {
+	default LI<D, __> li() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new LI<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ li__(IOConsumerE<? super LI__<__>, Ex> li) throws IOException, Ex {
+	default <Ex extends Throwable> __ li__(IOConsumerE<? super LI__<D, __>, Ex> li) throws IOException, Ex {
 		return li().__(li);
 	}
 
@@ -109,7 +117,7 @@ public interface LI_factory<__ extends ListContent<__>> extends Content<__> {
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default LI_c<__> li_c() throws IOException {
+	default LI_c<D, __> li_c() throws IOException {
 		return li()._c();
 	}
 }

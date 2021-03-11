@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -34,11 +34,14 @@ import java.util.function.Function;
 /**
  * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Name<
-	E extends Element<E, ?> & Name<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Name<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -53,6 +56,8 @@ public interface Name<
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #name(java.lang.String)
 	 */
@@ -73,6 +78,8 @@ public interface Name<
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #name(java.lang.Enum)
 	 */

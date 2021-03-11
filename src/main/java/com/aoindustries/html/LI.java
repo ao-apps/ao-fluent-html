@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class LI<PC extends ListContent<PC>> extends
-	NormalText<LI<PC>, PC, LI__<PC>, LI_c<PC>> implements
+public class LI<
+	D  extends AnyDocument<D>,
+	PC extends ListContent<D, PC>
+> extends
+	NormalText<D, PC, LI<D, PC>, LI__<D, PC>, LI_c<D, PC>> implements
 	// TODO: value (If the element is not a child of an ul or menu element)
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<LI<PC>>
+	AlmostGlobalAttributes<LI<D, PC>>
 {
 
-	public LI(Document document, PC pc) {
+	public LI(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected LI<PC> writeOpen(Writer out) throws IOException {
+	protected LI<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<li", false);
 		return this;
 	}
@@ -55,12 +59,12 @@ public class LI<PC extends ListContent<PC>> extends
 	}
 
 	@Override
-	protected LI__<PC> new__() {
+	protected LI__<D, PC> new__() {
 		return new LI__<>(this);
 	}
 
 	@Override
-	protected LI_c<PC> new_c() {
+	protected LI_c<D, PC> new_c() {
 		return new LI_c<>(this);
 	}
 }

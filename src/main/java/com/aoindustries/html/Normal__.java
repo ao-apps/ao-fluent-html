@@ -25,24 +25,26 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#normal-elements">13.1.2 Elements / Normal elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public abstract class Normal__<
-	PC extends Content<PC>,
-	__ extends Normal__<PC, __>
-> implements Content<__> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	__ extends Normal__<D, PC, __>
+> implements Content<D, __> {
 
-	protected final Normal<?, PC, __, ?> element;
+	protected final Normal<D, PC, ?, __, ?> element;
 
-	protected Normal__(Normal<?, PC, __, ?> element) {
+	protected Normal__(Normal<D, PC, ?, __, ?> element) {
 		this.element = element;
 	}
 
 	@Override
-	public Document getDocument() {
+	public D getDocument() {
 		return element.document;
 	}
 }

@@ -36,9 +36,11 @@ import java.io.IOException;
  * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Tabindex<E extends Element<E, ?> & Tabindex<E>> {
+public interface Tabindex<E extends Element<?, ?, E> & Tabindex<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
@@ -85,6 +87,8 @@ public interface Tabindex<E extends Element<E, ?> & Tabindex<E>> {
 	 * <blockquote>
 	 * In HTML5, the tabindex attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #tabindex(java.lang.Integer)
 	 */

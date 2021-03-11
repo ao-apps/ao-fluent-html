@@ -37,9 +37,11 @@ import java.io.IOException;
  * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface IdNoHtml4<E extends Element<E, ?> & IdNoHtml4<E>> extends Id<E> {
+public interface IdNoHtml4<E extends Element<?, ?, E> & IdNoHtml4<E>> extends Id<E> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
@@ -69,6 +71,8 @@ public interface IdNoHtml4<E extends Element<E, ?> & IdNoHtml4<E>> extends Id<E>
 	 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #id(java.lang.Object)
 	 */
 	@Override
@@ -90,6 +94,8 @@ public interface IdNoHtml4<E extends Element<E, ?> & IdNoHtml4<E>> extends Id<E>
 	 * <blockquote>
 	 * In HTML 4.01, the id attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #id(java.lang.Object)
 	 */

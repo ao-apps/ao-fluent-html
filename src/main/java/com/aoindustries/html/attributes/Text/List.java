@@ -40,9 +40,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface List<E extends Element<E, ?> & List<E>> {
+public interface List<E extends Element<?, ?, E> & List<E>> {
 
 	/**
 	 * <ul>
@@ -72,6 +74,8 @@ public interface List<E extends Element<E, ?> & List<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #list(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E list(IOSupplierE<?, Ex> list) throws IOException, Ex {
@@ -84,6 +88,8 @@ public interface List<E extends Element<E, ?> & List<E>> {
 	 * <li>See <a href="https://www.w3schools.com/tags/att_input_list.asp">HTML input list Attribute</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdeflist">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #list(java.lang.Object)
 	 */

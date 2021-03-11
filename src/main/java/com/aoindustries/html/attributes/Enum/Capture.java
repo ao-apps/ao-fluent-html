@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -39,11 +39,14 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3.org/TR/mediacapture-streams/#dom-videofacingmodeenum">Media Capture and Streams: VideoFacingModeEnum</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Capture<
-	E extends Element<E, ?> & Capture<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Capture<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -67,6 +70,8 @@ public interface Capture<
 	 * <li>See <a href="https://www.w3.org/TR/html-media-capture/#the-capture-attribute">5. The capture attribute</a>.</li>
 	 * <li>See <a href="https://www.w3.org/TR/mediacapture-streams/#dom-videofacingmodeenum">Media Capture and Streams: VideoFacingModeEnum</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #capture(java.lang.String)
 	 */
@@ -97,6 +102,8 @@ public interface Capture<
 	 * <li>See <a href="https://www.w3.org/TR/html-media-capture/#the-capture-attribute">5. The capture attribute</a>.</li>
 	 * <li>See <a href="https://www.w3.org/TR/mediacapture-streams/#dom-videofacingmodeenum">Media Capture and Streams: VideoFacingModeEnum</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #capture(java.lang.Enum)
 	 */

@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface VAR_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>>
+extends Content<D, __> {
 
 	/**
 	 * Opens a new var element.
@@ -41,10 +45,10 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
 	 * </p>
 	 */
-	default VAR<__> var() throws IOException {
+	default VAR<D, __> var() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new VAR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ var__(IOConsumerE<? super VAR__<__>, Ex> var) throws IOException, Ex {
+	default <Ex extends Throwable> __ var__(IOConsumerE<? super VAR__<D, __>, Ex> var) throws IOException, Ex {
 		return var().__(var);
 	}
 
@@ -109,7 +117,7 @@ public interface VAR_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default VAR_c<__> var_c() throws IOException {
+	default VAR_c<D, __> var_c() throws IOException {
 		return var()._c();
 	}
 }

@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class FOOTER_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, FOOTER_c<PC>>
-	implements FlowContent<FOOTER_c<PC>> {
+public class FOOTER_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, FOOTER_c<D, PC>>
+	implements FlowContent<D, FOOTER_c<D, PC>> {
 
-	protected FOOTER_c(FOOTER<PC> element) {
+	protected FOOTER_c(FOOTER<D, PC> element) {
 		super(element);
 	}
 }

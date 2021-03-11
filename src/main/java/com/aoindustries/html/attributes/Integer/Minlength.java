@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Minlength<E extends Element<E, ?> & Minlength<E>> {
+public interface Minlength<E extends Element<?, ?, E> & Minlength<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
@@ -54,6 +56,8 @@ public interface Minlength<E extends Element<E, ?> & Minlength<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefminlength">&lt;input&gt;: The Input (Form Input) element</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #minlength(java.lang.Integer)
 	 */

@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onabort<E extends Element<E, ?> & Onabort<E>> {
+public interface Onabort<E extends Element<?, ?, E> & Onabort<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
@@ -47,6 +49,8 @@ public interface Onabort<E extends Element<E, ?> & Onabort<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onabort(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onabort(IOSupplierE<?, Ex> onabort) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onabort<E extends Element<E, ?> & Onabort<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/jsref/event_onabort.asp">onabort Event</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onabort(java.lang.Object)
 	 */

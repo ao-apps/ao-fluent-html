@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Oninvalid<E extends Element<E, ?> & Oninvalid<E>> {
+public interface Oninvalid<E extends Element<?, ?, E> & Oninvalid<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Oninvalid<E extends Element<E, ?> & Oninvalid<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #oninvalid(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E oninvalid(IOSupplierE<?, Ex> oninvalid) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Oninvalid<E extends Element<E, ?> & Oninvalid<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oninvalid.asp">HTML oninvalid Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #oninvalid(java.lang.Object)
 	 */

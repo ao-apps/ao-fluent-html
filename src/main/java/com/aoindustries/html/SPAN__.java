@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SPAN__<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText__<PC, SPAN__<PC>>
-	implements PhrasingContent<SPAN__<PC>> {
+public class SPAN__<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText__<D, PC, SPAN__<D, PC>>
+	implements PhrasingContent<D, SPAN__<D, PC>> {
 
-	protected SPAN__(SPAN<PC> element) {
+	protected SPAN__(SPAN<D, PC> element) {
 		super(element);
 	}
 }

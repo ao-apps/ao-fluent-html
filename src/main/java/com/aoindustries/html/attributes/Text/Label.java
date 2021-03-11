@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Label<E extends Element<E, ?> & Label<E>> {
+public interface Label<E extends Element<?, ?, E> & Label<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
@@ -49,6 +51,8 @@ public interface Label<E extends Element<E, ?> & Label<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #label(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E label(IOSupplierE<?, Ex> label) throws IOException, Ex {
@@ -57,6 +61,8 @@ public interface Label<E extends Element<E, ?> & Label<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_label.asp">HTML label Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #label(java.lang.Object)
 	 */

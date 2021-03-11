@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TBODY<PC extends TABLE_content<PC>> extends
-	Normal<TBODY<PC>, PC, TBODY__<PC>, TBODY_c<PC>> implements
+public class TBODY<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+> extends
+	Normal<D, PC, TBODY<D, PC>, TBODY__<D, PC>, TBODY_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TBODY<PC>>
+	AlmostGlobalAttributes<TBODY<D, PC>>
 {
 
-	public TBODY(Document document, PC pc) {
+	public TBODY(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected TBODY<PC> writeOpen(Writer out) throws IOException {
+	protected TBODY<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<tbody", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class TBODY<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected TBODY__<PC> new__() {
+	protected TBODY__<D, PC> new__() {
 		return new TBODY__<>(this);
 	}
 
 	@Override
-	protected TBODY_c<PC> new_c() {
+	protected TBODY_c<D, PC> new_c() {
 		return new TBODY_c<>(this);
 	}
 }

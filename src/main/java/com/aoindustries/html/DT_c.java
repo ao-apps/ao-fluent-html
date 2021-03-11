@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DT_c<PC extends Union_DIV_DL<PC>>
-	extends NormalText_c<PC, DT_c<PC>>
-	implements FlowContent<DT_c<PC>> {
+public class DT_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_DIV_DL<D, PC>
+>
+	extends NormalText_c<D, PC, DT_c<D, PC>>
+	implements FlowContent<D, DT_c<D, PC>> {
 
-	protected DT_c(DT<PC> element) {
+	protected DT_c(DT<D, PC> element) {
 		super(element);
 	}
 }

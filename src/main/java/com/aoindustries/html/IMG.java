@@ -32,40 +32,44 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class IMG<PC extends Union_Embedded_Interactive<PC>> extends VoidElement<IMG<PC>, PC> implements
-	com.aoindustries.html.attributes.Enum.Align<IMG<PC>, IMG.Align>,
-	com.aoindustries.html.attributes.Text.Alt<IMG<PC>>,
+public class IMG<
+	D  extends AnyDocument<D>,
+	PC extends Union_Embedded_Interactive<D, PC>
+> extends VoidElement<D, PC, IMG<D, PC>> implements
+	com.aoindustries.html.attributes.Enum.Align<IMG<D, PC>, IMG.Align>,
+	com.aoindustries.html.attributes.Text.Alt<IMG<D, PC>>,
 	// TODO: border
 	// TODO: crossorigin
-	com.aoindustries.html.attributes.Integer.Height<IMG<PC>>,
+	com.aoindustries.html.attributes.Integer.Height<IMG<D, PC>>,
 	// TODO: hspace
-	com.aoindustries.html.attributes.Boolean.Ismap<IMG<PC>>,
+	com.aoindustries.html.attributes.Boolean.Ismap<IMG<D, PC>>,
 	// TODO: longdesc
 	// TODO: sizes
-	com.aoindustries.html.attributes.Url.Src<IMG<PC>>,
+	com.aoindustries.html.attributes.Url.Src<IMG<D, PC>>,
 	// TODO: srcset
-	com.aoindustries.html.attributes.String.Usemap<IMG<PC>>,
+	com.aoindustries.html.attributes.String.Usemap<IMG<D, PC>>,
 	// TODO: vspace
-	com.aoindustries.html.attributes.Integer.Width<IMG<PC>>,
+	com.aoindustries.html.attributes.Integer.Width<IMG<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<IMG<PC>>,
-	com.aoindustries.html.attributes.event.media.Onabort<IMG<PC>>,
-	com.aoindustries.html.attributes.event.window.Onerror<IMG<PC>>,
-	com.aoindustries.html.attributes.event.window.Onload<IMG<PC>>
+	AlmostGlobalAttributes<IMG<D, PC>>,
+	com.aoindustries.html.attributes.event.media.Onabort<IMG<D, PC>>,
+	com.aoindustries.html.attributes.event.window.Onerror<IMG<D, PC>>,
+	com.aoindustries.html.attributes.event.window.Onload<IMG<D, PC>>
 	// TODO: More events
 {
 
-	public IMG(Document document, PC pc) {
+	public IMG(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected IMG<PC> writeOpen(Writer out) throws IOException {
+	protected IMG<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<img", false);
 		return this;
 	}
@@ -76,7 +80,7 @@ public class IMG<PC extends Union_Embedded_Interactive<PC>> extends VoidElement<
 	 * @deprecated  The align attribute of &lt;img&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Function<Document, String> {
+	public enum Align implements Function<AnyDocument<?>, String> {
 
 		/**
 		 * Align the image to the left
@@ -115,7 +119,7 @@ public class IMG<PC extends Union_Embedded_Interactive<PC>> extends VoidElement<
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}

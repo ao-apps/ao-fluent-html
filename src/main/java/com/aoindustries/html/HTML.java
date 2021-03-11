@@ -28,18 +28,22 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class HTML<PC extends Content<PC>/* TODO? Document */> extends
-	Normal<HTML<PC>, PC, HTML__<PC>, HTML_c<PC>>
+public class HTML<
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>
+> extends
+	Normal<D, PC, HTML<D, PC>, HTML__<D, PC>, HTML_c<D, PC>>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <html>: AlmostGlobalAttributes<HTML<PC>>
+	// Not on <html>: AlmostGlobalAttributes<HTML<D, PC>>
 {
 
-	public HTML(Document document, PC pc) {
+	public HTML(D document, PC pc) {
 		super(document, pc);
 	}
 
@@ -54,7 +58,7 @@ public class HTML<PC extends Content<PC>/* TODO? Document */> extends
 	}
 
 	@Override
-	protected HTML<PC> writeOpen(Writer out) throws IOException {
+	protected HTML<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<html", false);
 		return this;
 	}
@@ -75,12 +79,12 @@ public class HTML<PC extends Content<PC>/* TODO? Document */> extends
 	}
 
 	@Override
-	protected HTML__<PC> new__() {
+	protected HTML__<D, PC> new__() {
 		return new HTML__<>(this);
 	}
 
 	@Override
-	protected HTML_c<PC> new_c() {
+	protected HTML_c<D, PC> new_c() {
 		return new HTML_c<>(this);
 	}
 }

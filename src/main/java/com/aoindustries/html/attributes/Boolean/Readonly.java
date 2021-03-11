@@ -33,9 +33,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefreadonly">&lt;input&gt;: The Input (Form Input) element</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Readonly<E extends Element<E, ?> & Readonly<E>> {
+public interface Readonly<E extends Element<?, ?, E> & Readonly<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
@@ -57,6 +59,8 @@ public interface Readonly<E extends Element<E, ?> & Readonly<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_readonly.asp">HTML readonly Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #readonly(java.lang.Boolean)
 	 */

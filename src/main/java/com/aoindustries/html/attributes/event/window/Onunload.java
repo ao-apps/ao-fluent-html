@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onunload<E extends Element<E, ?> & Onunload<E>> {
+public interface Onunload<E extends Element<?, ?, E> & Onunload<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onunload<E extends Element<E, ?> & Onunload<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onunload(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onunload(IOSupplierE<?, Ex> onunload) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onunload<E extends Element<E, ?> & Onunload<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onunload.asp">HTML onunload Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onunload(java.lang.Object)
 	 */

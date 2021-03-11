@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class PRE_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, PRE_c<PC>>
-	implements PhrasingContent<PRE_c<PC>> {
+public class PRE_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, PRE_c<D, PC>>
+	implements PhrasingContent<D, PRE_c<D, PC>> {
 
-	protected PRE_c(PRE<PC> element) {
+	protected PRE_c(PRE<D, PC> element) {
 		super(element);
 	}
 }

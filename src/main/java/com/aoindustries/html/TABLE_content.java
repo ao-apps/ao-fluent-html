@@ -34,34 +34,38 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TABLE_content<__ extends TABLE_content<__>> extends
+public interface TABLE_content<
+	D  extends AnyDocument<D>,
+	__ extends TABLE_content<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	Union_TBODY_THEAD_TFOOT<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
+	Union_TBODY_THEAD_TFOOT<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	// Inherited: ScriptSupportingContent<__>
+	// Inherited: Content<D, __>
+	// Inherited: ScriptSupportingContent<D, __>
 
 	//
 	// Factories:
 	//
-	CAPTION_factory<__>,
-	COLGROUP_factory<__>,
-	THEAD_factory<__>,
-	TBODY_factory<__>,
-	// Inherited: TR_factory<__>
-	TFOOT_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	CAPTION_factory<D, __>,
+	COLGROUP_factory<D, __>,
+	THEAD_factory<D, __>,
+	TBODY_factory<D, __>,
+	// Inherited: TR_factory<D, __>
+	TFOOT_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 
 	/**
@@ -70,11 +74,13 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	 */
 	@Deprecated
 	@Override
-	default TR<__> tr() throws IOException {
+	default TR<D, __> tr() throws IOException {
 		return Union_TBODY_THEAD_TFOOT.super.tr();
 	}
 
 	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */
@@ -85,12 +91,14 @@ public interface TABLE_content<__ extends TABLE_content<__>> extends
 	}
 
 	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */
 	@Deprecated
 	@Override
-	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
+	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<D, __>, Ex> tr) throws IOException, Ex {
 		return Union_TBODY_THEAD_TFOOT.super.tr__(tr);
 	}
 

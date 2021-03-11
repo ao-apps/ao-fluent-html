@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onwheel<E extends Element<E, ?> & Onwheel<E>> {
+public interface Onwheel<E extends Element<?, ?, E> & Onwheel<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Onwheel<E extends Element<E, ?> & Onwheel<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onwheel(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onwheel(IOSupplierE<?, Ex> onwheel) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Onwheel<E extends Element<E, ?> & Onwheel<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onwheel.asp">HTML onwheel Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onwheel(java.lang.Object)
 	 */

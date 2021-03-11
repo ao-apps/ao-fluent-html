@@ -25,34 +25,38 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SELECT_content<__ extends SELECT_content<__>> extends
+public interface SELECT_content<
+	D  extends AnyDocument<D>,
+	__ extends SELECT_content<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	// Inherited: Union_DATALIST_OPTGROUP<__>
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
+	// Inherited: Union_DATALIST_OPTGROUP<D, __>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	// Inherited: ScriptSupportingContent<__>
+	// Inherited: Content<D, __>
+	// Inherited: ScriptSupportingContent<D, __>
 
 	//
 	// Per-element content models:
 	//
-	OPTGROUP_content<__>,
+	OPTGROUP_content<D, __>,
 
 	//
 	// Factories:
 	//
-	OPTGROUP_factory<__>
-	// Inherited: OPTION_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	OPTGROUP_factory<D, __>
+	// Inherited: OPTION_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 }

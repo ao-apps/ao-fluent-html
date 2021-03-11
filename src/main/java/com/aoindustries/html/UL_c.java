@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">4.4.6 The ul element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class UL_c<PC extends PalpableContent<PC>>
-	extends Normal_c<PC, UL_c<PC>>
-	implements ListContent<UL_c<PC>> {
+public class UL_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends Normal_c<D, PC, UL_c<D, PC>>
+	implements ListContent<D, UL_c<D, PC>> {
 
-	protected UL_c(UL<PC> element) {
+	protected UL_c(UL<D, PC> element) {
 		super(element);
 	}
 }

@@ -31,12 +31,16 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends ObjectContent<__>>
-public interface PARAM_factory<__ extends Content<__>> extends Content<__> {
+public interface PARAM_factory<
+	D  extends AnyDocument<D>,
+	// TODO: __ extends ObjectContent<D, __>
+	__ extends Content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new param element.
@@ -46,10 +50,10 @@ public interface PARAM_factory<__ extends Content<__>> extends Content<__> {
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
 	 * </ul>
 	 */
-	default PARAM<__> param() throws IOException {
+	default PARAM<D, __> param() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new PARAM<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 

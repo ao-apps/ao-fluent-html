@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface I_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new i element.
@@ -41,10 +45,10 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 */
-	default I<__> i() throws IOException {
+	default I<D, __> i() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new I<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ i__(IOConsumerE<? super I__<__>, Ex> i) throws IOException, Ex {
+	default <Ex extends Throwable> __ i__(IOConsumerE<? super I__<D, __>, Ex> i) throws IOException, Ex {
 		return i().__(i);
 	}
 
@@ -109,7 +117,7 @@ public interface I_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default I_c<__> i_c() throws IOException {
+	default I_c<D, __> i_c() throws IOException {
 		return i()._c();
 	}
 }

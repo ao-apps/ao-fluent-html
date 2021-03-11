@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface SUB_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new sub element.
@@ -41,10 +45,10 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
 	 * </p>
 	 */
-	default SUB<__> sub() throws IOException {
+	default SUB<D, __> sub() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SUB<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ sub__(IOConsumerE<? super SUB__<__>, Ex> sub) throws IOException, Ex {
+	default <Ex extends Throwable> __ sub__(IOConsumerE<? super SUB__<D, __>, Ex> sub) throws IOException, Ex {
 		return sub().__(sub);
 	}
 
@@ -109,7 +117,7 @@ public interface SUB_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default SUB_c<__> sub_c() throws IOException {
+	default SUB_c<D, __> sub_c() throws IOException {
 		return sub()._c();
 	}
 }

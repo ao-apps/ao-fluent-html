@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class ASIDE__<PC extends SectioningContent<PC>>
-	extends NormalText__<PC, ASIDE__<PC>>
-	implements FlowContent<ASIDE__<PC>> {
+public class ASIDE__<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+>
+	extends NormalText__<D, PC, ASIDE__<D, PC>>
+	implements FlowContent<D, ASIDE__<D, PC>> {
 
-	protected ASIDE__(ASIDE<PC> element) {
+	protected ASIDE__(ASIDE<D, PC> element) {
 		super(element);
 	}
 }

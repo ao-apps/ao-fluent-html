@@ -31,23 +31,27 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BLOCKQUOTE<PC extends PalpableContent<PC>> extends
-	NormalText<BLOCKQUOTE<PC>, PC, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> implements
+public class BLOCKQUOTE<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, BLOCKQUOTE<D, PC>, BLOCKQUOTE__<D, PC>, BLOCKQUOTE_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	com.aoindustries.html.attributes.Url.Cite<BLOCKQUOTE<PC>>,
-	AlmostGlobalAttributes<BLOCKQUOTE<PC>>
+	com.aoindustries.html.attributes.Url.Cite<BLOCKQUOTE<D, PC>>,
+	AlmostGlobalAttributes<BLOCKQUOTE<D, PC>>
 {
 
-	public BLOCKQUOTE(Document document, PC pc) {
+	public BLOCKQUOTE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected BLOCKQUOTE<PC> writeOpen(Writer out) throws IOException {
+	protected BLOCKQUOTE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<blockquote", false);
 		return this;
 	}
@@ -68,12 +72,12 @@ public class BLOCKQUOTE<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected BLOCKQUOTE__<PC> new__() {
+	protected BLOCKQUOTE__<D, PC> new__() {
 		return new BLOCKQUOTE__<>(this);
 	}
 
 	@Override
-	protected BLOCKQUOTE_c<PC> new_c() {
+	protected BLOCKQUOTE_c<D, PC> new_c() {
 		return new BLOCKQUOTE_c<>(this);
 	}
 }

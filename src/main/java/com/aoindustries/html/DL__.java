@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DL__<PC extends PalpableContent<PC>>
-	extends Normal__<PC, DL__<PC>>
-	implements DL_content<DL__<PC>> {
+public class DL__<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends Normal__<D, PC, DL__<D, PC>>
+	implements DL_content<D, DL__<D, PC>> {
 
-	protected DL__(DL<PC> element) {
+	protected DL__(DL<D, PC> element) {
 		super(element);
 	}
 }

@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">4.3.7 The hgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 // TODO
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface HGROUP_factory<__ extends HeadingContent<__>> extends Content<__> {
+public interface HGROUP_factory<
+	D  extends AnyDocument<D>,
+	__ extends HeadingContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

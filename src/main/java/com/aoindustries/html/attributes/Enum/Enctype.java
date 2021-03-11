@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.ContentType;
@@ -39,11 +39,14 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Enctype<
-	E extends Element<E, ?> & Enctype<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Enctype<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -65,6 +68,8 @@ public interface Enctype<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E enctype(Suppliers.String<Ex> enctype) throws IOException, Ex {
@@ -89,6 +94,8 @@ public interface Enctype<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E enctype(IOSupplierE<? extends V, Ex> enctype) throws IOException, Ex {
@@ -102,7 +109,7 @@ public interface Enctype<
 	 * <li>See <a href="https://www.w3schools.com/tags/att_enctype.asp">HTML enctype Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Value implements Function<Document, String> {
+	public enum Value implements Function<AnyDocument<?>, String> {
 		X_WWW_FORM_URLENCODED(ContentType.X_WWW_FORM_URLENCODED),
 		FORM_DATA(ContentType.FORM_DATA),
 		/**
@@ -122,7 +129,7 @@ public interface Enctype<
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 

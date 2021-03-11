@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Disabled<E extends Element<E, ?> & Disabled<E>> {
+public interface Disabled<E extends Element<?, ?, E> & Disabled<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
@@ -54,6 +56,8 @@ public interface Disabled<E extends Element<E, ?> & Disabled<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_disabled.asp">HTML disabled Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #disabled(java.lang.Boolean)
 	 */

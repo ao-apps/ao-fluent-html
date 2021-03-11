@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Content<__> {
+public interface DATALIST_factory<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new datalist element.
@@ -41,10 +45,10 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 */
-	default DATALIST<__> datalist() throws IOException {
+	default DATALIST<D, __> datalist() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DATALIST<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ datalist__(IOConsumerE<? super DATALIST__<__>, Ex> datalist) throws IOException, Ex {
+	default <Ex extends Throwable> __ datalist__(IOConsumerE<? super DATALIST__<D, __>, Ex> datalist) throws IOException, Ex {
 		return datalist().__(datalist);
 	}
 
@@ -109,7 +117,7 @@ public interface DATALIST_factory<__ extends PhrasingContent<__>> extends Conten
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DATALIST_c<__> datalist_c() throws IOException {
+	default DATALIST_c<D, __> datalist_c() throws IOException {
 		return datalist()._c();
 	}
 }

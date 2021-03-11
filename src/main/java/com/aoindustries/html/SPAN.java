@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SPAN<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<SPAN<PC>, PC, SPAN__<PC>, SPAN_c<PC>> implements
+public class SPAN<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, SPAN<D, PC>, SPAN__<D, PC>, SPAN_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SPAN<PC>>
+	AlmostGlobalAttributes<SPAN<D, PC>>
 {
 
-	public SPAN(Document document, PC pc) {
+	public SPAN(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected SPAN<PC> writeOpen(Writer out) throws IOException {
+	protected SPAN<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<span", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class SPAN<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SPAN__<PC> new__() {
+	protected SPAN__<D, PC> new__() {
 		return new SPAN__<>(this);
 	}
 
 	@Override
-	protected SPAN_c<PC> new_c() {
+	protected SPAN_c<D, PC> new_c() {
 		return new SPAN_c<>(this);
 	}
 }

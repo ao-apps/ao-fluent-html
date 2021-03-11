@@ -25,28 +25,32 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface OPTGROUP_content<__ extends OPTGROUP_content<__>> extends
+public interface OPTGROUP_content<
+	D  extends AnyDocument<D>,
+	__ extends OPTGROUP_content<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	Union_DATALIST_OPTGROUP<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
+	Union_DATALIST_OPTGROUP<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>
+	// Inherited: Content<D, __>
+	ScriptSupportingContent<D, __>
 
 	//
 	// Factories:
 	//
-	// Inherited: OPTION_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	// Inherited: OPTION_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 }

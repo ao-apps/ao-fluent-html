@@ -30,11 +30,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface DATA_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new data element.
@@ -42,10 +46,10 @@ public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
 	 * </p>
 	 */
-	default DATA<__> data() throws IOException {
+	default DATA<D, __> data() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DATA<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -55,7 +59,7 @@ public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
 	 * </p>
 	 */
-	default DATA<__> data(Object value) throws IOException {
+	default DATA<D, __> data(Object value) throws IOException {
 		return data().value(value);
 	}
 
@@ -64,8 +68,10 @@ public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> DATA<__> data(IOSupplierE<?, Ex> value) throws IOException, Ex {
+	default <Ex extends Throwable> DATA<D, __> data(IOSupplierE<?, Ex> value) throws IOException, Ex {
 		return data().value(value);
 	}
 
@@ -74,6 +80,8 @@ public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -87,9 +95,11 @@ public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ data__(Object value, IOConsumerE<? super DATA__<__>, Ex> data) throws IOException, Ex {
+	default <Ex extends Throwable> __ data__(Object value, IOConsumerE<? super DATA__<D, __>, Ex> data) throws IOException, Ex {
 		return data(value).__(data);
 	}
 
@@ -130,7 +140,7 @@ public interface DATA_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DATA_c<__> data_c(Object value) throws IOException {
+	default DATA_c<D, __> data_c(Object value) throws IOException {
 		return data(value)._c();
 	}
 }

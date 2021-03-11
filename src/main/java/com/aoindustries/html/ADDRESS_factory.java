@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface ADDRESS_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new address element.
@@ -41,10 +45,10 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 */
-	default ADDRESS<__> address() throws IOException {
+	default ADDRESS<D, __> address() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new ADDRESS<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ address__(IOConsumerE<? super ADDRESS__<__>, Ex> address) throws IOException, Ex {
+	default <Ex extends Throwable> __ address__(IOConsumerE<? super ADDRESS__<D, __>, Ex> address) throws IOException, Ex {
 		return address().__(address);
 	}
 
@@ -109,7 +117,7 @@ public interface ADDRESS_factory<__ extends PalpableContent<__>> extends Content
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default ADDRESS_c<__> address_c() throws IOException {
+	default ADDRESS_c<D, __> address_c() throws IOException {
 		return address()._c();
 	}
 }

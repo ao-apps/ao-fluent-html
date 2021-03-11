@@ -35,9 +35,11 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/att_onerror.asp">HTML onerror Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onerror<E extends Element<E, ?> & Onerror<E>> {
+public interface Onerror<E extends Element<?, ?, E> & Onerror<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
@@ -51,6 +53,8 @@ public interface Onerror<E extends Element<E, ?> & Onerror<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onerror(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onerror(IOSupplierE<?, Ex> onerror) throws IOException, Ex {
@@ -59,6 +63,8 @@ public interface Onerror<E extends Element<E, ?> & Onerror<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onerror.asp">HTML onerror Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onerror(java.lang.Object)
 	 */

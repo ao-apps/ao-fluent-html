@@ -36,9 +36,11 @@ import java.io.IOException;
  * The width attribute is new in HTML5.
  * </p>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface WidthHtml5Only<E extends Element<E, ?> & WidthHtml5Only<E>> extends Width<E> {
+public interface WidthHtml5Only<E extends Element<?, ?, E> & WidthHtml5Only<E>> extends Width<E> {
 
 	/**
 	 * {@inheritDoc}
@@ -87,6 +89,8 @@ public interface WidthHtml5Only<E extends Element<E, ?> & WidthHtml5Only<E>> ext
 	 * <p>
 	 * The width attribute is new in HTML5.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #width(java.lang.Integer)
 	 */

@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Href<E extends Element<E, ?> & Href<E>> {
+public interface Href<E extends Element<?, ?, E> & Href<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
@@ -45,6 +47,8 @@ public interface Href<E extends Element<E, ?> & Href<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_href.asp">HTML href Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #href(java.lang.String)
 	 */

@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DATALIST<PC extends PhrasingContent<PC>> extends
-	NormalText<DATALIST<PC>, PC, DATALIST__<PC>, DATALIST_c<PC>> implements
+public class DATALIST<
+	D  extends AnyDocument<D>,
+	PC extends PhrasingContent<D, PC>
+> extends
+	NormalText<D, PC, DATALIST<D, PC>, DATALIST__<D, PC>, DATALIST_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DATALIST<PC>>
+	AlmostGlobalAttributes<DATALIST<D, PC>>
 {
 
-	public DATALIST(Document document, PC pc) {
+	public DATALIST(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DATALIST<PC> writeOpen(Writer out) throws IOException {
+	protected DATALIST<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<datalist", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class DATALIST<PC extends PhrasingContent<PC>> extends
 	}
 
 	@Override
-	protected DATALIST__<PC> new__() {
+	protected DATALIST__<D, PC> new__() {
 		return new DATALIST__<>(this);
 	}
 
 	@Override
-	protected DATALIST_c<PC> new_c() {
+	protected DATALIST_c<D, PC> new_c() {
 		return new DATALIST_c<>(this);
 	}
 }

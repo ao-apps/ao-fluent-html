@@ -35,9 +35,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="image"&gt;</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Formnovalidate<E extends Element<E, ?> & Formnovalidate<E>> {
+public interface Formnovalidate<E extends Element<?, ?, E> & Formnovalidate<E>> {
 
 	/**
 	 * <ul>
@@ -74,6 +76,8 @@ public interface Formnovalidate<E extends Element<E, ?> & Formnovalidate<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit#formnovalidate">&lt;input type="submit"&gt;</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formnovalidate">&lt;input type="image"&gt;</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #formnovalidate(java.lang.Boolean)
 	 */

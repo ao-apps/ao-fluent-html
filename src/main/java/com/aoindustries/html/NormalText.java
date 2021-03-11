@@ -31,21 +31,24 @@ import java.io.Writer;
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#normal-elements">13.1.2 Elements / Normal elements</a>.
  * </p>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
+ * @param  <E>   This element type
  * @param  <__>  This content model, which will be the parent content model of child elements
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 abstract public class NormalText<
-	E  extends NormalText<E, PC, __, _c>,
-	PC extends Content<PC>,
-	__ extends NormalText__<PC, __>,
-	// Would prefer "_c extends __ & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	_c extends NormalText_c<PC, _c>
-> extends Normal<E, PC, __, _c> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	E  extends NormalText<D, PC, E, __, _c>,
+	__ extends NormalText__<D, PC, __>,
+	// Would prefer "_c extends __ & Closeable<D, PC>", but "a type variable may not be followed by other bounds"
+	_c extends NormalText_c<D, PC, _c>
+> extends Normal<D, PC, E, __, _c> {
 
-	protected NormalText(Document document, PC pc) {
+	protected NormalText(D document, PC pc) {
 		super(document, pc);
 	}
 
@@ -54,7 +57,7 @@ abstract public class NormalText<
 	 *
 	 * @return  The parent content model this element is within
 	 *
-	 * @see  Document#text(java.lang.Object)
+	 * @see  AnyDocument#text(java.lang.Object)
 	 */
 	// Matches TransparentText.__(Object)
 	public PC __(Object text) throws IOException {

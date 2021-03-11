@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface MAIN_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new main element.
@@ -41,10 +45,10 @@ public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
 	 * </p>
 	 */
-	default MAIN<__> main() throws IOException {
+	default MAIN<D, __> main() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new MAIN<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ main__(IOConsumerE<? super MAIN__<__>, Ex> main) throws IOException, Ex {
+	default <Ex extends Throwable> __ main__(IOConsumerE<? super MAIN__<D, __>, Ex> main) throws IOException, Ex {
 		return main().__(main);
 	}
 
@@ -109,7 +117,7 @@ public interface MAIN_factory<__ extends PalpableContent<__>> extends Content<__
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default MAIN_c<__> main_c() throws IOException {
+	default MAIN_c<D, __> main_c() throws IOException {
 		return main()._c();
 	}
 }

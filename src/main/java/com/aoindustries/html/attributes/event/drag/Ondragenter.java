@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ondragenter<E extends Element<E, ?> & Ondragenter<E>> {
+public interface Ondragenter<E extends Element<?, ?, E> & Ondragenter<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Ondragenter<E extends Element<E, ?> & Ondragenter<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ondragenter(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ondragenter(IOSupplierE<?, Ex> ondragenter) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Ondragenter<E extends Element<E, ?> & Ondragenter<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragenter.asp">HTML ondragenter Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ondragenter(java.lang.Object)
 	 */

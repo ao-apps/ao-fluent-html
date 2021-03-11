@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class THEAD<PC extends TABLE_content<PC>> extends
-	Normal<THEAD<PC>, PC, THEAD__<PC>, THEAD_c<PC>> implements
+public class THEAD<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+> extends
+	Normal<D, PC, THEAD<D, PC>, THEAD__<D, PC>, THEAD_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<THEAD<PC>>
+	AlmostGlobalAttributes<THEAD<D, PC>>
 {
 
-	public THEAD(Document document, PC pc) {
+	public THEAD(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected THEAD<PC> writeOpen(Writer out) throws IOException {
+	protected THEAD<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<thead", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class THEAD<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected THEAD__<PC> new__() {
+	protected THEAD__<D, PC> new__() {
 		return new THEAD__<>(this);
 	}
 
 	@Override
-	protected THEAD_c<PC> new_c() {
+	protected THEAD_c<D, PC> new_c() {
 		return new THEAD_c<>(this);
 	}
 }

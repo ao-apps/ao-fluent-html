@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Value<E extends Element<E, ?> & Value<E>> {
+public interface Value<E extends Element<?, ?, E> & Value<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
@@ -50,6 +52,8 @@ public interface Value<E extends Element<E, ?> & Value<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #value(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E value(IOSupplierE<?, Ex> value) throws IOException, Ex {
@@ -58,6 +62,8 @@ public interface Value<E extends Element<E, ?> & Value<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_value.asp">HTML value Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #value(java.lang.Object)
 	 */

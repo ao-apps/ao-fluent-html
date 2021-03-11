@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">4.11.1 The details element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface DETAILS_factory<__ extends InteractiveContent<__>> extends Content<__> {
+public interface DETAILS_factory<
+	D  extends AnyDocument<D>,
+	__ extends InteractiveContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

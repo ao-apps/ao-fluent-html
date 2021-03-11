@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ononline<E extends Element<E, ?> & Ononline<E>> {
+public interface Ononline<E extends Element<?, ?, E> & Ononline<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Ononline<E extends Element<E, ?> & Ononline<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ononline(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ononline(IOSupplierE<?, Ex> ononline) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Ononline<E extends Element<E, ?> & Ononline<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ononline.asp">HTML ononline Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ononline(java.lang.Object)
 	 */

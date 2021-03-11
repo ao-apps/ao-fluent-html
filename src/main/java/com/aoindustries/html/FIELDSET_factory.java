@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element">4.10.15 The fieldset element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface FIELDSET_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface FIELDSET_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

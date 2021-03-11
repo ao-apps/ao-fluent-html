@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -38,11 +38,14 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Method<
-	E extends Element<E, ?> & Method<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Method<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -64,6 +67,8 @@ public interface Method<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E method(Suppliers.String<Ex> method) throws IOException, Ex {
@@ -88,6 +93,8 @@ public interface Method<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E method(IOSupplierE<? extends V, Ex> method) throws IOException, Ex {
@@ -101,7 +108,7 @@ public interface Method<
 	 * <li>See <a href="https://www.w3schools.com/tags/att_method.asp">HTML method Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Value implements Function<Document, String> {
+	public enum Value implements Function<AnyDocument<?>, String> {
 		GET("get"),
 		POST("post"),
 		DIALOG("dialog");
@@ -118,7 +125,7 @@ public interface Method<
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 

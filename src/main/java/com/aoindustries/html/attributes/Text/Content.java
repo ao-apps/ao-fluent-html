@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Content<E extends Element<E, ?> & Content<E>> {
+public interface Content<E extends Element<?, ?, E> & Content<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
@@ -50,6 +52,8 @@ public interface Content<E extends Element<E, ?> & Content<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #content(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E content(IOSupplierE<?, Ex> content) throws IOException, Ex {
@@ -58,6 +62,8 @@ public interface Content<E extends Element<E, ?> & Content<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_content.asp">HTML content Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #content(java.lang.Object)
 	 */

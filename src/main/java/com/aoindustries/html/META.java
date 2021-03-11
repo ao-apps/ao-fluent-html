@@ -33,26 +33,30 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<META<PC>, PC> implements
-	com.aoindustries.html.attributes.Enum.Charset<META<PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
-	com.aoindustries.html.attributes.Text.Content<META<PC>>,
-	com.aoindustries.html.attributes.Enum.HttpEquiv<META<PC>, META.HttpEquiv>,
-	com.aoindustries.html.attributes.Enum.Name<META<PC>, META.Name>
+public class META<
+	D  extends AnyDocument<D>,
+	PC extends Union_Metadata_Phrasing<D, PC>
+> extends VoidElement<D, PC, META<D, PC>> implements
+	com.aoindustries.html.attributes.Enum.Charset<META<D, PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
+	com.aoindustries.html.attributes.Text.Content<META<D, PC>>,
+	com.aoindustries.html.attributes.Enum.HttpEquiv<META<D, PC>, META.HttpEquiv>,
+	com.aoindustries.html.attributes.Enum.Name<META<D, PC>, META.Name>
 	// TODO: scheme
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <meta>: AlmostGlobalAttributes<META<PC>>
+	// Not on <meta>: AlmostGlobalAttributes<META<D, PC>>
 {
 
-	public META(Document document, PC pc) {
+	public META(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected META<PC> writeOpen(Writer out) throws IOException {
+	protected META<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<meta", false);
 		return this;
 	}
@@ -68,7 +72,7 @@ public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<ME
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
 	 * </ul>
 	 */
-	public enum HttpEquiv implements Function<Document, String> {
+	public enum HttpEquiv implements Function<AnyDocument<?>, String> {
 		/**
 		 * Defines the default language of the page.
 		 * It can be overridden by the lang attribute on any element.
@@ -179,7 +183,7 @@ public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<ME
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 
@@ -194,7 +198,7 @@ public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<ME
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-name">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
 	 * </ul>
 	 */
-	public enum Name implements Function<Document, String> {
+	public enum Name implements Function<AnyDocument<?>, String> {
 		/**
 		 * <code>application-name</code> which defines the name of the application running in the web page.
 		 */
@@ -324,7 +328,7 @@ public class META<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<ME
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 

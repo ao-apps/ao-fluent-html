@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class VAR_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, VAR_c<PC>>
-	implements PhrasingContent<VAR_c<PC>> {
+public class VAR_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, VAR_c<D, PC>>
+	implements PhrasingContent<D, VAR_c<D, PC>> {
 
-	protected VAR_c(VAR<PC> element) {
+	protected VAR_c(VAR<D, PC> element) {
 		super(element);
 	}
 }

@@ -28,18 +28,22 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class H4<PC extends HeadingContent<PC>> extends H<H4<PC>, PC, H4__<PC>, H4_c<PC>> {
+public class H4<
+	D  extends AnyDocument<D>,
+	PC extends HeadingContent<D, PC>
+> extends H<D, PC, H4<D, PC>, H4__<D, PC>, H4_c<D, PC>> {
 
-	public H4(Document document, PC pc) {
+	public H4(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected H4<PC> writeOpen(Writer out) throws IOException {
+	protected H4<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<h4", false);
 		return this;
 	}
@@ -50,12 +54,12 @@ public class H4<PC extends HeadingContent<PC>> extends H<H4<PC>, PC, H4__<PC>, H
 	}
 
 	@Override
-	protected H4__<PC> new__() {
+	protected H4__<D, PC> new__() {
 		return new H4__<>(this);
 	}
 
 	@Override
-	protected H4_c<PC> new_c() {
+	protected H4_c<D, PC> new_c() {
 		return new H4_c<>(this);
 	}
 

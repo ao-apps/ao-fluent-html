@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onpopstate<E extends Element<E, ?> & Onpopstate<E>> {
+public interface Onpopstate<E extends Element<?, ?, E> & Onpopstate<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onpopstate<E extends Element<E, ?> & Onpopstate<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onpopstate(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onpopstate(IOSupplierE<?, Ex> onpopstate) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onpopstate<E extends Element<E, ?> & Onpopstate<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpopstate.asp">HTML onpopstate Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onpopstate(java.lang.Object)
 	 */

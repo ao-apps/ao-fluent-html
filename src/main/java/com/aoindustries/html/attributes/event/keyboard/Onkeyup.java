@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onkeyup<E extends Element<E, ?> & Onkeyup<E>> {
+public interface Onkeyup<E extends Element<?, ?, E> & Onkeyup<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onkeyup<E extends Element<E, ?> & Onkeyup<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onkeyup(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onkeyup(IOSupplierE<?, Ex> onkeyup) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onkeyup<E extends Element<E, ?> & Onkeyup<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onkeyup.asp">HTML onkeyup Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onkeyup(java.lang.Object)
 	 */

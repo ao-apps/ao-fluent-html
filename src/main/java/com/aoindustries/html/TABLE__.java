@@ -29,15 +29,19 @@ package com.aoindustries.html;
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TABLE__<PC extends PalpableContent<PC>>
-	extends Normal__<PC, TABLE__<PC>>
-	implements TABLE_content<TABLE__<PC>> {
+public class TABLE__<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends Normal__<D, PC, TABLE__<D, PC>>
+	implements TABLE_content<D, TABLE__<D, PC>> {
 
-	protected TABLE__(TABLE<PC> element) {
+	protected TABLE__(TABLE<D, PC> element) {
 		super(element);
 	}
 }

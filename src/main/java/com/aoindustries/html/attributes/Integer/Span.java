@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Span<E extends Element<E, ?> & Span<E>> {
+public interface Span<E extends Element<?, ?, E> & Span<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
@@ -54,6 +56,8 @@ public interface Span<E extends Element<E, ?> & Span<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_span.asp">HTML span Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #span(java.lang.Integer)
 	 */

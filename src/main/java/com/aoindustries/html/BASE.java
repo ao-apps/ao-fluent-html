@@ -32,23 +32,27 @@ import java.io.Writer;
  * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BASE<PC extends MetadataContent<PC>> extends VoidElement<BASE<PC>, PC> implements
-	com.aoindustries.html.attributes.Url.Href<BASE<PC>>,
-	com.aoindustries.html.attributes.Enum.Target<BASE<PC>, com.aoindustries.html.attributes.Enum.Target.Value>
+public class BASE<
+	D  extends AnyDocument<D>,
+	PC extends MetadataContent<D, PC>
+> extends VoidElement<D, PC, BASE<D, PC>> implements
+	com.aoindustries.html.attributes.Url.Href<BASE<D, PC>>,
+	com.aoindustries.html.attributes.Enum.Target<BASE<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <base>: AlmostGlobalAttributes<BASE<PC>>
+	// Not on <base>: AlmostGlobalAttributes<BASE<D, PC>>
 {
 
-	public BASE(Document document, PC pc) {
+	public BASE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected BASE<PC> writeOpen(Writer out) throws IOException {
+	protected BASE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<base", false);
 		return this;
 	}

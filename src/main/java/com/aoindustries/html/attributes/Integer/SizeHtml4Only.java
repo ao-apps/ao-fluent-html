@@ -30,12 +30,14 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @deprecated  Not supported in HTML5.
  *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> extends Size<E> {
+public interface SizeHtml4Only<E extends Element<?, ?, E> & SizeHtml4Only<E>> extends Size<E> {
 
 	/**
 	 * @deprecated  Not supported in HTML5.
@@ -44,7 +46,6 @@ public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> exten
 	@Override
 	@Attributes.Funnel
 	default E size(int size) throws IOException {
-		@SuppressWarnings("unchecked") E element = (E)this;
 		return Size.super.size(size);
 	}
 
@@ -55,11 +56,12 @@ public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> exten
 	@Override
 	@Attributes.Funnel
 	default E size(Integer size) throws IOException {
-		@SuppressWarnings("unchecked") E element = (E)this;
 		return Size.super.size(size);
 	}
 
 	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #size(java.lang.Integer)
 	 *
 	 * @deprecated  Not supported in HTML5.
@@ -67,7 +69,6 @@ public interface SizeHtml4Only<E extends Element<E, ?> & SizeHtml4Only<E>> exten
 	@Deprecated
 	@Override
 	default <Ex extends Throwable> E size(IOSupplierE<? extends Integer, Ex> size) throws IOException, Ex {
-		@SuppressWarnings("unchecked") E element = (E)this;
 		return Size.super.size(size);
 	}
 }

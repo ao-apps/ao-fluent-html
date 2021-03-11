@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ondragend<E extends Element<E, ?> & Ondragend<E>> {
+public interface Ondragend<E extends Element<?, ?, E> & Ondragend<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Ondragend<E extends Element<E, ?> & Ondragend<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ondragend(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ondragend(IOSupplierE<?, Ex> ondragend) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Ondragend<E extends Element<E, ?> & Ondragend<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragend.asp">HTML ondragend Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ondragend(java.lang.Object)
 	 */

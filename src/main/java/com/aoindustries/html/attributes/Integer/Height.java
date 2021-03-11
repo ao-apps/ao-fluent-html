@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Height<E extends Element<E, ?> & Height<E>> {
+public interface Height<E extends Element<?, ?, E> & Height<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
@@ -54,6 +56,8 @@ public interface Height<E extends Element<E, ?> & Height<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #height(java.lang.Integer)
 	 */

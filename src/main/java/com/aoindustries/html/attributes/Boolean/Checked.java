@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Checked<E extends Element<E, ?> & Checked<E>> {
+public interface Checked<E extends Element<?, ?, E> & Checked<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
@@ -54,6 +56,8 @@ public interface Checked<E extends Element<E, ?> & Checked<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_checked.asp">HTML checked Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #checked(java.lang.Boolean)
 	 */

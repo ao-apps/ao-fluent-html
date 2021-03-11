@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">4.4.6 The ul element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class UL<PC extends PalpableContent<PC>> extends
-	Normal<UL<PC>, PC, UL__<PC>, UL_c<PC>> implements
+public class UL<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	Normal<D, PC, UL<D, PC>, UL__<D, PC>, UL_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<UL<PC>>
+	AlmostGlobalAttributes<UL<D, PC>>
 {
 
-	public UL(Document document, PC pc) {
+	public UL(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected UL<PC> writeOpen(Writer out) throws IOException {
+	protected UL<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<ul", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class UL<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected UL__<PC> new__() {
+	protected UL__<D, PC> new__() {
 		return new UL__<>(this);
 	}
 
 	@Override
-	protected UL_c<PC> new_c() {
+	protected UL_c<D, PC> new_c() {
 		return new UL_c<>(this);
 	}
 }

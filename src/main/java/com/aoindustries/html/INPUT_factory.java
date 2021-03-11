@@ -33,11 +33,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
+public interface INPUT_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Interactive_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Specialized input implementations.
@@ -47,14 +51,18 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <D>   This document type
 	 * @param  <__>  This content model, which will be the parent content model of child elements
 	 */
-	public static class Type<__ extends Union_Interactive_Phrasing<__>> {
+	public static class Type<
+		D  extends AnyDocument<D>,
+		__ extends Union_Interactive_Phrasing<D, __>
+	> {
 
-		private final Document document;
+		private final D document;
 		private final __ pc;
 
-		public Type(Document document, __ pc) {
+		public Type(D document, __ pc) {
 			this.document = document;
 			this.pc = pc;
 		}
@@ -66,7 +74,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Dynamic<__> dynamic() throws IOException {
+		public INPUT.Dynamic<D, __> dynamic() throws IOException {
 			return new INPUT.Dynamic<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -78,7 +86,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Dynamic<__> dynamic(String type) throws IOException {
+		public INPUT.Dynamic<D, __> dynamic(String type) throws IOException {
 			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
 		}
 
@@ -89,9 +97,11 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 		 * </ul>
+		 *
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
 		 */
 		// TODO: Move these type Input.type only?
-		public <Ex extends Throwable> INPUT.Dynamic<__> dynamic(Suppliers.String<Ex> type) throws IOException, Ex {
+		public <Ex extends Throwable> INPUT.Dynamic<D, __> dynamic(Suppliers.String<Ex> type) throws IOException, Ex {
 			return dynamic((type == null) ? null : type.get());
 		}
 
@@ -103,7 +113,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Dynamic<__> dynamic(INPUT.Dynamic.Type type) throws IOException {
+		public INPUT.Dynamic<D, __> dynamic(INPUT.Dynamic.Type type) throws IOException {
 			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
 		}
 
@@ -114,9 +124,11 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type.asp">HTML input type Attribute</a>.</li>
 		 * </ul>
+		 *
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
 		 */
 		// TODO: Move these type Input.type only?
-		public <Ex extends Throwable> INPUT.Dynamic<__> dynamic(IOSupplierE<? extends INPUT.Dynamic.Type, Ex> type) throws IOException, Ex {
+		public <Ex extends Throwable> INPUT.Dynamic<D, __> dynamic(IOSupplierE<? extends INPUT.Dynamic.Type, Ex> type) throws IOException, Ex {
 			return dynamic((type == null) ? null : type.get());
 		}
 
@@ -128,7 +140,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_button.asp">HTML input type="button"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Button<__> button() throws IOException {
+		public INPUT.Button<D, __> button() throws IOException {
 			return new INPUT.Button<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -140,7 +152,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp">HTML input type="checkbox"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Checkbox<__> checkbox() throws IOException {
+		public INPUT.Checkbox<D, __> checkbox() throws IOException {
 			return new INPUT.Checkbox<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -152,7 +164,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Color<__> color() throws IOException {
+		public INPUT.Color<D, __> color() throws IOException {
 			return new INPUT.Color<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -164,7 +176,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Date<__> date() throws IOException {
+		public INPUT.Date<D, __> date() throws IOException {
 			return new INPUT.Date<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -176,7 +188,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.DatetimeLocal<__> datetimeLocal() throws IOException {
+		public INPUT.DatetimeLocal<D, __> datetimeLocal() throws IOException {
 			return new INPUT.DatetimeLocal<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -188,7 +200,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Email<__> email() throws IOException {
+		public INPUT.Email<D, __> email() throws IOException {
 			return new INPUT.Email<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -200,7 +212,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_file.asp">HTML input type="file"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.File<__> file() throws IOException {
+		public INPUT.File<D, __> file() throws IOException {
 			return new INPUT.File<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -212,7 +224,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp">HTML input type="hidden"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Hidden<__> hidden() throws IOException {
+		public INPUT.Hidden<D, __> hidden() throws IOException {
 			return new INPUT.Hidden<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -224,7 +236,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_image.asp">HTML input type="image"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Image<__> image() throws IOException {
+		public INPUT.Image<D, __> image() throws IOException {
 			return new INPUT.Image<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -236,7 +248,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Month<__> month() throws IOException {
+		public INPUT.Month<D, __> month() throws IOException {
 			return new INPUT.Month<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -248,7 +260,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Number<__> number() throws IOException {
+		public INPUT.Number<D, __> number() throws IOException {
 			return new INPUT.Number<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -260,7 +272,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_password.asp">HTML input type="password"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Password<__> password() throws IOException {
+		public INPUT.Password<D, __> password() throws IOException {
 			return new INPUT.Password<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -272,7 +284,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_radio.asp">HTML input type="radio"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Radio<__> radio() throws IOException {
+		public INPUT.Radio<D, __> radio() throws IOException {
 			return new INPUT.Radio<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -284,7 +296,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Range<__> range() throws IOException {
+		public INPUT.Range<D, __> range() throws IOException {
 			return new INPUT.Range<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -296,7 +308,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_reset.asp">HTML input type="reset"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Reset<__> reset() throws IOException {
+		public INPUT.Reset<D, __> reset() throws IOException {
 			return new INPUT.Reset<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -308,7 +320,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Search<__> search() throws IOException {
+		public INPUT.Search<D, __> search() throws IOException {
 			return new INPUT.Search<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -320,7 +332,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_submit.asp">HTML input type="submit"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Submit<__> submit() throws IOException {
+		public INPUT.Submit<D, __> submit() throws IOException {
 			return new INPUT.Submit<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -348,6 +360,8 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.</li>
 		 * </ul>
 		 *
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
+		 *
 		 * @return  This content model, which will be the parent content model of child elements
 		 */
 		public <Ex extends Throwable> __ submit__(IOSupplierE<?, Ex> value) throws IOException, Ex {
@@ -363,6 +377,8 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_value.asp">HTML input value Attribute</a>.</li>
 		 * </ul>
 		 *
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
+		 *
 		 * @return  This content model, which will be the parent content model of child elements
 		 */
 		public <Ex extends Throwable> __ submit__(MediaWritable<Ex> value) throws IOException, Ex {
@@ -377,7 +393,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Tel<__> tel() throws IOException {
+		public INPUT.Tel<D, __> tel() throws IOException {
 			return new INPUT.Tel<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -389,7 +405,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_text.asp">HTML input type="text"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Text<__> text() throws IOException {
+		public INPUT.Text<D, __> text() throws IOException {
 			return new INPUT.Text<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -401,7 +417,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Time<__> time() throws IOException {
+		public INPUT.Time<D, __> time() throws IOException {
 			return new INPUT.Time<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -413,7 +429,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Url<__> url() throws IOException {
+		public INPUT.Url<D, __> url() throws IOException {
 			return new INPUT.Url<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 
@@ -425,7 +441,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 		 * <li>See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.</li>
 		 * </ul>
 		 */
-		public INPUT.Week<__> week() throws IOException {
+		public INPUT.Week<D, __> week() throws IOException {
 			return new INPUT.Week<>(document, pc).writeOpen(document.getUnsafe(null));
 		}
 	}
@@ -438,7 +454,7 @@ public interface INPUT_factory<__ extends Union_Interactive_Phrasing<__>> extend
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.</li>
 	 * </ul>
 	 */
-	default Type<__> input() {
+	default Type<D, __> input() {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		return new Type<>(getDocument(), pc);

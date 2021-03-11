@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class HEADER_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, HEADER_c<PC>>
-	implements FlowContent<HEADER_c<PC>> {
+public class HEADER_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, HEADER_c<D, PC>>
+	implements FlowContent<D, HEADER_c<D, PC>> {
 
-	protected HEADER_c(HEADER<PC> element) {
+	protected HEADER_c(HEADER<D, PC> element) {
 		super(element);
 	}
 }

@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SAMP_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, SAMP_c<PC>>
-	implements PhrasingContent<SAMP_c<PC>> {
+public class SAMP_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, SAMP_c<D, PC>>
+	implements PhrasingContent<D, SAMP_c<D, PC>> {
 
-	protected SAMP_c(SAMP<PC> element) {
+	protected SAMP_c(SAMP<D, PC> element) {
 		super(element);
 	}
 }

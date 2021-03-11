@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__> {
+public interface THEAD_factory<
+	D  extends AnyDocument<D>,
+	__ extends TABLE_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new thead element.
@@ -41,10 +45,10 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 */
-	default THEAD<__> thead() throws IOException {
+	default THEAD<D, __> thead() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new THEAD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ thead__(IOConsumerE<? super THEAD__<__>, Ex> thead) throws IOException, Ex {
+	default <Ex extends Throwable> __ thead__(IOConsumerE<? super THEAD__<D, __>, Ex> thead) throws IOException, Ex {
 		return thead().__(thead);
 	}
 
@@ -97,7 +105,7 @@ public interface THEAD_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default THEAD_c<__> thead_c() throws IOException {
+	default THEAD_c<D, __> thead_c() throws IOException {
 		return thead()._c();
 	}
 }

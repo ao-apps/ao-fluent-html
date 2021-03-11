@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface H3_factory<__ extends HeadingContent<__>> extends Content<__> {
+public interface H3_factory<
+	D  extends AnyDocument<D>,
+	__ extends HeadingContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new h3 element.
@@ -41,10 +45,10 @@ public interface H3_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
 	 * </p>
 	 */
-	default H3<__> h3() throws IOException {
+	default H3<D, __> h3() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new H3<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface H3_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface H3_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ h3__(IOConsumerE<? super H3__<__>, Ex> h3) throws IOException, Ex {
+	default <Ex extends Throwable> __ h3__(IOConsumerE<? super H3__<D, __>, Ex> h3) throws IOException, Ex {
 		return h3().__(h3);
 	}
 
@@ -109,7 +117,7 @@ public interface H3_factory<__ extends HeadingContent<__>> extends Content<__> {
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default H3_c<__> h3_c() throws IOException {
+	default H3_c<D, __> h3_c() throws IOException {
 		return h3()._c();
 	}
 }

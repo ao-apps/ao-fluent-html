@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ismap<E extends Element<E, ?> & Ismap<E>> {
+public interface Ismap<E extends Element<?, ?, E> & Ismap<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
@@ -54,6 +56,8 @@ public interface Ismap<E extends Element<E, ?> & Ismap<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_ismap.asp">HTML ismap Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ismap(java.lang.Boolean)
 	 */

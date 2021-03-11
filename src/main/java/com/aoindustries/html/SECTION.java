@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SECTION<PC extends SectioningContent<PC>> extends
-	NormalText<SECTION<PC>, PC, SECTION__<PC>, SECTION_c<PC>> implements
+public class SECTION<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+> extends
+	NormalText<D, PC, SECTION<D, PC>, SECTION__<D, PC>, SECTION_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SECTION<PC>>
+	AlmostGlobalAttributes<SECTION<D, PC>>
 {
 
-	public SECTION(Document document, PC pc) {
+	public SECTION(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected SECTION<PC> writeOpen(Writer out) throws IOException {
+	protected SECTION<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<section", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class SECTION<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected SECTION__<PC> new__() {
+	protected SECTION__<D, PC> new__() {
 		return new SECTION__<>(this);
 	}
 
 	@Override
-	protected SECTION_c<PC> new_c() {
+	protected SECTION_c<D, PC> new_c() {
 		return new SECTION_c<>(this);
 	}
 }

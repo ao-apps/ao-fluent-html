@@ -28,25 +28,29 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TD<PC extends TR_content<PC>> extends
-	NormalText<TD<PC>, PC, TD__<PC>, TD_c<PC>> implements
-	com.aoindustries.html.attributes.Integer.Colspan<TD<PC>>,
-	com.aoindustries.html.attributes.Integer.Rowspan<TD<PC>>,
+public class TD<
+	D  extends AnyDocument<D>,
+	PC extends TR_content<D, PC>
+> extends
+	NormalText<D, PC, TD<D, PC>, TD__<D, PC>, TD_c<D, PC>> implements
+	com.aoindustries.html.attributes.Integer.Colspan<TD<D, PC>>,
+	com.aoindustries.html.attributes.Integer.Rowspan<TD<D, PC>>,
 	// TODO: headers
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TD<PC>>
+	AlmostGlobalAttributes<TD<D, PC>>
 {
 
-	public TD(Document document, PC pc) {
+	public TD(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected TD<PC> writeOpen(Writer out) throws IOException {
+	protected TD<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<td", false);
 		return this;
 	}
@@ -57,12 +61,12 @@ public class TD<PC extends TR_content<PC>> extends
 	}
 
 	@Override
-	protected TD__<PC> new__() {
+	protected TD__<D, PC> new__() {
 		return new TD__<>(this);
 	}
 
 	@Override
-	protected TD_c<PC> new_c() {
+	protected TD_c<D, PC> new_c() {
 		return new TD_c<>(this);
 	}
 }

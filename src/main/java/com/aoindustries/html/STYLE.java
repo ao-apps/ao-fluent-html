@@ -46,22 +46,26 @@ import java.util.Locale;
  * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Extend RawTextElement: https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements
-public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC> implements
-	com.aoindustries.html.attributes.Text.Media<STYLE<PC>>,
+public class STYLE<
+	D  extends AnyDocument<D>,
+	PC extends MetadataContent<D, PC>
+> extends Element<D, PC, STYLE<D, PC>> implements
+	com.aoindustries.html.attributes.Text.Media<STYLE<D, PC>>,
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	com.aoindustries.html.attributes.Text.ClassNoHtml4<STYLE<PC>>,
-	com.aoindustries.html.attributes.Text.IdNoHtml4<STYLE<PC>>,
-	com.aoindustries.html.attributes.Text.StyleNoHtml4<STYLE<PC>>,
-	com.aoindustries.html.attributes.Text.TitleNoHtml4<STYLE<PC>>,
+	com.aoindustries.html.attributes.Text.ClassNoHtml4<STYLE<D, PC>>,
+	com.aoindustries.html.attributes.Text.IdNoHtml4<STYLE<D, PC>>,
+	com.aoindustries.html.attributes.Text.StyleNoHtml4<STYLE<D, PC>>,
+	com.aoindustries.html.attributes.Text.TitleNoHtml4<STYLE<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <style>: AlmostGlobalAttributes<STYLE<PC>>
-	com.aoindustries.html.attributes.event.window.Onerror<LINK<PC>>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
-	com.aoindustries.html.attributes.event.window.Onload<LINK<PC>>
+	// Not on <style>: AlmostGlobalAttributes<STYLE<D, PC>>
+	com.aoindustries.html.attributes.event.window.Onerror<STYLE<D, PC>>, // Only listed at https://www.w3schools.com/tags/ref_attributes.asp
+	com.aoindustries.html.attributes.event.window.Onload<STYLE<D, PC>>
 {
 
 	/**
@@ -102,24 +106,24 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 
 	private final String type;
 
-	public STYLE(Document document, PC pc) {
+	public STYLE(D document, PC pc) {
 		super(document, pc);
 		this.type = null;
 	}
 
-	public STYLE(Document document, PC pc, String type) {
+	public STYLE(D document, PC pc, String type) {
 		super(document, pc);
 		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public STYLE(Document document, PC pc, Type type) {
+	public STYLE(D document, PC pc, Type type) {
 		super(document, pc);
 		this.type = (type == null) ? null : type.getContentType();
 	}
 
 	@Override
-	protected STYLE<PC> writeOpen(Writer out) throws IOException {
+	protected STYLE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<style", false);
 		return type();
 	}
@@ -129,7 +133,7 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	 *
 	 * @see Doctype#styleType(java.lang.Appendable)
 	 */
-	protected STYLE<PC> type() throws IOException {
+	protected STYLE<D, PC> type() throws IOException {
 		Writer out = document.getUnsafe(null);
 		if(
 			type == null
@@ -190,7 +194,7 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	// TODO: Out parameter with MediaType, that automatically picks the encoder
 	// TODO: Separate "Write" for direct writing (no encoding)?
 	@SuppressWarnings("UseSpecificCatch")
-	public STYLE<PC> out(Object style) throws IOException {
+	public STYLE<D, PC> out(Object style) throws IOException {
 		while(style instanceof IOSupplierE<?, ?>) {
 			try {
 				style = ((IOSupplierE<?, ?>)style).get();
@@ -200,7 +204,8 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 		}
 		if(style instanceof StyleWriter) {
 			try {
-				return out((StyleWriter<?>)style);
+				@SuppressWarnings("unchecked") StyleWriter<D, ?> writer = (StyleWriter<D, ?>)style;
+				return out(writer);
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -225,23 +230,36 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 		return this;
 	}
 
-	public <Ex extends Throwable> STYLE<PC> out(IOSupplierE<?, Ex> style) throws IOException, Ex {
+	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	public <Ex extends Throwable> STYLE<D, PC> out(IOSupplierE<?, Ex> style) throws IOException, Ex {
 		return out((style == null) ? null : style.get());
 	}
 
+	/**
+	 * @param  <D>   This document type
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
 	// TODO: Consolidate with AttributeWriter?
 	@FunctionalInterface
-	public static interface StyleWriter<Ex extends Throwable> {
-		void writeStyle(DocumentMediaWriter style) throws IOException, Ex;
+	public static interface StyleWriter<
+		D  extends AnyDocument<D>,
+		Ex extends Throwable
+	> {
+		void writeStyle(DocumentMediaWriter<D> style) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> STYLE<PC> out(StyleWriter<Ex> style) throws IOException, Ex {
+	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	public <Ex extends Throwable> STYLE<D, PC> out(StyleWriter<D, Ex> style) throws IOException, Ex {
 		if(style != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			Writer out = document.getUnsafe(null);
 			startBody(out);
 			style.writeStyle(
-				new DocumentMediaWriter(
+				new DocumentMediaWriter<>(
 					document,
 					encoder,
 					new NoCloseWriter(out)
@@ -258,11 +276,11 @@ public class STYLE<PC extends MetadataContent<PC>> extends Element<STYLE<PC>, PC
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	// TODO: __() method to end text?  Call it "ContentWriter"?
-	public DocumentMediaWriter out__() throws IOException {
+	public DocumentMediaWriter<D> out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		Writer out = document.getUnsafe(null);
 		startBody(out);
-		return new DocumentMediaWriter(document, encoder, out) {
+		return new DocumentMediaWriter<D>(document, encoder, out) {
 			@Override
 			public void close() throws IOException {
 				__();

@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -38,11 +38,14 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/att_target.asp">HTML target Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Target<
-	E extends Element<E, ?> & Target<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Target<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -64,6 +67,8 @@ public interface Target<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-target">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_target.asp">HTML target Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E target(Suppliers.String<Ex> target) throws IOException, Ex {
@@ -88,6 +93,8 @@ public interface Target<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-target">&lt;form&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_target.asp">HTML target Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E target(IOSupplierE<? extends V, Ex> target) throws IOException, Ex {
@@ -97,7 +104,7 @@ public interface Target<
 	/**
 	 * See <a href="https://html.spec.whatwg.org/multipage/browsers.html#valid-browsing-context-name-or-keyword">7.1.5 Browsing context names</a>.
 	 */
-	public enum Value implements Function<Document, String> {
+	public enum Value implements Function<AnyDocument<?>, String> {
 		_BLANK("_blank"),
 		_SELF("_self"),
 		_PARENT("_parent"),
@@ -115,7 +122,7 @@ public interface Target<
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 

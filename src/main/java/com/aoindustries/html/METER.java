@@ -28,13 +28,17 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Phrasing content, but there must be no meter element descendants.
-public class METER<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<METER<PC>, PC, METER__<PC>, METER_c<PC>> implements
+public class METER<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, METER<D, PC>, METER__<D, PC>, METER_c<D, PC>> implements
 	// TODO: value
 	// TODO: min
 	// TODO: max
@@ -42,15 +46,15 @@ public class METER<PC extends Union_Palpable_Phrasing<PC>> extends
 	// TODO: high
 	// TODO: optimum
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<METER<PC>>
+	AlmostGlobalAttributes<METER<D, PC>>
 {
 
-	public METER(Document document, PC pc) {
+	public METER(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected METER<PC> writeOpen(Writer out) throws IOException {
+	protected METER<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<meter", false);
 		return this;
 	}
@@ -61,12 +65,12 @@ public class METER<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected METER__<PC> new__() {
+	protected METER__<D, PC> new__() {
 		return new METER__<>(this);
 	}
 
 	@Override
-	protected METER_c<PC> new_c() {
+	protected METER_c<D, PC> new_c() {
 		return new METER_c<>(this);
 	}
 }

@@ -31,11 +31,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface LINK_factory<__ extends Union_Metadata_Phrasing<__>> extends Content<__> {
+public interface LINK_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Metadata_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new link element.
@@ -46,10 +50,10 @@ public interface LINK_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 * </ul>
 	 */
 	// TODO: Variants of Link by Rel, with per-implementation attributes like Input?
-	default LINK<__> link() throws IOException {
+	default LINK<D, __> link() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new LINK<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -64,7 +68,7 @@ public interface LINK_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 * @see #link()
 	 * @see com.aoindustries.html.LINK#rel(java.lang.Enum)
 	 */
-	default LINK<__> link(LINK.Rel rel) throws IOException {
+	default LINK<D, __> link(LINK.Rel rel) throws IOException {
 		return link().rel(rel);
 	}
 	// No link__(), since either rel or itemprop is required

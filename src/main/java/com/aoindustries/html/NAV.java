@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class NAV<PC extends SectioningContent<PC>> extends
-	NormalText<NAV<PC>, PC, NAV__<PC>, NAV_c<PC>> implements
+public class NAV<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+> extends
+	NormalText<D, PC, NAV<D, PC>, NAV__<D, PC>, NAV_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<NAV<PC>>
+	AlmostGlobalAttributes<NAV<D, PC>>
 {
 
-	public NAV(Document document, PC pc) {
+	public NAV(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected NAV<PC> writeOpen(Writer out) throws IOException {
+	protected NAV<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<nav", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class NAV<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected NAV__<PC> new__() {
+	protected NAV__<D, PC> new__() {
 		return new NAV__<>(this);
 	}
 
 	@Override
-	protected NAV_c<PC> new_c() {
+	protected NAV_c<D, PC> new_c() {
 		return new NAV_c<>(this);
 	}
 }

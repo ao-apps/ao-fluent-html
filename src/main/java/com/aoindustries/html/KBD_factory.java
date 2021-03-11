@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface KBD_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new kbd element.
@@ -41,10 +45,10 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
 	 * </p>
 	 */
-	default KBD<__> kbd() throws IOException {
+	default KBD<D, __> kbd() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new KBD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ kbd__(IOConsumerE<? super KBD__<__>, Ex> kbd) throws IOException, Ex {
+	default <Ex extends Throwable> __ kbd__(IOConsumerE<? super KBD__<D, __>, Ex> kbd) throws IOException, Ex {
 		return kbd().__(kbd);
 	}
 
@@ -109,7 +117,7 @@ public interface KBD_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default KBD_c<__> kbd_c() throws IOException {
+	default KBD_c<D, __> kbd_c() throws IOException {
 		return kbd()._c();
 	}
 }

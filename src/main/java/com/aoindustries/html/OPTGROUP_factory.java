@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content<__> {
+public interface OPTGROUP_factory<
+	D  extends AnyDocument<D>,
+	__ extends SELECT_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new optgroup element.
@@ -41,10 +45,10 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
 	 * </p>
 	 */
-	default OPTGROUP<__> optgroup() throws IOException {
+	default OPTGROUP<D, __> optgroup() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new OPTGROUP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<__>, Ex> optgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<D, __>, Ex> optgroup) throws IOException, Ex {
 		return optgroup().__(optgroup);
 	}
 
@@ -97,7 +105,7 @@ public interface OPTGROUP_factory<__ extends SELECT_content<__>> extends Content
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default OPTGROUP_c<__> optgroup_c() throws IOException {
+	default OPTGROUP_c<D, __> optgroup_c() throws IOException {
 		return optgroup()._c();
 	}
 }

@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class COLGROUP<PC extends TABLE_content<PC>> extends
-	Normal<COLGROUP<PC>, PC, COLGROUP__<PC>, COLGROUP_c<PC>> implements
-	com.aoindustries.html.attributes.Integer.Span<COLGROUP<PC>>,
+public class COLGROUP<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+> extends
+	Normal<D, PC, COLGROUP<D, PC>, COLGROUP__<D, PC>, COLGROUP_c<D, PC>> implements
+	com.aoindustries.html.attributes.Integer.Span<COLGROUP<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<COLGROUP<PC>>
+	AlmostGlobalAttributes<COLGROUP<D, PC>>
 {
 
-	public COLGROUP(Document document, PC pc) {
+	public COLGROUP(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected COLGROUP<PC> writeOpen(Writer out) throws IOException {
+	protected COLGROUP<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<colgroup", false);
 		return this;
 	}
@@ -65,12 +69,12 @@ public class COLGROUP<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected COLGROUP__<PC> new__() {
+	protected COLGROUP__<D, PC> new__() {
 		return new COLGROUP__<>(this);
 	}
 
 	@Override
-	protected COLGROUP_c<PC> new_c() {
+	protected COLGROUP_c<D, PC> new_c() {
 		return new COLGROUP_c<>(this);
 	}
 }

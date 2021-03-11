@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * An arbitrary attribute.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Attribute<E extends Element<E, ?> & Attribute<E>> {
+public interface Attribute<E extends Element<?, ?, E> & Attribute<E>> {
 
 	/**
 	 * An arbitrary attribute.
@@ -55,6 +57,7 @@ public interface Attribute<E extends Element<E, ?> & Attribute<E>> {
 	/**
 	 * An arbitrary attribute.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 * @param value  The attribute value, {@link Attributes#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 	 *
 	 * @see #attribute(java.lang.String, java.lang.Object)
@@ -68,6 +71,8 @@ public interface Attribute<E extends Element<E, ?> & Attribute<E>> {
 
 	/**
 	 * An arbitrary attribute.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #attribute(java.lang.String, java.lang.Object)
 	 *

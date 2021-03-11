@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Name<E extends Element<E, ?> & Name<E>> {
+public interface Name<E extends Element<?, ?, E> & Name<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
@@ -50,6 +52,8 @@ public interface Name<E extends Element<E, ?> & Name<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #name(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E name(IOSupplierE<?, Ex> name) throws IOException, Ex {
@@ -58,6 +62,8 @@ public interface Name<E extends Element<E, ?> & Name<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_name.asp">HTML name Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #name(java.lang.Object)
 	 */

@@ -29,10 +29,12 @@ package com.aoindustries.html;
  * <li>See <a href="https://www.w3schools.com/tags/ref_standardattributes.asp">HTML Global attributes</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public interface GlobalAttributes<E extends Element<E, ?> & GlobalAttributes<E>> extends
+public interface GlobalAttributes<E extends Element<?, ?, E> & GlobalAttributes<E>> extends
 	// TODO: accesskey
 	// TODO: autocapitalize
 	// TODO: autofocus (whatwg only)

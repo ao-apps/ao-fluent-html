@@ -31,11 +31,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface COL_factory<__ extends COLGROUP_content<__>> extends Content<__> {
+public interface COL_factory<
+	D  extends AnyDocument<D>,
+	__ extends COLGROUP_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new col element.
@@ -45,10 +49,10 @@ public interface COL_factory<__ extends COLGROUP_content<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
 	 * </ul>
 	 */
-	default COL<__> col() throws IOException {
+	default COL<D, __> col() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new COL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 }

@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element">4.9.7 The tfoot element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TFOOT<PC extends TABLE_content<PC>> extends
-	Normal<TFOOT<PC>, PC, TFOOT__<PC>, TFOOT_c<PC>> implements
+public class TFOOT<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+> extends
+	Normal<D, PC, TFOOT<D, PC>, TFOOT__<D, PC>, TFOOT_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TFOOT<PC>>
+	AlmostGlobalAttributes<TFOOT<D, PC>>
 {
 
-	public TFOOT(Document document, PC pc) {
+	public TFOOT(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected TFOOT<PC> writeOpen(Writer out) throws IOException {
+	protected TFOOT<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<tfoot", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class TFOOT<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected TFOOT__<PC> new__() {
+	protected TFOOT__<D, PC> new__() {
 		return new TFOOT__<>(this);
 	}
 
 	@Override
-	protected TFOOT_c<PC> new_c() {
+	protected TFOOT_c<D, PC> new_c() {
 		return new TFOOT_c<>(this);
 	}
 }

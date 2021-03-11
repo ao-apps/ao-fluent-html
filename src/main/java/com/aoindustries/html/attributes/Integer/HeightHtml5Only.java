@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_height.asp">HTML height Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface HeightHtml5Only<E extends Element<E, ?> & HeightHtml5Only<E>> extends Height<E> {
+public interface HeightHtml5Only<E extends Element<?, ?, E> & HeightHtml5Only<E>> extends Height<E> {
 
 	/**
 	 * {@inheritDoc}
@@ -84,6 +86,8 @@ public interface HeightHtml5Only<E extends Element<E, ?> & HeightHtml5Only<E>> e
 	 * <p>
 	 * The height attribute is new in HTML5.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #height(java.lang.Integer)
 	 */

@@ -32,9 +32,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Usemap<E extends Element<E, ?> & Usemap<E>> {
+public interface Usemap<E extends Element<?, ?, E> & Usemap<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
@@ -65,6 +67,8 @@ public interface Usemap<E extends Element<E, ?> & Usemap<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_usemap.asp">HTML usemap Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #usemap(java.lang.String)
 	 */

@@ -22,9 +22,9 @@
  */
 package com.aoindustries.html.attributes.Enum;
 
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
 import static com.aoindustries.html.Attributes.RESOURCES;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -44,11 +44,14 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Dir<
-	E extends Element<E, ?>, // TODO: How to use from Global?  Remove others?  & Dir<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E>, // TODO: How to use from Global?  Remove others?  & Dir<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -130,6 +133,8 @@ public interface Dir<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E dir(Suppliers.String<Ex> dir) throws IOException, Ex {
@@ -154,6 +159,8 @@ public interface Dir<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir - HTML: Hypertext Markup Language | MDN</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E dir(IOSupplierE<? extends V, Ex> dir) throws IOException, Ex {
@@ -167,7 +174,7 @@ public interface Dir<
 	 * <li>See <a href="https://www.w3schools.com/tags/att_global_dir.asp">HTML Global dir Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Value implements Function<Document, String> {
+	public enum Value implements Function<AnyDocument<?>, String> {
 		LTR("ltr"),
 		RTL("rtl"),
 		AUTO("auto");
@@ -184,7 +191,7 @@ public interface Dir<
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 

@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element">4.8.2 The source element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends TODO<__>>
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface SOURCE_factory<__ extends Content<__>> extends Content<__> {
+public interface SOURCE_factory<
+	D  extends AnyDocument<D>,
+	// TODO: __ extends TODO<D, __>
+	__ extends Content<D, __>
+> extends Content<D, __> {
 	// TODO
 }

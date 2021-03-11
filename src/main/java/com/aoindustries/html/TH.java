@@ -28,28 +28,32 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Flow content, but with no header, footer, sectioning content, or heading content descendants.
-public class TH<PC extends TR_content<PC>> extends
-	NormalText<TH<PC>, PC, TH__<PC>, TH_c<PC>> implements
-	com.aoindustries.html.attributes.Integer.Colspan<TH<PC>>,
-	com.aoindustries.html.attributes.Integer.Rowspan<TH<PC>>,
+public class TH<
+	D  extends AnyDocument<D>,
+	PC extends TR_content<D, PC>
+> extends
+	NormalText<D, PC, TH<D, PC>, TH__<D, PC>, TH_c<D, PC>> implements
+	com.aoindustries.html.attributes.Integer.Colspan<TH<D, PC>>,
+	com.aoindustries.html.attributes.Integer.Rowspan<TH<D, PC>>,
 	// TODO: headers
 	// TODO: scope
 	// TODO: abbr
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TH<PC>>
+	AlmostGlobalAttributes<TH<D, PC>>
 {
 
-	public TH(Document document, PC pc) {
+	public TH(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected TH<PC> writeOpen(Writer out) throws IOException {
+	protected TH<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<th", false);
 		return this;
 	}
@@ -60,12 +64,12 @@ public class TH<PC extends TR_content<PC>> extends
 	}
 
 	@Override
-	protected TH__<PC> new__() {
+	protected TH__<D, PC> new__() {
 		return new TH__<>(this);
 	}
 
 	@Override
-	protected TH_c<PC> new_c() {
+	protected TH_c<D, PC> new_c() {
 		return new TH_c<>(this);
 	}
 }

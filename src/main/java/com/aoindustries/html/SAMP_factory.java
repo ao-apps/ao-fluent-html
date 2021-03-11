@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface SAMP_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new samp element.
@@ -41,10 +45,10 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
 	 * </p>
 	 */
-	default SAMP<__> samp() throws IOException {
+	default SAMP<D, __> samp() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SAMP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ samp__(IOConsumerE<? super SAMP__<__>, Ex> samp) throws IOException, Ex {
+	default <Ex extends Throwable> __ samp__(IOConsumerE<? super SAMP__<D, __>, Ex> samp) throws IOException, Ex {
 		return samp().__(samp);
 	}
 
@@ -109,7 +117,7 @@ public interface SAMP_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default SAMP_c<__> samp_c() throws IOException {
+	default SAMP_c<D, __> samp_c() throws IOException {
 		return samp()._c();
 	}
 }

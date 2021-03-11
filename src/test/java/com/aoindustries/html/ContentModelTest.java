@@ -38,6 +38,7 @@ public class ContentModelTest {
 	 */
 	static Class<? extends Content>[] getAllContentModels() {
 		return new Class[] {
+			AnyContent.class,
 			Content.class,
 			EmbeddedContent.class,
 			FlowContent.class,

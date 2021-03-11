@@ -45,9 +45,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Data<E extends Element<E, ?> & Data<E>> {
+public interface Data<E extends Element<?, ?, E> & Data<E>> {
 
 	/**
 	 * <p>
@@ -226,6 +228,8 @@ public interface Data<E extends Element<E, ?> & Data<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">data-* - HTML: Hypertext Markup Language | MDN</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	default <Ex extends Throwable> E data(String attrName, IOSupplierE<?, Ex> value) throws IOException, Ex {
 		return data(attrName, (value == null) ? null : value.get());
@@ -241,6 +245,8 @@ public interface Data<E extends Element<E, ?> & Data<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">data-* - HTML: Hypertext Markup Language | MDN</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	default <Ex extends Throwable> E data(String attrName, MediaWritable<Ex> value) throws IOException, Ex {
 		return data(attrName, (Object)value);
@@ -378,6 +384,8 @@ public interface Data<E extends Element<E, ?> & Data<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">data-* - HTML: Hypertext Markup Language | MDN</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	default <Ex extends Throwable> E dataset(String jsName, IOSupplierE<?, Ex> value) throws IOException, Ex {
 		return dataset(jsName, (value == null) ? null : value.get());
@@ -392,6 +400,8 @@ public interface Data<E extends Element<E, ?> & Data<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">data-* - HTML: Hypertext Markup Language | MDN</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">Using data attributes - Learn web development | MDN</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	default <Ex extends Throwable> E dataset(String jsName, MediaWritable<Ex> value) throws IOException, Ex {
 		return dataset(jsName, (Object)value);

@@ -33,9 +33,11 @@ import java.util.Locale;
 /**
  * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Hreflang<E extends Element<E, ?> & Hreflang<E>> {
+public interface Hreflang<E extends Element<?, ?, E> & Hreflang<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
@@ -48,6 +50,8 @@ public interface Hreflang<E extends Element<E, ?> & Hreflang<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #hreflang(java.lang.String)
 	 */
@@ -67,6 +71,8 @@ public interface Hreflang<E extends Element<E, ?> & Hreflang<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_hreflang.asp">HTML hreflang Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #hreflang(java.util.Locale)
 	 */

@@ -30,22 +30,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class ABBR<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<ABBR<PC>, PC, ABBR__<PC>, ABBR_c<PC>> implements
+public class ABBR<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, ABBR<D, PC>, ABBR__<D, PC>, ABBR_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ABBR<PC>>
+	AlmostGlobalAttributes<ABBR<D, PC>>
 {
 
-	public ABBR(Document document, PC pc) {
+	public ABBR(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected ABBR<PC> writeOpen(Writer out) throws IOException {
+	protected ABBR<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<abbr", false);
 		return this;
 	}
@@ -56,12 +60,12 @@ public class ABBR<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected ABBR__<PC> new__() {
+	protected ABBR__<D, PC> new__() {
 		return new ABBR__<>(this);
 	}
 
 	@Override
-	protected ABBR_c<PC> new_c() {
+	protected ABBR_c<D, PC> new_c() {
 		return new ABBR_c<>(this);
 	}
 
@@ -74,7 +78,7 @@ public class ABBR<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * </p>
 	 */
 	@Override
-	public ABBR<PC> title(Object title) throws IOException {
+	public ABBR<D, PC> title(Object title) throws IOException {
 		return super.title(title);
 	}
 
@@ -85,9 +89,11 @@ public class ABBR<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@Override
-	public <Ex extends Throwable> ABBR<PC> title(IOSupplierE<?, Ex> title) throws IOException, Ex {
+	public <Ex extends Throwable> ABBR<D, PC> title(IOSupplierE<?, Ex> title) throws IOException, Ex {
 		return super.title(title);
 	}
 
@@ -98,9 +104,11 @@ public class ABBR<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@Override
-	public <Ex extends Throwable> ABBR<PC> title(MediaWritable<Ex> title) throws IOException, Ex {
+	public <Ex extends Throwable> ABBR<D, PC> title(MediaWritable<Ex> title) throws IOException, Ex {
 		return super.title(title);
 	}
 }

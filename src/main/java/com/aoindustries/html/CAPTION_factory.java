@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<__> {
+public interface CAPTION_factory<
+	D  extends AnyDocument<D>,
+	__ extends TABLE_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new caption element.
@@ -41,10 +45,10 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
 	 * </p>
 	 */
-	default CAPTION<__> caption() throws IOException {
+	default CAPTION<D, __> caption() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new CAPTION<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ caption__(IOConsumerE<? super CAPTION__<__>, Ex> caption) throws IOException, Ex {
+	default <Ex extends Throwable> __ caption__(IOConsumerE<? super CAPTION__<D, __>, Ex> caption) throws IOException, Ex {
 		return caption().__(caption);
 	}
 
@@ -109,7 +117,7 @@ public interface CAPTION_factory<__ extends TABLE_content<__>> extends Content<_
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default CAPTION_c<__> caption_c() throws IOException {
+	default CAPTION_c<D, __> caption_c() throws IOException {
 		return caption()._c();
 	}
 }

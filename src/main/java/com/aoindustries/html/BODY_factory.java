@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-body-element">4.3.1 The body element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface BODY_factory<__ extends HTML_content<__>> extends Content<__> {
+public interface BODY_factory<
+	D  extends AnyDocument<D>,
+	__ extends HTML_content<D, __>
+> extends Content<D, __> {
 	// TODO
 	// TODO: Body tag will not indent
 }

@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onmousemove<E extends Element<E, ?> & Onmousemove<E>> {
+public interface Onmousemove<E extends Element<?, ?, E> & Onmousemove<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onmousemove<E extends Element<E, ?> & Onmousemove<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onmousemove(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onmousemove(IOSupplierE<?, Ex> onmousemove) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onmousemove<E extends Element<E, ?> & Onmousemove<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmousemove.asp">HTML onmousemove Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onmousemove(java.lang.Object)
 	 */

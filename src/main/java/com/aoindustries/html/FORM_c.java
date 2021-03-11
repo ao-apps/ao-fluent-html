@@ -28,15 +28,19 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class FORM_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, FORM_c<PC>>
-	implements FlowContent<FORM_c<PC>> {
+public class FORM_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, FORM_c<D, PC>>
+	implements FlowContent<D, FORM_c<D, PC>> {
 
-	protected FORM_c(FORM<PC> element) {
+	protected FORM_c(FORM<D, PC> element) {
 		super(element);
 	}
 }

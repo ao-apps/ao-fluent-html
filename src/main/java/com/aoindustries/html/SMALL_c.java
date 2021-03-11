@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SMALL_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, SMALL_c<PC>>
-	implements PhrasingContent<SMALL_c<PC>> {
+public class SMALL_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, SMALL_c<D, PC>>
+	implements PhrasingContent<D, SMALL_c<D, PC>> {
 
-	protected SMALL_c(SMALL<PC> element) {
+	protected SMALL_c(SMALL<D, PC> element) {
 		super(element);
 	}
 }

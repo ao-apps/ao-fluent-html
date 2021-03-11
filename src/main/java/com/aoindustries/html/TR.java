@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TR<PC extends Union_TBODY_THEAD_TFOOT<PC>> extends
-	Normal<TR<PC>, PC, TR__<PC>, TR_c<PC>> implements
+public class TR<
+	D  extends AnyDocument<D>,
+	PC extends Union_TBODY_THEAD_TFOOT<D, PC>
+> extends
+	Normal<D, PC, TR<D, PC>, TR__<D, PC>, TR_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TR<PC>>
+	AlmostGlobalAttributes<TR<D, PC>>
 {
 
-	public TR(Document document, PC pc) {
+	public TR(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected TR<PC> writeOpen(Writer out) throws IOException {
+	protected TR<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<tr", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class TR<PC extends Union_TBODY_THEAD_TFOOT<PC>> extends
 	}
 
 	@Override
-	protected TR__<PC> new__() {
+	protected TR__<D, PC> new__() {
 		return new TR__<>(this);
 	}
 
 	@Override
-	protected TR_c<PC> new_c() {
+	protected TR_c<D, PC> new_c() {
 		return new TR_c<>(this);
 	}
 }

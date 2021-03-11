@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Flow content, but with no descendant table elements.
-public class CAPTION<PC extends TABLE_content<PC>> extends
-	NormalText<CAPTION<PC>, PC, CAPTION__<PC>, CAPTION_c<PC>> implements
+public class CAPTION<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+> extends
+	NormalText<D, PC, CAPTION<D, PC>, CAPTION__<D, PC>, CAPTION_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<CAPTION<PC>>
+	AlmostGlobalAttributes<CAPTION<D, PC>>
 {
 
-	public CAPTION(Document document, PC pc) {
+	public CAPTION(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected CAPTION<PC> writeOpen(Writer out) throws IOException {
+	protected CAPTION<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<caption", false);
 		return this;
 	}
@@ -65,12 +69,12 @@ public class CAPTION<PC extends TABLE_content<PC>> extends
 	}
 
 	@Override
-	protected CAPTION__<PC> new__() {
+	protected CAPTION__<D, PC> new__() {
 		return new CAPTION__<>(this);
 	}
 
 	@Override
-	protected CAPTION_c<PC> new_c() {
+	protected CAPTION_c<D, PC> new_c() {
 		return new CAPTION_c<>(this);
 	}
 }

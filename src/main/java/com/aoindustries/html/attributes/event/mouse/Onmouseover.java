@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onmouseover<E extends Element<E, ?> & Onmouseover<E>> {
+public interface Onmouseover<E extends Element<?, ?, E> & Onmouseover<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onmouseover<E extends Element<E, ?> & Onmouseover<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onmouseover(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onmouseover(IOSupplierE<?, Ex> onmouseover) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onmouseover<E extends Element<E, ?> & Onmouseover<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmouseover.asp">HTML onmouseover Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onmouseover(java.lang.Object)
 	 */

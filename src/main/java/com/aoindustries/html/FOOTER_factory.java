@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface FOOTER_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface FOOTER_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new footer element.
@@ -41,10 +45,10 @@ public interface FOOTER_factory<__ extends PalpableContent<__>> extends Content<
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
 	 * </p>
 	 */
-	default FOOTER<__> footer() throws IOException {
+	default FOOTER<D, __> footer() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new FOOTER<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface FOOTER_factory<__ extends PalpableContent<__>> extends Content<
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface FOOTER_factory<__ extends PalpableContent<__>> extends Content<
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ footer__(IOConsumerE<? super FOOTER__<__>, Ex> footer) throws IOException, Ex {
+	default <Ex extends Throwable> __ footer__(IOConsumerE<? super FOOTER__<D, __>, Ex> footer) throws IOException, Ex {
 		return footer().__(footer);
 	}
 
@@ -109,7 +117,7 @@ public interface FOOTER_factory<__ extends PalpableContent<__>> extends Content<
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default FOOTER_c<__> footer_c() throws IOException {
+	default FOOTER_c<D, __> footer_c() throws IOException {
 		return footer()._c();
 	}
 }

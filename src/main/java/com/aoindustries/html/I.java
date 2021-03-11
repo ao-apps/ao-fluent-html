@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class I<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<I<PC>, PC, I__<PC>, I_c<PC>> implements
+public class I<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, I<D, PC>, I__<D, PC>, I_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<I<PC>>
+	AlmostGlobalAttributes<I<D, PC>>
 {
 
-	public I(Document document, PC pc) {
+	public I(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected I<PC> writeOpen(Writer out) throws IOException {
+	protected I<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<i", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class I<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected I__<PC> new__() {
+	protected I__<D, PC> new__() {
 		return new I__<>(this);
 	}
 
 	@Override
-	protected I_c<PC> new_c() {
+	protected I_c<D, PC> new_c() {
 		return new I_c<>(this);
 	}
 }

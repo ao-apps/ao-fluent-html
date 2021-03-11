@@ -27,6 +27,7 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#normal-elements">13.1.2 Elements / Normal elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
  *
@@ -34,24 +35,25 @@ import java.io.IOException;
  */
 // TODO: Can this extend Normal__?  Should it?
 public abstract class Normal_c<
-	PC extends Content<PC>,
-	_c extends Normal_c<PC, _c>
-> implements Content<_c>, Closeable<PC> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	_c extends Normal_c<D, PC, _c>
+> implements Content<D, _c>, Closeable<D, PC> {
 
-	protected final Normal<?, PC, ?, _c> element;
+	protected final Normal<D, PC, ?, ?, _c> element;
 
-	protected Normal_c(Normal<?, PC, ?, _c> element) {
+	protected Normal_c(Normal<D, PC, ?, ?, _c> element) {
 		this.element = element;
 	}
 
 	@Override
-	public Document getDocument() {
+	public D getDocument() {
 		return element.document;
 	}
 
 	@Override
 	public PC __() throws IOException {
-		Document document = element.document;
+		D document = element.document;
 		if(element.isContentIndented()) document.decDepth();
 		element.writeClose(document.getUnsafe(null), false);
 		return element.pc;

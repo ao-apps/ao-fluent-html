@@ -31,23 +31,27 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Q<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<Q<PC>, PC, Q__<PC>, Q_c<PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<Q<PC>>,
+public class Q<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, Q<D, PC>, Q__<D, PC>, Q_c<D, PC>> implements
+	com.aoindustries.html.attributes.Url.Cite<Q<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<Q<PC>>
+	AlmostGlobalAttributes<Q<D, PC>>
 {
 
-	public Q(Document document, PC pc) {
+	public Q(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected Q<PC> writeOpen(Writer out) throws IOException {
+	protected Q<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<q", false);
 		return this;
 	}
@@ -58,12 +62,12 @@ public class Q<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected Q__<PC> new__() {
+	protected Q__<D, PC> new__() {
 		return new Q__<>(this);
 	}
 
 	@Override
-	protected Q_c<PC> new_c() {
+	protected Q_c<D, PC> new_c() {
 		return new Q_c<>(this);
 	}
 }

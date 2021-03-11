@@ -26,21 +26,25 @@ package com.aoindustries.html;
  * Elements that are common to all three of {@link EmbeddedContent}, {@link PalpableContent}, and
  * {@link PhrasingContent}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("MarkerInterface")
-public interface Union_Embedded_Palpable_Phrasing<__ extends Union_Embedded_Palpable_Phrasing<__>> extends
+public interface Union_Embedded_Palpable_Phrasing<
+	D  extends AnyDocument<D>,
+	__ extends Union_Embedded_Palpable_Phrasing<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	CANVAS_factory<__>
+	CANVAS_factory<D, __>
 	// TODO: MathML math
 	// TODO: SVG svg
 {

@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DEL_c<PC extends PhrasingContent<PC>>
-	extends Transparent_c<PC, DEL_c<PC>>
-	implements PhrasingContent<DEL_c<PC>> {
+public class DEL_c<
+	D  extends AnyDocument<D>,
+	PC extends PhrasingContent<D, PC>
+>
+	extends Transparent_c<D, PC, DEL_c<D, PC>>
+	implements PhrasingContent<D, DEL_c<D, PC>> {
 
-	protected DEL_c(DEL<PC> element) {
+	protected DEL_c(DEL<D, PC> element) {
 		super(element);
 	}
 }

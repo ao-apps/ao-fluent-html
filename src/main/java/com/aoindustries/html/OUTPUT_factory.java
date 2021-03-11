@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface OUTPUT_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface OUTPUT_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new output element.
@@ -41,10 +45,10 @@ public interface OUTPUT_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
 	 * </p>
 	 */
-	default OUTPUT<__> output() throws IOException {
+	default OUTPUT<D, __> output() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new OUTPUT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface OUTPUT_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface OUTPUT_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ output__(IOConsumerE<? super OUTPUT__<__>, Ex> output) throws IOException, Ex {
+	default <Ex extends Throwable> __ output__(IOConsumerE<? super OUTPUT__<D, __>, Ex> output) throws IOException, Ex {
 		return output().__(output);
 	}
 
@@ -109,7 +117,7 @@ public interface OUTPUT_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default OUTPUT_c<__> output_c() throws IOException {
+	default OUTPUT_c<D, __> output_c() throws IOException {
 		return output()._c();
 	}
 }

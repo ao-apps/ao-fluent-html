@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DATA_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, DATA_c<PC>>
-	implements PhrasingContent<DATA_c<PC>> {
+public class DATA_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, DATA_c<D, PC>>
+	implements PhrasingContent<D, DATA_c<D, PC>> {
 
-	protected DATA_c(DATA<PC> element) {
+	protected DATA_c(DATA<D, PC> element) {
 		super(element);
 	}
 }

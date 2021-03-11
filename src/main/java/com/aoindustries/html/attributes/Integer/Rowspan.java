@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Rowspan<E extends Element<E, ?> & Rowspan<E>> {
+public interface Rowspan<E extends Element<?, ?, E> & Rowspan<E>> {
 
 	/**
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
@@ -61,6 +63,7 @@ public interface Rowspan<E extends Element<E, ?> & Rowspan<E>> {
 	/**
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan">4.9.11 Attributes common to td and th elements / rowspan</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 * @param  rowspan  Will not write the attribute when is {@code null} or {@code 1}.
 	 *
 	 * @see #rowspan(java.lang.Integer)

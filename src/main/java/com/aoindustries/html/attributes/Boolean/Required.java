@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_required.asp">HTML required Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Required<E extends Element<E, ?> & Required<E>> {
+public interface Required<E extends Element<?, ?, E> & Required<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_required.asp">HTML required Attribute</a>.
@@ -65,6 +67,8 @@ public interface Required<E extends Element<E, ?> & Required<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_required.asp">HTML required Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #required(java.lang.Boolean)
 	 */

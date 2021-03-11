@@ -36,9 +36,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Placeholder<E extends Element<E, ?> & Placeholder<E>> {
+public interface Placeholder<E extends Element<?, ?, E> & Placeholder<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
@@ -60,6 +62,8 @@ public interface Placeholder<E extends Element<E, ?> & Placeholder<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #placeholder(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E placeholder(IOSupplierE<?, Ex> placeholder) throws IOException, Ex {
@@ -68,6 +72,8 @@ public interface Placeholder<E extends Element<E, ?> & Placeholder<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_placeholder.asp">HTML placeholder Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #placeholder(java.lang.Object)
 	 */

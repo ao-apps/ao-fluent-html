@@ -34,9 +34,11 @@ import java.io.IOException;
  * <li>See <a href="https://html.spec.whatwg.org/multipage/edits.html#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Cite<E extends Element<E, ?> & Cite<E>> {
+public interface Cite<E extends Element<?, ?, E> & Cite<E>> {
 
 	/**
 	 * <ul>
@@ -57,6 +59,8 @@ public interface Cite<E extends Element<E, ?> & Cite<E>> {
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-q-cite">4.5.7 The q element / cite</a>.</li>
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/edits.html#attr-mod-cite">4.7.3 Attributes common to ins and del elements / cite</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #cite(java.lang.String)
 	 */

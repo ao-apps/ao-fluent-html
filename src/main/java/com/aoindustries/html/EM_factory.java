@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface EM_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface EM_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new em element.
@@ -41,10 +45,10 @@ public interface EM_factory<__ extends Union_Palpable_Phrasing<__>> extends Cont
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
 	 * </p>
 	 */
-	default EM<__> em() throws IOException {
+	default EM<D, __> em() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new EM<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface EM_factory<__ extends Union_Palpable_Phrasing<__>> extends Cont
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface EM_factory<__ extends Union_Palpable_Phrasing<__>> extends Cont
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ em__(IOConsumerE<? super EM__<__>, Ex> em) throws IOException, Ex {
+	default <Ex extends Throwable> __ em__(IOConsumerE<? super EM__<D, __>, Ex> em) throws IOException, Ex {
 		return em().__(em);
 	}
 
@@ -109,7 +117,7 @@ public interface EM_factory<__ extends Union_Palpable_Phrasing<__>> extends Cont
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default EM_c<__> em_c() throws IOException {
+	default EM_c<D, __> em_c() throws IOException {
 		return em()._c();
 	}
 }

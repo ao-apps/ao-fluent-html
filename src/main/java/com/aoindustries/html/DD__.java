@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DD__<PC extends Union_DIV_DL<PC>>
-	extends NormalText__<PC, DD__<PC>>
-	implements FlowContent<DD__<PC>> {
+public class DD__<
+	D  extends AnyDocument<D>,
+	PC extends Union_DIV_DL<D, PC>
+>
+	extends NormalText__<D, PC, DD__<D, PC>>
+	implements FlowContent<D, DD__<D, PC>> {
 
-	protected DD__(DD<PC> element) {
+	protected DD__(DD<D, PC> element) {
 		super(element);
 	}
 }

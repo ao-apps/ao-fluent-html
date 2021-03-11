@@ -28,104 +28,108 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#palpable_content">Palpable content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PalpableContent<__ extends PalpableContent<__>> extends
+public interface PalpableContent<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends
 	//
 	// Unions:
 	//
-	Union_DL_Palpable<__>,
-	// Inherited: Union_Embedded_Interactive<__>
-	// Inherited: Union_Embedded_Palpable_Phrasing<__>
-	// Inherited: Union_Interactive_Phrasing<__>
-	Union_Palpable_Phrasing<__>,
+	Union_DL_Palpable<D, __>,
+	// Inherited: Union_Embedded_Interactive<D, __>
+	// Inherited: Union_Embedded_Palpable_Phrasing<D, __>
+	// Inherited: Union_Interactive_Phrasing<D, __>
+	Union_Palpable_Phrasing<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	SectioningContent<__>,
-	HeadingContent<__>,
-	InteractiveContent<__>,
-	// Inherited: TextContent<__> // that is not inter-element whitespace
+	// Inherited: Content<D, __>
+	SectioningContent<D, __>,
+	HeadingContent<D, __>,
+	InteractiveContent<D, __>,
+	// Inherited: TextContent<D, __> // that is not inter-element whitespace
 
 	//
 	// Factories:
 	//
-	// Inherited: A_factory<__>
-	// Inherited: ABBR_factory<__>
-	ADDRESS_factory<__>,
-	// Inherited: ARTICLE_factory<__>
-	// Inherited: ASIDE_factory<__>
-	// Inherited: AUDIO_factory<__> // if the controls attribute is present
-	// Inherited: B_factory<__>
-	// Inherited: BDI_factory<__>
-	// Inherited: BDO_factory<__>
-	BLOCKQUOTE_factory<__>,
-	// Inherited: BUTTON_factory<__>
-	// Inherited: CANVAS_factory<__>
-	// Inherited: CITE_factory<__>
-	// Inherited: CODE_factory<__>
-	// Inherited: DATA_factory<__>
-	// Inherited: DETAILS_factory<__>
-	// Inherited: DFN_factory<__>
-	// Inherited: DIV_factory<__>
-	DL_factory<__>, // if childen contain at least one name/value pair
-	// Inherited: EM_factory<__>
-	// Inherited: EMBED_factory<__>
-	FIELDSET_factory<__>,
-	FIGURE_factory<__>,
-	FOOTER_factory<__>,
-	FORM_factory<__>,
-	// Inherited: H1_factory<__>
-	// Inherited: H2_factory<__>
-	// Inherited: H3_factory<__>
-	// Inherited: H4_factory<__>
-	// Inherited: H5_factory<__>
-	// Inherited: H6_factory<__>
-	HEADER_factory<__>,
-	// Inherited: HGROUP_factory<__>
-	// Inherited: I_factory<__>
-	// Inherited: IFRAME_factory<__>
-	// Inherited: IMG_factory<__>
-	// Inherited: INPUT_factory<__> // if type attribute is not in the hidden state
-	// Inherited: INS_factory<__>
-	// Inherited: KBD_factory<__>
-	// Inherited: LABEL_factory<__>
-	MAIN_factory<__>,
-	// Inherited: MAP_factory<__>
-	// Inherited: MARK_factory<__>
+	// Inherited: A_factory<D, __>
+	// Inherited: ABBR_factory<D, __>
+	ADDRESS_factory<D, __>,
+	// Inherited: ARTICLE_factory<D, __>
+	// Inherited: ASIDE_factory<D, __>
+	// Inherited: AUDIO_factory<D, __> // if the controls attribute is present
+	// Inherited: B_factory<D, __>
+	// Inherited: BDI_factory<D, __>
+	// Inherited: BDO_factory<D, __>
+	BLOCKQUOTE_factory<D, __>,
+	// Inherited: BUTTON_factory<D, __>
+	// Inherited: CANVAS_factory<D, __>
+	// Inherited: CITE_factory<D, __>
+	// Inherited: CODE_factory<D, __>
+	// Inherited: DATA_factory<D, __>
+	// Inherited: DETAILS_factory<D, __>
+	// Inherited: DFN_factory<D, __>
+	// Inherited: DIV_factory<D, __>
+	DL_factory<D, __>, // if childen contain at least one name/value pair
+	// Inherited: EM_factory<D, __>
+	// Inherited: EMBED_factory<D, __>
+	FIELDSET_factory<D, __>,
+	FIGURE_factory<D, __>,
+	FOOTER_factory<D, __>,
+	FORM_factory<D, __>,
+	// Inherited: H1_factory<D, __>
+	// Inherited: H2_factory<D, __>
+	// Inherited: H3_factory<D, __>
+	// Inherited: H4_factory<D, __>
+	// Inherited: H5_factory<D, __>
+	// Inherited: H6_factory<D, __>
+	HEADER_factory<D, __>,
+	// Inherited: HGROUP_factory<D, __>
+	// Inherited: I_factory<D, __>
+	// Inherited: IFRAME_factory<D, __>
+	// Inherited: IMG_factory<D, __>
+	// Inherited: INPUT_factory<D, __> // if type attribute is not in the hidden state
+	// Inherited: INS_factory<D, __>
+	// Inherited: KBD_factory<D, __>
+	// Inherited: LABEL_factory<D, __>
+	MAIN_factory<D, __>,
+	// Inherited: MAP_factory<D, __>
+	// Inherited: MARK_factory<D, __>
 	// Inherited: // TODO: MathML math
-	// Inherited: MENU_factory<__> // if children include at least one li
-	// Inherited: METER_factory<__>
-	// Inherited: NAV_factory<__>
-	// Inherited: OBJECT_factory<__>
-	OL_factory<__>, // if children include at least one li
-	// Inherited: OUTPUT_factory<__>
-	P_factory<__>,
-	PRE_factory<__>,
-	// Inherited: PROGRESS_factory<__>
-	// Inherited: Q_factory<__>
-	// Inherited: RUBY_factory<__>
-	// Inherited: S_factory<__>
-	// Inherited: SAMP_factory<__>
-	// Inherited: SECTION_factory<__>
-	// Inherited: SELECT_factory<__>
-	// Inherited: SMALL_factory<__>
-	// Inherited: SPAN_factory<__>
-	// Inherited: STRONG_factory<__>
-	// Inherited: SUB_factory<__>
-	// Inherited: SUP_factory<__>
+	// Inherited: MENU_factory<D, __> // if children include at least one li
+	// Inherited: METER_factory<D, __>
+	// Inherited: NAV_factory<D, __>
+	// Inherited: OBJECT_factory<D, __>
+	OL_factory<D, __>, // if children include at least one li
+	// Inherited: OUTPUT_factory<D, __>
+	P_factory<D, __>,
+	PRE_factory<D, __>,
+	// Inherited: PROGRESS_factory<D, __>
+	// Inherited: Q_factory<D, __>
+	// Inherited: RUBY_factory<D, __>
+	// Inherited: S_factory<D, __>
+	// Inherited: SAMP_factory<D, __>
+	// Inherited: SECTION_factory<D, __>
+	// Inherited: SELECT_factory<D, __>
+	// Inherited: SMALL_factory<D, __>
+	// Inherited: SPAN_factory<D, __>
+	// Inherited: STRONG_factory<D, __>
+	// Inherited: SUB_factory<D, __>
+	// Inherited: SUP_factory<D, __>
 	// Inherited: // TODO: SVG svg
-	TABLE_factory<__>,
-	// Inherited: TEXTAREA_factory<__>
-	// Inherited: TIME_factory<__>
-	// Inherited: U_factory<__>
-	UL_factory<__> // if children include at least one li
-	// Inherited: VAR_factory<__>
-	// Inherited: VIDEO_factory<__>
+	TABLE_factory<D, __>,
+	// Inherited: TEXTAREA_factory<D, __>
+	// Inherited: TIME_factory<D, __>
+	// Inherited: U_factory<D, __>
+	UL_factory<D, __> // if children include at least one li
+	// Inherited: VAR_factory<D, __>
+	// Inherited: VIDEO_factory<D, __>
 	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

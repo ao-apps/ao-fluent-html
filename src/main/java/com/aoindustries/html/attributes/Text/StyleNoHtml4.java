@@ -37,9 +37,11 @@ import java.io.IOException;
  * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface StyleNoHtml4<E extends Element<E, ?> & StyleNoHtml4<E>> extends Style<E> {
+public interface StyleNoHtml4<E extends Element<?, ?, E> & StyleNoHtml4<E>> extends Style<E> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
@@ -89,6 +91,8 @@ public interface StyleNoHtml4<E extends Element<E, ?> & StyleNoHtml4<E>> extends
 	 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #style(java.lang.Object)
 	 */
 	@Override
@@ -110,6 +114,8 @@ public interface StyleNoHtml4<E extends Element<E, ?> & StyleNoHtml4<E>> extends
 	 * <blockquote>
 	 * In HTML 4.01, the style attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #style(java.lang.Object)
 	 */

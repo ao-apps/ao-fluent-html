@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onpagehide<E extends Element<E, ?> & Onpagehide<E>> {
+public interface Onpagehide<E extends Element<?, ?, E> & Onpagehide<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onpagehide<E extends Element<E, ?> & Onpagehide<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onpagehide(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onpagehide(IOSupplierE<?, Ex> onpagehide) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onpagehide<E extends Element<E, ?> & Onpagehide<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpagehide.asp">HTML onpagehide Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onpagehide(java.lang.Object)
 	 */

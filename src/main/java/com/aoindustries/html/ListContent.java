@@ -25,27 +25,31 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface ListContent<__ extends ListContent<__>> extends
+public interface ListContent<
+	D  extends AnyDocument<D>,
+	__ extends ListContent<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>,
+	// Inherited: Content<D, __>
+	ScriptSupportingContent<D, __>,
 
 	//
 	// Factories:
 	//
-	LI_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	LI_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 }

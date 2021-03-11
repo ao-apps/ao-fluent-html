@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">4.5.22 The u element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class U<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<U<PC>, PC, U__<PC>, U_c<PC>> implements
+public class U<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, U<D, PC>, U__<D, PC>, U_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<U<PC>>
+	AlmostGlobalAttributes<U<D, PC>>
 {
 
-	public U(Document document, PC pc) {
+	public U(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected U<PC> writeOpen(Writer out) throws IOException {
+	protected U<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<u", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class U<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected U__<PC> new__() {
+	protected U__<D, PC> new__() {
 		return new U__<>(this);
 	}
 
 	@Override
-	protected U_c<PC> new_c() {
+	protected U_c<D, PC> new_c() {
 		return new U_c<>(this);
 	}
 }

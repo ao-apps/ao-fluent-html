@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DFN_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface DFN_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new dfn element.
@@ -41,10 +45,10 @@ public interface DFN_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
 	 * </p>
 	 */
-	default DFN<__> dfn() throws IOException {
+	default DFN<D, __> dfn() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DFN<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DFN_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface DFN_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ dfn__(IOConsumerE<? super DFN__<__>, Ex> dfn) throws IOException, Ex {
+	default <Ex extends Throwable> __ dfn__(IOConsumerE<? super DFN__<D, __>, Ex> dfn) throws IOException, Ex {
 		return dfn().__(dfn);
 	}
 
@@ -109,7 +117,7 @@ public interface DFN_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DFN_c<__> dfn_c() throws IOException {
+	default DFN_c<D, __> dfn_c() throws IOException {
 		return dfn()._c();
 	}
 }

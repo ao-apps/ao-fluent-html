@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Size<E extends Element<E, ?> & Size<E>> {
+public interface Size<E extends Element<?, ?, E> & Size<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
@@ -54,6 +56,8 @@ public interface Size<E extends Element<E, ?> & Size<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_size.asp">HTML size Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #size(java.lang.Integer)
 	 */

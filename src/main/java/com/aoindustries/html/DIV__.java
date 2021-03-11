@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DIV__<PC extends Union_DL_Palpable<PC>>
-	extends NormalText__<PC, DIV__<PC>>
-	implements DIV_content<DIV__<PC>> {
+public class DIV__<
+	D  extends AnyDocument<D>,
+	PC extends Union_DL_Palpable<D, PC>
+>
+	extends NormalText__<D, PC, DIV__<D, PC>>
+	implements DIV_content<D, DIV__<D, PC>> {
 
-	protected DIV__(DIV<PC> element) {
+	protected DIV__(DIV<D, PC> element) {
 		super(element);
 	}
 }

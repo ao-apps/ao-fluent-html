@@ -28,24 +28,28 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DEL<PC extends PhrasingContent<PC>> extends
-	Transparent<DEL<PC>, PC, DEL_c<PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<DEL<PC>>,
+public class DEL<
+	D  extends AnyDocument<D>,
+	PC extends PhrasingContent<D, PC>
+> extends
+	Transparent<D, PC, DEL<D, PC>, DEL_c<D, PC>> implements
+	com.aoindustries.html.attributes.Url.Cite<DEL<D, PC>>,
 	// TODO: datetime
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DEL<PC>>
+	AlmostGlobalAttributes<DEL<D, PC>>
 {
 
-	public DEL(Document document, PC pc) {
+	public DEL(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DEL<PC> writeOpen(Writer out) throws IOException {
+	protected DEL<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<del", false);
 		return this;
 	}
@@ -56,7 +60,7 @@ public class DEL<PC extends PhrasingContent<PC>> extends
 	}
 
 	@Override
-	protected DEL_c<PC> new_c() {
+	protected DEL_c<D, PC> new_c() {
 		return new DEL_c<>(this);
 	}
 }

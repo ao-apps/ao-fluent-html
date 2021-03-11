@@ -31,12 +31,14 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
  *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> extends Width<E> {
+public interface WidthHtml4Only<E extends Element<?, ?, E> & WidthHtml4Only<E>> extends Width<E> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
@@ -67,6 +69,8 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @deprecated  The width attribute is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
@@ -92,6 +96,8 @@ public interface WidthHtml4Only<E extends Element<E, ?> & WidthHtml4Only<E>> ext
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #width(java.lang.String)
 	 *

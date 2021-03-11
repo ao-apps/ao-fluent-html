@@ -28,88 +28,92 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">Phrasing content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PhrasingContent<__ extends PhrasingContent<__>> extends
+public interface PhrasingContent<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	// Inherited: Union_Embedded_Interactive<__>
-	// Inherited: Union_Embedded_Palpable_Phrasing<__>
-	// Inherited: Union_Interactive_Phrasing<__>
-	Union_Metadata_Phrasing<__>,
-	Union_Palpable_Phrasing<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
+	// Inherited: Union_Embedded_Interactive<D, __>
+	// Inherited: Union_Embedded_Palpable_Phrasing<D, __>
+	// Inherited: Union_Interactive_Phrasing<D, __>
+	Union_Metadata_Phrasing<D, __>,
+	Union_Palpable_Phrasing<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	EmbeddedContent<__>,
-	// Inherited: ScriptSupportingContent<__>
-	// Inherited: TextContent<__>
+	// Inherited: Content<D, __>
+	EmbeddedContent<D, __>,
+	// Inherited: ScriptSupportingContent<D, __>
+	// Inherited: TextContent<D, __>
 
 	//
 	// Factories:
 	//
-	// Inherited: A_factory<__>
-	// Inherited: ABBR_factory<__>
-	AREA_factory<__>, // if a descendent of map
-	// Inherited: AUDIO_factory<__>
-	// Inherited: B_factory<__>
-	// Inherited: BDI_factory<__>
-	// Inherited: BDO_factory<__>
-	BR_factory<__>,
-	// Inherited: BUTTON_factory<__>
-	// Inherited: CANVAS_factory<__>
-	// Inherited: CITE_factory<__>
-	// Inherited: CODE_factory<__>
-	// Inherited: DATA_factory<__>
-	DATALIST_factory<__>,
-	DEL_factory<__>,
-	// Inherited: DFN_factory<__>
-	// Inherited: EM_factory<__>
-	// Inherited: EMBED_factory<__>
-	// Inherited: I_factory<__>
-	// Inherited: IFRAME_factory<__>
-	// Inherited: IMG_factory<__>
-	// Inherited: INPUT_factory<__>
-	// Inherited: INS_factory<__>
-	// Inherited: KBD_factory<__>
-	// Inherited: LABEL_factory<__>
-	// Inherited: LINK_factory<__> // if it is allowed in body
-	// Inherited: MAP_factory<__>
-	// Inherited: MARK_factory<__>
+	// Inherited: A_factory<D, __>
+	// Inherited: ABBR_factory<D, __>
+	AREA_factory<D, __>, // if a descendent of map
+	// Inherited: AUDIO_factory<D, __>
+	// Inherited: B_factory<D, __>
+	// Inherited: BDI_factory<D, __>
+	// Inherited: BDO_factory<D, __>
+	BR_factory<D, __>,
+	// Inherited: BUTTON_factory<D, __>
+	// Inherited: CANVAS_factory<D, __>
+	// Inherited: CITE_factory<D, __>
+	// Inherited: CODE_factory<D, __>
+	// Inherited: DATA_factory<D, __>
+	DATALIST_factory<D, __>,
+	DEL_factory<D, __>,
+	// Inherited: DFN_factory<D, __>
+	// Inherited: EM_factory<D, __>
+	// Inherited: EMBED_factory<D, __>
+	// Inherited: I_factory<D, __>
+	// Inherited: IFRAME_factory<D, __>
+	// Inherited: IMG_factory<D, __>
+	// Inherited: INPUT_factory<D, __>
+	// Inherited: INS_factory<D, __>
+	// Inherited: KBD_factory<D, __>
+	// Inherited: LABEL_factory<D, __>
+	// Inherited: LINK_factory<D, __> // if it is allowed in body
+	// Inherited: MAP_factory<D, __>
+	// Inherited: MARK_factory<D, __>
 	// Inherited: // TODO: MathML math
-	// Inherited: META_factory<__> // if the itemprop attribute is present
-	// Inherited: METER_factory<__>
-	// Inherited: NOSCRIPT_factory<__>
-	// Inherited: OBJECT_factory<__>
-	// Inherited: OUTPUT_factory<__>
-	// Inherited: PICTURE_factory<__>
-	// Inherited: PROGRESS_factory<__>
-	// Inherited: Q_factory<__>
-	// Inherited: RUBY_factory<__>
-	// Inherited: S_factory<__>
-	// Inherited: SAMP_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: SELECT_factory<__>
-	SLOT_factory<__>,
-	// Inherited: SMALL_factory<__>
-	// Inherited: SPAN_factory<__>
-	// Inherited: STRONG_factory<__>
-	// Inherited: SUB_factory<__>
-	// Inherited: SUP_factory<__>
+	// Inherited: META_factory<D, __> // if the itemprop attribute is present
+	// Inherited: METER_factory<D, __>
+	// Inherited: NOSCRIPT_factory<D, __>
+	// Inherited: OBJECT_factory<D, __>
+	// Inherited: OUTPUT_factory<D, __>
+	// Inherited: PICTURE_factory<D, __>
+	// Inherited: PROGRESS_factory<D, __>
+	// Inherited: Q_factory<D, __>
+	// Inherited: RUBY_factory<D, __>
+	// Inherited: S_factory<D, __>
+	// Inherited: SAMP_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: SELECT_factory<D, __>
+	SLOT_factory<D, __>,
+	// Inherited: SMALL_factory<D, __>
+	// Inherited: SPAN_factory<D, __>
+	// Inherited: STRONG_factory<D, __>
+	// Inherited: SUB_factory<D, __>
+	// Inherited: SUP_factory<D, __>
 	// Inherited: // TODO: SVG svg
-	// Inherited: TEMPLATE_factory<__>
-	// Inherited: TEXTAREA_factory<__>
-	// Inherited: TIME_factory<__>
-	// Inherited: U_factory<__>
-	// Inherited: VAR_factory<__>
-	// Inherited: VIDEO_factory<__>
-	WBR_factory<__>
+	// Inherited: TEMPLATE_factory<D, __>
+	// Inherited: TEXTAREA_factory<D, __>
+	// Inherited: TIME_factory<D, __>
+	// Inherited: U_factory<D, __>
+	// Inherited: VAR_factory<D, __>
+	// Inherited: VIDEO_factory<D, __>
+	WBR_factory<D, __>
 	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 {
 }

@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class ASIDE<PC extends SectioningContent<PC>> extends
-	NormalText<ASIDE<PC>, PC, ASIDE__<PC>, ASIDE_c<PC>> implements
+public class ASIDE<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+> extends
+	NormalText<D, PC, ASIDE<D, PC>, ASIDE__<D, PC>, ASIDE_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ASIDE<PC>>
+	AlmostGlobalAttributes<ASIDE<D, PC>>
 {
 
-	public ASIDE(Document document, PC pc) {
+	public ASIDE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected ASIDE<PC> writeOpen(Writer out) throws IOException {
+	protected ASIDE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<aside", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class ASIDE<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected ASIDE__<PC> new__() {
+	protected ASIDE__<D, PC> new__() {
 		return new ASIDE__<>(this);
 	}
 
 	@Override
-	protected ASIDE_c<PC> new_c() {
+	protected ASIDE_c<D, PC> new_c() {
 		return new ASIDE_c<>(this);
 	}
 }

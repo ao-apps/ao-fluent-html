@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MARK_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface MARK_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new mark element.
@@ -41,10 +45,10 @@ public interface MARK_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
 	 * </p>
 	 */
-	default MARK<__> mark() throws IOException {
+	default MARK<D, __> mark() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new MARK<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface MARK_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface MARK_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ mark__(IOConsumerE<? super MARK__<__>, Ex> mark) throws IOException, Ex {
+	default <Ex extends Throwable> __ mark__(IOConsumerE<? super MARK__<D, __>, Ex> mark) throws IOException, Ex {
 		return mark().__(mark);
 	}
 
@@ -109,7 +117,7 @@ public interface MARK_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default MARK_c<__> mark_c() throws IOException {
+	default MARK_c<D, __> mark_c() throws IOException {
 		return mark()._c();
 	}
 }

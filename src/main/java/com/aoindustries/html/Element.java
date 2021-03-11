@@ -29,13 +29,19 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#elements-2">13.1.2 Elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
+ * @param  <E>   This element type
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Should every element have a __() closing method?
 //       Should every element implement Closeable, even if does not have a specific __()?
-abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> implements
+abstract public class Element<
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	E  extends Element<D, PC, E>
+> implements
 	WhitespaceWriter<E>,
 	// Allow any arbitrary attributes
 	com.aoindustries.html.attributes.Text.Attribute<E>,
@@ -43,22 +49,22 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	GlobalAttributes<E>
 {
 
-	protected final Document document;
+	protected final D document;
 	protected final PC pc;
 
-	protected Element(Document document, PC pc) {
+	protected Element(D document, PC pc) {
 		this.document = document;
 		this.pc = pc;
 	}
 
-	public Document getDocument() {
+	public D getDocument() {
 		return document;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#nl()}.
+	 * Delegates to {@link AnyDocument#nl()}.
 	 * </p>
 	 */
 	@Override
@@ -71,7 +77,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#nli()}.
+	 * Delegates to {@link AnyDocument#nli()}.
 	 * </p>
 	 */
 	@Override
@@ -84,7 +90,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#nli(int)}.
+	 * Delegates to {@link AnyDocument#nli(int)}.
 	 * </p>
 	 */
 	@Override
@@ -97,7 +103,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#indent()}.
+	 * Delegates to {@link AnyDocument#indent()}.
 	 * </p>
 	 */
 	@Override
@@ -110,7 +116,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#indent(int)}.
+	 * Delegates to {@link AnyDocument#indent(int)}.
 	 * </p>
 	 */
 	@Override
@@ -123,7 +129,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#getIndent()}.
+	 * Delegates to {@link AnyDocument#getIndent()}.
 	 * </p>
 	 */
 	@Override
@@ -134,7 +140,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#setIndent(boolean)}.
+	 * Delegates to {@link AnyDocument#setIndent(boolean)}.
 	 * </p>
 	 */
 	@Override
@@ -147,7 +153,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#getDepth()}.
+	 * Delegates to {@link AnyDocument#getDepth()}.
 	 * </p>
 	 */
 	@Override
@@ -158,7 +164,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#setDepth(int)}.
+	 * Delegates to {@link AnyDocument#setDepth(int)}.
 	 * </p>
 	 */
 	@Override
@@ -171,7 +177,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#incDepth()}.
+	 * Delegates to {@link AnyDocument#incDepth()}.
 	 * </p>
 	 */
 	@Override
@@ -184,7 +190,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#decDepth()}.
+	 * Delegates to {@link AnyDocument#decDepth()}.
 	 * </p>
 	 */
 	@Override
@@ -197,7 +203,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#sp()}.
+	 * Delegates to {@link AnyDocument#sp()}.
 	 * </p>
 	 */
 	@Override
@@ -210,7 +216,7 @@ abstract public class Element<E extends Element<E, PC>, PC extends Content<PC>> 
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#sp(int)}.
+	 * Delegates to {@link AnyDocument#sp(int)}.
 	 * </p>
 	 */
 	@Override

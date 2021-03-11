@@ -30,21 +30,24 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#normal-elements">13.1.2 Elements / Normal elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
+ * @param  <E>   This element type
  * @param  <__>  This content model, which will be the parent content model of child elements
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 abstract public class Normal<
-	E  extends Normal<E, PC, __, _c>,
-	PC extends Content<PC>,
-	__ extends Content<__>, // Transparent can have any: Normal__<PC, __>,
-	// Would prefer "_c extends __ & Closeable<PC>", but "a type variable may not be followed by other bounds"
-	_c extends Normal_c<PC, _c>
-> extends Element<E, PC> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	E  extends Normal<D, PC, E, __, _c>,
+	__ extends Content<D, __>, // Transparent can have any: Normal__<D, PC, __>,
+	// Would prefer "_c extends __ & Closeable<D, PC>", but "a type variable may not be followed by other bounds"
+	_c extends Normal_c<D, PC, _c>
+> extends Element<D, PC, E> {
 
-	protected Normal(Document document, PC pc) {
+	protected Normal(D document, PC pc) {
 		super(document, pc);
 	}
 
@@ -58,10 +61,10 @@ abstract public class Normal<
 	}
 
 	/**
-	 * Called after opening tag is completed, {@linkplain Document#incDepth() indentation depth is increased}
+	 * Called after opening tag is completed, {@linkplain AnyDocument#incDepth() indentation depth is increased}
 	 * (if {@link #isContentIndented()}), and before the body is invoked.
 	 * <p>
-	 * An common use-case is to call {@link Document#autoNl()} to begin body on the next line.
+	 * An common use-case is to call {@link AnyDocument#autoNl()} to begin body on the next line.
 	 * </p>
 	 */
 	@SuppressWarnings("NoopMethodInAbstractClass")
@@ -79,6 +82,8 @@ abstract public class Normal<
 
 	/**
 	 * Ends attributes, invokes the body, then closes this element.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  The parent content model this element is within
 	 */
@@ -100,6 +105,8 @@ abstract public class Normal<
 
 	/**
 	 * Ends attributes, invokes the body, then closes this element.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  The parent content model this element is within
 	 *

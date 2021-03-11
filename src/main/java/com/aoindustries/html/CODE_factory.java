@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface CODE_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new code element.
@@ -41,10 +45,10 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 */
-	default CODE<__> code() throws IOException {
+	default CODE<D, __> code() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new CODE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ code__(IOConsumerE<? super CODE__<__>, Ex> code) throws IOException, Ex {
+	default <Ex extends Throwable> __ code__(IOConsumerE<? super CODE__<D, __>, Ex> code) throws IOException, Ex {
 		return code().__(code);
 	}
 
@@ -109,7 +117,7 @@ public interface CODE_factory<__ extends Union_Palpable_Phrasing<__>> extends Co
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default CODE_c<__> code_c() throws IOException {
+	default CODE_c<D, __> code_c() throws IOException {
 		return code()._c();
 	}
 }

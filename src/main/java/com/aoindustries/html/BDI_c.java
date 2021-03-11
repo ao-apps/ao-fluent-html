@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BDI_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, BDI_c<PC>>
-	implements PhrasingContent<BDI_c<PC>> {
+public class BDI_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, BDI_c<D, PC>>
+	implements PhrasingContent<D, BDI_c<D, PC>> {
 
-	protected BDI_c(BDI<PC> element) {
+	protected BDI_c(BDI<D, PC> element) {
 		super(element);
 	}
 }

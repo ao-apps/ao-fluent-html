@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class ADDRESS_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, ADDRESS_c<PC>>
-	implements FlowContent<ADDRESS_c<PC>> {
+public class ADDRESS_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, ADDRESS_c<D, PC>>
+	implements FlowContent<D, ADDRESS_c<D, PC>> {
 
-	protected ADDRESS_c(ADDRESS<PC> element) {
+	protected ADDRESS_c(ADDRESS<D, PC> element) {
 		super(element);
 	}
 }

@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SECTION_factory<__ extends SectioningContent<__>> extends Content<__> {
+public interface SECTION_factory<
+	D  extends AnyDocument<D>,
+	__ extends SectioningContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new section element.
@@ -41,10 +45,10 @@ public interface SECTION_factory<__ extends SectioningContent<__>> extends Conte
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
 	 * </p>
 	 */
-	default SECTION<__> section() throws IOException {
+	default SECTION<D, __> section() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SECTION<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface SECTION_factory<__ extends SectioningContent<__>> extends Conte
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface SECTION_factory<__ extends SectioningContent<__>> extends Conte
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ section__(IOConsumerE<? super SECTION__<__>, Ex> section) throws IOException, Ex {
+	default <Ex extends Throwable> __ section__(IOConsumerE<? super SECTION__<D, __>, Ex> section) throws IOException, Ex {
 		return section().__(section);
 	}
 
@@ -109,7 +117,7 @@ public interface SECTION_factory<__ extends SectioningContent<__>> extends Conte
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default SECTION_c<__> section_c() throws IOException {
+	default SECTION_c<D, __> section_c() throws IOException {
 		return section()._c();
 	}
 }

@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element">4.5.14 The time element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface TIME_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface TIME_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 	// TODO
 }

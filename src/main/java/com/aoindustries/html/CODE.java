@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class CODE<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<CODE<PC>, PC, CODE__<PC>, CODE_c<PC>> implements
+public class CODE<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, CODE<D, PC>, CODE__<D, PC>, CODE_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<CODE<PC>>
+	AlmostGlobalAttributes<CODE<D, PC>>
 {
 
-	public CODE(Document document, PC pc) {
+	public CODE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected CODE<PC> writeOpen(Writer out) throws IOException {
+	protected CODE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<code", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class CODE<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected CODE__<PC> new__() {
+	protected CODE__<D, PC> new__() {
 		return new CODE__<>(this);
 	}
 
 	@Override
-	protected CODE_c<PC> new_c() {
+	protected CODE_c<D, PC> new_c() {
 		return new CODE_c<>(this);
 	}
 }

@@ -33,26 +33,30 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#heading_content">Heading content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface HeadingContent<__ extends HeadingContent<__>> extends
+public interface HeadingContent<
+	D  extends AnyDocument<D>,
+	__ extends HeadingContent<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	H1_factory<__>,
-	H2_factory<__>,
-	H3_factory<__>,
-	H4_factory<__>,
-	H5_factory<__>,
-	H6_factory<__>,
-	HGROUP_factory<__>
+	H1_factory<D, __>,
+	H2_factory<D, __>,
+	H3_factory<D, __>,
+	H4_factory<D, __>,
+	H5_factory<D, __>,
+	H6_factory<D, __>,
+	HGROUP_factory<D, __>
 {
 	/**
 	 * Opens a new h# element.
@@ -62,9 +66,9 @@ public interface HeadingContent<__ extends HeadingContent<__>> extends
 	 */
 	@SuppressWarnings("unchecked")
 	default <
-		H   extends com.aoindustries.html.H<H, __, H__, H_c>,
-		H__ extends com.aoindustries.html.H__<__, H__>,
-		H_c extends com.aoindustries.html.H_c<__, H_c>
+		H   extends com.aoindustries.html.H<D, __, H, H__, H_c>,
+		H__ extends com.aoindustries.html.H__<D, __, H__>,
+		H_c extends com.aoindustries.html.H_c<D, __, H_c>
 	> H h(int rank) throws IOException {
 		switch(rank) {
 			case 1 : return (H)h1();
@@ -141,6 +145,8 @@ public interface HeadingContent<__ extends HeadingContent<__>> extends
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	default <Ex extends Throwable> __ h__(int rank, IORunnableE<Ex> h) throws IOException, Ex {
@@ -153,10 +159,12 @@ public interface HeadingContent<__ extends HeadingContent<__>> extends
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
 	default <
-		H__ extends com.aoindustries.html.H__<__, H__>,
+		H__ extends com.aoindustries.html.H__<D, __, H__>,
 		Ex extends Throwable
 	> __ h__(int rank, IOConsumerE<? super H__, Ex> h) throws IOException, Ex {
 		return h(rank).__(h);
@@ -207,7 +215,7 @@ public interface HeadingContent<__ extends HeadingContent<__>> extends
 	 */
 	@SuppressWarnings("unchecked")
 	default <
-		H_c extends com.aoindustries.html.H_c<__, H_c>
+		H_c extends com.aoindustries.html.H_c<D, __, H_c>
 	> H_c h_c(int rank) throws IOException {
 		return (H_c)h(rank)._c();
 	}

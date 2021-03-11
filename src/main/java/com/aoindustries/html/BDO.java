@@ -29,22 +29,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BDO<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<BDO<PC>, PC, BDO__<PC>, BDO_c<PC>> implements
+public class BDO<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, BDO<D, PC>, BDO__<D, PC>, BDO_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<BDO<PC>>
+	AlmostGlobalAttributes<BDO<D, PC>>
 {
 
-	public BDO(Document document, PC pc) {
+	public BDO(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected BDO<PC> writeOpen(Writer out) throws IOException {
+	protected BDO<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<bdo", false);
 		return this;
 	}
@@ -55,12 +59,12 @@ public class BDO<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected BDO__<PC> new__() {
+	protected BDO__<D, PC> new__() {
 		return new BDO__<>(this);
 	}
 
 	@Override
-	protected BDO_c<PC> new_c() {
+	protected BDO_c<D, PC> new_c() {
 		return new BDO_c<>(this);
 	}
 
@@ -68,16 +72,18 @@ public class BDO<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 */
 	@Override
-	public BDO<PC> dir(String dir) throws IOException {
+	public BDO<D, PC> dir(String dir) throws IOException {
 		// TODO: Enforce auto value must not be specified
 		return super.dir(dir);
 	}
 
 	/**
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@Override
-	public <Ex extends Throwable> BDO<PC> dir(Suppliers.String<Ex> dir) throws IOException, Ex {
+	public <Ex extends Throwable> BDO<D, PC> dir(Suppliers.String<Ex> dir) throws IOException, Ex {
 		return super.dir(dir);
 	}
 
@@ -85,15 +91,17 @@ public class BDO<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 */
 	@Override
-	public BDO<PC> dir(Value dir) throws IOException {
+	public BDO<D, PC> dir(Value dir) throws IOException {
 		return super.dir(dir);
 	}
 
 	/**
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@Override
-	public <Ex extends Throwable> BDO<PC> dir(IOSupplierE<? extends Value, Ex> dir) throws IOException, Ex {
+	public <Ex extends Throwable> BDO<D, PC> dir(IOSupplierE<? extends Value, Ex> dir) throws IOException, Ex {
 		return super.dir(dir);
 	}
 }

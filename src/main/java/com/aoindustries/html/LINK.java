@@ -43,39 +43,43 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_link.asp">HTML link tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LINK<PC>, PC> implements
+public class LINK<
+	D  extends AnyDocument<D>,
+	PC extends Union_Metadata_Phrasing<D, PC>
+> extends VoidElement<D, PC, LINK<D, PC>> implements
 	// TODO: as
 	// TODO: charset
-	com.aoindustries.html.attributes.Enum.Crossorigin<LINK<PC>, LINK.Crossorigin>,
+	com.aoindustries.html.attributes.Enum.Crossorigin<LINK<D, PC>, LINK.Crossorigin>,
 	// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-disabled
-	com.aoindustries.html.attributes.Boolean.Disabled<LINK<PC>>,
-	com.aoindustries.html.attributes.Url.Href<LINK<PC>>,
-	com.aoindustries.html.attributes.String.Hreflang<LINK<PC>>,
-	com.aoindustries.html.attributes.Text.Media<LINK<PC>>,
-	com.aoindustries.html.attributes.Enum.Rel<LINK<PC>, LINK.Rel>,
+	com.aoindustries.html.attributes.Boolean.Disabled<LINK<D, PC>>,
+	com.aoindustries.html.attributes.Url.Href<LINK<D, PC>>,
+	com.aoindustries.html.attributes.String.Hreflang<LINK<D, PC>>,
+	com.aoindustries.html.attributes.Text.Media<LINK<D, PC>>,
+	com.aoindustries.html.attributes.Enum.Rel<LINK<D, PC>, LINK.Rel>,
 	// TODO: rev
 	// TODO: sizes
 	// TODO: target (not standardized per MDN)
 	// TODO: type
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<LINK<PC>>,
-	com.aoindustries.html.attributes.event.window.Onerror<LINK<PC>>,
-	com.aoindustries.html.attributes.event.window.Onload<LINK<PC>>
+	AlmostGlobalAttributes<LINK<D, PC>>,
+	com.aoindustries.html.attributes.event.window.Onerror<LINK<D, PC>>,
+	com.aoindustries.html.attributes.event.window.Onload<LINK<D, PC>>
 {
 
 	private static final com.aoindustries.i18n.Resources RESOURCES =
 		com.aoindustries.i18n.Resources.getResources(LINK.class);
 
-	public LINK(Document document, PC pc) {
+	public LINK(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected LINK<PC> writeOpen(Writer out) throws IOException {
+	protected LINK<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<link", false);
 		return this;
 	}
@@ -83,7 +87,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">The crossorigin attribute: Requesting CORS access to content</a>.
 	 */
-	public enum Crossorigin implements Function<Document, String> {
+	public enum Crossorigin implements Function<AnyDocument<?>, String> {
 		ANONYMOUS(
 			Attributes.NO_VALUE,
 			"anonymous"
@@ -107,7 +111,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			if(document.serialization == Serialization.SGML) {
 				return sgml;
 			} else {
@@ -127,12 +131,12 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 
 	// TODO: Is global property, move there and add See comment, still checking for link-specific rules here
 	// TODO: Attributes...itemprop in global
-	public LINK<PC> itemprop(Object itemprop) throws IOException {
+	public LINK<D, PC> itemprop(Object itemprop) throws IOException {
 		itemprop = Coercion.trimNullIfEmpty(itemprop);
 		if(itemprop != null) {
 			if(this.itemprop != null) {
 				throw new LocalizedIllegalStateException(
-					Document.RESOURCES,
+					AnyDocument.RESOURCES,
 					"duplicateAttribute",
 					"link",
 					"itemprop",
@@ -165,7 +169,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Rel implements Function<Document, String> {
+	public enum Rel implements Function<AnyDocument<?>, String> {
 		ALTERNATE("alternate"),
 		/**
 		 * @deprecated
@@ -250,7 +254,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}
@@ -268,12 +272,12 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	 * </ul>
 	 */
 	@Override
-	public LINK<PC> rel(String rel) throws IOException {
+	public LINK<D, PC> rel(String rel) throws IOException {
 		rel = Strings.trimNullIfEmpty(rel);
 		if(rel != null) {
 			if(this.rel != null) {
 				throw new LocalizedIllegalStateException(
-					Document.RESOURCES,
+					AnyDocument.RESOURCES,
 					"duplicateAttribute",
 					"link",
 					"rel",
@@ -300,10 +304,12 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #rel(java.lang.String)
 	 */
 	@Override
-	public <Ex extends Throwable> LINK<PC> rel(Suppliers.String<Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> LINK<D, PC> rel(Suppliers.String<Ex> rel) throws IOException, Ex {
 		return com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -320,7 +326,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	 * @see #rel(java.lang.String)
 	 */
 	@Override
-	public LINK<PC> rel(Rel rel) throws IOException {
+	public LINK<D, PC> rel(Rel rel) throws IOException {
 		return com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -333,11 +339,13 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#attr-link-rel">HTML Standard</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_link_rel.asp">HTML link rel Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #rel(com.aoindustries.html.LINK.Rel)
 	 */
 	@Override
-	public <Ex extends Throwable> LINK<PC> rel(IOSupplierE<? extends Rel, Ex> rel) throws IOException, Ex {
+	public <Ex extends Throwable> LINK<D, PC> rel(IOSupplierE<? extends Rel, Ex> rel) throws IOException, Ex {
 		return com.aoindustries.html.attributes.Enum.Rel.super.rel(rel);
 	}
 
@@ -350,7 +358,7 @@ public class LINK<PC extends Union_Metadata_Phrasing<PC>> extends VoidElement<LI
 	 *
 	 * See <a href="https://www.w3schools.com/tags/att_link_type.asp">HTML link type Attribute</a>.
 	 */
-	public LINK<PC> type(String type) throws IOException {
+	public LINK<D, PC> type(String type) throws IOException {
 		type = Strings.trimNullIfEmpty(type);
 		this.type = type;
 		if(

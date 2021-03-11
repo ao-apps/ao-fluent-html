@@ -25,20 +25,24 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface HTML_content<__ extends HTML_content<__>> extends
+public interface HTML_content<
+	D  extends AnyDocument<D>,
+	__ extends HTML_content<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	HEAD_factory<__>,
-	BODY_factory<__>
+	HEAD_factory<D, __>,
+	BODY_factory<D, __>
 {
 }

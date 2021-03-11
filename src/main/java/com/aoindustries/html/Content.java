@@ -35,17 +35,21 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories">Content categories - Developer guides</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
+public interface Content<
+	D  extends AnyDocument<D>,
+	__ extends Content<D, __>
+> extends WhitespaceWriter<__> {
 
 	/**
 	 * Gets the document for the current content model.  The document can be used to
 	 * perform raw output or write elements not expected in the current context.
 	 */
-	Document getDocument();
+	D getDocument();
 
 	// <editor-fold desc="Unsafe">
 	/**
@@ -61,9 +65,9 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 * @throws  IllegalStateException  when output has been set to {@code null}.
 	 *
 	 * @see  #getUnsafe()
-	 * @see  Document#setOut(java.io.Writer)
+	 * @see  AnyDocument#setOut(java.io.Writer)
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default Writer getUnsafe(Boolean endsNewline) throws IllegalStateException {
 		return getDocument().getUnsafe(endsNewline);
 	}
@@ -81,9 +85,9 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 * @throws  IllegalStateException  when output has been set to {@code null}.
 	 *
 	 * @see  #getUnsafe(java.lang.Boolean)
-	 * @see  Document#setOut(java.io.Writer)
+	 * @see  AnyDocument#setOut(java.io.Writer)
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default Writer getUnsafe() throws IllegalStateException {
 		return getDocument().getUnsafe();
 	}
@@ -93,7 +97,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(char ch) throws IOException {
 		getDocument().unsafe(ch);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -105,7 +109,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(char[] cbuf) throws IOException {
 		getDocument().unsafe(cbuf);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -117,7 +121,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(char[] cbuf, int offset, int len) throws IOException {
 		getDocument().unsafe(cbuf, offset, len);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -129,7 +133,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(CharSequence csq) throws IOException {
 		getDocument().unsafe(csq);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -141,7 +145,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(CharSequence csq, int start, int end) throws IOException {
 		getDocument().unsafe(csq, start, end);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -156,7 +160,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(Object unsafe) throws IOException {
 		getDocument().unsafe(unsafe);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -169,9 +173,11 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 * When no knowledge of what will be written, calls {@link #clearAtnl()} to be safe.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default <Ex extends Throwable> __ unsafe(IOSupplierE<?, Ex> unsafe) throws IOException, Ex {
 		getDocument().unsafe(unsafe);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -186,7 +192,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ unsafe(Writable unsafe) throws IOException {
 		getDocument().unsafe(unsafe);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -203,7 +209,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 * @return  a writer for direct output, which will ignore any calls to {@link Writer#close()}
 	 *          to be safely used in a try-with-resources block.
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default Writer unsafe() throws IOException {
 		return getDocument().unsafe();
 	}
@@ -211,7 +217,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	// TODO: Include a new interface similar to TextContent called "Unsafe" that Content would also extend?
 	// </editor-fold>
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ nl() throws IOException {
 		getDocument().nl();
@@ -219,7 +225,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ nli() throws IOException {
 		getDocument().nli();
@@ -227,7 +233,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ nli(int depthOffset) throws IOException {
 		getDocument().nli(depthOffset);
@@ -235,7 +241,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ indent() throws IOException {
 		getDocument().indent();
@@ -243,7 +249,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ indent(int depthOffset) throws IOException {
 		getDocument().indent(depthOffset);
@@ -251,13 +257,13 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default boolean getIndent() {
 		return getDocument().getIndent();
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ setIndent(boolean indent) {
 		getDocument().setIndent(indent);
@@ -265,13 +271,13 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default int getDepth() {
 		return getDocument().getDepth();
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ setDepth(int depth) {
 		getDocument().setDepth(depth);
@@ -279,7 +285,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ incDepth() {
 		getDocument().incDepth();
@@ -287,7 +293,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ decDepth() {
 		getDocument().decDepth();
@@ -295,7 +301,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ sp() throws IOException {
 		getDocument().sp();
@@ -303,7 +309,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 		return c;
 	}
 
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ sp(int count) throws IOException {
 		getDocument().sp(count);
@@ -316,7 +322,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 * Gets if automatic newline (and indentation when {@linkplain #getIndent() enabled}) is currently enabled,
 	 * off by default.
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default boolean getAutonli() {
 		return getDocument().getAutonli();
 	}
@@ -326,7 +332,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ setAutonli(boolean autonli) {
 		getDocument().setAutonli(autonli);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -336,7 +342,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	/**
 	 * Gets the at newline flag.
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default boolean getAtnl() {
 		return getDocument().getAtnl();
 	}
@@ -346,7 +352,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ setAtnl() {
 		getDocument().setAtnl();
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -358,7 +364,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ setAtnl(boolean atnl) {
 		getDocument().setAtnl(atnl);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -370,7 +376,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ clearAtnl() {
 		getDocument().clearAtnl();
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -383,7 +389,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ autoNl() throws IOException {
 		getDocument().autoNl();
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -396,7 +402,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ autoNli() throws IOException {
 		getDocument().autoNli();
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -412,7 +418,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ autoNli(int depthOffset) throws IOException {
 		getDocument().autoNli(depthOffset);
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -425,7 +431,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ autoIndent() throws IOException {
 		getDocument().autoIndent();
 		@SuppressWarnings("unchecked") __ c = (__)this;
@@ -441,7 +447,7 @@ public interface Content<__ extends Content<__>> extends WhitespaceWriter<__> {
 	 *
 	 * @return  {@code this} content model
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	default __ autoIndent(int depthOffset) throws IOException {
 		getDocument().autoIndent(depthOffset);
 		@SuppressWarnings("unchecked") __ c = (__)this;

@@ -38,7 +38,7 @@
  * </p>
  * <p>
  * When converting from {@link java.lang.Enum}, uses {@link java.util.function.Function}. giving the
- * {@link com.aoindustries.html.Document}.  This allows the enum to select values by
+ * {@link com.aoindustries.html.AnyDocument}.  This allows the enum to select values by
  * {@link com.aoindustries.encoding.Serialization} and/or {@link com.aoindustries.encoding.Doctype}, as-needed.
  * </p>
  *

@@ -31,11 +31,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/dom.html#text-content">3.2.5.2.5 Phrasing content / Text</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Content<__>, TextWriter<__> {
+public interface TextContent<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __>, TextWriter<__> {
 
 	/**
 	 * {@inheritDoc}
@@ -45,7 +49,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ nbsp() throws IOException {
 		getDocument().nbsp();
@@ -61,7 +65,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ nbsp(int count) throws IOException {
 		getDocument().nbsp(count);
@@ -77,7 +81,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ text(char ch) throws IOException {
 		getDocument().text(ch);
@@ -95,7 +99,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ text(char[] cbuf) throws IOException {
 		getDocument().text(cbuf);
@@ -111,7 +115,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ text(char[] cbuf, int offset, int len) throws IOException {
 		getDocument().text(cbuf, offset, len);
@@ -127,7 +131,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ text(CharSequence csq) throws IOException {
 		getDocument().text(csq);
@@ -143,7 +147,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ text(CharSequence csq, int start, int end) throws IOException {
 		getDocument().text(csq, start, end);
@@ -162,7 +166,7 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default __ text(Object text) throws IOException {
 		getDocument().text(text);
@@ -179,9 +183,11 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default <Ex extends Throwable> __ text(IOSupplierE<?, Ex> text) throws IOException, Ex {
 		getDocument().text(text);
@@ -198,9 +204,11 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * Does not perform any translation markups.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	@Override
 	default <Ex extends Throwable> __ text(MediaWritable<Ex> text) throws IOException, Ex {
 		getDocument().text(text);
@@ -217,10 +225,10 @@ public interface TextContent<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * Does not perform any translation markups.
 	 * </p>
 	 */
-	// Note: Must be implemented in Document to avoid infinite recursion
+	// Note: Must be implemented in AnyDocument to avoid infinite recursion
 	// TODO: __() method to end text?  Call it "ContentWriter"?
 	@Override
-	default DocumentMediaWriter text() throws IOException {
+	default DocumentMediaWriter<D> text() throws IOException {
 		return getDocument().text();
 	}
 }

@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__> {
+public interface TBODY_factory<
+	D  extends AnyDocument<D>,
+	__ extends TABLE_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new tbody element.
@@ -41,10 +45,10 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
 	 * </p>
 	 */
-	default TBODY<__> tbody() throws IOException {
+	default TBODY<D, __> tbody() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new TBODY<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ tbody__(IOConsumerE<? super TBODY__<__>, Ex> tbody) throws IOException, Ex {
+	default <Ex extends Throwable> __ tbody__(IOConsumerE<? super TBODY__<D, __>, Ex> tbody) throws IOException, Ex {
 		return tbody().__(tbody);
 	}
 
@@ -97,7 +105,7 @@ public interface TBODY_factory<__ extends TABLE_content<__>> extends Content<__>
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default TBODY_c<__> tbody_c() throws IOException {
+	default TBODY_c<D, __> tbody_c() throws IOException {
 		return tbody()._c();
 	}
 }

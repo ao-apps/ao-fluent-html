@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SELECT__<PC extends Union_Interactive_Phrasing<PC>>
-	extends Normal__<PC, SELECT__<PC>>
-	implements SELECT_content<SELECT__<PC>> {
+public class SELECT__<
+	D  extends AnyDocument<D>,
+	PC extends Union_Interactive_Phrasing<D, PC>
+>
+	extends Normal__<D, PC, SELECT__<D, PC>>
+	implements SELECT_content<D, SELECT__<D, PC>> {
 
-	protected SELECT__(SELECT<PC> element) {
+	protected SELECT__(SELECT<D, PC> element) {
 		super(element);
 	}
 }

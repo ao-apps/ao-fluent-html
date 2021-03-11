@@ -41,7 +41,7 @@ public class Suppliers {
 	/**
 	 * Variant bounded by {@link com.aoindustries.html.Circle}, since can't have multiple methods with different bounds due to erasure.
 	 *
-	 * @author  AO Industries, Inc.
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@FunctionalInterface
 	public interface Circle<Ex extends Throwable> extends IOSupplierE<com.aoindustries.html.Circle, Ex> {
@@ -56,7 +56,7 @@ public class Suppliers {
 	/**
 	 * Variant bounded by {@link java.util.Locale}, since can't have multiple methods with different bounds due to erasure.
 	 *
-	 * @author  AO Industries, Inc.
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@FunctionalInterface
 	public interface Locale<Ex extends Throwable> extends IOSupplierE<java.util.Locale, Ex> {
@@ -71,7 +71,7 @@ public class Suppliers {
 	/**
 	 * Variant bounded by {@link java.awt.Polygon}, since can't have multiple methods with different bounds due to erasure.
 	 *
-	 * @author  AO Industries, Inc.
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@FunctionalInterface
 	public interface Polygon<Ex extends Throwable> extends IOSupplierE<java.awt.Polygon, Ex> {
@@ -86,7 +86,7 @@ public class Suppliers {
 	/**
 	 * Variant bounded by {@link java.awt.Rectangle}, since can't have multiple methods with different bounds due to erasure.
 	 *
-	 * @author  AO Industries, Inc.
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@FunctionalInterface
 	public interface Rectangle<Ex extends Throwable> extends IOSupplierE<java.awt.Rectangle, Ex> {
@@ -101,7 +101,7 @@ public class Suppliers {
 	/**
 	 * Variant bounded by {@link java.awt.Shape}, since can't have multiple methods with different bounds due to erasure.
 	 *
-	 * @author  AO Industries, Inc.
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@FunctionalInterface
 	public interface Shape<Ex extends Throwable> extends IOSupplierE<java.awt.Shape, Ex> {
@@ -116,7 +116,7 @@ public class Suppliers {
 	/**
 	 * Variant bounded by {@link java.lang.String}, since can't have multiple methods with different bounds due to erasure.
 	 *
-	 * @author  AO Industries, Inc.
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@FunctionalInterface
 	public interface String<Ex extends Throwable> extends IOSupplierE<java.lang.String, Ex> {

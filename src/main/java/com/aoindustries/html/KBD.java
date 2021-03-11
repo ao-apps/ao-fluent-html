@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class KBD<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<KBD<PC>, PC, KBD__<PC>, KBD_c<PC>> implements
+public class KBD<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, KBD<D, PC>, KBD__<D, PC>, KBD_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<KBD<PC>>
+	AlmostGlobalAttributes<KBD<D, PC>>
 {
 
-	public KBD(Document document, PC pc) {
+	public KBD(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected KBD<PC> writeOpen(Writer out) throws IOException {
+	protected KBD<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<kbd", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class KBD<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected KBD__<PC> new__() {
+	protected KBD__<D, PC> new__() {
 		return new KBD__<>(this);
 	}
 
 	@Override
-	protected KBD_c<PC> new_c() {
+	protected KBD_c<D, PC> new_c() {
 		return new KBD_c<>(this);
 	}
 }

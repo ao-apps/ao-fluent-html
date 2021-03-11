@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class MENU__<PC extends InteractiveContent<PC>>
-	extends Normal__<PC, MENU__<PC>>
-	implements ListContent<MENU__<PC>> {
+public class MENU__<
+	D  extends AnyDocument<D>,
+	PC extends InteractiveContent<D, PC>
+>
+	extends Normal__<D, PC, MENU__<D, PC>>
+	implements ListContent<D, MENU__<D, PC>> {
 
-	protected MENU__(MENU<PC> element) {
+	protected MENU__(MENU<D, PC> element) {
 		super(element);
 	}
 }

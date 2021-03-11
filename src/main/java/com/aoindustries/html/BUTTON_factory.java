@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">4.10.6 The button element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface BUTTON_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
+public interface BUTTON_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Interactive_Phrasing<D, __>
+> extends Content<D, __> {
 	// TODO
 }

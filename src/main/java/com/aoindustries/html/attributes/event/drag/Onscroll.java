@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onscroll<E extends Element<E, ?> & Onscroll<E>> {
+public interface Onscroll<E extends Element<?, ?, E> & Onscroll<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Onscroll<E extends Element<E, ?> & Onscroll<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onscroll(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onscroll(IOSupplierE<?, Ex> onscroll) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Onscroll<E extends Element<E, ?> & Onscroll<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onscroll.asp">HTML onscroll Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onscroll(java.lang.Object)
 	 */

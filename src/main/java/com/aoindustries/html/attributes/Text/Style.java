@@ -36,10 +36,12 @@ import java.io.IOException;
  * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
 // TODO: cssInXmlAttributeEncoder
-public interface Style<E extends Element<E, ?> & Style<E>> {
+public interface Style<E extends Element<?, ?, E> & Style<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_style.asp">HTML Global style Attribute</a>.
@@ -73,6 +75,8 @@ public interface Style<E extends Element<E, ?> & Style<E>> {
 	 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #style(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E style(IOSupplierE<?, Ex> style) throws IOException, Ex {
@@ -84,6 +88,8 @@ public interface Style<E extends Element<E, ?> & Style<E>> {
 	 * <blockquote>
 	 * In HTML5, the style attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #style(java.lang.Object)
 	 */

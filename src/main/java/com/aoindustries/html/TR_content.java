@@ -25,28 +25,32 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TR_content<__ extends TR_content<__>> extends
+public interface TR_content<
+	D  extends AnyDocument<D>,
+	__ extends TR_content<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>,
+	// Inherited: Content<D, __>
+	ScriptSupportingContent<D, __>,
 
 	//
 	// Factories:
 	//
-	TD_factory<__>,
-	TH_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	TD_factory<D, __>,
+	TH_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 }

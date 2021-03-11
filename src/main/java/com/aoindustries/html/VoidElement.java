@@ -29,13 +29,20 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#void-elements">13.1.2 Elements / Void elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
+ * @param  <E>   This element type
  *
  * @author  AO Industries, Inc.
  */
-abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Content<PC>> extends Element<E, PC> {
+// TODO: Rename "Void" to match the naming of other elements?
+abstract public class VoidElement<
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	E  extends VoidElement<D, PC, E>
+> extends Element<D, PC, E> {
 
-	protected VoidElement(Document document, PC pc) {
+	protected VoidElement(D document, PC pc) {
 		super(document, pc);
 	}
 
@@ -67,9 +74,10 @@ abstract public class VoidElement<E extends VoidElement<E, PC>, PC extends Conte
 	/**
 	 * Called after the element is closed.
 	 * <p>
-	 * An common use is expected to be invoking {@link Document#autoNl(java.io.Writer)}.
+	 * An common use is expected to be invoking {@link AnyDocument#autoNl(java.io.Writer)}.
 	 * </p>
 	 */
+	@SuppressWarnings("NoopMethodInAbstractClass")
 	protected void doAfterElement(Writer out) throws IOException {
 		// Do nothing
 	}

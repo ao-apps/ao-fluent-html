@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SECTION_c<PC extends SectioningContent<PC>>
-	extends NormalText_c<PC, SECTION_c<PC>>
-	implements FlowContent<SECTION_c<PC>> {
+public class SECTION_c<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+>
+	extends NormalText_c<D, PC, SECTION_c<D, PC>>
+	implements FlowContent<D, SECTION_c<D, PC>> {
 
-	protected SECTION_c(SECTION<PC> element) {
+	protected SECTION_c(SECTION<D, PC> element) {
 		super(element);
 	}
 }

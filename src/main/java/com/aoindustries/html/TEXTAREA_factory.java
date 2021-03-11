@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">4.10.11 The textarea element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface TEXTAREA_factory<__ extends Union_Interactive_Phrasing<__>> extends Content<__> {
+public interface TEXTAREA_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Interactive_Phrasing<D, __>
+> extends Content<D, __> {
 	// TODO
 	// TODO: Set indentation depth back to zero before invoking body
 }

@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Width<E extends Element<E, ?> & Width<E>> {
+public interface Width<E extends Element<?, ?, E> & Width<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
@@ -56,6 +58,8 @@ public interface Width<E extends Element<E, ?> & Width<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #width(java.lang.Integer)
 	 */
 	@SuppressWarnings("overloads")
@@ -77,6 +81,8 @@ public interface Width<E extends Element<E, ?> & Width<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_width.asp">HTML width Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #width(java.lang.String)
 	 *

@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">4.5.22 The u element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class U_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, U_c<PC>>
-	implements PhrasingContent<U_c<PC>> {
+public class U_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, U_c<D, PC>>
+	implements PhrasingContent<D, U_c<D, PC>> {
 
-	protected U_c(U<PC> element) {
+	protected U_c(U<D, PC> element) {
 		super(element);
 	}
 }

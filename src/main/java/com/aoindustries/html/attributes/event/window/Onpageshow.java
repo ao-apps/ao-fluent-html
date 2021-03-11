@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onpageshow<E extends Element<E, ?> & Onpageshow<E>> {
+public interface Onpageshow<E extends Element<?, ?, E> & Onpageshow<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onpageshow<E extends Element<E, ?> & Onpageshow<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onpageshow(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onpageshow(IOSupplierE<?, Ex> onpageshow) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onpageshow<E extends Element<E, ?> & Onpageshow<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onpageshow.asp">HTML onpageshow Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onpageshow(java.lang.Object)
 	 */

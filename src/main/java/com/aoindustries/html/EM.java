@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class EM<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<EM<PC>, PC, EM__<PC>, EM_c<PC>> implements
+public class EM<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, EM<D, PC>, EM__<D, PC>, EM_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<EM<PC>>
+	AlmostGlobalAttributes<EM<D, PC>>
 {
 
-	public EM(Document document, PC pc) {
+	public EM(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected EM<PC> writeOpen(Writer out) throws IOException {
+	protected EM<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<em", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class EM<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected EM__<PC> new__() {
+	protected EM__<D, PC> new__() {
 		return new EM__<>(this);
 	}
 
 	@Override
-	protected EM_c<PC> new_c() {
+	protected EM_c<D, PC> new_c() {
 		return new EM_c<>(this);
 	}
 }

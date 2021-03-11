@@ -32,11 +32,15 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface Q_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new q element.
@@ -45,10 +49,10 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 */
-	default Q<__> q() throws IOException {
+	default Q<D, __> q() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new Q<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -58,6 +62,8 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -72,9 +78,11 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ q__(IOConsumerE<? super Q__<__>, Ex> q) throws IOException, Ex {
+	default <Ex extends Throwable> __ q__(IOConsumerE<? super Q__<D, __>, Ex> q) throws IOException, Ex {
 		return q().__(q);
 	}
 
@@ -118,7 +126,7 @@ public interface Q_factory<__ extends Union_Palpable_Phrasing<__>> extends Conte
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default Q_c<__> q_c() throws IOException {
+	default Q_c<D, __> q_c() throws IOException {
 		return q()._c();
 	}
 }

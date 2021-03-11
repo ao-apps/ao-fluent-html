@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DL<PC extends PalpableContent<PC>> extends
-	Normal<DL<PC>, PC, DL__<PC>, DL_c<PC>> implements
+public class DL<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	Normal<D, PC, DL<D, PC>, DL__<D, PC>, DL_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DL<PC>>
+	AlmostGlobalAttributes<DL<D, PC>>
 {
 
-	public DL(Document document, PC pc) {
+	public DL(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DL<PC> writeOpen(Writer out) throws IOException {
+	protected DL<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<dl", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class DL<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected DL__<PC> new__() {
+	protected DL__<D, PC> new__() {
 		return new DL__<>(this);
 	}
 
 	@Override
-	protected DL_c<PC> new_c() {
+	protected DL_c<D, PC> new_c() {
 		return new DL_c<>(this);
 	}
 }

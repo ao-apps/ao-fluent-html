@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onbeforeunload<E extends Element<E, ?> & Onbeforeunload<E>> {
+public interface Onbeforeunload<E extends Element<?, ?, E> & Onbeforeunload<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onbeforeunload<E extends Element<E, ?> & Onbeforeunload<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onbeforeunload(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onbeforeunload(IOSupplierE<?, Ex> onbeforeunload) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onbeforeunload<E extends Element<E, ?> & Onbeforeunload<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onbeforeunload.asp">HTML onbeforeunload Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onbeforeunload(java.lang.Object)
 	 */

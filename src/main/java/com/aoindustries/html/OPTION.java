@@ -39,25 +39,29 @@ import java.io.Writer;
  * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTION<PC>, PC> implements
-	com.aoindustries.html.attributes.Boolean.Disabled<OPTION<PC>>,
-	com.aoindustries.html.attributes.Text.Label<OPTION<PC>>,
-	com.aoindustries.html.attributes.Boolean.Selected<OPTION<PC>>,
-	com.aoindustries.html.attributes.Text.Value<OPTION<PC>>,
+public class OPTION<
+	D  extends AnyDocument<D>,
+	PC extends Union_DATALIST_OPTGROUP<D, PC>
+> extends Element<D, PC, OPTION<D, PC>> implements
+	com.aoindustries.html.attributes.Boolean.Disabled<OPTION<D, PC>>,
+	com.aoindustries.html.attributes.Text.Label<OPTION<D, PC>>,
+	com.aoindustries.html.attributes.Boolean.Selected<OPTION<D, PC>>,
+	com.aoindustries.html.attributes.Text.Value<OPTION<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<OPTION<PC>>
+	AlmostGlobalAttributes<OPTION<D, PC>>
 {
 
-	public OPTION(Document document, PC pc) {
+	public OPTION(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected OPTION<PC> writeOpen(Writer out) throws IOException {
+	protected OPTION<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<option", false);
 		return this;
 	}
@@ -74,12 +78,14 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 */
 	@Deprecated
 	@Override
-	public OPTION<PC> label(Object label) throws IOException {
+	public OPTION<D, PC> label(Object label) throws IOException {
 		return com.aoindustries.html.attributes.Text.Label.super.label(label);
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #label(java.lang.Object)
 	 *
@@ -92,12 +98,14 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> OPTION<PC> label(IOSupplierE<?, Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> OPTION<D, PC> label(IOSupplierE<?, Ex> label) throws IOException, Ex {
 		return com.aoindustries.html.attributes.Text.Label.super.label(label);
 	}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_option_label.asp">HTML option label Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #label(java.lang.Object)
 	 *
@@ -110,7 +118,7 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 */
 	@Deprecated
 	@Override
-	public <Ex extends Throwable> OPTION<PC> label(MediaWritable<Ex> label) throws IOException, Ex {
+	public <Ex extends Throwable> OPTION<D, PC> label(MediaWritable<Ex> label) throws IOException, Ex {
 		return com.aoindustries.html.attributes.Text.Label.super.label(label);
 	}
 
@@ -122,7 +130,7 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 * </p>
 	 */
 	@Override
-	public OPTION<PC> value(Object value) throws IOException {
+	public OPTION<D, PC> value(Object value) throws IOException {
 		return Attributes.Text.attribute(this, "value", MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
 	}
 
@@ -180,6 +188,8 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 * Writes the text body then closes this element.
 	 * Supports translation markup type {@link MarkupType#XHTML}.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  The parent content model this element is within
 	 */
 	public <Ex extends Throwable> PC text__(IOSupplierE<?, Ex> text) throws IOException, Ex {
@@ -189,6 +199,8 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	/**
 	 * Writes the text body then closes this element.
 	 * Does not perform any translation markups.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  The parent content model this element is within
 	 */
@@ -204,7 +216,7 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 			if(oldIndent) document.setIndent(false);
 			try {
 				text.writeTo(
-					new DocumentMediaWriter(
+					new DocumentMediaWriter<>(
 						document,
 						textInXhtmlEncoder,
 						new NoCloseWriter(out)
@@ -231,14 +243,14 @@ public class OPTION<PC extends Union_DATALIST_OPTGROUP<PC>> extends Element<OPTI
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	// TODO: __() method on DocumentMediaWriter to end text?  Call it "ContentWriter"?
-	public DocumentMediaWriter text__() throws IOException {
+	public DocumentMediaWriter<D> text__() throws IOException {
 		Writer out = document.getUnsafe(null);
 		document.autoIndent(out).unsafe(out, '>').incDepth();
 		boolean oldAutonli = document.getAutonli();
 		if(oldAutonli) document.setAutonli(false);
 		boolean oldIndent = document.getIndent();
 		if(oldIndent) document.setIndent(false);
-		return new DocumentMediaWriter(document, textInXhtmlEncoder, out) {
+		return new DocumentMediaWriter<D>(document, textInXhtmlEncoder, out) {
 			@Override
 			public void close() throws IOException {
 				// Get a new "out", just in case changed before closing, such as in legacy JSP taglibs

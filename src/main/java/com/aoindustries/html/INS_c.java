@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class INS_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends TransparentText_c<PC, INS_c<PC>>
-	implements Union_Palpable_Phrasing<INS_c<PC>> {
+public class INS_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends TransparentText_c<D, PC, INS_c<D, PC>>
+	implements Union_Palpable_Phrasing<D, INS_c<D, PC>> {
 
-	protected INS_c(INS<PC> element) {
+	protected INS_c(INS<D, PC> element) {
 		super(element);
 	}
 }

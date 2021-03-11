@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">4.5.28 The wbr element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface WBR_factory<__ extends PhrasingContent<__>> extends Content<__> {
+public interface WBR_factory<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DATA<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<DATA<PC>, PC, DATA__<PC>, DATA_c<PC>> implements
-	com.aoindustries.html.attributes.Text.Value<DATA<PC>>,
+public class DATA<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, DATA<D, PC>, DATA__<D, PC>, DATA_c<D, PC>> implements
+	com.aoindustries.html.attributes.Text.Value<DATA<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DATA<PC>>
+	AlmostGlobalAttributes<DATA<D, PC>>
 {
 
-	public DATA(Document document, PC pc) {
+	public DATA(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DATA<PC> writeOpen(Writer out) throws IOException {
+	protected DATA<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<data", false);
 		return this;
 	}
@@ -55,12 +59,12 @@ public class DATA<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected DATA__<PC> new__() {
+	protected DATA__<D, PC> new__() {
 		return new DATA__<>(this);
 	}
 
 	@Override
-	protected DATA_c<PC> new_c() {
+	protected DATA_c<D, PC> new_c() {
 		return new DATA_c<>(this);
 	}
 }

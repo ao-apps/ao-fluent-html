@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class STRONG<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<STRONG<PC>, PC, STRONG__<PC>, STRONG_c<PC>> implements
+public class STRONG<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, STRONG<D, PC>, STRONG__<D, PC>, STRONG_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<STRONG<PC>>
+	AlmostGlobalAttributes<STRONG<D, PC>>
 {
 
-	public STRONG(Document document, PC pc) {
+	public STRONG(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected STRONG<PC> writeOpen(Writer out) throws IOException {
+	protected STRONG<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<strong", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class STRONG<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected STRONG__<PC> new__() {
+	protected STRONG__<D, PC> new__() {
 		return new STRONG__<>(this);
 	}
 
 	@Override
-	protected STRONG_c<PC> new_c() {
+	protected STRONG_c<D, PC> new_c() {
 		return new STRONG_c<>(this);
 	}
 }

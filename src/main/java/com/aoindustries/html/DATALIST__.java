@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DATALIST__<PC extends PhrasingContent<PC>>
-	extends NormalText__<PC, DATALIST__<PC>>
-	implements DATALIST_content<DATALIST__<PC>> {
+public class DATALIST__<
+	D  extends AnyDocument<D>,
+	PC extends PhrasingContent<D, PC>
+>
+	extends NormalText__<D, PC, DATALIST__<D, PC>>
+	implements DATALIST_content<D, DATALIST__<D, PC>> {
 
-	protected DATALIST__(DATALIST<PC> element) {
+	protected DATALIST__(DATALIST<D, PC> element) {
 		super(element);
 	}
 }

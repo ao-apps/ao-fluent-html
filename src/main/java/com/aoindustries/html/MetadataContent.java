@@ -28,33 +28,37 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content">Metadata content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MetadataContent<__ extends MetadataContent<__>> extends
+public interface MetadataContent<
+	D  extends AnyDocument<D>,
+	__ extends MetadataContent<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	Union_Metadata_Phrasing<__>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
+	Union_Metadata_Phrasing<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	// Inherited: ScriptSupportingContent<__>
+	// Inherited: Content<D, __>
+	// Inherited: ScriptSupportingContent<D, __>
 
 	//
 	// Factories:
 	//
-	BASE_factory<__>,
-	// Inherited: LINK_factory<__>
-	// Inherited: META_factory<__>
-	// Inherited: NOSCRIPT_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	STYLE_factory<__>,
-	// Inherited: TEMPLATE_factory<__> // WHATWG only
-	TITLE_factory<__>
+	BASE_factory<D, __>,
+	// Inherited: LINK_factory<D, __>
+	// Inherited: META_factory<D, __>
+	// Inherited: NOSCRIPT_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	STYLE_factory<D, __>,
+	// Inherited: TEMPLATE_factory<D, __> // WHATWG only
+	TITLE_factory<D, __>
 {
 }

@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-head-element">4.2.1 The head element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface HEAD_factory<__ extends HTML_content<__>> extends Content<__> {
+public interface HEAD_factory<
+	D  extends AnyDocument<D>,
+	__ extends HTML_content<D, __>
+> extends Content<D, __> {
 	// TODO
 	// TODO: Head tag will not indent
 }

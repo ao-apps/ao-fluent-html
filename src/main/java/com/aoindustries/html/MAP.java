@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class MAP<PC extends Union_Palpable_Phrasing<PC>> extends
-	TransparentText<MAP<PC>, PC, MAP_c<PC>> implements
-	com.aoindustries.html.attributes.Text.Name<MAP<PC>>,
+public class MAP<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	TransparentText<D, PC, MAP<D, PC>, MAP_c<D, PC>> implements
+	com.aoindustries.html.attributes.Text.Name<MAP<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MAP<PC>>
+	AlmostGlobalAttributes<MAP<D, PC>>
 {
 
-	public MAP(Document document, PC pc) {
+	public MAP(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected MAP<PC> writeOpen(Writer out) throws IOException {
+	protected MAP<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<map", false);
 		return this;
 	}
@@ -55,7 +59,7 @@ public class MAP<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected MAP_c<PC> new_c() {
+	protected MAP_c<D, PC> new_c() {
 		return new MAP_c<>(this);
 	}
 }

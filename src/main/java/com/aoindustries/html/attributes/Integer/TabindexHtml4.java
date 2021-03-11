@@ -33,9 +33,11 @@ import java.io.IOException;
  * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface TabindexHtml4<E extends Element<E, ?> & TabindexHtml4<E>> extends Tabindex<E> {
+public interface TabindexHtml4<E extends Element<?, ?, E> & TabindexHtml4<E>> extends Tabindex<E> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_tabindex.asp">HTML Global tabindex Attribute</a>.
@@ -68,6 +70,8 @@ public interface TabindexHtml4<E extends Element<E, ?> & TabindexHtml4<E>> exten
 	 * <blockquote>
 	 * In HTML 4.01, the tabindex attribute can be used with: &lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt;, and &lt;textarea&gt;.
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #tabindex(java.lang.Integer)
 	 */

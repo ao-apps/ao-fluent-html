@@ -34,9 +34,11 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/jsref/event_onchange.asp">onchange Event</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onchange<E extends Element<E, ?> & Onchange<E>> {
+public interface Onchange<E extends Element<?, ?, E> & Onchange<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
@@ -50,6 +52,8 @@ public interface Onchange<E extends Element<E, ?> & Onchange<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onchange(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onchange(IOSupplierE<?, Ex> onchange) throws IOException, Ex {
@@ -58,6 +62,8 @@ public interface Onchange<E extends Element<E, ?> & Onchange<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onchange.asp">HTML onchange Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onchange(java.lang.Object)
 	 */

@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class MAIN_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, MAIN_c<PC>>
-	implements FlowContent<MAIN_c<PC>> {
+public class MAIN_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, MAIN_c<D, PC>>
+	implements FlowContent<D, MAIN_c<D, PC>> {
 
-	protected MAIN_c(MAIN<PC> element) {
+	protected MAIN_c(MAIN<D, PC> element) {
 		super(element);
 	}
 }

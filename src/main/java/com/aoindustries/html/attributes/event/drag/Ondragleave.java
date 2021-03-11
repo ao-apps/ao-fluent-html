@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ondragleave<E extends Element<E, ?> & Ondragleave<E>> {
+public interface Ondragleave<E extends Element<?, ?, E> & Ondragleave<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Ondragleave<E extends Element<E, ?> & Ondragleave<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ondragleave(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ondragleave(IOSupplierE<?, Ex> ondragleave) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Ondragleave<E extends Element<E, ?> & Ondragleave<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondragleave.asp">HTML ondragleave Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ondragleave(java.lang.Object)
 	 */

@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Flow content, but with no heading content descendants, no sectioning content descendants, and no header, footer, or address element descendants.
-public class ADDRESS<PC extends PalpableContent<PC>> extends
-	NormalText<ADDRESS<PC>, PC, ADDRESS__<PC>, ADDRESS_c<PC>> implements
+public class ADDRESS<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, ADDRESS<D, PC>, ADDRESS__<D, PC>, ADDRESS_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ADDRESS<PC>>
+	AlmostGlobalAttributes<ADDRESS<D, PC>>
 {
 
-	public ADDRESS(Document document, PC pc) {
+	public ADDRESS(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected ADDRESS<PC> writeOpen(Writer out) throws IOException {
+	protected ADDRESS<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<address", false);
 		return this;
 	}
@@ -65,12 +69,12 @@ public class ADDRESS<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected ADDRESS__<PC> new__() {
+	protected ADDRESS__<D, PC> new__() {
 		return new ADDRESS__<>(this);
 	}
 
 	@Override
-	protected ADDRESS_c<PC> new_c() {
+	protected ADDRESS_c<D, PC> new_c() {
 		return new ADDRESS_c<>(this);
 	}
 }

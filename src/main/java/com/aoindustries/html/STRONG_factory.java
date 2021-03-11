@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface STRONG_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface STRONG_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new strong element.
@@ -41,10 +45,10 @@ public interface STRONG_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
 	 * </p>
 	 */
-	default STRONG<__> strong() throws IOException {
+	default STRONG<D, __> strong() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new STRONG<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface STRONG_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface STRONG_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ strong__(IOConsumerE<? super STRONG__<__>, Ex> strong) throws IOException, Ex {
+	default <Ex extends Throwable> __ strong__(IOConsumerE<? super STRONG__<D, __>, Ex> strong) throws IOException, Ex {
 		return strong().__(strong);
 	}
 
@@ -109,7 +117,7 @@ public interface STRONG_factory<__ extends Union_Palpable_Phrasing<__>> extends 
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default STRONG_c<__> strong_c() throws IOException {
+	default STRONG_c<D, __> strong_c() throws IOException {
 		return strong()._c();
 	}
 }

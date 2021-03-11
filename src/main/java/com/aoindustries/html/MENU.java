@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class MENU<PC extends InteractiveContent<PC>> extends
-	Normal<MENU<PC>, PC, MENU__<PC>, MENU_c<PC>> implements
+public class MENU<
+	D  extends AnyDocument<D>,
+	PC extends InteractiveContent<D, PC>
+> extends
+	Normal<D, PC, MENU<D, PC>, MENU__<D, PC>, MENU_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MENU<PC>>
+	AlmostGlobalAttributes<MENU<D, PC>>
 {
 
-	public MENU(Document document, PC pc) {
+	public MENU(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected MENU<PC> writeOpen(Writer out) throws IOException {
+	protected MENU<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<menu", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class MENU<PC extends InteractiveContent<PC>> extends
 	}
 
 	@Override
-	protected MENU__<PC> new__() {
+	protected MENU__<D, PC> new__() {
 		return new MENU__<>(this);
 	}
 
 	@Override
-	protected MENU_c<PC> new_c() {
+	protected MENU_c<D, PC> new_c() {
 		return new MENU_c<>(this);
 	}
 }

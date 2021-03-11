@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class CODE__<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText__<PC, CODE__<PC>>
-	implements PhrasingContent<CODE__<PC>> {
+public class CODE__<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText__<D, PC, CODE__<D, PC>>
+	implements PhrasingContent<D, CODE__<D, PC>> {
 
-	protected CODE__(CODE<PC> element) {
+	protected CODE__(CODE<D, PC> element) {
 		super(element);
 	}
 }

@@ -33,29 +33,33 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, PC> implements
-	com.aoindustries.html.attributes.Enum.Align<COL<PC>, COL.Align>,
+public class COL<
+	D  extends AnyDocument<D>,
+	PC extends COLGROUP_content<D, PC>
+> extends VoidElement<D, PC, COL<D, PC>> implements
+	com.aoindustries.html.attributes.Enum.Align<COL<D, PC>, COL.Align>,
 	// TODO: bgcolor (deprecated)
 	// TODO: char (deprecated)
 	// TODO: charoff (deprecated)
-	com.aoindustries.html.attributes.Integer.Span<COL<PC>>,
-	com.aoindustries.html.attributes.Enum.Valign<COL<PC>, COL.Valign>,
-	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<COL<PC>>,
+	com.aoindustries.html.attributes.Integer.Span<COL<D, PC>>,
+	com.aoindustries.html.attributes.Enum.Valign<COL<D, PC>, COL.Valign>,
+	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<COL<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<COL<PC>>
+	AlmostGlobalAttributes<COL<D, PC>>
 {
 
-	public COL(Document document, PC pc) {
+	public COL(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected COL<PC> writeOpen(Writer out) throws IOException {
+	protected COL<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<col", false);
 		return this;
 	}
@@ -71,7 +75,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 	 * @deprecated  The align attribute of &lt;col&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Function<Document, String> {
+	public enum Align implements Function<AnyDocument<?>, String> {
 
 		/**
 		 * Left-align content
@@ -110,7 +114,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}
@@ -121,7 +125,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 	 * @deprecated  The valign attribute of &lt;col&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Valign implements Function<Document, String> {
+	public enum Valign implements Function<AnyDocument<?>, String> {
 
 		/**
 		 * Top-align content
@@ -155,7 +159,7 @@ public class COL<PC extends COLGROUP_content<PC>> extends VoidElement<COL<PC>, P
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}

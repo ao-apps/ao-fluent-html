@@ -37,9 +37,11 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/jsref/event_oninput.asp">oninput Event</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Oninput<E extends Element<E, ?> & Oninput<E>> {
+public interface Oninput<E extends Element<?, ?, E> & Oninput<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
@@ -61,6 +63,8 @@ public interface Oninput<E extends Element<E, ?> & Oninput<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #oninput(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E oninput(IOSupplierE<?, Ex> oninput) throws IOException, Ex {
@@ -69,6 +73,8 @@ public interface Oninput<E extends Element<E, ?> & Oninput<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oninput.asp">HTML oninput Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #oninput(java.lang.Object)
 	 */

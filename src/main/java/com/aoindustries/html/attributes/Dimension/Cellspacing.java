@@ -31,12 +31,14 @@ import java.io.IOException;
 /**
  * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellspacing">&lt;table&gt;: The Table element / cellspacing</a>.
  *
+ * @param  <E>   This element type
+ *
  * @deprecated  The cellspacing attribute is not supported in HTML5. Use CSS instead.
  *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface Cellspacing<E extends Element<E, ?> & Cellspacing<E>> {
+public interface Cellspacing<E extends Element<?, ?, E> & Cellspacing<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellspacing">&lt;table&gt;: The Table element / cellspacing</a>.
@@ -65,6 +67,8 @@ public interface Cellspacing<E extends Element<E, ?> & Cellspacing<E>> {
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellspacing">&lt;table&gt;: The Table element / cellspacing</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @deprecated  The cellspacing attribute is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
@@ -87,6 +91,8 @@ public interface Cellspacing<E extends Element<E, ?> & Cellspacing<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellspacing">&lt;table&gt;: The Table element / cellspacing</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #cellspacing(java.lang.String)
 	 *

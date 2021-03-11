@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TD_c<PC extends TR_content<PC>>
-	extends NormalText_c<PC, TD_c<PC>>
-	implements FlowContent<TD_c<PC>> {
+public class TD_c<
+	D  extends AnyDocument<D>,
+	PC extends TR_content<D, PC>
+>
+	extends NormalText_c<D, PC, TD_c<D, PC>>
+	implements FlowContent<D, TD_c<D, PC>> {
 
-	protected TD_c(TD<PC> element) {
+	protected TD_c(TD<D, PC> element) {
 		super(element);
 	}
 }

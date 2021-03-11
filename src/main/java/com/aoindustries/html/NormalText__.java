@@ -28,17 +28,19 @@ package com.aoindustries.html;
  * See <a href="https://html.spec.whatwg.org/multipage/syntax.html#normal-elements">13.1.2 Elements / Normal elements</a>.
  * </p>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public abstract class NormalText__<
-	PC extends Content<PC>,
-	__ extends NormalText__<PC, __>
-> extends Normal__<PC, __> implements Union_Palpable_Phrasing<__> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	__ extends NormalText__<D, PC, __>
+> extends Normal__<D, PC, __> implements Union_Palpable_Phrasing<D, __> {
 
-	protected NormalText__(NormalText<?, PC, __, ?> element) {
+	protected NormalText__(NormalText<D, PC, ?, __, ?> element) {
 		super(element);
 	}
 }

@@ -30,11 +30,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface MAP_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new map element.
@@ -42,10 +46,10 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 */
-	default MAP<__> map() throws IOException {
+	default MAP<D, __> map() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new MAP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -55,7 +59,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
 	 */
-	default MAP<__> map(String name) throws IOException {
+	default MAP<D, __> map(String name) throws IOException {
 		return map().name(name);
 	}
 
@@ -64,8 +68,10 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> MAP<__> map(IOSupplierE<? extends String, Ex> name) throws IOException, Ex {
+	default <Ex extends Throwable> MAP<D, __> map(IOSupplierE<? extends String, Ex> name) throws IOException, Ex {
 		return map().name(name);
 	}
 
@@ -74,6 +80,8 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -86,6 +94,8 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -140,7 +150,7 @@ public interface MAP_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#close()
 	 * @see  Transparent_c#pc()
 	 */
-	default MAP_c<__> map_c(String name) throws IOException {
+	default MAP_c<D, __> map_c(String name) throws IOException {
 		return map(name)._c();
 	}
 }

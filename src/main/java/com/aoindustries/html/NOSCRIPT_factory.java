@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element">4.12.2 The noscript element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface NOSCRIPT_factory<__ extends Union_Metadata_Phrasing<__>> extends Content<__> {
+public interface NOSCRIPT_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Metadata_Phrasing<D, __>
+> extends Content<D, __> {
 	// TODO
 }

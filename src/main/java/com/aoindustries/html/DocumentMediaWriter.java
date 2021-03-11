@@ -32,86 +32,86 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
 /**
- * A media writer streaming through to a {@link Document}.
+ * A media writer streaming through to a {@link AnyDocument Document}.
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Take parent context <PC> and implement a __() to close?
-public class DocumentMediaWriter extends MediaWriter {
+public class DocumentMediaWriter<D extends AnyDocument<D>> extends MediaWriter {
 
-	private final Document document;
+	private final D document;
 
-	public DocumentMediaWriter(Document document, MediaEncoder encoder, Writer out) {
+	public DocumentMediaWriter(D document, MediaEncoder encoder, Writer out) {
 		super(document.encodingContext, encoder, out);
 		this.document = document;
 	}
 
-	public DocumentMediaWriter(Document document, MediaEncoder encoder) {
+	public DocumentMediaWriter(D document, MediaEncoder encoder) {
 		this(document, encoder, document.getUnsafe(null));
 	}
 
-	public Document getDocument() {
+	public D getDocument() {
 		return document;
 	}
 
 	@Override
-	protected DocumentMediaWriter getTextWriter() throws UnsupportedEncodingException {
+	protected DocumentMediaWriter<D> getTextWriter() throws UnsupportedEncodingException {
 		if(textWriter == null) {
 			MediaEncoder textEncoder = MediaEncoder.getInstance(document.encodingContext, MediaType.TEXT, getEncoder().getValidMediaInputType());
-			textWriter = (textEncoder == null) ? this : new DocumentMediaWriter(document, textEncoder, this);
+			textWriter = (textEncoder == null) ? this : new DocumentMediaWriter<>(document, textEncoder, this);
 		}
-		return (DocumentMediaWriter)textWriter;
+		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter append(char c) throws IOException {
+	public DocumentMediaWriter<D> append(char c) throws IOException {
 		super.append(c);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter append(CharSequence csq) throws IOException {
+	public DocumentMediaWriter<D> append(CharSequence csq) throws IOException {
 		super.append(csq);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter append(CharSequence csq, int start, int end) throws IOException {
+	public DocumentMediaWriter<D> append(CharSequence csq, int start, int end) throws IOException {
 		super.append(csq, start, end);
 		return this;
 	}
 
-	// Not delegating to Document.nl(), because the newlines themselves may need to be encoded.
+	// Not delegating to AnyDocument.nl(), because the newlines themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter nl() throws IOException {
+	public DocumentMediaWriter<D> nl() throws IOException {
 		super.nl();
 		return this;
 	}
 
-	// Not delegating to Document.nli(), because the newlines and tabs themselves may need to be encoded.
+	// Not delegating to AnyDocument.nli(), because the newlines and tabs themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter nli() throws IOException {
+	public DocumentMediaWriter<D> nli() throws IOException {
 		super.nli();
 		return this;
 	}
 
-	// Not delegating to Document.nli(int), because the newlines and tabs themselves may need to be encoded.
+	// Not delegating to AnyDocument.nli(int), because the newlines and tabs themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter nli(int depthOffset) throws IOException {
+	public DocumentMediaWriter<D> nli(int depthOffset) throws IOException {
 		super.nli(depthOffset);
 		return this;
 	}
 
-	// Not delegating to Document.indent(), because the tabs themselves may need to be encoded.
+	// Not delegating to AnyDocument.indent(), because the tabs themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter indent() throws IOException {
+	public DocumentMediaWriter<D> indent() throws IOException {
 		super.indent();
 		return this;
 	}
 
-	// Not delegating to Document.indent(int), because the tabs themselves may need to be encoded.
+	// Not delegating to AnyDocument.indent(int), because the tabs themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter indent(int depthOffset) throws IOException {
+	public DocumentMediaWriter<D> indent(int depthOffset) throws IOException {
 		super.indent(depthOffset);
 		return this;
 	}
@@ -119,7 +119,7 @@ public class DocumentMediaWriter extends MediaWriter {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#getIndent()}.
+	 * Delegates to {@link AnyDocument#getIndent()}.
 	 * </p>
 	 */
 	@Override
@@ -130,11 +130,11 @@ public class DocumentMediaWriter extends MediaWriter {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#setIndent(boolean)}.
+	 * Delegates to {@link AnyDocument#setIndent(boolean)}.
 	 * </p>
 	 */
 	@Override
-	public DocumentMediaWriter setIndent(boolean indent) {
+	public DocumentMediaWriter<D> setIndent(boolean indent) {
 		document.setIndent(indent);
 		return this;
 	}
@@ -142,7 +142,7 @@ public class DocumentMediaWriter extends MediaWriter {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#getDepth()}.
+	 * Delegates to {@link AnyDocument#getDepth()}.
 	 * </p>
 	 */
 	@Override
@@ -153,11 +153,11 @@ public class DocumentMediaWriter extends MediaWriter {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#setDepth(int)}.
+	 * Delegates to {@link AnyDocument#setDepth(int)}.
 	 * </p>
 	 */
 	@Override
-	public DocumentMediaWriter setDepth(int depth) {
+	public DocumentMediaWriter<D> setDepth(int depth) {
 		document.setDepth(depth);
 		return this;
 	}
@@ -165,11 +165,11 @@ public class DocumentMediaWriter extends MediaWriter {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#incDepth()}.
+	 * Delegates to {@link AnyDocument#incDepth()}.
 	 * </p>
 	 */
 	@Override
-	public DocumentMediaWriter incDepth() {
+	public DocumentMediaWriter<D> incDepth() {
 		document.incDepth();
 		return this;
 	}
@@ -177,43 +177,43 @@ public class DocumentMediaWriter extends MediaWriter {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * Delegates to {@link Document#decDepth()}.
+	 * Delegates to {@link AnyDocument#decDepth()}.
 	 * </p>
 	 */
 	@Override
-	public DocumentMediaWriter decDepth() {
+	public DocumentMediaWriter<D> decDepth() {
 		document.decDepth();
 		return this;
 	}
 
-	// Not delegating to Document.sp(), because the spaces themselves may need to be encoded.
+	// Not delegating to AnyDocument.sp(), because the spaces themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter sp() throws IOException {
+	public DocumentMediaWriter<D> sp() throws IOException {
 		super.sp();
 		return this;
 	}
 
-	// Not delegating to Document.sp(int), because the spaces themselves may need to be encoded.
+	// Not delegating to AnyDocument.sp(int), because the spaces themselves may need to be encoded.
 	@Override
-	public DocumentMediaWriter sp(int count) throws IOException {
+	public DocumentMediaWriter<D> sp(int count) throws IOException {
 		super.sp(count);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter nbsp() throws IOException {
+	public DocumentMediaWriter<D> nbsp() throws IOException {
 		super.nbsp();
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter nbsp(int count) throws IOException {
+	public DocumentMediaWriter<D> nbsp(int count) throws IOException {
 		super.nbsp(count);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter text(char ch) throws IOException {
+	public DocumentMediaWriter<D> text(char ch) throws IOException {
 		super.text(ch);
 		return this;
 	}
@@ -221,44 +221,50 @@ public class DocumentMediaWriter extends MediaWriter {
 	// TODO: codePoint?
 
 	@Override
-	public DocumentMediaWriter text(char[] cbuf) throws IOException {
+	public DocumentMediaWriter<D> text(char[] cbuf) throws IOException {
 		super.text(cbuf);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter text(char[] cbuf, int offset, int len) throws IOException {
+	public DocumentMediaWriter<D> text(char[] cbuf, int offset, int len) throws IOException {
 		super.text(cbuf, offset, len);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter text(CharSequence csq) throws IOException {
+	public DocumentMediaWriter<D> text(CharSequence csq) throws IOException {
 		super.text(csq);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter text(CharSequence csq, int start, int end) throws IOException {
+	public DocumentMediaWriter<D> text(CharSequence csq, int start, int end) throws IOException {
 		super.text(csq, start, end);
 		return this;
 	}
 
 	@Override
-	public DocumentMediaWriter text(Object text) throws IOException {
+	public DocumentMediaWriter<D> text(Object text) throws IOException {
 		super.text(text);
 		return this;
 	}
 
+	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
 	@Override
-	public <Ex extends Throwable> DocumentMediaWriter text(IOSupplierE<?,Ex> text) throws IOException, Ex {
+	public <Ex extends Throwable> DocumentMediaWriter<D> text(IOSupplierE<?, Ex> text) throws IOException, Ex {
 		super.text(text);
 		return this;
 	}
 
+	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
 	@Override
-	public <Ex extends Throwable> DocumentMediaWriter text(MediaWritable<Ex> text) throws IOException, Ex {
-		try (DocumentMediaWriter tw = text()) {
+	public <Ex extends Throwable> DocumentMediaWriter<D> text(MediaWritable<Ex> text) throws IOException, Ex {
+		try (DocumentMediaWriter<D> tw = text()) {
 			if(text != null) {
 				text.writeTo(tw);
 			}
@@ -267,10 +273,10 @@ public class DocumentMediaWriter extends MediaWriter {
 	}
 
 	@Override
-	public DocumentMediaWriter text() throws IOException {
-		DocumentMediaWriter tw = getTextWriter();
+	public DocumentMediaWriter<D> text() throws IOException {
+		DocumentMediaWriter<D> tw = getTextWriter();
 		if(tw != this) textWriter.getEncoder().writePrefixTo(this);
-		return new DocumentMediaWriter(
+		return new DocumentMediaWriter<D>(
 			document,
 			tw.getEncoder(),
 			tw.out

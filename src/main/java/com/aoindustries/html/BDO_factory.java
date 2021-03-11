@@ -31,11 +31,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface BDO_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new bdo element.
@@ -43,10 +47,10 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
 	 * </p>
 	 */
-	default BDO<__> bdo() throws IOException {
+	default BDO<D, __> bdo() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new BDO<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -58,7 +62,20 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 */
-	default BDO<__> bdo(String dir) throws IOException {
+	default BDO<D, __> bdo(String dir) throws IOException {
+		return bdo().dir(dir);
+	}
+
+	/**
+	 * Opens a new bdo element with the given dir attribute.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
+	 */
+	default <Ex extends Throwable> BDO<D, __> bdo(Suppliers.String<Ex> dir) throws IOException, Ex {
 		return bdo().dir(dir);
 	}
 
@@ -70,7 +87,7 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 *
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 */
-	default <Ex extends Throwable> BDO<__> bdo(Suppliers.String<Ex> dir) throws IOException, Ex {
+	default BDO<D, __> bdo(Value dir) throws IOException {
 		return bdo().dir(dir);
 	}
 
@@ -80,21 +97,10 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 */
-	default BDO<__> bdo(Value dir) throws IOException {
-		return bdo().dir(dir);
-	}
-
-	/**
-	 * Opens a new bdo element with the given dir attribute.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
-	 * </p>
-	 *
-	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
-	 */
-	default <Ex extends Throwable> BDO<__> bdo(IOSupplierE<? extends Value, Ex> dir) throws IOException, Ex {
+	default <Ex extends Throwable> BDO<D, __> bdo(IOSupplierE<? extends Value, Ex> dir) throws IOException, Ex {
 		return bdo().dir(dir);
 	}
 
@@ -104,6 +110,8 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
 	 * </p>
 	 *
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
@@ -118,11 +126,12 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ bdo__(Value dir, IOConsumerE<? super BDO__<__>, Ex> bdo) throws IOException, Ex {
+	default <Ex extends Throwable> __ bdo__(Value dir, IOConsumerE<? super BDO__<D, __>, Ex> bdo) throws IOException, Ex {
 		return bdo(dir).__(bdo);
 	}
 
@@ -169,7 +178,7 @@ public interface BDO_factory<__ extends Union_Palpable_Phrasing<__>> extends Con
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default BDO_c<__> bdo_c(Value dir) throws IOException {
+	default BDO_c<D, __> bdo_c(Value dir) throws IOException {
 		return bdo(dir)._c();
 	}
 }

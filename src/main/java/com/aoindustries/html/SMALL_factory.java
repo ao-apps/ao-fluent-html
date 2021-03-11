@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SMALL_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface SMALL_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new small element.
@@ -41,10 +45,10 @@ public interface SMALL_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
 	 * </p>
 	 */
-	default SMALL<__> small() throws IOException {
+	default SMALL<D, __> small() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SMALL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface SMALL_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface SMALL_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ small__(IOConsumerE<? super SMALL__<__>, Ex> small) throws IOException, Ex {
+	default <Ex extends Throwable> __ small__(IOConsumerE<? super SMALL__<D, __>, Ex> small) throws IOException, Ex {
 		return small().__(small);
 	}
 
@@ -109,7 +117,7 @@ public interface SMALL_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default SMALL_c<__> small_c() throws IOException {
+	default SMALL_c<D, __> small_c() throws IOException {
 		return small()._c();
 	}
 }

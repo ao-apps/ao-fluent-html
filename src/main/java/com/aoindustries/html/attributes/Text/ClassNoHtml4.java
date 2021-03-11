@@ -37,9 +37,11 @@ import java.io.IOException;
  * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface ClassNoHtml4<E extends Element<E, ?> & ClassNoHtml4<E>> extends Class<E> {
+public interface ClassNoHtml4<E extends Element<?, ?, E> & ClassNoHtml4<E>> extends Class<E> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
@@ -89,6 +91,8 @@ public interface ClassNoHtml4<E extends Element<E, ?> & ClassNoHtml4<E>> extends
 	 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #clazz(java.lang.Object)
 	 */
 	@Override
@@ -110,6 +114,8 @@ public interface ClassNoHtml4<E extends Element<E, ?> & ClassNoHtml4<E>> extends
 	 * <blockquote>
 	 * In HTML 4.01, the class attribute cannot be used with: &lt;base&gt;, &lt;head&gt;, &lt;html&gt;, &lt;meta&gt;, &lt;param&gt;, &lt;script&gt;, &lt;style&gt;, and &lt;title&gt;.
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #clazz(java.lang.Object)
 	 */

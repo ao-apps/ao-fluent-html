@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface ASIDE_factory<__ extends SectioningContent<__>> extends Content<__> {
+public interface ASIDE_factory<
+	D  extends AnyDocument<D>,
+	__ extends SectioningContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new aside element.
@@ -41,10 +45,10 @@ public interface ASIDE_factory<__ extends SectioningContent<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
 	 * </p>
 	 */
-	default ASIDE<__> aside() throws IOException {
+	default ASIDE<D, __> aside() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new ASIDE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface ASIDE_factory<__ extends SectioningContent<__>> extends Content
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface ASIDE_factory<__ extends SectioningContent<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ aside__(IOConsumerE<? super ASIDE__<__>, Ex> aside) throws IOException, Ex {
+	default <Ex extends Throwable> __ aside__(IOConsumerE<? super ASIDE__<D, __>, Ex> aside) throws IOException, Ex {
 		return aside().__(aside);
 	}
 
@@ -109,7 +117,7 @@ public interface ASIDE_factory<__ extends SectioningContent<__>> extends Content
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default ASIDE_c<__> aside_c() throws IOException {
+	default ASIDE_c<D, __> aside_c() throws IOException {
 		return aside()._c();
 	}
 }

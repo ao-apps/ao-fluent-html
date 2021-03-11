@@ -31,11 +31,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends Content<__> {
+public interface IMG_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Embedded_Interactive<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new img element.
@@ -44,10 +48,10 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
 	 */
-	default IMG<__> img() throws IOException {
+	default IMG<D, __> img() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new IMG<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -59,7 +63,7 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
 	 */
-	default IMG<__> img(String src) throws IOException {
+	default IMG<D, __> img(String src) throws IOException {
 		return img().src(src);
 	}
 
@@ -69,8 +73,10 @@ public interface IMG_factory<__ extends Union_Embedded_Interactive<__>> extends 
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">4.8.3 The img element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> IMG<__> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
+	default <Ex extends Throwable> IMG<D, __> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
 		return img().src(src);
 	}
 }

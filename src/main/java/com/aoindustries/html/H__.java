@@ -25,17 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public abstract class H__<
-	PC extends HeadingContent<PC>,
-	__ extends H__<PC, __>
-> extends NormalText__<PC, __> implements PhrasingContent<__> {
+	D  extends AnyDocument<D>,
+	PC extends HeadingContent<D, PC>,
+	__ extends H__<D, PC, __>
+> extends NormalText__<D, PC, __> implements PhrasingContent<D, __> {
 
-	protected H__(H<?, PC, __, ?> element) {
+	protected H__(H<D, PC, ?, __, ?> element) {
 		super(element);
 	}
 }

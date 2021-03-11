@@ -30,11 +30,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface HR_factory<__ extends FlowContent<__>> extends Content<__> {
+public interface HR_factory<
+	D  extends AnyDocument<D>,
+	__ extends FlowContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new hr element.
@@ -43,10 +47,10 @@ public interface HR_factory<__ extends FlowContent<__>> extends Content<__> {
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
 	 * </ul>
 	 */
-	default HR<__> hr() throws IOException {
+	default HR<D, __> hr() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new HR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 

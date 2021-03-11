@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element">4.5.11 The rt element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends RUBY_content<__>>
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface RT_factory<__ extends Content<__>> extends Content<__> {
+public interface RT_factory<
+	D  extends AnyDocument<D>,
+	// TODO: __ extends RUBY_content<D, __>
+	__ extends Content<D, __>
+> extends Content<D, __> {
 	// TODO
 }

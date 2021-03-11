@@ -32,11 +32,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends Content<__> {
+public interface SCRIPT_factory<
+	D  extends AnyDocument<D>,
+	__ extends ScriptSupportingContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new script element.
@@ -47,10 +51,10 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 *
 	 * @see Doctype#scriptType(java.lang.Appendable)
 	 */
-	default SCRIPT<__> script() throws IOException {
+	default SCRIPT<D, __> script() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SCRIPT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -62,10 +66,10 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default SCRIPT<__> script(String type) throws IOException {
+	default SCRIPT<D, __> script(String type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
@@ -76,8 +80,10 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> SCRIPT<__> script(Suppliers.String<Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> SCRIPT<D, __> script(Suppliers.String<Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
@@ -89,10 +95,10 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default SCRIPT<__> script(SCRIPT.Type type) throws IOException {
+	default SCRIPT<D, __> script(SCRIPT.Type type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
@@ -103,8 +109,10 @@ public interface SCRIPT_factory<__ extends ScriptSupportingContent<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> SCRIPT<__> script(IOSupplierE<? extends SCRIPT.Type, Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> SCRIPT<D, __> script(IOSupplierE<? extends SCRIPT.Type, Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 }

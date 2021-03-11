@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ondrag<E extends Element<E, ?> & Ondrag<E>> {
+public interface Ondrag<E extends Element<?, ?, E> & Ondrag<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Ondrag<E extends Element<E, ?> & Ondrag<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ondrag(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ondrag(IOSupplierE<?, Ex> ondrag) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Ondrag<E extends Element<E, ?> & Ondrag<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondrag.asp">HTML ondrag Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ondrag(java.lang.Object)
 	 */

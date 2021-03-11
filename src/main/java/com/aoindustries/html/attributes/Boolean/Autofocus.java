@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Autofocus<E extends Element<E, ?> & Autofocus<E>> {
+public interface Autofocus<E extends Element<?, ?, E> & Autofocus<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
@@ -65,6 +67,8 @@ public interface Autofocus<E extends Element<E, ?> & Autofocus<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_autofocus.asp">HTML autofocus Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #autofocus(java.lang.Boolean)
 	 */

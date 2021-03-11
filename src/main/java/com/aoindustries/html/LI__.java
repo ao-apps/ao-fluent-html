@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class LI__<PC extends ListContent<PC>>
-	extends NormalText__<PC, LI__<PC>>
-	implements FlowContent<LI__<PC>> {
+public class LI__<
+	D  extends AnyDocument<D>,
+	PC extends ListContent<D, PC>
+>
+	extends NormalText__<D, PC, LI__<D, PC>>
+	implements FlowContent<D, LI__<D, PC>> {
 
-	protected LI__(LI<PC> element) {
+	protected LI__(LI<D, PC> element) {
 		super(element);
 	}
 }

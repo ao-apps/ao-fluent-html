@@ -28,15 +28,19 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BLOCKQUOTE_c<PC extends PalpableContent<PC>>
-	extends NormalText_c<PC, BLOCKQUOTE_c<PC>>
-	implements FlowContent<BLOCKQUOTE_c<PC>> {
+public class BLOCKQUOTE_c<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+>
+	extends NormalText_c<D, PC, BLOCKQUOTE_c<D, PC>>
+	implements FlowContent<D, BLOCKQUOTE_c<D, PC>> {
 
-	protected BLOCKQUOTE_c(BLOCKQUOTE<PC> element) {
+	protected BLOCKQUOTE_c(BLOCKQUOTE<D, PC> element) {
 		super(element);
 	}
 }

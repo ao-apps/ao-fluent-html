@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">4.8.1 The picture element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface PICTURE_factory<__ extends EmbeddedContent<__>> extends Content<__> {
+public interface PICTURE_factory<
+	D  extends AnyDocument<D>,
+	__ extends EmbeddedContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

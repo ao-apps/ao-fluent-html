@@ -31,11 +31,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Content<__> {
+public interface META_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Metadata_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new meta element.
@@ -45,10 +49,10 @@ public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_meta.asp">HTML meta tag</a>.</li>
 	 * </ul>
 	 */
-	default META<__> meta() throws IOException {
+	default META<D, __> meta() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new META<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -63,7 +67,7 @@ public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 * @see #meta()
 	 * @see com.aoindustries.html.META#name(java.lang.Enum)
 	 */
-	default META<__> meta(META.Name name) throws IOException {
+	default META<D, __> meta(META.Name name) throws IOException {
 		return meta().name(name);
 	}
 
@@ -78,7 +82,7 @@ public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 * @see #meta()
 	 * @see com.aoindustries.html.META#httpEquiv(java.lang.Enum)
 	 */
-	default META<__> meta(META.HttpEquiv httpEquiv) throws IOException {
+	default META<D, __> meta(META.HttpEquiv httpEquiv) throws IOException {
 		return meta().httpEquiv(httpEquiv);
 	}
 
@@ -93,7 +97,7 @@ public interface META_factory<__ extends Union_Metadata_Phrasing<__>> extends Co
 	 * @see #meta()
 	 * @see com.aoindustries.html.META#charset(java.lang.Enum)
 	 */
-	default META<__> meta(com.aoindustries.html.attributes.Enum.Charset.Value charset) throws IOException {
+	default META<D, __> meta(com.aoindustries.html.attributes.Enum.Charset.Value charset) throws IOException {
 		return meta().charset(charset);
 	}
 	// No meta__(), since either name, http-equiv, or itemprop is required (TODO: confirm itemprop-only metas?)

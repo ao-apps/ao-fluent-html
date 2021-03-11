@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element">4.9.7 The tfoot element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TFOOT_c<PC extends TABLE_content<PC>>
-	extends Normal_c<PC, TFOOT_c<PC>>
-	implements Union_TBODY_THEAD_TFOOT<TFOOT_c<PC>> {
+public class TFOOT_c<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+>
+	extends Normal_c<D, PC, TFOOT_c<D, PC>>
+	implements Union_TBODY_THEAD_TFOOT<D, TFOOT_c<D, PC>> {
 
-	protected TFOOT_c(TFOOT<PC> element) {
+	protected TFOOT_c(TFOOT<D, PC> element) {
 		super(element);
 	}
 }

@@ -25,29 +25,33 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link MetadataContent} and {@link PhrasingContent}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Union_Metadata_Phrasing<__ extends Union_Metadata_Phrasing<__>> extends
+public interface Union_Metadata_Phrasing<
+	D  extends AnyDocument<D>,
+	__ extends Union_Metadata_Phrasing<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: COLGROUP_ScriptSupporting<__>
+	// Inherited: COLGROUP_ScriptSupporting<D, __>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>,
+	// Inherited: Content<D, __>
+	ScriptSupportingContent<D, __>,
 
 	//
 	// Factories:
 	//
-	LINK_factory<__>,
-	META_factory<__>,
-	NOSCRIPT_factory<__>
-	// Inherited: SCRIPT_factory<__>
-	// Inherited: TEMPLATE_factory<__>
+	LINK_factory<D, __>,
+	META_factory<D, __>,
+	NOSCRIPT_factory<D, __>
+	// Inherited: SCRIPT_factory<D, __>
+	// Inherited: TEMPLATE_factory<D, __>
 {
 }

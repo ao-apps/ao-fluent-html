@@ -30,34 +30,38 @@ import java.util.function.Function;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 //       the tabindex attribute specified.
-public class A<PC extends Union_Interactive_Phrasing<PC>> extends
-	Transparent<A<PC>, PC, A_c<PC>> implements
-	com.aoindustries.html.attributes.Url.Href<A<PC>>,
-	com.aoindustries.html.attributes.Enum.Target<A<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
+public class A<
+	D  extends AnyDocument<D>,
+	PC extends Union_Interactive_Phrasing<D, PC>
+> extends
+	Transparent<D, PC, A<D, PC>, A_c<D, PC>> implements
+	com.aoindustries.html.attributes.Url.Href<A<D, PC>>,
+	com.aoindustries.html.attributes.Enum.Target<A<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: download
 	// TODO: ping
-	com.aoindustries.html.attributes.Enum.Rel<A<PC>, A.Rel>,
-	com.aoindustries.html.attributes.String.Hreflang<A<PC>>,
+	com.aoindustries.html.attributes.Enum.Rel<A<D, PC>, A.Rel>,
+	com.aoindustries.html.attributes.String.Hreflang<A<D, PC>>,
 	// TODO: type
 	// TODO: referrerpolicy
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<A<PC>>
+	AlmostGlobalAttributes<A<D, PC>>
 {
 
 	private static final com.aoindustries.i18n.Resources RESOURCES = com.aoindustries.i18n.Resources.getResources(A.class);
 
-	public A(Document document, PC pc) {
+	public A(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected A<PC> writeOpen(Writer out) throws IOException {
+	protected A<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<a", false);
 		return this;
 	}
@@ -77,7 +81,7 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	 *
 	 * @return  The parent content model this element is within
 	 *
-	 * @see  Document#text(java.lang.Object)
+	 * @see  AnyDocument#text(java.lang.Object)
 	 * @see  NormalText#__(java.lang.Object)
 	 *
 	 * @throws  IllegalStateException when {@code text != null} and current content model does not allow text
@@ -102,7 +106,7 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 	 * <li>See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Rel implements Function<Document, String> {
+	public enum Rel implements Function<AnyDocument<?>, String> {
 		ALTERNATE("alternate"),
 		/**
 		 * @deprecated
@@ -161,13 +165,13 @@ public class A<PC extends Union_Interactive_Phrasing<PC>> extends
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}
 
 	@Override
-	protected A_c<PC> new_c() {
+	protected A_c<D, PC> new_c() {
 		return new A_c<>(this);
 	}
 }

@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface NAV_factory<__ extends SectioningContent<__>> extends Content<__> {
+public interface NAV_factory<
+	D  extends AnyDocument<D>,
+	__ extends SectioningContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new nav element.
@@ -41,10 +45,10 @@ public interface NAV_factory<__ extends SectioningContent<__>> extends Content<_
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
 	 * </p>
 	 */
-	default NAV<__> nav() throws IOException {
+	default NAV<D, __> nav() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new NAV<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface NAV_factory<__ extends SectioningContent<__>> extends Content<_
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface NAV_factory<__ extends SectioningContent<__>> extends Content<_
 	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ nav__(IOConsumerE<? super NAV__<__>, Ex> nav) throws IOException, Ex {
+	default <Ex extends Throwable> __ nav__(IOConsumerE<? super NAV__<D, __>, Ex> nav) throws IOException, Ex {
 		return nav().__(nav);
 	}
 
@@ -109,7 +117,7 @@ public interface NAV_factory<__ extends SectioningContent<__>> extends Content<_
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default NAV_c<__> nav_c() throws IOException {
+	default NAV_c<D, __> nav_c() throws IOException {
 		return nav()._c();
 	}
 }

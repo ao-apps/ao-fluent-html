@@ -28,25 +28,29 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">4.10.13 The progress element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Phrasing content, but there must be no progress element descendants.
-public class PROGRESS<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<PROGRESS<PC>, PC, PROGRESS__<PC>, PROGRESS_c<PC>> implements
+public class PROGRESS<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, PROGRESS<D, PC>, PROGRESS__<D, PC>, PROGRESS_c<D, PC>> implements
 	// TODO: value
 	// TODO: max
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<PROGRESS<PC>>
+	AlmostGlobalAttributes<PROGRESS<D, PC>>
 {
 
-	public PROGRESS(Document document, PC pc) {
+	public PROGRESS(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected PROGRESS<PC> writeOpen(Writer out) throws IOException {
+	protected PROGRESS<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<progress", false);
 		return this;
 	}
@@ -57,12 +61,12 @@ public class PROGRESS<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected PROGRESS__<PC> new__() {
+	protected PROGRESS__<D, PC> new__() {
 		return new PROGRESS__<>(this);
 	}
 
 	@Override
-	protected PROGRESS_c<PC> new_c() {
+	protected PROGRESS_c<D, PC> new_c() {
 		return new PROGRESS_c<>(this);
 	}
 }

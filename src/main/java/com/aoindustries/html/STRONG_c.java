@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class STRONG_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, STRONG_c<PC>>
-	implements PhrasingContent<STRONG_c<PC>> {
+public class STRONG_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, STRONG_c<D, PC>>
+	implements PhrasingContent<D, STRONG_c<D, PC>> {
 
-	protected STRONG_c(STRONG<PC> element) {
+	protected STRONG_c(STRONG<D, PC> element) {
 		super(element);
 	}
 }

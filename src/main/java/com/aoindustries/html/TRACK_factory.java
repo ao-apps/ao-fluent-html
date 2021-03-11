@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">4.8.11 The track element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends MediaContent<__>>
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface TRACK_factory<__ extends Content<__>> extends Content<__> {
+public interface TRACK_factory<
+	D  extends AnyDocument<D>,
+	// TODO: __ extends MediaContent<D, __>
+	__ extends Content<D, __>
+> extends Content<D, __> {
 	// TODO
 }

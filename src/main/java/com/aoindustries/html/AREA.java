@@ -33,37 +33,41 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, PC> implements
-	com.aoindustries.html.attributes.Text.Alt<AREA<PC>>,
-	com.aoindustries.html.attributes.Dimension.Coords<AREA<PC>>,
+public class AREA<
+	D  extends AnyDocument<D>,
+	PC extends PhrasingContent<D, PC>
+> extends VoidElement<D, PC, AREA<D, PC>> implements
+	com.aoindustries.html.attributes.Text.Alt<AREA<D, PC>>,
+	com.aoindustries.html.attributes.Dimension.Coords<AREA<D, PC>>,
 	// TODO: download
-	com.aoindustries.html.attributes.Url.Href<AREA<PC>>,
-	com.aoindustries.html.attributes.String.Hreflang<AREA<PC>>,
-	com.aoindustries.html.attributes.Text.Media<AREA<PC>>,
+	com.aoindustries.html.attributes.Url.Href<AREA<D, PC>>,
+	com.aoindustries.html.attributes.String.Hreflang<AREA<D, PC>>,
+	com.aoindustries.html.attributes.Text.Media<AREA<D, PC>>,
 	// TODO: name? (MDN only)
 	// TODO: nohref
 	// TODO: ping
 	// TODO: referrerpolicy
-	com.aoindustries.html.attributes.Enum.Rel<AREA<PC>, A.Rel>,
-	com.aoindustries.html.attributes.Enum.Shape<AREA<PC>, AREA.Shape>,
-	com.aoindustries.html.attributes.Enum.Target<AREA<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
+	com.aoindustries.html.attributes.Enum.Rel<AREA<D, PC>, A.Rel>,
+	com.aoindustries.html.attributes.Enum.Shape<AREA<D, PC>, AREA.Shape>,
+	com.aoindustries.html.attributes.Enum.Target<AREA<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: type (deprecated since definition is in conflict and doesn't do anything?)
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	com.aoindustries.html.attributes.Integer.TabindexHtml4<AREA<PC>>,
+	com.aoindustries.html.attributes.Integer.TabindexHtml4<AREA<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<AREA<PC>>
+	AlmostGlobalAttributes<AREA<D, PC>>
 {
 
-	public AREA(Document document, PC pc) {
+	public AREA(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected AREA<PC> writeOpen(Writer out) throws IOException {
+	protected AREA<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<area", false);
 		return this;
 	}
@@ -79,7 +83,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 	 * <li>See <a href="https://www.w3schools.com/tags/att_area_shape.asp">HTML area shape Attribute</a>.</li>
 	 * </ul>
 	 */
-	public enum Shape implements Function<Document, String> {
+	public enum Shape implements Function<AnyDocument<?>, String> {
 		DEFAULT("default"),
 		RECT("rect"),
 		CIRCLE("circle"),
@@ -97,7 +101,7 @@ public class AREA<PC extends PhrasingContent<PC>> extends VoidElement<AREA<PC>, 
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}

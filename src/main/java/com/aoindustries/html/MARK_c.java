@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class MARK_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, MARK_c<PC>>
-	implements PhrasingContent<MARK_c<PC>> {
+public class MARK_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, MARK_c<D, PC>>
+	implements PhrasingContent<D, MARK_c<D, PC>> {
 
-	protected MARK_c(MARK<PC> element) {
+	protected MARK_c(MARK<D, PC> element) {
 		super(element);
 	}
 }

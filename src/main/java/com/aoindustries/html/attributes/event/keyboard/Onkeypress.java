@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onkeypress<E extends Element<E, ?> & Onkeypress<E>> {
+public interface Onkeypress<E extends Element<?, ?, E> & Onkeypress<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onkeypress<E extends Element<E, ?> & Onkeypress<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onkeypress(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onkeypress(IOSupplierE<?, Ex> onkeypress) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onkeypress<E extends Element<E, ?> & Onkeypress<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onkeypress.asp">HTML onkeypress Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onkeypress(java.lang.Object)
 	 */

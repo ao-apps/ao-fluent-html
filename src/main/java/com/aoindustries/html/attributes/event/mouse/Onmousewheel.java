@@ -31,12 +31,14 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel onwheel} attribute instead.
  *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface Onmousewheel<E extends Element<E, ?> & Onmousewheel<E>> {
+public interface Onmousewheel<E extends Element<?, ?, E> & Onmousewheel<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
@@ -53,6 +55,8 @@ public interface Onmousewheel<E extends Element<E, ?> & Onmousewheel<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onmousewheel(java.lang.Object)
 	 *
 	 * @deprecated  The onmousewheel attribute is deprecated, you should use the {@linkplain Onwheel#onwheel(com.aoindustries.io.function.IOSupplierE) onwheel} attribute instead.
@@ -64,6 +68,8 @@ public interface Onmousewheel<E extends Element<E, ?> & Onmousewheel<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_onmousewheel.asp">HTML onmousewheel Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onmousewheel(java.lang.Object)
 	 *

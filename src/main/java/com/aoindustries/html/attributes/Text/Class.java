@@ -36,10 +36,12 @@ import java.io.IOException;
  * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
 // TODO: Move to String?
-public interface Class<E extends Element<E, ?> & Class<E>> {
+public interface Class<E extends Element<?, ?, E> & Class<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_class.asp">HTML Global class Attribute</a>.
@@ -73,6 +75,8 @@ public interface Class<E extends Element<E, ?> & Class<E>> {
 	 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #clazz(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E clazz(IOSupplierE<?, Ex> clazz) throws IOException, Ex {
@@ -84,6 +88,8 @@ public interface Class<E extends Element<E, ?> & Class<E>> {
 	 * <blockquote>
 	 * In HTML5, the class attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #clazz(java.lang.Object)
 	 */

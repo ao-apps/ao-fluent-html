@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Selected<E extends Element<E, ?> & Selected<E>> {
+public interface Selected<E extends Element<?, ?, E> & Selected<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
@@ -54,6 +56,8 @@ public interface Selected<E extends Element<E, ?> & Selected<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_selected.asp">HTML selected Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #selected(java.lang.Boolean)
 	 */

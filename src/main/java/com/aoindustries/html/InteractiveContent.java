@@ -28,38 +28,42 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#interactive_content">Interactive content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface InteractiveContent<__ extends InteractiveContent<__>> extends
+public interface InteractiveContent<
+	D  extends AnyDocument<D>,
+	__ extends InteractiveContent<D, __>
+> extends
 	//
 	// Unions:
 	//
-	// Inherited: Union_Embedded_Interactive<__>
-	Union_Interactive_Phrasing<__>,
+	// Inherited: Union_Embedded_Interactive<D, __>
+	Union_Interactive_Phrasing<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	// Inherited: A_factory<__> // if the href attribute is present
-	// Inherited: AUDIO_factory<__> // if the controls attribute is present
-	// Inherited: BUTTON_factory<__>
-	DETAILS_factory<__>,
-	// Inherited: EMBED_factory<__>
-	// Inherited: IFRAME_factory<__>
-	// Inherited: IMG_factory<__> // if the usemap attribute is present
-	// Inherited: INPUT_factory<__> // if type attribute is not in the hidden state
-	// Inherited: LABEL_factory<__>
-	MENU_factory<__> // (MDN only) if the type attribute is in the toolbar state
-	// Inherited: OBJECT_factory<__> // if the usemap attribute is present
-	// Inherited: SELECT_factory<__>
-	// Inherited: TEXTAREA_factory<__>
-	// Inherited: VIDEO_factory<__> // if the controls attribute is present
+	// Inherited: A_factory<D, __> // if the href attribute is present
+	// Inherited: AUDIO_factory<D, __> // if the controls attribute is present
+	// Inherited: BUTTON_factory<D, __>
+	DETAILS_factory<D, __>,
+	// Inherited: EMBED_factory<D, __>
+	// Inherited: IFRAME_factory<D, __>
+	// Inherited: IMG_factory<D, __> // if the usemap attribute is present
+	// Inherited: INPUT_factory<D, __> // if type attribute is not in the hidden state
+	// Inherited: LABEL_factory<D, __>
+	MENU_factory<D, __> // (MDN only) if the type attribute is in the toolbar state
+	// Inherited: OBJECT_factory<D, __> // if the usemap attribute is present
+	// Inherited: SELECT_factory<D, __>
+	// Inherited: TEXTAREA_factory<D, __>
+	// Inherited: VIDEO_factory<D, __> // if the controls attribute is present
 {
 }

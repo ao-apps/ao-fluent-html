@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">4.12.4 The slot element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface SLOT_factory<__ extends PhrasingContent<__>> extends Content<__> {
+public interface SLOT_factory<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends Content<D, __> {
 	// TODO
 }

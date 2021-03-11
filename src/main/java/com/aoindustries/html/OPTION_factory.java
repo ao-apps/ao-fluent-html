@@ -30,11 +30,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface OPTION_factory<__ extends Union_DATALIST_OPTGROUP<__>> extends Content<__> {
+public interface OPTION_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_DATALIST_OPTGROUP<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new option element.
@@ -43,10 +47,10 @@ public interface OPTION_factory<__ extends Union_DATALIST_OPTGROUP<__>> extends 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
 	 * </ul>
 	 */
-	default OPTION<__> option() throws IOException {
+	default OPTION<D, __> option() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new OPTION<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 

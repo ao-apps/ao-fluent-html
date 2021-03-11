@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onstorage<E extends Element<E, ?> & Onstorage<E>> {
+public interface Onstorage<E extends Element<?, ?, E> & Onstorage<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onstorage<E extends Element<E, ?> & Onstorage<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onstorage(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onstorage(IOSupplierE<?, Ex> onstorage) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onstorage<E extends Element<E, ?> & Onstorage<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onstorage.asp">HTML onstorage Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onstorage(java.lang.Object)
 	 */

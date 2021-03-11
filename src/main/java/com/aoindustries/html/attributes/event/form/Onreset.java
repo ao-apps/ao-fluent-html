@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onreset<E extends Element<E, ?> & Onreset<E>> {
+public interface Onreset<E extends Element<?, ?, E> & Onreset<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Onreset<E extends Element<E, ?> & Onreset<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onreset(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onreset(IOSupplierE<?, Ex> onreset) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Onreset<E extends Element<E, ?> & Onreset<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onreset.asp">HTML onreset Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onreset(java.lang.Object)
 	 */

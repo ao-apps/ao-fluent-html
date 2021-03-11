@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class MARK<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<MARK<PC>, PC, MARK__<PC>, MARK_c<PC>> implements
+public class MARK<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, MARK<D, PC>, MARK__<D, PC>, MARK_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MARK<PC>>
+	AlmostGlobalAttributes<MARK<D, PC>>
 {
 
-	public MARK(Document document, PC pc) {
+	public MARK(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected MARK<PC> writeOpen(Writer out) throws IOException {
+	protected MARK<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<mark", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class MARK<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected MARK__<PC> new__() {
+	protected MARK__<D, PC> new__() {
 		return new MARK__<>(this);
 	}
 
 	@Override
-	protected MARK_c<PC> new_c() {
+	protected MARK_c<D, PC> new_c() {
 		return new MARK_c<>(this);
 	}
 }

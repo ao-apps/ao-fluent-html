@@ -28,25 +28,29 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class OL<PC extends PalpableContent<PC>> extends
-	Normal<OL<PC>, PC, OL__<PC>, OL_c<PC>> implements
+public class OL<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	Normal<D, PC, OL<D, PC>, OL__<D, PC>, OL_c<D, PC>> implements
 	// TOOD: reversed
 	// TODO: start
 	// TODO: type
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<OL<PC>>
+	AlmostGlobalAttributes<OL<D, PC>>
 {
 
-	public OL(Document document, PC pc) {
+	public OL(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected OL<PC> writeOpen(Writer out) throws IOException {
+	protected OL<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<ol", false);
 		return this;
 	}
@@ -67,12 +71,12 @@ public class OL<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected OL__<PC> new__() {
+	protected OL__<D, PC> new__() {
 		return new OL__<>(this);
 	}
 
 	@Override
-	protected OL_c<PC> new_c() {
+	protected OL_c<D, PC> new_c() {
 		return new OL_c<>(this);
 	}
 }

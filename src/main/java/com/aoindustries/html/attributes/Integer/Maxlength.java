@@ -33,9 +33,11 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefmaxlength">&lt;input&gt;: The Input (Form Input) element</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Maxlength<E extends Element<E, ?> & Maxlength<E>> {
+public interface Maxlength<E extends Element<?, ?, E> & Maxlength<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
@@ -57,6 +59,8 @@ public interface Maxlength<E extends Element<E, ?> & Maxlength<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_maxlength.asp">HTML maxlength Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #maxlength(java.lang.Integer)
 	 */

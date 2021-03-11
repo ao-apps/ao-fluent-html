@@ -30,23 +30,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Phrasing content, but there must be no dfn element descendants.
-public class DFN<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<DFN<PC>, PC, DFN__<PC>, DFN_c<PC>> implements
+public class DFN<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, DFN<D, PC>, DFN__<D, PC>, DFN_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DFN<PC>>
+	AlmostGlobalAttributes<DFN<D, PC>>
 {
 
-	public DFN(Document document, PC pc) {
+	public DFN(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DFN<PC> writeOpen(Writer out) throws IOException {
+	protected DFN<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<dfn", false);
 		return this;
 	}
@@ -57,12 +61,12 @@ public class DFN<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected DFN__<PC> new__() {
+	protected DFN__<D, PC> new__() {
 		return new DFN__<>(this);
 	}
 
 	@Override
-	protected DFN_c<PC> new_c() {
+	protected DFN_c<D, PC> new_c() {
 		return new DFN_c<>(this);
 	}
 
@@ -75,7 +79,7 @@ public class DFN<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * </p>
 	 */
 	@Override
-	public DFN<PC> title(Object title) throws IOException {
+	public DFN<D, PC> title(Object title) throws IOException {
 		return super.title(title);
 	}
 
@@ -86,9 +90,11 @@ public class DFN<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@Override
-	public <Ex extends Throwable> DFN<PC> title(IOSupplierE<?, Ex> title) throws IOException, Ex {
+	public <Ex extends Throwable> DFN<D, PC> title(IOSupplierE<?, Ex> title) throws IOException, Ex {
 		return super.title(title);
 	}
 
@@ -99,9 +105,11 @@ public class DFN<PC extends Union_Palpable_Phrasing<PC>> extends
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@Override
-	public <Ex extends Throwable> DFN<PC> title(MediaWritable<Ex> title) throws IOException, Ex {
+	public <Ex extends Throwable> DFN<D, PC> title(MediaWritable<Ex> title) throws IOException, Ex {
 		return super.title(title);
 	}
 }

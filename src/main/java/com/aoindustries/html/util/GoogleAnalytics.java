@@ -24,7 +24,7 @@
 package com.aoindustries.html.util;
 
 import com.aoindustries.encoding.Doctype;
-import com.aoindustries.html.Document;
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.LINK;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.net.URIEncoder;
@@ -47,7 +47,7 @@ public class GoogleAnalytics {
 	 *
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
-	public static void writeGlobalSiteTag(Document document, String trackingId) throws IOException {
+	public static void writeGlobalSiteTag(AnyDocument<?> document, String trackingId) throws IOException {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
 			// See https://rehmann.co/blog/optimize-google-analytics-google-tag-manager-via-preconnect-headers/
@@ -74,7 +74,7 @@ public class GoogleAnalytics {
 	 * @param trackingId  No script will be written when {@code null} or empty (after trimming)
 	 */
 	// TODO: Support hitType exception? https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
-	public static void writeAnalyticsJs(Document document, String trackingId) throws IOException {
+	public static void writeAnalyticsJs(AnyDocument<?> document, String trackingId) throws IOException {
 		String trimmedId = Strings.trimNullIfEmpty(trackingId);
 		if(trimmedId != null) {
 			document.script().out(script -> script.indent()

@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">4.12.5 The canvas element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface CANVAS_factory<__ extends Union_Embedded_Palpable_Phrasing<__>> extends Content<__> {
+public interface CANVAS_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Embedded_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 	// TODO
 }

@@ -25,20 +25,24 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link DL_content} and {@link PalpableContent}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("MarkerInterface")
-public interface Union_DL_Palpable<__ extends Union_DL_Palpable<__>> extends
+public interface Union_DL_Palpable<
+	D  extends AnyDocument<D>,
+	__ extends Union_DL_Palpable<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	DIV_factory<__>
+	DIV_factory<D, __>
 {
 }

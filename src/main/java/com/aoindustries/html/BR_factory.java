@@ -30,11 +30,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface BR_factory<__ extends PhrasingContent<__>> extends Content<__> {
+public interface BR_factory<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new br element.
@@ -43,10 +47,10 @@ public interface BR_factory<__ extends PhrasingContent<__>> extends Content<__> 
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
 	 * </ul>
 	 */
-	default BR<__> br() throws IOException {
+	default BR<D, __> br() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new BR<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 

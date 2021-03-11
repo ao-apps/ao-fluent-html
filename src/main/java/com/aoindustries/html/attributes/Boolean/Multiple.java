@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Multiple<E extends Element<E, ?> & Multiple<E>> {
+public interface Multiple<E extends Element<?, ?, E> & Multiple<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
@@ -65,6 +67,8 @@ public interface Multiple<E extends Element<E, ?> & Multiple<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_multiple.asp">HTML multiple Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #multiple(java.lang.Boolean)
 	 */

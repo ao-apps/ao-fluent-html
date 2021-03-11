@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element">4.11.2 The summary element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends DETAILS_content<__>>
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface SUMMARY_factory<__ extends Content<__>> extends Content<__> {
+public interface SUMMARY_factory<
+	D  extends AnyDocument<D>,
+	// TODO: __ extends DETAILS_content<D, __>
+	__ extends Content<D, __>
+> extends Content<D, __> {
 	// TODO
 }

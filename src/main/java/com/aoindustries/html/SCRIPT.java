@@ -45,27 +45,31 @@ import java.util.Locale;
  * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Extend RawTextElement: https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements
-public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRIPT<PC>, PC> implements
-	com.aoindustries.html.attributes.Boolean.Async<SCRIPT<PC>>,
-	com.aoindustries.html.attributes.Enum.Charset<SCRIPT<PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
-	com.aoindustries.html.attributes.Boolean.Defer<SCRIPT<PC>>,
-	com.aoindustries.html.attributes.Url.Src<SCRIPT<PC>>,
+public class SCRIPT<
+	D  extends AnyDocument<D>,
+	PC extends ScriptSupportingContent<D, PC>
+> extends Element<D, PC, SCRIPT<D, PC>> implements
+	com.aoindustries.html.attributes.Boolean.Async<SCRIPT<D, PC>>,
+	com.aoindustries.html.attributes.Enum.Charset<SCRIPT<D, PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
+	com.aoindustries.html.attributes.Boolean.Defer<SCRIPT<D, PC>>,
+	com.aoindustries.html.attributes.Url.Src<SCRIPT<D, PC>>,
 	// TODO: type
 	// TODO: xmlSpace
 	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	com.aoindustries.html.attributes.Text.ClassNoHtml4<SCRIPT<PC>>,
-	com.aoindustries.html.attributes.Text.IdNoHtml4<SCRIPT<PC>>,
-	com.aoindustries.html.attributes.Text.StyleNoHtml4<SCRIPT<PC>>,
-	com.aoindustries.html.attributes.Text.TitleNoHtml4<SCRIPT<PC>>,
+	com.aoindustries.html.attributes.Text.ClassNoHtml4<SCRIPT<D, PC>>,
+	com.aoindustries.html.attributes.Text.IdNoHtml4<SCRIPT<D, PC>>,
+	com.aoindustries.html.attributes.Text.StyleNoHtml4<SCRIPT<D, PC>>,
+	com.aoindustries.html.attributes.Text.TitleNoHtml4<SCRIPT<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <script>: AlmostGlobalAttributes<SCRIPT<PC>>
-	com.aoindustries.html.attributes.event.window.Onerror<SCRIPT<PC>>,
-	com.aoindustries.html.attributes.event.window.Onload<SCRIPT<PC>>
+	// Not on <script>: AlmostGlobalAttributes<SCRIPT<D, PC>>
+	com.aoindustries.html.attributes.event.window.Onerror<SCRIPT<D, PC>>,
+	com.aoindustries.html.attributes.event.window.Onload<SCRIPT<D, PC>>
 {
 
 	/**
@@ -126,26 +130,26 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 
 	private final String type;
 
-	public SCRIPT(Document document, PC pc) {
+	public SCRIPT(D document, PC pc) {
 		super(document, pc);
 		this.type = null;
 	}
 
-	public SCRIPT(Document document, PC pc, String type) {
+	public SCRIPT(D document, PC pc, String type) {
 		super(document, pc);
 		type = Strings.trimNullIfEmpty(type);
 		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
 	}
 
-	public SCRIPT(Document document, PC pc, Type type) {
+	public SCRIPT(D document, PC pc, Type type) {
 		super(document, pc);
 		this.type = (type == null) ? null : type.getContentType();
 	}
 
 	@Override
-	protected SCRIPT<PC> writeOpen(Writer out) throws IOException {
+	protected SCRIPT<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<script", false);
-		SCRIPT<PC> s = type();
+		SCRIPT<D, PC> s = type();
 		assert s == this;
 		return this;
 	}
@@ -156,7 +160,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	 * @see Doctype#scriptType(java.lang.Appendable)
 	 */
 	@SuppressWarnings("deprecation")
-	protected SCRIPT<PC> type() throws IOException {
+	protected SCRIPT<D, PC> type() throws IOException {
 		Writer out = document.getUnsafe(null);
 		// TODO: Check didBody here and other attributes, perhaps in some central attribute registry that detects duplicate attributes, too
 		if(
@@ -228,7 +232,7 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	// TODO:     Similar for "text", too.
 	// TODO: Interface for "out" with default methods? (Another for "text", too)
 	@SuppressWarnings("UseSpecificCatch")
-	public SCRIPT<PC> out(Object script) throws IOException {
+	public SCRIPT<D, PC> out(Object script) throws IOException {
 		while(script instanceof IOSupplierE<?, ?>) {
 			try {
 				script = ((IOSupplierE<?, ?>)script).get();
@@ -238,7 +242,8 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 		}
 		if(script instanceof ScriptWriter) {
 			try {
-				return out((ScriptWriter<?>)script);
+				@SuppressWarnings("unchecked") ScriptWriter<D, ?> writer = (ScriptWriter<D, ?>)script;
+				return out(writer);
 			} catch(Throwable t) {
 				throw Throwables.wrap(t, IOException.class, IOException::new);
 			}
@@ -262,23 +267,36 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 		return this;
 	}
 
-	public <Ex extends Throwable> SCRIPT<PC> out(IOSupplierE<?, Ex> script) throws IOException, Ex {
+	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	public <Ex extends Throwable> SCRIPT<D, PC> out(IOSupplierE<?, Ex> script) throws IOException, Ex {
 		return out((script == null) ? null : script.get());
 	}
 
+	/**
+	 * @param  <D>   This document type
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
 	// TODO: Consolidate with AttributeWriter?
 	@FunctionalInterface
-	public static interface ScriptWriter<Ex extends Throwable> {
-		void writeScript(DocumentMediaWriter script) throws IOException, Ex;
+	public static interface ScriptWriter<
+		D  extends AnyDocument<D>,
+		Ex extends Throwable
+	> {
+		void writeScript(DocumentMediaWriter<D> script) throws IOException, Ex;
 	}
 
-	public <Ex extends Throwable> SCRIPT<PC> out(ScriptWriter<Ex> script) throws IOException, Ex {
+	/**
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	public <Ex extends Throwable> SCRIPT<D, PC> out(ScriptWriter<D, Ex> script) throws IOException, Ex {
 		if(script != null) {
 			MediaEncoder encoder = getMediaEncoder(getMediaType());
 			Writer out = document.getUnsafe(null);
 			startBody(out);
 			script.writeScript(
-				new DocumentMediaWriter(
+				new DocumentMediaWriter<>(
 					document,
 					encoder,
 					new NoCloseWriter(out)
@@ -295,11 +313,11 @@ public class SCRIPT<PC extends ScriptSupportingContent<PC>> extends Element<SCRI
 	 * This is well suited for use in a try-with-resources block.
 	 */
 	// TODO: __() method to end text?  Call it "ContentWriter"?
-	public DocumentMediaWriter out__() throws IOException {
+	public DocumentMediaWriter<D> out__() throws IOException {
 		MediaEncoder encoder = getMediaEncoder(getMediaType());
 		Writer out = document.getUnsafe(null);
 		startBody(out);
-		return new DocumentMediaWriter(document, encoder, out) {
+		return new DocumentMediaWriter<D>(document, encoder, out) {
 			@Override
 			public void close() throws IOException {
 				__();

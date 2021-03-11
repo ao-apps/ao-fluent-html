@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SUB<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<SUB<PC>, PC, SUB__<PC>, SUB_c<PC>> implements
+public class SUB<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, SUB<D, PC>, SUB__<D, PC>, SUB_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SUB<PC>>
+	AlmostGlobalAttributes<SUB<D, PC>>
 {
 
-	public SUB(Document document, PC pc) {
+	public SUB(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected SUB<PC> writeOpen(Writer out) throws IOException {
+	protected SUB<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<sub", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class SUB<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SUB__<PC> new__() {
+	protected SUB__<D, PC> new__() {
 		return new SUB__<>(this);
 	}
 
 	@Override
-	protected SUB_c<PC> new_c() {
+	protected SUB_c<D, PC> new_c() {
 		return new SUB_c<>(this);
 	}
 }

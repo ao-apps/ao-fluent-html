@@ -28,22 +28,26 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#sectioning_content">Sectioning content</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface SectioningContent<__ extends SectioningContent<__>> extends
+public interface SectioningContent<
+	D  extends AnyDocument<D>,
+	__ extends SectioningContent<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	ARTICLE_factory<__>,
-	ASIDE_factory<__>,
-	NAV_factory<__>,
-	SECTION_factory<__>
+	ARTICLE_factory<D, __>,
+	ASIDE_factory<D, __>,
+	NAV_factory<D, __>,
+	SECTION_factory<D, __>
 {
 }

@@ -25,35 +25,39 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link InteractiveContent} and {@link PhrasingContent}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface Union_Interactive_Phrasing<__ extends Union_Interactive_Phrasing<__>> extends
+public interface Union_Interactive_Phrasing<
+	D  extends AnyDocument<D>,
+	__ extends Union_Interactive_Phrasing<D, __>
+> extends
 	//
 	// Unions:
 	//
-	Union_Embedded_Interactive<__>,
+	Union_Embedded_Interactive<D, __>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	A_factory<__>,
-	// Inherited: AUDIO_factory<__>
-	BUTTON_factory<__>,
-	// Inherited: EMBED_factory<__>
-	INPUT_factory<__>,
-	// Inherited: IFRAME_factory<__>
-	// Inherited: IMG_factory<__>
-	LABEL_factory<__>,
-	// Inherited: OBJECT_factory<__>
-	SELECT_factory<__>,
-	TEXTAREA_factory<__>
-	// Inherited: VIDEO_factory<__>
+	A_factory<D, __>,
+	// Inherited: AUDIO_factory<D, __>
+	BUTTON_factory<D, __>,
+	// Inherited: EMBED_factory<D, __>
+	INPUT_factory<D, __>,
+	// Inherited: IFRAME_factory<D, __>
+	// Inherited: IMG_factory<D, __>
+	LABEL_factory<D, __>,
+	// Inherited: OBJECT_factory<D, __>
+	SELECT_factory<D, __>,
+	TEXTAREA_factory<D, __>
+	// Inherited: VIDEO_factory<D, __>
 {
 }

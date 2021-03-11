@@ -25,13 +25,17 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class H6__<PC extends HeadingContent<PC>> extends H__<PC, H6__<PC>> {
+public class H6__<
+	D  extends AnyDocument<D>,
+	PC extends HeadingContent<D, PC>
+> extends H__<D, PC, H6__<D, PC>> {
 
-	protected H6__(H6<PC> element) {
+	protected H6__(H6<D, PC> element) {
 		super(element);
 	}
 }

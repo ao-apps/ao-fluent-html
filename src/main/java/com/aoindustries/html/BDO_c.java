@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class BDO_c<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText_c<PC, BDO_c<PC>>
-	implements PhrasingContent<BDO_c<PC>> {
+public class BDO_c<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText_c<D, PC, BDO_c<D, PC>>
+	implements PhrasingContent<D, BDO_c<D, PC>> {
 
-	protected BDO_c(BDO<PC> element) {
+	protected BDO_c(BDO<D, PC> element) {
 		super(element);
 	}
 }

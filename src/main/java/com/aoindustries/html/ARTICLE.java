@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class ARTICLE<PC extends SectioningContent<PC>> extends
-	NormalText<ARTICLE<PC>, PC, ARTICLE__<PC>, ARTICLE_c<PC>> implements
+public class ARTICLE<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+> extends
+	NormalText<D, PC, ARTICLE<D, PC>, ARTICLE__<D, PC>, ARTICLE_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ARTICLE<PC>>
+	AlmostGlobalAttributes<ARTICLE<D, PC>>
 {
 
-	public ARTICLE(Document document, PC pc) {
+	public ARTICLE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected ARTICLE<PC> writeOpen(Writer out) throws IOException {
+	protected ARTICLE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<article", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class ARTICLE<PC extends SectioningContent<PC>> extends
 	}
 
 	@Override
-	protected ARTICLE__<PC> new__() {
+	protected ARTICLE__<D, PC> new__() {
 		return new ARTICLE__<>(this);
 	}
 
 	@Override
-	protected ARTICLE_c<PC> new_c() {
+	protected ARTICLE_c<D, PC> new_c() {
 		return new ARTICLE_c<>(this);
 	}
 }

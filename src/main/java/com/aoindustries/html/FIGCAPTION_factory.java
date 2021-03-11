@@ -25,12 +25,16 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figcaption-element">4.4.13 The figcaption element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-// TODO: <__ extends FigcaptionContent<__>> (where FigcaptionContent extends FlowContent + Figcaption)
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface FIGCAPTION_factory<__ extends Content<__>> extends Content<__> {
+public interface FIGCAPTION_factory<
+	D  extends AnyDocument<D>,
+	// TODO: __ extends FigcaptionContent<D, __> (where FigcaptionContent extends FlowContent + Figcaption)
+	__ extends Content<D, __>
+> extends Content<D, __> {
 	// TODO
 }

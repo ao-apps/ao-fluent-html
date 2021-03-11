@@ -36,10 +36,12 @@ import java.io.IOException;
  * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
  * </blockquote>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
 // TODO: Move to String?
-public interface Id<E extends Element<E, ?> & Id<E>> {
+public interface Id<E extends Element<?, ?, E> & Id<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_global_id.asp">HTML Global id Attribute</a>.
@@ -60,6 +62,8 @@ public interface Id<E extends Element<E, ?> & Id<E>> {
 	 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #id(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E id(IOSupplierE<?, Ex> id) throws IOException, Ex {
@@ -71,6 +75,8 @@ public interface Id<E extends Element<E, ?> & Id<E>> {
 	 * <blockquote>
 	 * In HTML5, the id attribute can be used on <b>any</b> HTML element (it will validate on any HTML element. However, it is not necessarily useful).
 	 * </blockquote>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #id(java.lang.Object)
 	 */

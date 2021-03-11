@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface PRE_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface PRE_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new pre element.
@@ -41,10 +45,10 @@ public interface PRE_factory<__ extends PalpableContent<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
 	 * </p>
 	 */
-	default PRE<__> pre() throws IOException {
+	default PRE<D, __> pre() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new PRE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface PRE_factory<__ extends PalpableContent<__>> extends Content<__>
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface PRE_factory<__ extends PalpableContent<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ pre__(IOConsumerE<? super PRE__<__>, Ex> pre) throws IOException, Ex {
+	default <Ex extends Throwable> __ pre__(IOConsumerE<? super PRE__<D, __>, Ex> pre) throws IOException, Ex {
 		return pre().__(pre);
 	}
 
@@ -109,7 +117,7 @@ public interface PRE_factory<__ extends PalpableContent<__>> extends Content<__>
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default PRE_c<__> pre_c() throws IOException {
+	default PRE_c<D, __> pre_c() throws IOException {
 		return pre()._c();
 	}
 }

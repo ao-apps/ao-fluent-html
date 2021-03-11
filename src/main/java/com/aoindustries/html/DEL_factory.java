@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__> {
+public interface DEL_factory<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new del element.
@@ -41,10 +45,10 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
 	 */
-	default DEL<__> del() throws IOException {
+	default DEL<D, __> del() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DEL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -65,6 +71,8 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -107,7 +115,7 @@ public interface DEL_factory<__ extends PhrasingContent<__>> extends Content<__>
 	 * @see  Closeable#close()
 	 * @see  Transparent_c#pc()
 	 */
-	default DEL_c<__> del_c() throws IOException {
+	default DEL_c<D, __> del_c() throws IOException {
 		return del()._c();
 	}
 }

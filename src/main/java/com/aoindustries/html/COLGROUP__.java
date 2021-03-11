@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class COLGROUP__<PC extends TABLE_content<PC>>
-	extends Normal__<PC, COLGROUP__<PC>>
-	implements COLGROUP_content<COLGROUP__<PC>> {
+public class COLGROUP__<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+>
+	extends Normal__<D, PC, COLGROUP__<D, PC>>
+	implements COLGROUP_content<D, COLGROUP__<D, PC>> {
 
-	protected COLGROUP__(COLGROUP<PC> element) {
+	protected COLGROUP__(COLGROUP<D, PC> element) {
 		super(element);
 	}
 }

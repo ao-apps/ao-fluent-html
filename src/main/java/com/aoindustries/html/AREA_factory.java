@@ -30,11 +30,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">4.8.14 The area element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__> {
+public interface AREA_factory<
+	D  extends AnyDocument<D>,
+	__ extends PhrasingContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new area element.
@@ -44,10 +48,10 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default AREA<__> area() throws IOException {
+	default AREA<D, __> area() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new AREA<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -59,7 +63,21 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default AREA<__> area(Rectangle rect) throws IOException {
+	default AREA<D, __> area(Rectangle rect) throws IOException {
+		return area().shape(AREA.Shape.RECT).coords(rect);
+	}
+
+	/**
+	 * Opens a new area element with the given coords attribute.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	default <Ex extends Throwable> AREA<D, __> area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
 		return area().shape(AREA.Shape.RECT).coords(rect);
 	}
 
@@ -71,8 +89,8 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default <Ex extends Throwable> AREA<__> area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
-		return area().shape(AREA.Shape.RECT).coords(rect);
+	default AREA<D, __> area(Circle circle) throws IOException {
+		return area().shape(AREA.Shape.CIRCLE).coords(circle);
 	}
 
 	/**
@@ -82,8 +100,10 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default AREA<__> area(Circle circle) throws IOException {
+	default <Ex extends Throwable> AREA<D, __> area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
 		return area().shape(AREA.Shape.CIRCLE).coords(circle);
 	}
 
@@ -95,8 +115,8 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default <Ex extends Throwable> AREA<__> area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
-		return area().shape(AREA.Shape.CIRCLE).coords(circle);
+	default AREA<D, __> area(Polygon poly) throws IOException {
+		return area().shape(AREA.Shape.POLY).coords(poly);
 	}
 
 	/**
@@ -106,8 +126,10 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default AREA<__> area(Polygon poly) throws IOException {
+	default <Ex extends Throwable> AREA<D, __> area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
 		return area().shape(AREA.Shape.POLY).coords(poly);
 	}
 
@@ -119,19 +141,7 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
 	 */
-	default <Ex extends Throwable> AREA<__> area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
-		return area().shape(AREA.Shape.POLY).coords(poly);
-	}
-
-	/**
-	 * Opens a new area element with the given coords attribute.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-area-element">HTML Standard</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
-	 * </ul>
-	 */
-	default AREA<__> area(Shape shape) throws IOException {
+	default AREA<D, __> area(Shape shape) throws IOException {
 		if (shape == null) {
 			return area();
 		}
@@ -156,8 +166,10 @@ public interface AREA_factory<__ extends PhrasingContent<__>> extends Content<__
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> AREA<__> area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
+	default <Ex extends Throwable> AREA<D, __> area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
 		return area(shape == null ? null : shape.get());
 	}
 }

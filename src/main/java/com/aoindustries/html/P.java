@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class P<PC extends PalpableContent<PC>> extends
-	NormalText<P<PC>, PC, P__<PC>, P_c<PC>> implements
+public class P<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, P<D, PC>, P__<D, PC>, P_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<P<PC>>
+	AlmostGlobalAttributes<P<D, PC>>
 {
 
-	public P(Document document, PC pc) {
+	public P(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected P<PC> writeOpen(Writer out) throws IOException {
+	protected P<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<p", false);
 		return this;
 	}
@@ -64,12 +68,12 @@ public class P<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected P__<PC> new__() {
+	protected P__<D, PC> new__() {
 		return new P__<>(this);
 	}
 
 	@Override
-	protected P_c<PC> new_c() {
+	protected P_c<D, PC> new_c() {
 		return new P_c<>(this);
 	}
 }

@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onbeforeprint<E extends Element<E, ?> & Onbeforeprint<E>> {
+public interface Onbeforeprint<E extends Element<?, ?, E> & Onbeforeprint<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Onbeforeprint<E extends Element<E, ?> & Onbeforeprint<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onbeforeprint(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onbeforeprint(IOSupplierE<?, Ex> onbeforeprint) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Onbeforeprint<E extends Element<E, ?> & Onbeforeprint<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onbeforeprint.asp">HTML onbeforeprint Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onbeforeprint(java.lang.Object)
 	 */

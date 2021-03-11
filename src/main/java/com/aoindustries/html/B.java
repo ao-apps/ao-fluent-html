@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class B<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<B<PC>, PC, B__<PC>, B_c<PC>> implements
+public class B<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, B<D, PC>, B__<D, PC>, B_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<B<PC>>
+	AlmostGlobalAttributes<B<D, PC>>
 {
 
-	public B(Document document, PC pc) {
+	public B(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected B<PC> writeOpen(Writer out) throws IOException {
+	protected B<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<b", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class B<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected B__<PC> new__() {
+	protected B__<D, PC> new__() {
 		return new B__<>(this);
 	}
 
 	@Override
-	protected B_c<PC> new_c() {
+	protected B_c<D, PC> new_c() {
 		return new B_c<>(this);
 	}
 }

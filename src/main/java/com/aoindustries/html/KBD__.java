@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class KBD__<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText__<PC, KBD__<PC>>
-	implements PhrasingContent<KBD__<PC>> {
+public class KBD__<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText__<D, PC, KBD__<D, PC>>
+	implements PhrasingContent<D, KBD__<D, PC>> {
 
-	protected KBD__(KBD<PC> element) {
+	protected KBD__(KBD<D, PC> element) {
 		super(element);
 	}
 }

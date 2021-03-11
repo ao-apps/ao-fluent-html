@@ -31,33 +31,37 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Flow content, but with no form element descendants.
-public class FORM<PC extends PalpableContent<PC>> extends
-	NormalText<FORM<PC>, PC, FORM__<PC>, FORM_c<PC>> implements
+public class FORM<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, FORM<D, PC>, FORM__<D, PC>, FORM_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
 	// TODO: accept (MDN only, HTML-4 only)
 	// TODO: accept-charset
-	com.aoindustries.html.attributes.Url.Action<FORM<PC>>,
+	com.aoindustries.html.attributes.Url.Action<FORM<D, PC>>,
 	// TODO: autocomplete
-	com.aoindustries.html.attributes.Enum.Enctype<FORM<PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
-	com.aoindustries.html.attributes.Enum.Method<FORM<PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
+	com.aoindustries.html.attributes.Enum.Enctype<FORM<D, PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
+	com.aoindustries.html.attributes.Enum.Method<FORM<D, PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
 	// TODO: name (only support Id, and do name like <ao:iframe>?)  Deprecated as of html 4
-	com.aoindustries.html.attributes.Boolean.Novalidate<FORM<PC>>,
-	com.aoindustries.html.attributes.Enum.Target<FORM<PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
+	com.aoindustries.html.attributes.Boolean.Novalidate<FORM<D, PC>>,
+	com.aoindustries.html.attributes.Enum.Target<FORM<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
 	// TODO: rel
-	AlmostGlobalAttributes<FORM<PC>>
+	AlmostGlobalAttributes<FORM<D, PC>>
 {
 
-	public FORM(Document document, PC pc) {
+	public FORM(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected FORM<PC> writeOpen(Writer out) throws IOException {
+	protected FORM<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<form", false); // TODO: Is whitespace around <form> ok? autoIndent() instead like SELECT?
 		return this;
 	}
@@ -78,12 +82,12 @@ public class FORM<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected FORM__<PC> new__() {
+	protected FORM__<D, PC> new__() {
 		return new FORM__<>(this);
 	}
 
 	@Override
-	protected FORM_c<PC> new_c() {
+	protected FORM_c<D, PC> new_c() {
 		return new FORM_c<>(this);
 	}
 }

@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
+public interface DD_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_DIV_DL<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new dd element.
@@ -41,10 +45,10 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 */
-	default DD<__> dd() throws IOException {
+	default DD<D, __> dd() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ dd__(IOConsumerE<? super DD__<__>, Ex> dd) throws IOException, Ex {
+	default <Ex extends Throwable> __ dd__(IOConsumerE<? super DD__<D, __>, Ex> dd) throws IOException, Ex {
 		return dd().__(dd);
 	}
 
@@ -109,7 +117,7 @@ public interface DD_factory<__ extends Union_DIV_DL<__>> extends Content<__> {
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DD_c<__> dd_c() throws IOException {
+	default DD_c<D, __> dd_c() throws IOException {
 		return dd()._c();
 	}
 }

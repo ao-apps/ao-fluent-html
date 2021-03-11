@@ -32,11 +32,15 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<__> {
+public interface STYLE_factory<
+	D  extends AnyDocument<D>,
+	__ extends MetadataContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new style element.
@@ -47,10 +51,10 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 *
 	 * @see Doctype#styleType(java.lang.Appendable)
 	 */
-	default STYLE<__> style() throws IOException {
+	default STYLE<D, __> style() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new STYLE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -62,10 +66,10 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default STYLE<__> style(String type) throws IOException {
+	default STYLE<D, __> style(String type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
@@ -76,8 +80,10 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> STYLE<__> style(Suppliers.String<Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> STYLE<D, __> style(Suppliers.String<Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 
@@ -89,10 +95,10 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
 	 */
-	default STYLE<__> style(STYLE.Type type) throws IOException {
+	default STYLE<D, __> style(STYLE.Type type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
@@ -103,8 +109,10 @@ public interface STYLE_factory<__ extends MetadataContent<__>> extends Content<_
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	default <Ex extends Throwable> STYLE<__> style(IOSupplierE<? extends STYLE.Type, Ex> type) throws IOException, Ex {
+	default <Ex extends Throwable> STYLE<D, __> style(IOSupplierE<? extends STYLE.Type, Ex> type) throws IOException, Ex {
 		return style((type == null) ? null : type.get());
 	}
 	// TODO: style__() - go directly to out, since no attributes? Lambda versions, too

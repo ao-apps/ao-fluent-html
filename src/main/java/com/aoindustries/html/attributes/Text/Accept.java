@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Accept<E extends Element<E, ?> & Accept<E>> {
+public interface Accept<E extends Element<?, ?, E> & Accept<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
@@ -49,6 +51,8 @@ public interface Accept<E extends Element<E, ?> & Accept<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #accept(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E accept(IOSupplierE<?, Ex> accept) throws IOException, Ex {
@@ -57,6 +61,8 @@ public interface Accept<E extends Element<E, ?> & Accept<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_accept.asp">HTML accept Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #accept(java.lang.Object)
 	 */

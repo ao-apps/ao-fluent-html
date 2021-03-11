@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class NAV_c<PC extends SectioningContent<PC>>
-	extends NormalText_c<PC, NAV_c<PC>>
-	implements FlowContent<NAV_c<PC>> {
+public class NAV_c<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+>
+	extends NormalText_c<D, PC, NAV_c<D, PC>>
+	implements FlowContent<D, NAV_c<D, PC>> {
 
-	protected NAV_c(NAV<PC> element) {
+	protected NAV_c(NAV<D, PC> element) {
 		super(element);
 	}
 }

@@ -23,9 +23,9 @@
 package com.aoindustries.html.attributes.Enum;
 
 import com.aoindustries.encoding.Doctype;
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Attributes;
 import static com.aoindustries.html.Attributes.RESOURCES;
-import com.aoindustries.html.Document;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -41,12 +41,15 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 // TODO: Support java Charset, too
 public interface Charset<
-	E extends Element<E, ?> & Charset<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Charset<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -76,6 +79,8 @@ public interface Charset<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E charset(Suppliers.String<Ex> charset) throws IOException, Ex {
@@ -100,6 +105,8 @@ public interface Charset<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset">&lt;meta&gt;: The Document-level Metadata element</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/ref_charactersets.asp">HTML Character Sets</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E charset(IOSupplierE<? extends V, Ex> charset) throws IOException, Ex {
@@ -112,7 +119,7 @@ public interface Charset<
 	 * <li>See <a href="https://www.iana.org/assignments/character-sets/character-sets.xhtml">Character Sets</a>.</li>
 	 * </ul>
 	 */
-	public enum Value implements Function<Document, String> {
+	public enum Value implements Function<AnyDocument<?>, String> {
 		// TODO: Add other charsets here?
 		US_ASCII("US-ASCII"),
 		ISO_8859_1("ISO-8859-1"),
@@ -131,7 +138,7 @@ public interface Charset<
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 

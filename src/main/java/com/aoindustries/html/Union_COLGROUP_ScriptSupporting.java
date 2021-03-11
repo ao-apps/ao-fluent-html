@@ -25,20 +25,24 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link COLGROUP_content} and {@link ScriptSupportingContent}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("MarkerInterface")
-public interface Union_COLGROUP_ScriptSupporting<__ extends Union_COLGROUP_ScriptSupporting<__>> extends
+public interface Union_COLGROUP_ScriptSupporting<
+	D  extends AnyDocument<D>,
+	__ extends Union_COLGROUP_ScriptSupporting<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	TEMPLATE_factory<__>
+	TEMPLATE_factory<D, __>
 {
 }

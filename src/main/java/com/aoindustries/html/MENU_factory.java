@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface MENU_factory<__ extends InteractiveContent<__>> extends Content<__> {
+public interface MENU_factory<
+	D  extends AnyDocument<D>,
+	__ extends InteractiveContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new menu element.
@@ -41,10 +45,10 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
 	 * </p>
 	 */
-	default MENU<__> menu() throws IOException {
+	default MENU<D, __> menu() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new MENU<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<__>, Ex> menu) throws IOException, Ex {
+	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<D, __>, Ex> menu) throws IOException, Ex {
 		return menu().__(menu);
 	}
 
@@ -97,7 +105,7 @@ public interface MENU_factory<__ extends InteractiveContent<__>> extends Content
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default MENU_c<__> menu_c() throws IOException {
+	default MENU_c<D, __> menu_c() throws IOException {
 		return menu()._c();
 	}
 }

@@ -26,7 +26,7 @@ import com.aoindustries.encoding.Doctype;
 import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
 import com.aoindustries.html.Attributes;
 import static com.aoindustries.html.Attributes.RESOURCES;
-import com.aoindustries.html.Document;
+import com.aoindustries.html.AnyDocument;
 import com.aoindustries.html.Element;
 import com.aoindustries.html.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
@@ -44,11 +44,14 @@ import java.util.function.Function;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ * @param  <V>   This enum type to use for this attribute
+ *
  * @author  AO Industries, Inc.
  */
 public interface Autocomplete<
-	E extends Element<E, ?> & Autocomplete<E, V>,
-	V extends Enum<V> & Function<Document, String>
+	E extends Element<?, ?, E> & Autocomplete<E, V>,
+	V extends Enum<V> & Function<AnyDocument<?>, String>
 > {
 
 	/**
@@ -78,6 +81,8 @@ public interface Autocomplete<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E autocomplete(Suppliers.String<Ex> autocomplete) throws IOException, Ex {
@@ -102,6 +107,8 @@ public interface Autocomplete<
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete">&lt;input&gt;: The Input (Form Input) element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">The HTML autocomplete attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
 	@SuppressWarnings("overloads")
 	default <Ex extends Throwable> E autocomplete(IOSupplierE<? extends V, Ex> autocomplete) throws IOException, Ex {
@@ -118,7 +125,7 @@ public interface Autocomplete<
 	@Attributes.Funnel
 	default E autocomplete(String ... autocomplete) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		Document document = element.getDocument();
+		AnyDocument<?> document = element.getDocument();
 		if(document.doctype != Doctype.HTML5) {
 			throw new LocalizedIllegalArgumentException(
 				RESOURCES,
@@ -167,7 +174,7 @@ public interface Autocomplete<
 	@SuppressWarnings("unchecked") // generic varargs
 	default E autocomplete(V ... autocomplete) throws IOException {
 		@SuppressWarnings("unchecked") E element = (E)this;
-		Document document = element.getDocument();
+		AnyDocument<?> document = element.getDocument();
 		if(document.doctype != Doctype.HTML5) {
 			throw new LocalizedIllegalArgumentException(
 				RESOURCES,

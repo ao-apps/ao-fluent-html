@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
+public interface TH_factory<
+	D  extends AnyDocument<D>,
+	__ extends TR_content<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new th element.
@@ -41,10 +45,10 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
 	 * </p>
 	 */
-	default TH<__> th() throws IOException {
+	default TH<D, __> th() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new TH<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ th__(IOConsumerE<? super TH__<__>, Ex> th) throws IOException, Ex {
+	default <Ex extends Throwable> __ th__(IOConsumerE<? super TH__<D, __>, Ex> th) throws IOException, Ex {
 		return th().__(th);
 	}
 
@@ -109,7 +117,7 @@ public interface TH_factory<__ extends TR_content<__>> extends Content<__> {
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default TH_c<__> th_c() throws IOException {
+	default TH_c<D, __> th_c() throws IOException {
 		return th()._c();
 	}
 }

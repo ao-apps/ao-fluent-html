@@ -25,20 +25,24 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("MarkerInterface")
-public interface Union_DATALIST_OPTGROUP<__ extends Union_DATALIST_OPTGROUP<__>> extends
+public interface Union_DATALIST_OPTGROUP<
+	D  extends AnyDocument<D>,
+	__ extends Union_DATALIST_OPTGROUP<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	OPTION_factory<__>
+	OPTION_factory<D, __>
 {
 }

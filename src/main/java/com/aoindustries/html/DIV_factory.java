@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<__> {
+public interface DIV_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_DL_Palpable<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new div element.
@@ -41,10 +45,10 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 */
-	default DIV<__> div() throws IOException {
+	default DIV<D, __> div() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new DIV<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<__>, Ex> div) throws IOException, Ex {
+	default <Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<D, __>, Ex> div) throws IOException, Ex {
 		return div().__(div);
 	}
 
@@ -109,7 +117,7 @@ public interface DIV_factory<__ extends Union_DL_Palpable<__>> extends Content<_
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default DIV_c<__> div_c() throws IOException {
+	default DIV_c<D, __> div_c() throws IOException {
 		return div()._c();
 	}
 }

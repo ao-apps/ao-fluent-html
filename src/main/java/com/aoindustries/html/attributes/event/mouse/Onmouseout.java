@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onmouseout<E extends Element<E, ?> & Onmouseout<E>> {
+public interface Onmouseout<E extends Element<?, ?, E> & Onmouseout<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Onmouseout<E extends Element<E, ?> & Onmouseout<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onmouseout(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onmouseout(IOSupplierE<?, Ex> onmouseout) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Onmouseout<E extends Element<E, ?> & Onmouseout<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onmouseout.asp">HTML onmouseout Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onmouseout(java.lang.Object)
 	 */

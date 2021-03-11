@@ -29,11 +29,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface OL_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new ol element.
@@ -41,10 +45,10 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 */
-	default OL<__> ol() throws IOException {
+	default OL<D, __> ol() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new OL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -53,6 +57,8 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -66,9 +72,11 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ ol__(IOConsumerE<? super OL__<__>, Ex> ol) throws IOException, Ex {
+	default <Ex extends Throwable> __ ol__(IOConsumerE<? super OL__<D, __>, Ex> ol) throws IOException, Ex {
 		return ol().__(ol);
 	}
 
@@ -97,7 +105,7 @@ public interface OL_factory<__ extends PalpableContent<__>> extends Content<__> 
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default OL_c<__> ol_c() throws IOException {
+	default OL_c<D, __> ol_c() throws IOException {
 		return ol()._c();
 	}
 }

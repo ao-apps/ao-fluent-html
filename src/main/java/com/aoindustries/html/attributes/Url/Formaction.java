@@ -35,9 +35,11 @@ import java.io.IOException;
  * <li>See <a href="https://www.w3schools.com/tags/att_formaction.asp">HTML formaction Attribute</a>.</li>
  * </ul>
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Formaction<E extends Element<E, ?> & Formaction<E>> {
+public interface Formaction<E extends Element<?, ?, E> & Formaction<E>> {
 
 	/**
 	 * <ul>
@@ -60,6 +62,8 @@ public interface Formaction<E extends Element<E, ?> & Formaction<E>> {
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image#formaction">&lt;input type="image"&gt;</a>.</li>
 	 * <li>See <a href="https://www.w3schools.com/tags/att_formaction.asp">HTML formaction Attribute</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #formaction(java.lang.String)
 	 */

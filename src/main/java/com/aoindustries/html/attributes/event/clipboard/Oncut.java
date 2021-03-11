@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Oncut<E extends Element<E, ?> & Oncut<E>> {
+public interface Oncut<E extends Element<?, ?, E> & Oncut<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Oncut<E extends Element<E, ?> & Oncut<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #oncut(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E oncut(IOSupplierE<?, Ex> oncut) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Oncut<E extends Element<E, ?> & Oncut<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_oncut.asp">HTML oncut Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #oncut(java.lang.Object)
 	 */

@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class DD<PC extends Union_DIV_DL<PC>> extends
-	NormalText<DD<PC>, PC, DD__<PC>, DD_c<PC>> implements
+public class DD<
+	D  extends AnyDocument<D>,
+	PC extends Union_DIV_DL<D, PC>
+> extends
+	NormalText<D, PC, DD<D, PC>, DD__<D, PC>, DD_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DD<PC>>
+	AlmostGlobalAttributes<DD<D, PC>>
 {
 
-	public DD(Document document, PC pc) {
+	public DD(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected DD<PC> writeOpen(Writer out) throws IOException {
+	protected DD<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<dd", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class DD<PC extends Union_DIV_DL<PC>> extends
 	}
 
 	@Override
-	protected DD__<PC> new__() {
+	protected DD__<D, PC> new__() {
 		return new DD__<>(this);
 	}
 
 	@Override
-	protected DD_c<PC> new_c() {
+	protected DD_c<D, PC> new_c() {
 		return new DD_c<>(this);
 	}
 }

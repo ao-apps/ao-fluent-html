@@ -34,9 +34,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Onoffline<E extends Element<E, ?> & Onoffline<E>> {
+public interface Onoffline<E extends Element<?, ?, E> & Onoffline<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
@@ -58,6 +60,8 @@ public interface Onoffline<E extends Element<E, ?> & Onoffline<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #onoffline(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E onoffline(IOSupplierE<?, Ex> onoffline) throws IOException, Ex {
@@ -66,6 +70,8 @@ public interface Onoffline<E extends Element<E, ?> & Onoffline<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_onoffline.asp">HTML onoffline Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #onoffline(java.lang.Object)
 	 */

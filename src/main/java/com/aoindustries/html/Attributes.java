@@ -134,9 +134,12 @@ public class Attributes {
 		/** Make no instances. */
 		private Boolean() {}
 
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
+		/**
+		 * @param  <E>   This element type
+		 */
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, boolean value) throws IOException {
 			if(value) {
-				Document document = element.document;
+				AnyDocument<?> document = element.document;
 				Writer out = document.getUnsafe(null);
 				if(document.getAtnl()) {
 					document.autoIndent(out, 1);
@@ -170,19 +173,27 @@ public class Attributes {
 		/** Make no instances. */
 		private Dimension() {}
 
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, int pixels) throws IOException {
-			return Integer.attribute(element, name, pixels);
-		}
-
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.Integer pixels) throws IOException {
+		/**
+		 * @param  <E>   This element type
+		 */
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, int pixels) throws IOException {
 			return Integer.attribute(element, name, pixels);
 		}
 
 		/**
+		 * @param  <E>   This element type
+		 */
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, java.lang.Integer pixels) throws IOException {
+			return Integer.attribute(element, name, pixels);
+		}
+
+		/**
+		 * @param  <E>   This element type
+		 *
 		 * @deprecated  In HTML 4.01, the value could be defined in pixels or in % of the containing element. In HTML5, the value must be in pixels.
 		 */
 		@Deprecated
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.String pixelsOrPercent) throws IOException {
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, java.lang.String pixelsOrPercent) throws IOException {
 			return String.attribute(element, name, MarkupType.NONE, pixelsOrPercent, true, true);
 		}
 	}
@@ -204,7 +215,14 @@ public class Attributes {
 		/** Make no instances. */
 		private Event() {}
 
-		public static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
+		/**
+		 * @param  <E>   This element type
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
+		 */
+		public static <
+			E  extends Element<?, ?, E>,
+			Ex extends Throwable // TODO: Required?
+		> E attribute(E element, java.lang.String name, Object script) throws IOException, Ex {
 			return Attributes.Text.attribute(element, name, MarkupType.JAVASCRIPT, script, true, true, javaScriptInXhtmlAttributeEncoder);
 		}
 	}
@@ -219,8 +237,11 @@ public class Attributes {
 		/** Make no instances. */
 		private Integer() {}
 
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, int value) throws IOException {
-			Document document = element.document;
+		/**
+		 * @param  <E>   This element type
+		 */
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, int value) throws IOException {
+			AnyDocument<?> document = element.document;
 			Writer out = document.getUnsafe(null);
 			if(document.getAtnl()) {
 				document.autoIndent(out, 1);
@@ -235,7 +256,10 @@ public class Attributes {
 			return element;
 		}
 
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.Integer value) throws IOException {
+		/**
+		 * @param  <E>   This element type
+		 */
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, java.lang.Integer value) throws IOException {
 			if(value != null) {
 				return attribute(element, name, value.intValue());
 			} else {
@@ -255,15 +279,16 @@ public class Attributes {
 		private String() {}
 
 		/**
+		 * @param  <E>   This element type
 		 * @param value  If is {@link #NO_VALUE} (by identity), will write empty attribute.
 		 */
 		// TODO: Remove trim and nullIfEmpty once all attributes have normalize methods
 		@SuppressWarnings("StringEquality")
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, MarkupType markupType, java.lang.String value, boolean trim, boolean nullIfEmpty) throws IOException {
 			if(value != null) {
 				if(value == NO_VALUE) { // Identity comparison for marker value
 					// Empty attribute
-					Document document = element.document;
+					AnyDocument<?> document = element.document;
 					Writer out = document.getUnsafe(null);
 					if(document.getAtnl()) {
 						document.autoIndent(out, 1);
@@ -275,7 +300,7 @@ public class Attributes {
 				} else {
 					if(trim) value = value.trim(); // TODO: These trims should all be from Strings?
 					if(!nullIfEmpty || !value.isEmpty()) {
-						Document document = element.document;
+						AnyDocument<?> document = element.document;
 						Writer out = document.getUnsafe(null);
 						if(document.getAtnl()) {
 							document.autoIndent(out, 1);
@@ -310,9 +335,14 @@ public class Attributes {
 		private Text() {}
 
 		/**
+		 * @param  <E>   This element type
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
 		 * @param value  The attribute value, {@link Attributes#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 		 */
-		public static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
+		public static <
+			E  extends Element<?, ?, E>,
+			Ex extends Throwable // TODO: Required?
+		> E attribute(E element, java.lang.String name, MarkupType markupType, Object value, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			// TODO: Assert is valid attribute name by doctype
 			while(value instanceof IOSupplierE<?, ?>) {
 				@SuppressWarnings("unchecked") IOSupplierE<?, Ex> supplier = (IOSupplierE<?, Ex>)value;
@@ -321,7 +351,7 @@ public class Attributes {
 			if(value != null) {
 				if(value instanceof MediaWritable<?>) {
 					@SuppressWarnings("unchecked") MediaWritable<Ex> writer = (MediaWritable<Ex>)value;
-					Document document = element.document;
+					AnyDocument<?> document = element.document;
 					Writer out = document.getUnsafe(null);
 					if(document.getAtnl()) {
 						document.autoIndent(out, 1);
@@ -342,7 +372,7 @@ public class Attributes {
 				} else {
 					if(value == NO_VALUE) { // Identity comparison for marker value
 						// Empty attribute
-						Document document = element.document;
+						AnyDocument<?> document = element.document;
 						Writer out = document.getUnsafe(null);
 						if(document.getAtnl()) {
 							document.autoIndent(out, 1);
@@ -363,7 +393,7 @@ public class Attributes {
 							value = Coercion.nullIfEmpty(value);
 						}
 						if(value != null) {
-							Document document = element.document;
+							AnyDocument<?> document = element.document;
 							Writer out = document.getUnsafe(null);
 							if(document.getAtnl()) {
 								document.autoIndent(out, 1);
@@ -383,14 +413,19 @@ public class Attributes {
 		}
 
 		/**
+		 * @param  <E>   This element type
+		 * @param  <Ex>  An arbitrary exception type that may be thrown
 		 * @param values  The attribute values, {@link Attributes#NO_VALUE} (by identity, not value) for an empty attribute, {@code null} for no attribute.
 		 * @param separator  The separator to use between non-null values.  Written directly (not through the encoder).
 		 *                   Not written when a value is {@link Attributes#NO_VALUE}.
 		 */
 		@SuppressWarnings("AssignmentToForLoopParameter")
-		public static <E extends Element<E, ?>, Ex extends Throwable> E attribute(E element, java.lang.String name, MarkupType markupType, Object[] values, java.lang.String separator, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
+		public static <
+			E  extends Element<?, ?, E>,
+			Ex extends Throwable // TODO: Required?
+		> E attribute(E element, java.lang.String name, MarkupType markupType, Object[] values, java.lang.String separator, boolean trim, boolean nullIfEmpty, MediaEncoder encoder) throws IOException, Ex {
 			if(values != null) {
-				Document document = element.document;
+				AnyDocument<?> document = element.document;
 				Writer out = document.getUnsafe(null);
 				boolean attr = false;
 				boolean val = false;
@@ -495,9 +530,12 @@ public class Attributes {
 		/** Make no instances. */
 		private Url() {}
 
-		public static <E extends Element<E, ?>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
+		/**
+		 * @param  <E>   This element type
+		 */
+		public static <E extends Element<?, ?, E>> E attribute(E element, java.lang.String name, java.lang.String url) throws IOException {
 			if(url != null) {
-				Document document = element.document;
+				AnyDocument<?> document = element.document;
 				Writer out = document.getUnsafe(null);
 				if(document.getAtnl()) {
 					document.autoIndent(out, 1);

@@ -33,9 +33,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Alt<E extends Element<E, ?> & Alt<E>> {
+public interface Alt<E extends Element<?, ?, E> & Alt<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
@@ -49,6 +51,8 @@ public interface Alt<E extends Element<E, ?> & Alt<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #alt(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E alt(IOSupplierE<?, Ex> alt) throws IOException, Ex {
@@ -57,6 +61,8 @@ public interface Alt<E extends Element<E, ?> & Alt<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_alt.asp">HTML alt Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #alt(java.lang.Object)
 	 */

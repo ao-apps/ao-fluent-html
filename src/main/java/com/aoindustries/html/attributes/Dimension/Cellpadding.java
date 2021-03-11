@@ -31,12 +31,14 @@ import java.io.IOException;
 /**
  * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellpadding">&lt;table&gt;: The Table element / cellpadding</a>.
  *
+ * @param  <E>   This element type
+ *
  * @deprecated  The cellpadding attribute is not supported in HTML5. Use CSS instead.
  *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
+public interface Cellpadding<E extends Element<?, ?, E> & Cellpadding<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellpadding">&lt;table&gt;: The Table element / cellpadding</a>.
@@ -65,6 +67,8 @@ public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellpadding">&lt;table&gt;: The Table element / cellpadding</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @deprecated  The cellpadding attribute is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
@@ -87,6 +91,8 @@ public interface Cellpadding<E extends Element<E, ?> & Cellpadding<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-cellpadding">&lt;table&gt;: The Table element / cellpadding</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #cellpadding(java.lang.String)
 	 *

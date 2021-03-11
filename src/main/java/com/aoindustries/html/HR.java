@@ -32,26 +32,30 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-public class HR<PC extends FlowContent<PC>> extends VoidElement<HR<PC>, PC> implements
-	com.aoindustries.html.attributes.Enum.Align<HR<PC>, HR.Align>,
-	com.aoindustries.html.attributes.Boolean.Noshade<HR<PC>>,
-	com.aoindustries.html.attributes.Integer.SizeHtml4Only<HR<PC>>,
-	com.aoindustries.html.attributes.Dimension.Width<HR<PC>>,
+public class HR<
+	D  extends AnyDocument<D>,
+	PC extends FlowContent<D, PC>
+> extends VoidElement<D, PC, HR<D, PC>> implements
+	com.aoindustries.html.attributes.Enum.Align<HR<D, PC>, HR.Align>,
+	com.aoindustries.html.attributes.Boolean.Noshade<HR<D, PC>>,
+	com.aoindustries.html.attributes.Integer.SizeHtml4Only<HR<D, PC>>,
+	com.aoindustries.html.attributes.Dimension.Width<HR<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<HR<PC>>
+	AlmostGlobalAttributes<HR<D, PC>>
 {
 
-	public HR(Document document, PC pc) {
+	public HR(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected HR<PC> writeOpen(Writer out) throws IOException {
+	protected HR<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<hr", false);
 		return this;
 	}
@@ -67,7 +71,7 @@ public class HR<PC extends FlowContent<PC>> extends VoidElement<HR<PC>, PC> impl
 	 * @deprecated  The align attribute of &lt;hr&gt; is not supported in HTML5. Use CSS instead.
 	 */
 	@Deprecated
-	public enum Align implements Function<Document, String> {
+	public enum Align implements Function<AnyDocument<?>, String> {
 
 		/**
 		 * Left-aligns the horizontal line
@@ -96,7 +100,7 @@ public class HR<PC extends FlowContent<PC>> extends VoidElement<HR<PC>, PC> impl
 		}
 
 		@Override
-		public String apply(Document document) {
+		public String apply(AnyDocument<?> document) {
 			return value;
 		}
 	}

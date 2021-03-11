@@ -25,21 +25,25 @@ package com.aoindustries.html;
 /**
  * Elements that are common to both {@link DIV_content} and {@link DL_content}.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("MarkerInterface")
-public interface Union_DIV_DL<__ extends Union_DIV_DL<__>> extends
+public interface Union_DIV_DL<
+	D  extends AnyDocument<D>,
+	__ extends Union_DIV_DL<D, __>
+> extends
 	//
 	// Content models:
 	//
-	// Inherited: Content<__>
+	// Inherited: Content<D, __>
 
 	//
 	// Factories:
 	//
-	DD_factory<__>,
-	DT_factory<__>
+	DD_factory<D, __>,
+	DT_factory<D, __>
 {
 }

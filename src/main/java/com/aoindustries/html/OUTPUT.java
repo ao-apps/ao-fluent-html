@@ -28,25 +28,29 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class OUTPUT<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<OUTPUT<PC>, PC, OUTPUT__<PC>, OUTPUT_c<PC>> implements
+public class OUTPUT<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, OUTPUT<D, PC>, OUTPUT__<D, PC>, OUTPUT_c<D, PC>> implements
 	// TODO: for
 	// TODO: form
-	com.aoindustries.html.attributes.Text.Name<OUTPUT<PC>>,
+	com.aoindustries.html.attributes.Text.Name<OUTPUT<D, PC>>,
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<OUTPUT<PC>>
+	AlmostGlobalAttributes<OUTPUT<D, PC>>
 {
 
-	public OUTPUT(Document document, PC pc) {
+	public OUTPUT(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected OUTPUT<PC> writeOpen(Writer out) throws IOException {
+	protected OUTPUT<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<output", false);
 		return this;
 	}
@@ -57,12 +61,12 @@ public class OUTPUT<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected OUTPUT__<PC> new__() {
+	protected OUTPUT__<D, PC> new__() {
 		return new OUTPUT__<>(this);
 	}
 
 	@Override
-	protected OUTPUT_c<PC> new_c() {
+	protected OUTPUT_c<D, PC> new_c() {
 		return new OUTPUT_c<>(this);
 	}
 }

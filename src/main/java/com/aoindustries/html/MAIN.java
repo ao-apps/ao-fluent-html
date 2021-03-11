@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Where flow content is expected, but only if it is a hierarchically correct main element.
-public class MAIN<PC extends PalpableContent<PC>> extends
-	NormalText<MAIN<PC>, PC, MAIN__<PC>, MAIN_c<PC>> implements
+public class MAIN<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, MAIN<D, PC>, MAIN__<D, PC>, MAIN_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MAIN<PC>>
+	AlmostGlobalAttributes<MAIN<D, PC>>
 {
 
-	public MAIN(Document document, PC pc) {
+	public MAIN(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected MAIN<PC> writeOpen(Writer out) throws IOException {
+	protected MAIN<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<main", false);
 		return this;
 	}
@@ -65,12 +69,12 @@ public class MAIN<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected MAIN__<PC> new__() {
+	protected MAIN__<D, PC> new__() {
 		return new MAIN__<>(this);
 	}
 
 	@Override
-	protected MAIN_c<PC> new_c() {
+	protected MAIN_c<D, PC> new_c() {
 		return new MAIN_c<>(this);
 	}
 }

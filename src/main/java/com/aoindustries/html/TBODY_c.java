@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class TBODY_c<PC extends TABLE_content<PC>>
-	extends Normal_c<PC, TBODY_c<PC>>
-	implements Union_TBODY_THEAD_TFOOT<TBODY_c<PC>> {
+public class TBODY_c<
+	D  extends AnyDocument<D>,
+	PC extends TABLE_content<D, PC>
+>
+	extends Normal_c<D, PC, TBODY_c<D, PC>>
+	implements Union_TBODY_THEAD_TFOOT<D, TBODY_c<D, PC>> {
 
-	protected TBODY_c(TBODY<PC> element) {
+	protected TBODY_c(TBODY<D, PC> element) {
 		super(element);
 	}
 }

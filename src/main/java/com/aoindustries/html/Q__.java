@@ -28,15 +28,19 @@ package com.aoindustries.html;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class Q__<PC extends Union_Palpable_Phrasing<PC>>
-	extends NormalText__<PC, Q__<PC>>
-	implements PhrasingContent<Q__<PC>> {
+public class Q__<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+>
+	extends NormalText__<D, PC, Q__<D, PC>>
+	implements PhrasingContent<D, Q__<D, PC>> {
 
-	protected Q__(Q<PC> element) {
+	protected Q__(Q<D, PC> element) {
 		super(element);
 	}
 }

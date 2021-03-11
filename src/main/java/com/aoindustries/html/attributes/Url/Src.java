@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Src<E extends Element<E, ?> & Src<E>> {
+public interface Src<E extends Element<?, ?, E> & Src<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
@@ -45,6 +47,8 @@ public interface Src<E extends Element<E, ?> & Src<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_src.asp">HTML src Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #src(java.lang.String)
 	 */

@@ -27,11 +27,15 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface BASE_factory<__ extends MetadataContent<__>> extends Content<__> {
+public interface BASE_factory<
+	D  extends AnyDocument<D>,
+	__ extends MetadataContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new base element.
@@ -41,10 +45,10 @@ public interface BASE_factory<__ extends MetadataContent<__>> extends Content<__
 	 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
 	 * </ul>
 	 */
-	default BASE<__> base() throws IOException {
+	default BASE<D, __> base() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new BASE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 

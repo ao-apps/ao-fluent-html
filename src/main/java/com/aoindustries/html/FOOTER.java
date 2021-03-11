@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Flow content, but with no header or footer element descendants.
-public class FOOTER<PC extends PalpableContent<PC>> extends
-	NormalText<FOOTER<PC>, PC, FOOTER__<PC>, FOOTER_c<PC>> implements
+public class FOOTER<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, FOOTER<D, PC>, FOOTER__<D, PC>, FOOTER_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<FOOTER<PC>>
+	AlmostGlobalAttributes<FOOTER<D, PC>>
 {
 
-	public FOOTER(Document document, PC pc) {
+	public FOOTER(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected FOOTER<PC> writeOpen(Writer out) throws IOException {
+	protected FOOTER<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<footer", false);
 		return this;
 	}
@@ -65,12 +69,12 @@ public class FOOTER<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected FOOTER__<PC> new__() {
+	protected FOOTER__<D, PC> new__() {
 		return new FOOTER__<>(this);
 	}
 
 	@Override
-	protected FOOTER_c<PC> new_c() {
+	protected FOOTER_c<D, PC> new_c() {
 		return new FOOTER_c<>(this);
 	}
 }

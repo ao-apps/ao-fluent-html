@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class HTML__<PC extends Content<PC>/* TODO? Document */>
-	extends Normal__<PC, HTML__<PC>>
-	implements HTML_content<HTML__<PC>> {
+public class HTML__<
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>
+>
+	extends Normal__<D, PC, HTML__<D, PC>>
+	implements HTML_content<D, HTML__<D, PC>> {
 
-	protected HTML__(HTML<PC> element) {
+	protected HTML__(HTML<D, PC> element) {
 		super(element);
 	}
 }

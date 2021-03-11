@@ -32,11 +32,15 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
  * </ul>
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
-public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Content<__> {
+public interface BLOCKQUOTE_factory<
+	D  extends AnyDocument<D>,
+	__ extends PalpableContent<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new blockquote element.
@@ -45,10 +49,10 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 */
-	default BLOCKQUOTE<__> blockquote() throws IOException {
+	default BLOCKQUOTE<D, __> blockquote() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new BLOCKQUOTE<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -58,6 +62,8 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -72,9 +78,11 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
 	 * </ul>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ blockquote__(IOConsumerE<? super BLOCKQUOTE__<__>, Ex> blockquote) throws IOException, Ex {
+	default <Ex extends Throwable> __ blockquote__(IOConsumerE<? super BLOCKQUOTE__<D, __>, Ex> blockquote) throws IOException, Ex {
 		return blockquote().__(blockquote);
 	}
 
@@ -118,7 +126,7 @@ public interface BLOCKQUOTE_factory<__ extends PalpableContent<__>> extends Cont
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default BLOCKQUOTE_c<__> blockquote_c() throws IOException {
+	default BLOCKQUOTE_c<D, __> blockquote_c() throws IOException {
 		return blockquote()._c();
 	}
 }

@@ -33,10 +33,12 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
 // TODO: Any sort of comments allowed in media queries?  MarkupType?
-public interface Media<E extends Element<E, ?> & Media<E>> {
+public interface Media<E extends Element<?, ?, E> & Media<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
@@ -50,6 +52,8 @@ public interface Media<E extends Element<E, ?> & Media<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #media(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E media(IOSupplierE<?, Ex> media) throws IOException, Ex {
@@ -58,6 +62,8 @@ public interface Media<E extends Element<E, ?> & Media<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_media.asp">HTML media Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #media(java.lang.Object)
 	 */

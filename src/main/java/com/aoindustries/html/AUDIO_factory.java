@@ -25,11 +25,15 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/media.html#the-audio-element">4.8.10 The audio element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings(value = "MarkerInterface") // TODO
-public interface AUDIO_factory<__ extends Union_Embedded_Interactive<__>> extends Content<__> {
+public interface AUDIO_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Embedded_Interactive<D, __>
+> extends Content<D, __> {
 	// TODO
 }

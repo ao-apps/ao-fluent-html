@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class SMALL<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<SMALL<PC>, PC, SMALL__<PC>, SMALL_c<PC>> implements
+public class SMALL<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, SMALL<D, PC>, SMALL__<D, PC>, SMALL_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SMALL<PC>>
+	AlmostGlobalAttributes<SMALL<D, PC>>
 {
 
-	public SMALL(Document document, PC pc) {
+	public SMALL(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected SMALL<PC> writeOpen(Writer out) throws IOException {
+	protected SMALL<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<small", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class SMALL<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected SMALL__<PC> new__() {
+	protected SMALL__<D, PC> new__() {
 		return new SMALL__<>(this);
 	}
 
 	@Override
-	protected SMALL_c<PC> new_c() {
+	protected SMALL_c<D, PC> new_c() {
 		return new SMALL_c<>(this);
 	}
 }

@@ -28,23 +28,27 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Flow content, but with no header or footer element descendants.
-public class HEADER<PC extends PalpableContent<PC>> extends
-	NormalText<HEADER<PC>, PC, HEADER__<PC>, HEADER_c<PC>> implements
+public class HEADER<
+	D  extends AnyDocument<D>,
+	PC extends PalpableContent<D, PC>
+> extends
+	NormalText<D, PC, HEADER<D, PC>, HEADER__<D, PC>, HEADER_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<HEADER<PC>>
+	AlmostGlobalAttributes<HEADER<D, PC>>
 {
 
-	public HEADER(Document document, PC pc) {
+	public HEADER(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected HEADER<PC> writeOpen(Writer out) throws IOException {
+	protected HEADER<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoNli(out).unsafe(out, "<header", false);
 		return this;
 	}
@@ -65,12 +69,12 @@ public class HEADER<PC extends PalpableContent<PC>> extends
 	}
 
 	@Override
-	protected HEADER__<PC> new__() {
+	protected HEADER__<D, PC> new__() {
 		return new HEADER__<>(this);
 	}
 
 	@Override
-	protected HEADER_c<PC> new_c() {
+	protected HEADER_c<D, PC> new_c() {
 		return new HEADER_c<>(this);
 	}
 }

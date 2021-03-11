@@ -32,10 +32,12 @@ import java.io.IOException;
  *
  * @deprecated  The noshade attribute of <code>&lt;hr&gt;</code> is not supported in HTML5. Use CSS instead.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface Noshade<E extends Element<E, ?> & Noshade<E>> {
+public interface Noshade<E extends Element<?, ?, E> & Noshade<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
@@ -63,6 +65,8 @@ public interface Noshade<E extends Element<E, ?> & Noshade<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_hr_noshade.asp">HTML hr noshade Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #noshade(java.lang.Boolean)
 	 *

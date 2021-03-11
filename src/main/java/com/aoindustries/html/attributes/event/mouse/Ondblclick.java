@@ -31,9 +31,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Ondblclick<E extends Element<E, ?> & Ondblclick<E>> {
+public interface Ondblclick<E extends Element<?, ?, E> & Ondblclick<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
@@ -47,6 +49,8 @@ public interface Ondblclick<E extends Element<E, ?> & Ondblclick<E>> {
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see #ondblclick(java.lang.Object)
 	 */
 	default <Ex extends Throwable> E ondblclick(IOSupplierE<?, Ex> ondblclick) throws IOException, Ex {
@@ -55,6 +59,8 @@ public interface Ondblclick<E extends Element<E, ?> & Ondblclick<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/ev_ondblclick.asp">HTML ondblclick Event Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #ondblclick(java.lang.Object)
 	 */

@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Async<E extends Element<E, ?> & Async<E>> {
+public interface Async<E extends Element<?, ?, E> & Async<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
@@ -54,6 +56,8 @@ public interface Async<E extends Element<E, ?> & Async<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_async.asp">HTML async Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #async(java.lang.Boolean)
 	 */

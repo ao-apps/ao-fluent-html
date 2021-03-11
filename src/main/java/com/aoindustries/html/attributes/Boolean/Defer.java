@@ -30,9 +30,11 @@ import java.io.IOException;
 /**
  * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
  *
+ * @param  <E>   This element type
+ *
  * @author  AO Industries, Inc.
  */
-public interface Defer<E extends Element<E, ?> & Defer<E>> {
+public interface Defer<E extends Element<?, ?, E> & Defer<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
@@ -54,6 +56,8 @@ public interface Defer<E extends Element<E, ?> & Defer<E>> {
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/att_defer.asp">HTML defer Attribute</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @see #defer(java.lang.Boolean)
 	 */

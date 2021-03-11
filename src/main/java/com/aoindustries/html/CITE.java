@@ -28,22 +28,26 @@ import java.io.Writer;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class CITE<PC extends Union_Palpable_Phrasing<PC>> extends
-	NormalText<CITE<PC>, PC, CITE__<PC>, CITE_c<PC>> implements
+public class CITE<
+	D  extends AnyDocument<D>,
+	PC extends Union_Palpable_Phrasing<D, PC>
+> extends
+	NormalText<D, PC, CITE<D, PC>, CITE__<D, PC>, CITE_c<D, PC>> implements
 	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<CITE<PC>>
+	AlmostGlobalAttributes<CITE<D, PC>>
 {
 
-	public CITE(Document document, PC pc) {
+	public CITE(D document, PC pc) {
 		super(document, pc);
 	}
 
 	@Override
-	protected CITE<PC> writeOpen(Writer out) throws IOException {
+	protected CITE<D, PC> writeOpen(Writer out) throws IOException {
 		document.autoIndent(out).unsafe(out, "<cite", false);
 		return this;
 	}
@@ -54,12 +58,12 @@ public class CITE<PC extends Union_Palpable_Phrasing<PC>> extends
 	}
 
 	@Override
-	protected CITE__<PC> new__() {
+	protected CITE__<D, PC> new__() {
 		return new CITE__<>(this);
 	}
 
 	@Override
-	protected CITE_c<PC> new_c() {
+	protected CITE_c<D, PC> new_c() {
 		return new CITE_c<>(this);
 	}
 }

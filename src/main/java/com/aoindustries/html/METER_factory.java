@@ -29,12 +29,16 @@ import java.io.IOException;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
  *
+ * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 // TODO: The value attribute must be specified, create convenience methods that set the value (like A.href)
-public interface METER_factory<__ extends Union_Palpable_Phrasing<__>> extends Content<__> {
+public interface METER_factory<
+	D  extends AnyDocument<D>,
+	__ extends Union_Palpable_Phrasing<D, __>
+> extends Content<D, __> {
 
 	/**
 	 * Opens a new meter element.
@@ -42,10 +46,10 @@ public interface METER_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
 	 * </p>
 	 */
-	default METER<__> meter() throws IOException {
+	default METER<D, __> meter() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		Document document = getDocument();
+		D document = getDocument();
 		return new METER<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -54,6 +58,8 @@ public interface METER_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
 	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
@@ -67,9 +73,11 @@ public interface METER_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
 	 * </p>
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	default <Ex extends Throwable> __ meter__(IOConsumerE<? super METER__<__>, Ex> meter) throws IOException, Ex {
+	default <Ex extends Throwable> __ meter__(IOConsumerE<? super METER__<D, __>, Ex> meter) throws IOException, Ex {
 		return meter().__(meter);
 	}
 
@@ -110,7 +118,7 @@ public interface METER_factory<__ extends Union_Palpable_Phrasing<__>> extends C
 	 * @see  Closeable#__()
 	 * @see  Closeable#close()
 	 */
-	default METER_c<__> meter_c() throws IOException {
+	default METER_c<D, __> meter_c() throws IOException {
 		return meter()._c();
 	}
 }

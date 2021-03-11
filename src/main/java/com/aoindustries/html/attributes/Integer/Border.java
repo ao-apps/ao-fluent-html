@@ -30,12 +30,14 @@ import java.io.IOException;
 /**
  * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-border">&lt;table&gt;: The Table element / border</a>.
  *
+ * @param  <E>   This element type
+ *
  * @deprecated  The border attribute is not supported in HTML5. Use CSS instead.
  *
  * @author  AO Industries, Inc.
  */
 @Deprecated
-public interface Border<E extends Element<E, ?> & Border<E>> {
+public interface Border<E extends Element<?, ?, E> & Border<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-border">&lt;table&gt;: The Table element / border</a>.
@@ -63,6 +65,8 @@ public interface Border<E extends Element<E, ?> & Border<E>> {
 
 	/**
 	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-border">&lt;table&gt;: The Table element / border</a>.
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @deprecated  The border attribute is not supported in HTML5. Use CSS instead.
 	 */

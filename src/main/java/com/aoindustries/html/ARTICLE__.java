@@ -25,15 +25,19 @@ package com.aoindustries.html;
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public class ARTICLE__<PC extends SectioningContent<PC>>
-	extends NormalText__<PC, ARTICLE__<PC>>
-	implements FlowContent<ARTICLE__<PC>> {
+public class ARTICLE__<
+	D  extends AnyDocument<D>,
+	PC extends SectioningContent<D, PC>
+>
+	extends NormalText__<D, PC, ARTICLE__<D, PC>>
+	implements FlowContent<D, ARTICLE__<D, PC>> {
 
-	protected ARTICLE__(ARTICLE<PC> element) {
+	protected ARTICLE__(ARTICLE<D, PC> element) {
 		super(element);
 	}
 }

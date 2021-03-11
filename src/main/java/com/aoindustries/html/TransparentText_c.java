@@ -37,6 +37,7 @@ package com.aoindustries.html;
  * {@linkplain Transparent_c#pc() use the parent content model directly}.
  * </em></p>
  *
+ * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  * @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements
  *
@@ -45,11 +46,12 @@ package com.aoindustries.html;
  * @author  AO Industries, Inc.
  */
 public abstract class TransparentText_c<
-	PC extends Content<PC>,
-	_c extends TransparentText_c<PC, _c>
-> extends Transparent_c<PC, _c> implements Union_Palpable_Phrasing<_c> {
+	D  extends AnyDocument<D>,
+	PC extends Content<D, PC>,
+	_c extends TransparentText_c<D, PC, _c>
+> extends Transparent_c<D, PC, _c> implements Union_Palpable_Phrasing<D, _c> {
 
-	protected TransparentText_c(TransparentText<?, PC, _c> element) {
+	protected TransparentText_c(TransparentText<D, PC, ?, _c> element) {
 		super(element);
 	}
 }

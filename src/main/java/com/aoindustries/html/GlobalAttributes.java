@@ -56,7 +56,7 @@ public interface GlobalAttributes<E extends Element<?, ?, E> & GlobalAttributes<
 	// TODO: itemref
 	// TODO: itemscope
 	// TODO: itemtype
-	// TODO: lang
+	com.aoindustries.html.attributes.String.Lang<E>,
 	// TODO: none (whatwg only)
 	// TODO: part (experimental)
 	// TODO: slot

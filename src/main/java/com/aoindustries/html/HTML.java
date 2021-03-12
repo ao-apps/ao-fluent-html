@@ -23,8 +23,11 @@
 package com.aoindustries.html;
 
 import com.aoindustries.encoding.Serialization;
+import com.aoindustries.io.function.IOSupplierE;
+import com.aoindustries.util.i18n.MarkupType;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Locale;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
@@ -93,5 +96,89 @@ public class HTML<
 	@Override
 	protected HTML_c<D, PC> new_c() {
 		return new HTML_c<>(this);
+	}
+
+	/**
+	 * <p>
+	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
+	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
+	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
+	 * </ul>
+	 * <hr>
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HTML<D, PC> lang(String lang) throws IOException {
+		// Write default lang="…"
+		super.lang(lang);
+		if(document.serialization == Serialization.XML) {
+			// Add xml:lang="…"
+			Attributes.String.attribute(this, "xml:lang", MarkupType.NONE, lang, true, true);
+		}
+		return this;
+	}
+
+	/**
+	 * <p>
+	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
+	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
+	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
+	 * </ul>
+	 * <hr>
+	 * {@inheritDoc}
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @see #lang(java.lang.String)
+	 */
+	@Override
+	public <Ex extends Throwable> HTML<D, PC> lang(IOSupplierE<? extends String, Ex> lang) throws IOException, Ex {
+		return super.lang(lang);
+	}
+
+	/**
+	 * <p>
+	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
+	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
+	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
+	 * </ul>
+	 * <hr>
+	 * {@inheritDoc}
+	 *
+	 * @see #lang(java.lang.String)
+	 */
+	@Override
+	public HTML<D, PC> lang(Locale lang) throws IOException {
+		return super.lang(lang);
+	}
+
+	/**
+	 * <p>
+	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
+	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
+	 * </p>
+	 * <ul>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
+	 * </ul>
+	 * <hr>
+	 * {@inheritDoc}
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @see #lang(java.util.Locale)
+	 */
+	@Override
+	public <Ex extends Throwable> HTML<D, PC> lang(Suppliers.Locale<Ex> lang) throws IOException, Ex {
+		return super.lang(lang);
 	}
 }

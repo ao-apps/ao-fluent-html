@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Serialization;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -59,7 +60,13 @@ public class HTML<
 
 	@Override
 	protected HTML<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<html", false);
+		document.autoNli(out).unsafe(
+			out,
+			(document.serialization == Serialization.XML)
+				? "<html xmlns=\"http://www.w3.org/1999/xhtml\""
+				: "<html",
+			false
+		);
 		return this;
 	}
 

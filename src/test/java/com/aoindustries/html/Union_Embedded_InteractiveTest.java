@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,19 +72,18 @@ public class Union_Embedded_InteractiveTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_Embedded_Interactive.class,
 			//
 			// Factories:
 			//
-			AUDIO_factory.class,
-			EMBED_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
-			OBJECT_factory.class,
-			VIDEO_factory.class
+			"audio",
+			"embed",
+			"iframe",
+			"img",
+			"object",
+			"video"
 		);
 	}
 

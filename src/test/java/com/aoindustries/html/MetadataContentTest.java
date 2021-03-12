@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -72,21 +73,20 @@ public class MetadataContentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			MetadataContent.class,
 			//
 			// Factories:
 			//
-			BASE_factory.class,
-			LINK_factory.class,
-			META_factory.class,
-			NOSCRIPT_factory.class,
-			SCRIPT_factory.class,
-			STYLE_factory.class,
-			TEMPLATE_factory.class, // WHATWG only
-			TITLE_factory.class
+			"base",
+			"link",
+			"meta",
+			"noscript",
+			"script",
+			"style",
+			"template", // WHATWG only
+			"title"
 		);
 	}
 

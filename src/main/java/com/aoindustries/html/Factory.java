@@ -22,18 +22,16 @@
  */
 package com.aoindustries.html;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
+
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">4.10.6 The button element</a>.
- *
- * @param  <D>   This document type
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * Marks a method as being one that creates new elements in the document.
+ * This is only used by tests to verify the content model interface hierarchy.
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings(value = "MarkerInterface") // TODO
-public interface BUTTON_factory<
-	D  extends AnyDocument<D>,
-	__ extends Union_Interactive_Phrasing<D, __>
-> extends Content<D, __> {
-	// TODO
+@Target(ElementType.METHOD)
+@interface Factory {
+	public String value();
 }

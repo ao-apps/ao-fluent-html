@@ -45,12 +45,11 @@ public interface OPTGROUP_content<
 	//
 	// Inherited: Content<D, __>
 	ScriptSupportingContent<D, __>
-
+{
 	//
 	// Factories:
 	//
-	// Inherited: OPTION_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	// Inherited: TEMPLATE_factory<D, __>
-{
+	// Inherited: OPTION
+	// Inherited: SCRIPT
+	// Inherited: TEMPLATE
 }

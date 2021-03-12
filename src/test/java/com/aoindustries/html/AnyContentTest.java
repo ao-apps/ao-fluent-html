@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
 import org.junit.Test;
 
 /**
@@ -65,7 +66,7 @@ public class AnyContentTest {
 	}
 
 	@Test
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			AnyContent.class,
 			//

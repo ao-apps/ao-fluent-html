@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,25 +72,24 @@ public class Union_Interactive_PhrasingTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_Interactive_Phrasing.class,
 			//
 			// Factories:
 			//
-			A_factory.class,
-			AUDIO_factory.class,
-			BUTTON_factory.class,
-			EMBED_factory.class,
-			INPUT_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
-			LABEL_factory.class,
-			OBJECT_factory.class,
-			SELECT_factory.class,
-			TEXTAREA_factory.class,
-			VIDEO_factory.class
+			"a",
+			"audio",
+			"button",
+			"embed",
+			"input",
+			"iframe",
+			"img",
+			"label",
+			"object",
+			"select",
+			"textarea",
+			"video"
 		);
 	}
 

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,23 +72,22 @@ public class EmbeddedContentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			EmbeddedContent.class,
 			//
 			// Factories:
 			//
-			AUDIO_factory.class,
-			CANVAS_factory.class,
-			EMBED_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
+			"audio",
+			"canvas",
+			"embed",
+			"iframe",
+			"img",
 			// TODO: MathML math
-			OBJECT_factory.class,
-			PICTURE_factory.class,
+			"object",
+			"picture",
 			// TODO: SVG svg
-			VIDEO_factory.class
+			"video"
 		);
 	}
 

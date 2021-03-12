@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,14 +72,13 @@ public class Union_DL_PalpableTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_DL_Palpable.class,
 			//
 			// Factories:
 			//
-			DIV_factory.class
+			"div"
 		);
 	}
 

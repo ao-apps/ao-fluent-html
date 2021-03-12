@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#interactive-content">3.2.5.2.7 Interactive content</a>.</li>
@@ -41,29 +45,114 @@ public interface InteractiveContent<
 	// Unions:
 	//
 	// Inherited: Union_Embedded_Interactive<D, __>
-	Union_Interactive_Phrasing<D, __>,
+	Union_Interactive_Phrasing<D, __>
 
 	//
 	// Content models:
 	//
 	// Inherited: Content<D, __>
-
+{
 	//
 	// Factories:
 	//
-	// Inherited: A_factory<D, __> // if the href attribute is present
-	// Inherited: AUDIO_factory<D, __> // if the controls attribute is present
-	// Inherited: BUTTON_factory<D, __>
-	DETAILS_factory<D, __>,
-	// Inherited: EMBED_factory<D, __>
-	// Inherited: IFRAME_factory<D, __>
-	// Inherited: IMG_factory<D, __> // if the usemap attribute is present
-	// Inherited: INPUT_factory<D, __> // if type attribute is not in the hidden state
-	// Inherited: LABEL_factory<D, __>
-	MENU_factory<D, __> // (MDN only) if the type attribute is in the toolbar state
-	// Inherited: OBJECT_factory<D, __> // if the usemap attribute is present
-	// Inherited: SELECT_factory<D, __>
-	// Inherited: TEXTAREA_factory<D, __>
-	// Inherited: VIDEO_factory<D, __> // if the controls attribute is present
-{
+	// Inherited: A - if the href attribute is present
+	// Inherited: AUDIO - if the controls attribute is present
+	// Inherited: BUTTON
+	// <editor-fold defaultstate="collapsed" desc="DETAILS">
+	/**
+	 * Opens a new details element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">4.11.1 The details element</a>.
+	 * </p>
+	 */
+	@Factory("details")
+	default void details() throws IOException {
+		throw new AssertionError("TODO: Implement details");
+	}
+	// </editor-fold>
+	// Inherited: EMBED
+	// Inherited: IFRAME
+	// Inherited: IMG - if the usemap attribute is present
+	// Inherited: INPUT - if type attribute is not in the hidden state
+	// Inherited: LABEL
+	// <editor-fold defaultstate="collapsed" desc="MENU - (MDN only) if the type attribute is in the toolbar state">
+	/**
+	 * Opens a new menu element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
+	 * </p>
+	 */
+	@Factory("menu")
+	default MENU<D, __> menu() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new MENU<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a menu element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("menu")
+	default <Ex extends Throwable> __ menu__(IORunnableE<Ex> menu) throws IOException, Ex {
+		return menu().__(menu);
+	}
+
+	/**
+	 * Creates a menu element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("menu")
+	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<D, __>, Ex> menu) throws IOException, Ex {
+		return menu().__(menu);
+	}
+
+	/**
+	 * Creates an empty menu element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("menu")
+	default __ menu__() throws IOException {
+		return menu().__();
+	}
+
+	/**
+	 * Creates a menu element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	@Factory("menu")
+	default MENU_c<D, __> menu_c() throws IOException {
+		return menu()._c();
+	}
+	// </editor-fold>
+	// Inherited: OBJECT - if the usemap attribute is present
+	// Inherited: SELECT
+	// Inherited: TEXTAREA
+	// Inherited: VIDEO - if the controls attribute is present
 }

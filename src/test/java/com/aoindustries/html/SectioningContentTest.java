@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -70,17 +71,16 @@ public class SectioningContentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			SectioningContent.class,
 			//
 			// Factories:
 			//
-			ARTICLE_factory.class,
-			ASIDE_factory.class,
-			NAV_factory.class,
-			SECTION_factory.class
+			"article",
+			"aside",
+			"nav",
+			"section"
 		);
 	}
 

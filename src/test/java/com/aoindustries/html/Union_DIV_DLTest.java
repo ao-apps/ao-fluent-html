@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,15 +72,14 @@ public class Union_DIV_DLTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_DIV_DL.class,
 			//
 			// Factories:
 			//
-			DD_factory.class,
-			DT_factory.class
+			"dd",
+			"dt"
 		);
 	}
 

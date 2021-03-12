@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -70,15 +71,14 @@ public class COLGROUP_contentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			COLGROUP_content.class,
 			//
 			// Factories:
 			//
-			COL_factory.class,
-			TEMPLATE_factory.class
+			"col",
+			"template"
 		);
 	}
 

@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -72,16 +73,15 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_TBODY_THEAD_TFOOT.class,
 			//
 			// Factories:
 			//
-			TR_factory.class,
-			SCRIPT_factory.class,
-			TEMPLATE_factory.class
+			"tr",
+			"script",
+			"template"
 		);
 	}
 

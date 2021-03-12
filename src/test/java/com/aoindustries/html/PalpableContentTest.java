@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -78,85 +79,85 @@ public class PalpableContentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			PalpableContent.class,
 			//
 			// Factories:
 			//
-			A_factory.class,
-			ABBR_factory.class,
-			ADDRESS_factory.class,
-			ARTICLE_factory.class,
-			ASIDE_factory.class,
-			AUDIO_factory.class, // if the controls attribute is present
-			B_factory.class,
-			BDI_factory.class,
-			BDO_factory.class,
-			BLOCKQUOTE_factory.class,
-			BUTTON_factory.class,
-			CANVAS_factory.class,
-			CITE_factory.class,
-			CODE_factory.class,
-			DATA_factory.class,
-			DETAILS_factory.class,
-			DFN_factory.class,
-			DIV_factory.class,
-			DL_factory.class, // if childen contain at least one name/value pair
-			EM_factory.class,
-			EMBED_factory.class,
-			FIELDSET_factory.class,
-			FIGURE_factory.class,
-			FOOTER_factory.class,
-			FORM_factory.class,
-			H1_factory.class,
-			H2_factory.class,
-			H3_factory.class,
-			H4_factory.class,
-			H5_factory.class,
-			H6_factory.class,
-			HEADER_factory.class,
-			HGROUP_factory.class,
-			I_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
-			INPUT_factory.class, // if type attribute is not in the hidden state
-			INS_factory.class,
-			KBD_factory.class,
-			LABEL_factory.class,
-			MAIN_factory.class,
-			MAP_factory.class,
-			MARK_factory.class,
+			"a",
+			"abbr",
+			"address",
+			"article",
+			"aside",
+			"audio", // if the controls attribute is present
+			"b",
+			"bdi",
+			"bdo",
+			"blockquote",
+			"button",
+			"canvas",
+			"cite",
+			"code",
+			"data",
+			"details",
+			"dfn",
+			"div",
+			"dl", // if childen contain at least one name/value pair
+			"em",
+			"embed",
+			"fieldset",
+			"figure",
+			"footer",
+			"form",
+			"h1",
+			"h2",
+			"h3",
+			"h4",
+			"h5",
+			"h6",
+			"h#",
+			"header",
+			"hgroup",
+			"i",
+			"iframe",
+			"img",
+			"input", // if type attribute is not in the hidden state
+			"ins",
+			"kbd",
+			"label",
+			"main",
+			"map",
+			"mark",
 			// TODO: MathML math
-			MENU_factory.class, // if children include at least one li
-			METER_factory.class,
-			NAV_factory.class,
-			OBJECT_factory.class,
-			OL_factory.class, // if children include at least one li
-			OUTPUT_factory.class,
-			P_factory.class,
-			PRE_factory.class,
-			PROGRESS_factory.class,
-			Q_factory.class,
-			RUBY_factory.class,
-			S_factory.class,
-			SAMP_factory.class,
-			SECTION_factory.class,
-			SELECT_factory.class,
-			SMALL_factory.class,
-			SPAN_factory.class,
-			STRONG_factory.class,
-			SUB_factory.class,
-			SUP_factory.class,
+			"menu", // if children include at least one li
+			"meter",
+			"nav",
+			"object",
+			"ol", // if children include at least one li
+			"output",
+			"p",
+			"pre",
+			"progress",
+			"q",
+			"ruby",
+			"s",
+			"samp",
+			"section",
+			"select",
+			"small",
+			"span",
+			"strong",
+			"sub",
+			"sup",
 			// TODO: SVG svg
-			TABLE_factory.class,
-			TEXTAREA_factory.class,
-			TIME_factory.class,
-			U_factory.class,
-			UL_factory.class, // if children include at least one li
-			VAR_factory.class,
-			VIDEO_factory.class
+			"table",
+			"textarea",
+			"time",
+			"u",
+			"ul", // if children include at least one li
+			"var",
+			"video"
 			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 		);
 	}

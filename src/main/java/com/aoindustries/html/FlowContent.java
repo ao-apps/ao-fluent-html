@@ -22,6 +22,8 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#flow-content">3.2.5.2.2 Flow content</a>.</li>
@@ -56,100 +58,139 @@ public interface FlowContent<
 	// Inherited: HeadingContent<D, __>
 	// Inherited: InteractiveContent<D, __>
 	PalpableContent<D, __>,
-	PhrasingContent<D, __>,
+	PhrasingContent<D, __>
 	// Inherited: ScriptSupportingContent<D, __>
 	// Inherited: SectioningContent<D, __>
 	// Inherited: TextContent<D, __>
-
+{
 	//
 	// Factories:
 	//
-	// Inherited: A_factory<D, __>
-	// Inherited: ABBR_factory<D, __>
-	// Inherited: ADDRESS_factory<D, __>
-	// Inherited: AREA_factory<D, __> // if a descendent of map
-	// Inherited: ARTICLE_factory<D, __>
-	// Inherited: ASIDE_factory<D, __>
-	// Inherited: AUDIO_factory<D, __>
-	// Inherited: B_factory<D, __>
-	// Inherited: BDI_factory<D, __>
-	// Inherited: BDO_factory<D, __>
-	// Inherited: BLOCKQUOTE_factory<D, __>
-	// Inherited: BR_factory<D, __>
-	// Inherited: BUTTON_factory<D, __>
-	// Inherited: CANVAS_factory<D, __>
-	// Inherited: CITE_factory<D, __>
-	// Inherited: CODE_factory<D, __>
-	// Inherited: DATA_factory<D, __>
-	// Inherited: DATALIST_factory<D, __>
-	// Inherited: DEL_factory<D, __>
-	// Inherited: DETAILS_factory<D, __>
-	// Inherited: DFN_factory<D, __>
-	DIALOG_factory<D, __>,
-	// Inherited: DIV_factory<D, __>
-	// Inherited: DL_factory<D, __>
-	// Inherited: EM_factory<D, __>
-	// Inherited: EMBED_factory<D, __>
-	// Inherited: FIELDSET_factory<D, __>
-	// Inherited: FIGURE_factory<D, __>
-	// Inherited: FOOTER_factory<D, __>
-	// Inherited: FORM_factory<D, __>
-	// Inherited: H1_factory<D, __>
-	// Inherited: H2_factory<D, __>
-	// Inherited: H3_factory<D, __>
-	// Inherited: H4_factory<D, __>
-	// Inherited: H5_factory<D, __>
-	// Inherited: H6_factory<D, __>
-	// Inherited: HEADER_factory<D, __>
-	// Inherited: HGROUP_factory<D, __>
-	HR_factory<D, __>
-	// Inherited: I_factory<D, __>
-	// Inherited: IFRAME_factory<D, __>
-	// Inherited: IMG_factory<D, __>
-	// Inherited: INPUT_factory<D, __>
-	// Inherited: INS_factory<D, __>
-	// Inherited: KBD_factory<D, __>
-	// Inherited: LABEL_factory<D, __>
-	// Inherited: LINK_factory<D, __> // if it is allowed in body
-	// Inherited: MAIN_factory<D, __> // if it is a hierarchically correct main element
-	// Inherited: MAP_factory<D, __>
-	// Inherited: MARK_factory<D, __>
-	// Inherited: // TODO: MathML math
-	// Inherited: MENU_factory<D, __>
-	// Inherited: META_factory<D, __> // if the itemprop attribute is present
-	// Inherited: METER_factory<D, __>
-	// Inherited: NAV_factory<D, __>
-	// Inherited: NOSCRIPT_factory<D, __>
-	// Inherited: OBJECT_factory<D, __>
-	// Inherited: OL_factory<D, __>
-	// Inherited: OUTPUT_factory<D, __>
-	// Inherited: P_factory<D, __>
-	// Inherited: PICTURE_factory<D, __>
-	// Inherited: PRE_factory<D, __>
-	// Inherited: PROGRESS_factory<D, __>
-	// Inherited: Q_factory<D, __>
-	// Inherited: RUBY_factory<D, __>
-	// Inherited: S_factory<D, __>
-	// Inherited: SAMP_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	// Inherited: SECTION_factory<D, __>
-	// Inherited: SELECT_factory<D, __>
-	// Inherited: SLOT_factory<D, __>
-	// Inherited: SMALL_factory<D, __>
-	// Inherited: SPAN_factory<D, __>
-	// Inherited: STRONG_factory<D, __>
-	// Inherited: SUB_factory<D, __>
-	// Inherited: SUP_factory<D, __>
-	// Inherited: // TODO: SVG svg
-	// Inherited: TABLE_factory<D, __>
-	// Inherited: TEMPLATE_factory<D, __>
-	// Inherited: TEXTAREA_factory<D, __>
-	// Inherited: TIME_factory<D, __>
-	// Inherited: U_factory<D, __>
-	// Inherited: UL_factory<D, __>
-	// Inherited: VAR_factory<D, __>
-	// Inherited: VIDEO_factory<D, __>
-	// Inherited: WBR_factory<D, __>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-{
+	// Inherited: A
+	// Inherited: ABBR
+	// Inherited: ADDRESS
+	// Inherited: AREA - if a descendent of map
+	// Inherited: ARTICLE
+	// Inherited: ASIDE
+	// Inherited: AUDIO
+	// Inherited: B
+	// Inherited: BDI
+	// Inherited: BDO
+	// Inherited: BLOCKQUOTE
+	// Inherited: BR
+	// Inherited: BUTTON
+	// Inherited: CANVAS
+	// Inherited: CITE
+	// Inherited: CODE
+	// Inherited: DATA
+	// Inherited: DATALIST
+	// Inherited: DEL
+	// Inherited: DETAILS
+	// Inherited: DFN
+	// <editor-fold defaultstate="collapsed" desc="DIALOG">
+	/**
+	 * Opens a new dialog element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">4.11.4 The dialog element</a>.
+	 * </p>
+	 */
+	@Factory("dialog")
+	default void dialog() throws IOException {
+		throw new AssertionError("TODO: Implement dialog");
+	}
+	// </editor-fold>
+	// Inherited: DIV
+	// Inherited: DL
+	// Inherited: EM
+	// Inherited: EMBED
+	// Inherited: FIELDSET
+	// Inherited: FIGURE
+	// Inherited: FOOTER
+	// Inherited: FORM
+	// Inherited: H1
+	// Inherited: H2
+	// Inherited: H3
+	// Inherited: H4
+	// Inherited: H5
+	// Inherited: H6
+	// Inherited: HEADER
+	// Inherited: HGROUP
+	// <editor-fold defaultstate="collapsed" desc="HR">
+	/**
+	 * Opens a new hr element.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">4.4.2 The hr element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
+	 * </ul>
+	 */
+	@Factory("hr")
+	default HR<D, __> hr() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new HR<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates an empty hr element with no attributes.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element">4.4.2 The hr element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("hr")
+	default __ hr__() throws IOException {
+		return hr().__();
+	}
+	// </editor-fold>
+	// Inherited: I
+	// Inherited: IFRAME
+	// Inherited: IMG
+	// Inherited: INPUT
+	// Inherited: INS
+	// Inherited: KBD
+	// Inherited: LABEL
+	// Inherited: LINK - if it is allowed in body
+	// Inherited: MAIN - if it is a hierarchically correct main element
+	// Inherited: MAP
+	// Inherited: MARK
+	// Inherited: MathML math
+	// Inherited: MENU
+	// Inherited: META - if the itemprop attribute is present
+	// Inherited: METER
+	// Inherited: NAV
+	// Inherited: NOSCRIPT
+	// Inherited: OBJECT
+	// Inherited: OL
+	// Inherited: OUTPUT
+	// Inherited: P
+	// Inherited: PICTURE
+	// Inherited: PRE
+	// Inherited: PROGRESS
+	// Inherited: Q
+	// Inherited: RUBY
+	// Inherited: S
+	// Inherited: SAMP
+	// Inherited: SCRIPT
+	// Inherited: SECTION
+	// Inherited: SELECT
+	// Inherited: SLOT
+	// Inherited: SMALL
+	// Inherited: SPAN
+	// Inherited: STRONG
+	// Inherited: SUB
+	// Inherited: SUP
+	// Inherited: SVG svg
+	// Inherited: TABLE
+	// Inherited: TEMPLATE
+	// Inherited: TEXTAREA
+	// Inherited: TIME
+	// Inherited: U
+	// Inherited: UL
+	// Inherited: VAR
+	// Inherited: VIDEO
+	// Inherited: WBR
+	// Inherited: autonomous custom elements
 }

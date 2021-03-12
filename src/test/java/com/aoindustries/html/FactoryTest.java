@@ -22,11 +22,24 @@
  */
 package com.aoindustries.html;
 
-import org.junit.Test;
+import com.aoindustries.lang.reflect.Classes;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import org.apache.bcel.classfile.AnnotationEntry;
+import org.apache.bcel.classfile.ClassParser;
+import org.apache.bcel.classfile.ElementValue;
+import org.apache.bcel.classfile.ElementValuePair;
+import org.apache.bcel.classfile.Method;
+import org.apache.bcel.util.ClassPath;
+import org.junit.Assert;
 
 /**
- * Tests <code>*_factory</code> element factory interfaces,
- * which confirm a class implements the expected set of interfaces.
+ * Tests {@link Factory} element factory methods,
+ * which confirm a class implements the expected set of elements.
  *
  * @author  AO Industries, Inc.
  */
@@ -34,138 +47,201 @@ import org.junit.Test;
 public class FactoryTest {
 
 	/**
-	 * Gets the set of all <code>*_factory</code> element factory interfaces.
+	 * Gets the set of all element factory names.
 	 */
-	static Class<? extends Content>[] getAllFactories() {
-		return new Class[] {
-			ABBR_factory.class,
-			ADDRESS_factory.class,
-			A_factory.class,
-			AREA_factory.class,
-			ARTICLE_factory.class,
-			ASIDE_factory.class,
-			AUDIO_factory.class,
-			BASE_factory.class,
-			BDI_factory.class,
-			BDO_factory.class,
-			B_factory.class,
-			BLOCKQUOTE_factory.class,
-			BODY_factory.class,
-			BR_factory.class,
-			BUTTON_factory.class,
-			CANVAS_factory.class,
-			CAPTION_factory.class,
-			CITE_factory.class,
-			CODE_factory.class,
-			COL_factory.class,
-			COLGROUP_factory.class,
-			DATA_factory.class,
-			DATALIST_factory.class,
-			DD_factory.class,
-			DEL_factory.class,
-			DETAILS_factory.class,
-			DFN_factory.class,
-			DIALOG_factory.class,
-			DIV_factory.class,
-			DL_factory.class,
-			DT_factory.class,
-			EMBED_factory.class,
-			EM_factory.class,
-			FIELDSET_factory.class,
-			FIGCAPTION_factory.class,
-			FIGURE_factory.class,
-			FOOTER_factory.class,
-			FORM_factory.class,
-			H1_factory.class,
-			H2_factory.class,
-			H3_factory.class,
-			H4_factory.class,
-			H5_factory.class,
-			H6_factory.class,
-			HEADER_factory.class,
-			HEAD_factory.class,
-			HGROUP_factory.class,
-			HR_factory.class,
-			HTML_factory.class,
-			I_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
-			INPUT_factory.class,
-			INS_factory.class,
-			KBD_factory.class,
-			LABEL_factory.class,
-			LEGEND_factory.class,
-			LI_factory.class,
-			LINK_factory.class,
-			MAIN_factory.class,
-			MAP_factory.class,
-			MARK_factory.class,
-			MENU_factory.class,
-			META_factory.class,
-			METER_factory.class,
-			NAV_factory.class,
-			NOSCRIPT_factory.class,
-			OBJECT_factory.class,
-			OL_factory.class,
-			OPTGROUP_factory.class,
-			OPTION_factory.class,
-			OUTPUT_factory.class,
-			PARAM_factory.class,
-			P_factory.class,
-			PICTURE_factory.class,
-			PRE_factory.class,
-			PROGRESS_factory.class,
-			Q_factory.class,
-			RP_factory.class,
-			RT_factory.class,
-			RUBY_factory.class,
-			SAMP_factory.class,
-			SCRIPT_factory.class,
-			SECTION_factory.class,
-			SELECT_factory.class,
-			S_factory.class,
-			SLOT_factory.class,
-			SMALL_factory.class,
-			SOURCE_factory.class,
-			SPAN_factory.class,
-			STRONG_factory.class,
-			STYLE_factory.class,
-			SUB_factory.class,
-			SUMMARY_factory.class,
-			SUP_factory.class,
-			TABLE_factory.class,
-			TBODY_factory.class,
-			TD_factory.class,
-			TEMPLATE_factory.class,
-			TEXTAREA_factory.class,
-			TFOOT_factory.class,
-			THEAD_factory.class,
-			TH_factory.class,
-			TIME_factory.class,
-			TITLE_factory.class,
-			TRACK_factory.class,
-			TR_factory.class,
-			U_factory.class,
-			UL_factory.class,
-			VAR_factory.class,
-			VIDEO_factory.class,
-			WBR_factory.class
+	static String[] getAllFactories() {
+		return new String[] {
+			"abbr",
+			"address",
+			"a",
+			"area",
+			"article",
+			"aside",
+			"audio",
+			"base",
+			"bdi",
+			"bdo",
+			"b",
+			"blockquote",
+			"body",
+			"br",
+			"button",
+			"canvas",
+			"caption",
+			"cite",
+			"code",
+			"col",
+			"colgroup",
+			"data",
+			"datalist",
+			"dd",
+			"del",
+			"details",
+			"dfn",
+			"dialog",
+			"div",
+			"dl",
+			"dt",
+			"embed",
+			"em",
+			"fieldset",
+			"figcaption",
+			"figure",
+			"form",
+			"footer",
+			"h1",
+			"h2",
+			"h3",
+			"h4",
+			"h5",
+			"h6",
+			"h#",
+			"header",
+			"head",
+			"hgroup",
+			"hr",
+			"html",
+			"i",
+			"iframe",
+			"img",
+			"input",
+			"ins",
+			"kbd",
+			"label",
+			"legend",
+			"li",
+			"link",
+			"main",
+			"map",
+			"mark",
+			"menu",
+			"meta",
+			"meter",
+			"nav",
+			"noscript",
+			"object",
+			"ol",
+			"optgroup",
+			"option",
+			"output",
+			"param",
+			"p",
+			"picture",
+			"pre",
+			"progress",
+			"q",
+			"rp",
+			"rt",
+			"ruby",
+			"samp",
+			"script",
+			"section",
+			"select",
+			"s",
+			"slot",
+			"small",
+			"source",
+			"span",
+			"strong",
+			"style",
+			"sub",
+			"summary",
+			"sup",
+			"table",
+			"tbody",
+			"td",
+			"template",
+			"textarea",
+			"tfoot",
+			"thead",
+			"th",
+			"time",
+			"title",
+			"track",
+			"tr",
+			"u",
+			"ul",
+			"var",
+			"video",
+			"wbr"
 		};
 	}
 
-	static void testFactories(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		InheritanceTests.testInterfaces(
-			iface -> iface.getSimpleName().endsWith("_factory"),
-			getAllFactories(),
-			clazz,
-			expected
-		);
+	private static final String FACTORY_ANNOTATION_TYPE = "L" + Factory.class.getCanonicalName().replace('.', '/') + ";";
+
+	private static final Map<Class<? extends Content>, Set<String>> factoryCache = new HashMap<>();
+
+	/**
+	 * Finds the set of all element factory name for the given class.
+	 */
+	private static void getFactoryNames(Class<? extends Content> clazz, Set<String> factoryNames) throws IOException {
+		Set<String> factories = factoryCache.get(clazz);
+		if(factories == null) {
+			factories = new HashSet<>();
+			ClassPath.ClassFile classFile = ClassPath.SYSTEM_CLASS_PATH.getClassFile(clazz.getCanonicalName());
+			for(
+				Method method :
+				new ClassParser(classFile.getInputStream(), classFile.getPath()).parse().getMethods()
+			) {
+				for(AnnotationEntry annotation : method.getAnnotationEntries()) {
+					String annotationType = annotation.getAnnotationType();
+					if(FACTORY_ANNOTATION_TYPE.equals(annotationType)) {
+						for(ElementValuePair pair : annotation.getElementValuePairs()) {
+							if("value".equals(pair.getNameString())) {
+								ElementValue value = pair.getValue();
+								int valueType = value.getElementValueType();
+								if(valueType == ElementValue.STRING) {
+									factories.add(value.toString());
+								} else {
+									Assert.fail("Unexected annotation element value type (" + valueType + "): " + pair.toShortString());
+								}
+							} else {
+								Assert.fail("Unexected annotation element: " + pair.toShortString());
+							}
+						}
+					} else if(
+						// Allow Deprecated
+						!annotationType.startsWith("Ljava/lang")
+					) {
+						Assert.fail("Unexected annotation type \"" + annotationType + "\": " + annotation);
+					}
+				}
+			}
+			factoryCache.put(clazz, factories);
+		}
+		factoryNames.addAll(factories);
 	}
 
-	@Test
-	public void testNoImplementInherited() {
-		for(Class<? extends Content> iface : getAllFactories()) {
-			InheritanceTests.testNoImplementInherited(iface);
+	static void testFactories(Class<? extends Content> clazz, String ... expected) throws IOException {
+		String[] all = getAllFactories();
+		Set<String> allSet = new HashSet<>(Arrays.asList(all));
+		// Check parameters
+		for(String factory : expected) {
+			Assert.assertTrue("factory not in getAllFactories(): " + factory, allSet.contains(factory));
 		}
+		// Find all content interfaces
+		Set<Class<? extends Content>> allClasses = Classes.getAllClasses(clazz, Content.class);
+		// First make sure has all the expected
+		Set<String> clazzFactories = new HashSet<>();
+		for(Class<? extends Content> iface : allClasses) {
+			getFactoryNames(iface, clazzFactories);
+		}
+		for(String factory : expected) {
+			Assert.assertTrue(
+				clazz.getSimpleName() + " must have factory methods for \"" + factory + '"',
+				clazzFactories.contains(factory)
+			);
+		}
+		// Next make sure no unexpected
+		Set<String> expectedSet = new HashSet<>(Arrays.asList(expected));
+		for(String factory : clazzFactories) {
+			Assert.assertTrue("factory not in getAllFactories(): " + factory, allSet.contains(factory));
+			Assert.assertTrue(
+				clazz.getSimpleName() + " may not have factory methods for \"" + factory + '"',
+				expectedSet.contains(factory)
+			);
+		}
+		// TODO: Test factory not inherited from different interfaces?
+		//       Would this instead verify an @OverrideFactory annotation, which would require all override?
 	}
 }

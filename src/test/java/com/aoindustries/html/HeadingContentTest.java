@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -70,20 +71,20 @@ public class HeadingContentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			HeadingContent.class,
 			//
 			// Factories:
 			//
-			H1_factory.class,
-			H2_factory.class,
-			H3_factory.class,
-			H4_factory.class,
-			H5_factory.class,
-			H6_factory.class,
-			HGROUP_factory.class
+			"h1",
+			"h2",
+			"h3",
+			"h4",
+			"h5",
+			"h6",
+			"h#",
+			"hgroup"
 		);
 	}
 

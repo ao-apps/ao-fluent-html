@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * Elements that are common to all three of {@link TBODY}, {@link THEAD}, and {@link TFOOT}.
  * <ul>
@@ -48,13 +52,87 @@ public interface Union_TBODY_THEAD_TFOOT<
 	// Content models:
 	//
 	// Inherited: Content<D, __>
-	ScriptSupportingContent<D, __>,
-
+	ScriptSupportingContent<D, __>
+{
 	//
 	// Factories:
 	//
-	TR_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	// Inherited: TEMPLATE_factory<D, __>
-{
+	// <editor-fold defaultstate="collapsed" desc="TR">
+	/**
+	 * Opens a new tr element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
+	 * </p>
+	 */
+	@Factory("tr")
+	default TR<D, __> tr() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new TR<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a tr element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("tr")
+	default <Ex extends Throwable> __ tr__(IORunnableE<Ex> tr) throws IOException, Ex {
+		return tr().__(tr);
+	}
+
+	/**
+	 * Creates a tr element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("tr")
+	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<D, __>, Ex> tr) throws IOException, Ex {
+		return tr().__(tr);
+	}
+
+	/**
+	 * Creates an empty tr element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("tr")
+	default __ tr__() throws IOException {
+		return tr().__();
+	}
+
+	/**
+	 * Creates a tr element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	@Factory("tr")
+	default TR_c<D, __> tr_c() throws IOException {
+		return tr()._c();
+	}
+	// </editor-fold>
+	// Inherited: SCRIPT
+	// Inherited: TEMPLATE
 }

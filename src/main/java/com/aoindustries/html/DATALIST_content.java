@@ -53,67 +53,66 @@ public interface DATALIST_content<
 	PhrasingContent<D, __>
 	// Inherited: ScriptSupportingContent<D, __>
 	// Inherited: TextContent<D, __>
-
+{
 	//
 	// Factories:
 	//
-	// Inherited: A_factory<D, __>
-	// Inherited: ABBR_factory<D, __>
-	// Inherited: AREA_factory<D, __> // if a descendent of map
-	// Inherited: AUDIO_factory<D, __>
-	// Inherited: B_factory<D, __>
-	// Inherited: BDI_factory<D, __>
-	// Inherited: BDO_factory<D, __>
-	// Inherited: BR_factory<D, __>
-	// Inherited: BUTTON_factory<D, __>
-	// Inherited: CANVAS_factory<D, __>
-	// Inherited: CITE_factory<D, __>
-	// Inherited: CODE_factory<D, __>
-	// Inherited: DATA_factory<D, __>
-	// Inherited: DATALIST_factory<D, __>
-	// Inherited: DEL_factory<D, __>
-	// Inherited: DFN_factory<D, __>
-	// Inherited: EM_factory<D, __>
-	// Inherited: EMBED_factory<D, __>
-	// Inherited: I_factory<D, __>
-	// Inherited: IFRAME_factory<D, __>
-	// Inherited: IMG_factory<D, __>
-	// Inherited: INPUT_factory<D, __>
-	// Inherited: INS_factory<D, __>
-	// Inherited: KBD_factory<D, __>
-	// Inherited: LABEL_factory<D, __>
-	// Inherited: LINK_factory<D, __> // if it is allowed in body
-	// Inherited: MAP_factory<D, __>
-	// Inherited: MARK_factory<D, __>
-	// Inherited: // TODO: MathML math
-	// Inherited: META_factory<D, __> // if the itemprop attribute is present
-	// Inherited: METER_factory<D, __>
-	// Inherited: NOSCRIPT_factory<D, __>
-	// Inherited: OBJECT_factory<D, __>
-	// Inherited: OPTION_factory<D, __>
-	// Inherited: OUTPUT_factory<D, __>
-	// Inherited: PICTURE_factory<D, __>
-	// Inherited: PROGRESS_factory<D, __>
-	// Inherited: Q_factory<D, __>
-	// Inherited: RUBY_factory<D, __>
-	// Inherited: S_factory<D, __>
-	// Inherited: SAMP_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	// Inherited: SELECT_factory<D, __>
-	// Inherited: SLOT_factory<D, __>
-	// Inherited: SMALL_factory<D, __>
-	// Inherited: SPAN_factory<D, __>
-	// Inherited: STRONG_factory<D, __>
-	// Inherited: SUB_factory<D, __>
-	// Inherited: SUP_factory<D, __>
-	// Inherited: // TODO: SVG svg
-	// Inherited: TEMPLATE_factory<D, __>
-	// Inherited: TEXTAREA_factory<D, __>
-	// Inherited: TIME_factory<D, __>
-	// Inherited: U_factory<D, __>
-	// Inherited: VAR_factory<D, __>
-	// Inherited: VIDEO_factory<D, __>
-	// Inherited: WBR_factory<D, __>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-{
+	// Inherited: A
+	// Inherited: ABBR
+	// Inherited: AREA - if a descendent of map
+	// Inherited: AUDIO
+	// Inherited: B
+	// Inherited: BDI
+	// Inherited: BDO
+	// Inherited: BR
+	// Inherited: BUTTON
+	// Inherited: CANVAS
+	// Inherited: CITE
+	// Inherited: CODE
+	// Inherited: DATA
+	// Inherited: DATALIST
+	// Inherited: DEL
+	// Inherited: DFN
+	// Inherited: EM
+	// Inherited: EMBED
+	// Inherited: I
+	// Inherited: IFRAME
+	// Inherited: IMG
+	// Inherited: INPUT
+	// Inherited: INS
+	// Inherited: KBD
+	// Inherited: LABEL
+	// Inherited: LINK - if it is allowed in body
+	// Inherited: MAP
+	// Inherited: MARK
+	// Inherited: MathML math
+	// Inherited: META - if the itemprop attribute is present
+	// Inherited: METER
+	// Inherited: NOSCRIPT
+	// Inherited: OBJECT
+	// Inherited: OPTION
+	// Inherited: OUTPUT
+	// Inherited: PICTURE
+	// Inherited: PROGRESS
+	// Inherited: Q
+	// Inherited: RUBY
+	// Inherited: S
+	// Inherited: SAMP
+	// Inherited: SCRIPT
+	// Inherited: SELECT
+	// Inherited: SLOT
+	// Inherited: SMALL
+	// Inherited: SPAN
+	// Inherited: STRONG
+	// Inherited: SUB
+	// Inherited: SUP
+	// Inherited: SVG svg
+	// Inherited: TEMPLATE
+	// Inherited: TEXTAREA
+	// Inherited: TIME
+	// Inherited: U
+	// Inherited: VAR
+	// Inherited: VIDEO
+	// Inherited: WBR
+	// Inherited: autonomous custom elements
 }

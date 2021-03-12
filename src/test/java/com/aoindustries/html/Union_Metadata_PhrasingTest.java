@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -72,18 +73,17 @@ public class Union_Metadata_PhrasingTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_Metadata_Phrasing.class,
 			//
 			// Factories:
 			//
-			LINK_factory.class,
-			META_factory.class,
-			NOSCRIPT_factory.class,
-			SCRIPT_factory.class,
-			TEMPLATE_factory.class
+			"link",
+			"meta",
+			"noscript",
+			"script",
+			"template"
 		);
 	}
 

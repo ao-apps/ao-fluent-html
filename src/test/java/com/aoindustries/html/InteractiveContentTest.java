@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,27 +72,26 @@ public class InteractiveContentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			InteractiveContent.class,
 			//
 			// Factories:
 			//
-			A_factory.class, // if the href attribute is present
-			AUDIO_factory.class, // if the controls attribute is present
-			BUTTON_factory.class,
-			DETAILS_factory.class,
-			EMBED_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class, // if the usemap attribute is present
-			INPUT_factory.class, // if type attribute is not in the hidden state
-			LABEL_factory.class,
-			MENU_factory.class, // (MDN only) if the type attribute is in the toolbar state
-			OBJECT_factory.class, // if the usemap attribute is present
-			SELECT_factory.class,
-			TEXTAREA_factory.class,
-			VIDEO_factory.class // if the controls attribute is present
+			"a", // if the href attribute is present
+			"audio", // if the controls attribute is present
+			"button",
+			"details",
+			"embed",
+			"iframe",
+			"img", // if the usemap attribute is present
+			"input", // if type attribute is not in the hidden state
+			"label",
+			"menu", // (MDN only) if the type attribute is in the toolbar state
+			"object", // if the usemap attribute is present
+			"select",
+			"textarea",
+			"video" // if the controls attribute is present
 		);
 	}
 

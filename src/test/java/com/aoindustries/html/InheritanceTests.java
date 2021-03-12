@@ -110,5 +110,5 @@ class InheritanceTests {
 		}
 	}
 
-	// TODO: Test generic upper bounds consistency between Element, Content, and Factories?
+	// TODO: Test generic upper bounds consistency between Element and Content?
 }

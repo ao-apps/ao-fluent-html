@@ -22,6 +22,8 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#embedded-content-2">3.2.5.2.6 Embedded content</a>.</li>
@@ -41,25 +43,35 @@ public interface EmbeddedContent<
 	// Unions:
 	//
 	Union_Embedded_Interactive<D, __>,
-	Union_Embedded_Palpable_Phrasing<D, __>,
+	Union_Embedded_Palpable_Phrasing<D, __>
 
 	//
 	// Content models:
 	//
 	// Inherited: Content<D, __>
-
+{
 	//
 	// Factories:
 	//
-	// Inherited: AUDIO_factory<D, __>
-	// Inherited: CANVAS_factory<D, __>
-	// Inherited: EMBED_factory<D, __>
-	// Inherited: IFRAME_factory<D, __>
-	// Inherited: IMG_factory<D, __>
-	// Inherited: // TODO: MathML math
-	// Inherited: OBJECT_factory<D, __>
-	PICTURE_factory<D, __>
-	// Inherited: // TODO: SVG svg
-	// Inherited: VIDEO_factory<D, __>
-{
+	// Inherited: AUDIO
+	// Inherited: CANVAS
+	// Inherited: EMBED
+	// Inherited: IFRAME
+	// Inherited: IMG
+	// Inherited: MathML math
+	// Inherited: OBJECT
+	// <editor-fold defaultstate="collapsed" desc="PICTURE">
+	/**
+	 * Opens a new picture element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element">4.8.1 The picture element</a>.
+	 * </p>
+	 */
+	@Factory("picture")
+	default void picture() throws IOException {
+		throw new AssertionError("TODO: Implement picture");
+	}
+	// </editor-fold>
+	// Inherited: SVG svg
+	// Inherited: VIDEO
 }

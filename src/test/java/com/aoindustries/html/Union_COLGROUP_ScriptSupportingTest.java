@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,14 +72,13 @@ public class Union_COLGROUP_ScriptSupportingTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_COLGROUP_ScriptSupporting.class,
 			//
 			// Factories:
 			//
-			TEMPLATE_factory.class
+			"template"
 		);
 	}
 

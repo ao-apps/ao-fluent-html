@@ -82,13 +82,6 @@
  *   </li>
  *   <li>
  *     <p>
- *       <code>ELEMENT_factory</code> - Creates child elements of the given type.  These factories are implemented by
- *       <code>*Content</code> models, element-specific <code>ELEMENT_content</code> models, and {@link AnyDocument}
- *       itself.  Notably, {@link AnyDocument} can create all element types.
- *     </p>
- *   </li>
- *   <li>
- *     <p>
  *       <code>*Content</code> - Various content model interfaces, either directly defined by the HTML specification or a
  *       result of adapting the HTML specification into an interface hierarchy.
  *     </p>

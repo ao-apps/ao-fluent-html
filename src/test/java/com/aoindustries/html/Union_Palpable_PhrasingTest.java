@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -74,57 +75,56 @@ public class Union_Palpable_PhrasingTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			Union_Palpable_Phrasing.class,
 			//
 			// Factories:
 			//
-			A_factory.class,
-			ABBR_factory.class,
-			AUDIO_factory.class,
-			B_factory.class,
-			BDI_factory.class,
-			BDO_factory.class,
-			BUTTON_factory.class,
-			CANVAS_factory.class,
-			CITE_factory.class,
-			CODE_factory.class,
-			DATA_factory.class,
-			DFN_factory.class,
-			EM_factory.class,
-			EMBED_factory.class,
-			I_factory.class,
-			IFRAME_factory.class,
-			IMG_factory.class,
-			INPUT_factory.class,
-			INS_factory.class,
-			KBD_factory.class,
-			LABEL_factory.class,
-			MAP_factory.class,
-			MARK_factory.class,
+			"a",
+			"abbr",
+			"audio",
+			"b",
+			"bdi",
+			"bdo",
+			"button",
+			"canvas",
+			"cite",
+			"code",
+			"data",
+			"dfn",
+			"em",
+			"embed",
+			"i",
+			"iframe",
+			"img",
+			"input",
+			"ins",
+			"kbd",
+			"label",
+			"map",
+			"mark",
 			// TODO: MathML math
-			METER_factory.class,
-			OBJECT_factory.class,
-			OUTPUT_factory.class,
-			PROGRESS_factory.class,
-			Q_factory.class,
-			RUBY_factory.class,
-			S_factory.class,
-			SAMP_factory.class,
-			SELECT_factory.class,
-			SMALL_factory.class,
-			SPAN_factory.class,
-			STRONG_factory.class,
-			SUB_factory.class,
-			SUP_factory.class,
+			"meter",
+			"object",
+			"output",
+			"progress",
+			"q",
+			"ruby",
+			"s",
+			"samp",
+			"select",
+			"small",
+			"span",
+			"strong",
+			"sub",
+			"sup",
 			// TODO: SVG svg
-			TEXTAREA_factory.class,
-			TIME_factory.class,
-			U_factory.class,
-			VAR_factory.class,
-			VIDEO_factory.class
+			"textarea",
+			"time",
+			"u",
+			"var",
+			"video"
 			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 		);
 	}

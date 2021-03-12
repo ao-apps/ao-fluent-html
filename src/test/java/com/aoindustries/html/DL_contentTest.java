@@ -23,6 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -73,18 +74,17 @@ public class DL_contentTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	public void testFactories() {
+	public void testFactories() throws IOException {
 		FactoryTest.testFactories(
 			DL_content.class,
 			//
 			// Factories:
 			//
-			DD_factory.class,
-			DIV_factory.class,
-			DT_factory.class,
-			SCRIPT_factory.class,
-			TEMPLATE_factory.class
+			"dd",
+			"div",
+			"dt",
+			"script",
+			"template"
 		);
 	}
 

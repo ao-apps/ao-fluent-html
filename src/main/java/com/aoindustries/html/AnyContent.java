@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * This interface extends all content interfaces and supports all element types.
  *
@@ -75,129 +79,321 @@ public interface AnyContent<
 	// Inherited: OPTGROUP_content<D, __>
 	SELECT_content<D, __>,
 	TABLE_content<D, __>,
-	TR_content<D, __>,
+	TR_content<D, __>
 
-	//
-	// Factories:
-	//
-	HTML_factory<D, __>,
-	// Inherited: HEAD_factory<D, __>
-	// Inherited: TITLE_factory<D, __>
-	// Inherited: BASE_factory<D, __>
-	// Inherited: LINK_factory<D, __>
-	// Inherited: META_factory<D, __>
-	// Inherited: STYLE_factory<D, __>
-	// Inherited: BODY_factory<D, __>
-	// Inherited: ARTICLE_factory<D, __>
-	// Inherited: SECTION_factory<D, __>
-	// Inherited: NAV_factory<D, __>
-	// Inherited: ASIDE_factory<D, __>
-	// Inherited: H1_factory<D, __>
-	// Inherited: H2_factory<D, __>
-	// Inherited: H3_factory<D, __>
-	// Inherited: H4_factory<D, __>
-	// Inherited: H5_factory<D, __>
-	// Inherited: H6_factory<D, __>
-	// Inherited: HGROUP_factory<D, __>
-	// Inherited: HEADER_factory<D, __>
-	// Inherited: FOOTER_factory<D, __>
-	// Inherited: ADDRESS_factory<D, __>
-	// Inherited: P_factory<D, __>
-	// Inherited: HR_factory<D, __>
-	// Inherited: PRE_factory<D, __>
-	// Inherited: BLOCKQUOTE_factory<D, __>
-	// Inherited: OL_factory<D, __>
-	// Inherited: UL_factory<D, __>
-	// Inherited: MENU_factory<D, __>
-	// Inherited: LI_factory<D, __>
-	// Inherited: DL_factory<D, __>
-	// Inherited: DT_factory<D, __>
-	// Inherited: DD_factory<D, __>
-	// Inherited: FIGURE_factory<D, __>
-	FIGCAPTION_factory<D, __>,
-	// Inherited: MAIN_factory<D, __>
-	// Inherited: DIV_factory<D, __>
-	// Inherited: A_factory<D, __>
-	// Inherited: EM_factory<D, __>
-	// Inherited: STRONG_factory<D, __>
-	// Inherited: SMALL_factory<D, __>
-	// Inherited: S_factory<D, __>
-	// Inherited: CITE_factory<D, __>
-	// Inherited: Q_factory<D, __>
-	// Inherited: DFN_factory<D, __>
-	// Inherited: ABBR_factory<D, __>
-	// Inherited: RUBY_factory<D, __>
-	RT_factory<D, __>,
-	RP_factory<D, __>,
-	// Inherited: DATA_factory<D, __>
-	// Inherited: TIME_factory<D, __>
-	// Inherited: CODE_factory<D, __>
-	// Inherited: VAR_factory<D, __>
-	// Inherited: SAMP_factory<D, __>
-	// Inherited: KBD_factory<D, __>
-	// Inherited: SUB_factory<D, __>
-	// Inherited: SUP_factory<D, __>
-	// Inherited: I_factory<D, __>
-	// Inherited: B_factory<D, __>
-	// Inherited: U_factory<D, __>
-	// Inherited: MARK_factory<D, __>
-	// Inherited: BDI_factory<D, __>
-	// Inherited: BDO_factory<D, __>
-	// Inherited: SPAN_factory<D, __>
-	// Inherited: BR_factory<D, __>
-	// Inherited: WBR_factory<D, __>
-	// Inherited: INS_factory<D, __>
-	// Inherited: DEL_factory<D, __>
-	// Inherited: PICTURE_factory<D, __>
-	SOURCE_factory<D, __>,
-	// Inherited: IMG_factory<D, __>
-	// Inherited: IFRAME_factory<D, __>
-	// Inherited: EMBED_factory<D, __>
-	// Inherited: OBJECT_factory<D, __>
-	PARAM_factory<D, __>,
-	// Inherited: VIDEO_factory<D, __>
-	// Inherited: AUDIO_factory<D, __>
-	TRACK_factory<D, __>,
-	// Inherited: MAP_factory<D, __>
-	// Inherited: AREA_factory<D, __>
-	// Inherited: // TODO: MathML math
-	// Inherited: // TODO: SVG svg
-	// Inherited: TABLE_factory<D, __>
-	// Inherited: CAPTION_factory<D, __>
-	// Inherited: COLGROUP_factory<D, __>
-	// Inherited: COL_factory<D, __>
-	// Inherited: TBODY_factory<D, __>
-	// Inherited: THEAD_factory<D, __>
-	// Inherited: TFOOT_factory<D, __>
-	// Inherited: TR_factory<D, __>
-	// Inherited: TD_factory<D, __>
-	// Inherited: TH_factory<D, __>
-	// Inherited: FORM_factory<D, __>
-	// Inherited: LABEL_factory<D, __>
-	// Inherited: INPUT_factory<D, __>
-	// Inherited: BUTTON_factory<D, __>
-	// Inherited: SELECT_factory<D, __>
-	// Inherited: DATALIST_factory<D, __>
-	// Inherited: OPTGROUP_factory<D, __>
-	// Inherited: OPTION_factory<D, __>
-	// Inherited: TEXTAREA_factory<D, __>
-	// Inherited: OUTPUT_factory<D, __>
-	// Inherited: PROGRESS_factory<D, __>
-	// Inherited: METER_factory<D, __>
-	// Inherited: FIELDSET_factory<D, __>
-	LEGEND_factory<D, __>,
-	// Inherited: DETAILS_factory<D, __>
-	SUMMARY_factory<D, __>
-	// Inherited: DIALOG_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	// Inherited: NOSCRIPT_factory<D, __>
-	// Inherited: TEMPLATE_factory<D, __>
-	// Inherited: SLOT_factory<D, __>
-	// Inherited: CANVAS_factory<D, __>
-	// Inherited: // TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
 	//
 	// Others:
 	//
 	// Inherited: WhitespaceWriter<D>
 {
+	//
+	// Factories:
+	//
+	// <editor-fold defaultstate="collapsed" desc="HTML">
+	/**
+	 * Opens a new html element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
+	 * </p>
+	 */
+	@Factory("html")
+	default HTML<D, __> html() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new HTML<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a html element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("html")
+	default <Ex extends Throwable> __ html__(IORunnableE<Ex> html) throws IOException, Ex {
+		return html().__(html);
+	}
+
+	/**
+	 * Creates a html element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("html")
+	default <Ex extends Throwable> __ html__(IOConsumerE<? super HTML__<D, __>, Ex> html) throws IOException, Ex {
+		return html().__(html);
+	}
+
+	/**
+	 * Creates an empty html element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("html")
+	default __ html__() throws IOException {
+		return html().__();
+	}
+
+	/**
+	 * Creates a html element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	@Factory("html")
+	default HTML_c<D, __> html_c() throws IOException {
+		return html()._c();
+	}
+	// </editor-fold>
+	// Inherited: HEAD
+	// Inherited: TITLE
+	// Inherited: BASE
+	// Inherited: LINK
+	// Inherited: META
+	// Inherited: STYLE
+	// Inherited: BODY
+	// Inherited: ARTICLE
+	// Inherited: SECTION
+	// Inherited: NAV
+	// Inherited: ASIDE
+	// Inherited: H1
+	// Inherited: H2
+	// Inherited: H3
+	// Inherited: H4
+	// Inherited: H5
+	// Inherited: H6
+	// Inherited: HGROUP
+	// Inherited: HEADER
+	// Inherited: FOOTER
+	// Inherited: ADDRESS
+	// Inherited: P
+	// Inherited: HR
+	// Inherited: PRE
+	// Inherited: BLOCKQUOTE
+	// Inherited: OL
+	// Inherited: UL
+	// Inherited: MENU
+	// Inherited: LI
+	// Inherited: DL
+	// Inherited: DT
+	// Inherited: DD
+	// Inherited: FIGURE
+	// <editor-fold defaultstate="collapsed" desc="FIGCAPTION">
+	/**
+	 * Opens a new figcaption element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figcaption-element">4.4.13 The figcaption element</a>.
+	 * </p>
+	 */
+	@Factory("figcaption")
+	default void figcaption() throws IOException {
+		throw new AssertionError("TODO: Implement figcaption");
+	}
+	// TODO: __ extends FigcaptionContent<D, __> (where FigcaptionContent extends FlowContent + Figcaption)
+	// </editor-fold>
+	// Inherited: MAIN
+	// Inherited: DIV
+	// Inherited: A
+	// Inherited: EM
+	// Inherited: STRONG
+	// Inherited: SMALL
+	// Inherited: S
+	// Inherited: CITE
+	// Inherited: Q
+	// Inherited: DFN
+	// Inherited: ABBR
+	// Inherited: RUBY
+	// <editor-fold defaultstate="collapsed" desc="RT">
+	/**
+	 * Opens a new rt element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element">4.5.11 The rt element</a>.
+	 * </p>
+	 */
+	@Factory("rt")
+	default void rt() throws IOException {
+		throw new AssertionError("TODO: Implement rt");
+	}
+	// TODO: __ extends RUBY_content<D, __>
+	// </editor-fold>
+	// <editor-fold defaultstate="collapsed" desc="RP">
+	/**
+	 * Opens a new rp element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rp-element">4.5.12 The rp element</a>.
+	 * </p>
+	 */
+	@Factory("rp")
+	default void rp() throws IOException {
+		throw new AssertionError("TODO: Implement rp");
+	}
+	// TODO: __ extends RUBY_content<D, __>
+	// </editor-fold>
+	// Inherited: DATA
+	// Inherited: TIME
+	// Inherited: CODE
+	// Inherited: VAR
+	// Inherited: SAMP
+	// Inherited: KBD
+	// Inherited: SUB
+	// Inherited: SUP
+	// Inherited: I
+	// Inherited: B
+	// Inherited: U
+	// Inherited: MARK
+	// Inherited: BDI
+	// Inherited: BDO
+	// Inherited: SPAN
+	// Inherited: BR
+	// Inherited: WBR
+	// Inherited: INS
+	// Inherited: DEL
+	// Inherited: PICTURE
+	// <editor-fold defaultstate="collapsed" desc="SOURCE">
+	/**
+	 * Opens a new source element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element">4.8.2 The source element</a>.
+	 * </p>
+	 */
+	@Factory("source")
+	default void source() throws IOException {
+		throw new AssertionError("TODO: Implement source");
+	}
+	// TODO: __ extends TODO<D, __>
+	// </editor-fold>
+	// Inherited: IMG
+	// Inherited: IFRAME
+	// Inherited: EMBED
+	// Inherited: OBJECT
+	// <editor-fold defaultstate="collapsed" desc="PARAM">
+	// TODO: __ extends ObjectContent<D, __>
+	/**
+	 * Opens a new param element.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element">4.8.8 The param element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
+	 * </ul>
+	 */
+	@Factory("param")
+	default PARAM<D, __> param() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new PARAM<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a param element with the given name and value.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element">4.8.8 The param element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("param")
+	default __ param__(Object name, Object value) throws IOException {
+		return param().name(name).value(value).__();
+	}
+	// TODO: More types like supported by ao-taglib (ParamsTag.java), including collection types, as "params__"?
+	// </editor-fold>
+	// Inherited: VIDEO
+	// Inherited: AUDIO
+	// <editor-fold defaultstate="collapsed" desc="TRACK">
+	/**
+	 * Opens a new track element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">4.8.11 The track element</a>.
+	 * </p>
+	 */
+	@Factory("track")
+	default void track() throws IOException {
+		throw new AssertionError("TODO: Implement track");
+	}
+	// TODO: __ extends MediaContent<D, __>
+	// </editor-fold>
+	// Inherited: MAP
+	// Inherited: AREA
+	// Inherited: MathML math
+	// Inherited: SVG svg
+	// Inherited: TABLE
+	// Inherited: CAPTION
+	// Inherited: COLGROUP
+	// Inherited: COL
+	// Inherited: TBODY
+	// Inherited: THEAD
+	// Inherited: TFOOT
+	// Inherited: TR
+	// Inherited: TD
+	// Inherited: TH
+	// Inherited: FORM
+	// Inherited: LABEL
+	// Inherited: INPUT
+	// Inherited: BUTTON
+	// Inherited: SELECT
+	// Inherited: DATALIST
+	// Inherited: OPTGROUP
+	// Inherited: OPTION
+	// Inherited: TEXTAREA
+	// Inherited: OUTPUT
+	// Inherited: PROGRESS
+	// Inherited: METER
+	// Inherited: FIELDSET
+	// <editor-fold defaultstate="collapsed" desc="LEGEND">
+	/**
+	 * Opens a new legend element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-legend-element">4.10.16 The legend element</a>.
+	 * </p>
+	 */
+	@Factory("legend")
+	default void legend() throws IOException {
+		throw new AssertionError("TODO: Implement legend");
+	}
+	// TODO: __ extends FIELDSET_content<D, __>
+	// </editor-fold>
+	// Inherited: DETAILS
+	// <editor-fold defaultstate="collapsed" desc="SUMMARY">
+	/**
+	 * Opens a new summary element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element">4.11.2 The summary element</a>.
+	 * </p>
+	 */
+	@Factory("summary")
+	default void summary() throws IOException {
+		throw new AssertionError("TODO: Implement summary");
+	}
+	// TODO: __ extends DETAILS_content<D, __>
+	// </editor-fold>
+	// Inherited: DIALOG
+	// Inherited: SCRIPT
+	// Inherited: NOSCRIPT
+	// Inherited: TEMPLATE
+	// Inherited: SLOT
+	// Inherited: CANVAS
+	// Inherited: autonomous custom elements
 }

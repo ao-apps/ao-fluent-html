@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.encoding.Doctype;
+import com.aoindustries.io.function.IOSupplierE;
+import java.io.IOException;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/dom.html#metadata-content">3.2.5.2.1 Metadata content</a>.</li>
@@ -41,24 +45,148 @@ public interface MetadataContent<
 	// Unions:
 	//
 	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
-	Union_Metadata_Phrasing<D, __>,
+	Union_Metadata_Phrasing<D, __>
 
 	//
 	// Content models:
 	//
 	// Inherited: Content<D, __>
 	// Inherited: ScriptSupportingContent<D, __>
-
+{
 	//
 	// Factories:
 	//
-	BASE_factory<D, __>,
-	// Inherited: LINK_factory<D, __>
-	// Inherited: META_factory<D, __>
-	// Inherited: NOSCRIPT_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	STYLE_factory<D, __>,
-	// Inherited: TEMPLATE_factory<D, __> // WHATWG only
-	TITLE_factory<D, __>
-{
+	// <editor-fold defaultstate="collapsed" desc="BASE">
+	/**
+	 * Opens a new base element.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
+	 * </ul>
+	 */
+	@Factory("base")
+	default BASE<D, __> base() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new BASE<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Shortcut to create a base with href only.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-base-element">4.2.3 The base element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">&lt;base&gt;: The Document Base URL element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_base.asp">HTML base tag</a>.</li>
+	 * </ul>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("base")
+	default __ base__(String href) throws IOException {
+		return base().href(href).__();
+	}
+	// TODO: IOSupplierE version like A? (review others, too)
+	// </editor-fold>
+	// Inherited: LINK
+	// Inherited: META
+	// Inherited: NOSCRIPT
+	// Inherited: SCRIPT
+	// <editor-fold defaultstate="collapsed" desc="STYLE">
+	/**
+	 * Opens a new style element.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+	 * </ul>
+	 *
+	 * @see Doctype#styleType(java.lang.Appendable)
+	 */
+	@Factory("style")
+	default STYLE<D, __> style() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new STYLE<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Opens a new style element of the given type.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
+	 * </ul>
+	 */
+	@Factory("style")
+	default STYLE<D, __> style(String type) throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Opens a new style element of the given type.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	@Factory("style")
+	default <Ex extends Throwable> STYLE<D, __> style(Suppliers.String<Ex> type) throws IOException, Ex {
+		return style((type == null) ? null : type.get());
+	}
+
+	/**
+	 * Opens a new style element of the given type.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
+	 * </ul>
+	 */
+	@Factory("style")
+	default STYLE<D, __> style(STYLE.Type type) throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Opens a new style element of the given type.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/att_style_type.asp">HTML style type Attribute</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 */
+	@Factory("style")
+	default <Ex extends Throwable> STYLE<D, __> style(IOSupplierE<? extends STYLE.Type, Ex> type) throws IOException, Ex {
+		return style((type == null) ? null : type.get());
+	}
+	// TODO: style__() - go directly to out, since no attributes? Lambda versions, too
+	// TODO: A version called HtmlWriter that extends ChainWriter to avoid all this passing of appendables?
+	// TODO: html.input.style.type().print("...").__().  How far do we take this?
+	// </editor-fold>
+	// Inherited: TEMPLATE - WHATWG only
+	// <editor-fold defaultstate="collapsed" desc="TITLE">
+	/**
+	 * Opens a new title element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">4.2.2 The title element</a>.
+	 * </p>
+	 */
+	@Factory("title")
+	default void title() throws IOException {
+		throw new AssertionError("TODO: Implement title");
+	}
+	// </editor-fold>
 }

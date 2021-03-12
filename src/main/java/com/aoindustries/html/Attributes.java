@@ -83,7 +83,7 @@ public class Attributes {
 	 * or checking preconditions, only the funnel methods need to be overridden.
 	 * </p>
 	 */
-	// TODO: Move to com.aoindustries.html and use for *_factory classes, too?
+	// TODO: Move to com.aoindustries.html and use for Factory methods, too?
 	@Retention(RetentionPolicy.SOURCE)
 	@Target(ElementType.METHOD)
 	public static @interface Funnel {

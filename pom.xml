@@ -121,6 +121,11 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 										</artifactItem>
 										<!-- Test Direct -->
 										<artifactItem>
+											<groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId><classifier>javadoc</classifier>
+											<includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/org.apache.bcel/bcel</outputDirectory>
+										</artifactItem>
+										<artifactItem>
 											<groupId>junit</groupId><artifactId>junit</artifactId><classifier>javadoc</classifier>
 											<includes>element-list, package-list</includes>
 											<outputDirectory>${project.build.directory}/offlineLinks/junit/junit</outputDirectory>
@@ -156,6 +161,10 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 									<location>${project.build.directory}/offlineLinks/com.aoindustries/aocode-public</location>
 								</offlineLink>
 								<!-- Test Direct -->
+								<offlineLink>
+									<url>https://commons.apache.org/proper/commons-bcel/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/org.apache.bcel/bcel</location>
+								</offlineLink>
 								<offlineLink>
 									<url>https://junit.org/junit4/javadoc/latest/</url>
 									<location>${project.build.directory}/offlineLinks/junit/junit</location>
@@ -200,6 +209,9 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			</dependency>
 			<!-- Test Direct -->
 			<dependency>
+				<groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId><version>6.5.0</version>
+			</dependency>
+			<dependency>
 				<groupId>junit</groupId><artifactId>junit</artifactId><version>4.13.2</version>
 			</dependency>
 			<!-- Test Transitive -->
@@ -231,6 +243,10 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId>
 		</dependency>
 		<!-- Test Direct -->
+		<dependency>
+			<groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId><artifactId>junit</artifactId>
 			<scope>test</scope>

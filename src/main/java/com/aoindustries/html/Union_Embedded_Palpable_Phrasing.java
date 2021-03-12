@@ -22,6 +22,8 @@
  */
 package com.aoindustries.html;
 
+import java.io.IOException;
+
 /**
  * Elements that are common to all three of {@link EmbeddedContent}, {@link PalpableContent}, and
  * {@link PhrasingContent}.
@@ -31,7 +33,6 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
 public interface Union_Embedded_Palpable_Phrasing<
 	D  extends AnyDocument<D>,
 	__ extends Union_Embedded_Palpable_Phrasing<D, __>
@@ -39,13 +40,27 @@ public interface Union_Embedded_Palpable_Phrasing<
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-
+	Content<D, __>
+{
 	//
 	// Factories:
 	//
-	CANVAS_factory<D, __>
-	// TODO: MathML math
-	// TODO: SVG svg
-{
+	// <editor-fold defaultstate="collapsed" desc="CANVAS">
+	/**
+	 * Opens a new canvas element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">4.12.5 The canvas element</a>.
+	 * </p>
+	 */
+	@Factory("canvas")
+	default void canvas() throws IOException {
+		throw new AssertionError("TODO: Implement canvas");
+	}
+	// </editor-fold>
+	// <editor-fold defaultstate="collapsed" desc="TODO: MathML math">
+	// See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#mathml">4.8.16 MathML</a>.
+	// </editor-fold>
+	// <editor-fold defaultstate="collapsed" desc="TODO: SVG svg">
+	// See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#svg-0">4.8.17 SVG</a>.
+	// </editor-fold>
 }

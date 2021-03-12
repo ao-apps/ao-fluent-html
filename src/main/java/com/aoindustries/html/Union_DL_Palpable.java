@@ -22,6 +22,10 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.io.function.IOConsumerE;
+import com.aoindustries.io.function.IORunnableE;
+import java.io.IOException;
+
 /**
  * Elements that are common to both {@link DL_content} and {@link PalpableContent}.
  *
@@ -30,7 +34,6 @@ package com.aoindustries.html;
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
 public interface Union_DL_Palpable<
 	D  extends AnyDocument<D>,
 	__ extends Union_DL_Palpable<D, __>
@@ -38,11 +41,98 @@ public interface Union_DL_Palpable<
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-
+	Content<D, __>
+{
 	//
 	// Factories:
 	//
-	DIV_factory<D, __>
-{
+	// <editor-fold defaultstate="collapsed" desc="DIV">
+	/**
+	 * Opens a new div element.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 */
+	@Factory("div")
+	default DIV<D, __> div() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		D document = getDocument();
+		return new DIV<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a div element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("div")
+	default <Ex extends Throwable> __ div__(IORunnableE<Ex> div) throws IOException, Ex {
+		return div().__(div);
+	}
+
+	/**
+	 * Creates a div element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("div")
+	default <Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<D, __>, Ex> div) throws IOException, Ex {
+		return div().__(div);
+	}
+
+	/**
+	 * Creates a div element with no attributes and a text body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("div")
+	default __ div__(Object text) throws IOException {
+		return div().__(text);
+	}
+
+	/**
+	 * Creates an empty div element with no attributes.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	@Factory("div")
+	default __ div__() throws IOException {
+		return div().__();
+	}
+
+	/**
+	 * Creates a div element with no attributes then begins element content
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
+	 * </p>
+	 *
+	 * @return  The content model of this element, which will be the parent content model of child elements.
+	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
+	 *          the tag.  This is well suited for use in a try-with-resources block.
+	 *
+	 * @see  Closeable#__()
+	 * @see  Closeable#close()
+	 */
+	@Factory("div")
+	default DIV_c<D, __> div_c() throws IOException {
+		return div()._c();
+	}
+	// </editor-fold>
 }

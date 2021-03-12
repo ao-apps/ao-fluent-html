@@ -46,14 +46,13 @@ public interface DL_content<
 	//
 	// Inherited: Content<D, __>
 	ScriptSupportingContent<D, __>
-
+{
 	//
 	// Factories:
 	//
-	// Inherited: DD_factory<D, __>
-	// Inherited: DIV_factory<D, __>
-	// Inherited: DT_factory<D, __>
-	// Inherited: SCRIPT_factory<D, __>
-	// Inherited: TEMPLATE_factory<D, __>
-{
+	// Inherited: DD
+	// Inherited: DIV
+	// Inherited: DT
+	// Inherited: SCRIPT
+	// Inherited: TEMPLATE
 }

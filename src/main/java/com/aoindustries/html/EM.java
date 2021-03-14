@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyEM;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class EM<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, EM<D, PC>, EM__<D, PC>, EM_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<EM<D, PC>>
-{
+	AnyEM<Document, PC, EM<PC>, EM__<PC>, EM_c<PC>> {
 
-	public EM(D document, PC pc) {
+	protected EM(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected EM<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<em", false);
-		return this;
+	protected EM<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></em>" : "</em>", false);
-	}
-
-	@Override
-	protected EM__<D, PC> new__() {
+	protected EM__<PC> new__() {
 		return new EM__<>(this);
 	}
 
 	@Override
-	protected EM_c<D, PC> new_c() {
+	protected EM_c<PC> new_c() {
 		return new EM_c<>(this);
 	}
 }

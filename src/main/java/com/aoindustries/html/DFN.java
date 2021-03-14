@@ -22,94 +22,39 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.MediaWritable;
-import com.aoindustries.io.function.IOSupplierE;
+import com.aoindustries.html.any.AnyDFN;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Phrasing content, but there must be no dfn element descendants.
 public class DFN<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, DFN<D, PC>, DFN__<D, PC>, DFN_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DFN<D, PC>>
-{
+	AnyDFN<Document, PC, DFN<PC>, DFN__<PC>, DFN_c<PC>> {
 
-	public DFN(D document, PC pc) {
+	protected DFN(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected DFN<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<dfn", false);
-		return this;
+	protected DFN<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></dfn>" : "</dfn>", false);
-	}
-
-	@Override
-	protected DFN__<D, PC> new__() {
+	protected DFN__<PC> new__() {
 		return new DFN__<>(this);
 	}
 
 	@Override
-	protected DFN_c<D, PC> new_c() {
+	protected DFN_c<PC> new_c() {
 		return new DFN_c<>(this);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#title(java.lang.Object) title} attribute
-	 * <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-dfn-title">has special semantics</a>
-	 * on this element: Full term or expansion of abbreviation.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
-	 * </p>
-	 */
-	@Override
-	public DFN<D, PC> title(Object title) throws IOException {
-		return super.title(title);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#title(com.aoindustries.io.function.IOSupplierE) title} attribute
-	 * <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-dfn-title">has special semantics</a>
-	 * on this element: Full term or expansion of abbreviation.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> DFN<D, PC> title(IOSupplierE<?, Ex> title) throws IOException, Ex {
-		return super.title(title);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#title(com.aoindustries.encoding.MediaWritable) title} attribute
-	 * <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-dfn-title">has special semantics</a>
-	 * on this element: Full term or expansion of abbreviation.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> DFN<D, PC> title(MediaWritable<Ex> title) throws IOException, Ex {
-		return super.title(title);
 	}
 }

@@ -22,38 +22,26 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_COLGROUP_ScriptSupporting;
 
 /**
  * Elements that are common to both {@link COLGROUP_content} and {@link ScriptSupportingContent}.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface Union_COLGROUP_ScriptSupporting<
-	D  extends AnyDocument<D>,
-	__ extends Union_COLGROUP_ScriptSupporting<D, __>
-> extends
+	__ extends Union_COLGROUP_ScriptSupporting<__>
+> extends AnyUnion_COLGROUP_ScriptSupporting<Document, __>,
 	//
 	// Content models:
 	//
-	Content<D, __>
+	Content<__>
 {
 	//
 	// Factories:
 	//
-	// <editor-fold defaultstate="collapsed" desc="TEMPLATE">
-	/**
-	 * Opens a new template element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">4.12.3 The template element</a>.
-	 * </p>
-	 */
-	@Factory("template")
-	default void template() throws IOException {
-		throw new AssertionError("TODO: Implement template");
-	}
+	// <editor-fold defaultstate="collapsed" desc="TODO: TEMPLATE">
 	// </editor-fold>
 }

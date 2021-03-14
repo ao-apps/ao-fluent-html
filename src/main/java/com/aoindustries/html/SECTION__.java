@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySECTION__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">4.3.3 The section element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SECTION__<
-	D  extends AnyDocument<D>,
-	PC extends SectioningContent<D, PC>
+	PC extends SectioningContent<PC>
 >
-	extends NormalText__<D, PC, SECTION__<D, PC>>
-	implements FlowContent<D, SECTION__<D, PC>> {
+	extends AnySECTION__<Document, PC, SECTION__<PC>>
+	implements FlowContent<SECTION__<PC>> {
 
-	protected SECTION__(SECTION<D, PC> element) {
+	protected SECTION__(SECTION<PC> element) {
 		super(element);
 	}
 }

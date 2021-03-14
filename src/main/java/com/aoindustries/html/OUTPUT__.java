@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyOUTPUT__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class OUTPUT__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, OUTPUT__<D, PC>>
-	implements PhrasingContent<D, OUTPUT__<D, PC>> {
+	extends AnyOUTPUT__<Document, PC, OUTPUT__<PC>>
+	implements PhrasingContent<OUTPUT__<PC>> {
 
-	protected OUTPUT__(OUTPUT<D, PC> element) {
+	protected OUTPUT__(OUTPUT<PC> element) {
 		super(element);
 	}
 }

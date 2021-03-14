@@ -22,9 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyAREA;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.function.Function;
 
 /**
  * <ul>
@@ -33,76 +33,21 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_area.asp">HTML area tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class AREA<
-	D  extends AnyDocument<D>,
-	PC extends PhrasingContent<D, PC>
-> extends VoidElement<D, PC, AREA<D, PC>> implements
-	com.aoindustries.html.attributes.Text.Alt<AREA<D, PC>>,
-	com.aoindustries.html.attributes.Dimension.Coords<AREA<D, PC>>,
-	// TODO: download
-	com.aoindustries.html.attributes.Url.Href<AREA<D, PC>>,
-	com.aoindustries.html.attributes.String.Hreflang<AREA<D, PC>>,
-	com.aoindustries.html.attributes.Text.Media<AREA<D, PC>>,
-	// TODO: name? (MDN only)
-	// TODO: nohref
-	// TODO: ping
-	// TODO: referrerpolicy
-	com.aoindustries.html.attributes.Enum.Rel<AREA<D, PC>, A.Rel>,
-	com.aoindustries.html.attributes.Enum.Shape<AREA<D, PC>, AREA.Shape>,
-	com.aoindustries.html.attributes.Enum.Target<AREA<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
-	// TODO: type (deprecated since definition is in conflict and doesn't do anything?)
-	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	com.aoindustries.html.attributes.Integer.TabindexHtml4<AREA<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<AREA<D, PC>>
-{
+	PC extends PhrasingContent<PC>
+> extends AnyAREA<Document, PC, AREA<PC>> {
 
-	public AREA(D document, PC pc) {
+	protected AREA(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected AREA<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<area", false);
-		return this;
-	}
-
-	@Override
-	protected void doAfterElement(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	/**
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#attr-shape">&lt;area&gt; - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_area_shape.asp">HTML area shape Attribute</a>.</li>
-	 * </ul>
-	 */
-	public enum Shape implements Function<AnyDocument<?>, String> {
-		DEFAULT("default"),
-		RECT("rect"),
-		CIRCLE("circle"),
-		POLY("poly");
-
-		private final String value;
-
-		private Shape(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
+	protected AREA<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

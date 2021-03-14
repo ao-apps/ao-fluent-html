@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDFN_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">4.5.8 The dfn element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DFN_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText_c<D, PC, DFN_c<D, PC>>
-	implements PhrasingContent<D, DFN_c<D, PC>> {
+	extends AnyDFN_c<Document, PC, DFN_c<PC>>
+	implements PhrasingContent<DFN_c<PC>> {
 
-	protected DFN_c(DFN<D, PC> element) {
+	protected DFN_c(DFN<PC> element) {
 		super(element);
 	}
 }

@@ -22,10 +22,11 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyA_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
@@ -33,13 +34,12 @@ package com.aoindustries.html;
 // TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 //       the tabindex attribute specified.
 public class A_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Interactive_Phrasing<D, PC>
+	PC extends Union_Interactive_Phrasing<PC>
 >
-	extends Transparent_c<D, PC, A_c<D, PC>>
-	implements Union_Interactive_Phrasing<D, A_c<D, PC>> {
+	extends AnyA_c<Document, PC, A_c<PC>>
+	implements Union_Interactive_Phrasing<A_c<PC>> {
 
-	protected A_c(A<D, PC> element) {
+	protected A_c(A<PC> element) {
 		super(element);
 	}
 }

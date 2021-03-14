@@ -22,9 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyHR;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.function.Function;
 
 /**
  * <ul>
@@ -32,76 +32,22 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_hr.asp">HTML hr tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
 public class HR<
-	D  extends AnyDocument<D>,
-	PC extends FlowContent<D, PC>
-> extends VoidElement<D, PC, HR<D, PC>> implements
-	com.aoindustries.html.attributes.Enum.Align<HR<D, PC>, HR.Align>,
-	com.aoindustries.html.attributes.Boolean.Noshade<HR<D, PC>>,
-	com.aoindustries.html.attributes.Integer.SizeHtml4Only<HR<D, PC>>,
-	com.aoindustries.html.attributes.Dimension.Width<HR<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<HR<D, PC>>
-{
+	PC extends FlowContent<PC>
+> extends AnyHR<Document, PC, HR<PC>> {
 
-	public HR(D document, PC pc) {
+	protected HR(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected HR<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<hr", false);
-		return this;
-	}
-
-	@Override
-	protected void doAfterElement(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_hr_align.asp">HTML hr align Attribute</a>.
-	 *
-	 * @deprecated  The align attribute of &lt;hr&gt; is not supported in HTML5. Use CSS instead.
-	 */
-	@Deprecated
-	public enum Align implements Function<AnyDocument<?>, String> {
-
-		/**
-		 * Left-aligns the horizontal line
-		 */
-		LEFT("left"),
-
-		/**
-		 * Center-aligns the horizontal line (this is default)
-		 */
-		CENTER("center"),
-
-		/**
-		 * Right-aligns the horizontal line
-		 */
-		RIGHT("right");
-
-		private final String value;
-
-		private Align(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
+	protected HR<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

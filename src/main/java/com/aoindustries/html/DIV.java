@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDIV;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DIV<
-	D  extends AnyDocument<D>,
-	PC extends Union_DL_Palpable<D, PC>
+	PC extends Union_DL_Palpable<PC>
 > extends
-	NormalText<D, PC, DIV<D, PC>, DIV__<D, PC>, DIV_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DIV<D, PC>>
-{
+	AnyDIV<Document, PC, DIV<PC>, DIV__<PC>, DIV_c<PC>> {
 
-	public DIV(D document, PC pc) {
+	protected DIV(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected DIV<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<div", false);
-		return this;
+	protected DIV<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></div>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</div>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected DIV__<D, PC> new__() {
+	protected DIV__<PC> new__() {
 		return new DIV__<>(this);
 	}
 
 	@Override
-	protected DIV_c<D, PC> new_c() {
+	protected DIV_c<PC> new_c() {
 		return new DIV_c<>(this);
 	}
 }

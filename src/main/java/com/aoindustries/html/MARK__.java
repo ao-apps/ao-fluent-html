@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMARK__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class MARK__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, MARK__<D, PC>>
-	implements PhrasingContent<D, MARK__<D, PC>> {
+	extends AnyMARK__<Document, PC, MARK__<PC>>
+	implements PhrasingContent<MARK__<PC>> {
 
-	protected MARK__(MARK<D, PC> element) {
+	protected MARK__(MARK<PC> element) {
 		super(element);
 	}
 }

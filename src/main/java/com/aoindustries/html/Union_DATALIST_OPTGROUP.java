@@ -22,56 +22,34 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyUnion_DATALIST_OPTGROUP;
 import java.io.IOException;
 
 /**
  * Elements that are common to both {@link DATALIST_content} and {@link OPTGROUP_content}.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface Union_DATALIST_OPTGROUP<
-	D  extends AnyDocument<D>,
-	__ extends Union_DATALIST_OPTGROUP<D, __>
-> extends
+	__ extends Union_DATALIST_OPTGROUP<__>
+> extends AnyUnion_DATALIST_OPTGROUP<Document, __>,
 	//
 	// Content models:
 	//
-	Content<D, __>
+	Content<__>
 {
 	//
 	// Factories:
 	//
 	// <editor-fold defaultstate="collapsed" desc="OPTION">
-	/**
-	 * Opens a new option element.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
-	 * </ul>
-	 */
-	@Factory("option")
-	default OPTION<D, __> option() throws IOException {
+	@Override
+	default OPTION<__> option() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new OPTION<>(document, pc).writeOpen(document.getUnsafe(null));
-	}
-
-	/**
-	 * Creates an empty option element with no attributes.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
-	 * </ul>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("option")
-	default __ option__() throws IOException {
-		return option().__();
 	}
 	// </editor-fold>
 }

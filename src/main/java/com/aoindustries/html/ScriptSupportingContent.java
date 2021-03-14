@@ -22,112 +22,73 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
+import com.aoindustries.html.any.AnySCRIPT;
+import com.aoindustries.html.any.AnyScriptSupportingContent;
+import com.aoindustries.html.any.Suppliers;
 import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/dom.html#script-supporting-elements">3.2.5.2.9 Script-supporting elements</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface ScriptSupportingContent<
-	D  extends AnyDocument<D>,
-	__ extends ScriptSupportingContent<D, __>
-> extends
+	__ extends ScriptSupportingContent<__>
+> extends AnyScriptSupportingContent<Document, __>,
 	//
 	// Unions:
 	//
-	Union_COLGROUP_ScriptSupporting<D, __>
+	Union_COLGROUP_ScriptSupporting<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
+	// Inherited: Content<__>
 {
 	//
 	// Factories:
 	//
 	// <editor-fold defaultstate="collapsed" desc="SCRIPT">
-	/**
-	 * Opens a new script element.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
-	 * </ul>
-	 *
-	 * @see Doctype#scriptType(java.lang.Appendable)
-	 */
-	@Factory("script")
-	default SCRIPT<D, __> script() throws IOException {
+	@Override
+	default SCRIPT<__> script() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new SCRIPT<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
-	/**
-	 * Opens a new script element of the given type.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
-	 * </ul>
-	 */
-	@Factory("script")
-	default SCRIPT<D, __> script(String type) throws IOException {
+	@Override
+	default SCRIPT<__> script(String type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
 	/**
-	 * Opens a new script element of the given type.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
-	 * </ul>
-	 *
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	@Factory("script")
-	default <Ex extends Throwable> SCRIPT<D, __> script(Suppliers.String<Ex> type) throws IOException, Ex {
+	@Override
+	default <Ex extends Throwable> SCRIPT<__> script(Suppliers.String<Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 
-	/**
-	 * Opens a new script element of the given type.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
-	 * </ul>
-	 */
-	@Factory("script")
-	default SCRIPT<D, __> script(SCRIPT.Type type) throws IOException {
+	@Override
+	default SCRIPT<__> script(AnySCRIPT.Type type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
 	}
 
 	/**
-	 * Opens a new script element of the given type.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.</li>
-	 * </ul>
-	 *
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 */
-	@Factory("script")
-	default <Ex extends Throwable> SCRIPT<D, __> script(IOSupplierE<? extends SCRIPT.Type, Ex> type) throws IOException, Ex {
+	@Override
+	default <Ex extends Throwable> SCRIPT<__> script(IOSupplierE<? extends AnySCRIPT.Type, Ex> type) throws IOException, Ex {
 		return script((type == null) ? null : type.get());
 	}
 	// </editor-fold>

@@ -22,48 +22,40 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTR_content;
 import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface TR_content<
-	D  extends AnyDocument<D>,
-	__ extends TR_content<D, __>
-> extends
+	__ extends TR_content<__>
+> extends AnyTR_content<Document, __>,
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-	ScriptSupportingContent<D, __>
+	// Inherited: Content<__>
+	ScriptSupportingContent<__>
 {
 	//
 	// Factories:
 	//
 	// <editor-fold defaultstate="collapsed" desc="TD">
-	/**
-	 * Opens a new td element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
-	 * </p>
-	 */
-	@Factory("td")
-	default TD<D, __> td() throws IOException {
+	@Override
+	default TD<__> td() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new TD<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -77,82 +69,21 @@ public interface TR_content<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	@Factory("td")
-	default <Ex extends Throwable> __ td__(IORunnableE<Ex> td) throws IOException, Ex {
+	default <Ex extends Throwable> __ td__(IOConsumerE<? super TD__<__>, Ex> td) throws IOException, Ex {
 		return td().__(td);
 	}
 
-	/**
-	 * Creates a td element with no attributes and the given foot.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("td")
-	default <Ex extends Throwable> __ td__(IOConsumerE<? super TD__<D, __>, Ex> td) throws IOException, Ex {
-		return td().__(td);
-	}
-
-	/**
-	 * Creates a td element with no attributes and a text body.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("td")
-	default __ td__(Object text) throws IOException {
-		return td().__(text);
-	}
-
-	/**
-	 * Creates an empty td element with no attributes.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("td")
-	default __ td__() throws IOException {
-		return td().__();
-	}
-
-	/**
-	 * Creates a td element with no attributes then begins element content
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
-	 * </p>
-	 *
-	 * @return  The content model of this element, which will be the parent content model of child elements.
-	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
-	 *          the tag.  This is well suited for use in a try-with-resources block.
-	 *
-	 * @see  Closeable#__()
-	 * @see  Closeable#close()
-	 */
-	@Factory("td")
-	default TD_c<D, __> td_c() throws IOException {
+	@Override
+	default TD_c<__> td_c() throws IOException {
 		return td()._c();
 	}
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TH">
-	/**
-	 * Opens a new th element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
-	 * </p>
-	 */
-	@Factory("th")
-	default TH<D, __> th() throws IOException {
+	@Override
+	default TH<__> th() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new TH<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -166,67 +97,12 @@ public interface TR_content<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	@Factory("th")
-	default <Ex extends Throwable> __ th__(IORunnableE<Ex> th) throws IOException, Ex {
+	default <Ex extends Throwable> __ th__(IOConsumerE<? super TH__<__>, Ex> th) throws IOException, Ex {
 		return th().__(th);
 	}
 
-	/**
-	 * Creates a th element with no attributes and the given foot.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("th")
-	default <Ex extends Throwable> __ th__(IOConsumerE<? super TH__<D, __>, Ex> th) throws IOException, Ex {
-		return th().__(th);
-	}
-
-	/**
-	 * Creates a th element with no attributes and a text body.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("th")
-	default __ th__(Object text) throws IOException {
-		return th().__(text);
-	}
-
-	/**
-	 * Creates an empty th element with no attributes.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("th")
-	default __ th__() throws IOException {
-		return th().__();
-	}
-
-	/**
-	 * Creates a th element with no attributes then begins element content
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
-	 * </p>
-	 *
-	 * @return  The content model of this element, which will be the parent content model of child elements.
-	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
-	 *          the tag.  This is well suited for use in a try-with-resources block.
-	 *
-	 * @see  Closeable#__()
-	 * @see  Closeable#close()
-	 */
-	@Factory("th")
-	default TH_c<D, __> th_c() throws IOException {
+	@Override
+	default TH_c<__> th_c() throws IOException {
 		return th()._c();
 	}
 	// </editor-fold>

@@ -22,25 +22,25 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyFORM_c;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class FORM_c<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText_c<D, PC, FORM_c<D, PC>>
-	implements FlowContent<D, FORM_c<D, PC>> {
+	extends AnyFORM_c<Document, PC, FORM_c<PC>>
+	implements FlowContent<FORM_c<PC>> {
 
-	protected FORM_c(FORM<D, PC> element) {
+	protected FORM_c(FORM<PC> element) {
 		super(element);
 	}
 }

@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTD__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TD__<
-	D  extends AnyDocument<D>,
-	PC extends TR_content<D, PC>
+	PC extends TR_content<PC>
 >
-	extends NormalText__<D, PC, TD__<D, PC>>
-	implements FlowContent<D, TD__<D, PC>> {
+	extends AnyTD__<Document, PC, TD__<PC>>
+	implements FlowContent<TD__<PC>> {
 
-	protected TD__(TD<D, PC> element) {
+	protected TD__(TD<PC> element) {
 		super(element);
 	}
 }

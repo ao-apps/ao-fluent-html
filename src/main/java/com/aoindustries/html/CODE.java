@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyCODE;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element">4.5.15 The code element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class CODE<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, CODE<D, PC>, CODE__<D, PC>, CODE_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<CODE<D, PC>>
-{
+	AnyCODE<Document, PC, CODE<PC>, CODE__<PC>, CODE_c<PC>> {
 
-	public CODE(D document, PC pc) {
+	protected CODE(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected CODE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<code", false);
-		return this;
+	protected CODE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></code>" : "</code>", false);
-	}
-
-	@Override
-	protected CODE__<D, PC> new__() {
+	protected CODE__<PC> new__() {
 		return new CODE__<>(this);
 	}
 
 	@Override
-	protected CODE_c<D, PC> new_c() {
+	protected CODE_c<PC> new_c() {
 		return new CODE_c<>(this);
 	}
 }

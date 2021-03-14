@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySTRONG;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">4.5.3 The strong element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class STRONG<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, STRONG<D, PC>, STRONG__<D, PC>, STRONG_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<STRONG<D, PC>>
-{
+	AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
 
-	public STRONG(D document, PC pc) {
+	protected STRONG(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected STRONG<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<strong", false);
-		return this;
+	protected STRONG<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></strong>" : "</strong>", false);
-	}
-
-	@Override
-	protected STRONG__<D, PC> new__() {
+	protected STRONG__<PC> new__() {
 		return new STRONG__<>(this);
 	}
 
 	@Override
-	protected STRONG_c<D, PC> new_c() {
+	protected STRONG_c<PC> new_c() {
 		return new STRONG_c<>(this);
 	}
 }

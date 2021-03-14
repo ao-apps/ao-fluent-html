@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTBODY__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TBODY__<
-	D  extends AnyDocument<D>,
-	PC extends TABLE_content<D, PC>
+	PC extends TABLE_content<PC>
 >
-	extends Normal__<D, PC, TBODY__<D, PC>>
-	implements Union_TBODY_THEAD_TFOOT<D, TBODY__<D, PC>> {
+	extends AnyTBODY__<Document, PC, TBODY__<PC>>
+	implements Union_TBODY_THEAD_TFOOT<TBODY__<PC>> {
 
-	protected TBODY__(TBODY<D, PC> element) {
+	protected TBODY__(TBODY<PC> element) {
 		super(element);
 	}
 }

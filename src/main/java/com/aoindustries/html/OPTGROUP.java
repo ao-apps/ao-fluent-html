@@ -22,60 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyOPTGROUP;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class OPTGROUP<
-	D  extends AnyDocument<D>,
-	PC extends SELECT_content<D, PC>
+	PC extends SELECT_content<PC>
 > extends
-	Normal<D, PC, OPTGROUP<D, PC>, OPTGROUP__<D, PC>, OPTGROUP_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	com.aoindustries.html.attributes.Boolean.Disabled<OPTGROUP<D, PC>>,
-	com.aoindustries.html.attributes.Text.Label<OPTGROUP<D, PC>>,
-	AlmostGlobalAttributes<OPTGROUP<D, PC>>
-{
+	AnyOPTGROUP<Document, PC, OPTGROUP<PC>, OPTGROUP__<PC>, OPTGROUP_c<PC>> {
 
-	public OPTGROUP(D document, PC pc) {
+	protected OPTGROUP(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected OPTGROUP<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<optgroup", false);
-		return this;
+	protected OPTGROUP<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></optgroup>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</optgroup>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected OPTGROUP__<D, PC> new__() {
+	protected OPTGROUP__<PC> new__() {
 		return new OPTGROUP__<>(this);
 	}
 
 	@Override
-	protected OPTGROUP_c<D, PC> new_c() {
+	protected OPTGROUP_c<PC> new_c() {
 		return new OPTGROUP_c<>(this);
 	}
 }

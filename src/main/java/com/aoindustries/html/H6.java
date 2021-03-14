@@ -22,49 +22,38 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyH6;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class H6<
-	D  extends AnyDocument<D>,
-	PC extends HeadingContent<D, PC>
-> extends H<D, PC, H6<D, PC>, H6__<D, PC>, H6_c<D, PC>> {
+	PC extends HeadingContent<PC>
+> extends AnyH6<Document, PC, H6<PC>, H6__<PC>, H6_c<PC>> {
 
-	public H6(D document, PC pc) {
+	protected H6(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected H6<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<h6", false);
-		return this;
+	protected H6<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></h6>" : "</h6>", false).autoNl(out);
-	}
-
-	@Override
-	protected H6__<D, PC> new__() {
+	protected H6__<PC> new__() {
 		return new H6__<>(this);
 	}
 
 	@Override
-	protected H6_c<D, PC> new_c() {
+	protected H6_c<PC> new_c() {
 		return new H6_c<>(this);
-	}
-
-	@Override
-	public int getRank() {
-		return 6;
 	}
 }

@@ -22,59 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyADDRESS;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Flow content, but with no heading content descendants, no sectioning content descendants, and no header, footer, or address element descendants.
 public class ADDRESS<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, ADDRESS<D, PC>, ADDRESS__<D, PC>, ADDRESS_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ADDRESS<D, PC>>
-{
+	AnyADDRESS<Document, PC, ADDRESS<PC>, ADDRESS__<PC>, ADDRESS_c<PC>> {
 
-	public ADDRESS(D document, PC pc) {
+	protected ADDRESS(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected ADDRESS<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<address", false);
-		return this;
+	protected ADDRESS<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></address>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</address>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected ADDRESS__<D, PC> new__() {
+	protected ADDRESS__<PC> new__() {
 		return new ADDRESS__<>(this);
 	}
 
 	@Override
-	protected ADDRESS_c<D, PC> new_c() {
+	protected ADDRESS_c<PC> new_c() {
 		return new ADDRESS_c<>(this);
 	}
 }

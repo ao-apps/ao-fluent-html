@@ -22,77 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyPRE;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class PRE<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, PRE<D, PC>, PRE__<D, PC>, PRE_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<PRE<D, PC>>
-{
+	AnyPRE<Document, PC, PRE<PC>, PRE__<PC>, PRE_c<PC>> {
 
-	private boolean oldAutonli;
-	private boolean oldIndent;
-
-	public PRE(D document, PC pc) {
+	protected PRE(Document document, PC pc) {
 		super(document, pc);
 	}
 
-	/**
-	 * Does not have indented content.
-	 *
-	 * @return {@code false} - does not indent
-	 */
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected boolean isContentIndented() {
-		return false;
+	protected PRE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected PRE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<pre", false);
-		return this;
-	}
-
-	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		oldAutonli = document.getAutonli();
-		if(oldAutonli) document.setAutonli(false);
-		oldIndent = document.getIndent();
-		if(oldIndent) document.setIndent(false);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document
-			.setIndent(oldIndent)
-			.setAutonli(oldAutonli);
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></pre>", false);
-		} else {
-			document.unsafe(out, "</pre>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected PRE__<D, PC> new__() {
+	protected PRE__<PC> new__() {
 		return new PRE__<>(this);
 	}
 
 	@Override
-	protected PRE_c<D, PC> new_c() {
+	protected PRE_c<PC> new_c() {
 		return new PRE_c<>(this);
 	}
 }

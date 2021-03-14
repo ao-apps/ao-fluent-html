@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyBLOCKQUOTE;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -31,53 +32,32 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class BLOCKQUOTE<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, BLOCKQUOTE<D, PC>, BLOCKQUOTE__<D, PC>, BLOCKQUOTE_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	com.aoindustries.html.attributes.Url.Cite<BLOCKQUOTE<D, PC>>,
-	AlmostGlobalAttributes<BLOCKQUOTE<D, PC>>
-{
+	AnyBLOCKQUOTE<Document, PC, BLOCKQUOTE<PC>, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> {
 
-	public BLOCKQUOTE(D document, PC pc) {
+	protected BLOCKQUOTE(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected BLOCKQUOTE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<blockquote", false);
-		return this;
+	protected BLOCKQUOTE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></blockquote>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</blockquote>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected BLOCKQUOTE__<D, PC> new__() {
+	protected BLOCKQUOTE__<PC> new__() {
 		return new BLOCKQUOTE__<>(this);
 	}
 
 	@Override
-	protected BLOCKQUOTE_c<D, PC> new_c() {
+	protected BLOCKQUOTE_c<PC> new_c() {
 		return new BLOCKQUOTE_c<>(this);
 	}
 }

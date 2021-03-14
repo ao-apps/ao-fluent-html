@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyVAR__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class VAR__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, VAR__<D, PC>>
-	implements PhrasingContent<D, VAR__<D, PC>> {
+	extends AnyVAR__<Document, PC, VAR__<PC>>
+	implements PhrasingContent<VAR__<PC>> {
 
-	protected VAR__(VAR<D, PC> element) {
+	protected VAR__(VAR<PC> element) {
 		super(element);
 	}
 }

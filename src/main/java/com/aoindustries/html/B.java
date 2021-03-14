@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyB;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class B<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, B<D, PC>, B__<D, PC>, B_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<B<D, PC>>
-{
+	AnyB<Document, PC, B<PC>, B__<PC>, B_c<PC>> {
 
-	public B(D document, PC pc) {
+	protected B(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected B<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<b", false);
-		return this;
+	protected B<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></b>" : "</b>", false);
-	}
-
-	@Override
-	protected B__<D, PC> new__() {
+	protected B__<PC> new__() {
 		return new B__<>(this);
 	}
 
 	@Override
-	protected B_c<D, PC> new_c() {
+	protected B_c<PC> new_c() {
 		return new B_c<>(this);
 	}
 }

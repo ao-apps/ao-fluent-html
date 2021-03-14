@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySAMP__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SAMP__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, SAMP__<D, PC>>
-	implements PhrasingContent<D, SAMP__<D, PC>> {
+	extends AnySAMP__<Document, PC, SAMP__<PC>>
+	implements PhrasingContent<SAMP__<PC>> {
 
-	protected SAMP__(SAMP<D, PC> element) {
+	protected SAMP__(SAMP<PC> element) {
 		super(element);
 	}
 }

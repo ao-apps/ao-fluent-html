@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyBDI__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class BDI__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, BDI__<D, PC>>
-	implements PhrasingContent<D, BDI__<D, PC>> {
+	extends AnyBDI__<Document, PC, BDI__<PC>>
+	implements PhrasingContent<BDI__<PC>> {
 
-	protected BDI__(BDI<D, PC> element) {
+	protected BDI__(BDI<PC> element) {
 		super(element);
 	}
 }

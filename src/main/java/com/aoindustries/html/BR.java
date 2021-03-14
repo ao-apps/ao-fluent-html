@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyBR;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -31,31 +32,21 @@ import java.io.Writer;
  * <li>See <a href="https://www.w3schools.com/tags/tag_br.asp">HTML br tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class BR<
-	D  extends AnyDocument<D>,
-	PC extends PhrasingContent<D, PC>
-> extends VoidElement<D, PC, BR<D, PC>>
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <br>: AlmostGlobalAttributes<BR<D, PC>>
-{
+	PC extends PhrasingContent<PC>
+> extends AnyBR<Document, PC, BR<PC>> {
 
-	public BR(D document, PC pc) {
+	protected BR(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected BR<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<br", false);
-		return this;
-	}
-
-	@Override
-	protected void doAfterElement(Writer out) throws IOException {
-		document.autoNl(out);
+	protected BR<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

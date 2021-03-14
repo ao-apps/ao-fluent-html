@@ -22,7 +22,7 @@
  */
 package com.aoindustries.html.util;
 
-import com.aoindustries.html.AnyDocument;
+import com.aoindustries.html.any.AnyDocument;
 import java.io.IOException;
 
 /**

@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_COLGROUP_ScriptSupportingTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_COLGROUP_ScriptSupporting
+ * @see  Union_COLGROUP_ScriptSupporting
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_COLGROUP_ScriptSupportingTest {
+public class Union_COLGROUP_ScriptSupportingTest extends AnyUnion_COLGROUP_ScriptSupportingTest {
+
+	public Union_COLGROUP_ScriptSupportingTest() {
+		super(Union_COLGROUP_ScriptSupporting.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_COLGROUP_ScriptSupporting.class
@@ -49,6 +55,7 @@ public class Union_COLGROUP_ScriptSupportingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_COLGROUP_ScriptSupporting.class,
@@ -61,6 +68,7 @@ public class Union_COLGROUP_ScriptSupportingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_COLGROUP_ScriptSupporting.class
@@ -72,22 +80,12 @@ public class Union_COLGROUP_ScriptSupportingTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_COLGROUP_ScriptSupporting.class,
-			//
-			// Factories:
-			//
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_COLGROUP_ScriptSupporting.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_COLGROUP_ScriptSupporting.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_COLGROUP_ScriptSupporting.class);
 	}
 }

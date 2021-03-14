@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyKBD;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">4.5.18 The kbd element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class KBD<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, KBD<D, PC>, KBD__<D, PC>, KBD_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<KBD<D, PC>>
-{
+	AnyKBD<Document, PC, KBD<PC>, KBD__<PC>, KBD_c<PC>> {
 
-	public KBD(D document, PC pc) {
+	protected KBD(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected KBD<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<kbd", false);
-		return this;
+	protected KBD<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></kbd>" : "</kbd>", false);
-	}
-
-	@Override
-	protected KBD__<D, PC> new__() {
+	protected KBD__<PC> new__() {
 		return new KBD__<>(this);
 	}
 
 	@Override
-	protected KBD_c<D, PC> new_c() {
+	protected KBD_c<PC> new_c() {
 		return new KBD_c<>(this);
 	}
 }

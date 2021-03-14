@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTHEAD__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class THEAD__<
-	D  extends AnyDocument<D>,
-	PC extends TABLE_content<D, PC>
+	PC extends TABLE_content<PC>
 >
-	extends Normal__<D, PC, THEAD__<D, PC>>
-	implements Union_TBODY_THEAD_TFOOT<D, THEAD__<D, PC>> {
+	extends AnyTHEAD__<Document, PC, THEAD__<PC>>
+	implements Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
 
-	protected THEAD__(THEAD<D, PC> element) {
+	protected THEAD__(THEAD<PC> element) {
 		super(element);
 	}
 }

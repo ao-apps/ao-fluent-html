@@ -22,47 +22,38 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyCOLGROUP_content;
 import java.io.IOException;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface COLGROUP_content<
-	D  extends AnyDocument<D>,
-	__ extends COLGROUP_content<D, __>
-> extends
+	__ extends COLGROUP_content<__>
+> extends AnyCOLGROUP_content<Document, __>,
 	//
 	// Unions:
 	//
-	Union_COLGROUP_ScriptSupporting<D, __>
+	Union_COLGROUP_ScriptSupporting<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
+	// Inherited: Content<__>
 {
 	//
 	// Factories:
 	//
 	// <editor-fold defaultstate="collapsed" desc="COL">
-	/**
-	 * Opens a new col element.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-col-element">4.9.4 The col element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">&lt;col&gt; - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
-	 * </ul>
-	 */
-	@Factory("col")
-	default COL<D, __> col() throws IOException {
+	@Override
+	default COL<__> col() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new COL<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 	// </editor-fold>

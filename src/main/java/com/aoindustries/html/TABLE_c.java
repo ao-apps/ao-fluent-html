@@ -22,6 +22,8 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTABLE_c;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">4.9.1 The table element</a>.</li>
@@ -29,19 +31,17 @@ package com.aoindustries.html;
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TABLE_c<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends Normal_c<D, PC, TABLE_c<D, PC>>
-	implements TABLE_content<D, TABLE_c<D, PC>> {
+	extends AnyTABLE_c<Document, PC, TABLE_c<PC>>
+	implements TABLE_content<TABLE_c<PC>> {
 
-	protected TABLE_c(TABLE<D, PC> element) {
+	protected TABLE_c(TABLE<PC> element) {
 		super(element);
 	}
 }

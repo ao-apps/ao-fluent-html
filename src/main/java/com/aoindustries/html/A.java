@@ -22,156 +22,34 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.lang.LocalizedIllegalStateException;
+import com.aoindustries.html.any.AnyA;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.function.Function;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">4.5.1 The a element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
-//       the tabindex attribute specified.
 public class A<
-	D  extends AnyDocument<D>,
-	PC extends Union_Interactive_Phrasing<D, PC>
+	PC extends Union_Interactive_Phrasing<PC>
 > extends
-	Transparent<D, PC, A<D, PC>, A_c<D, PC>> implements
-	com.aoindustries.html.attributes.Url.Href<A<D, PC>>,
-	com.aoindustries.html.attributes.Enum.Target<A<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
-	// TODO: download
-	// TODO: ping
-	com.aoindustries.html.attributes.Enum.Rel<A<D, PC>, A.Rel>,
-	com.aoindustries.html.attributes.String.Hreflang<A<D, PC>>,
-	// TODO: type
-	// TODO: referrerpolicy
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<A<D, PC>>
-{
+	AnyA<Document, PC, A<PC>, A_c<PC>> {
 
-	private static final com.aoindustries.i18n.Resources RESOURCES = com.aoindustries.i18n.Resources.getResources(A.class);
-
-	public A(D document, PC pc) {
+	protected A(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected A<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<a", false);
-		return this;
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></a>" : "</a>", false);
-	}
-
-	/**
-	 * Ends attributes, writes a text body, then closes this element.
-	 * <p>
-	 * Since {@link TextContent} is not a part of {@link Union_Interactive_Phrasing},
-	 * strictly speaking text is not allowed in all possible content models that can apply to <code>&lt;a&gt;</code>.
-	 * However, since it is such a common operation, we've added it here.
-	 * </p>
-	 *
-	 * @return  The parent content model this element is within
-	 *
-	 * @see  AnyDocument#text(java.lang.Object)
-	 * @see  NormalText#__(java.lang.Object)
-	 *
-	 * @throws  IllegalStateException when {@code text != null} and current content model does not allow text
-	 */
-	public PC __(Object text) throws IOException, IllegalStateException {
-		Writer out = document.getUnsafe(null);
-		if(text != null) {
-			if(!(pc instanceof TextContent)) throw new LocalizedIllegalStateException(RESOURCES, "contentModelNotAllowText", (pc == null) ? "null" : pc.getClass().getName());
-			document.autoIndent(out).unsafe(out, '>').incDepth().text(out, text).decDepth();
-			writeClose(out, false);
-		} else {
-			writeClose(out, true);
-		}
-		return pc;
-	}
-
-	/**
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">Link types - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel">HTML Standard</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_a_rel.asp">HTML a rel Attribute</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/att_area_rel.asp">HTML area rel Attribute</a>.</li>
-	 * </ul>
-	 */
-	public enum Rel implements Function<AnyDocument<?>, String> {
-		ALTERNATE("alternate"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		ARCHIVES("archives"), // MDN only
-		AUTHOR("author"), // w3schools, MDN only
-		BOOKMARK("bookmark"),
-		EXTERNAL("external"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		FIRST("first"), // MDN only
-		HELP("help"), // w3schools, MDN only
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		INDEX("index"), // MDN only
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		LAST("last"), // MDN only
-		LICENSE("license"), // w3schools, MDN only
-		NEXT("next"),
-		NOFOLLOW("nofollow"),
-		NOOPENER("noopener"),
-		NOREFERRER("noreferrer"),
-		// TODO: opener?
-		PREV("prev"), // w3schools, MDN only
-		SEARCH("search"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		SIDEBAR("sidebar"), // MDN only
-		TAG("tag"),
-		/**
-		 * @deprecated
-		 */
-		@Deprecated
-		UP("up"); // MDN only
-
-		private final String value;
-		// TODO: Verify values by doctype
-
-		private Rel(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
+	protected A<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected A_c<D, PC> new_c() {
+	protected A_c<PC> new_c() {
 		return new A_c<>(this);
 	}
 }

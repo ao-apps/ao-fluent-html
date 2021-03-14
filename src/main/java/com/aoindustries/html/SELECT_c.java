@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySELECT_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SELECT_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Interactive_Phrasing<D, PC>
+	PC extends Union_Interactive_Phrasing<PC>
 >
-	extends Normal_c<D, PC, SELECT_c<D, PC>>
-	implements SELECT_content<D, SELECT_c<D, PC>> {
+	extends AnySELECT_c<Document, PC, SELECT_c<PC>>
+	implements SELECT_content<SELECT_c<PC>> {
 
-	protected SELECT_c(SELECT<D, PC> element) {
+	protected SELECT_c(SELECT<PC> element) {
 		super(element);
 	}
 }

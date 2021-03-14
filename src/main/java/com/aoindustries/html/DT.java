@@ -22,49 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDT;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Flow content, but with no header, footer, sectioning content, or heading content descendants.
 public class DT<
-	D  extends AnyDocument<D>,
-	PC extends Union_DIV_DL<D, PC>
+	PC extends Union_DIV_DL<PC>
 > extends
-	NormalText<D, PC, DT<D, PC>, DT__<D, PC>, DT_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DT<D, PC>>
-{
+	AnyDT<Document, PC, DT<PC>, DT__<PC>, DT_c<PC>> {
 
-	public DT(D document, PC pc) {
+	protected DT(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected DT<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<dt", false);
-		return this;
+	protected DT<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.unsafe(out, closeAttributes ? "></dt>" : "</dt>", false).autoNl(out);
-	}
-
-	@Override
-	protected DT__<D, PC> new__() {
+	protected DT__<PC> new__() {
 		return new DT__<>(this);
 	}
 
 	@Override
-	protected DT_c<D, PC> new_c() {
+	protected DT_c<PC> new_c() {
 		return new DT_c<>(this);
 	}
 }

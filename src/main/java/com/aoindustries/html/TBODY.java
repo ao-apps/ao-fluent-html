@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTBODY;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">4.9.5 The tbody element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TBODY<
-	D  extends AnyDocument<D>,
-	PC extends TABLE_content<D, PC>
+	PC extends TABLE_content<PC>
 > extends
-	Normal<D, PC, TBODY<D, PC>, TBODY__<D, PC>, TBODY_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TBODY<D, PC>>
-{
+	AnyTBODY<Document, PC, TBODY<PC>, TBODY__<PC>, TBODY_c<PC>> {
 
-	public TBODY(D document, PC pc) {
+	protected TBODY(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected TBODY<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<tbody", false);
-		return this;
+	protected TBODY<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></tbody>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</tbody>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected TBODY__<D, PC> new__() {
+	protected TBODY__<PC> new__() {
 		return new TBODY__<>(this);
 	}
 
 	@Override
-	protected TBODY_c<D, PC> new_c() {
+	protected TBODY_c<PC> new_c() {
 		return new TBODY_c<>(this);
 	}
 }

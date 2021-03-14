@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyASIDE;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">4.3.5 The aside element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class ASIDE<
-	D  extends AnyDocument<D>,
-	PC extends SectioningContent<D, PC>
+	PC extends SectioningContent<PC>
 > extends
-	NormalText<D, PC, ASIDE<D, PC>, ASIDE__<D, PC>, ASIDE_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ASIDE<D, PC>>
-{
+	AnyASIDE<Document, PC, ASIDE<PC>, ASIDE__<PC>, ASIDE_c<PC>> {
 
-	public ASIDE(D document, PC pc) {
+	protected ASIDE(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected ASIDE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<aside", false);
-		return this;
+	protected ASIDE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></aside>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</aside>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected ASIDE__<D, PC> new__() {
+	protected ASIDE__<PC> new__() {
 		return new ASIDE__<>(this);
 	}
 
 	@Override
-	protected ASIDE_c<D, PC> new_c() {
+	protected ASIDE_c<PC> new_c() {
 		return new ASIDE_c<>(this);
 	}
 }

@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_Palpable_PhrasingTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_Palpable_Phrasing
+ * @see  Union_Palpable_Phrasing
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_Palpable_PhrasingTest {
+public class Union_Palpable_PhrasingTest extends AnyUnion_Palpable_PhrasingTest {
+
+	public Union_Palpable_PhrasingTest() {
+		super(Union_Palpable_Phrasing.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_Palpable_Phrasing.class,
@@ -51,6 +57,7 @@ public class Union_Palpable_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_Palpable_Phrasing.class,
@@ -64,6 +71,7 @@ public class Union_Palpable_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_Palpable_Phrasing.class
@@ -75,66 +83,12 @@ public class Union_Palpable_PhrasingTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_Palpable_Phrasing.class,
-			//
-			// Factories:
-			//
-			"a",
-			"abbr",
-			"audio",
-			"b",
-			"bdi",
-			"bdo",
-			"button",
-			"canvas",
-			"cite",
-			"code",
-			"data",
-			"dfn",
-			"em",
-			"embed",
-			"i",
-			"iframe",
-			"img",
-			"input",
-			"ins",
-			"kbd",
-			"label",
-			"map",
-			"mark",
-			// TODO: MathML math
-			"meter",
-			"object",
-			"output",
-			"progress",
-			"q",
-			"ruby",
-			"s",
-			"samp",
-			"select",
-			"small",
-			"span",
-			"strong",
-			"sub",
-			"sup",
-			// TODO: SVG svg
-			"textarea",
-			"time",
-			"u",
-			"var",
-			"video"
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Palpable_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_Palpable_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_Palpable_Phrasing.class);
 	}
 }

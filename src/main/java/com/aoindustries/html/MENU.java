@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMENU;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class MENU<
-	D  extends AnyDocument<D>,
-	PC extends InteractiveContent<D, PC>
+	PC extends InteractiveContent<PC>
 > extends
-	Normal<D, PC, MENU<D, PC>, MENU__<D, PC>, MENU_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MENU<D, PC>>
-{
+	AnyMENU<Document, PC, MENU<PC>, MENU__<PC>, MENU_c<PC>> {
 
-	public MENU(D document, PC pc) {
+	protected MENU(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected MENU<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<menu", false);
-		return this;
+	protected MENU<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></menu>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</menu>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected MENU__<D, PC> new__() {
+	protected MENU__<PC> new__() {
 		return new MENU__<>(this);
 	}
 
 	@Override
-	protected MENU_c<D, PC> new_c() {
+	protected MENU_c<PC> new_c() {
 		return new MENU_c<>(this);
 	}
 }

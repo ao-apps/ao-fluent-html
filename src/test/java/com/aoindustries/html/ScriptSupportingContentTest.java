@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyScriptSupportingContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class ScriptSupportingContentTest {
+public class ScriptSupportingContentTest extends AnyScriptSupportingContentTest {
+
+	public ScriptSupportingContentTest() {
+		super(ScriptSupportingContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			ScriptSupportingContent.class,
@@ -48,6 +54,7 @@ public class ScriptSupportingContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			ScriptSupportingContent.class,
@@ -60,6 +67,7 @@ public class ScriptSupportingContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			ScriptSupportingContent.class
@@ -71,24 +79,13 @@ public class ScriptSupportingContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			ScriptSupportingContent.class,
-			//
-			// Factories:
-			//
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), ScriptSupportingContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(ScriptSupportingContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, ScriptSupportingContent.class);
 	}
 }

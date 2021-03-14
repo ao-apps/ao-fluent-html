@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyDL_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class DL_contentTest {
+public class DL_contentTest extends AnyDL_contentTest {
+
+	public DL_contentTest() {
+		super(DL_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			DL_content.class,
@@ -50,6 +56,7 @@ public class DL_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			DL_content.class,
@@ -63,6 +70,7 @@ public class DL_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			DL_content.class
@@ -74,27 +82,13 @@ public class DL_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			DL_content.class,
-			//
-			// Factories:
-			//
-			"dd",
-			"div",
-			"dt",
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DL_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(DL_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, DL_content.class);
 	}
 }

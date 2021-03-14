@@ -22,49 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyLI;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">4.4.8 The li element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class LI<
-	D  extends AnyDocument<D>,
-	PC extends ListContent<D, PC>
+	PC extends ListContent<PC>
 > extends
-	NormalText<D, PC, LI<D, PC>, LI__<D, PC>, LI_c<D, PC>> implements
-	// TODO: value (If the element is not a child of an ul or menu element)
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<LI<D, PC>>
-{
+	AnyLI<Document, PC, LI<PC>, LI__<PC>, LI_c<PC>> {
 
-	public LI(D document, PC pc) {
+	protected LI(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected LI<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<li", false);
-		return this;
+	protected LI<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></li>" : "</li>", false).autoNl(out);
-	}
-
-	@Override
-	protected LI__<D, PC> new__() {
+	protected LI__<PC> new__() {
 		return new LI__<>(this);
 	}
 
 	@Override
-	protected LI_c<D, PC> new_c() {
+	protected LI_c<PC> new_c() {
 		return new LI_c<>(this);
 	}
 }

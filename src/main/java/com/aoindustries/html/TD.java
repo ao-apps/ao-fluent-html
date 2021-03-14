@@ -22,51 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTD;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TD<
-	D  extends AnyDocument<D>,
-	PC extends TR_content<D, PC>
+	PC extends TR_content<PC>
 > extends
-	NormalText<D, PC, TD<D, PC>, TD__<D, PC>, TD_c<D, PC>> implements
-	com.aoindustries.html.attributes.Integer.Colspan<TD<D, PC>>,
-	com.aoindustries.html.attributes.Integer.Rowspan<TD<D, PC>>,
-	// TODO: headers
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TD<D, PC>>
-{
+	AnyTD<Document, PC, TD<PC>, TD__<PC>, TD_c<PC>> {
 
-	public TD(D document, PC pc) {
+	protected TD(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected TD<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<td", false);
-		return this;
+	protected TD<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></td>" : "</td>", false).autoNl(out);
-	}
-
-	@Override
-	protected TD__<D, PC> new__() {
+	protected TD__<PC> new__() {
 		return new TD__<>(this);
 	}
 
 	@Override
-	protected TD_c<D, PC> new_c() {
+	protected TD_c<PC> new_c() {
 		return new TD_c<>(this);
 	}
 }

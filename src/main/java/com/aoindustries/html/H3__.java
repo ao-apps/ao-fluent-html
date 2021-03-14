@@ -22,20 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyH3__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class H3__<
-	D  extends AnyDocument<D>,
-	PC extends HeadingContent<D, PC>
-> extends H__<D, PC, H3__<D, PC>> {
+	PC extends HeadingContent<PC>
+>
+	extends AnyH3__<Document, PC, H3__<PC>>
+	implements PhrasingContent<H3__<PC>> {
 
-	protected H3__(H3<D, PC> element) {
+	protected H3__(H3<PC> element) {
 		super(element);
 	}
 }

@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_Embedded_InteractiveTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_Embedded_Interactive
+ * @see  Union_Embedded_Interactive
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_Embedded_InteractiveTest {
+public class Union_Embedded_InteractiveTest extends AnyUnion_Embedded_InteractiveTest {
+
+	public Union_Embedded_InteractiveTest() {
+		super(Union_Embedded_Interactive.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_Embedded_Interactive.class
@@ -49,6 +55,7 @@ public class Union_Embedded_InteractiveTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_Embedded_Interactive.class,
@@ -61,6 +68,7 @@ public class Union_Embedded_InteractiveTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_Embedded_Interactive.class
@@ -72,27 +80,12 @@ public class Union_Embedded_InteractiveTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_Embedded_Interactive.class,
-			//
-			// Factories:
-			//
-			"audio",
-			"embed",
-			"iframe",
-			"img",
-			"object",
-			"video"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Embedded_Interactive.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_Embedded_Interactive.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_Embedded_Interactive.class);
 	}
 }

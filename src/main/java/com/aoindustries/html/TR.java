@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTR;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TR<
-	D  extends AnyDocument<D>,
-	PC extends Union_TBODY_THEAD_TFOOT<D, PC>
+	PC extends Union_TBODY_THEAD_TFOOT<PC>
 > extends
-	Normal<D, PC, TR<D, PC>, TR__<D, PC>, TR_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TR<D, PC>>
-{
+	AnyTR<Document, PC, TR<PC>, TR__<PC>, TR_c<PC>> {
 
-	public TR(D document, PC pc) {
+	protected TR(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected TR<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<tr", false);
-		return this;
+	protected TR<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></tr>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</tr>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected TR__<D, PC> new__() {
+	protected TR__<PC> new__() {
 		return new TR__<>(this);
 	}
 
 	@Override
-	protected TR_c<D, PC> new_c() {
+	protected TR_c<PC> new_c() {
 		return new TR_c<>(this);
 	}
 }

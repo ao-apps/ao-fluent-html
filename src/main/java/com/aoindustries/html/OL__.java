@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyOL__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class OL__<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends Normal__<D, PC, OL__<D, PC>>
-	implements ListContent<D, OL__<D, PC>> {
+	extends AnyOL__<Document, PC, OL__<PC>>
+	implements ListContent<OL__<PC>> {
 
-	protected OL__(OL<D, PC> element) {
+	protected OL__(OL<PC> element) {
 		super(element);
 	}
 }

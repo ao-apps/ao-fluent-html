@@ -22,59 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyFOOTER;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Flow content, but with no header or footer element descendants.
 public class FOOTER<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, FOOTER<D, PC>, FOOTER__<D, PC>, FOOTER_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<FOOTER<D, PC>>
-{
+	AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
 
-	public FOOTER(D document, PC pc) {
+	protected FOOTER(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected FOOTER<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<footer", false);
-		return this;
+	protected FOOTER<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></footer>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</footer>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected FOOTER__<D, PC> new__() {
+	protected FOOTER__<PC> new__() {
 		return new FOOTER__<>(this);
 	}
 
 	@Override
-	protected FOOTER_c<D, PC> new_c() {
+	protected FOOTER_c<PC> new_c() {
 		return new FOOTER_c<>(this);
 	}
 }

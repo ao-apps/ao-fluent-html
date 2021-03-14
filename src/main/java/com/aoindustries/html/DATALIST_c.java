@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDATALIST_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element">4.10.8 The datalist element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DATALIST_c<
-	D  extends AnyDocument<D>,
-	PC extends PhrasingContent<D, PC>
+	PC extends PhrasingContent<PC>
 >
-	extends NormalText_c<D, PC, DATALIST_c<D, PC>>
-	implements DATALIST_content<D, DATALIST_c<D, PC>> {
+	extends AnyDATALIST_c<Document, PC, DATALIST_c<PC>>
+	implements DATALIST_content<DATALIST_c<PC>> {
 
-	protected DATALIST_c(DATALIST<D, PC> element) {
+	protected DATALIST_c(DATALIST<PC> element) {
 		super(element);
 	}
 }

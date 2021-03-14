@@ -22,22 +22,9 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.MediaEncoder;
-import com.aoindustries.encoding.MediaType;
-import com.aoindustries.encoding.Serialization;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
-import com.aoindustries.io.ContentType;
-import com.aoindustries.io.NoCloseWriter;
-import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.lang.Coercion;
-import com.aoindustries.lang.Strings;
-import com.aoindustries.lang.Throwables;
-import com.aoindustries.util.i18n.MarkupCoercion;
+import com.aoindustries.html.any.AnySCRIPT;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.util.Locale;
 
 /**
  * <ul>
@@ -45,299 +32,31 @@ import java.util.Locale;
  * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Extend RawTextElement: https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements
 public class SCRIPT<
-	D  extends AnyDocument<D>,
-	PC extends ScriptSupportingContent<D, PC>
-> extends Element<D, PC, SCRIPT<D, PC>> implements
-	com.aoindustries.html.attributes.Boolean.Async<SCRIPT<D, PC>>,
-	com.aoindustries.html.attributes.Enum.Charset<SCRIPT<D, PC>, com.aoindustries.html.attributes.Enum.Charset.Value>,
-	com.aoindustries.html.attributes.Boolean.Defer<SCRIPT<D, PC>>,
-	com.aoindustries.html.attributes.Url.Src<SCRIPT<D, PC>>,
-	// TODO: type
-	// TODO: xmlSpace
-	// Global Attributes: https://www.w3schools.com/tags/ref_standardattributes.asp
-	com.aoindustries.html.attributes.Text.ClassNoHtml4<SCRIPT<D, PC>>,
-	com.aoindustries.html.attributes.Text.IdNoHtml4<SCRIPT<D, PC>>,
-	com.aoindustries.html.attributes.Text.StyleNoHtml4<SCRIPT<D, PC>>,
-	com.aoindustries.html.attributes.Text.TitleNoHtml4<SCRIPT<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <script>: AlmostGlobalAttributes<SCRIPT<D, PC>>
-	com.aoindustries.html.attributes.event.window.Onerror<SCRIPT<D, PC>>,
-	com.aoindustries.html.attributes.event.window.Onload<SCRIPT<D, PC>>
-{
+	PC extends ScriptSupportingContent<PC>
+> extends
+	AnySCRIPT<Document, PC, SCRIPT<PC>> {
 
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
-	 */
-	public enum Type {
-		/**
-		 * The default type for (X)HTML 5.
-		 */
-		APPLICATION_JAVASCRIPT(ContentType.JAVASCRIPT),
-
-		/**
-		 * The default type for XHTML 1.0 / HTML 4.
-		 *
-		 * @deprecated  Use {@link #APPLICATION_JAVASCRIPT} in HTML 5.
-		 */
-		@Deprecated
-		TEXT_JAVASCRIPT(ContentType.JAVASCRIPT_OLD),
-
-		/**
-		 * A JSON script.
-		 */
-		APPLICATION_JSON(ContentType.JSON),
-
-		/**
-		 * A JSON linked data script.
-		 */
-		APPLICATION_JD_JSON(ContentType.LD_JSON),
-
-		APPLICATION_ECMASCRIPT(ContentType.ECMASCRIPT);
-
-		private final String contentType;
-
-		private Type(String contentType) {
-			this.contentType = contentType;
-		}
-
-		@Override
-		public String toString() {
-			return contentType;
-		}
-
-		public String getContentType() {
-			return contentType;
-		}
-
-		private static boolean assertAllLowerCaseAndTrimmed() {
-			for(Type type : values()) {
-				if(!type.contentType.equals(type.contentType.toLowerCase(Locale.ROOT))) throw new AssertionError("Content types must be lowercase as looked-up later");
-				if(!type.contentType.equals(type.contentType.trim())) throw new AssertionError("Content types must be trimmed as looked-up later");
-			}
-			return true;
-		}
-		static {
-			assert assertAllLowerCaseAndTrimmed();
-		}
-	}
-
-	private final String type;
-
-	public SCRIPT(D document, PC pc) {
+	protected SCRIPT(Document document, PC pc) {
 		super(document, pc);
-		this.type = null;
 	}
 
-	public SCRIPT(D document, PC pc, String type) {
-		super(document, pc);
-		type = Strings.trimNullIfEmpty(type);
-		this.type = (type == null) ? null : type.toLowerCase(Locale.ROOT);
+	protected SCRIPT(Document document, PC pc, String type) {
+		super(document, pc, type);
 	}
 
-	public SCRIPT(D document, PC pc, Type type) {
-		super(document, pc);
-		this.type = (type == null) ? null : type.getContentType();
+	protected SCRIPT(Document document, PC pc, Type type) {
+		super(document, pc, type);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SCRIPT<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<script", false);
-		SCRIPT<D, PC> s = type();
-		assert s == this;
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_script_type.asp">HTML script type Attribute</a>.
-	 *
-	 * @see Doctype#scriptType(java.lang.Appendable)
-	 */
-	@SuppressWarnings("deprecation")
-	protected SCRIPT<D, PC> type() throws IOException {
-		Writer out = document.getUnsafe(null);
-		// TODO: Check didBody here and other attributes, perhaps in some central attribute registry that detects duplicate attributes, too
-		if(
-			type == null
-			|| type.equals(ContentType.JAVASCRIPT)
-			|| type.equals(ContentType.JAVASCRIPT_OLD)
-		) {
-			String typeAttr = document.doctype.getScriptType();
-			int len = typeAttr.length();
-			if(len > 0) {
-				if(document.getAtnl()) {
-					assert typeAttr.charAt(0) == ' ';
-					document.autoIndent(out, 1);
-					out.write(typeAttr, 1, len - 1);
-					document.clearAtnl();
-				} else {
-					out.write(typeAttr);
-				}
-			}
-		} else {
-			if(document.getAtnl()) {
-				document.autoIndent(out, 1);
-				out.write("type=\"");
-				document.clearAtnl();
-			} else {
-				out.write(" type=\"");
-			}
-			encodeTextInXhtmlAttribute(type, out);
-			out.append('"');
-		}
-		return this;
-	}
-
-	protected MediaType getMediaType() throws UnsupportedEncodingException {
-		return type == null ? MediaType.JAVASCRIPT : MediaType.getMediaTypeForContentType(type);
-	}
-
-	protected MediaEncoder getMediaEncoder(MediaType mediaType) throws UnsupportedEncodingException {
-		return MediaEncoder.getInstance(document.encodingContext, mediaType, MediaType.XHTML);
-	}
-
-	@SuppressWarnings("deprecation")
-	protected boolean doCdata() {
-		return
-			document.serialization == Serialization.XML
-			&& (
-				type == null
-				|| type.equals(ContentType.JAVASCRIPT)
-				|| type.equals(ContentType.JAVASCRIPT_OLD)
-				|| type.equals(ContentType.ECMASCRIPT)
-				|| type.equals(ContentType.ECMASCRIPT_OLD)
-			);
-	}
-
-	private boolean didBody;
-
-	protected void startBody(Writer out) throws IOException {
-		if(!didBody) {
-			document
-				.autoIndent(out)
-				.unsafe(out, doCdata() ? (">//<![CDATA[" + NL) : (">" + NL), true)
-				.incDepth();
-			didBody = true;
-		}
-	}
-
-	// TODO: Return a "Body" / "ScriptBody" that only allows additional out or closing the tag.
-	// TODO:     Setting attributes after startBody() would create invalid HTML.
-	// TODO:     Similar for "text", too.
-	// TODO: Interface for "out" with default methods? (Another for "text", too)
-	@SuppressWarnings("UseSpecificCatch")
-	public SCRIPT<D, PC> out(Object script) throws IOException {
-		while(script instanceof IOSupplierE<?, ?>) {
-			try {
-				script = ((IOSupplierE<?, ?>)script).get();
-			} catch(Throwable t) {
-				throw Throwables.wrap(t, IOException.class, IOException::new);
-			}
-		}
-		if(script instanceof ScriptWriter) {
-			try {
-				@SuppressWarnings("unchecked") ScriptWriter<D, ?> writer = (ScriptWriter<D, ?>)script;
-				return out(writer);
-			} catch(Throwable t) {
-				throw Throwables.wrap(t, IOException.class, IOException::new);
-			}
-		}
-		script = Coercion.nullIfEmpty(script);
-		if(script != null) {
-			Writer out = document.getUnsafe(null);
-			startBody(out);
-			// Allow text markup from translations
-			MediaType mediaType = getMediaType();
-			MarkupCoercion.write(
-				script,
-				mediaType.getMarkupType(),
-				true,
-				getMediaEncoder(mediaType),
-				false,
-				out
-			);
-			document.clearAtnl(); // Unknown, safe to assume not at newline
-		}
-		return this;
-	}
-
-	/**
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	public <Ex extends Throwable> SCRIPT<D, PC> out(IOSupplierE<?, Ex> script) throws IOException, Ex {
-		return out((script == null) ? null : script.get());
-	}
-
-	/**
-	 * @param  <D>   This document type
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	// TODO: Consolidate with AttributeWriter?
-	@FunctionalInterface
-	public static interface ScriptWriter<
-		D  extends AnyDocument<D>,
-		Ex extends Throwable
-	> {
-		void writeScript(DocumentMediaWriter<D> script) throws IOException, Ex;
-	}
-
-	/**
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	public <Ex extends Throwable> SCRIPT<D, PC> out(ScriptWriter<D, Ex> script) throws IOException, Ex {
-		if(script != null) {
-			MediaEncoder encoder = getMediaEncoder(getMediaType());
-			Writer out = document.getUnsafe(null);
-			startBody(out);
-			script.writeScript(
-				new DocumentMediaWriter<>(
-					document,
-					encoder,
-					new NoCloseWriter(out)
-				)
-			);
-			document.clearAtnl(); // Unknown, safe to assume not at newline
-		}
-		return this;
-	}
-
-	/**
-	 * Writes the script, automatically closing the script via
-	 * {@link #__()} on {@link DocumentMediaWriter#close()}.
-	 * This is well suited for use in a try-with-resources block.
-	 */
-	// TODO: __() method to end text?  Call it "ContentWriter"?
-	public DocumentMediaWriter<D> out__() throws IOException {
-		MediaEncoder encoder = getMediaEncoder(getMediaType());
-		Writer out = document.getUnsafe(null);
-		startBody(out);
-		return new DocumentMediaWriter<D>(document, encoder, out) {
-			@Override
-			public void close() throws IOException {
-				__();
-			}
-		};
-	}
-
-	/**
-	 * Closes this element.
-	 *
-	 * @return  The parent content model this element is within
-	 */
-	public PC __() throws IOException {
-		Writer out = document.getUnsafe(null);
-		if(!didBody) {
-			document.autoIndent(out).unsafe(out, "></script>", false);
-		} else {
-			document.decDepth().nli(out).unsafe(out, doCdata() ? "//]]></script>" : "</script>", false);
-		}
-		document.autoNl(out);
-		return pc;
+	protected SCRIPT<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

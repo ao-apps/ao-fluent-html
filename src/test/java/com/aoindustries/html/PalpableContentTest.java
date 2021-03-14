@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyPalpableContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class PalpableContentTest {
+public class PalpableContentTest extends AnyPalpableContentTest {
+
+	public PalpableContentTest() {
+		super(PalpableContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			PalpableContent.class,
@@ -52,6 +58,7 @@ public class PalpableContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			PalpableContent.class,
@@ -68,6 +75,7 @@ public class PalpableContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			PalpableContent.class
@@ -79,96 +87,13 @@ public class PalpableContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			PalpableContent.class,
-			//
-			// Factories:
-			//
-			"a",
-			"abbr",
-			"address",
-			"article",
-			"aside",
-			"audio", // if the controls attribute is present
-			"b",
-			"bdi",
-			"bdo",
-			"blockquote",
-			"button",
-			"canvas",
-			"cite",
-			"code",
-			"data",
-			"details",
-			"dfn",
-			"div",
-			"dl", // if childen contain at least one name/value pair
-			"em",
-			"embed",
-			"fieldset",
-			"figure",
-			"footer",
-			"form",
-			"h1",
-			"h2",
-			"h3",
-			"h4",
-			"h5",
-			"h6",
-			"h#",
-			"header",
-			"hgroup",
-			"i",
-			"iframe",
-			"img",
-			"input", // if type attribute is not in the hidden state
-			"ins",
-			"kbd",
-			"label",
-			"main",
-			"map",
-			"mark",
-			// TODO: MathML math
-			"menu", // if children include at least one li
-			"meter",
-			"nav",
-			"object",
-			"ol", // if children include at least one li
-			"output",
-			"p",
-			"pre",
-			"progress",
-			"q",
-			"ruby",
-			"s",
-			"samp",
-			"section",
-			"select",
-			"small",
-			"span",
-			"strong",
-			"sub",
-			"sup",
-			// TODO: SVG svg
-			"table",
-			"textarea",
-			"time",
-			"u",
-			"ul", // if children include at least one li
-			"var",
-			"video"
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), PalpableContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(PalpableContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, PalpableContent.class);
 	}
 }

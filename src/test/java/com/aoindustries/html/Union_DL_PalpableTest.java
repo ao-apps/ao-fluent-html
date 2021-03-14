@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_DL_PalpableTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_DL_Palpable
+ * @see  Union_DL_Palpable
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_DL_PalpableTest {
+public class Union_DL_PalpableTest extends AnyUnion_DL_PalpableTest {
+
+	public Union_DL_PalpableTest() {
+		super(Union_DL_Palpable.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_DL_Palpable.class
@@ -49,6 +55,7 @@ public class Union_DL_PalpableTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_DL_Palpable.class,
@@ -61,6 +68,7 @@ public class Union_DL_PalpableTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_DL_Palpable.class
@@ -72,22 +80,12 @@ public class Union_DL_PalpableTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_DL_Palpable.class,
-			//
-			// Factories:
-			//
-			"div"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DL_Palpable.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_DL_Palpable.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_DL_Palpable.class);
 	}
 }

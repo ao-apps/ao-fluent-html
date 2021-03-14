@@ -22,8 +22,7 @@
  */
 package com.aoindustries.html;
 
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.textInXhtmlAttributeEncoder;
-import com.aoindustries.util.i18n.MarkupType;
+import com.aoindustries.html.any.AnyPARAM;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -34,54 +33,22 @@ import java.io.Writer;
  * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class PARAM<
-	D  extends AnyDocument<D>,
-	// TODO: PC extends ObjectContent<D, PC>
-	PC extends Content<D, PC>
-> extends VoidElement<D, PC, PARAM<D, PC>> implements
-	com.aoindustries.html.attributes.Text.Name<PARAM<D, PC>>,
-	// TODO: type (deprecated)
-	com.aoindustries.html.attributes.Text.Value<PARAM<D, PC>>
-	// TODO: valuetype (deprecated)
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <param>: AlmostGlobalAttributes<PARAM<D, PC>>
-{
+	// TODO: PC extends ObjectContent<PC>
+	PC extends Content<PC>
+> extends AnyPARAM<Document, PC, PARAM<PC>> {
 
-	public PARAM(D document, PC pc) {
+	protected PARAM(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected PARAM<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<param", false);
-		return this;
-	}
-
-	@Override
-	protected void doAfterElement(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_param_name.asp">HTML param name Attribute</a>.
-	 */
-	@Override
-	public PARAM<D, PC> name(Object name) throws IOException {
-		// Overridden to not trim-to-null
-		return Attributes.Text.attribute(this, "name", MarkupType.NONE, name, false, false, textInXhtmlAttributeEncoder);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_param_value.asp">HTML param value Attribute</a>.
-	 */
-	@Override
-	public PARAM<D, PC> value(Object value) throws IOException {
-		// Overridden to not trim-to-null
-		return Attributes.Text.attribute(this, "value", MarkupType.NONE, value, false, false, textInXhtmlAttributeEncoder);
+	protected PARAM<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

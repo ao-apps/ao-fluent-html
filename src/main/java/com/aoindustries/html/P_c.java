@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyP_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">4.4.1 The p element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class P_c<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText_c<D, PC, P_c<D, PC>>
-	implements PhrasingContent<D, P_c<D, PC>> {
+	extends AnyP_c<Document, PC, P_c<PC>>
+	implements PhrasingContent<P_c<PC>> {
 
-	protected P_c(P<D, PC> element) {
+	protected P_c(P<PC> element) {
 		super(element);
 	}
 }

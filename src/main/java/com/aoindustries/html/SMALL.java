@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySMALL;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element">4.5.4 The small element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SMALL<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, SMALL<D, PC>, SMALL__<D, PC>, SMALL_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SMALL<D, PC>>
-{
+	AnySMALL<Document, PC, SMALL<PC>, SMALL__<PC>, SMALL_c<PC>> {
 
-	public SMALL(D document, PC pc) {
+	protected SMALL(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SMALL<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<small", false);
-		return this;
+	protected SMALL<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></small>" : "</small>", false);
-	}
-
-	@Override
-	protected SMALL__<D, PC> new__() {
+	protected SMALL__<PC> new__() {
 		return new SMALL__<>(this);
 	}
 
 	@Override
-	protected SMALL_c<D, PC> new_c() {
+	protected SMALL_c<PC> new_c() {
 		return new SMALL_c<>(this);
 	}
 }

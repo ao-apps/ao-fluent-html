@@ -22,163 +22,40 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.Serialization;
-import com.aoindustries.io.function.IOSupplierE;
-import com.aoindustries.util.i18n.MarkupType;
+import com.aoindustries.html.any.AnyHTML;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Locale;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("deprecation")
 public class HTML<
-	D  extends AnyDocument<D>,
-	PC extends Content<D, PC>
+	PC extends Content<PC>
 > extends
-	Normal<D, PC, HTML<D, PC>, HTML__<D, PC>, HTML_c<D, PC>>
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// Not on <html>: AlmostGlobalAttributes<HTML<D, PC>>
+	AnyHTML<Document, PC, HTML<PC>, HTML__<PC>, HTML_c<PC>>
 {
 
-	public HTML(D document, PC pc) {
+	protected HTML(Document document, PC pc) {
 		super(document, pc);
 	}
 
-	/**
-	 * Does not have indented content.
-	 *
-	 * @return {@code false} - does not indent
-	 */
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected boolean isContentIndented() {
-		return false;
+	protected HTML<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected HTML<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(
-			out,
-			(document.serialization == Serialization.XML)
-				? "<html xmlns=\"http://www.w3.org/1999/xhtml\""
-				: "<html",
-			false
-		);
-		return this;
-	}
-
-	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></html>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</html>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected HTML__<D, PC> new__() {
+	protected HTML__<PC> new__() {
 		return new HTML__<>(this);
 	}
 
 	@Override
-	protected HTML_c<D, PC> new_c() {
+	protected HTML_c<PC> new_c() {
 		return new HTML_c<>(this);
-	}
-
-	/**
-	 * <p>
-	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
-	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
-	 * </p>
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
-	 * </ul>
-	 * <hr>
-	 * {@inheritDoc}
-	 */
-	@Override
-	public HTML<D, PC> lang(String lang) throws IOException {
-		// Write default lang="…"
-		super.lang(lang);
-		if(document.serialization == Serialization.XML) {
-			// Add xml:lang="…"
-			Attributes.String.attribute(this, "xml:lang", MarkupType.NONE, lang, true, true);
-		}
-		return this;
-	}
-
-	/**
-	 * <p>
-	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
-	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
-	 * </p>
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
-	 * </ul>
-	 * <hr>
-	 * {@inheritDoc}
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @see #lang(java.lang.String)
-	 */
-	@Override
-	public <Ex extends Throwable> HTML<D, PC> lang(IOSupplierE<? extends String, Ex> lang) throws IOException, Ex {
-		return super.lang(lang);
-	}
-
-	/**
-	 * <p>
-	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
-	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
-	 * </p>
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
-	 * </ul>
-	 * <hr>
-	 * {@inheritDoc}
-	 *
-	 * @see #lang(java.lang.String)
-	 */
-	@Override
-	public HTML<D, PC> lang(Locale lang) throws IOException {
-		return super.lang(lang);
-	}
-
-	/**
-	 * <p>
-	 * In addition to the default <code>lang="…"</code>, also adds <code>xml:lang="…"</code> when the
-	 * {@link AnyDocument#serialization} is {@link Serialization#XML}.
-	 * </p>
-	 * <ul>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-xml:lang">Global attributes - HTML: HyperText Markup Language | MDN</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML ISO Language Code Reference</a>.</li>
-	 * </ul>
-	 * <hr>
-	 * {@inheritDoc}
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @see #lang(java.util.Locale)
-	 */
-	@Override
-	public <Ex extends Throwable> HTML<D, PC> lang(Suppliers.Locale<Ex> lang) throws IOException, Ex {
-		return super.lang(lang);
 	}
 }

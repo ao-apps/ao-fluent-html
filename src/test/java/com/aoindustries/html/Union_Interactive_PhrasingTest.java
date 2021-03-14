@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_Interactive_PhrasingTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_Interactive_Phrasing
+ * @see  Union_Interactive_Phrasing
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_Interactive_PhrasingTest {
+public class Union_Interactive_PhrasingTest extends AnyUnion_Interactive_PhrasingTest {
+
+	public Union_Interactive_PhrasingTest() {
+		super(Union_Interactive_Phrasing.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_Interactive_Phrasing.class,
@@ -49,6 +55,7 @@ public class Union_Interactive_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_Interactive_Phrasing.class,
@@ -61,6 +68,7 @@ public class Union_Interactive_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_Interactive_Phrasing.class
@@ -72,33 +80,12 @@ public class Union_Interactive_PhrasingTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_Interactive_Phrasing.class,
-			//
-			// Factories:
-			//
-			"a",
-			"audio",
-			"button",
-			"embed",
-			"input",
-			"iframe",
-			"img",
-			"label",
-			"object",
-			"select",
-			"textarea",
-			"video"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Interactive_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_Interactive_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_Interactive_Phrasing.class);
 	}
 }

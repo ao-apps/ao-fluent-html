@@ -22,54 +22,46 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySELECT_content;
 import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface SELECT_content<
-	D  extends AnyDocument<D>,
-	__ extends SELECT_content<D, __>
-> extends
+	__ extends SELECT_content<__>
+> extends AnySELECT_content<Document, __>,
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
-	// Inherited: Union_DATALIST_OPTGROUP<D, __>
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	// Inherited: Union_DATALIST_OPTGROUP<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-	// Inherited: ScriptSupportingContent<D, __>
+	// Inherited: Content<__>
+	// Inherited: ScriptSupportingContent<__>
 
 	//
 	// Per-element content models:
 	//
-	OPTGROUP_content<D, __>
+	OPTGROUP_content<__>
 {
 	//
 	// Factories:
 	//
 	// <editor-fold defaultstate="collapsed" desc="OPTGROUP">
-	/**
-	 * Opens a new optgroup element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
-	 * </p>
-	 */
-	@Factory("optgroup")
-	default OPTGROUP<D, __> optgroup() throws IOException {
+	@Override
+	default OPTGROUP<__> optgroup() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new OPTGROUP<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -83,54 +75,12 @@ public interface SELECT_content<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	@Factory("optgroup")
-	default <Ex extends Throwable> __ optgroup__(IORunnableE<Ex> optgroup) throws IOException, Ex {
+	default <Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<__>, Ex> optgroup) throws IOException, Ex {
 		return optgroup().__(optgroup);
 	}
 
-	/**
-	 * Creates an optgroup element with no attributes and the given body.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("optgroup")
-	default <Ex extends Throwable> __ optgroup__(IOConsumerE<? super OPTGROUP__<D, __>, Ex> optgroup) throws IOException, Ex {
-		return optgroup().__(optgroup);
-	}
-
-	/**
-	 * Creates an empty optgroup element with no attributes.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("optgroup")
-	default __ optgroup__() throws IOException {
-		return optgroup().__();
-	}
-
-	/**
-	 * Creates an optgroup element with no attributes then begins element content
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
-	 * </p>
-	 *
-	 * @return  The content model of this element, which will be the parent content model of child elements.
-	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
-	 *          the tag.  This is well suited for use in a try-with-resources block.
-	 *
-	 * @see  Closeable#__()
-	 * @see  Closeable#close()
-	 */
-	@Factory("optgroup")
-	default OPTGROUP_c<D, __> optgroup_c() throws IOException {
+	@Override
+	default OPTGROUP_c<__> optgroup_c() throws IOException {
 		return optgroup()._c();
 	}
 	// </editor-fold>

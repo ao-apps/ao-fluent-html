@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyADDRESS__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class ADDRESS__<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText__<D, PC, ADDRESS__<D, PC>>
-	implements FlowContent<D, ADDRESS__<D, PC>> {
+	extends AnyADDRESS__<Document, PC, ADDRESS__<PC>>
+	implements FlowContent<ADDRESS__<PC>> {
 
-	protected ADDRESS__(ADDRESS<D, PC> element) {
+	protected ADDRESS__(ADDRESS<PC> element) {
 		super(element);
 	}
 }

@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySAMP;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">4.5.17 The samp element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SAMP<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, SAMP<D, PC>, SAMP__<D, PC>, SAMP_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SAMP<D, PC>>
-{
+	AnySAMP<Document, PC, SAMP<PC>, SAMP__<PC>, SAMP_c<PC>> {
 
-	public SAMP(D document, PC pc) {
+	protected SAMP(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SAMP<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<samp", false);
-		return this;
+	protected SAMP<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></samp>" : "</samp>", false);
-	}
-
-	@Override
-	protected SAMP__<D, PC> new__() {
+	protected SAMP__<PC> new__() {
 		return new SAMP__<>(this);
 	}
 
 	@Override
-	protected SAMP_c<D, PC> new_c() {
+	protected SAMP_c<PC> new_c() {
 		return new SAMP_c<>(this);
 	}
 }

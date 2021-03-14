@@ -22,40 +22,28 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_Embedded_Palpable_Phrasing;
 
 /**
  * Elements that are common to all three of {@link EmbeddedContent}, {@link PalpableContent}, and
  * {@link PhrasingContent}.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface Union_Embedded_Palpable_Phrasing<
-	D  extends AnyDocument<D>,
-	__ extends Union_Embedded_Palpable_Phrasing<D, __>
-> extends
+	__ extends Union_Embedded_Palpable_Phrasing<__>
+> extends AnyUnion_Embedded_Palpable_Phrasing<Document, __>,
 	//
 	// Content models:
 	//
-	Content<D, __>
+	Content<__>
 {
 	//
 	// Factories:
 	//
-	// <editor-fold defaultstate="collapsed" desc="CANVAS">
-	/**
-	 * Opens a new canvas element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element">4.12.5 The canvas element</a>.
-	 * </p>
-	 */
-	@Factory("canvas")
-	default void canvas() throws IOException {
-		throw new AssertionError("TODO: Implement canvas");
-	}
+	// <editor-fold defaultstate="collapsed" desc="TODO: CANVAS">
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TODO: MathML math">
 	// See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#mathml">4.8.16 MathML</a>.

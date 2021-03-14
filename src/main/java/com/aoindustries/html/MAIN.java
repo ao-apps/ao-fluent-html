@@ -22,59 +22,40 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMAIN;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Where flow content is expected, but only if it is a hierarchically correct main element.
 public class MAIN<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, MAIN<D, PC>, MAIN__<D, PC>, MAIN_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MAIN<D, PC>>
-{
+	AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {
 
-	public MAIN(D document, PC pc) {
+	protected MAIN(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected MAIN<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<main", false);
-		return this;
+	protected MAIN<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></main>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</main>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected MAIN__<D, PC> new__() {
+	protected MAIN__<PC> new__() {
 		return new MAIN__<>(this);
 	}
 
 	@Override
-	protected MAIN_c<D, PC> new_c() {
+	protected MAIN_c<PC> new_c() {
 		return new MAIN_c<>(this);
 	}
 }

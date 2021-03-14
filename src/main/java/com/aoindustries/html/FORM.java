@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyFORM;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -31,63 +32,32 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Flow content, but with no form element descendants.
 public class FORM<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, FORM<D, PC>, FORM__<D, PC>, FORM_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// TODO: accept (MDN only, HTML-4 only)
-	// TODO: accept-charset
-	com.aoindustries.html.attributes.Url.Action<FORM<D, PC>>,
-	// TODO: autocomplete
-	com.aoindustries.html.attributes.Enum.Enctype<FORM<D, PC>, com.aoindustries.html.attributes.Enum.Enctype.Value>,
-	com.aoindustries.html.attributes.Enum.Method<FORM<D, PC>, com.aoindustries.html.attributes.Enum.Method.Value>,
-	// TODO: name (only support Id, and do name like <ao:iframe>?)  Deprecated as of html 4
-	com.aoindustries.html.attributes.Boolean.Novalidate<FORM<D, PC>>,
-	com.aoindustries.html.attributes.Enum.Target<FORM<D, PC>, com.aoindustries.html.attributes.Enum.Target.Value>,
-	// TODO: rel
-	AlmostGlobalAttributes<FORM<D, PC>>
-{
+	AnyFORM<Document, PC, FORM<PC>, FORM__<PC>, FORM_c<PC>> {
 
-	public FORM(D document, PC pc) {
+	protected FORM(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected FORM<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<form", false); // TODO: Is whitespace around <form> ok? autoIndent() instead like SELECT?
-		return this;
+	protected FORM<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></form>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</form>", false);
-		}
-		document.autoNl(out); // TODO: Is whitespace around <form> ok? No final autoNl() like SELECT?
-	}
-
-	@Override
-	protected FORM__<D, PC> new__() {
+	protected FORM__<PC> new__() {
 		return new FORM__<>(this);
 	}
 
 	@Override
-	protected FORM_c<D, PC> new_c() {
+	protected FORM_c<PC> new_c() {
 		return new FORM_c<>(this);
 	}
 }

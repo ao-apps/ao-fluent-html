@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyOPTGROUP_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">4.10.9 The optgroup element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class OPTGROUP_c<
-	D  extends AnyDocument<D>,
-	PC extends SELECT_content<D, PC>
+	PC extends SELECT_content<PC>
 >
-	extends Normal_c<D, PC, OPTGROUP_c<D, PC>>
-	implements OPTGROUP_content<D, OPTGROUP_c<D, PC>> {
+	extends AnyOPTGROUP_c<Document, PC, OPTGROUP_c<PC>>
+	implements OPTGROUP_content<OPTGROUP_c<PC>> {
 
-	protected OPTGROUP_c(OPTGROUP<D, PC> element) {
+	protected OPTGROUP_c(OPTGROUP<PC> element) {
 		super(element);
 	}
 }

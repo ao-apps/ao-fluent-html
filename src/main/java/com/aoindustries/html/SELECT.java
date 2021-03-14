@@ -22,66 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySELECT;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element">4.10.7 The select element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: indent before, and newline after?  Review whitespace rules.  (this decision will affect FORM, too)
-//       https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
 public class SELECT<
-	D  extends AnyDocument<D>,
-	PC extends Union_Interactive_Phrasing<D, PC>
+	PC extends Union_Interactive_Phrasing<PC>
 > extends
-	Normal<D, PC, SELECT<D, PC>, SELECT__<D, PC>, SELECT_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	// TODO: autocomplete
-	com.aoindustries.html.attributes.Boolean.Disabled<SELECT<D, PC>>,
-	// TODO: form
-	com.aoindustries.html.attributes.Boolean.Multiple<SELECT<D, PC>>,
-	com.aoindustries.html.attributes.Text.Name<SELECT<D, PC>>,
-	com.aoindustries.html.attributes.Boolean.Required<SELECT<D, PC>>,
-	com.aoindustries.html.attributes.Integer.Size<SELECT<D, PC>>,
-	AlmostGlobalAttributes<SELECT<D, PC>>
-{
+	AnySELECT<Document, PC, SELECT<PC>, SELECT__<PC>, SELECT_c<PC>> {
 
-	public SELECT(D document, PC pc) {
+	protected SELECT(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SELECT<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<select", false);
-		return this;
+	protected SELECT<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></select>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</select>", false);
-		}
-	}
-
-	@Override
-	protected SELECT__<D, PC> new__() {
+	protected SELECT__<PC> new__() {
 		return new SELECT__<>(this);
 	}
 
 	@Override
-	protected SELECT_c<D, PC> new_c() {
+	protected SELECT_c<PC> new_c() {
 		return new SELECT_c<>(this);
 	}
 }

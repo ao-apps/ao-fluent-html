@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyPRE__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class PRE__<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText__<D, PC, PRE__<D, PC>>
-	implements PhrasingContent<D, PRE__<D, PC>> {
+	extends AnyPRE__<Document, PC, PRE__<PC>>
+	implements PhrasingContent<PRE__<PC>> {
 
-	protected PRE__(PRE<D, PC> element) {
+	protected PRE__(PRE<PC> element) {
 		super(element);
 	}
 }

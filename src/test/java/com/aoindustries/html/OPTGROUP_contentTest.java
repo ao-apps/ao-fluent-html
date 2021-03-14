@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyOPTGROUP_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class OPTGROUP_contentTest {
+public class OPTGROUP_contentTest extends AnyOPTGROUP_contentTest {
+
+	public OPTGROUP_contentTest() {
+		super(OPTGROUP_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			OPTGROUP_content.class,
@@ -49,6 +55,7 @@ public class OPTGROUP_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			OPTGROUP_content.class,
@@ -62,6 +69,7 @@ public class OPTGROUP_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			OPTGROUP_content.class
@@ -73,25 +81,13 @@ public class OPTGROUP_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			OPTGROUP_content.class,
-			//
-			// Factories:
-			//
-			"option",
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OPTGROUP_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(OPTGROUP_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, OPTGROUP_content.class);
 	}
 }

@@ -22,45 +22,34 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyINS;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class INS<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	TransparentText<D, PC, INS<D, PC>, INS_c<D, PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<INS<D, PC>>,
-	// TODO: datetime
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<INS<D, PC>>
-{
+	AnyINS<Document, PC, INS<PC>, INS_c<PC>> {
 
-	public INS(D document, PC pc) {
+	protected INS(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected INS<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<ins", false);
-		return this;
+	protected INS<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></ins>" : "</ins>", false);
-	}
-
-	@Override
-	protected INS_c<D, PC> new_c() {
+	protected INS_c<PC> new_c() {
 		return new INS_c<>(this);
 	}
 }

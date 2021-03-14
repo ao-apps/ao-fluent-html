@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyI_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class I_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText_c<D, PC, I_c<D, PC>>
-	implements PhrasingContent<D, I_c<D, PC>> {
+	extends AnyI_c<Document, PC, I_c<PC>>
+	implements PhrasingContent<I_c<PC>> {
 
-	protected I_c(I<D, PC> element) {
+	protected I_c(I<PC> element) {
 		super(element);
 	}
 }

@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyVAR;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element">4.5.16 The var element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class VAR<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, VAR<D, PC>, VAR__<D, PC>, VAR_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<VAR<D, PC>>
-{
+	AnyVAR<Document, PC, VAR<PC>, VAR__<PC>, VAR_c<PC>> {
 
-	public VAR(D document, PC pc) {
+	protected VAR(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected VAR<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<var", false);
-		return this;
+	protected VAR<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></var>" : "</var>", false);
-	}
-
-	@Override
-	protected VAR__<D, PC> new__() {
+	protected VAR__<PC> new__() {
 		return new VAR__<>(this);
 	}
 
 	@Override
-	protected VAR_c<D, PC> new_c() {
+	protected VAR_c<PC> new_c() {
 		return new VAR_c<>(this);
 	}
 }

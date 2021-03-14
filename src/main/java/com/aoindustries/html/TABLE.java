@@ -22,9 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTABLE;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.function.Function;
 
 /**
  * <ul>
@@ -33,102 +33,33 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_table.asp">HTML table tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
 public class TABLE<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	Normal<D, PC, TABLE<D, PC>, TABLE__<D, PC>, TABLE_c<D, PC>> implements
-	com.aoindustries.html.attributes.Enum.Align<TABLE<D, PC>, TABLE.Align>,
-	// TODO: bgcolor (deprecated)
-	com.aoindustries.html.attributes.Integer.Border<TABLE<D, PC>>,
-	com.aoindustries.html.attributes.Dimension.Cellpadding<TABLE<D, PC>>,
-	com.aoindustries.html.attributes.Dimension.Cellspacing<TABLE<D, PC>>,
-	// TODO: frame (deprecated)
-	// TODO: rules (deprecated)
-	// TODO: summary (deprecated)
-	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<TABLE<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TABLE<D, PC>>
-{
+	AnyTABLE<Document, PC, TABLE<PC>, TABLE__<PC>, TABLE_c<PC>> {
 
-	public TABLE(D document, PC pc) {
+	protected TABLE(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected TABLE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<table", false);
-		return this;
+	protected TABLE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></table>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</table>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected TABLE__<D, PC> new__() {
+	protected TABLE__<PC> new__() {
 		return new TABLE__<>(this);
 	}
 
 	@Override
-	protected TABLE_c<D, PC> new_c() {
+	protected TABLE_c<PC> new_c() {
 		return new TABLE_c<>(this);
-	}
-
-	/**
-	 * See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attr-align">&lt;table&gt;: The Table element / align</a>.
-	 *
-	 * @deprecated  The align attribute of &lt;table&gt; is not supported in HTML5. Use CSS instead.
-	 */
-	@Deprecated
-	public enum Align implements Function<AnyDocument<?>, String> {
-
-		/**
-		 * the table is displayed on the left side of the document
-		 */
-		LEFT("left"),
-
-		/**
-		 * the table is displayed in the center of the document
-		 */
-		CENTER("center"),
-
-		/**
-		 * the table is displayed on the right side of the document
-		 */
-		RIGHT("right");
-
-		private final String value;
-
-		private Align(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
 	}
 }

@@ -22,101 +22,39 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOSupplierE;
+import com.aoindustries.html.any.AnyBDI;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class BDI<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, BDI<D, PC>, BDI__<D, PC>, BDI_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<BDI<D, PC>>
-{
+	AnyBDI<Document, PC, BDI<PC>, BDI__<PC>, BDI_c<PC>> {
 
-	public BDI(D document, PC pc) {
+	protected BDI(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected BDI<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<bdi", false);
-		return this;
+	protected BDI<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></bdi>" : "</bdi>", false);
-	}
-
-	@Override
-	protected BDI__<D, PC> new__() {
+	protected BDI__<PC> new__() {
 		return new BDI__<>(this);
 	}
 
 	@Override
-	protected BDI_c<D, PC> new_c() {
+	protected BDI_c<PC> new_c() {
 		return new BDI_c<>(this);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#dir(java.lang.String) dir} global attribute defaults to <code>auto</code>
-	 * on this element (it never inherits from the parent element like with other elements).
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
-	 * </p>
-	 */
-	@Override
-	public BDI<D, PC> dir(String dir) throws IOException {
-		return super.dir(dir);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#dir(com.aoindustries.html.Suppliers.String) dir} global attribute defaults to <code>auto</code>
-	 * on this element (it never inherits from the parent element like with other elements).
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> BDI<D, PC> dir(Suppliers.String<Ex> dir) throws IOException, Ex {
-		return super.dir(dir);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#dir(java.lang.Enum) dir} global attribute defaults to <code>auto</code>
-	 * on this element (it never inherits from the parent element like with other elements).
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
-	 * </p>
-	 */
-	@Override
-	public BDI<D, PC> dir(Value dir) throws IOException {
-		return super.dir(dir);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#dir(com.aoindustries.io.function.IOSupplierE) dir} global attribute defaults to <code>auto</code>
-	 * on this element (it never inherits from the parent element like with other elements).
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element">4.5.24 The bdi element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> BDI<D, PC> dir(IOSupplierE<? extends Value, Ex> dir) throws IOException, Ex {
-		return super.dir(dir);
 	}
 }

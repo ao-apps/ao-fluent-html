@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyFlowContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class FlowContentTest {
+public class FlowContentTest extends AnyFlowContentTest {
+
+	public FlowContentTest() {
+		super(FlowContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			FlowContent.class,
@@ -54,6 +60,7 @@ public class FlowContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			FlowContent.class,
@@ -74,6 +81,7 @@ public class FlowContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			FlowContent.class
@@ -85,110 +93,13 @@ public class FlowContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			FlowContent.class,
-			//
-			// Factories:
-			//
-			"a",
-			"abbr",
-			"address",
-			"area", // if a descendent of map
-			"article",
-			"aside",
-			"audio",
-			"b",
-			"bdi",
-			"bdo",
-			"blockquote",
-			"br",
-			"button",
-			"canvas",
-			"cite",
-			"code",
-			"data",
-			"datalist",
-			"del",
-			"details",
-			"dfn",
-			"dialog",
-			"div",
-			"dl",
-			"em",
-			"embed",
-			"fieldset",
-			"figure",
-			"footer",
-			"form",
-			"h1",
-			"h2",
-			"h3",
-			"h4",
-			"h5",
-			"h6",
-			"h#",
-			"header",
-			"hgroup",
-			"hr",
-			"i",
-			"iframe",
-			"img",
-			"input",
-			"ins",
-			"kbd",
-			"label",
-			"link", // if it is allowed in body
-			"main", // if it is a hierarchically correct main element
-			"map",
-			"mark",
-			// TODO: MathML math
-			"menu",
-			"meta", // if the itemprop attribute is present
-			"meter",
-			"nav",
-			"noscript",
-			"object",
-			"ol",
-			"output",
-			"p",
-			"picture",
-			"pre",
-			"progress",
-			"q",
-			"ruby",
-			"s",
-			"samp",
-			"script",
-			"section",
-			"select",
-			"slot",
-			"small",
-			"span",
-			"strong",
-			"sub",
-			"sup",
-			// TODO: SVG svg
-			"table",
-			"template",
-			"textarea",
-			"time",
-			"u",
-			"ul",
-			"var",
-			"video",
-			"wbr"
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), FlowContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(FlowContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, FlowContent.class);
 	}
 }

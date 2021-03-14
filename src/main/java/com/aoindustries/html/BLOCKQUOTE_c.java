@@ -22,25 +22,25 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyBLOCKQUOTE_c;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">4.4.4 The blockquote element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">&lt;blockquote&gt;: The Block Quotation element</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class BLOCKQUOTE_c<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText_c<D, PC, BLOCKQUOTE_c<D, PC>>
-	implements FlowContent<D, BLOCKQUOTE_c<D, PC>> {
+	extends AnyBLOCKQUOTE_c<Document, PC, BLOCKQUOTE_c<PC>>
+	implements FlowContent<BLOCKQUOTE_c<PC>> {
 
-	protected BLOCKQUOTE_c(BLOCKQUOTE<D, PC> element) {
+	protected BLOCKQUOTE_c(BLOCKQUOTE<PC> element) {
 		super(element);
 	}
 }

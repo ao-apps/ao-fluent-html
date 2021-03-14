@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyEM__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">4.5.2 The em element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class EM__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, EM__<D, PC>>
-	implements PhrasingContent<D, EM__<D, PC>> {
+	extends AnyEM__<Document, PC, EM__<PC>>
+	implements PhrasingContent<EM__<PC>> {
 
-	protected EM__(EM<D, PC> element) {
+	protected EM__(EM<PC> element) {
 		super(element);
 	}
 }

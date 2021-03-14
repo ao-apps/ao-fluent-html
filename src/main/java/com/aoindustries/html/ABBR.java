@@ -22,93 +22,39 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.encoding.MediaWritable;
-import com.aoindustries.io.function.IOSupplierE;
+import com.aoindustries.html.any.AnyABBR;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class ABBR<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, ABBR<D, PC>, ABBR__<D, PC>, ABBR_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ABBR<D, PC>>
-{
+	AnyABBR<Document, PC, ABBR<PC>, ABBR__<PC>, ABBR_c<PC>> {
 
-	public ABBR(D document, PC pc) {
+	protected ABBR(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected ABBR<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<abbr", false);
-		return this;
+	protected ABBR<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></abbr>" : "</abbr>", false);
-	}
-
-	@Override
-	protected ABBR__<D, PC> new__() {
+	protected ABBR__<PC> new__() {
 		return new ABBR__<>(this);
 	}
 
 	@Override
-	protected ABBR_c<D, PC> new_c() {
+	protected ABBR_c<PC> new_c() {
 		return new ABBR_c<>(this);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#title(java.lang.Object) title} attribute
-	 * <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-abbr-title">has special semantics</a>
-	 * on this element: Full term or expansion of abbreviation.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
-	 * </p>
-	 */
-	@Override
-	public ABBR<D, PC> title(Object title) throws IOException {
-		return super.title(title);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#title(com.aoindustries.io.function.IOSupplierE) title} attribute
-	 * <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-abbr-title">has special semantics</a>
-	 * on this element: Full term or expansion of abbreviation.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> ABBR<D, PC> title(IOSupplierE<?, Ex> title) throws IOException, Ex {
-		return super.title(title);
-	}
-
-	/**
-	 * The {@linkplain GlobalAttributes#title(com.aoindustries.encoding.MediaWritable) title} attribute
-	 * <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-abbr-title">has special semantics</a>
-	 * on this element: Full term or expansion of abbreviation.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> ABBR<D, PC> title(MediaWritable<Ex> title) throws IOException, Ex {
-		return super.title(title);
 	}
 }

@@ -22,8 +22,8 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyInteractiveContent;
 import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
@@ -32,25 +32,23 @@ import java.io.IOException;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#interactive_content">Interactive content</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface InteractiveContent<
-	D  extends AnyDocument<D>,
-	__ extends InteractiveContent<D, __>
-> extends
+	__ extends InteractiveContent<__>
+> extends AnyInteractiveContent<Document, __>,
 	//
 	// Unions:
 	//
-	// Inherited: Union_Embedded_Interactive<D, __>
-	Union_Interactive_Phrasing<D, __>
+	// Inherited: Union_Embedded_Interactive<__>
+	Union_Interactive_Phrasing<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
+	// Inherited: Content<__>
 {
 	//
 	// Factories:
@@ -58,17 +56,7 @@ public interface InteractiveContent<
 	// Inherited: A - if the href attribute is present
 	// Inherited: AUDIO - if the controls attribute is present
 	// Inherited: BUTTON
-	// <editor-fold defaultstate="collapsed" desc="DETAILS">
-	/**
-	 * Opens a new details element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">4.11.1 The details element</a>.
-	 * </p>
-	 */
-	@Factory("details")
-	default void details() throws IOException {
-		throw new AssertionError("TODO: Implement details");
-	}
+	// <editor-fold defaultstate="collapsed" desc="TODO: DETAILS">
 	// </editor-fold>
 	// Inherited: EMBED
 	// Inherited: IFRAME
@@ -76,17 +64,11 @@ public interface InteractiveContent<
 	// Inherited: INPUT - if type attribute is not in the hidden state
 	// Inherited: LABEL
 	// <editor-fold defaultstate="collapsed" desc="MENU - (MDN only) if the type attribute is in the toolbar state">
-	/**
-	 * Opens a new menu element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
-	 * </p>
-	 */
-	@Factory("menu")
-	default MENU<D, __> menu() throws IOException {
+	@Override
+	default MENU<__> menu() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new MENU<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -100,54 +82,12 @@ public interface InteractiveContent<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	@Factory("menu")
-	default <Ex extends Throwable> __ menu__(IORunnableE<Ex> menu) throws IOException, Ex {
+	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<__>, Ex> menu) throws IOException, Ex {
 		return menu().__(menu);
 	}
 
-	/**
-	 * Creates a menu element with no attributes and the given foot.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("menu")
-	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<D, __>, Ex> menu) throws IOException, Ex {
-		return menu().__(menu);
-	}
-
-	/**
-	 * Creates an empty menu element with no attributes.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("menu")
-	default __ menu__() throws IOException {
-		return menu().__();
-	}
-
-	/**
-	 * Creates a menu element with no attributes then begins element content
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
-	 * </p>
-	 *
-	 * @return  The content model of this element, which will be the parent content model of child elements.
-	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
-	 *          the tag.  This is well suited for use in a try-with-resources block.
-	 *
-	 * @see  Closeable#__()
-	 * @see  Closeable#close()
-	 */
-	@Factory("menu")
-	default MENU_c<D, __> menu_c() throws IOException {
+	@Override
+	default MENU_c<__> menu_c() throws IOException {
 		return menu()._c();
 	}
 	// </editor-fold>

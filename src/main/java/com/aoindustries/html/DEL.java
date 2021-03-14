@@ -22,45 +22,34 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDEL;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-del-element">4.7.2 The del element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DEL<
-	D  extends AnyDocument<D>,
-	PC extends PhrasingContent<D, PC>
+	PC extends PhrasingContent<PC>
 > extends
-	Transparent<D, PC, DEL<D, PC>, DEL_c<D, PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<DEL<D, PC>>,
-	// TODO: datetime
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DEL<D, PC>>
-{
+	AnyDEL<Document, PC, DEL<PC>, DEL_c<PC>> {
 
-	public DEL(D document, PC pc) {
+	protected DEL(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected DEL<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<del", false);
-		return this;
+	protected DEL<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></del>" : "</del>", false);
-	}
-
-	@Override
-	protected DEL_c<D, PC> new_c() {
+	protected DEL_c<PC> new_c() {
 		return new DEL_c<>(this);
 	}
 }

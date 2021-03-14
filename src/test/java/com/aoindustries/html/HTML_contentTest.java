@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyHTML_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class HTML_contentTest {
+public class HTML_contentTest extends AnyHTML_contentTest {
+
+	public HTML_contentTest() {
+		super(HTML_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			HTML_content.class
@@ -48,6 +54,7 @@ public class HTML_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			HTML_content.class,
@@ -60,6 +67,7 @@ public class HTML_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			HTML_content.class
@@ -71,24 +79,13 @@ public class HTML_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			HTML_content.class,
-			//
-			// Factories:
-			//
-			"head",
-			"body"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), HTML_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(HTML_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, HTML_content.class);
 	}
 }

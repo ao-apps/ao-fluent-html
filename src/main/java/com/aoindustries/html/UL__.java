@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyUL__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">4.4.6 The ul element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class UL__<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends Normal__<D, PC, UL__<D, PC>>
-	implements ListContent<D, UL__<D, PC>> {
+	extends AnyUL__<Document, PC, UL__<PC>>
+	implements ListContent<UL__<PC>> {
 
-	protected UL__(UL<D, PC> element) {
+	protected UL__(UL<PC> element) {
 		super(element);
 	}
 }

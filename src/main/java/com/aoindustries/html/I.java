@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyI;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">4.5.20 The i element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class I<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, I<D, PC>, I__<D, PC>, I_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<I<D, PC>>
-{
+	AnyI<Document, PC, I<PC>, I__<PC>, I_c<PC>> {
 
-	public I(D document, PC pc) {
+	protected I(Document document, PC pc) {
 		super(document, pc);
 	}
 
-	@Override
-	protected I<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<i", false);
-		return this;
-	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></i>" : "</i>", false);
+	protected I<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
-
 	@Override
-	protected I__<D, PC> new__() {
+	protected I__<PC> new__() {
 		return new I__<>(this);
 	}
 
 	@Override
-	protected I_c<D, PC> new_c() {
+	protected I_c<PC> new_c() {
 		return new I_c<>(this);
 	}
 }

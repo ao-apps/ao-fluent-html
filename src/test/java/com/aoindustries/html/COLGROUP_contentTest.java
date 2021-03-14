@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyCOLGROUP_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class COLGROUP_contentTest {
+public class COLGROUP_contentTest extends AnyCOLGROUP_contentTest {
+
+	public COLGROUP_contentTest() {
+		super(COLGROUP_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			COLGROUP_content.class,
@@ -48,6 +54,7 @@ public class COLGROUP_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			COLGROUP_content.class,
@@ -60,6 +67,7 @@ public class COLGROUP_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			COLGROUP_content.class
@@ -71,24 +79,13 @@ public class COLGROUP_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			COLGROUP_content.class,
-			//
-			// Factories:
-			//
-			"col",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), COLGROUP_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(COLGROUP_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, COLGROUP_content.class);
 	}
 }

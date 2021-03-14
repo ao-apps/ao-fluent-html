@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDL;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DL<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	Normal<D, PC, DL<D, PC>, DL__<D, PC>, DL_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DL<D, PC>>
-{
+	AnyDL<Document, PC, DL<PC>, DL__<PC>, DL_c<PC>> {
 
-	public DL(D document, PC pc) {
+	protected DL(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected DL<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<dl", false);
-		return this;
+	protected DL<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></dl>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</dl>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected DL__<D, PC> new__() {
+	protected DL__<PC> new__() {
 		return new DL__<>(this);
 	}
 
 	@Override
-	protected DL_c<D, PC> new_c() {
+	protected DL_c<PC> new_c() {
 		return new DL_c<>(this);
 	}
 }

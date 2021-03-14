@@ -22,44 +22,34 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMAP;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class MAP<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	TransparentText<D, PC, MAP<D, PC>, MAP_c<D, PC>> implements
-	com.aoindustries.html.attributes.Text.Name<MAP<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MAP<D, PC>>
-{
+	AnyMAP<Document, PC, MAP<PC>, MAP_c<PC>> {
 
-	public MAP(D document, PC pc) {
+	protected MAP(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected MAP<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<map", false);
-		return this;
+	protected MAP<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></map>" : "</map>", false);
-	}
-
-	@Override
-	protected MAP_c<D, PC> new_c() {
+	protected MAP_c<PC> new_c() {
 		return new MAP_c<>(this);
 	}
 }

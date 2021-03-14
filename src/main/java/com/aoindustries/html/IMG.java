@@ -22,9 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyIMG;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.function.Function;
 
 /**
  * <ul>
@@ -32,95 +32,22 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_img.asp">HTML img tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
 public class IMG<
-	D  extends AnyDocument<D>,
-	PC extends Union_Embedded_Interactive<D, PC>
-> extends VoidElement<D, PC, IMG<D, PC>> implements
-	com.aoindustries.html.attributes.Enum.Align<IMG<D, PC>, IMG.Align>,
-	com.aoindustries.html.attributes.Text.Alt<IMG<D, PC>>,
-	// TODO: border
-	// TODO: crossorigin
-	com.aoindustries.html.attributes.Integer.Height<IMG<D, PC>>,
-	// TODO: hspace
-	com.aoindustries.html.attributes.Boolean.Ismap<IMG<D, PC>>,
-	// TODO: longdesc
-	// TODO: sizes
-	com.aoindustries.html.attributes.Url.Src<IMG<D, PC>>,
-	// TODO: srcset
-	com.aoindustries.html.attributes.String.Usemap<IMG<D, PC>>,
-	// TODO: vspace
-	com.aoindustries.html.attributes.Integer.Width<IMG<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<IMG<D, PC>>,
-	com.aoindustries.html.attributes.event.media.Onabort<IMG<D, PC>>,
-	com.aoindustries.html.attributes.event.window.Onerror<IMG<D, PC>>,
-	com.aoindustries.html.attributes.event.window.Onload<IMG<D, PC>>
-	// TODO: More events
-{
+	PC extends Union_Embedded_Interactive<PC>
+> extends AnyIMG<Document, PC, IMG<PC>> {
 
-	public IMG(D document, PC pc) {
+	protected IMG(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected IMG<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<img", false);
-		return this;
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_img_align.asp">HTML img align Attribute</a>.
-	 *
-	 * @deprecated  The align attribute of &lt;img&gt; is not supported in HTML5. Use CSS instead.
-	 */
-	@Deprecated
-	public enum Align implements Function<AnyDocument<?>, String> {
-
-		/**
-		 * Align the image to the left
-		 */
-		LEFT("left"),
-
-		/**
-		 * Align the image to the right
-		 */
-		RIGHT("right"),
-
-		/**
-		 * Align the image in the middle
-		 */
-		MIDDLE("middle"),
-
-		/**
-		 * Align the image at the top
-		 */
-		TOP("top"),
-
-		/**
-		 * Align the image at the bottom
-		 */
-		BOTTOM("bottom");
-
-		private final String value;
-
-		private Align(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
+	protected IMG<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

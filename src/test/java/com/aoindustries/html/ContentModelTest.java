@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Test;
 
 /**
@@ -56,6 +57,7 @@ public class ContentModelTest {
 
 	static void testContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
 		InheritanceTests.testInterfaces(
+			Content.class,
 			iface -> iface.getSimpleName().endsWith("Content"),
 			getAllContentModels(),
 			clazz,
@@ -66,7 +68,7 @@ public class ContentModelTest {
 	@Test
 	public void testNoImplementInherited() {
 		for(Class<? extends Content> iface : getAllContentModels()) {
-			InheritanceTests.testNoImplementInherited(iface);
+			InheritanceTests.testNoImplementInherited(Content.class, iface);
 		}
 	}
 }

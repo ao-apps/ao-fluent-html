@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyNAV;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class NAV<
-	D  extends AnyDocument<D>,
-	PC extends SectioningContent<D, PC>
+	PC extends SectioningContent<PC>
 > extends
-	NormalText<D, PC, NAV<D, PC>, NAV__<D, PC>, NAV_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<NAV<D, PC>>
-{
+	AnyNAV<Document, PC, NAV<PC>, NAV__<PC>, NAV_c<PC>> {
 
-	public NAV(D document, PC pc) {
+	protected NAV(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected NAV<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<nav", false);
-		return this;
+	protected NAV<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></nav>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</nav>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected NAV__<D, PC> new__() {
+	protected NAV__<PC> new__() {
 		return new NAV__<>(this);
 	}
 
 	@Override
-	protected NAV_c<D, PC> new_c() {
+	protected NAV_c<PC> new_c() {
 		return new NAV_c<>(this);
 	}
 }

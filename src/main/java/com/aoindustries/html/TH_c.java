@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTH_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TH_c<
-	D  extends AnyDocument<D>,
-	PC extends TR_content<D, PC>
+	PC extends TR_content<PC>
 >
-	extends NormalText_c<D, PC, TH_c<D, PC>>
-	implements FlowContent<D, TH_c<D, PC>> {
+	extends AnyTH_c<Document, PC, TH_c<PC>>
+	implements FlowContent<TH_c<PC>> {
 
-	protected TH_c(TH<D, PC> element) {
+	protected TH_c(TH<PC> element) {
 		super(element);
 	}
 }

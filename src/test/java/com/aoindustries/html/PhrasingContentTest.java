@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyPhrasingContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class PhrasingContentTest {
+public class PhrasingContentTest extends AnyPhrasingContentTest {
+
+	public PhrasingContentTest() {
+		super(PhrasingContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			PhrasingContent.class,
@@ -53,6 +59,7 @@ public class PhrasingContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			PhrasingContent.class,
@@ -68,6 +75,7 @@ public class PhrasingContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			PhrasingContent.class
@@ -79,79 +87,13 @@ public class PhrasingContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			PhrasingContent.class,
-			//
-			// Factories:
-			//
-			"a",
-			"abbr",
-			"area", // if a descendent of map
-			"audio",
-			"b",
-			"bdi",
-			"bdo",
-			"br",
-			"button",
-			"canvas",
-			"cite",
-			"code",
-			"data",
-			"datalist",
-			"del",
-			"dfn",
-			"em",
-			"embed",
-			"i",
-			"iframe",
-			"img",
-			"input",
-			"ins",
-			"kbd",
-			"label",
-			"link", // if it is allowed in body
-			"map",
-			"mark",
-			// TODO: MathML math
-			"meta", // if the itemprop attribute is present
-			"meter",
-			"noscript",
-			"object",
-			"output",
-			"picture",
-			"progress",
-			"q",
-			"ruby",
-			"s",
-			"samp",
-			"script",
-			"select",
-			"slot",
-			"small",
-			"span",
-			"strong",
-			"sub",
-			"sup",
-			// TODO: SVG svg
-			"template",
-			"textarea",
-			"time",
-			"u",
-			"var",
-			"video",
-			"wbr"
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), PhrasingContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(PhrasingContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, PhrasingContent.class);
 	}
 }

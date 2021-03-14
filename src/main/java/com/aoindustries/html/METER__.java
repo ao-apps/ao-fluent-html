@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMETER__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class METER__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, METER__<D, PC>>
-	implements PhrasingContent<D, METER__<D, PC>> {
+	extends AnyMETER__<Document, PC, METER__<PC>>
+	implements PhrasingContent<METER__<PC>> {
 
-	protected METER__(METER<D, PC> element) {
+	protected METER__(METER<PC> element) {
 		super(element);
 	}
 }

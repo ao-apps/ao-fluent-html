@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyDATALIST_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class DATALIST_contentTest {
+public class DATALIST_contentTest extends AnyDATALIST_contentTest {
+
+	public DATALIST_contentTest() {
+		super(DATALIST_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			DATALIST_content.class,
@@ -54,6 +60,7 @@ public class DATALIST_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			DATALIST_content.class,
@@ -70,6 +77,7 @@ public class DATALIST_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			DATALIST_content.class
@@ -81,80 +89,13 @@ public class DATALIST_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			DATALIST_content.class,
-			//
-			// Factories:
-			//
-			"a",
-			"abbr",
-			"area", // if a descendent of map
-			"audio",
-			"b",
-			"bdi",
-			"bdo",
-			"br",
-			"button",
-			"canvas",
-			"cite",
-			"code",
-			"data",
-			"datalist",
-			"del",
-			"dfn",
-			"em",
-			"embed",
-			"i",
-			"iframe",
-			"img",
-			"input",
-			"ins",
-			"kbd",
-			"label",
-			"link", // if it is allowed in body
-			"map",
-			"mark",
-			// TODO: MathML math
-			"meta", // if the itemprop attribute is present
-			"meter",
-			"noscript",
-			"object",
-			"option",
-			"output",
-			"picture",
-			"progress",
-			"q",
-			"ruby",
-			"s",
-			"samp",
-			"script",
-			"select",
-			"slot",
-			"small",
-			"span",
-			"strong",
-			"sub",
-			"sup",
-			// TODO: SVG svg
-			"template",
-			"textarea",
-			"time",
-			"u",
-			"var",
-			"video",
-			"wbr"
-			// TODO: autonomous custom elements: 4.13 Custom elements: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DATALIST_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(DATALIST_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, DATALIST_content.class);
 	}
 }

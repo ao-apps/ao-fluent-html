@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyFOOTER_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-footer-element">4.3.9 The footer element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class FOOTER_c<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText_c<D, PC, FOOTER_c<D, PC>>
-	implements FlowContent<D, FOOTER_c<D, PC>> {
+	extends AnyFOOTER_c<Document, PC, FOOTER_c<PC>>
+	implements FlowContent<FOOTER_c<PC>> {
 
-	protected FOOTER_c(FOOTER<D, PC> element) {
+	protected FOOTER_c(FOOTER<PC> element) {
 		super(element);
 	}
 }

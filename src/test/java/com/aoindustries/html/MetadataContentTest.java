@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyMetadataContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class MetadataContentTest {
+public class MetadataContentTest extends AnyMetadataContentTest {
+
+	public MetadataContentTest() {
+		super(MetadataContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			MetadataContent.class,
@@ -49,6 +55,7 @@ public class MetadataContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			MetadataContent.class,
@@ -62,6 +69,7 @@ public class MetadataContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			MetadataContent.class
@@ -73,30 +81,13 @@ public class MetadataContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			MetadataContent.class,
-			//
-			// Factories:
-			//
-			"base",
-			"link",
-			"meta",
-			"noscript",
-			"script",
-			"style",
-			"template", // WHATWG only
-			"title"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), MetadataContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(MetadataContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, MetadataContent.class);
 	}
 }

@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyEmbeddedContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class EmbeddedContentTest {
+public class EmbeddedContentTest extends AnyEmbeddedContentTest {
+
+	public EmbeddedContentTest() {
+		super(EmbeddedContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			EmbeddedContent.class,
@@ -49,6 +55,7 @@ public class EmbeddedContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			EmbeddedContent.class,
@@ -61,6 +68,7 @@ public class EmbeddedContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			EmbeddedContent.class
@@ -72,32 +80,13 @@ public class EmbeddedContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			EmbeddedContent.class,
-			//
-			// Factories:
-			//
-			"audio",
-			"canvas",
-			"embed",
-			"iframe",
-			"img",
-			// TODO: MathML math
-			"object",
-			"picture",
-			// TODO: SVG svg
-			"video"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), EmbeddedContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(EmbeddedContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, EmbeddedContent.class);
 	}
 }

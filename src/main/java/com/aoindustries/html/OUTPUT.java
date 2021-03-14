@@ -22,51 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyOUTPUT;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-output-element">4.10.12 The output element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class OUTPUT<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, OUTPUT<D, PC>, OUTPUT__<D, PC>, OUTPUT_c<D, PC>> implements
-	// TODO: for
-	// TODO: form
-	com.aoindustries.html.attributes.Text.Name<OUTPUT<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<OUTPUT<D, PC>>
-{
+	AnyOUTPUT<Document, PC, OUTPUT<PC>, OUTPUT__<PC>, OUTPUT_c<PC>> {
 
-	public OUTPUT(D document, PC pc) {
+	protected OUTPUT(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected OUTPUT<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<output", false);
-		return this;
+	protected OUTPUT<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></output>" : "</output>", false);
-	}
-
-	@Override
-	protected OUTPUT__<D, PC> new__() {
+	protected OUTPUT__<PC> new__() {
 		return new OUTPUT__<>(this);
 	}
 
 	@Override
-	protected OUTPUT_c<D, PC> new_c() {
+	protected OUTPUT_c<PC> new_c() {
 		return new OUTPUT_c<>(this);
 	}
 }

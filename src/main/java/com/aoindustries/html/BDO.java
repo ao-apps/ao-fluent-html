@@ -22,86 +22,39 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.io.function.IOSupplierE;
+import com.aoindustries.html.any.AnyBDO;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element">4.5.25 The bdo element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class BDO<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, BDO<D, PC>, BDO__<D, PC>, BDO_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<BDO<D, PC>>
-{
+	AnyBDO<Document, PC, BDO<PC>, BDO__<PC>, BDO_c<PC>> {
 
-	public BDO(D document, PC pc) {
+	protected BDO(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected BDO<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<bdo", false);
-		return this;
+	protected BDO<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></bdo>" : "</bdo>", false);
-	}
-
-	@Override
-	protected BDO__<D, PC> new__() {
+	protected BDO__<PC> new__() {
 		return new BDO__<>(this);
 	}
 
 	@Override
-	protected BDO_c<D, PC> new_c() {
+	protected BDO_c<PC> new_c() {
 		return new BDO_c<>(this);
-	}
-
-	/**
-	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
-	 */
-	@Override
-	public BDO<D, PC> dir(String dir) throws IOException {
-		// TODO: Enforce auto value must not be specified
-		return super.dir(dir);
-	}
-
-	/**
-	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> BDO<D, PC> dir(Suppliers.String<Ex> dir) throws IOException, Ex {
-		return super.dir(dir);
-	}
-
-	/**
-	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
-	 */
-	@Override
-	public BDO<D, PC> dir(Value dir) throws IOException {
-		return super.dir(dir);
-	}
-
-	/**
-	 * @param  dir  <em>The <code>auto</code> value must not be specified.</em>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 */
-	@Override
-	public <Ex extends Throwable> BDO<D, PC> dir(IOSupplierE<? extends Value, Ex> dir) throws IOException, Ex {
-		return super.dir(dir);
 	}
 }

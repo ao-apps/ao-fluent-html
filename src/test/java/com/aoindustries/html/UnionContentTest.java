@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Test;
 
 /**
@@ -53,6 +54,7 @@ public class UnionContentTest {
 
 	static void testUnions(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
 		InheritanceTests.testInterfaces(
+			Content.class,
 			iface -> iface.getSimpleName().startsWith("Union_"),
 			getAllUnions(),
 			clazz,
@@ -63,7 +65,7 @@ public class UnionContentTest {
 	@Test
 	public void testNoImplementInherited() {
 		for(Class<? extends Content> iface : getAllUnions()) {
-			InheritanceTests.testNoImplementInherited(iface);
+			InheritanceTests.testNoImplementInherited(Content.class, iface);
 		}
 	}
 }

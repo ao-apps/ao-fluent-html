@@ -22,52 +22,28 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
+import com.aoindustries.html.any.AnyHTML_content;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface HTML_content<
-	D  extends AnyDocument<D>,
-	__ extends HTML_content<D, __>
-> extends
+	__ extends HTML_content<__>
+> extends AnyHTML_content<Document, __>,
 	//
 	// Content models:
 	//
-	Content<D, __>
+	Content<__>
 {
 	//
 	// Factories:
 	//
-	// <editor-fold defaultstate="collapsed" desc="HEAD">
-	/**
-	 * Opens a new head element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-head-element">4.2.1 The head element</a>.
-	 * </p>
-	 */
-	@Factory("head")
-	default void head() throws IOException {
-		throw new AssertionError("TODO: Implement head");
-	}
-	// TODO: Head tag will not indent
+	// <editor-fold defaultstate="collapsed" desc="TODO: HEAD">
 	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="BODY">
-	/**
-	 * Opens a new body element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-body-element">4.3.1 The body element</a>.
-	 * </p>
-	 */
-	@Factory("body")
-	default void body() throws IOException {
-		throw new AssertionError("TODO: Implement body");
-	}
-	// TODO: Body tag will not indent
+	// <editor-fold defaultstate="collapsed" desc="TODO: BODY">
 	// </editor-fold>
 }

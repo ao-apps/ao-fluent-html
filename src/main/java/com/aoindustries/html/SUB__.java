@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySUB__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SUB__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, SUB__<D, PC>>
-	implements PhrasingContent<D, SUB__<D, PC>> {
+	extends AnySUB__<Document, PC, SUB__<PC>>
+	implements PhrasingContent<SUB__<PC>> {
 
-	protected SUB__(SUB<D, PC> element) {
+	protected SUB__(SUB<PC> element) {
 		super(element);
 	}
 }

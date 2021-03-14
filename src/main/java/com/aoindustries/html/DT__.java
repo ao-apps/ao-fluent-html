@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDT__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DT__<
-	D  extends AnyDocument<D>,
-	PC extends Union_DIV_DL<D, PC>
+	PC extends Union_DIV_DL<PC>
 >
-	extends NormalText__<D, PC, DT__<D, PC>>
-	implements FlowContent<D, DT__<D, PC>> {
+	extends AnyDT__<Document, PC, DT__<PC>>
+	implements FlowContent<DT__<PC>> {
 
-	protected DT__(DT<D, PC> element) {
+	protected DT__(DT<PC> element) {
 		super(element);
 	}
 }

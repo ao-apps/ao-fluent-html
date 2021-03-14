@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyPROGRESS__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element">4.10.13 The progress element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class PROGRESS__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, PROGRESS__<D, PC>>
-	implements PhrasingContent<D, PROGRESS__<D, PC>> {
+	extends AnyPROGRESS__<Document, PC, PROGRESS__<PC>>
+	implements PhrasingContent<PROGRESS__<PC>> {
 
-	protected PROGRESS__(PROGRESS<D, PC> element) {
+	protected PROGRESS__(PROGRESS<PC> element) {
 		super(element);
 	}
 }

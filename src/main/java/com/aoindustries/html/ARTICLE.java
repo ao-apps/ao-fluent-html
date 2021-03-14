@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyARTICLE;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">4.3.2 The article element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class ARTICLE<
-	D  extends AnyDocument<D>,
-	PC extends SectioningContent<D, PC>
+	PC extends SectioningContent<PC>
 > extends
-	NormalText<D, PC, ARTICLE<D, PC>, ARTICLE__<D, PC>, ARTICLE_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<ARTICLE<D, PC>>
-{
+	AnyARTICLE<Document, PC, ARTICLE<PC>, ARTICLE__<PC>, ARTICLE_c<PC>> {
 
-	public ARTICLE(D document, PC pc) {
+	protected ARTICLE(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected ARTICLE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<article", false);
-		return this;
+	protected ARTICLE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></article>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</article>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected ARTICLE__<D, PC> new__() {
+	protected ARTICLE__<PC> new__() {
 		return new ARTICLE__<>(this);
 	}
 
 	@Override
-	protected ARTICLE_c<D, PC> new_c() {
+	protected ARTICLE_c<PC> new_c() {
 		return new ARTICLE_c<>(this);
 	}
 }

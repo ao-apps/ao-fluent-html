@@ -23,7 +23,7 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +32,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class ContentTest {
+public class ContentTest extends com.aoindustries.html.any.ContentTest {
+
+	public ContentTest() {
+		super(Content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Content.class
@@ -48,6 +53,7 @@ public class ContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Content.class
@@ -60,6 +66,7 @@ public class ContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Content.class
@@ -71,23 +78,13 @@ public class ContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Content.class
-			//
-			// Factories:
-			//
-			// None
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), Content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Content.class);
 	}
 }

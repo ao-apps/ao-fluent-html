@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySUB;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">4.5.19 The sub and sup elements</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SUB<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, SUB<D, PC>, SUB__<D, PC>, SUB_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SUB<D, PC>>
-{
+	AnySUB<Document, PC, SUB<PC>, SUB__<PC>, SUB_c<PC>> {
 
-	public SUB(D document, PC pc) {
+	protected SUB(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SUB<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<sub", false);
-		return this;
+	protected SUB<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></sub>" : "</sub>", false);
-	}
-
-	@Override
-	protected SUB__<D, PC> new__() {
+	protected SUB__<PC> new__() {
 		return new SUB__<>(this);
 	}
 
 	@Override
-	protected SUB_c<D, PC> new_c() {
+	protected SUB_c<PC> new_c() {
 		return new SUB_c<>(this);
 	}
 }

@@ -22,6 +22,7 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyQ;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -31,43 +32,32 @@ import java.io.Writer;
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class Q<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, Q<D, PC>, Q__<D, PC>, Q_c<D, PC>> implements
-	com.aoindustries.html.attributes.Url.Cite<Q<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<Q<D, PC>>
-{
+	AnyQ<Document, PC, Q<PC>, Q__<PC>, Q_c<PC>> {
 
-	public Q(D document, PC pc) {
+	protected Q(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected Q<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<q", false);
-		return this;
+	protected Q<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></q>" : "</q>", false);
-	}
-
-	@Override
-	protected Q__<D, PC> new__() {
+	protected Q__<PC> new__() {
 		return new Q__<>(this);
 	}
 
 	@Override
-	protected Q_c<D, PC> new_c() {
+	protected Q_c<PC> new_c() {
 		return new Q_c<>(this);
 	}
 }

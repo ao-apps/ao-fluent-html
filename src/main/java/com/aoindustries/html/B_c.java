@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyB_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">4.5.21 The b element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class B_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText_c<D, PC, B_c<D, PC>>
-	implements PhrasingContent<D, B_c<D, PC>> {
+	extends AnyB_c<Document, PC, B_c<PC>>
+	implements PhrasingContent<B_c<PC>> {
 
-	protected B_c(B<D, PC> element) {
+	protected B_c(B<PC> element) {
 		super(element);
 	}
 }

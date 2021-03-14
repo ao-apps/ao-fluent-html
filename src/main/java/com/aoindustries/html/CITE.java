@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyCITE;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element">4.5.6 The cite element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class CITE<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, CITE<D, PC>, CITE__<D, PC>, CITE_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<CITE<D, PC>>
-{
+	AnyCITE<Document, PC, CITE<PC>, CITE__<PC>, CITE_c<PC>> {
 
-	public CITE(D document, PC pc) {
+	protected CITE(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected CITE<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<cite", false);
-		return this;
+	protected CITE<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></cite>" : "</cite>", false);
-	}
-
-	@Override
-	protected CITE__<D, PC> new__() {
+	protected CITE__<PC> new__() {
 		return new CITE__<>(this);
 	}
 
 	@Override
-	protected CITE_c<D, PC> new_c() {
+	protected CITE_c<PC> new_c() {
 		return new CITE_c<>(this);
 	}
 }

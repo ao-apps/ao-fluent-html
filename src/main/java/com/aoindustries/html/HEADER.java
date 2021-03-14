@@ -22,59 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyHEADER;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Flow content, but with no header or footer element descendants.
 public class HEADER<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	NormalText<D, PC, HEADER<D, PC>, HEADER__<D, PC>, HEADER_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<HEADER<D, PC>>
-{
+	AnyHEADER<Document, PC, HEADER<PC>, HEADER__<PC>, HEADER_c<PC>> {
 
-	public HEADER(D document, PC pc) {
+	protected HEADER(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected HEADER<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<header", false);
-		return this;
+	protected HEADER<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></header>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</header>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected HEADER__<D, PC> new__() {
+	protected HEADER__<PC> new__() {
 		return new HEADER__<>(this);
 	}
 
 	@Override
-	protected HEADER_c<D, PC> new_c() {
+	protected HEADER_c<PC> new_c() {
 		return new HEADER_c<>(this);
 	}
 }

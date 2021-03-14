@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyS__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">4.5.5 The s element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class S__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, S__<D, PC>>
-	implements PhrasingContent<D, S__<D, PC>> {
+	extends AnyS__<Document, PC, S__<PC>>
+	implements PhrasingContent<S__<PC>> {
 
-	protected S__(S<D, PC> element) {
+	protected S__(S<PC> element) {
 		super(element);
 	}
 }

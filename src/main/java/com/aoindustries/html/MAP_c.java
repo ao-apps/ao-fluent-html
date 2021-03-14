@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMAP_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element">4.8.13 The map element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class MAP_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends TransparentText_c<D, PC, MAP_c<D, PC>>
-	implements Union_Palpable_Phrasing<D, MAP_c<D, PC>> {
+	extends AnyMAP_c<Document, PC, MAP_c<PC>>
+	implements Union_Palpable_Phrasing<MAP_c<PC>> {
 
-	protected MAP_c(MAP<D, PC> element) {
+	protected MAP_c(MAP<PC> element) {
 		super(element);
 	}
 }

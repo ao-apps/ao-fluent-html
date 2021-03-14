@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyABBR_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">4.5.9 The abbr element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class ABBR_c<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText_c<D, PC, ABBR_c<D, PC>>
-	implements PhrasingContent<D, ABBR_c<D, PC>> {
+	extends AnyABBR_c<Document, PC, ABBR_c<PC>>
+	implements PhrasingContent<ABBR_c<PC>> {
 
-	protected ABBR_c(ABBR<D, PC> element) {
+	protected ABBR_c(ABBR<PC> element) {
 		super(element);
 	}
 }

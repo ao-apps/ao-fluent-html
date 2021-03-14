@@ -22,43 +22,43 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDIV_content;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface DIV_content<
-	D  extends AnyDocument<D>,
-	__ extends DIV_content<D, __>
-> extends
+	__ extends DIV_content<__>
+> extends AnyDIV_content<Document, __>,
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
-	Union_DIV_DL<D, __>,
-	// Inherited: Union_DL_Palpable<D, __>
-	// Inherited: Union_Embedded_Interactive<D, __>
-	// Inherited: Union_Embedded_Palpable_Phrasing<D, __>
-	// Inherited: Union_Interactive_Phrasing<D, __>
-	// Inherited: Union_Metadata_Phrasing<D, __>
-	// Inherited: Union_Palpable_Phrasing<D, __>
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	Union_DIV_DL<__>,
+	// Inherited: Union_DL_Palpable<__>
+	// Inherited: Union_Embedded_Interactive<__>
+	// Inherited: Union_Embedded_Palpable_Phrasing<__>
+	// Inherited: Union_Interactive_Phrasing<__>
+	// Inherited: Union_Metadata_Phrasing<__>
+	// Inherited: Union_Palpable_Phrasing<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-	// Inherited: EmbeddedContent<D, __>
-	FlowContent<D, __>
-	// Inherited: HeadingContent<D, __>
-	// Inherited: InteractiveContent<D, __>
-	// Inherited: PalpableContent<D, __>
-	// Inherited: PhrasingContent<D, __>
-	// Inherited: ScriptSupportingContent<D, __>
-	// Inherited: SectioningContent<D, __>
-	// Inherited: TextContent<D, __>
+	// Inherited: Content<__>
+	// Inherited: EmbeddedContent<__>
+	FlowContent<__>
+	// Inherited: HeadingContent<__>
+	// Inherited: InteractiveContent<__>
+	// Inherited: PalpableContent<__>
+	// Inherited: PhrasingContent<__>
+	// Inherited: ScriptSupportingContent<__>
+	// Inherited: SectioningContent<__>
+	// Inherited: TextContent<__>
 {
 	//
 	// Factories:

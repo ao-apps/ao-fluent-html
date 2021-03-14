@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyUL;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">4.4.6 The ul element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class UL<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 > extends
-	Normal<D, PC, UL<D, PC>, UL__<D, PC>, UL_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<UL<D, PC>>
-{
+	AnyUL<Document, PC, UL<PC>, UL__<PC>, UL_c<PC>> {
 
-	public UL(D document, PC pc) {
+	protected UL(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected UL<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<ul", false);
-		return this;
+	protected UL<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></ul>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</ul>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected UL__<D, PC> new__() {
+	protected UL__<PC> new__() {
 		return new UL__<>(this);
 	}
 
 	@Override
-	protected UL_c<D, PC> new_c() {
+	protected UL_c<PC> new_c() {
 		return new UL_c<>(this);
 	}
 }

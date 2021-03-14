@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnySELECT_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class SELECT_contentTest {
+public class SELECT_contentTest extends AnySELECT_contentTest {
+
+	public SELECT_contentTest() {
+		super(SELECT_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			SELECT_content.class,
@@ -49,6 +55,7 @@ public class SELECT_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			SELECT_content.class,
@@ -62,6 +69,7 @@ public class SELECT_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			SELECT_content.class,
@@ -73,26 +81,13 @@ public class SELECT_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			SELECT_content.class,
-			//
-			// Factories:
-			//
-			"optgroup",
-			"option",
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), SELECT_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(SELECT_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, SELECT_content.class);
 	}
 }

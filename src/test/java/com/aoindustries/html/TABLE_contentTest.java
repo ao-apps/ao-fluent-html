@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyTABLE_contentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class TABLE_contentTest {
+public class TABLE_contentTest extends AnyTABLE_contentTest {
+
+	public TABLE_contentTest() {
+		super(TABLE_content.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			TABLE_content.class,
@@ -49,6 +55,7 @@ public class TABLE_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			TABLE_content.class,
@@ -62,6 +69,7 @@ public class TABLE_contentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			TABLE_content.class
@@ -73,30 +81,13 @@ public class TABLE_contentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			TABLE_content.class,
-			//
-			// Factories:
-			//
-			"caption",
-			"colgroup",
-			"thead",
-			"tbody",
-			"tr",
-			"tfoot",
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), TABLE_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(TABLE_content.class);
+		InheritanceTests.testNoImplementInherited(Content.class, TABLE_content.class);
 	}
 }

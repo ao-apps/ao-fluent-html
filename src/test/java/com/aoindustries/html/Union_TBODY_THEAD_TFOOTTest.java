@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_TBODY_THEAD_TFOOTTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_TBODY_THEAD_TFOOT
+ * @see  Union_TBODY_THEAD_TFOOT
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_TBODY_THEAD_TFOOTTest {
+public class Union_TBODY_THEAD_TFOOTTest extends AnyUnion_TBODY_THEAD_TFOOTTest {
+
+	public Union_TBODY_THEAD_TFOOTTest() {
+		super(Union_TBODY_THEAD_TFOOT.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_TBODY_THEAD_TFOOT.class,
@@ -49,6 +55,7 @@ public class Union_TBODY_THEAD_TFOOTTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_TBODY_THEAD_TFOOT.class,
@@ -62,6 +69,7 @@ public class Union_TBODY_THEAD_TFOOTTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_TBODY_THEAD_TFOOT.class
@@ -73,24 +81,12 @@ public class Union_TBODY_THEAD_TFOOTTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_TBODY_THEAD_TFOOT.class,
-			//
-			// Factories:
-			//
-			"tr",
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_TBODY_THEAD_TFOOT.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_TBODY_THEAD_TFOOT.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_TBODY_THEAD_TFOOT.class);
 	}
 }

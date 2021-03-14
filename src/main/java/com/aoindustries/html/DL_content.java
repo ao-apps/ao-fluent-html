@@ -22,30 +22,30 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDL_content;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface DL_content<
-	D  extends AnyDocument<D>,
-	__ extends DL_content<D, __>
-> extends
+	__ extends DL_content<__>
+> extends AnyDL_content<Document, __>,
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
-	Union_DIV_DL<D, __>,
-	Union_DL_Palpable<D, __>,
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	Union_DIV_DL<__>,
+	Union_DL_Palpable<__>,
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-	ScriptSupportingContent<D, __>
+	// Inherited: Content<__>
+	ScriptSupportingContent<__>
 {
 	//
 	// Factories:

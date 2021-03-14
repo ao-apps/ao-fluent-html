@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyHTML_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class HTML_c<
-	D  extends AnyDocument<D>,
-	PC extends Content<D, PC>
+	PC extends Content<PC>
 >
-	extends Normal_c<D, PC, HTML_c<D, PC>>
-	implements HTML_content<D, HTML_c<D, PC>> {
+	extends AnyHTML_c<Document, PC, HTML_c<PC>>
+	implements HTML_content<HTML_c<PC>> {
 
-	protected HTML_c(HTML<D, PC> element) {
+	protected HTML_c(HTML<PC> element) {
 		super(element);
 	}
 }

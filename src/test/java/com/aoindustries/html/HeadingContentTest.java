@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyHeadingContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class HeadingContentTest {
+public class HeadingContentTest extends AnyHeadingContentTest {
+
+	public HeadingContentTest() {
+		super(HeadingContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			HeadingContent.class
@@ -48,6 +54,7 @@ public class HeadingContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			HeadingContent.class,
@@ -60,6 +67,7 @@ public class HeadingContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			HeadingContent.class
@@ -71,30 +79,13 @@ public class HeadingContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			HeadingContent.class,
-			//
-			// Factories:
-			//
-			"h1",
-			"h2",
-			"h3",
-			"h4",
-			"h5",
-			"h6",
-			"h#",
-			"hgroup"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), HeadingContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(HeadingContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, HeadingContent.class);
 	}
 }

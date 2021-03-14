@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDL_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">4.4.9 The dl element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DL_c<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends Normal_c<D, PC, DL_c<D, PC>>
-	implements DL_content<D, DL_c<D, PC>> {
+	extends AnyDL_c<Document, PC, DL_c<PC>>
+	implements DL_content<DL_c<PC>> {
 
-	protected DL_c(DL<D, PC> element) {
+	protected DL_c(DL<PC> element) {
 		super(element);
 	}
 }

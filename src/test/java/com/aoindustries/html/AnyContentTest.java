@@ -22,7 +22,7 @@
  */
 package com.aoindustries.html;
 
-import java.io.IOException;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Test;
 
 /**
@@ -30,9 +30,14 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class AnyContentTest {
+public class AnyContentTest extends com.aoindustries.html.any.AnyContentTest {
+
+	public AnyContentTest() {
+		super(AnyContent.class);
+	}
 
 	@Test
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			AnyContent.class,
@@ -44,6 +49,7 @@ public class AnyContentTest {
 	}
 
 	@Test
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			AnyContent.class,
@@ -55,6 +61,7 @@ public class AnyContentTest {
 	}
 
 	@Test
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			AnyContent.class,
@@ -66,18 +73,8 @@ public class AnyContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			AnyContent.class,
-			//
-			// Factories:
-			//
-			FactoryTest.getAllFactories()
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
-		InheritanceTests.testNoImplementInherited(AnyContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, AnyContent.class);
 	}
 }

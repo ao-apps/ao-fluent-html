@@ -60,14 +60,14 @@
  *   </li>
  *   <li>
  *     <p>
- *       <code>ELEMENT__</code> - Non-{@link Closeable closeable}, lambda-friendly content of HTML elements (tag is
+ *       <code>ELEMENT__</code> - Non-{@link com.aoindustries.html.any.Closeable closeable}, lambda-friendly content of HTML elements (tag is
  *       automatically ended when lambda execution completes).
  *     </p>
  *   </li>
  *   <li>
  *     <p>
- *       <code>ELEMENT_c</code> - {@link Closeable} HTML element content, which must be explicitly closed to end the tag
- *       (with either {@link Closeable#close()} or {@link Closeable#__()}, the latter allowing further fluent method
+ *       <code>ELEMENT_c</code> - {@link com.aoindustries.html.any.Closeable} HTML element content, which must be explicitly closed to end the tag
+ *       (with either {@link com.aoindustries.html.any.Closeable#close()} or {@link com.aoindustries.html.any.Closeable#__()}, the latter allowing further fluent method
  *       chaining).  This is useful when the opening tag and closing tag are written at different times or in different
  *       parts of the code.  For example, when creating a template where one method writes the template header and a
  *       different method writes the template footer.

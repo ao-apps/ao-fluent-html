@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_Embedded_Palpable_PhrasingTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_Embedded_Palpable_Phrasing
+ * @see  Union_Embedded_Palpable_Phrasing
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_Embedded_Palpable_PhrasingTest {
+public class Union_Embedded_Palpable_PhrasingTest extends AnyUnion_Embedded_Palpable_PhrasingTest {
+
+	public Union_Embedded_Palpable_PhrasingTest() {
+		super(Union_Embedded_Palpable_Phrasing.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_Embedded_Palpable_Phrasing.class
@@ -49,6 +55,7 @@ public class Union_Embedded_Palpable_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_Embedded_Palpable_Phrasing.class,
@@ -61,6 +68,7 @@ public class Union_Embedded_Palpable_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_Embedded_Palpable_Phrasing.class
@@ -72,24 +80,12 @@ public class Union_Embedded_Palpable_PhrasingTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_Embedded_Palpable_Phrasing.class,
-			//
-			// Factories:
-			//
-			"canvas"
-			// TODO: MathML math
-			// TODO: SVG svg
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Embedded_Palpable_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_Embedded_Palpable_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_Embedded_Palpable_Phrasing.class);
 	}
 }

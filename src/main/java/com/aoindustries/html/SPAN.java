@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnySPAN;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">4.5.26 The span element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class SPAN<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, SPAN<D, PC>, SPAN__<D, PC>, SPAN_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<SPAN<D, PC>>
-{
+	AnySPAN<Document, PC, SPAN<PC>, SPAN__<PC>, SPAN_c<PC>> {
 
-	public SPAN(D document, PC pc) {
+	protected SPAN(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SPAN<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<span", false);
-		return this;
+	protected SPAN<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></span>" : "</span>", false);
-	}
-
-	@Override
-	protected SPAN__<D, PC> new__() {
+	protected SPAN__<PC> new__() {
 		return new SPAN__<>(this);
 	}
 
 	@Override
-	protected SPAN_c<D, PC> new_c() {
+	protected SPAN_c<PC> new_c() {
 		return new SPAN_c<>(this);
 	}
 }

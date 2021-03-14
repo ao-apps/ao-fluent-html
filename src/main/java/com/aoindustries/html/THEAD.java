@@ -22,58 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTHEAD;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">4.9.6 The thead element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class THEAD<
-	D  extends AnyDocument<D>,
-	PC extends TABLE_content<D, PC>
+	PC extends TABLE_content<PC>
 > extends
-	Normal<D, PC, THEAD<D, PC>, THEAD__<D, PC>, THEAD_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<THEAD<D, PC>>
-{
+	AnyTHEAD<Document, PC, THEAD<PC>, THEAD__<PC>, THEAD_c<PC>> {
 
-	public THEAD(D document, PC pc) {
+	protected THEAD(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected THEAD<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<thead", false);
-		return this;
+	protected THEAD<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void doBeforeBody(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		if(closeAttributes) {
-			document.autoIndent(out).unsafe(out, "></thead>", false);
-		} else {
-			document.autoNli(out).unsafe(out, "</thead>", false);
-		}
-		document.autoNl(out);
-	}
-
-	@Override
-	protected THEAD__<D, PC> new__() {
+	protected THEAD__<PC> new__() {
 		return new THEAD__<>(this);
 	}
 
 	@Override
-	protected THEAD_c<D, PC> new_c() {
+	protected THEAD_c<PC> new_c() {
 		return new THEAD_c<>(this);
 	}
 }

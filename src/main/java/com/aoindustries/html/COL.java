@@ -22,9 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyCOL;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.function.Function;
 
 /**
  * <ul>
@@ -33,134 +33,23 @@ import java.util.function.Function;
  * <li>See <a href="https://www.w3schools.com/tags/tag_col.asp">HTML col tag</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
 public class COL<
-	D  extends AnyDocument<D>,
-	PC extends COLGROUP_content<D, PC>
-> extends VoidElement<D, PC, COL<D, PC>> implements
-	com.aoindustries.html.attributes.Enum.Align<COL<D, PC>, COL.Align>,
-	// TODO: bgcolor (deprecated)
-	// TODO: char (deprecated)
-	// TODO: charoff (deprecated)
-	com.aoindustries.html.attributes.Integer.Span<COL<D, PC>>,
-	com.aoindustries.html.attributes.Enum.Valign<COL<D, PC>, COL.Valign>,
-	com.aoindustries.html.attributes.Dimension.WidthHtml4Only<COL<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<COL<D, PC>>
-{
+	PC extends COLGROUP_content<PC>
+> extends
+	AnyCOL<Document, PC, COL<PC>> {
 
-	public COL(D document, PC pc) {
+	protected COL(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected COL<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<col", false);
-		return this;
-	}
-
-	@Override
-	protected void doAfterElement(Writer out) throws IOException {
-		document.autoNl(out);
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_col_align.asp">HTML col align Attribute</a>.
-	 *
-	 * @deprecated  The align attribute of &lt;col&gt; is not supported in HTML5. Use CSS instead.
-	 */
-	@Deprecated
-	public enum Align implements Function<AnyDocument<?>, String> {
-
-		/**
-		 * Left-align content
-		 */
-		LEFT("left"),
-
-		/**
-		 * Right-align content
-		 */
-		RIGHT("right"),
-
-		/**
-		 * Center-align content
-		 */
-		CENTER("center"),
-
-		/**
-		 * Stretches the lines so that each line has equal width (like in newspapers and magazines)
-		 */
-		JUSTIFY("justify"),
-
-		/**
-		 * Align the content to a specific character
-		 */
-		CHAR("char");
-
-		private final String value;
-
-		private Align(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
-	}
-
-	/**
-	 * See <a href="https://www.w3schools.com/tags/att_col_valign.asp">HTML col valign Attribute</a>.
-	 *
-	 * @deprecated  The valign attribute of &lt;col&gt; is not supported in HTML5. Use CSS instead.
-	 */
-	@Deprecated
-	public enum Valign implements Function<AnyDocument<?>, String> {
-
-		/**
-		 * Top-align content
-		 */
-		TOP("top"),
-
-		/**
-		 * Center-align content
-		 */
-		MIDDLE("middle"),
-
-		/**
-		 * Bottom-align content
-		 */
-		BOTTOM("bottom"),
-
-		/**
-		 * The baseline is the "imaginary line" which most letters "sit" on, in a line of text.
-		 */
-		BASELINE("baseline");
-
-		private final String value;
-
-		private Valign(String value) {
-			this.value = value;
-		}
-
-		@Override
-		public String toString() {
-			return value;
-		}
-
-		@Override
-		public String apply(AnyDocument<?> document) {
-			return value;
-		}
+	protected COL<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 }

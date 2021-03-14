@@ -22,48 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMARK;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">4.5.23 The mark element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class MARK<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, MARK<D, PC>, MARK__<D, PC>, MARK_c<D, PC>> implements
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<MARK<D, PC>>
-{
+	AnyMARK<Document, PC, MARK<PC>, MARK__<PC>, MARK_c<PC>> {
 
-	public MARK(D document, PC pc) {
+	protected MARK(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected MARK<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<mark", false);
-		return this;
+	protected MARK<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></mark>" : "</mark>", false);
-	}
-
-	@Override
-	protected MARK__<D, PC> new__() {
+	protected MARK__<PC> new__() {
 		return new MARK__<>(this);
 	}
 
 	@Override
-	protected MARK_c<D, PC> new_c() {
+	protected MARK_c<PC> new_c() {
 		return new MARK_c<>(this);
 	}
 }

@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_Metadata_PhrasingTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_Metadata_Phrasing
+ * @see  Union_Metadata_Phrasing
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_Metadata_PhrasingTest {
+public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest {
+
+	public Union_Metadata_PhrasingTest() {
+		super(Union_Metadata_Phrasing.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_Metadata_Phrasing.class,
@@ -49,6 +55,7 @@ public class Union_Metadata_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_Metadata_Phrasing.class,
@@ -62,6 +69,7 @@ public class Union_Metadata_PhrasingTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_Metadata_Phrasing.class
@@ -73,26 +81,12 @@ public class Union_Metadata_PhrasingTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_Metadata_Phrasing.class,
-			//
-			// Factories:
-			//
-			"link",
-			"meta",
-			"noscript",
-			"script",
-			"template"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_Metadata_Phrasing.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_Metadata_Phrasing.class);
 	}
 }

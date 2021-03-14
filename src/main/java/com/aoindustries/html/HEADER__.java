@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyHEADER__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class HEADER__<
-	D  extends AnyDocument<D>,
-	PC extends PalpableContent<D, PC>
+	PC extends PalpableContent<PC>
 >
-	extends NormalText__<D, PC, HEADER__<D, PC>>
-	implements FlowContent<D, HEADER__<D, PC>> {
+	extends AnyHEADER__<Document, PC, HEADER__<PC>>
+	implements FlowContent<HEADER__<PC>> {
 
-	protected HEADER__(HEADER<D, PC> element) {
+	protected HEADER__(HEADER<PC> element) {
 		super(element);
 	}
 }

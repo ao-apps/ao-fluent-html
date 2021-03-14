@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_DATALIST_OPTGROUPTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_DATALIST_OPTGROUP
+ * @see  Union_DATALIST_OPTGROUP
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_DATALIST_OPTGROUPTest {
+public class Union_DATALIST_OPTGROUPTest extends AnyUnion_DATALIST_OPTGROUPTest {
+
+	public Union_DATALIST_OPTGROUPTest() {
+		super(Union_DATALIST_OPTGROUP.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_DATALIST_OPTGROUP.class
@@ -49,6 +55,7 @@ public class Union_DATALIST_OPTGROUPTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_DATALIST_OPTGROUP.class,
@@ -61,6 +68,7 @@ public class Union_DATALIST_OPTGROUPTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_DATALIST_OPTGROUP.class
@@ -72,22 +80,12 @@ public class Union_DATALIST_OPTGROUPTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_DATALIST_OPTGROUP.class,
-			//
-			// Factories:
-			//
-			"option"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DATALIST_OPTGROUP.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_DATALIST_OPTGROUP.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_DATALIST_OPTGROUP.class);
 	}
 }

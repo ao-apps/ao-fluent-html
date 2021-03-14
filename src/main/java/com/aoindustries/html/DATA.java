@@ -22,49 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyDATA;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element">4.5.13 The data element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class DATA<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, DATA<D, PC>, DATA__<D, PC>, DATA_c<D, PC>> implements
-	com.aoindustries.html.attributes.Text.Value<DATA<D, PC>>,
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<DATA<D, PC>>
-{
+	AnyDATA<Document, PC, DATA<PC>, DATA__<PC>, DATA_c<PC>> {
 
-	public DATA(D document, PC pc) {
+	protected DATA(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected DATA<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<data", false);
-		return this;
+	protected DATA<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></data>" : "</data>", false);
-	}
-
-	@Override
-	protected DATA__<D, PC> new__() {
+	protected DATA__<PC> new__() {
 		return new DATA__<>(this);
 	}
 
 	@Override
-	protected DATA_c<D, PC> new_c() {
+	protected DATA_c<PC> new_c() {
 		return new DATA_c<>(this);
 	}
 }

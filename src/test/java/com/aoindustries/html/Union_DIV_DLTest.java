@@ -23,20 +23,26 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyUnion_DIV_DLTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @see Union_DIV_DL
+ * @see  Union_DIV_DL
  *
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class Union_DIV_DLTest {
+public class Union_DIV_DLTest extends AnyUnion_DIV_DLTest {
+
+	public Union_DIV_DLTest() {
+		super(Union_DIV_DL.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			Union_DIV_DL.class
@@ -49,6 +55,7 @@ public class Union_DIV_DLTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			Union_DIV_DL.class,
@@ -61,6 +68,7 @@ public class Union_DIV_DLTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			Union_DIV_DL.class
@@ -72,23 +80,12 @@ public class Union_DIV_DLTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			Union_DIV_DL.class,
-			//
-			// Factories:
-			//
-			"dd",
-			"dt"
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DIV_DL.class)
 		);
-		InheritanceTests.testNoImplementInherited(Union_DIV_DL.class);
+		InheritanceTests.testNoImplementInherited(Content.class, Union_DIV_DL.class);
 	}
 }

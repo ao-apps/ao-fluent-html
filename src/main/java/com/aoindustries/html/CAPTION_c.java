@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyCAPTION_c;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class CAPTION_c<
-	D  extends AnyDocument<D>,
-	PC extends TABLE_content<D, PC>
+	PC extends TABLE_content<PC>
 >
-	extends NormalText_c<D, PC, CAPTION_c<D, PC>>
-	implements FlowContent<D, CAPTION_c<D, PC>> {
+	extends AnyCAPTION_c<Document, PC, CAPTION_c<PC>>
+	implements FlowContent<CAPTION_c<PC>> {
 
-	protected CAPTION_c(CAPTION<D, PC> element) {
+	protected CAPTION_c(CAPTION<PC> element) {
 		super(element);
 	}
 }

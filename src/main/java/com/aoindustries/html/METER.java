@@ -22,55 +22,40 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyMETER;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element">4.10.14 The meter element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 // TODO: Phrasing content, but there must be no meter element descendants.
 public class METER<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 > extends
-	NormalText<D, PC, METER<D, PC>, METER__<D, PC>, METER_c<D, PC>> implements
-	// TODO: value
-	// TODO: min
-	// TODO: max
-	// TODO: low
-	// TODO: high
-	// TODO: optimum
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<METER<D, PC>>
-{
+	AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
 
-	public METER(D document, PC pc) {
+	protected METER(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected METER<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoIndent(out).unsafe(out, "<meter", false);
-		return this;
+	protected METER<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></meter>" : "</meter>", false);
-	}
-
-	@Override
-	protected METER__<D, PC> new__() {
+	protected METER__<PC> new__() {
 		return new METER__<>(this);
 	}
 
 	@Override
-	protected METER_c<D, PC> new_c() {
+	protected METER_c<PC> new_c() {
 		return new METER_c<>(this);
 	}
 }

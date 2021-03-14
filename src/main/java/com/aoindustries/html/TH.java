@@ -22,54 +22,39 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTH;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Flow content, but with no header, footer, sectioning content, or heading content descendants.
 public class TH<
-	D  extends AnyDocument<D>,
-	PC extends TR_content<D, PC>
+	PC extends TR_content<PC>
 > extends
-	NormalText<D, PC, TH<D, PC>, TH__<D, PC>, TH_c<D, PC>> implements
-	com.aoindustries.html.attributes.Integer.Colspan<TH<D, PC>>,
-	com.aoindustries.html.attributes.Integer.Rowspan<TH<D, PC>>,
-	// TODO: headers
-	// TODO: scope
-	// TODO: abbr
-	// Global Event Attributes: https://www.w3schools.com/tags/ref_eventattributes.asp
-	AlmostGlobalAttributes<TH<D, PC>>
-{
+	AnyTH<Document, PC, TH<PC>, TH__<PC>, TH_c<PC>> {
 
-	public TH(D document, PC pc) {
+	protected TH(Document document, PC pc) {
 		super(document, pc);
 	}
 
+	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected TH<D, PC> writeOpen(Writer out) throws IOException {
-		document.autoNli(out).unsafe(out, "<th", false);
-		return this;
+	protected TH<PC> writeOpen(Writer out) throws IOException {
+		return super.writeOpen(out);
 	}
 
 	@Override
-	protected void writeClose(Writer out, boolean closeAttributes) throws IOException {
-		document.autoIndent(out).unsafe(out, closeAttributes ? "></th>" : "</th>", false).autoNl(out);
-	}
-
-	@Override
-	protected TH__<D, PC> new__() {
+	protected TH__<PC> new__() {
 		return new TH__<>(this);
 	}
 
 	@Override
-	protected TH_c<D, PC> new_c() {
+	protected TH_c<PC> new_c() {
 		return new TH_c<>(this);
 	}
 }

@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyNAV__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-nav-element">4.3.4 The nav element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class NAV__<
-	D  extends AnyDocument<D>,
-	PC extends SectioningContent<D, PC>
+	PC extends SectioningContent<PC>
 >
-	extends NormalText__<D, PC, NAV__<D, PC>>
-	implements FlowContent<D, NAV__<D, PC>> {
+	extends AnyNAV__<Document, PC, NAV__<PC>>
+	implements FlowContent<NAV__<PC>> {
 
-	protected NAV__(NAV<D, PC> element) {
+	protected NAV__(NAV<PC> element) {
 		super(element);
 	}
 }

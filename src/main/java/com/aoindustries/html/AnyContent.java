@@ -23,63 +23,60 @@
 package com.aoindustries.html;
 
 import com.aoindustries.io.function.IOConsumerE;
-import com.aoindustries.io.function.IORunnableE;
 import java.io.IOException;
 
 /**
  * This interface extends all content interfaces and supports all element types.
  *
- * @param  <D>   This document type
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
  * @author  AO Industries, Inc.
  */
 public interface AnyContent<
-	D  extends AnyDocument<D>,
-	__ extends AnyContent<D, __>
-> extends
+	__ extends AnyContent<__>
+> extends com.aoindustries.html.any.AnyContent<Document, __>,
 	//
 	// Unions:
 	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<D, __>
-	// Inherited: Union_DATALIST_OPTGROUP<D, __>
-	// Inherited: Union_DIV_DL<D, __>
-	// Inherited: Union_DL_Palpable<D, __>
-	// Inherited: Union_Embedded_Interactive<D, __>
-	// Inherited: Union_Embedded_Palpable_Phrasing<D, __>
-	// Inherited: Union_Interactive_Phrasing<D, __>
-	// Inherited: Union_Metadata_Phrasing<D, __>
-	// Inherited: Union_Palpable_Phrasing<D, __>
-	// Inherited: Union_TBODY_THEAD_TFOOT<D, __>
+	// Inherited: Union_COLGROUP_ScriptSupporting<__>
+	// Inherited: Union_DATALIST_OPTGROUP<__>
+	// Inherited: Union_DIV_DL<__>
+	// Inherited: Union_DL_Palpable<__>
+	// Inherited: Union_Embedded_Interactive<__>
+	// Inherited: Union_Embedded_Palpable_Phrasing<__>
+	// Inherited: Union_Interactive_Phrasing<__>
+	// Inherited: Union_Metadata_Phrasing<__>
+	// Inherited: Union_Palpable_Phrasing<__>
+	// Inherited: Union_TBODY_THEAD_TFOOT<__>
 
 	//
 	// Content models:
 	//
-	// Inherited: Content<D, __>
-	// Inherited: EmbeddedContent<D, __>
-	// Inherited: FlowContent<D, __>
-	// Inherited: HeadingContent<D, __>
-	// Inherited: InteractiveContent<D, __>
-	ListContent<D, __>,
-	MetadataContent<D, __>,
-	// Inherited: PalpableContent<D, __>
-	// Inherited: PhrasingContent<D, __>
-	// Inherited: ScriptSupportingContent<D, __>
-	// Inherited: SectioningContent<D, __>
-	// Inherited: TextContent<D, __>
+	// Inherited: Content<__>
+	// Inherited: EmbeddedContent<__>
+	// Inherited: FlowContent<__>
+	// Inherited: HeadingContent<__>
+	// Inherited: InteractiveContent<__>
+	ListContent<__>,
+	MetadataContent<__>,
+	// Inherited: PalpableContent<__>
+	// Inherited: PhrasingContent<__>
+	// Inherited: ScriptSupportingContent<__>
+	// Inherited: SectioningContent<__>
+	// Inherited: TextContent<__>
 
 	//
 	// Per-element content models:
 	//
-	COLGROUP_content<D, __>,
-	DATALIST_content<D, __>,
-	DIV_content<D, __>,
-	DL_content<D, __>,
-	HTML_content<D, __>,
-	// Inherited: OPTGROUP_content<D, __>
-	SELECT_content<D, __>,
-	TABLE_content<D, __>,
-	TR_content<D, __>
+	COLGROUP_content<__>,
+	DATALIST_content<__>,
+	DIV_content<__>,
+	DL_content<__>,
+	HTML_content<__>,
+	// Inherited: OPTGROUP_content<__>
+	SELECT_content<__>,
+	TABLE_content<__>,
+	TR_content<__>
 
 	//
 	// Others:
@@ -90,17 +87,11 @@ public interface AnyContent<
 	// Factories:
 	//
 	// <editor-fold defaultstate="collapsed" desc="HTML">
-	/**
-	 * Opens a new html element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
-	 * </p>
-	 */
-	@Factory("html")
-	default HTML<D, __> html() throws IOException {
+	@Override
+	default HTML<__> html() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new HTML<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
@@ -114,54 +105,12 @@ public interface AnyContent<
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
 	 */
-	@Factory("html")
-	default <Ex extends Throwable> __ html__(IORunnableE<Ex> html) throws IOException, Ex {
+	default <Ex extends Throwable> __ html__(IOConsumerE<? super HTML__<__>, Ex> html) throws IOException, Ex {
 		return html().__(html);
 	}
 
-	/**
-	 * Creates a html element with no attributes and the given body.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
-	 * </p>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("html")
-	default <Ex extends Throwable> __ html__(IOConsumerE<? super HTML__<D, __>, Ex> html) throws IOException, Ex {
-		return html().__(html);
-	}
-
-	/**
-	 * Creates an empty html element with no attributes.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
-	 * </p>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("html")
-	default __ html__() throws IOException {
-		return html().__();
-	}
-
-	/**
-	 * Creates a html element with no attributes then begins element content
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
-	 * </p>
-	 *
-	 * @return  The content model of this element, which will be the parent content model of child elements.
-	 *          This must be {@linkplain Closeable#__() ended} or {@linkplain Closeable#close() closed} in order to end
-	 *          the tag.  This is well suited for use in a try-with-resources block.
-	 *
-	 * @see  Closeable#__()
-	 * @see  Closeable#close()
-	 */
-	@Factory("html")
-	default HTML_c<D, __> html_c() throws IOException {
+	@Override
+	default HTML_c<__> html_c() throws IOException {
 		return html()._c();
 	}
 	// </editor-fold>
@@ -198,18 +147,7 @@ public interface AnyContent<
 	// Inherited: DT
 	// Inherited: DD
 	// Inherited: FIGURE
-	// <editor-fold defaultstate="collapsed" desc="FIGCAPTION">
-	/**
-	 * Opens a new figcaption element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figcaption-element">4.4.13 The figcaption element</a>.
-	 * </p>
-	 */
-	@Factory("figcaption")
-	default void figcaption() throws IOException {
-		throw new AssertionError("TODO: Implement figcaption");
-	}
-	// TODO: __ extends FigcaptionContent<D, __> (where FigcaptionContent extends FlowContent + Figcaption)
+	// <editor-fold defaultstate="collapsed" desc="TODO: FIGCAPTION">
 	// </editor-fold>
 	// Inherited: MAIN
 	// Inherited: DIV
@@ -223,31 +161,9 @@ public interface AnyContent<
 	// Inherited: DFN
 	// Inherited: ABBR
 	// Inherited: RUBY
-	// <editor-fold defaultstate="collapsed" desc="RT">
-	/**
-	 * Opens a new rt element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element">4.5.11 The rt element</a>.
-	 * </p>
-	 */
-	@Factory("rt")
-	default void rt() throws IOException {
-		throw new AssertionError("TODO: Implement rt");
-	}
-	// TODO: __ extends RUBY_content<D, __>
+	// <editor-fold defaultstate="collapsed" desc="TODO: RT">
 	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="RP">
-	/**
-	 * Opens a new rp element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rp-element">4.5.12 The rp element</a>.
-	 * </p>
-	 */
-	@Factory("rp")
-	default void rp() throws IOException {
-		throw new AssertionError("TODO: Implement rp");
-	}
-	// TODO: __ extends RUBY_content<D, __>
+	// <editor-fold defaultstate="collapsed" desc="TODO: RP">
 	// </editor-fold>
 	// Inherited: DATA
 	// Inherited: TIME
@@ -269,71 +185,24 @@ public interface AnyContent<
 	// Inherited: INS
 	// Inherited: DEL
 	// Inherited: PICTURE
-	// <editor-fold defaultstate="collapsed" desc="SOURCE">
-	/**
-	 * Opens a new source element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element">4.8.2 The source element</a>.
-	 * </p>
-	 */
-	@Factory("source")
-	default void source() throws IOException {
-		throw new AssertionError("TODO: Implement source");
-	}
-	// TODO: __ extends TODO<D, __>
+	// <editor-fold defaultstate="collapsed" desc="TODO: SOURCE">
 	// </editor-fold>
 	// Inherited: IMG
 	// Inherited: IFRAME
 	// Inherited: EMBED
 	// Inherited: OBJECT
 	// <editor-fold defaultstate="collapsed" desc="PARAM">
-	// TODO: __ extends ObjectContent<D, __>
-	/**
-	 * Opens a new param element.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element">4.8.8 The param element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
-	 * </ul>
-	 */
-	@Factory("param")
-	default PARAM<D, __> param() throws IOException {
+	@Override
+	default PARAM<__> param() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
-		D document = getDocument();
+		Document document = getDocument();
 		return new PARAM<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
-
-	/**
-	 * Creates a param element with the given name and value.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element">4.8.8 The param element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
-	 * </ul>
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	@Factory("param")
-	default __ param__(Object name, Object value) throws IOException {
-		return param().name(name).value(value).__();
-	}
-	// TODO: More types like supported by ao-taglib (ParamsTag.java), including collection types, as "params__"?
 	// </editor-fold>
 	// Inherited: VIDEO
 	// Inherited: AUDIO
-	// <editor-fold defaultstate="collapsed" desc="TRACK">
-	/**
-	 * Opens a new track element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/media.html#the-track-element">4.8.11 The track element</a>.
-	 * </p>
-	 */
-	@Factory("track")
-	default void track() throws IOException {
-		throw new AssertionError("TODO: Implement track");
-	}
-	// TODO: __ extends MediaContent<D, __>
+	// <editor-fold defaultstate="collapsed" desc="TODO: TRACK">
 	// </editor-fold>
 	// Inherited: MAP
 	// Inherited: AREA
@@ -362,32 +231,10 @@ public interface AnyContent<
 	// Inherited: PROGRESS
 	// Inherited: METER
 	// Inherited: FIELDSET
-	// <editor-fold defaultstate="collapsed" desc="LEGEND">
-	/**
-	 * Opens a new legend element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-legend-element">4.10.16 The legend element</a>.
-	 * </p>
-	 */
-	@Factory("legend")
-	default void legend() throws IOException {
-		throw new AssertionError("TODO: Implement legend");
-	}
-	// TODO: __ extends FIELDSET_content<D, __>
+	// <editor-fold defaultstate="collapsed" desc="TODO: LEGEND">
 	// </editor-fold>
 	// Inherited: DETAILS
-	// <editor-fold defaultstate="collapsed" desc="SUMMARY">
-	/**
-	 * Opens a new summary element.
-	 * <p>
-	 * See <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element">4.11.2 The summary element</a>.
-	 * </p>
-	 */
-	@Factory("summary")
-	default void summary() throws IOException {
-		throw new AssertionError("TODO: Implement summary");
-	}
-	// TODO: __ extends DETAILS_content<D, __>
+	// <editor-fold defaultstate="collapsed" desc="TODO: SUMMARY">
 	// </editor-fold>
 	// Inherited: DIALOG
 	// Inherited: SCRIPT

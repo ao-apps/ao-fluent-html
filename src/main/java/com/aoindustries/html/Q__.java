@@ -22,25 +22,25 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyQ__;
+
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element">4.5.7 The q element</a>.</li>
  * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">&lt;q&gt;: The Inline Quotation element</a>.</li>
  * </ul>
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class Q__<
-	D  extends AnyDocument<D>,
-	PC extends Union_Palpable_Phrasing<D, PC>
+	PC extends Union_Palpable_Phrasing<PC>
 >
-	extends NormalText__<D, PC, Q__<D, PC>>
-	implements PhrasingContent<D, Q__<D, PC>> {
+	extends AnyQ__<Document, PC, Q__<PC>>
+	implements PhrasingContent<Q__<PC>> {
 
-	protected Q__(Q<D, PC> element) {
+	protected Q__(Q<PC> element) {
 		super(element);
 	}
 }

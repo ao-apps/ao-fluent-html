@@ -23,7 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.collections.AoArrays;
-import java.io.IOException;
+import com.aoindustries.html.any.AnyInteractiveContentTest;
+import com.aoindustries.html.any.InheritanceTests;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,10 +33,15 @@ import org.junit.Test;
  *
  * @author  AO Industries, Inc.
  */
-public class InteractiveContentTest {
+public class InteractiveContentTest extends AnyInteractiveContentTest {
+
+	public InteractiveContentTest() {
+		super(InteractiveContent.class);
+	}
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testUnions() {
 		UnionContentTest.testUnions(
 			InteractiveContent.class,
@@ -49,6 +55,7 @@ public class InteractiveContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testContentModels() {
 		ContentModelTest.testContentModels(
 			InteractiveContent.class,
@@ -61,6 +68,7 @@ public class InteractiveContentTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
+	@Override
 	public void testElementContentModels() {
 		ElementContentModelTest.testElementContentModels(
 			InteractiveContent.class
@@ -72,36 +80,13 @@ public class InteractiveContentTest {
 	}
 
 	@Test
-	public void testFactories() throws IOException {
-		FactoryTest.testFactories(
-			InteractiveContent.class,
-			//
-			// Factories:
-			//
-			"a", // if the href attribute is present
-			"audio", // if the controls attribute is present
-			"button",
-			"details",
-			"embed",
-			"iframe",
-			"img", // if the usemap attribute is present
-			"input", // if type attribute is not in the hidden state
-			"label",
-			"menu", // (MDN only) if the type attribute is in the toolbar state
-			"object", // if the usemap attribute is present
-			"select",
-			"textarea",
-			"video" // if the controls attribute is present
-		);
-	}
-
-	@Test
+	@Override
 	public void testNoImplementInherited() {
 		Assert.assertNotEquals(
 			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), InteractiveContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(InteractiveContent.class);
+		InheritanceTests.testNoImplementInherited(Content.class, InteractiveContent.class);
 	}
 }

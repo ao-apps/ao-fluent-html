@@ -22,22 +22,22 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyTR__;
+
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
  *
- * @param  <D>   This document type
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
 public class TR__<
-	D  extends AnyDocument<D>,
-	PC extends Union_TBODY_THEAD_TFOOT<D, PC>
+	PC extends Union_TBODY_THEAD_TFOOT<PC>
 >
-	extends Normal__<D, PC, TR__<D, PC>>
-	implements TR_content<D, TR__<D, PC>> {
+	extends AnyTR__<Document, PC, TR__<PC>>
+	implements TR_content<TR__<PC>> {
 
-	protected TR__(TR<D, PC> element) {
+	protected TR__(TR<PC> element) {
 		super(element);
 	}
 }

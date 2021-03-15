@@ -94,6 +94,13 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 					<ignoreNonCompile>true</ignoreNonCompile>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<!-- Only show public docs, since this project is not intended to be extended. -->
+					<show>public</show>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

@@ -33,6 +33,7 @@ Fluent Java DSL for high-performance HTML generation.
 ## Modules
 * [AO Fluent HTML Any](https://github.com/aoindustries/ao-fluent-html-any)
 * [AO Fluent HTML Servlet](https://github.com/aoindustries/ao-fluent-html-servlet)
+* [AO Fluent HTML Util](https://github.com/aoindustries/ao-fluent-html-util)
 
 ## Motivation
 We have a lot of legacy servlet-based code that directly writes HTML as strings.

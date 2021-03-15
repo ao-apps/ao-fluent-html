@@ -50,54 +50,7 @@
  *   </li>
  * </ul>
  * <p>
- *   Naming conventions within the package:
+ *   This follows the naming conventions specified in {@link com.aoindustries.html.any}, but without "Any" prefixed to names.
  * </p>
- * <ul>
- *   <li>
- *     <p>
- *      <code>ELEMENT</code> - Classes that represent HTML elements.
- *     </p>
- *   </li>
- *   <li>
- *     <p>
- *       <code>ELEMENT__</code> - Non-{@link com.aoindustries.html.any.Closeable closeable}, lambda-friendly content of HTML elements (tag is
- *       automatically ended when lambda execution completes).
- *     </p>
- *   </li>
- *   <li>
- *     <p>
- *       <code>ELEMENT_c</code> - {@link com.aoindustries.html.any.Closeable} HTML element content, which must be explicitly closed to end the tag
- *       (with either {@link com.aoindustries.html.any.Closeable#close()} or {@link com.aoindustries.html.any.Closeable#__()}, the latter allowing further fluent method
- *       chaining).  This is useful when the opening tag and closing tag are written at different times or in different
- *       parts of the code.  For example, when creating a template where one method writes the template header and a
- *       different method writes the template footer.
- *     </p>
- *   </li>
- *   <li>
- *     <p>
- *       <code>ELEMENT_content</code> - Content model interface specific to a single type of element.  This interface, or
- *       one of the more general-purpose <code>*Content</code> models, is implemented by both <code>ELEMENT__</code> and
- *       <code>ELEMENT_c</code>.
- *     </p>
- *   </li>
- *   <li>
- *     <p>
- *       <code>*Content</code> - Various content model interfaces, either directly defined by the HTML specification or a
- *       result of adapting the HTML specification into an interface hierarchy.
- *     </p>
- *   </li>
- *   <li>
- *     <p>
- *       <code>Union_*</code> - Union content models represent the specific elements that are common between two or more
- *       content models, but where the content models cannot inherit from one another.
- *       These interfaces are not specifically part of the HTML specification, but are an artifact of this implementation.
- *       These interfaces are primarily needed because there is no "or" for generic upper bounds.
- *     </p>
- *     <p>
- *       For example, both {@link B} and {@link I} are part of both {@link PalpableContent} and {@link PhrasingContent}.
- *       Thus, when you have one, you know you can have the other (see {@link Union_Palpable_Phrasing} in this case).
- *     </p>
- *   </li>
- * </ul>
  */
 package com.aoindustries.html;

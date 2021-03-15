@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyTH__;
  *
  * @author  AO Industries, Inc.
  */
-public class TH__<
+final public class TH__<
 	PC extends TR_content<PC>
 >
 	extends AnyTH__<Document, PC, TH__<PC>>
 	implements FlowContent<TH__<PC>> {
 
-	protected TH__(TH<PC> element) {
+	TH__(TH<PC> element) {
 		super(element);
 	}
 }

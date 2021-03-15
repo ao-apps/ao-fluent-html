@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyCAPTION__;
  *
  * @author  AO Industries, Inc.
  */
-public class CAPTION__<
+final public class CAPTION__<
 	PC extends TABLE_content<PC>
 >
 	extends AnyCAPTION__<Document, PC, CAPTION__<PC>>
 	implements FlowContent<CAPTION__<PC>> {
 
-	protected CAPTION__(CAPTION<PC> element) {
+	CAPTION__(CAPTION<PC> element) {
 		super(element);
 	}
 }

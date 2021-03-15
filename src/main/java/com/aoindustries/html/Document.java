@@ -40,7 +40,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class Document extends AnyDocument<Document> implements AnyContent<Document> {
+final public class Document extends AnyDocument<Document> implements AnyContent<Document> {
 
 	/**
 	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.

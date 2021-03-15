@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyUL__;
  *
  * @author  AO Industries, Inc.
  */
-public class UL__<
+final public class UL__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyUL__<Document, PC, UL__<PC>>
 	implements ListContent<UL__<PC>> {
 
-	protected UL__(UL<PC> element) {
+	UL__(UL<PC> element) {
 		super(element);
 	}
 }

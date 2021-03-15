@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyPRE__;
  *
  * @author  AO Industries, Inc.
  */
-public class PRE__<
+final public class PRE__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyPRE__<Document, PC, PRE__<PC>>
 	implements PhrasingContent<PRE__<PC>> {
 
-	protected PRE__(PRE<PC> element) {
+	PRE__(PRE<PC> element) {
 		super(element);
 	}
 }

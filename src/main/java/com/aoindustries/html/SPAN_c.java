@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnySPAN_c;
  *
  * @author  AO Industries, Inc.
  */
-public class SPAN_c<
+final public class SPAN_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySPAN_c<Document, PC, SPAN_c<PC>>
 	implements PhrasingContent<SPAN_c<PC>> {
 
-	protected SPAN_c(SPAN<PC> element) {
+	SPAN_c(SPAN<PC> element) {
 		super(element);
 	}
 }

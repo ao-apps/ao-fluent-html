@@ -93,9 +93,10 @@ public interface Union_Interactive_Phrasing<
 	 *
 	 * @param  <__>  This content model, which will be the parent content model of child elements
 	 */
-	public static class InputFactory<
+	final public static class InputFactory<
 		__ extends Union_Interactive_Phrasing<__>
-	> extends AnyUnion_Interactive_Phrasing.InputFactory<Document, __> {
+	> extends
+		AnyUnion_Interactive_Phrasing.InputFactory<Document, __> {
 
 		public InputFactory(Document document, __ pc) {
 			super(document, pc);

@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyH4__;
  *
  * @author  AO Industries, Inc.
  */
-public class H4__<
+final public class H4__<
 	PC extends HeadingContent<PC>
 >
 	extends AnyH4__<Document, PC, H4__<PC>>
 	implements PhrasingContent<H4__<PC>> {
 
-	protected H4__(H4<PC> element) {
+	H4__(H4<PC> element) {
 		super(element);
 	}
 }

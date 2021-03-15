@@ -36,12 +36,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class BLOCKQUOTE<
+final public class BLOCKQUOTE<
 	PC extends PalpableContent<PC>
 > extends
 	AnyBLOCKQUOTE<Document, PC, BLOCKQUOTE<PC>, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> {
 
-	protected BLOCKQUOTE(Document document, PC pc) {
+	BLOCKQUOTE(Document document, PC pc) {
 		super(document, pc);
 	}
 

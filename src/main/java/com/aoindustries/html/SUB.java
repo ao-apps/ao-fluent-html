@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class SUB<
+final public class SUB<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnySUB<Document, PC, SUB<PC>, SUB__<PC>, SUB_c<PC>> {
 
-	protected SUB(Document document, PC pc) {
+	SUB(Document document, PC pc) {
 		super(document, pc);
 	}
 

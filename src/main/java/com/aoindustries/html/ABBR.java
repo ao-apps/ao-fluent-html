@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class ABBR<
+final public class ABBR<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyABBR<Document, PC, ABBR<PC>, ABBR__<PC>, ABBR_c<PC>> {
 
-	protected ABBR(Document document, PC pc) {
+	ABBR(Document document, PC pc) {
 		super(document, pc);
 	}
 

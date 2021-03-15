@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnySAMP_c;
  *
  * @author  AO Industries, Inc.
  */
-public class SAMP_c<
+final public class SAMP_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySAMP_c<Document, PC, SAMP_c<PC>>
 	implements PhrasingContent<SAMP_c<PC>> {
 
-	protected SAMP_c(SAMP<PC> element) {
+	SAMP_c(SAMP<PC> element) {
 		super(element);
 	}
 }

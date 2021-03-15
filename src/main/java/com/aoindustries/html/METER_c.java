@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyMETER_c;
  *
  * @author  AO Industries, Inc.
  */
-public class METER_c<
+final public class METER_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyMETER_c<Document, PC, METER_c<PC>>
 	implements PhrasingContent<METER_c<PC>> {
 
-	protected METER_c(METER<PC> element) {
+	METER_c(METER<PC> element) {
 		super(element);
 	}
 }

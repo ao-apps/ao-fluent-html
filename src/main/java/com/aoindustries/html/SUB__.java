@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnySUB__;
  *
  * @author  AO Industries, Inc.
  */
-public class SUB__<
+final public class SUB__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySUB__<Document, PC, SUB__<PC>>
 	implements PhrasingContent<SUB__<PC>> {
 
-	protected SUB__(SUB<PC> element) {
+	SUB__(SUB<PC> element) {
 		super(element);
 	}
 }

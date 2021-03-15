@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyNAV_c;
  *
  * @author  AO Industries, Inc.
  */
-public class NAV_c<
+final public class NAV_c<
 	PC extends SectioningContent<PC>
 >
 	extends AnyNAV_c<Document, PC, NAV_c<PC>>
 	implements FlowContent<NAV_c<PC>> {
 
-	protected NAV_c(NAV<PC> element) {
+	NAV_c(NAV<PC> element) {
 		super(element);
 	}
 }

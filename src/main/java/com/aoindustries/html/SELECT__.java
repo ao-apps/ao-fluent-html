@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnySELECT__;
  *
  * @author  AO Industries, Inc.
  */
-public class SELECT__<
+final public class SELECT__<
 	PC extends Union_Interactive_Phrasing<PC>
 >
 	extends AnySELECT__<Document, PC, SELECT__<PC>>
 	implements SELECT_content<SELECT__<PC>> {
 
-	protected SELECT__(SELECT<PC> element) {
+	SELECT__(SELECT<PC> element) {
 		super(element);
 	}
 }

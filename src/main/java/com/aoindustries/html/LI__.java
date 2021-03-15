@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyLI__;
  *
  * @author  AO Industries, Inc.
  */
-public class LI__<
+final public class LI__<
 	PC extends ListContent<PC>
 >
 	extends AnyLI__<Document, PC, LI__<PC>>
 	implements FlowContent<LI__<PC>> {
 
-	protected LI__(LI<PC> element) {
+	LI__(LI<PC> element) {
 		super(element);
 	}
 }

@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDD_c;
  *
  * @author  AO Industries, Inc.
  */
-public class DD_c<
+final public class DD_c<
 	PC extends Union_DIV_DL<PC>
 >
 	extends AnyDD_c<Document, PC, DD_c<PC>>
 	implements FlowContent<DD_c<PC>> {
 
-	protected DD_c(DD<PC> element) {
+	DD_c(DD<PC> element) {
 		super(element);
 	}
 }

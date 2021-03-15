@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyPROGRESS__;
  *
  * @author  AO Industries, Inc.
  */
-public class PROGRESS__<
+final public class PROGRESS__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyPROGRESS__<Document, PC, PROGRESS__<PC>>
 	implements PhrasingContent<PROGRESS__<PC>> {
 
-	protected PROGRESS__(PROGRESS<PC> element) {
+	PROGRESS__(PROGRESS<PC> element) {
 		super(element);
 	}
 }

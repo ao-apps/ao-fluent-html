@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyTR_c;
  *
  * @author  AO Industries, Inc.
  */
-public class TR_c<
+final public class TR_c<
 	PC extends Union_TBODY_THEAD_TFOOT<PC>
 >
 	extends AnyTR_c<Document, PC, TR_c<PC>>
 	implements TR_content<TR_c<PC>> {
 
-	protected TR_c(TR<PC> element) {
+	TR_c(TR<PC> element) {
 		super(element);
 	}
 }

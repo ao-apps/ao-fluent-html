@@ -35,13 +35,13 @@ import com.aoindustries.html.any.AnyTABLE_c;
  *
  * @author  AO Industries, Inc.
  */
-public class TABLE_c<
+final public class TABLE_c<
 	PC extends PalpableContent<PC>
 >
 	extends AnyTABLE_c<Document, PC, TABLE_c<PC>>
 	implements TABLE_content<TABLE_c<PC>> {
 
-	protected TABLE_c(TABLE<PC> element) {
+	TABLE_c(TABLE<PC> element) {
 		super(element);
 	}
 }

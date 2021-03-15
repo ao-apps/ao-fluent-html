@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyCITE_c;
  *
  * @author  AO Industries, Inc.
  */
-public class CITE_c<
+final public class CITE_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyCITE_c<Document, PC, CITE_c<PC>>
 	implements PhrasingContent<CITE_c<PC>> {
 
-	protected CITE_c(CITE<PC> element) {
+	CITE_c(CITE<PC> element) {
 		super(element);
 	}
 }

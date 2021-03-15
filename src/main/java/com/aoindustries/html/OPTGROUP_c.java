@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyOPTGROUP_c;
  *
  * @author  AO Industries, Inc.
  */
-public class OPTGROUP_c<
+final public class OPTGROUP_c<
 	PC extends SELECT_content<PC>
 >
 	extends AnyOPTGROUP_c<Document, PC, OPTGROUP_c<PC>>
 	implements OPTGROUP_content<OPTGROUP_c<PC>> {
 
-	protected OPTGROUP_c(OPTGROUP<PC> element) {
+	OPTGROUP_c(OPTGROUP<PC> element) {
 		super(element);
 	}
 }

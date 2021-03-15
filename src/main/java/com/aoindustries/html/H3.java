@@ -33,11 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class H3<
+final public class H3<
 	PC extends HeadingContent<PC>
-> extends AnyH3<Document, PC, H3<PC>, H3__<PC>, H3_c<PC>> {
+> extends
+	AnyH3<Document, PC, H3<PC>, H3__<PC>, H3_c<PC>> {
 
-	protected H3(Document document, PC pc) {
+	H3(Document document, PC pc) {
 		super(document, pc);
 	}
 

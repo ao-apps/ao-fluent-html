@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class ASIDE<
+final public class ASIDE<
 	PC extends SectioningContent<PC>
 > extends
 	AnyASIDE<Document, PC, ASIDE<PC>, ASIDE__<PC>, ASIDE_c<PC>> {
 
-	protected ASIDE(Document document, PC pc) {
+	ASIDE(Document document, PC pc) {
 		super(document, pc);
 	}
 

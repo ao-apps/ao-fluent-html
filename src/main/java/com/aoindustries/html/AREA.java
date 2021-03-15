@@ -37,11 +37,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class AREA<
+final public class AREA<
 	PC extends PhrasingContent<PC>
-> extends AnyAREA<Document, PC, AREA<PC>> {
+> extends
+	AnyAREA<Document, PC, AREA<PC>> {
 
-	protected AREA(Document document, PC pc) {
+	AREA(Document document, PC pc) {
 		super(document, pc);
 	}
 

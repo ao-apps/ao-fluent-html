@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyHTML_c;
  *
  * @author  AO Industries, Inc.
  */
-public class HTML_c<
+final public class HTML_c<
 	PC extends Content<PC>
 >
 	extends AnyHTML_c<Document, PC, HTML_c<PC>>
 	implements HTML_content<HTML_c<PC>> {
 
-	protected HTML_c(HTML<PC> element) {
+	HTML_c(HTML<PC> element) {
 		super(element);
 	}
 }

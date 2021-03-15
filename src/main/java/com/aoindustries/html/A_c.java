@@ -33,13 +33,13 @@ import com.aoindustries.html.any.AnyA_c;
  */
 // TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
 //       the tabindex attribute specified.
-public class A_c<
+final public class A_c<
 	PC extends Union_Interactive_Phrasing<PC>
 >
 	extends AnyA_c<Document, PC, A_c<PC>>
 	implements Union_Interactive_Phrasing<A_c<PC>> {
 
-	protected A_c(A<PC> element) {
+	A_c(A<PC> element) {
 		super(element);
 	}
 }

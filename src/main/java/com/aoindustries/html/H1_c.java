@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyH1_c;
  *
  * @author  AO Industries, Inc.
  */
-public class H1_c<
+final public class H1_c<
 	PC extends HeadingContent<PC>
 >
 	extends AnyH1_c<Document, PC, H1_c<PC>>
 	implements PhrasingContent<H1_c<PC>> {
 
-	protected H1_c(H1<PC> element) {
+	H1_c(H1<PC> element) {
 		super(element);
 	}
 }

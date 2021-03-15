@@ -37,12 +37,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class LINK<
+final public class LINK<
 	PC extends Union_Metadata_Phrasing<PC>
 > extends
 	AnyLINK<Document, PC, LINK<PC>> {
 
-	protected LINK(Document document, PC pc) {
+	LINK(Document document, PC pc) {
 		super(document, pc);
 	}
 

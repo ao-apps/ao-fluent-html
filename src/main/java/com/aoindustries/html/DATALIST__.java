@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDATALIST__;
  *
  * @author  AO Industries, Inc.
  */
-public class DATALIST__<
+final public class DATALIST__<
 	PC extends PhrasingContent<PC>
 >
 	extends AnyDATALIST__<Document, PC, DATALIST__<PC>>
 	implements DATALIST_content<DATALIST__<PC>> {
 
-	protected DATALIST__(DATALIST<PC> element) {
+	DATALIST__(DATALIST<PC> element) {
 		super(element);
 	}
 }

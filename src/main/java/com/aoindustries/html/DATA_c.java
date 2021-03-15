@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDATA_c;
  *
  * @author  AO Industries, Inc.
  */
-public class DATA_c<
+final public class DATA_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyDATA_c<Document, PC, DATA_c<PC>>
 	implements PhrasingContent<DATA_c<PC>> {
 
-	protected DATA_c(DATA<PC> element) {
+	DATA_c(DATA<PC> element) {
 		super(element);
 	}
 }

@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyMARK_c;
  *
  * @author  AO Industries, Inc.
  */
-public class MARK_c<
+final public class MARK_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyMARK_c<Document, PC, MARK_c<PC>>
 	implements PhrasingContent<MARK_c<PC>> {
 
-	protected MARK_c(MARK<PC> element) {
+	MARK_c(MARK<PC> element) {
 		super(element);
 	}
 }

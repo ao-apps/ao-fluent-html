@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyADDRESS__;
  *
  * @author  AO Industries, Inc.
  */
-public class ADDRESS__<
+final public class ADDRESS__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyADDRESS__<Document, PC, ADDRESS__<PC>>
 	implements FlowContent<ADDRESS__<PC>> {
 
-	protected ADDRESS__(ADDRESS<PC> element) {
+	ADDRESS__(ADDRESS<PC> element) {
 		super(element);
 	}
 }

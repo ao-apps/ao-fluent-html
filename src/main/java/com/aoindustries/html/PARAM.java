@@ -37,12 +37,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class PARAM<
+final public class PARAM<
 	// TODO: PC extends ObjectContent<PC>
 	PC extends Content<PC>
 > extends AnyPARAM<Document, PC, PARAM<PC>> {
 
-	protected PARAM(Document document, PC pc) {
+	PARAM(Document document, PC pc) {
 		super(document, pc);
 	}
 

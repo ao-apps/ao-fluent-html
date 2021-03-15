@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class KBD<
+final public class KBD<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyKBD<Document, PC, KBD<PC>, KBD__<PC>, KBD_c<PC>> {
 
-	protected KBD(Document document, PC pc) {
+	KBD(Document document, PC pc) {
 		super(document, pc);
 	}
 

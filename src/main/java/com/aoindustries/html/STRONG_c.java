@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnySTRONG_c;
  *
  * @author  AO Industries, Inc.
  */
-public class STRONG_c<
+final public class STRONG_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySTRONG_c<Document, PC, STRONG_c<PC>>
 	implements PhrasingContent<STRONG_c<PC>> {
 
-	protected STRONG_c(STRONG<PC> element) {
+	STRONG_c(STRONG<PC> element) {
 		super(element);
 	}
 }

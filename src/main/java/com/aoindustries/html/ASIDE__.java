@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyASIDE__;
  *
  * @author  AO Industries, Inc.
  */
-public class ASIDE__<
+final public class ASIDE__<
 	PC extends SectioningContent<PC>
 >
 	extends AnyASIDE__<Document, PC, ASIDE__<PC>>
 	implements FlowContent<ASIDE__<PC>> {
 
-	protected ASIDE__(ASIDE<PC> element) {
+	ASIDE__(ASIDE<PC> element) {
 		super(element);
 	}
 }

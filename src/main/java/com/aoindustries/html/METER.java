@@ -34,12 +34,12 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 // TODO: Phrasing content, but there must be no meter element descendants.
-public class METER<
+final public class METER<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
 
-	protected METER(Document document, PC pc) {
+	METER(Document document, PC pc) {
 		super(document, pc);
 	}
 

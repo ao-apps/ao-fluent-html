@@ -34,12 +34,12 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 // TODO: Where flow content is expected, but only if it is a hierarchically correct main element.
-public class MAIN<
+final public class MAIN<
 	PC extends PalpableContent<PC>
 > extends
 	AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {
 
-	protected MAIN(Document document, PC pc) {
+	MAIN(Document document, PC pc) {
 		super(document, pc);
 	}
 

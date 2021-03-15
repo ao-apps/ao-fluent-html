@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDEL_c;
  *
  * @author  AO Industries, Inc.
  */
-public class DEL_c<
+final public class DEL_c<
 	PC extends PhrasingContent<PC>
 >
 	extends AnyDEL_c<Document, PC, DEL_c<PC>>
 	implements PhrasingContent<DEL_c<PC>> {
 
-	protected DEL_c(DEL<PC> element) {
+	DEL_c(DEL<PC> element) {
 		super(element);
 	}
 }

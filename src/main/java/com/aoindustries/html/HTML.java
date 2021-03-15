@@ -33,13 +33,13 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class HTML<
+final public class HTML<
 	PC extends Content<PC>
 > extends
 	AnyHTML<Document, PC, HTML<PC>, HTML__<PC>, HTML_c<PC>>
 {
 
-	protected HTML(Document document, PC pc) {
+	HTML(Document document, PC pc) {
 		super(document, pc);
 	}
 

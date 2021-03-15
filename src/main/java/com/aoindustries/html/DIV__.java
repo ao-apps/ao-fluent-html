@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDIV__;
  *
  * @author  AO Industries, Inc.
  */
-public class DIV__<
+final public class DIV__<
 	PC extends Union_DL_Palpable<PC>
 >
 	extends AnyDIV__<Document, PC, DIV__<PC>>
 	implements DIV_content<DIV__<PC>> {
 
-	protected DIV__(DIV<PC> element) {
+	DIV__(DIV<PC> element) {
 		super(element);
 	}
 }

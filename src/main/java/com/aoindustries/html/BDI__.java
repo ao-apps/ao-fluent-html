@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyBDI__;
  *
  * @author  AO Industries, Inc.
  */
-public class BDI__<
+final public class BDI__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyBDI__<Document, PC, BDI__<PC>>
 	implements PhrasingContent<BDI__<PC>> {
 
-	protected BDI__(BDI<PC> element) {
+	BDI__(BDI<PC> element) {
 		super(element);
 	}
 }

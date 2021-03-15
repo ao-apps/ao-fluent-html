@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyOL__;
  *
  * @author  AO Industries, Inc.
  */
-public class OL__<
+final public class OL__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyOL__<Document, PC, OL__<PC>>
 	implements ListContent<OL__<PC>> {
 
-	protected OL__(OL<PC> element) {
+	OL__(OL<PC> element) {
 		super(element);
 	}
 }

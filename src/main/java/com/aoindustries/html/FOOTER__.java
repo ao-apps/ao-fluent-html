@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyFOOTER__;
  *
  * @author  AO Industries, Inc.
  */
-public class FOOTER__<
+final public class FOOTER__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyFOOTER__<Document, PC, FOOTER__<PC>>
 	implements FlowContent<FOOTER__<PC>> {
 
-	protected FOOTER__(FOOTER<PC> element) {
+	FOOTER__(FOOTER<PC> element) {
 		super(element);
 	}
 }

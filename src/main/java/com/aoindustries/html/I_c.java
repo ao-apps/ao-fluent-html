@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyI_c;
  *
  * @author  AO Industries, Inc.
  */
-public class I_c<
+final public class I_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyI_c<Document, PC, I_c<PC>>
 	implements PhrasingContent<I_c<PC>> {
 
-	protected I_c(I<PC> element) {
+	I_c(I<PC> element) {
 		super(element);
 	}
 }

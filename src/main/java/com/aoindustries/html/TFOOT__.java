@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyTFOOT__;
  *
  * @author  AO Industries, Inc.
  */
-public class TFOOT__<
+final public class TFOOT__<
 	PC extends TABLE_content<PC>
 >
 	extends AnyTFOOT__<Document, PC, TFOOT__<PC>>
 	implements Union_TBODY_THEAD_TFOOT<TFOOT__<PC>> {
 
-	protected TFOOT__(TFOOT<PC> element) {
+	TFOOT__(TFOOT<PC> element) {
 		super(element);
 	}
 }

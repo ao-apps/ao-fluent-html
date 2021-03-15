@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyMAIN_c;
  *
  * @author  AO Industries, Inc.
  */
-public class MAIN_c<
+final public class MAIN_c<
 	PC extends PalpableContent<PC>
 >
 	extends AnyMAIN_c<Document, PC, MAIN_c<PC>>
 	implements FlowContent<MAIN_c<PC>> {
 
-	protected MAIN_c(MAIN<PC> element) {
+	MAIN_c(MAIN<PC> element) {
 		super(element);
 	}
 }

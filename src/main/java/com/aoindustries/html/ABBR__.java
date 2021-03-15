@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyABBR__;
  *
  * @author  AO Industries, Inc.
  */
-public class ABBR__<
+final public class ABBR__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyABBR__<Document, PC, ABBR__<PC>>
 	implements PhrasingContent<ABBR__<PC>> {
 
-	protected ABBR__(ABBR<PC> element) {
+	ABBR__(ABBR<PC> element) {
 		super(element);
 	}
 }

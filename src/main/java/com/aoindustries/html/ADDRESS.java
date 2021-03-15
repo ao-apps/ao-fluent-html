@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class ADDRESS<
+final public class ADDRESS<
 	PC extends PalpableContent<PC>
 > extends
 	AnyADDRESS<Document, PC, ADDRESS<PC>, ADDRESS__<PC>, ADDRESS_c<PC>> {
 
-	protected ADDRESS(Document document, PC pc) {
+	ADDRESS(Document document, PC pc) {
 		super(document, pc);
 	}
 

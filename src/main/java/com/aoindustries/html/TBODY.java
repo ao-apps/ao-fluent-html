@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class TBODY<
+final public class TBODY<
 	PC extends TABLE_content<PC>
 > extends
 	AnyTBODY<Document, PC, TBODY<PC>, TBODY__<PC>, TBODY_c<PC>> {
 
-	protected TBODY(Document document, PC pc) {
+	TBODY(Document document, PC pc) {
 		super(document, pc);
 	}
 

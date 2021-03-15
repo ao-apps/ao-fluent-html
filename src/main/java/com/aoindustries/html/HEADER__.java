@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyHEADER__;
  *
  * @author  AO Industries, Inc.
  */
-public class HEADER__<
+final public class HEADER__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyHEADER__<Document, PC, HEADER__<PC>>
 	implements FlowContent<HEADER__<PC>> {
 
-	protected HEADER__(HEADER<PC> element) {
+	HEADER__(HEADER<PC> element) {
 		super(element);
 	}
 }

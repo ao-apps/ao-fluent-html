@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyEM__;
  *
  * @author  AO Industries, Inc.
  */
-public class EM__<
+final public class EM__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyEM__<Document, PC, EM__<PC>>
 	implements PhrasingContent<EM__<PC>> {
 
-	protected EM__(EM<PC> element) {
+	EM__(EM<PC> element) {
 		super(element);
 	}
 }

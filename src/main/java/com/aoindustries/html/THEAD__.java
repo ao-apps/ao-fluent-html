@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyTHEAD__;
  *
  * @author  AO Industries, Inc.
  */
-public class THEAD__<
+final public class THEAD__<
 	PC extends TABLE_content<PC>
 >
 	extends AnyTHEAD__<Document, PC, THEAD__<PC>>
 	implements Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
 
-	protected THEAD__(THEAD<PC> element) {
+	THEAD__(THEAD<PC> element) {
 		super(element);
 	}
 }

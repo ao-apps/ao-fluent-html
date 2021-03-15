@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyINS_c;
  *
  * @author  AO Industries, Inc.
  */
-public class INS_c<
+final public class INS_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyINS_c<Document, PC, INS_c<PC>>
 	implements Union_Palpable_Phrasing<INS_c<PC>> {
 
-	protected INS_c(INS<PC> element) {
+	INS_c(INS<PC> element) {
 		super(element);
 	}
 }

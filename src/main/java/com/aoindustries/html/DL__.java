@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDL__;
  *
  * @author  AO Industries, Inc.
  */
-public class DL__<
+final public class DL__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyDL__<Document, PC, DL__<PC>>
 	implements DL_content<DL__<PC>> {
 
-	protected DL__(DL<PC> element) {
+	DL__(DL<PC> element) {
 		super(element);
 	}
 }

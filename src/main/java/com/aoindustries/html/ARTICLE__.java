@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyARTICLE__;
  *
  * @author  AO Industries, Inc.
  */
-public class ARTICLE__<
+final public class ARTICLE__<
 	PC extends SectioningContent<PC>
 >
 	extends AnyARTICLE__<Document, PC, ARTICLE__<PC>>
 	implements FlowContent<ARTICLE__<PC>> {
 
-	protected ARTICLE__(ARTICLE<PC> element) {
+	ARTICLE__(ARTICLE<PC> element) {
 		super(element);
 	}
 }

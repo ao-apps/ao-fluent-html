@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class PRE<
+final public class PRE<
 	PC extends PalpableContent<PC>
 > extends
 	AnyPRE<Document, PC, PRE<PC>, PRE__<PC>, PRE_c<PC>> {
 
-	protected PRE(Document document, PC pc) {
+	PRE(Document document, PC pc) {
 		super(document, pc);
 	}
 

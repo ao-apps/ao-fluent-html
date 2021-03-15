@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyTBODY__;
  *
  * @author  AO Industries, Inc.
  */
-public class TBODY__<
+final public class TBODY__<
 	PC extends TABLE_content<PC>
 >
 	extends AnyTBODY__<Document, PC, TBODY__<PC>>
 	implements Union_TBODY_THEAD_TFOOT<TBODY__<PC>> {
 
-	protected TBODY__(TBODY<PC> element) {
+	TBODY__(TBODY<PC> element) {
 		super(element);
 	}
 }

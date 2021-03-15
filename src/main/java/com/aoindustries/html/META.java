@@ -37,11 +37,11 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class META<
+final public class META<
 	PC extends Union_Metadata_Phrasing<PC>
 > extends AnyMETA<Document, PC, META<PC>> {
 
-	protected META(Document document, PC pc) {
+	META(Document document, PC pc) {
 		super(document, pc);
 	}
 

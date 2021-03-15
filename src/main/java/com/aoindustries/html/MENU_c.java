@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyMENU_c;
  *
  * @author  AO Industries, Inc.
  */
-public class MENU_c<
+final public class MENU_c<
 	PC extends InteractiveContent<PC>
 >
 	extends AnyMENU_c<Document, PC, MENU_c<PC>>
 	implements ListContent<MENU_c<PC>> {
 
-	protected MENU_c(MENU<PC> element) {
+	MENU_c(MENU<PC> element) {
 		super(element);
 	}
 }

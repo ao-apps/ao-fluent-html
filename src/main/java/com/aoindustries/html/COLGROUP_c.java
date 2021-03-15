@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyCOLGROUP_c;
  *
  * @author  AO Industries, Inc.
  */
-public class COLGROUP_c<
+final public class COLGROUP_c<
 	PC extends TABLE_content<PC>
 >
 	extends AnyCOLGROUP_c<Document, PC, COLGROUP_c<PC>>
 	implements COLGROUP_content<COLGROUP_c<PC>> {
 
-	protected COLGROUP_c(COLGROUP<PC> element) {
+	COLGROUP_c(COLGROUP<PC> element) {
 		super(element);
 	}
 }

@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class DEL<
+final public class DEL<
 	PC extends PhrasingContent<PC>
 > extends
 	AnyDEL<Document, PC, DEL<PC>, DEL_c<PC>> {
 
-	protected DEL(Document document, PC pc) {
+	DEL(Document document, PC pc) {
 		super(document, pc);
 	}
 

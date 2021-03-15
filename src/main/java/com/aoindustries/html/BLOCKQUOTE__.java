@@ -34,13 +34,13 @@ import com.aoindustries.html.any.AnyBLOCKQUOTE__;
  *
  * @author  AO Industries, Inc.
  */
-public class BLOCKQUOTE__<
+final public class BLOCKQUOTE__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyBLOCKQUOTE__<Document, PC, BLOCKQUOTE__<PC>>
 	implements FlowContent<BLOCKQUOTE__<PC>> {
 
-	protected BLOCKQUOTE__(BLOCKQUOTE<PC> element) {
+	BLOCKQUOTE__(BLOCKQUOTE<PC> element) {
 		super(element);
 	}
 }

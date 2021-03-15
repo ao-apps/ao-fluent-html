@@ -34,13 +34,13 @@ import com.aoindustries.html.any.AnyFORM_c;
  *
  * @author  AO Industries, Inc.
  */
-public class FORM_c<
+final public class FORM_c<
 	PC extends PalpableContent<PC>
 >
 	extends AnyFORM_c<Document, PC, FORM_c<PC>>
 	implements FlowContent<FORM_c<PC>> {
 
-	protected FORM_c(FORM<PC> element) {
+	FORM_c(FORM<PC> element) {
 		super(element);
 	}
 }

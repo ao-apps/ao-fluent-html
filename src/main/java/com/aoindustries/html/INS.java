@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class INS<
+final public class INS<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyINS<Document, PC, INS<PC>, INS_c<PC>> {
 
-	protected INS(Document document, PC pc) {
+	INS(Document document, PC pc) {
 		super(document, pc);
 	}
 

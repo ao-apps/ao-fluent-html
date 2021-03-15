@@ -33,12 +33,12 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public class SECTION<
+final public class SECTION<
 	PC extends SectioningContent<PC>
 > extends
 	AnySECTION<Document, PC, SECTION<PC>, SECTION__<PC>, SECTION_c<PC>> {
 
-	protected SECTION(Document document, PC pc) {
+	SECTION(Document document, PC pc) {
 		super(document, pc);
 	}
 

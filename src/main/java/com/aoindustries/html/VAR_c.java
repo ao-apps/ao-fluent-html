@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyVAR_c;
  *
  * @author  AO Industries, Inc.
  */
-public class VAR_c<
+final public class VAR_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyVAR_c<Document, PC, VAR_c<PC>>
 	implements PhrasingContent<VAR_c<PC>> {
 
-	protected VAR_c(VAR<PC> element) {
+	VAR_c(VAR<PC> element) {
 		super(element);
 	}
 }

@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyKBD__;
  *
  * @author  AO Industries, Inc.
  */
-public class KBD__<
+final public class KBD__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyKBD__<Document, PC, KBD__<PC>>
 	implements PhrasingContent<KBD__<PC>> {
 
-	protected KBD__(KBD<PC> element) {
+	KBD__(KBD<PC> element) {
 		super(element);
 	}
 }

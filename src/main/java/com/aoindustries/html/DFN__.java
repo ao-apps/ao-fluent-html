@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyDFN__;
  *
  * @author  AO Industries, Inc.
  */
-public class DFN__<
+final public class DFN__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyDFN__<Document, PC, DFN__<PC>>
 	implements PhrasingContent<DFN__<PC>> {
 
-	protected DFN__(DFN<PC> element) {
+	DFN__(DFN<PC> element) {
 		super(element);
 	}
 }

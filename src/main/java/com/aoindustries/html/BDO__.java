@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnyBDO__;
  *
  * @author  AO Industries, Inc.
  */
-public class BDO__<
+final public class BDO__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyBDO__<Document, PC, BDO__<PC>>
 	implements PhrasingContent<BDO__<PC>> {
 
-	protected BDO__(BDO<PC> element) {
+	BDO__(BDO<PC> element) {
 		super(element);
 	}
 }

@@ -31,13 +31,13 @@ import com.aoindustries.html.any.AnySECTION_c;
  *
  * @author  AO Industries, Inc.
  */
-public class SECTION_c<
+final public class SECTION_c<
 	PC extends SectioningContent<PC>
 >
 	extends AnySECTION_c<Document, PC, SECTION_c<PC>>
 	implements FlowContent<SECTION_c<PC>> {
 
-	protected SECTION_c(SECTION<PC> element) {
+	SECTION_c(SECTION<PC> element) {
 		super(element);
 	}
 }

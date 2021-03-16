@@ -111,6 +111,13 @@ public interface MetadataContent<
 	}
 	// </editor-fold>
 	// Inherited: TEMPLATE - WHATWG only
-	// <editor-fold defaultstate="collapsed" desc="TODO: TITLE">
+	// <editor-fold defaultstate="collapsed" desc="TITLE">
+	@Override
+	default TITLE<__> title() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TITLE<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
 	// </editor-fold>
 }

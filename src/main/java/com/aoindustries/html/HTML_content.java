@@ -23,6 +23,8 @@
 package com.aoindustries.html;
 
 import com.aoindustries.html.any.AnyHTML_content;
+import com.aoindustries.io.function.IOConsumerE;
+import java.io.IOException;
 
 /**
  * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">4.1.1 The html element</a>.
@@ -42,8 +44,62 @@ public interface HTML_content<
 	//
 	// Factories:
 	//
-	// <editor-fold defaultstate="collapsed" desc="TODO: HEAD">
+	// <editor-fold defaultstate="collapsed" desc="HEAD">
+	@Override
+	default HEAD<__> head() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new HEAD<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a head element with no attributes and the given foot.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-head-element">4.2.1 The head element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ head__(IOConsumerE<? super HEAD__<__>, Ex> head) throws IOException, Ex {
+		return head().__(head);
+	}
+
+	@Override
+	default HEAD_c<__> head_c() throws IOException {
+		return head()._c();
+	}
 	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="TODO: BODY">
+	// <editor-fold defaultstate="collapsed" desc="BODY">
+	@Override
+	default BODY<__> body() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new BODY<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a body element with no attributes and the given foot.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-body-element">4.3.1 The body element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body">&lt;body&gt;: The Document Body element - HTML: HyperText Markup Language | MDN</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_body.asp">HTML body tag</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ body__(IOConsumerE<? super BODY__<__>, Ex> body) throws IOException, Ex {
+		return body().__(body);
+	}
+
+	@Override
+	default BODY_c<__> body_c() throws IOException {
+		return body()._c();
+	}
 	// </editor-fold>
 }

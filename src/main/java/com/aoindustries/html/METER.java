@@ -33,7 +33,6 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Phrasing content, but there must be no meter element descendants.
 final public class METER<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends

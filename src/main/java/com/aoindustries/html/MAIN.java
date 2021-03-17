@@ -33,7 +33,6 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Where flow content is expected, but only if it is a hierarchically correct main element.
 final public class MAIN<
 	PC extends PalpableContent<PC>
 > extends

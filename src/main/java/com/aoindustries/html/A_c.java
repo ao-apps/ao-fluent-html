@@ -31,8 +31,6 @@ import com.aoindustries.html.any.AnyA_c;
  *
  * @author  AO Industries, Inc.
  */
-// TODO: Transparent, but there must be no interactive content descendent, a element descendent, or descendent with
-//       the tabindex attribute specified.
 final public class A_c<
 	PC extends Union_Interactive_Phrasing<PC>
 >

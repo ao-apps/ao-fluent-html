@@ -253,7 +253,33 @@ public interface Union_Interactive_Phrasing<
 	// </editor-fold>
 	// Inherited: IFRAME
 	// Inherited: IMG
-	// <editor-fold defaultstate="collapsed" desc="TODO: LABEL">
+	// <editor-fold defaultstate="collapsed" desc="LABEL">
+	@Override
+	default LABEL<__> label() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new LABEL<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a label element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">4.10.4 The label element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ label__(IOConsumerE<? super LABEL__<__>, Ex> label) throws IOException, Ex {
+		return label().__(label);
+	}
+
+	@Override
+	default LABEL_c<__> label_c() throws IOException {
+		return label()._c();
+	}
 	// </editor-fold>
 	// Inherited: OBJECT
 	// <editor-fold defaultstate="collapsed" desc="SELECT">

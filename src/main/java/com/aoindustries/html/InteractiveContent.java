@@ -73,7 +73,7 @@ public interface InteractiveContent<
 	}
 
 	/**
-	 * Creates a menu element with no attributes and the given foot.
+	 * Creates a menu element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.
 	 * </p>

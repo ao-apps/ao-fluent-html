@@ -54,7 +54,7 @@ public interface Union_DIV_DL<
 	}
 
 	/**
-	 * Creates a dd element with no attributes and the given foot.
+	 * Creates a dd element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element">4.4.11 The dd element</a>.
 	 * </p>
@@ -82,7 +82,7 @@ public interface Union_DIV_DL<
 	}
 
 	/**
-	 * Creates a dt element with no attributes and the given foot.
+	 * Creates a dt element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element">4.4.10 The dt element</a>.
 	 * </p>

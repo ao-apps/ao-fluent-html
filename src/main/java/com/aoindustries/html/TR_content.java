@@ -60,7 +60,7 @@ public interface TR_content<
 	}
 
 	/**
-	 * Creates a td element with no attributes and the given foot.
+	 * Creates a td element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">4.9.9 The td element</a>.
 	 * </p>
@@ -88,7 +88,7 @@ public interface TR_content<
 	}
 
 	/**
-	 * Creates a th element with no attributes and the given foot.
+	 * Creates a th element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">4.9.10 The th element</a>.
 	 * </p>

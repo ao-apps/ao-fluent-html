@@ -65,7 +65,7 @@ public interface Union_TBODY_THEAD_TFOOT<
 	}
 
 	/**
-	 * Creates a tr element with no attributes and the given foot.
+	 * Creates a tr element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.
 	 * </p>

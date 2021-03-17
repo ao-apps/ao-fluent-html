@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,32 +22,39 @@
  */
 package com.aoindustries.html;
 
-import com.aoindustries.html.any.AnyPARAM;
+import com.aoindustries.html.any.AnyOBJECT;
 import java.io.IOException;
 import java.io.Writer;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element">4.8.8 The param element</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt; - HTML: Hypertext Markup Language</a>.</li>
- * <li>See <a href="https://www.w3schools.com/tags/tag_param.asp">HTML param tag</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">4.8.7 The object element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-final public class PARAM<
-	PC extends OBJECT_content<PC>
-> extends AnyPARAM<Document, PC, PARAM<PC>> {
+final public class OBJECT<
+	PC extends Union_Embedded_Interactive<PC>
+> extends
+	AnyOBJECT<Document, PC, OBJECT<PC>, OBJECT__<PC>, OBJECT_c<PC>> {
 
-	PARAM(Document document, PC pc) {
+	OBJECT(Document document, PC pc) {
 		super(document, pc);
 	}
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected PARAM<PC> writeOpen(Writer out) throws IOException {
+	protected OBJECT<PC> writeOpen(Writer out) throws IOException {
 		return super.writeOpen(out);
+	}
+
+	@Override
+	protected OBJECT__<PC> new__() {
+		return new OBJECT__<>(this);
+	}
+
+	@Override
+	protected OBJECT_c<PC> new_c() {
+		return new OBJECT_c<>(this);
 	}
 }

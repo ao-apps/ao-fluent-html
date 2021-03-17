@@ -290,7 +290,7 @@ public interface PalpableContent<
 	}
 
 	/**
-	 * Creates a main element with no attributes and the given foot.
+	 * Creates a main element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element">4.4.14 The main element</a>.
 	 * </p>
@@ -325,7 +325,7 @@ public interface PalpableContent<
 	}
 
 	/**
-	 * Creates an ol element with no attributes and the given foot.
+	 * Creates an ol element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">4.4.5 The ol element</a>.
 	 * </p>
@@ -456,7 +456,7 @@ public interface PalpableContent<
 	}
 
 	/**
-	 * Creates a ul element with no attributes and the given foot.
+	 * Creates a ul element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">4.4.6 The ul element</a>.
 	 * </p>

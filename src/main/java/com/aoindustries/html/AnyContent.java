@@ -73,6 +73,7 @@ public interface AnyContent<
 	DIV_content<__>,
 	DL_content<__>,
 	HTML_content<__>,
+	OBJECT_content<__>,
 	// Inherited: OPTGROUP_content<__>
 	SELECT_content<__>,
 	TABLE_content<__>,
@@ -191,15 +192,7 @@ public interface AnyContent<
 	// Inherited: IFRAME
 	// Inherited: EMBED
 	// Inherited: OBJECT
-	// <editor-fold defaultstate="collapsed" desc="PARAM">
-	@Override
-	default PARAM<__> param() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new PARAM<>(document, pc).writeOpen(document.getUnsafe(null));
-	}
-	// </editor-fold>
+	// Inherited: PARAM
 	// Inherited: VIDEO
 	// Inherited: AUDIO
 	// <editor-fold defaultstate="collapsed" desc="TODO: TRACK">

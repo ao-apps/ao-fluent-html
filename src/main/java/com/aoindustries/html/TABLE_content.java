@@ -66,7 +66,7 @@ public interface TABLE_content<
 	}
 
 	/**
-	 * Creates a caption element with no attributes and the given foot.
+	 * Creates a caption element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-caption-element">4.9.2 The caption element</a>.
 	 * </p>
@@ -94,7 +94,7 @@ public interface TABLE_content<
 	}
 
 	/**
-	 * Creates a colgroup element with no attributes and the given foot.
+	 * Creates a colgroup element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
 	 * </p>
@@ -211,7 +211,7 @@ public interface TABLE_content<
 	}
 
 	/**
-	 * Creates a tfoot element with no attributes and the given foot.
+	 * Creates a tfoot element with no attributes and the given body.
 	 * <p>
 	 * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element">4.9.7 The tfoot element</a>.
 	 * </p>

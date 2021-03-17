@@ -22,7 +22,9 @@
  */
 package com.aoindustries.html;
 
+import com.aoindustries.html.any.AnyOBJECT__;
 import com.aoindustries.html.any.AnyUnion_Embedded_Interactive;
+import com.aoindustries.io.function.IOConsumerE;
 import com.aoindustries.io.function.IOSupplierE;
 import java.io.IOException;
 
@@ -72,7 +74,45 @@ public interface Union_Embedded_Interactive<
 		return img().src(src);
 	}
 	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="TODO: OBJECT">
+	// <editor-fold defaultstate="collapsed" desc="OBJECT">
+	@Override
+	default OBJECT<__> object() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new OBJECT<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates an object element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element">4.8.7 The object element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 * @param  object  The content model of this element, which will be the parent content model of child elements.
+	 *                 <p>
+	 *                 Due to limitations in Java generics, this content model does not directly reflect the parent content
+	 *                 model, despite this being a transparent content model.  Rather, it includes only the content model that
+	 *                 always applies to this element type.
+	 *                 </p>
+	 *                 <p><em>
+	 *                 For the full, context-aware content model, which will likely include more elements,
+	 *                 {@linkplain AnyOBJECT__#pc() use the parent content model directly}.
+	 *                 </em></p>
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @see  AnyOBJECT__#pc()
+	 */
+	default <Ex extends Throwable> __ object__(IOConsumerE<? super OBJECT__<__>, Ex> object) throws IOException, Ex {
+		return object().__(object);
+	}
+
+	@Override
+	default OBJECT_c<__> object_c() throws IOException {
+		return object()._c();
+	}
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TODO: VIDEO">
 	// </editor-fold>

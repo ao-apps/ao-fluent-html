@@ -33,7 +33,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	<core:page
 		title="@{documented.name}"
 		description="@{documented.description}"
-		datePublished="2019-10-27T16:59:13-0500"
+		datePublished="2019-10-27T16:59:13-05:00"
 		dateModified="2021-03-15T12:49:51-05:00"
 	>
 		<core:child page="changelog.jspx" />

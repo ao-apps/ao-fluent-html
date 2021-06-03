@@ -22,7 +22,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 -->
 <jsp:root
-	xmlns:ao="https://aoindustries.com/ao-taglib/"
+	xmlns:ao="https://oss.aoapps.com/taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2021-05-26T06:36:49-05:00"
+		dateModified="2021-05-31T01:04:26-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -45,10 +45,12 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				version="@{project.version}"
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
+				repository="https://s01.oss.sonatype.org/content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
 			>
 				<ul>
 					<li>Minimum Java version changed from 1.8 to 11.</li>
+					<li>Maven artifact relocated from <code>com.aoindustries:ao-fluent-html</code> to <code>com.aoapps:ao-fluent-html</code>.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
@@ -57,7 +59,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="0.4.0"
 			datePublished="2021-03-17T08:51:13-05:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
@@ -74,7 +76,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="0.3.0"
 			datePublished="2020-12-07T15:54:15-06:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
@@ -116,7 +118,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="0.2.0"
 			datePublished="2020-11-17T23:35:17-06:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
@@ -133,7 +135,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="0.1.0"
 			datePublished="2020-03-26T20:43:16-05:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
@@ -143,7 +145,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 					<ol>
 						<li>
 							New functionality derived from methods and constants moved from
-							<ao:a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/HtmlTag.html">HtmlTag</ao:a>.
+							<ao:a href="https://oss.aoapps.com/taglib/apidocs/com/aoindustries/taglib/HtmlTag.html">HtmlTag</ao:a>.
 						</li>
 					</ol>
 				</li>

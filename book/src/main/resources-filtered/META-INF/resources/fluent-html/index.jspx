@@ -22,7 +22,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 -->
 <jsp:root
-	xmlns:ao="https://aoindustries.com/ao-taglib/"
+	xmlns:ao="https://oss.aoapps.com/taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:section="https://semanticcms.com/section/taglib/"
@@ -34,13 +34,13 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2021-03-15T12:49:51-05:00"
+		dateModified="2021-05-31T01:25:50-05:00"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
-		<core:child book="/ao-fluent-html/any" page="/index.jspx" />
-		<core:child book="/ao-fluent-html/servlet" page="/index.jspx" />
-		<core:child book="/ao-fluent-html/util" page="/index.jspx" />
+		<core:child book="/fluent-html/any" page="/index.jspx" />
+		<core:child book="/fluent-html/servlet" page="/index.jspx" />
+		<core:child book="/fluent-html/util" page="/index.jspx" />
 		<header>
 			<ao:include
 				page="/ao-badges/badges.inc.jspx"
@@ -66,9 +66,9 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		</section:nav>
 		<section:section label="Modules">
 			<ul>
-				<li><core:link book="/ao-fluent-html/any" page="/index.jspx" /></li>
-				<li><core:link book="/ao-fluent-html/servlet" page="/index.jspx" /></li>
-				<li><core:link book="/ao-fluent-html/util" page="/index.jspx" /></li>
+				<li><core:link book="/fluent-html/any" page="/index.jspx" /></li>
+				<li><core:link book="/fluent-html/servlet" page="/index.jspx" /></li>
+				<li><core:link book="/fluent-html/util" page="/index.jspx" /></li>
 			</ul>
 		</section:section>
 		<section:section label="Motivation">
@@ -84,7 +84,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				<li>Fluent API.</li>
 				<li>Also supports lambda element content, which makes it easier to code and debug than a strict fluent-only approach.</li>
 				<li>Context-aware compiler and code assistance through extensive use of the interface hierachy along with bounded self-referential generics.</li>
-				<li>Everything is <core:link book="/ao-encoding" page="/index.jspx">encoded and safe by default</core:link>, with <code>unsafe(…)</code> methods allowing raw output.</li>
+				<li>Everything is <core:link book="/encoding" page="/index.jspx">encoded and safe by default</core:link>, with <code>unsafe(…)</code> methods allowing raw output.</li>
 				<li>Optional automatic newline and tab indentation.</li>
 				<li>Optimized streaming implementation, including attributes.</li>
 				<li>Integrates with AO in-context translation tools.</li>

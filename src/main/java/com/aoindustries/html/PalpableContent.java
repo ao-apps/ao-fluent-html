@@ -134,7 +134,7 @@ public interface PalpableContent<
 	// Inherited: DETAILS
 	// Inherited: DFN
 	// Inherited: DIV
-	// <editor-fold defaultstate="collapsed" desc="DL - if childen contain at least one name/value pair">
+	// <editor-fold defaultstate="collapsed" desc="DL - if children contain at least one name/value pair">
 	@Override
 	default DL<__> dl() throws IOException {
 		@SuppressWarnings("unchecked")

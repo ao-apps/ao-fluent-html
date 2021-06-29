@@ -33,6 +33,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	<packaging>bundle</packaging>
 
 	<properties>
+		<module.name>com.aoapps.html</module.name>
 		<javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://oss.aoapps.com/">AO OSS</a>
 / <a target="${javadoc.target}" href="${project.url}">Fluent HTML</a>]]></javadoc.breadcrumbs>
 		<javadoc.modules><![CDATA[<div style="float:left; margin: 0 1em">
@@ -98,11 +99,27 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!-- TODO: Can't find the magic combo to get modular tests running -->
+					<useModulePath>false</useModulePath>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
 					<!-- Only show public docs, since this project is not intended to be extended. -->
 					<show>public</show>
 				</configuration>
+				<executions>
+					<execution>
+						<id>attach-test-javadocs</id><goals><goal>test-jar</goal></goals>
+						<configuration>
+							<!-- TODO: Can't find the magic combo to get modular tests running -->
+							<skip>true</skip>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

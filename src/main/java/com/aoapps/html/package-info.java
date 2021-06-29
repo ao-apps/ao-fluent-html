@@ -50,7 +50,7 @@
  *   </li>
  * </ul>
  * <p>
- *   This follows the naming conventions specified in {@link com.aoapps.html.any}, but without "Any" prefixed to names.
+ *   This follows the naming conventions specified in <a href="https://oss.aoapps.com/fluent-html/any/apidocs/com.aoapps.html.any/com/aoapps/html/any/package-summary.html"><code>com.aoapps.html.any</code></a>, but without "Any" prefixed to names.
  * </p>
  */
 package com.aoapps.html;

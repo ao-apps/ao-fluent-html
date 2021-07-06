@@ -29,7 +29,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		<relativePath>../parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.aoapps</groupId><artifactId>ao-fluent-html</artifactId><version>0.5.0</version>
+	<groupId>com.aoapps</groupId><artifactId>ao-fluent-html</artifactId><version>0.5.0-POST-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<properties>
@@ -78,7 +78,7 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 		<connection>scm:git:git://github.com/aoindustries/ao-fluent-html.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/ao-fluent-html.git</developerConnection>
 		<url>https://github.com/aoindustries/ao-fluent-html</url>
-		<tag>ao-fluent-html-0.5.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>

@@ -34,7 +34,7 @@ import com.aoapps.html.any.AnyQ_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class Q_c<
+public final class Q_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyQ_c<Document, PC, Q_c<PC>>

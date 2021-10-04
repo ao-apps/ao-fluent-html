@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class DD<
+public final class DD<
 	PC extends Union_DIV_DL<PC>
 > extends
 	AnyDD<Document, PC, DD<PC>, DD__<PC>, DD_c<PC>> {

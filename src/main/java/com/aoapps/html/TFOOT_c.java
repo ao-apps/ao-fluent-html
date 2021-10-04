@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyTFOOT_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class TFOOT_c<
+public final class TFOOT_c<
 	PC extends TABLE_content<PC>
 >
 	extends AnyTFOOT_c<Document, PC, TFOOT_c<PC>>

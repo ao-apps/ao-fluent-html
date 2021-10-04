@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnySTRONG__;
  *
  * @author  AO Industries, Inc.
  */
-final public class STRONG__<
+public final class STRONG__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySTRONG__<Document, PC, STRONG__<PC>>

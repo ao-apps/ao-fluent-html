@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyINS_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class INS_c<
+public final class INS_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyINS_c<Document, PC, INS_c<PC>>

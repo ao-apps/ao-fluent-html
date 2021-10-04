@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyLI_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class LI_c<
+public final class LI_c<
 	PC extends ListContent<PC>
 >
 	extends AnyLI_c<Document, PC, LI_c<PC>>

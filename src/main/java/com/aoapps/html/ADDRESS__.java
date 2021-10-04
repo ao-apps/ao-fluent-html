@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyADDRESS__;
  *
  * @author  AO Industries, Inc.
  */
-final public class ADDRESS__<
+public final class ADDRESS__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyADDRESS__<Document, PC, ADDRESS__<PC>>

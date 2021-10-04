@@ -38,7 +38,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-final public class COL<
+public final class COL<
 	PC extends COLGROUP_content<PC>
 > extends
 	AnyCOL<Document, PC, COL<PC>> {

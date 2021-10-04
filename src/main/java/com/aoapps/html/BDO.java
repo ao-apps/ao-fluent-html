@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class BDO<
+public final class BDO<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyBDO<Document, PC, BDO<PC>, BDO__<PC>, BDO_c<PC>> {

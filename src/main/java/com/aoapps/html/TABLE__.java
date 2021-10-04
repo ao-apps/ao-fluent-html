@@ -35,7 +35,7 @@ import com.aoapps.html.any.AnyTABLE__;
  *
  * @author  AO Industries, Inc.
  */
-final public class TABLE__<
+public final class TABLE__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyTABLE__<Document, PC, TABLE__<PC>>

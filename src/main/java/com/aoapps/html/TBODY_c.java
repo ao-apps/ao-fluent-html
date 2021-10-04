@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyTBODY_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class TBODY_c<
+public final class TBODY_c<
 	PC extends TABLE_content<PC>
 >
 	extends AnyTBODY_c<Document, PC, TBODY_c<PC>>

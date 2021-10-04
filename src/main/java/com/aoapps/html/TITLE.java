@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class TITLE<
+public final class TITLE<
 	PC extends MetadataContent<PC>
 > extends AnyTITLE<Document, PC, TITLE<PC>> {
 

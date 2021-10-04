@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class FOOTER<
+public final class FOOTER<
 	PC extends PalpableContent<PC>
 > extends
 	AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {

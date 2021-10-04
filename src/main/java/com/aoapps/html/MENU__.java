@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyMENU__;
  *
  * @author  AO Industries, Inc.
  */
-final public class MENU__<
+public final class MENU__<
 	PC extends InteractiveContent<PC>
 >
 	extends AnyMENU__<Document, PC, MENU__<PC>>

@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class ASIDE<
+public final class ASIDE<
 	PC extends SectioningContent<PC>
 > extends
 	AnyASIDE<Document, PC, ASIDE<PC>, ASIDE__<PC>, ASIDE_c<PC>> {

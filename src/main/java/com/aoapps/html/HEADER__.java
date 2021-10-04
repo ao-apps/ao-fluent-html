@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyHEADER__;
  *
  * @author  AO Industries, Inc.
  */
-final public class HEADER__<
+public final class HEADER__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyHEADER__<Document, PC, HEADER__<PC>>

@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyDIV_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class DIV_c<
+public final class DIV_c<
 	PC extends Union_DL_Palpable<PC>
 >
 	extends AnyDIV_c<Document, PC, DIV_c<PC>>

@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class TH<
+public final class TH<
 	PC extends TR_content<PC>
 > extends
 	AnyTH<Document, PC, TH<PC>, TH__<PC>, TH_c<PC>> {

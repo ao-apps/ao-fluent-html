@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyCITE__;
  *
  * @author  AO Industries, Inc.
  */
-final public class CITE__<
+public final class CITE__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyCITE__<Document, PC, CITE__<PC>>

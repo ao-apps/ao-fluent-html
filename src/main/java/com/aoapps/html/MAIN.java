@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class MAIN<
+public final class MAIN<
 	PC extends PalpableContent<PC>
 > extends
 	AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {

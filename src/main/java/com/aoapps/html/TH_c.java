@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyTH_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class TH_c<
+public final class TH_c<
 	PC extends TR_content<PC>
 >
 	extends AnyTH_c<Document, PC, TH_c<PC>>

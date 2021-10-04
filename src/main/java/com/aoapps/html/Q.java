@@ -36,7 +36,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class Q<
+public final class Q<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyQ<Document, PC, Q<PC>, Q__<PC>, Q_c<PC>> {

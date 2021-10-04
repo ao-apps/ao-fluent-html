@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyDFN_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class DFN_c<
+public final class DFN_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyDFN_c<Document, PC, DFN_c<PC>>

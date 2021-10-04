@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyPROGRESS__;
  *
  * @author  AO Industries, Inc.
  */
-final public class PROGRESS__<
+public final class PROGRESS__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyPROGRESS__<Document, PC, PROGRESS__<PC>>

@@ -37,7 +37,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class PARAM<
+public final class PARAM<
 	PC extends OBJECT_content<PC>
 > extends AnyPARAM<Document, PC, PARAM<PC>> {
 

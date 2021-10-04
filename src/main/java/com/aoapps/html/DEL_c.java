@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyDEL_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class DEL_c<
+public final class DEL_c<
 	PC extends PhrasingContent<PC>
 >
 	extends AnyDEL_c<Document, PC, DEL_c<PC>>

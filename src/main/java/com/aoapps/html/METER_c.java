@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyMETER_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class METER_c<
+public final class METER_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyMETER_c<Document, PC, METER_c<PC>>

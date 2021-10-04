@@ -37,7 +37,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class BODY<
+public final class BODY<
 	PC extends HTML_content<PC>
 > extends
 	AnyBODY<Document, PC, BODY<PC>, BODY__<PC>, BODY_c<PC>> {

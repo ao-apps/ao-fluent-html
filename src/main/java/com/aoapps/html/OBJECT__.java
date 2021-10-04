@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyOBJECT__;
  *
  * @author  AO Industries, Inc.
  */
-final public class OBJECT__<
+public final class OBJECT__<
 	PC extends Union_Embedded_Interactive<PC>
 >
 	extends AnyOBJECT__<Document, PC, OBJECT__<PC>>

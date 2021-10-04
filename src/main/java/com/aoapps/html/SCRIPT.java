@@ -36,7 +36,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class SCRIPT<
+public final class SCRIPT<
 	PC extends ScriptSupportingContent<PC>
 > extends
 	AnySCRIPT<Document, PC, SCRIPT<PC>> {

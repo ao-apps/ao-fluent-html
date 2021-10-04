@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyUL_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class UL_c<
+public final class UL_c<
 	PC extends PalpableContent<PC>
 >
 	extends AnyUL_c<Document, PC, UL_c<PC>>

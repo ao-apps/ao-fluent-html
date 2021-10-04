@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyABBR_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class ABBR_c<
+public final class ABBR_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyABBR_c<Document, PC, ABBR_c<PC>>

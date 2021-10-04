@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyARTICLE_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class ARTICLE_c<
+public final class ARTICLE_c<
 	PC extends SectioningContent<PC>
 >
 	extends AnyARTICLE_c<Document, PC, ARTICLE_c<PC>>

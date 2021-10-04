@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyEM_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class EM_c<
+public final class EM_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyEM_c<Document, PC, EM_c<PC>>

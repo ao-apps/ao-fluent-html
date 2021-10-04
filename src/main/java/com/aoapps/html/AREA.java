@@ -37,7 +37,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class AREA<
+public final class AREA<
 	PC extends PhrasingContent<PC>
 > extends
 	AnyAREA<Document, PC, AREA<PC>> {

@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyDT_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class DT_c<
+public final class DT_c<
 	PC extends Union_DIV_DL<PC>
 >
 	extends AnyDT_c<Document, PC, DT_c<PC>>

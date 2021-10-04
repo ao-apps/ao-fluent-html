@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyH3_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class H3_c<
+public final class H3_c<
 	PC extends HeadingContent<PC>
 >
 	extends AnyH3_c<Document, PC, H3_c<PC>>

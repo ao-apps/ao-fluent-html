@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyKBD_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class KBD_c<
+public final class KBD_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyKBD_c<Document, PC, KBD_c<PC>>

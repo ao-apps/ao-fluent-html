@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyBDI__;
  *
  * @author  AO Industries, Inc.
  */
-final public class BDI__<
+public final class BDI__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyBDI__<Document, PC, BDI__<PC>>

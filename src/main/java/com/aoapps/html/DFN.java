@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class DFN<
+public final class DFN<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyDFN<Document, PC, DFN<PC>, DFN__<PC>, DFN_c<PC>> {

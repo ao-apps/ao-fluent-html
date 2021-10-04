@@ -35,7 +35,7 @@ import com.aoapps.html.any.AnyBODY__;
  *
  * @author  AO Industries, Inc.
  */
-final public class BODY__<
+public final class BODY__<
 	PC extends HTML_content<PC>
 >
 	extends AnyBODY__<Document, PC, BODY__<PC>>

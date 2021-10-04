@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyHTML__;
  *
  * @author  AO Industries, Inc.
  */
-final public class HTML__<
+public final class HTML__<
 	PC extends Content<PC>
 >
 	extends AnyHTML__<Document, PC, HTML__<PC>>

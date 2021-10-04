@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyMARK__;
  *
  * @author  AO Industries, Inc.
  */
-final public class MARK__<
+public final class MARK__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyMARK__<Document, PC, MARK__<PC>>

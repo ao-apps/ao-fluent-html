@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class SUP<
+public final class SUP<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnySUP<Document, PC, SUP<PC>, SUP__<PC>, SUP_c<PC>> {

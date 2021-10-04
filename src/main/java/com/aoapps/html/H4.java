@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class H4<
+public final class H4<
 	PC extends HeadingContent<PC>
 > extends
 	AnyH4<Document, PC, H4<PC>, H4__<PC>, H4_c<PC>> {

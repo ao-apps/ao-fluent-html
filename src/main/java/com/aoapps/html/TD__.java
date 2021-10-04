@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyTD__;
  *
  * @author  AO Industries, Inc.
  */
-final public class TD__<
+public final class TD__<
 	PC extends TR_content<PC>
 >
 	extends AnyTD__<Document, PC, TD__<PC>>

@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnySMALL_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class SMALL_c<
+public final class SMALL_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySMALL_c<Document, PC, SMALL_c<PC>>

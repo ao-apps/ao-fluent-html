@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyASIDE__;
  *
  * @author  AO Industries, Inc.
  */
-final public class ASIDE__<
+public final class ASIDE__<
 	PC extends SectioningContent<PC>
 >
 	extends AnyASIDE__<Document, PC, ASIDE__<PC>>

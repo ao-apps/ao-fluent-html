@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class NAV<
+public final class NAV<
 	PC extends SectioningContent<PC>
 > extends
 	AnyNAV<Document, PC, NAV<PC>, NAV__<PC>, NAV_c<PC>> {

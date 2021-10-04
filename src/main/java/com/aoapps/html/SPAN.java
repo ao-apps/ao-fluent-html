@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class SPAN<
+public final class SPAN<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnySPAN<Document, PC, SPAN<PC>, SPAN__<PC>, SPAN_c<PC>> {

@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class LI<
+public final class LI<
 	PC extends ListContent<PC>
 > extends
 	AnyLI<Document, PC, LI<PC>, LI__<PC>, LI_c<PC>> {

@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyOPTGROUP__;
  *
  * @author  AO Industries, Inc.
  */
-final public class OPTGROUP__<
+public final class OPTGROUP__<
 	PC extends SELECT_content<PC>
 >
 	extends AnyOPTGROUP__<Document, PC, OPTGROUP__<PC>>

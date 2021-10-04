@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyTHEAD_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class THEAD_c<
+public final class THEAD_c<
 	PC extends TABLE_content<PC>
 >
 	extends AnyTHEAD_c<Document, PC, THEAD_c<PC>>

@@ -36,7 +36,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class STYLE<
+public final class STYLE<
 	PC extends MetadataContent<PC>
 > extends AnySTYLE<Document, PC, STYLE<PC>> {
 

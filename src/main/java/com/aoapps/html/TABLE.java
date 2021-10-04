@@ -38,7 +38,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 @SuppressWarnings("deprecation")
-final public class TABLE<
+public final class TABLE<
 	PC extends PalpableContent<PC>
 > extends
 	AnyTABLE<Document, PC, TABLE<PC>, TABLE__<PC>, TABLE_c<PC>> {

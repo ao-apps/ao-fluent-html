@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyCAPTION_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class CAPTION_c<
+public final class CAPTION_c<
 	PC extends TABLE_content<PC>
 >
 	extends AnyCAPTION_c<Document, PC, CAPTION_c<PC>>

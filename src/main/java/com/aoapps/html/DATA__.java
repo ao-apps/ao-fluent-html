@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyDATA__;
  *
  * @author  AO Industries, Inc.
  */
-final public class DATA__<
+public final class DATA__<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyDATA__<Document, PC, DATA__<PC>>

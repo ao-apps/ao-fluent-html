@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnySUP_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class SUP_c<
+public final class SUP_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnySUP_c<Document, PC, SUP_c<PC>>

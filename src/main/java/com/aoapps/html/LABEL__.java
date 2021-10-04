@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyLABEL__;
  *
  * @author  AO Industries, Inc.
  */
-final public class LABEL__<
+public final class LABEL__<
 	PC extends Union_Interactive_Phrasing<PC>
 >
 	extends AnyLABEL__<Document, PC, LABEL__<PC>>

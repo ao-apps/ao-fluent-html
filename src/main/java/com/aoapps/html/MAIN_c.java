@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyMAIN_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class MAIN_c<
+public final class MAIN_c<
 	PC extends PalpableContent<PC>
 >
 	extends AnyMAIN_c<Document, PC, MAIN_c<PC>>

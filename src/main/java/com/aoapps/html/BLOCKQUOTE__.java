@@ -34,7 +34,7 @@ import com.aoapps.html.any.AnyBLOCKQUOTE__;
  *
  * @author  AO Industries, Inc.
  */
-final public class BLOCKQUOTE__<
+public final class BLOCKQUOTE__<
 	PC extends PalpableContent<PC>
 >
 	extends AnyBLOCKQUOTE__<Document, PC, BLOCKQUOTE__<PC>>

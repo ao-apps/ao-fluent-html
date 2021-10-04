@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnySELECT_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class SELECT_c<
+public final class SELECT_c<
 	PC extends Union_Interactive_Phrasing<PC>
 >
 	extends AnySELECT_c<Document, PC, SELECT_c<PC>>

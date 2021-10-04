@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class DL<
+public final class DL<
 	PC extends PalpableContent<PC>
 > extends
 	AnyDL<Document, PC, DL<PC>, DL__<PC>, DL_c<PC>> {

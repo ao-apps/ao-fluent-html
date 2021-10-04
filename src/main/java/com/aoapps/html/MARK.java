@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class MARK<
+public final class MARK<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnyMARK<Document, PC, MARK<PC>, MARK__<PC>, MARK_c<PC>> {

@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyH5__;
  *
  * @author  AO Industries, Inc.
  */
-final public class H5__<
+public final class H5__<
 	PC extends HeadingContent<PC>
 >
 	extends AnyH5__<Document, PC, H5__<PC>>

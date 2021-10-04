@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyBDO_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class BDO_c<
+public final class BDO_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyBDO_c<Document, PC, BDO_c<PC>>

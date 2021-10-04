@@ -33,7 +33,7 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-final public class SAMP<
+public final class SAMP<
 	PC extends Union_Palpable_Phrasing<PC>
 > extends
 	AnySAMP<Document, PC, SAMP<PC>, SAMP__<PC>, SAMP_c<PC>> {

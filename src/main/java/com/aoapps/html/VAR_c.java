@@ -31,7 +31,7 @@ import com.aoapps.html.any.AnyVAR_c;
  *
  * @author  AO Industries, Inc.
  */
-final public class VAR_c<
+public final class VAR_c<
 	PC extends Union_Palpable_Phrasing<PC>
 >
 	extends AnyVAR_c<Document, PC, VAR_c<PC>>

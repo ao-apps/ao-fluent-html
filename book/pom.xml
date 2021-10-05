@@ -71,20 +71,20 @@ along with ao-fluent-html.  If not, see <http://www.gnu.org/licenses />.
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/aoindustries/ao-fluent-html.git</connection>
-		<developerConnection>scm:git:git@github.com:aoindustries/ao-fluent-html.git</developerConnection>
-		<url>https://github.com/aoindustries/ao-fluent-html</url>
+		<connection>scm:git:git://github.com/ao-apps/ao-fluent-html.git</connection>
+		<developerConnection>scm:git:git@github.com:ao-apps/ao-fluent-html.git</developerConnection>
+		<url>https://github.com/ao-apps/ao-fluent-html</url>
 		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/aoindustries/ao-fluent-html/issues</url>
+		<url>https://github.com/ao-apps/ao-fluent-html/issues</url>
 	</issueManagement>
 
 	<ciManagement>
 		<system>GitHub Actions</system>
-		<url>https://github.com/aoindustries/ao-fluent-html/actions</url>
+		<url>https://github.com/ao-apps/ao-fluent-html/actions</url>
 	</ciManagement>
 
 	<repositories>

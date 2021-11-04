@@ -22,6 +22,7 @@
  */
 package com.aoapps.html;
 
+import com.aoapps.html.any.AnyINPUT;
 import com.aoapps.html.any.AnyUnion_Interactive_Phrasing;
 import com.aoapps.html.any.Suppliers;
 import com.aoapps.lang.io.function.IOConsumerE;
@@ -121,7 +122,7 @@ public interface Union_Interactive_Phrasing<
 		}
 
 		@Override
-		public INPUT.Dynamic<__> dynamic(INPUT.Dynamic.Type type) throws IOException {
+		public INPUT.Dynamic<__> dynamic(AnyINPUT.Dynamic.Type type) throws IOException {
 			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
 		}
 
@@ -129,7 +130,7 @@ public interface Union_Interactive_Phrasing<
 		 * @param  <Ex>  An arbitrary exception type that may be thrown
 		 */
 		@Override
-		public <Ex extends Throwable> INPUT.Dynamic<__> dynamic(IOSupplierE<? extends INPUT.Dynamic.Type, Ex> type) throws IOException, Ex {
+		public <Ex extends Throwable> INPUT.Dynamic<__> dynamic(IOSupplierE<? extends AnyINPUT.Dynamic.Type, Ex> type) throws IOException, Ex {
 			return dynamic((type == null) ? null : type.get());
 		}
 

@@ -22,6 +22,7 @@
  */
 package com.aoapps.html;
 
+import com.aoapps.html.any.AnyAREA;
 import com.aoapps.html.any.AnyPhrasingContent;
 import com.aoapps.html.any.Circle;
 import com.aoapps.html.any.Suppliers;
@@ -78,7 +79,7 @@ public interface PhrasingContent<
 
 	@Override
 	default AREA<__> area(Rectangle rect) throws IOException {
-		return area().shape(AREA.Shape.RECT).coords(rect);
+		return area().shape(AnyAREA.Shape.RECT).coords(rect);
 	}
 
 	/**
@@ -86,12 +87,12 @@ public interface PhrasingContent<
 	 */
 	@Override
 	default <Ex extends Throwable> AREA<__> area(Suppliers.Rectangle<Ex> rect) throws IOException, Ex {
-		return area().shape(AREA.Shape.RECT).coords(rect);
+		return area().shape(AnyAREA.Shape.RECT).coords(rect);
 	}
 
 	@Override
 	default AREA<__> area(Circle circle) throws IOException {
-		return area().shape(AREA.Shape.CIRCLE).coords(circle);
+		return area().shape(AnyAREA.Shape.CIRCLE).coords(circle);
 	}
 
 	/**
@@ -99,12 +100,12 @@ public interface PhrasingContent<
 	 */
 	@Override
 	default <Ex extends Throwable> AREA<__> area(Suppliers.Circle<Ex> circle) throws IOException, Ex {
-		return area().shape(AREA.Shape.CIRCLE).coords(circle);
+		return area().shape(AnyAREA.Shape.CIRCLE).coords(circle);
 	}
 
 	@Override
 	default AREA<__> area(Polygon poly) throws IOException {
-		return area().shape(AREA.Shape.POLY).coords(poly);
+		return area().shape(AnyAREA.Shape.POLY).coords(poly);
 	}
 
 	/**
@@ -112,7 +113,7 @@ public interface PhrasingContent<
 	 */
 	@Override
 	default <Ex extends Throwable> AREA<__> area(Suppliers.Polygon<Ex> poly) throws IOException, Ex {
-		return area().shape(AREA.Shape.POLY).coords(poly);
+		return area().shape(AnyAREA.Shape.POLY).coords(poly);
 	}
 
 	@Override

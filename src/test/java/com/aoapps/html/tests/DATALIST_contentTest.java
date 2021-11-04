@@ -37,7 +37,7 @@ import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.Union_Palpable_Phrasing;
 import com.aoapps.html.any.tests.AnyDATALIST_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -109,6 +109,6 @@ public class DATALIST_contentTest extends AnyDATALIST_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DATALIST_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, DATALIST_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, DATALIST_content.class);
 	}
 }

@@ -30,7 +30,7 @@ import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_DIV_DL;
 import com.aoapps.html.Union_DL_Palpable;
 import com.aoapps.html.any.tests.AnyDL_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -95,6 +95,6 @@ public class DL_contentTest extends AnyDL_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DL_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, DL_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, DL_content.class);
 	}
 }

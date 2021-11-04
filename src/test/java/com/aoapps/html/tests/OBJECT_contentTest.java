@@ -27,7 +27,7 @@ import com.aoapps.html.Content;
 import com.aoapps.html.OBJECT_content;
 import com.aoapps.html.Union_Embedded_Interactive;
 import com.aoapps.html.any.tests.AnyOBJECT_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -89,6 +89,6 @@ public class OBJECT_contentTest extends AnyOBJECT_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OBJECT_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, OBJECT_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, OBJECT_content.class);
 	}
 }

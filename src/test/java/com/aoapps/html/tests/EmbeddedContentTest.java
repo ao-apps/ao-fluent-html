@@ -28,7 +28,7 @@ import com.aoapps.html.EmbeddedContent;
 import com.aoapps.html.Union_Embedded_Interactive;
 import com.aoapps.html.Union_Embedded_Palpable_Phrasing;
 import com.aoapps.html.any.tests.AnyEmbeddedContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -91,6 +91,6 @@ public class EmbeddedContentTest extends AnyEmbeddedContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), EmbeddedContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, EmbeddedContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, EmbeddedContent.class);
 	}
 }

@@ -26,7 +26,7 @@ import com.aoapps.collections.AoArrays;
 import com.aoapps.html.Content;
 import com.aoapps.html.HeadingContent;
 import com.aoapps.html.any.tests.AnyHeadingContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -88,6 +88,6 @@ public class HeadingContentTest extends AnyHeadingContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), HeadingContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, HeadingContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, HeadingContent.class);
 	}
 }

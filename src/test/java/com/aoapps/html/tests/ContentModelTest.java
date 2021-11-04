@@ -35,7 +35,7 @@ import com.aoapps.html.PhrasingContent;
 import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.SectioningContent;
 import com.aoapps.html.TextContent;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Test;
 
 /**
@@ -69,7 +69,7 @@ public class ContentModelTest {
 	}
 
 	static void testContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		InheritanceTests.testInterfaces(
+		InheritanceTestHelper.testInterfaces(
 			Content.class,
 			iface -> iface.getSimpleName().endsWith("Content"),
 			getAllContentModels(),
@@ -81,7 +81,7 @@ public class ContentModelTest {
 	@Test
 	public void testNoImplementInherited() {
 		for(Class<? extends Content> iface : getAllContentModels()) {
-			InheritanceTests.testNoImplementInherited(Content.class, iface);
+			InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
 		}
 	}
 }

@@ -26,7 +26,7 @@ import com.aoapps.collections.AoArrays;
 import com.aoapps.html.Content;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.any.tests.AnyUnion_COLGROUP_ScriptSupportingTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -88,6 +88,6 @@ public class Union_COLGROUP_ScriptSupportingTest extends AnyUnion_COLGROUP_Scrip
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_COLGROUP_ScriptSupporting.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, Union_COLGROUP_ScriptSupporting.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_COLGROUP_ScriptSupporting.class);
 	}
 }

@@ -27,7 +27,7 @@ import com.aoapps.html.COLGROUP_content;
 import com.aoapps.html.Content;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.any.tests.AnyCOLGROUP_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -89,6 +89,6 @@ public class COLGROUP_contentTest extends AnyCOLGROUP_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), COLGROUP_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, COLGROUP_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, COLGROUP_content.class);
 	}
 }

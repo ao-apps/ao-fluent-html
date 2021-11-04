@@ -28,7 +28,7 @@ import com.aoapps.html.InteractiveContent;
 import com.aoapps.html.Union_Embedded_Interactive;
 import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.any.tests.AnyInteractiveContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -91,6 +91,6 @@ public class InteractiveContentTest extends AnyInteractiveContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), InteractiveContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, InteractiveContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, InteractiveContent.class);
 	}
 }

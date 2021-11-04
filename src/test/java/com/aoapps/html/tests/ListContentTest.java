@@ -28,7 +28,7 @@ import com.aoapps.html.ListContent;
 import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.any.tests.AnyListContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -91,6 +91,6 @@ public class ListContentTest extends AnyListContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), ListContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, ListContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, ListContent.class);
 	}
 }

@@ -28,7 +28,7 @@ import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.TR_content;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.any.tests.AnyTR_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -91,6 +91,6 @@ public class TR_contentTest extends AnyTR_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), TR_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, TR_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, TR_content.class);
 	}
 }

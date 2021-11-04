@@ -33,7 +33,7 @@ import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.Union_Palpable_Phrasing;
 import com.aoapps.html.Union_TBODY_THEAD_TFOOT;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Test;
 
 /**
@@ -64,7 +64,7 @@ public class UnionContentTest {
 	}
 
 	static void testUnions(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		InheritanceTests.testInterfaces(
+		InheritanceTestHelper.testInterfaces(
 			Content.class,
 			iface -> iface.getSimpleName().startsWith("Union_"),
 			getAllUnions(),
@@ -76,7 +76,7 @@ public class UnionContentTest {
 	@Test
 	public void testNoImplementInherited() {
 		for(Class<? extends Content> iface : getAllUnions()) {
-			InheritanceTests.testNoImplementInherited(Content.class, iface);
+			InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
 		}
 	}
 }

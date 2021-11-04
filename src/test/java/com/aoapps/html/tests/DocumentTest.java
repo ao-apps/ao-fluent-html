@@ -25,7 +25,7 @@ package com.aoapps.html.tests;
 import com.aoapps.html.Content;
 import com.aoapps.html.Document;
 import com.aoapps.html.any.tests.AnyDocumentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Test;
 
 /**
@@ -78,6 +78,6 @@ public class DocumentTest extends AnyDocumentTest {
 	@Test
 	@Override
 	public void testNoImplementInherited() {
-		InheritanceTests.testNoImplementInherited(Content.class, Document.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Document.class);
 	}
 }

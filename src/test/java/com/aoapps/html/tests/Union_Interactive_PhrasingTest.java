@@ -27,7 +27,7 @@ import com.aoapps.html.Content;
 import com.aoapps.html.Union_Embedded_Interactive;
 import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.any.tests.AnyUnion_Interactive_PhrasingTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -89,6 +89,6 @@ public class Union_Interactive_PhrasingTest extends AnyUnion_Interactive_Phrasin
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Interactive_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, Union_Interactive_Phrasing.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Interactive_Phrasing.class);
 	}
 }

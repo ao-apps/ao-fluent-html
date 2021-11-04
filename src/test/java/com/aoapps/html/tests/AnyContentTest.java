@@ -24,7 +24,7 @@ package com.aoapps.html.tests;
 
 import com.aoapps.html.AnyContent;
 import com.aoapps.html.Content;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Test;
 
 /**
@@ -77,6 +77,6 @@ public class AnyContentTest extends com.aoapps.html.any.tests.AnyContentTest {
 	@Test
 	@Override
 	public void testNoImplementInherited() {
-		InheritanceTests.testNoImplementInherited(Content.class, AnyContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, AnyContent.class);
 	}
 }

@@ -30,7 +30,7 @@ import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_DATALIST_OPTGROUP;
 import com.aoapps.html.any.tests.AnySELECT_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -94,6 +94,6 @@ public class SELECT_contentTest extends AnySELECT_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), SELECT_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, SELECT_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, SELECT_content.class);
 	}
 }

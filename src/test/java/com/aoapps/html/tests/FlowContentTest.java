@@ -41,7 +41,7 @@ import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.Union_Palpable_Phrasing;
 import com.aoapps.html.any.tests.AnyFlowContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -117,6 +117,6 @@ public class FlowContentTest extends AnyFlowContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), FlowContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, FlowContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, FlowContent.class);
 	}
 }

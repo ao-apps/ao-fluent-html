@@ -29,7 +29,7 @@ import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_DATALIST_OPTGROUP;
 import com.aoapps.html.any.tests.AnyOPTGROUP_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -93,6 +93,6 @@ public class OPTGROUP_contentTest extends AnyOPTGROUP_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OPTGROUP_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, OPTGROUP_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, OPTGROUP_content.class);
 	}
 }

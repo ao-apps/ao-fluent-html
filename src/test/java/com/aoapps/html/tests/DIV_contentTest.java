@@ -43,7 +43,7 @@ import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.Union_Palpable_Phrasing;
 import com.aoapps.html.any.tests.AnyDIV_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -121,6 +121,6 @@ public class DIV_contentTest extends AnyDIV_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DIV_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, DIV_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, DIV_content.class);
 	}
 }

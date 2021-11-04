@@ -29,7 +29,7 @@ import com.aoapps.html.TABLE_content;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_TBODY_THEAD_TFOOT;
 import com.aoapps.html.any.tests.AnyTABLE_contentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -93,6 +93,6 @@ public class TABLE_contentTest extends AnyTABLE_contentTest {
 			-1,
 			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), TABLE_content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, TABLE_content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, TABLE_content.class);
 	}
 }

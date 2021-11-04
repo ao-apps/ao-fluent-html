@@ -35,7 +35,7 @@ import com.aoapps.html.Union_Embedded_Palpable_Phrasing;
 import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.Union_Palpable_Phrasing;
 import com.aoapps.html.any.tests.AnyPalpableContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -105,6 +105,6 @@ public class PalpableContentTest extends AnyPalpableContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), PalpableContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, PalpableContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, PalpableContent.class);
 	}
 }

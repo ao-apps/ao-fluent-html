@@ -29,7 +29,7 @@ import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.any.tests.AnyMetadataContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -93,6 +93,6 @@ public class MetadataContentTest extends AnyMetadataContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), MetadataContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, MetadataContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, MetadataContent.class);
 	}
 }

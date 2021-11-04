@@ -24,7 +24,7 @@ package com.aoapps.html.tests;
 
 import com.aoapps.collections.AoArrays;
 import com.aoapps.html.Content;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -86,6 +86,6 @@ public class ContentTest extends com.aoapps.html.any.tests.ContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), Content.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, Content.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Content.class);
 	}
 }

@@ -35,7 +35,7 @@ import com.aoapps.html.Union_Interactive_Phrasing;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.Union_Palpable_Phrasing;
 import com.aoapps.html.any.tests.AnyPhrasingContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -105,6 +105,6 @@ public class PhrasingContentTest extends AnyPhrasingContentTest {
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), PhrasingContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, PhrasingContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, PhrasingContent.class);
 	}
 }

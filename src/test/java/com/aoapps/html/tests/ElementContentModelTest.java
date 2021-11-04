@@ -33,7 +33,7 @@ import com.aoapps.html.OPTGROUP_content;
 import com.aoapps.html.SELECT_content;
 import com.aoapps.html.TABLE_content;
 import com.aoapps.html.TR_content;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Test;
 
 /**
@@ -64,7 +64,7 @@ public class ElementContentModelTest {
 	}
 
 	static void testElementContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		InheritanceTests.testInterfaces(
+		InheritanceTestHelper.testInterfaces(
 			Content.class,
 			iface -> iface.getSimpleName().endsWith("_content"),
 			getAllElementContentModels(),
@@ -76,7 +76,7 @@ public class ElementContentModelTest {
 	@Test
 	public void testNoImplementInherited() {
 		for(Class<? extends Content> iface : getAllElementContentModels()) {
-			InheritanceTests.testNoImplementInherited(Content.class, iface);
+			InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
 		}
 	}
 }

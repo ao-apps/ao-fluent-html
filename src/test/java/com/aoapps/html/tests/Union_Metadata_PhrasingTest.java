@@ -28,7 +28,7 @@ import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_Metadata_Phrasing;
 import com.aoapps.html.any.tests.AnyUnion_Metadata_PhrasingTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -91,6 +91,6 @@ public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest 
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, Union_Metadata_Phrasing.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Metadata_Phrasing.class);
 	}
 }

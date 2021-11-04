@@ -27,7 +27,7 @@ import com.aoapps.html.Content;
 import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.any.tests.AnyScriptSupportingContentTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -89,6 +89,6 @@ public class ScriptSupportingContentTest extends AnyScriptSupportingContentTest 
 			-1,
 			AoArrays.indexOf(ContentModelTest.getAllContentModels(), ScriptSupportingContent.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, ScriptSupportingContent.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, ScriptSupportingContent.class);
 	}
 }

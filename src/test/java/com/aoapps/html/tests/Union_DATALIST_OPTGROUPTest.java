@@ -26,7 +26,7 @@ import com.aoapps.collections.AoArrays;
 import com.aoapps.html.Content;
 import com.aoapps.html.Union_DATALIST_OPTGROUP;
 import com.aoapps.html.any.tests.AnyUnion_DATALIST_OPTGROUPTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -88,6 +88,6 @@ public class Union_DATALIST_OPTGROUPTest extends AnyUnion_DATALIST_OPTGROUPTest 
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DATALIST_OPTGROUP.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, Union_DATALIST_OPTGROUP.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_DATALIST_OPTGROUP.class);
 	}
 }

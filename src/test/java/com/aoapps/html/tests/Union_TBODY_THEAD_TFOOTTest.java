@@ -28,7 +28,7 @@ import com.aoapps.html.ScriptSupportingContent;
 import com.aoapps.html.Union_COLGROUP_ScriptSupporting;
 import com.aoapps.html.Union_TBODY_THEAD_TFOOT;
 import com.aoapps.html.any.tests.AnyUnion_TBODY_THEAD_TFOOTTest;
-import com.aoapps.html.any.tests.InheritanceTests;
+import com.aoapps.html.any.tests.InheritanceTestHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -91,6 +91,6 @@ public class Union_TBODY_THEAD_TFOOTTest extends AnyUnion_TBODY_THEAD_TFOOTTest 
 			-1,
 			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_TBODY_THEAD_TFOOT.class)
 		);
-		InheritanceTests.testNoImplementInherited(Content.class, Union_TBODY_THEAD_TFOOT.class);
+		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_TBODY_THEAD_TFOOT.class);
 	}
 }

@@ -32,9 +32,10 @@ import java.io.Writer;
  *
  * @author  AO Industries, Inc.
  */
-public final class INPUT {
+public abstract class INPUT {
 
-	private INPUT() {}
+	/** Make no instances. */
+	private INPUT() {throw new AssertionError();}
 
 	/**
 	 * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.

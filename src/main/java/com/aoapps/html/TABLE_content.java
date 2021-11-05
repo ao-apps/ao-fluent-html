@@ -173,7 +173,7 @@ public interface TABLE_content<
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */
-	@Deprecated
+	@Deprecated(forRemoval = false)
 	@Override
 	default TR<__> tr() throws IOException {
 		return Union_TBODY_THEAD_TFOOT.super.tr();
@@ -185,7 +185,7 @@ public interface TABLE_content<
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */
-	@Deprecated
+	@Deprecated(forRemoval = false)
 	@Override
 	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
 		return Union_TBODY_THEAD_TFOOT.super.tr__(tr);
@@ -195,7 +195,7 @@ public interface TABLE_content<
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */
-	@Deprecated
+	@Deprecated(forRemoval = false)
 	@Override
 	default TR_c<__> tr_c() throws IOException {
 		return Union_TBODY_THEAD_TFOOT.super.tr_c();

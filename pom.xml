@@ -93,9 +93,15 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 	</issueManagement>
 
 	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://jenkins.aoindustries.com/job/ao/job/oss/job/fluent-html/</url>
+	</ciManagement>
+	<!-- Only one allowed in POM:
+	<ciManagement>
 		<system>GitHub Actions</system>
 		<url>https://github.com/ao-apps/ao-fluent-html/actions</url>
 	</ciManagement>
+	-->
 
 	<repositories>
 		<!-- Repository required here, too, so can find parent -->
@@ -185,7 +191,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 										</artifactItem>
 										<!-- Test Direct -->
 										<!-- Not published: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><classifier>tests</classifier> -->
-										<!-- No transitive dependencies: <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId> -->
+										<!-- No transitive dependencies: <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId><classifier>javadoc</classifier> -->
 										<artifactItem>
 											<groupId>junit</groupId><artifactId>junit</artifactId><classifier>javadoc</classifier>
 											<includes>element-list, package-list</includes>
@@ -219,7 +225,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 								</offlineLink>
 								<!-- Test Direct -->
 								<!-- Not published: <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><classifier>tests</classifier> -->
-								<!-- No transitive dependencies: <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId> -->
+								<!-- No transitive dependencies: <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId><classifier>javadoc</classifier> -->
 								<offlineLink>
 									<url>https://junit.org/junit4/javadoc/latest/</url>
 									<location>${project.build.directory}/offlineLinks/junit/junit</location>

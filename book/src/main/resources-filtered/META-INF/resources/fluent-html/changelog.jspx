@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-02-15T21:21:57-06:00"
+		dateModified="2022-03-16T15:24:29-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -47,7 +47,11 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 				artifactId="@{documented.artifactId}"
 				repository="@{nexusUrl}content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Added <code><ao:a href="https://www.w3schools.com/tags/att_global_tabindex.asp">tabindex</ao:a></code> attribute to remaining elements.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release

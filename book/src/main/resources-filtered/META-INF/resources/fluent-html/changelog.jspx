@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-03-17T18:43:52-05:00"
+		dateModified="2022-03-18T10:02:22-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -55,6 +55,11 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 						attribute is now a <ao:a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes">global attribute</ao:a>.
 					</li>
 					<li>Implemented <code><ao:a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element"><![CDATA[&lt;textarea&gt;]]></ao:a></code>.</li>
+					<li>
+						Changed <code><ao:a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element"><![CDATA[&lt;option&gt;]]></ao:a></code>
+						and <code><ao:a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element"><![CDATA[&lt;title&gt;]]></ao:a></code>
+						from <code>MediaWritable</code> to <code>TextContent</code>.
+					</li>
 				</ul>
 			</changelog:release>
 		</c:if>

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,6 +23,7 @@
 package com.aoapps.html;
 
 import com.aoapps.html.any.AnyUnion_DATALIST_OPTGROUP;
+import com.aoapps.lang.io.function.IOConsumerE;
 import java.io.IOException;
 
 /**
@@ -50,6 +51,26 @@ public interface Union_DATALIST_OPTGROUP<
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new OPTION<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates an option element with no attributes and the given body.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ option__(IOConsumerE<? super OPTION__<__>, Ex> option) throws IOException, Ex {
+		return option().__(option);
+	}
+
+	@Override
+	default OPTION_c<__> option_c() throws IOException {
+		return option()._c();
 	}
 	// </editor-fold>
 }

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,6 +25,7 @@ package com.aoapps.html;
 import com.aoapps.html.any.AnyMetadataContent;
 import com.aoapps.html.any.AnySTYLE;
 import com.aoapps.html.any.Suppliers;
+import com.aoapps.lang.io.function.IOConsumerE;
 import com.aoapps.lang.io.function.IOSupplierE;
 import java.io.IOException;
 
@@ -118,6 +119,25 @@ public interface MetadataContent<
 		__ pc = (__)this;
 		Document document = getDocument();
 		return new TITLE<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a title element with no attributes and the given body.
+	 * <p>
+	 * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">4.2.2 The title element</a>.
+	 * </p>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ title__(IOConsumerE<? super TITLE__<__>, Ex> title) throws IOException, Ex {
+		return title().__(title);
+	}
+
+	@Override
+	default TITLE_c<__> title_c() throws IOException {
+		return title()._c();
 	}
 	// </editor-fold>
 }

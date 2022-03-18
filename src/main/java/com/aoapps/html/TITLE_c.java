@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,41 +22,22 @@
  */
 package com.aoapps.html;
 
-import com.aoapps.html.any.AnyOPTION;
-import java.io.IOException;
-import java.io.Writer;
+import com.aoapps.html.any.AnyTITLE_c;
 
 /**
- * <ul>
- * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
- * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
- * </ul>
+ * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">4.2.2 The title element</a>.
  *
  * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-public final class OPTION<
-	PC extends Union_DATALIST_OPTGROUP<PC>
-> extends AnyOPTION<Document, PC, OPTION<PC>, OPTION__<PC>, OPTION_c<PC>> {
+public final class TITLE_c<
+	PC extends MetadataContent<PC>
+>
+	extends AnyTITLE_c<Document, PC, TITLE_c<PC>>
+	implements TextContent<TITLE_c<PC>> {
 
-	OPTION(Document document, PC pc) {
-		super(document, pc);
-	}
-
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected OPTION<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
-	}
-
-	@Override
-	protected OPTION__<PC> new__() {
-		return new OPTION__<>(this);
-	}
-
-	@Override
-	protected OPTION_c<PC> new_c() {
-		return new OPTION_c<>(this);
+	TITLE_c(TITLE<PC> element) {
+		super(element);
 	}
 }

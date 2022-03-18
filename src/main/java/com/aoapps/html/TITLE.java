@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,7 +35,7 @@ import java.io.Writer;
  */
 public final class TITLE<
 	PC extends MetadataContent<PC>
-> extends AnyTITLE<Document, PC, TITLE<PC>> {
+> extends AnyTITLE<Document, PC, TITLE<PC>, TITLE__<PC>, TITLE_c<PC>> {
 
 	TITLE(Document document, PC pc) {
 		super(document, pc);
@@ -45,5 +45,15 @@ public final class TITLE<
 	@Override
 	protected TITLE<PC> writeOpen(Writer out) throws IOException {
 		return super.writeOpen(out);
+	}
+
+	@Override
+	protected TITLE__<PC> new__() {
+		return new TITLE__<>(this);
+	}
+
+	@Override
+	protected TITLE_c<PC> new_c() {
+		return new TITLE_c<>(this);
 	}
 }

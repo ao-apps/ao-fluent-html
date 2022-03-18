@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,19 +22,26 @@
  */
 package com.aoapps.html;
 
-import com.aoapps.html.any.AnyTextContent;
+import com.aoapps.html.any.AnyTEXTAREA__;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/dom.html#text-content">3.2.5.2.5 Phrasing content / Text</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">4.10.11 The textarea element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea">&lt;textarea&gt;: The Textarea element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_textarea.asp">HTML textarea tag</a>.</li>
+ * </ul>
  *
- * @param  <__>  This content model, which will be the parent content model of child elements
+ * @param  <PC>  The parent content model this element is within
  *
  * @author  AO Industries, Inc.
  */
-@SuppressWarnings("MarkerInterface")
-public interface TextContent<
-	__ extends TextContent<__>
-> extends AnyTextContent<Document, __>,
-	Content<__> {
+public final class TEXTAREA__<
+	PC extends Union_Interactive_Phrasing<PC>
+>
+	extends AnyTEXTAREA__<Document, PC, TEXTAREA__<PC>>
+	implements TextContent<TEXTAREA__<PC>> {
 
+	TEXTAREA__(TEXTAREA<PC> element) {
+		super(element);
+	}
 }

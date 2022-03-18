@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -311,8 +311,35 @@ public interface Union_Interactive_Phrasing<
 		return select()._c();
 	}
 	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="TODO: TEXTAREA">
-	// TODO: Set indentation depth back to zero before invoking body
+	// <editor-fold defaultstate="collapsed" desc="TEXTAREA">
+	@Override
+	default TEXTAREA<__> textarea() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new TEXTAREA<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
+
+	/**
+	 * Creates a textarea element with no attributes and the given body.
+	 * <ul>
+	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element">4.10.11 The textarea element</a>.</li>
+	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea">&lt;textarea&gt;: The Textarea element</a>.</li>
+	 * <li>See <a href="https://www.w3schools.com/tags/tag_textarea.asp">HTML textarea tag</a>.</li>
+	 * </ul>
+	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @return  This content model, which will be the parent content model of child elements
+	 */
+	default <Ex extends Throwable> __ textarea__(IOConsumerE<? super TEXTAREA__<__>, Ex> textarea) throws IOException, Ex {
+		return textarea().__(textarea);
+	}
+
+	@Override
+	default TEXTAREA_c<__> textarea_c() throws IOException {
+		return textarea()._c();
+	}
 	// </editor-fold>
 	// Inherited: VIDEO
 }

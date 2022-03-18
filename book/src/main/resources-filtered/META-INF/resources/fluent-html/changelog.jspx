@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-03-16T16:37:04-05:00"
+		dateModified="2022-03-17T18:43:52-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -54,6 +54,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 						The <code><ao:a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-fe-autofocus">autofocus</ao:a></code>
 						attribute is now a <ao:a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes">global attribute</ao:a>.
 					</li>
+					<li>Implemented <code><ao:a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-textarea-element"><![CDATA[&lt;textarea&gt;]]></ao:a></code>.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

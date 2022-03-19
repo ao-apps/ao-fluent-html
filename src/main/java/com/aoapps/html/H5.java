@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class H5<
 	PC extends HeadingContent<PC>
-> extends
-	AnyH5<Document, PC, H5<PC>, H5__<PC>, H5_c<PC>> {
+> extends AnyH5<Document, PC, H5<PC>, H5__<PC>, H5_c<PC>> {
 
 	H5(Document document, PC pc) {
 		super(document, pc);

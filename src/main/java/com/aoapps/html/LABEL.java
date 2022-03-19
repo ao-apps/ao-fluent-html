@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class LABEL<
 	PC extends Union_Interactive_Phrasing<PC>
-> extends
-	AnyLABEL<Document, PC, LABEL<PC>, LABEL__<PC>, LABEL_c<PC>> {
+> extends AnyLABEL<Document, PC, LABEL<PC>, LABEL__<PC>, LABEL_c<PC>> {
 
 	LABEL(Document document, PC pc) {
 		super(document, pc);

@@ -55,8 +55,7 @@ public final class INPUT {
 	@SuppressWarnings("deprecation")
 	public static final class Dynamic<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Dynamic<Document, PC, Dynamic<PC>> {
+	> extends AnyINPUT.Dynamic<Document, PC, Dynamic<PC>> {
 
 		protected Dynamic(Document document, PC pc) {
 			super(document, pc);
@@ -84,8 +83,7 @@ public final class INPUT {
 	 */
 	public static final class Button<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Button<Document, PC, Button<PC>> {
+	> extends AnyINPUT.Button<Document, PC, Button<PC>> {
 
 		protected Button(Document document, PC pc) {
 			super(document, pc);
@@ -105,8 +103,7 @@ public final class INPUT {
 	 */
 	public static final class Checkbox<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Checkbox<Document, PC, Checkbox<PC>> {
+	> extends AnyINPUT.Checkbox<Document, PC, Checkbox<PC>> {
 
 		protected Checkbox(Document document, PC pc) {
 			super(document, pc);
@@ -126,8 +123,7 @@ public final class INPUT {
 	 */
 	public static final class Color<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Color<Document, PC, Color<PC>> {
+	> extends AnyINPUT.Color<Document, PC, Color<PC>> {
 
 		protected Color(Document document, PC pc) {
 			super(document, pc);
@@ -147,8 +143,7 @@ public final class INPUT {
 	 */
 	public static final class Date<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Date<Document, PC, Date<PC>> {
+	> extends AnyINPUT.Date<Document, PC, Date<PC>> {
 
 		protected Date(Document document, PC pc) {
 			super(document, pc);
@@ -168,8 +163,7 @@ public final class INPUT {
 	 */
 	public static final class DatetimeLocal<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.DatetimeLocal<Document, PC, DatetimeLocal<PC>> {
+	> extends AnyINPUT.DatetimeLocal<Document, PC, DatetimeLocal<PC>> {
 
 		protected DatetimeLocal(Document document, PC pc) {
 			super(document, pc);
@@ -189,8 +183,7 @@ public final class INPUT {
 	 */
 	public static final class Email<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Email<Document, PC, Email<PC>> {
+	> extends AnyINPUT.Email<Document, PC, Email<PC>> {
 
 		protected Email(Document document, PC pc) {
 			super(document, pc);
@@ -213,8 +206,7 @@ public final class INPUT {
 	 */
 	public static final class File<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.File<Document, PC, File<PC>> {
+	> extends AnyINPUT.File<Document, PC, File<PC>> {
 
 		protected File(Document document, PC pc) {
 			super(document, pc);
@@ -234,8 +226,7 @@ public final class INPUT {
 	 */
 	public static final class Hidden<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Hidden<Document, PC, Hidden<PC>> {
+	> extends AnyINPUT.Hidden<Document, PC, Hidden<PC>> {
 
 		protected Hidden(Document document, PC pc) {
 			super(document, pc);
@@ -259,8 +250,7 @@ public final class INPUT {
 	@SuppressWarnings("deprecation")
 	public static final class Image<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Image<Document, PC, Image<PC>> {
+	> extends AnyINPUT.Image<Document, PC, Image<PC>> {
 
 		protected Image(Document document, PC pc) {
 			super(document, pc);
@@ -280,8 +270,7 @@ public final class INPUT {
 	 */
 	public static final class Month<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Month<Document, PC, Month<PC>> {
+	> extends AnyINPUT.Month<Document, PC, Month<PC>> {
 
 		protected Month(Document document, PC pc) {
 			super(document, pc);
@@ -301,8 +290,7 @@ public final class INPUT {
 	 */
 	public static final class Number<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Number<Document, PC, Number<PC>> {
+	> extends AnyINPUT.Number<Document, PC, Number<PC>> {
 
 		protected Number(Document document, PC pc) {
 			super(document, pc);
@@ -322,8 +310,7 @@ public final class INPUT {
 	 */
 	public static final class Password<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Password<Document, PC, Password<PC>> {
+	> extends AnyINPUT.Password<Document, PC, Password<PC>> {
 
 		protected Password(Document document, PC pc) {
 			super(document, pc);
@@ -343,8 +330,7 @@ public final class INPUT {
 	 */
 	public static final class Radio<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Radio<Document, PC, Radio<PC>> {
+	> extends AnyINPUT.Radio<Document, PC, Radio<PC>> {
 
 		public Radio(Document document, PC pc) {
 			super(document, pc);
@@ -364,8 +350,7 @@ public final class INPUT {
 	 */
 	public static final class Range<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Range<Document, PC, Range<PC>> {
+	> extends AnyINPUT.Range<Document, PC, Range<PC>> {
 
 		protected Range(Document document, PC pc) {
 			super(document, pc);
@@ -385,8 +370,7 @@ public final class INPUT {
 	 */
 	public static final class Reset<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Reset<Document, PC, Reset<PC>> {
+	> extends AnyINPUT.Reset<Document, PC, Reset<PC>> {
 
 		protected Reset(Document document, PC pc) {
 			super(document, pc);
@@ -406,8 +390,7 @@ public final class INPUT {
 	 */
 	public static final class Search<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Search<Document, PC, Search<PC>> {
+	> extends AnyINPUT.Search<Document, PC, Search<PC>> {
 
 		protected Search(Document document, PC pc) {
 			super(document, pc);
@@ -430,8 +413,7 @@ public final class INPUT {
 	 */
 	public static final class Submit<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Submit<Document, PC, Submit<PC>> {
+	> extends AnyINPUT.Submit<Document, PC, Submit<PC>> {
 
 		protected Submit(Document document, PC pc) {
 			super(document, pc);
@@ -451,8 +433,7 @@ public final class INPUT {
 	 */
 	public static final class Tel<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Tel<Document, PC, Tel<PC>> {
+	> extends AnyINPUT.Tel<Document, PC, Tel<PC>> {
 
 		protected Tel(Document document, PC pc) {
 			super(document, pc);
@@ -472,8 +453,7 @@ public final class INPUT {
 	 */
 	public static final class Text<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Text<Document, PC, Text<PC>> {
+	> extends AnyINPUT.Text<Document, PC, Text<PC>> {
 
 		protected Text(Document document, PC pc) {
 			super(document, pc);
@@ -493,8 +473,7 @@ public final class INPUT {
 	 */
 	public static final class Time<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Time<Document, PC, Time<PC>> {
+	> extends AnyINPUT.Time<Document, PC, Time<PC>> {
 
 		protected Time(Document document, PC pc) {
 			super(document, pc);
@@ -514,8 +493,7 @@ public final class INPUT {
 	 */
 	public static final class Url<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Url<Document, PC, Url<PC>> {
+	> extends AnyINPUT.Url<Document, PC, Url<PC>> {
 
 		protected Url(Document document, PC pc) {
 			super(document, pc);
@@ -535,8 +513,7 @@ public final class INPUT {
 	 */
 	public static final class Week<
 		PC extends Union_Interactive_Phrasing<PC>
-	> extends
-		AnyINPUT.Week<Document, PC, Week<PC>> {
+	> extends AnyINPUT.Week<Document, PC, Week<PC>> {
 
 		protected Week(Document document, PC pc) {
 			super(document, pc);

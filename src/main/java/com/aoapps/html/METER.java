@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class METER<
 	PC extends Union_Palpable_Phrasing<PC>
-> extends
-	AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
+> extends AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
 
 	METER(Document document, PC pc) {
 		super(document, pc);

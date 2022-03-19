@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,8 +40,7 @@ import java.io.Writer;
 @SuppressWarnings("deprecation")
 public final class COL<
 	PC extends COLGROUP_content<PC>
-> extends
-	AnyCOL<Document, PC, COL<PC>> {
+> extends AnyCOL<Document, PC, COL<PC>> {
 
 	COL(Document document, PC pc) {
 		super(document, pc);

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class FOOTER<
 	PC extends PalpableContent<PC>
-> extends
-	AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
+> extends AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
 
 	FOOTER(Document document, PC pc) {
 		super(document, pc);

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class STRONG<
 	PC extends Union_Palpable_Phrasing<PC>
-> extends
-	AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
+> extends AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
 
 	STRONG(Document document, PC pc) {
 		super(document, pc);

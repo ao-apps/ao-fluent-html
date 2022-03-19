@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class COLGROUP<
 	PC extends TABLE_content<PC>
-> extends
-	AnyCOLGROUP<Document, PC, COLGROUP<PC>, COLGROUP__<PC>, COLGROUP_c<PC>> {
+> extends AnyCOLGROUP<Document, PC, COLGROUP<PC>, COLGROUP__<PC>, COLGROUP_c<PC>> {
 
 	COLGROUP(Document document, PC pc) {
 		super(document, pc);

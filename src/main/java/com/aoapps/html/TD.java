@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -35,8 +35,7 @@ import java.io.Writer;
  */
 public final class TD<
 	PC extends TR_content<PC>
-> extends
-	AnyTD<Document, PC, TD<PC>, TD__<PC>, TD_c<PC>> {
+> extends AnyTD<Document, PC, TD<PC>, TD__<PC>, TD_c<PC>> {
 
 	TD(Document document, PC pc) {
 		super(document, pc);

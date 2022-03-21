@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,6 +34,8 @@ import java.io.IOException;
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *
+ * @since HTML 5
+ *
  * @author  AO Industries, Inc.
  */
 public interface SectioningContent<
@@ -65,6 +67,8 @@ public interface SectioningContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ article__(IOConsumerE<? super ARTICLE__<__>, Ex> article) throws IOException, Ex {
 		return article().__(article);
@@ -93,6 +97,8 @@ public interface SectioningContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ aside__(IOConsumerE<? super ASIDE__<__>, Ex> aside) throws IOException, Ex {
 		return aside().__(aside);
@@ -121,6 +127,8 @@ public interface SectioningContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ nav__(IOConsumerE<? super NAV__<__>, Ex> nav) throws IOException, Ex {
 		return nav().__(nav);
@@ -149,6 +157,8 @@ public interface SectioningContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ section__(IOConsumerE<? super SECTION__<__>, Ex> section) throws IOException, Ex {
 		return section().__(section);

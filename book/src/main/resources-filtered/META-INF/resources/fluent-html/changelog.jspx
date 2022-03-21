@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-03-18T10:02:22-05:00"
+		dateModified="2022-03-21T03:54:02-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -60,6 +60,9 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 						and <code><ao:a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element"><![CDATA[&lt;title&gt;]]></ao:a></code>
 						from <code>MediaWritable</code> to <code>TextContent</code>.
 					</li>
+					<li>Implemented many more <ao:a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes">global attributes</ao:a>.</li>
+					<li>Added very thorough doctype checks for all HTML 5 elements and attributes.</li>
+					<li>Annotated javadocs <code>@since HTML 5</code> for all HTML 5 elements and attributes.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
@@ -163,7 +166,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 			<ul>
 				<li>Added <ao:a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">global attribute <code>dir</code></ao:a>.</li>
 				<li>
-					Added <ao:a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">global attribute <code>data-*</code></ao:a>,
+					Added <ao:a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-%2A">global attribute <code>data-*</code></ao:a>,
 					with implementations for both HTML attribute and JavaScript property names.
 				</li>
 			</ul>

@@ -31,6 +31,8 @@ import java.io.Writer;
  *
  * @param  <PC>  The parent content model this element is within
  *
+ * @since HTML 5
+ *
  * @author  AO Industries, Inc.
  */
 public final class OUTPUT<

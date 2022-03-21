@@ -120,6 +120,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_color.asp">HTML input type="color"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Color<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -140,6 +142,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_date.asp">HTML input type="date"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Date<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -160,6 +164,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp">HTML input type="datetime-local"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class DatetimeLocal<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -180,6 +186,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_email.asp">HTML input type="email"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Email<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -267,6 +275,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_month.asp">HTML input type="month"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Month<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -287,6 +297,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_number.asp">HTML input type="number"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Number<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -347,6 +359,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_range.asp">HTML input type="range"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Range<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -387,6 +401,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_search.asp">HTML input type="search"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Search<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -430,6 +446,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_tel.asp">HTML input type="tel"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Tel<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -470,6 +488,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_time.asp">HTML input type="time"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Time<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -490,6 +510,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_url.asp">HTML input type="url"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Url<
 		PC extends Union_Interactive_Phrasing<PC>
@@ -510,6 +532,8 @@ public final class INPUT {
 	 * See <a href="https://www.w3schools.com/tags/att_input_type_week.asp">HTML input type="week"</a>.
 	 *
 	 * @param  <PC>  The parent content model this element is within
+	 *
+	 * @since HTML 5
 	 */
 	public static final class Week<
 		PC extends Union_Interactive_Phrasing<PC>

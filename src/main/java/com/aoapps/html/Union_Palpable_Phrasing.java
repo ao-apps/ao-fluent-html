@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -131,6 +131,8 @@ public interface Union_Palpable_Phrasing<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ bdi__(IOConsumerE<? super BDI__<__>, Ex> bdi) throws IOException, Ex {
 		return bdi().__(bdi);
@@ -270,6 +272,8 @@ public interface Union_Palpable_Phrasing<
 
 	/**
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
+	 * @since HTML 5
 	 */
 	@Override
 	default <Ex extends Throwable> DATA<__> data(IOSupplierE<?, Ex> value) throws IOException, Ex {
@@ -285,6 +289,8 @@ public interface Union_Palpable_Phrasing<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ data__(Object value, IOConsumerE<? super DATA__<__>, Ex> data) throws IOException, Ex {
 		return data(value).__(data);
@@ -471,6 +477,8 @@ public interface Union_Palpable_Phrasing<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ mark__(IOConsumerE<? super MARK__<__>, Ex> mark) throws IOException, Ex {
 		return mark().__(mark);
@@ -500,6 +508,8 @@ public interface Union_Palpable_Phrasing<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ meter__(IOConsumerE<? super METER__<__>, Ex> meter) throws IOException, Ex {
 		return meter().__(meter);
@@ -529,6 +539,8 @@ public interface Union_Palpable_Phrasing<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ output__(IOConsumerE<? super OUTPUT__<__>, Ex> output) throws IOException, Ex {
 		return output().__(output);
@@ -557,6 +569,8 @@ public interface Union_Palpable_Phrasing<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ progress__(IOConsumerE<? super PROGRESS__<__>, Ex> progress) throws IOException, Ex {
 		return progress().__(progress);

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -186,6 +186,8 @@ public interface PalpableContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ footer__(IOConsumerE<? super FOOTER__<__>, Ex> footer) throws IOException, Ex {
 		return footer().__(footer);
@@ -262,6 +264,8 @@ public interface PalpableContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ header__(IOConsumerE<? super HEADER__<__>, Ex> header) throws IOException, Ex {
 		return header().__(header);
@@ -298,6 +302,8 @@ public interface PalpableContent<
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @return  This content model, which will be the parent content model of child elements
+	 *
+	 * @since HTML 5
 	 */
 	default <Ex extends Throwable> __ main__(IOConsumerE<? super MAIN__<__>, Ex> main) throws IOException, Ex {
 		return main().__(main);

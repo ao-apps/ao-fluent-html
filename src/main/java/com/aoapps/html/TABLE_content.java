@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -170,6 +170,8 @@ public interface TABLE_content<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="Inherited: TR (deprecated to encourage use of <tbody> for SGML/XML consistency)">
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */
@@ -180,6 +182,8 @@ public interface TABLE_content<
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
@@ -192,6 +196,8 @@ public interface TABLE_content<
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * @deprecated  For maximum compatibility with both {@link Serialization#SGML} and {@link Serialization#XML},
 	 *              it is recommended to always use <code>&lt;tbody&gt;</code>.
 	 */

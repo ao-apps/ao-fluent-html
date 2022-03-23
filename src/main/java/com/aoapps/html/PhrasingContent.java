@@ -246,7 +246,14 @@ public interface PhrasingContent<
 	// Inherited: U
 	// Inherited: VAR
 	// Inherited: VIDEO
-	// <editor-fold defaultstate="collapsed" desc="TODO: WBR">
+	// <editor-fold defaultstate="collapsed" desc="WBR">
+	@Override
+	default WBR<__> wbr() throws IOException {
+		@SuppressWarnings("unchecked")
+		__ pc = (__)this;
+		Document document = getDocument();
+		return new WBR<>(document, pc).writeOpen(document.getUnsafe(null));
+	}
 	// </editor-fold>
 	// Inherited: autonomous custom elements
 }

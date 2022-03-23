@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-03-21T03:54:02-05:00"
+		dateModified="2022-03-22T21:51:29-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -63,6 +63,11 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 					<li>Implemented many more <ao:a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes">global attributes</ao:a>.</li>
 					<li>Added very thorough doctype checks for all HTML 5 elements and attributes.</li>
 					<li>Annotated javadocs <code>@since HTML 5</code> for all HTML 5 elements and attributes.</li>
+					<li>
+						Moved all attributes from <code>com.aoapps.html.any.attributes.String</code> to
+						<code>com.aoapps.html.any.attributes.Text</code>, making them now streamable.
+					</li>
+					<li>Implemented more <ao:a href="https://html.spec.whatwg.org/multipage/#toc-semantics">elements</ao:a>.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

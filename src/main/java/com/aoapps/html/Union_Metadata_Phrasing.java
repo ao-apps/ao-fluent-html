@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -26,6 +26,7 @@ import com.aoapps.html.any.AnyLINK;
 import com.aoapps.html.any.AnyMETA;
 import com.aoapps.html.any.AnyUnion_Metadata_Phrasing;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * Elements that are common to both {@link MetadataContent} and {@link PhrasingContent}.
@@ -83,6 +84,11 @@ public interface Union_Metadata_Phrasing<
 	@Override
 	default META<__> meta(AnyMETA.HttpEquiv httpEquiv) throws IOException {
 		return meta().httpEquiv(httpEquiv);
+	}
+
+	@Override
+	default META<__> meta(Charset charset) throws IOException {
+		return meta().charset(charset);
 	}
 
 	@Override

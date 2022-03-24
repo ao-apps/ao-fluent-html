@@ -42,6 +42,7 @@ rewriting everything.
 * Fluent API.
 * Also supports lambda element content, which makes it easier to code and debug than a strict fluent-only approach.
 * Context-aware compiler and code assistance through extensive use of the interface hierachy along with bounded self-referential generics.
+* Optimized code assistance through method deprecation, such as global attributes only being activated on expected elements.
 * Everything is [encoded and safe by default](https://github.com/ao-apps/ao-encoding), with <code>unsafe(…)</code> methods allowing raw output.
 * Optional automatic newline and tab indentation.
 * Optimized streaming implementation, including attributes.

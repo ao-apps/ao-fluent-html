@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
-Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
+Copyright (C) 2019, 2020, 2021, 2022  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -34,7 +34,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2021-07-16T03:48:08-05:00"
+		dateModified="2022-03-24T03:48:33-05:00"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -95,6 +95,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 				<li>Fluent API.</li>
 				<li>Also supports lambda element content, which makes it easier to code and debug than a strict fluent-only approach.</li>
 				<li>Context-aware compiler and code assistance through extensive use of the interface hierachy along with bounded self-referential generics.</li>
+				<li>Optimized code assistance through method deprecation, such as global attributes only being activated on expected elements.</li>
 				<li>Everything is <core:link book="/encoding" page="/index.jspx">encoded and safe by default</core:link>, with <code>unsafe(…)</code> methods allowing raw output.</li>
 				<li>Optional automatic newline and tab indentation.</li>
 				<li>Optimized streaming implementation, including attributes.</li>

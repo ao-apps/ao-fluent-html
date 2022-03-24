@@ -36,8 +36,8 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		<module.name>com.aoapps.html</module.name>
 		<javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://oss.aoapps.com/">AO OSS</a>
 / <a target="${javadoc.target}" href="${project.url}">Fluent HTML</a>]]></javadoc.breadcrumbs>
-		<javadoc.modules><![CDATA[<div style="float:left; margin: 0 1em">
-			<h2 style="margin-top: 0em">Modules</h2>
+		<javadoc.modules><![CDATA[<div>
+			<h2>Modules</h2>
 			<ul>
 				<li><a target="${javadoc.target}" href="https://oss.aoapps.com/fluent-html/any/">AO Fluent HTML Any</a></li>
 				<li><a target="${javadoc.target}" href="https://oss.aoapps.com/fluent-html/servlet/">AO Fluent HTML Servlet</a></li>

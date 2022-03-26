@@ -344,7 +344,7 @@ public final class INPUT {
 		PC extends Union_Interactive_Phrasing<PC>
 	> extends AnyINPUT.Radio<Document, PC, Radio<PC>> {
 
-		public Radio(Document document, PC pc) {
+		Radio(Document document, PC pc) {
 			super(document, pc);
 		}
 

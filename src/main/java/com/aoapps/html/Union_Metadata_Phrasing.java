@@ -23,10 +23,8 @@
 package com.aoapps.html;
 
 import com.aoapps.html.any.AnyLINK;
-import com.aoapps.html.any.AnyMETA;
 import com.aoapps.html.any.AnyUnion_Metadata_Phrasing;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 /**
  * Elements that are common to both {@link MetadataContent} and {@link PhrasingContent}.
@@ -76,25 +74,7 @@ public interface Union_Metadata_Phrasing<
 		return new META<>(document, pc).writeOpen(document.getUnsafe(null));
 	}
 
-	@Override
-	default META<__> meta(AnyMETA.Name name) throws IOException {
-		return meta().name(name);
-	}
-
-	@Override
-	default META<__> meta(AnyMETA.HttpEquiv httpEquiv) throws IOException {
-		return meta().httpEquiv(httpEquiv);
-	}
-
-	@Override
-	default META<__> meta(Charset charset) throws IOException {
-		return meta().charset(charset);
-	}
-
-	@Override
-	default META<__> meta(com.aoapps.html.any.attributes.Enum.Charset.Value charset) throws IOException {
-		return meta().charset(charset);
-	}
+	// No meta__(), since either name, http-equiv, or itemprop is required
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TODO: NOSCRIPT">
 	// </editor-fold>

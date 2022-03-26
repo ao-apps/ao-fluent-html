@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -28,6 +28,7 @@ import com.aoapps.encoding.EncodingContext;
 import com.aoapps.encoding.Serialization;
 import com.aoapps.html.any.AnyDocument;
 import java.io.Writer;
+import java.nio.charset.Charset;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
@@ -48,8 +49,8 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 	 *
 	 * @see  #setOut(java.io.Writer)
 	 */
-	public Document(EncodingContext encodingContext, Serialization serialization, Doctype doctype, Writer out) {
-		super(encodingContext, serialization, doctype, out);
+	public Document(EncodingContext encodingContext, Writer out) {
+		super(encodingContext, out);
 	}
 
 	/**
@@ -58,7 +59,7 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 	 *
 	 * @see  #setOut(java.io.Writer)
 	 */
-	public Document(Serialization serialization, Doctype doctype, Writer out) {
+	public Document(Serialization serialization, Doctype doctype, Charset characterEncoding, Writer out) {
 		this(
 			new EncodingContext() {
 				@Override
@@ -69,24 +70,11 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 				public Doctype getDoctype() {
 					return doctype;
 				}
+				@Override
+				public Charset getCharacterEncoding() {
+					return characterEncoding;
+				}
 			},
-			serialization,
-			doctype,
-			out
-		);
-	}
-
-	/**
-	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
-	 *              Not doing so may result in {@link IllegalStateException}.
-	 *
-	 * @see  #setOut(java.io.Writer)
-	 */
-	public Document(EncodingContext encodingContext, Writer out) {
-		this(
-			encodingContext,
-			encodingContext.getSerialization(),
-			encodingContext.getDoctype(),
 			out
 		);
 	}

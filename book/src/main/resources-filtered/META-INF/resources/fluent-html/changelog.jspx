@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-03-23T13:48:24-05:00"
+		dateModified="2022-03-31T16:40:21-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -69,7 +69,6 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 					</li>
 					<li>Implemented more <ao:a href="https://html.spec.whatwg.org/multipage/#toc-semantics">elements</ao:a>.</li>
 					<li>Added support for <code>java.nio.charset.Charset</code>.</li>
-					<li>Added <code>text(int)</code> methods for code point support.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

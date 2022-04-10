@@ -27,6 +27,7 @@ import com.aoapps.encoding.Doctype;
 import com.aoapps.encoding.EncodingContext;
 import com.aoapps.encoding.Serialization;
 import com.aoapps.html.any.AnyDocument;
+import com.aoapps.lang.Coercion;
 import java.io.Writer;
 import java.nio.charset.Charset;
 
@@ -46,6 +47,10 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 	/**
 	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
 	 *              Not doing so may result in {@link IllegalStateException}.
+	 *              <p>
+	 *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+	 *              with {@code encoder = null}.
+	 *              </p>
 	 *
 	 * @see  #setOut(java.io.Writer)
 	 */
@@ -56,6 +61,10 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 	/**
 	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
 	 *              Not doing so may result in {@link IllegalStateException}.
+	 *              <p>
+	 *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+	 *              with {@code encoder = null}.
+	 *              </p>
 	 *
 	 * @see  #setOut(java.io.Writer)
 	 */
@@ -82,6 +91,10 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 	/**
 	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
 	 *              Not doing so may result in {@link IllegalStateException}.
+	 *              <p>
+	 *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+	 *              with {@code encoder = null}.
+	 *              </p>
 	 *
 	 * @see  #setOut(java.io.Writer)
 	 * @see  EncodingContext#DEFAULT
@@ -92,6 +105,9 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
 
 	/**
 	 * Unwraps the given chain writer.
+	 *
+	 * @param  out  After being unwrapped, will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+	 *              with {@code encoder = null}.
 	 */
 	public Document(ChainWriter out) {
 		this(out.getEncodingContext(), out.getPrintWriter());

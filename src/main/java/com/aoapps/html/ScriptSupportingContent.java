@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -53,19 +53,21 @@ public interface ScriptSupportingContent<
 	//
 	// <editor-fold defaultstate="collapsed" desc="SCRIPT">
 	@Override
+	@SuppressWarnings("deprecation")
 	default SCRIPT<__> script() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new SCRIPT<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new SCRIPT<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	default SCRIPT<__> script(String type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
+		return new SCRIPT<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -77,11 +79,12 @@ public interface ScriptSupportingContent<
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	default SCRIPT<__> script(AnySCRIPT.Type type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new SCRIPT<>(document, pc, type).writeOpen(document.getUnsafe(null));
+		return new SCRIPT<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

@@ -54,11 +54,12 @@ public interface Union_Interactive_Phrasing<
 	//
 	// <editor-fold defaultstate="collapsed" desc="A">
 	@Override
+	@SuppressWarnings("deprecation")
 	default A<__> a() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new A<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new A<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
@@ -103,13 +104,15 @@ public interface Union_Interactive_Phrasing<
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Dynamic<__> dynamic() throws IOException {
-			return new INPUT.Dynamic<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Dynamic<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Dynamic<__> dynamic(String type) throws IOException {
-			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
+			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
 		}
 
 		/**
@@ -121,8 +124,9 @@ public interface Union_Interactive_Phrasing<
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Dynamic<__> dynamic(AnyINPUT.Dynamic.Type type) throws IOException {
-			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getUnsafe(null));
+			return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
 		}
 
 		/**
@@ -134,113 +138,135 @@ public interface Union_Interactive_Phrasing<
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Button<__> button() throws IOException {
-			return new INPUT.Button<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Button<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Checkbox<__> checkbox() throws IOException {
-			return new INPUT.Checkbox<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Checkbox<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Color<__> color() throws IOException {
-			return new INPUT.Color<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Color<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Date<__> date() throws IOException {
-			return new INPUT.Date<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Date<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.DatetimeLocal<__> datetimeLocal() throws IOException {
-			return new INPUT.DatetimeLocal<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.DatetimeLocal<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Email<__> email() throws IOException {
-			return new INPUT.Email<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Email<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.File<__> file() throws IOException {
-			return new INPUT.File<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.File<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Hidden<__> hidden() throws IOException {
-			return new INPUT.Hidden<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Hidden<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Image<__> image() throws IOException {
-			return new INPUT.Image<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Image<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Month<__> month() throws IOException {
-			return new INPUT.Month<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Month<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Number<__> number() throws IOException {
-			return new INPUT.Number<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Number<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Password<__> password() throws IOException {
-			return new INPUT.Password<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Password<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Radio<__> radio() throws IOException {
-			return new INPUT.Radio<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Radio<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Range<__> range() throws IOException {
-			return new INPUT.Range<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Range<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Reset<__> reset() throws IOException {
-			return new INPUT.Reset<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Reset<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Search<__> search() throws IOException {
-			return new INPUT.Search<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Search<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Submit<__> submit() throws IOException {
-			return new INPUT.Submit<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Submit<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Tel<__> tel() throws IOException {
-			return new INPUT.Tel<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Tel<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Text<__> text() throws IOException {
-			return new INPUT.Text<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Text<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Time<__> time() throws IOException {
-			return new INPUT.Time<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Time<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Url<__> url() throws IOException {
-			return new INPUT.Url<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Url<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 
 		@Override
+		@SuppressWarnings("deprecation")
 		public INPUT.Week<__> week() throws IOException {
-			return new INPUT.Week<>(document, pc).writeOpen(document.getUnsafe(null));
+			return new INPUT.Week<>(document, pc).writeOpen(document.getRawUnsafe(null));
 		}
 	}
 
@@ -255,11 +281,12 @@ public interface Union_Interactive_Phrasing<
 	// Inherited: IMG
 	// <editor-fold defaultstate="collapsed" desc="LABEL">
 	@Override
+	@SuppressWarnings("deprecation")
 	default LABEL<__> label() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new LABEL<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new LABEL<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -284,11 +311,12 @@ public interface Union_Interactive_Phrasing<
 	// Inherited: OBJECT
 	// <editor-fold defaultstate="collapsed" desc="SELECT">
 	@Override
+	@SuppressWarnings("deprecation")
 	default SELECT<__> select() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new SELECT<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new SELECT<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -312,11 +340,12 @@ public interface Union_Interactive_Phrasing<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TEXTAREA">
 	@Override
+	@SuppressWarnings("deprecation")
 	default TEXTAREA<__> textarea() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new TEXTAREA<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new TEXTAREA<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

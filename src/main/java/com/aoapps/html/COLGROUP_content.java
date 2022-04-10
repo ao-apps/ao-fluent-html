@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -50,11 +50,12 @@ public interface COLGROUP_content<
 	//
 	// <editor-fold defaultstate="collapsed" desc="COL">
 	@Override
+	@SuppressWarnings("deprecation")
 	default COL<__> col() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new COL<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new COL<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 	// </editor-fold>
 	// Inherited: TEMPLATE

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -55,11 +55,12 @@ public interface HeadingContent<
 	 * </p>
 	 */
 	@Override
+	@SuppressWarnings("deprecation")
 	default H1<__> h1() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new H1<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new H1<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -83,11 +84,12 @@ public interface HeadingContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="H2">
 	@Override
+	@SuppressWarnings("deprecation")
 	default H2<__> h2() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new H2<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new H2<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -111,11 +113,12 @@ public interface HeadingContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="H3">
 	@Override
+	@SuppressWarnings("deprecation")
 	default H3<__> h3() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new H3<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new H3<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -139,11 +142,12 @@ public interface HeadingContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="H4">
 	@Override
+	@SuppressWarnings("deprecation")
 	default H4<__> h4() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new H4<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new H4<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -167,11 +171,12 @@ public interface HeadingContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="H5">
 	@Override
+	@SuppressWarnings("deprecation")
 	default H5<__> h5() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new H5<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new H5<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -195,11 +200,12 @@ public interface HeadingContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="H6">
 	@Override
+	@SuppressWarnings("deprecation")
 	default H6<__> h6() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new H6<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new H6<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

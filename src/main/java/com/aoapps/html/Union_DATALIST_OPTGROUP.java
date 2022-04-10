@@ -46,11 +46,12 @@ public interface Union_DATALIST_OPTGROUP<
 	//
 	// <editor-fold defaultstate="collapsed" desc="OPTION">
 	@Override
+	@SuppressWarnings("deprecation")
 	default OPTION<__> option() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new OPTION<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new OPTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

@@ -70,11 +70,12 @@ public interface PhrasingContent<
 	// Inherited: ABBR
 	// <editor-fold defaultstate="collapsed" desc="AREA - if a descendent of map">
 	@Override
+	@SuppressWarnings("deprecation")
 	default AREA<__> area() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new AREA<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new AREA<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
@@ -149,11 +150,12 @@ public interface PhrasingContent<
 	// Inherited: BDO
 	// <editor-fold defaultstate="collapsed" desc="BR">
 	@Override
+	@SuppressWarnings("deprecation")
 	default BR<__> br() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new BR<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new BR<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 	// </editor-fold>
 	// Inherited: BUTTON
@@ -163,11 +165,12 @@ public interface PhrasingContent<
 	// Inherited: DATA
 	// <editor-fold defaultstate="collapsed" desc="DATALIST">
 	@Override
+	@SuppressWarnings("deprecation")
 	default DATALIST<__> datalist() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new DATALIST<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new DATALIST<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -193,11 +196,12 @@ public interface PhrasingContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="DEL">
 	@Override
+	@SuppressWarnings("deprecation")
 	default DEL<__> del() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new DEL<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new DEL<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
@@ -248,11 +252,12 @@ public interface PhrasingContent<
 	// Inherited: VIDEO
 	// <editor-fold defaultstate="collapsed" desc="WBR">
 	@Override
+	@SuppressWarnings("deprecation")
 	default WBR<__> wbr() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new WBR<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new WBR<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 	// </editor-fold>
 	// Inherited: autonomous custom elements

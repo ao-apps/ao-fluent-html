@@ -58,11 +58,12 @@ public interface TABLE_content<
 	//
 	// <editor-fold defaultstate="collapsed" desc="CAPTION">
 	@Override
+	@SuppressWarnings("deprecation")
 	default CAPTION<__> caption() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new CAPTION<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new CAPTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -86,11 +87,12 @@ public interface TABLE_content<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="COLGROUP">
 	@Override
+	@SuppressWarnings("deprecation")
 	default COLGROUP<__> colgroup() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new COLGROUP<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new COLGROUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -114,11 +116,12 @@ public interface TABLE_content<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="THEAD">
 	@Override
+	@SuppressWarnings("deprecation")
 	default THEAD<__> thead() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new THEAD<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new THEAD<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -142,11 +145,12 @@ public interface TABLE_content<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TBODY">
 	@Override
+	@SuppressWarnings("deprecation")
 	default TBODY<__> tbody() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new TBODY<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new TBODY<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -209,11 +213,12 @@ public interface TABLE_content<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="TFOOT">
 	@Override
+	@SuppressWarnings("deprecation")
 	default TFOOT<__> tfoot() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new TFOOT<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new TFOOT<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

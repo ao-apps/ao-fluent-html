@@ -52,11 +52,12 @@ public interface Union_Metadata_Phrasing<
 	//
 	// <editor-fold defaultstate="collapsed" desc="LINK">
 	@Override
+	@SuppressWarnings("deprecation")
 	default LINK<__> link() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new LINK<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new LINK<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
@@ -67,11 +68,12 @@ public interface Union_Metadata_Phrasing<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="META">
 	@Override
+	@SuppressWarnings("deprecation")
 	default META<__> meta() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new META<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new META<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	// No meta__(), since either name, http-equiv, or itemprop is required

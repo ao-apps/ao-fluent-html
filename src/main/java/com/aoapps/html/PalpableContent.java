@@ -65,11 +65,12 @@ public interface PalpableContent<
 	// Inherited: ABBR
 	// <editor-fold defaultstate="collapsed" desc="ADDRESS">
 	@Override
+	@SuppressWarnings("deprecation")
 	default ADDRESS<__> address() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new ADDRESS<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new ADDRESS<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -99,11 +100,12 @@ public interface PalpableContent<
 	// Inherited: BDO
 	// <editor-fold defaultstate="collapsed" desc="BLOCKQUOTE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default BLOCKQUOTE<__> blockquote() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new BLOCKQUOTE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new BLOCKQUOTE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -136,11 +138,12 @@ public interface PalpableContent<
 	// Inherited: DIV
 	// <editor-fold defaultstate="collapsed" desc="DL - if children contain at least one name/value pair">
 	@Override
+	@SuppressWarnings("deprecation")
 	default DL<__> dl() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new DL<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new DL<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -170,11 +173,12 @@ public interface PalpableContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="FOOTER">
 	@Override
+	@SuppressWarnings("deprecation")
 	default FOOTER<__> footer() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new FOOTER<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new FOOTER<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -200,11 +204,12 @@ public interface PalpableContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="FORM">
 	@Override
+	@SuppressWarnings("deprecation")
 	default FORM<__> form() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new FORM<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new FORM<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
@@ -248,11 +253,12 @@ public interface PalpableContent<
 	// Inherited: H6
 	// <editor-fold defaultstate="collapsed" desc="HEADER">
 	@Override
+	@SuppressWarnings("deprecation")
 	default HEADER<__> header() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new HEADER<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new HEADER<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -286,11 +292,12 @@ public interface PalpableContent<
 	// Inherited: LABEL
 	// <editor-fold defaultstate="collapsed" desc="MAIN">
 	@Override
+	@SuppressWarnings("deprecation")
 	default MAIN<__> main() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new MAIN<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new MAIN<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -323,11 +330,12 @@ public interface PalpableContent<
 	// Inherited: OBJECT
 	// <editor-fold defaultstate="collapsed" desc="OL - if children include at least one li">
 	@Override
+	@SuppressWarnings("deprecation")
 	default OL<__> ol() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new OL<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new OL<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -352,11 +360,12 @@ public interface PalpableContent<
 	// Inherited: OUTPUT
 	// <editor-fold defaultstate="collapsed" desc="P">
 	@Override
+	@SuppressWarnings("deprecation")
 	default P<__> p() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new P<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new P<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -380,11 +389,12 @@ public interface PalpableContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="PRE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default PRE<__> pre() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new PRE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new PRE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -421,11 +431,12 @@ public interface PalpableContent<
 	// Inherited: SVG svg
 	// <editor-fold defaultstate="collapsed" desc="TABLE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default TABLE<__> table() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new TABLE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new TABLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -454,11 +465,12 @@ public interface PalpableContent<
 	// Inherited: U
 	// <editor-fold defaultstate="collapsed" desc="UL - if children include at least one li">
 	@Override
+	@SuppressWarnings("deprecation")
 	default UL<__> ul() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new UL<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new UL<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

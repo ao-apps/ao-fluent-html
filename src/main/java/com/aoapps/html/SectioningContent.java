@@ -51,11 +51,12 @@ public interface SectioningContent<
 	//
 	// <editor-fold defaultstate="collapsed" desc="ARTICLE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default ARTICLE<__> article() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new ARTICLE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new ARTICLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -81,11 +82,12 @@ public interface SectioningContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="ASIDE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default ASIDE<__> aside() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new ASIDE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new ASIDE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -111,11 +113,12 @@ public interface SectioningContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="NAV">
 	@Override
+	@SuppressWarnings("deprecation")
 	default NAV<__> nav() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new NAV<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new NAV<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -141,11 +144,12 @@ public interface SectioningContent<
 	// </editor-fold>
 	// <editor-fold defaultstate="collapsed" desc="SECTION">
 	@Override
+	@SuppressWarnings("deprecation")
 	default SECTION<__> section() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new SECTION<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new SECTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

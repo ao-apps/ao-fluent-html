@@ -59,11 +59,12 @@ public interface MetadataContent<
 	//
 	// <editor-fold defaultstate="collapsed" desc="BASE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default BASE<__> base() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new BASE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new BASE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 	// </editor-fold>
 	// Inherited: LINK
@@ -72,19 +73,21 @@ public interface MetadataContent<
 	// Inherited: SCRIPT
 	// <editor-fold defaultstate="collapsed" desc="STYLE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default STYLE<__> style() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new STYLE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new STYLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	default STYLE<__> style(String type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
+		return new STYLE<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -96,11 +99,12 @@ public interface MetadataContent<
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	default STYLE<__> style(AnySTYLE.Type type) throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new STYLE<>(document, pc, type).writeOpen(document.getUnsafe(null));
+		return new STYLE<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**
@@ -114,11 +118,12 @@ public interface MetadataContent<
 	// Inherited: TEMPLATE - WHATWG only
 	// <editor-fold defaultstate="collapsed" desc="TITLE">
 	@Override
+	@SuppressWarnings("deprecation")
 	default TITLE<__> title() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new TITLE<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new TITLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

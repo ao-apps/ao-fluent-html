@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -58,11 +58,12 @@ public interface SELECT_content<
 	//
 	// <editor-fold defaultstate="collapsed" desc="OPTGROUP">
 	@Override
+	@SuppressWarnings("deprecation")
 	default OPTGROUP<__> optgroup() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new OPTGROUP<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new OPTGROUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2019-10-27T16:59:13-05:00"
-		dateModified="2022-04-04T20:50:15-05:00"
+		dateModified="2022-04-09T21:54:49-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -73,6 +73,11 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 						Removed self-referential generics that were emulating self-types.  Instead, manually overloading
 						all methods.  Although a bit tedious in the implementation, this cleans-up the API by removing
 						unnecessary type parameter.
+					</li>
+					<li>
+						Made <code>AnyDocument.out</code> private and deprecated the <code>unsafe(…)</code> methods.
+						The <code>unsafe(…)</code> methods will remain, but their use is discouraged as it can be dangerous.
+						Renamed <code>getUnsafe()</code> to <code>getRawUnsafe()</code>.
 					</li>
 				</ul>
 			</changelog:release>

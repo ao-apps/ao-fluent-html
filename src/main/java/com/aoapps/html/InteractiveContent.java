@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -65,11 +65,12 @@ public interface InteractiveContent<
 	// Inherited: LABEL
 	// <editor-fold defaultstate="collapsed" desc="MENU - (MDN only) if the type attribute is in the toolbar state">
 	@Override
+	@SuppressWarnings("deprecation")
 	default MENU<__> menu() throws IOException {
 		@SuppressWarnings("unchecked")
 		__ pc = (__)this;
 		Document document = getDocument();
-		return new MENU<>(document, pc).writeOpen(document.getUnsafe(null));
+		return new MENU<>(document, pc).writeOpen(document.getRawUnsafe(null));
 	}
 
 	/**

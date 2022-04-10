@@ -43,8 +43,8 @@ public final class TH<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected TH<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected TH<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 
 	@Override

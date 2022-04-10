@@ -43,8 +43,8 @@ public final class H4<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected H4<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected H4<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 
 	@Override

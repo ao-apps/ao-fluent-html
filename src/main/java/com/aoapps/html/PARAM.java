@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -47,7 +47,7 @@ public final class PARAM<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected PARAM<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected PARAM<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 }

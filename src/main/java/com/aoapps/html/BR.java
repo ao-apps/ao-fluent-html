@@ -46,7 +46,7 @@ public final class BR<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected BR<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected BR<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 }

@@ -47,7 +47,7 @@ public final class AREA<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected AREA<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected AREA<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 }

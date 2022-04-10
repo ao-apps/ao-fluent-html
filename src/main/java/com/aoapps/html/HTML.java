@@ -44,8 +44,8 @@ public final class HTML<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected HTML<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected HTML<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 
 	@Override

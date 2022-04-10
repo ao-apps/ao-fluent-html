@@ -43,8 +43,8 @@ public final class SUB<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected SUB<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected SUB<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 
 	@Override

@@ -45,8 +45,8 @@ public final class ARTICLE<
 
 	// Expose to this package, avoiding public to keep a clean API for optimal code assist
 	@Override
-	protected ARTICLE<PC> writeOpen(Writer out) throws IOException {
-		return super.writeOpen(out);
+	protected ARTICLE<PC> writeOpen(Writer unsafe) throws IOException {
+		return super.writeOpen(unsafe);
 	}
 
 	@Override

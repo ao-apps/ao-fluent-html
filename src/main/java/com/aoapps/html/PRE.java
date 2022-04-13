@@ -27,7 +27,11 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">4.4.3 The pre element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre">&lt;pre&gt;: The Preformatted Text element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_pre.asp">HTML pre tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

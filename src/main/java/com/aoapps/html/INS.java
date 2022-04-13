@@ -27,7 +27,11 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/edits.html#the-ins-element">4.7.1 The ins element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins">&lt;ins&gt;</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_ins.asp">HTML ins tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

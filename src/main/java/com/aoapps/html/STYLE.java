@@ -29,6 +29,7 @@ import java.io.Writer;
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element">4.2.6 The style element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style">&lt;style&gt;: The Style Information element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_style.asp">HTML style tag</a>.</li>
  * </ul>
  *

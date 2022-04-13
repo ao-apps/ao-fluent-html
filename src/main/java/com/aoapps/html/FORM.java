@@ -29,7 +29,8 @@ import java.io.Writer;
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/forms.html#the-form-element">4.10.3 The form element</a>.</li>
- * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;: The Form element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_form.asp">HTML form tag</a>.</li>
  * </ul>
  *
  * @param  <PC>  The parent content model this element is within

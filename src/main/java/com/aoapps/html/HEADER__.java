@@ -25,7 +25,11 @@ package com.aoapps.html;
 import com.aoapps.html.any.AnyHEADER__;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">4.3.8 The header element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header">&lt;header&gt;</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_header.asp">HTML header Tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

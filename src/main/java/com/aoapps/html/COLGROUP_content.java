@@ -26,7 +26,11 @@ import com.aoapps.html.any.AnyCOLGROUP_content;
 import java.io.IOException;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element">4.9.3 The colgroup element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup">&lt;colgroup&gt;: The Table Column Group element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_colgroup.asp">HTML colgroup tag</a>.</li>
+ * </ul>
  *
  * @param  <__>  This content model, which will be the parent content model of child elements
  *

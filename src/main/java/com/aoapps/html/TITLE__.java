@@ -25,7 +25,11 @@ package com.aoapps.html;
 import com.aoapps.html.any.AnyTITLE__;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">4.2.2 The title element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">4.2.2 The title element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">&lt;title&gt;: The Document Title element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_title.asp">HTML title tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

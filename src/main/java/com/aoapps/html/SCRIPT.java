@@ -29,6 +29,7 @@ import java.io.Writer;
 /**
  * <ul>
  * <li>See <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">4.12.1 The script element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">&lt;script&gt;: The Script element</a>.</li>
  * <li>See <a href="https://www.w3schools.com/tags/tag_script.asp">HTML script tag</a>.</li>
  * </ul>
  *

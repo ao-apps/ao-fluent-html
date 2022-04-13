@@ -27,7 +27,11 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.
+ * <ul>
+ * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">4.3.10 The address element</a>.</li>
+ * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address">&lt;address&gt;: The Contact Address element</a>.</li>
+ * <li>See <a href="https://www.w3schools.com/tags/tag_address.asp">HTML address tag</a>.</li>
+ * </ul>
  *
  * @param  <PC>  The parent content model this element is within
  *

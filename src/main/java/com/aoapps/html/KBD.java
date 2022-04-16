@@ -20,6 +20,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
  */
+
 package com.aoapps.html;
 
 import com.aoapps.html.any.AnyKBD;

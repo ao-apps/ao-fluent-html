@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class ASIDE<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 > extends AnyASIDE<Document, PC, ASIDE<PC>, ASIDE__<PC>, ASIDE_c<PC>> {
 
-	ASIDE(Document document, PC pc) {
-		super(document, pc);
-	}
+  ASIDE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected ASIDE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected ASIDE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected ASIDE__<PC> new__() {
-		return new ASIDE__<>(this);
-	}
+  @Override
+  protected ASIDE__<PC> new__() {
+    return new ASIDE__<>(this);
+  }
 
-	@Override
-	protected ASIDE_c<PC> new_c() {
-		return new ASIDE_c<>(this);
-	}
+  @Override
+  protected ASIDE_c<PC> new_c() {
+    return new ASIDE_c<>(this);
+  }
 }

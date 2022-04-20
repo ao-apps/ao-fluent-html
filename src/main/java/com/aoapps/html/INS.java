@@ -39,21 +39,21 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class INS<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyINS<Document, PC, INS<PC>, INS_c<PC>> {
 
-	INS(Document document, PC pc) {
-		super(document, pc);
-	}
+  INS(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected INS<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected INS<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected INS_c<PC> new_c() {
-		return new INS_c<>(this);
-	}
+  @Override
+  protected INS_c<PC> new_c() {
+    return new INS_c<>(this);
+  }
 }

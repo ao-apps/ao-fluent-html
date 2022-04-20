@@ -40,26 +40,26 @@ import java.io.Writer;
  */
 @SuppressWarnings("deprecation")
 public final class TABLE<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyTABLE<Document, PC, TABLE<PC>, TABLE__<PC>, TABLE_c<PC>> {
 
-	TABLE(Document document, PC pc) {
-		super(document, pc);
-	}
+  TABLE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TABLE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TABLE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TABLE__<PC> new__() {
-		return new TABLE__<>(this);
-	}
+  @Override
+  protected TABLE__<PC> new__() {
+    return new TABLE__<>(this);
+  }
 
-	@Override
-	protected TABLE_c<PC> new_c() {
-		return new TABLE_c<>(this);
-	}
+  @Override
+  protected TABLE_c<PC> new_c() {
+    return new TABLE_c<>(this);
+  }
 }

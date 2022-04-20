@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyBDI_c;
  * @author  AO Industries, Inc.
  */
 public final class BDI_c<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyBDI_c<Document, PC, BDI_c<PC>>
-	implements PhrasingContent<BDI_c<PC>> {
+  extends AnyBDI_c<Document, PC, BDI_c<PC>>
+  implements PhrasingContent<BDI_c<PC>> {
 
-	BDI_c(BDI<PC> element) {
-		super(element);
-	}
+  BDI_c(BDI<PC> element) {
+    super(element);
+  }
 }

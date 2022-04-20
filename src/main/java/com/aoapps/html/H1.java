@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class H1<
-	PC extends HeadingContent<PC>
+  PC extends HeadingContent<PC>
 > extends AnyH1<Document, PC, H1<PC>, H1__<PC>, H1_c<PC>> {
 
-	H1(Document document, PC pc) {
-		super(document, pc);
-	}
+  H1(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected H1<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected H1<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected H1__<PC> new__() {
-		return new H1__<>(this);
-	}
+  @Override
+  protected H1__<PC> new__() {
+    return new H1__<>(this);
+  }
 
-	@Override
-	protected H1_c<PC> new_c() {
-		return new H1_c<>(this);
-	}
+  @Override
+  protected H1_c<PC> new_c() {
+    return new H1_c<>(this);
+  }
 }

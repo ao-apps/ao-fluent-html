@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class OPTGROUP<
-	PC extends SELECT_content<PC>
+  PC extends SELECT_content<PC>
 > extends AnyOPTGROUP<Document, PC, OPTGROUP<PC>, OPTGROUP__<PC>, OPTGROUP_c<PC>> {
 
-	OPTGROUP(Document document, PC pc) {
-		super(document, pc);
-	}
+  OPTGROUP(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected OPTGROUP<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected OPTGROUP<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected OPTGROUP__<PC> new__() {
-		return new OPTGROUP__<>(this);
-	}
+  @Override
+  protected OPTGROUP__<PC> new__() {
+    return new OPTGROUP__<>(this);
+  }
 
-	@Override
-	protected OPTGROUP_c<PC> new_c() {
-		return new OPTGROUP_c<>(this);
-	}
+  @Override
+  protected OPTGROUP_c<PC> new_c() {
+    return new OPTGROUP_c<>(this);
+  }
 }

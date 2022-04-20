@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SECTION<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 > extends AnySECTION<Document, PC, SECTION<PC>, SECTION__<PC>, SECTION_c<PC>> {
 
-	SECTION(Document document, PC pc) {
-		super(document, pc);
-	}
+  SECTION(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected SECTION<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected SECTION<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected SECTION__<PC> new__() {
-		return new SECTION__<>(this);
-	}
+  @Override
+  protected SECTION__<PC> new__() {
+    return new SECTION__<>(this);
+  }
 
-	@Override
-	protected SECTION_c<PC> new_c() {
-		return new SECTION_c<>(this);
-	}
+  @Override
+  protected SECTION_c<PC> new_c() {
+    return new SECTION_c<>(this);
+  }
 }

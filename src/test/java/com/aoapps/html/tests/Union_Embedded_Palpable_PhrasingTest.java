@@ -39,56 +39,56 @@ import org.junit.Test;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Union_Embedded_Palpable_PhrasingTest extends AnyUnion_Embedded_Palpable_PhrasingTest {
 
-	public Union_Embedded_Palpable_PhrasingTest() {
-		super(Union_Embedded_Palpable_Phrasing.class);
-	}
+  public Union_Embedded_Palpable_PhrasingTest() {
+    super(Union_Embedded_Palpable_Phrasing.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			Union_Embedded_Palpable_Phrasing.class
-			//
-			// Unions:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      Union_Embedded_Palpable_Phrasing.class
+      //
+      // Unions:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			Union_Embedded_Palpable_Phrasing.class,
-			//
-			// Content models:
-			//
-			Content.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      Union_Embedded_Palpable_Phrasing.class,
+      //
+      // Content models:
+      //
+      Content.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			Union_Embedded_Palpable_Phrasing.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      Union_Embedded_Palpable_Phrasing.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Embedded_Palpable_Phrasing.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Embedded_Palpable_Phrasing.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
+      -1,
+      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Embedded_Palpable_Phrasing.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Embedded_Palpable_Phrasing.class);
+  }
 }

@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyLABEL_c;
  * @author  AO Industries, Inc.
  */
 public final class LABEL_c<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 >
-	extends AnyLABEL_c<Document, PC, LABEL_c<PC>>
-	implements PhrasingContent<LABEL_c<PC>> {
+  extends AnyLABEL_c<Document, PC, LABEL_c<PC>>
+  implements PhrasingContent<LABEL_c<PC>> {
 
-	LABEL_c(LABEL<PC> element) {
-		super(element);
-	}
+  LABEL_c(LABEL<PC> element) {
+    super(element);
+  }
 }

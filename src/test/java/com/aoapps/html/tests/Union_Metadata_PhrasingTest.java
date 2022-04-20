@@ -41,57 +41,57 @@ import org.junit.Test;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest {
 
-	public Union_Metadata_PhrasingTest() {
-		super(Union_Metadata_Phrasing.class);
-	}
+  public Union_Metadata_PhrasingTest() {
+    super(Union_Metadata_Phrasing.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			Union_Metadata_Phrasing.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      Union_Metadata_Phrasing.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			Union_Metadata_Phrasing.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			ScriptSupportingContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      Union_Metadata_Phrasing.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      ScriptSupportingContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			Union_Metadata_Phrasing.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      Union_Metadata_Phrasing.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Metadata_Phrasing.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
+      -1,
+      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Metadata_Phrasing.class);
+  }
 }

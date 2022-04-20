@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class CODE<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyCODE<Document, PC, CODE<PC>, CODE__<PC>, CODE_c<PC>> {
 
-	CODE(Document document, PC pc) {
-		super(document, pc);
-	}
+  CODE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected CODE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected CODE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected CODE__<PC> new__() {
-		return new CODE__<>(this);
-	}
+  @Override
+  protected CODE__<PC> new__() {
+    return new CODE__<>(this);
+  }
 
-	@Override
-	protected CODE_c<PC> new_c() {
-		return new CODE_c<>(this);
-	}
+  @Override
+  protected CODE_c<PC> new_c() {
+    return new CODE_c<>(this);
+  }
 }

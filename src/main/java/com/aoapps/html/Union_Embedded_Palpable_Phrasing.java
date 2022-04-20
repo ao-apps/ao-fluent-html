@@ -34,22 +34,22 @@ import com.aoapps.html.any.AnyUnion_Embedded_Palpable_Phrasing;
  * @author  AO Industries, Inc.
  */
 public interface Union_Embedded_Palpable_Phrasing<
-	__ extends Union_Embedded_Palpable_Phrasing<__>
+  __ extends Union_Embedded_Palpable_Phrasing<__>
 > extends AnyUnion_Embedded_Palpable_Phrasing<Document, __>,
-	//
-	// Content models:
-	//
-	Content<__>
+  //
+  // Content models:
+  //
+  Content<__>
 {
-	//
-	// Factories:
-	//
-	// <editor-fold defaultstate="collapsed" desc="TODO: CANVAS">
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="TODO: MathML math">
-	// See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#mathml">4.8.16 MathML</a>.
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="TODO: SVG svg">
-	// See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#svg-0">4.8.17 SVG</a>.
-	// </editor-fold>
+  //
+  // Factories:
+  //
+  // <editor-fold defaultstate="collapsed" desc="TODO: CANVAS">
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="TODO: MathML math">
+  // See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#mathml">4.8.16 MathML</a>.
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="TODO: SVG svg">
+  // See <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html#svg-0">4.8.17 SVG</a>.
+  // </editor-fold>
 }

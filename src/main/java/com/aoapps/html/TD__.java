@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyTD__;
  * @author  AO Industries, Inc.
  */
 public final class TD__<
-	PC extends TR_content<PC>
+  PC extends TR_content<PC>
 >
-	extends AnyTD__<Document, PC, TD__<PC>>
-	implements FlowContent<TD__<PC>> {
+  extends AnyTD__<Document, PC, TD__<PC>>
+  implements FlowContent<TD__<PC>> {
 
-	TD__(TD<PC> element) {
-		super(element);
-	}
+  TD__(TD<PC> element) {
+    super(element);
+  }
 }

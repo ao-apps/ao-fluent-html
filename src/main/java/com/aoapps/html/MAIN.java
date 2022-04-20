@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MAIN<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {
 
-	MAIN(Document document, PC pc) {
-		super(document, pc);
-	}
+  MAIN(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected MAIN<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected MAIN<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected MAIN__<PC> new__() {
-		return new MAIN__<>(this);
-	}
+  @Override
+  protected MAIN__<PC> new__() {
+    return new MAIN__<>(this);
+  }
 
-	@Override
-	protected MAIN_c<PC> new_c() {
-		return new MAIN_c<>(this);
-	}
+  @Override
+  protected MAIN_c<PC> new_c() {
+    return new MAIN_c<>(this);
+  }
 }

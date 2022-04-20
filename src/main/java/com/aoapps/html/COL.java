@@ -40,16 +40,16 @@ import java.io.Writer;
  */
 @SuppressWarnings("deprecation")
 public final class COL<
-	PC extends COLGROUP_content<PC>
+  PC extends COLGROUP_content<PC>
 > extends AnyCOL<Document, PC, COL<PC>> {
 
-	COL(Document document, PC pc) {
-		super(document, pc);
-	}
+  COL(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected COL<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected COL<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 }

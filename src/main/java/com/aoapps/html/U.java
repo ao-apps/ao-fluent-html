@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class U<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyU<Document, PC, U<PC>, U__<PC>, U_c<PC>> {
 
-	U(Document document, PC pc) {
-		super(document, pc);
-	}
+  U(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected U<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected U<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected U__<PC> new__() {
-		return new U__<>(this);
-	}
+  @Override
+  protected U__<PC> new__() {
+    return new U__<>(this);
+  }
 
-	@Override
-	protected U_c<PC> new_c() {
-		return new U_c<>(this);
-	}
+  @Override
+  protected U_c<PC> new_c() {
+    return new U_c<>(this);
+  }
 }

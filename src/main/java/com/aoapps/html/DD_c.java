@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyDD_c;
  * @author  AO Industries, Inc.
  */
 public final class DD_c<
-	PC extends Union_DIV_DL<PC>
+  PC extends Union_DIV_DL<PC>
 >
-	extends AnyDD_c<Document, PC, DD_c<PC>>
-	implements FlowContent<DD_c<PC>> {
+  extends AnyDD_c<Document, PC, DD_c<PC>>
+  implements FlowContent<DD_c<PC>> {
 
-	DD_c(DD<PC> element) {
-		super(element);
-	}
+  DD_c(DD<PC> element) {
+    super(element);
+  }
 }

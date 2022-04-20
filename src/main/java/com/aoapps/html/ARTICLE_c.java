@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyARTICLE_c;
  * @author  AO Industries, Inc.
  */
 public final class ARTICLE_c<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 >
-	extends AnyARTICLE_c<Document, PC, ARTICLE_c<PC>>
-	implements FlowContent<ARTICLE_c<PC>> {
+  extends AnyARTICLE_c<Document, PC, ARTICLE_c<PC>>
+  implements FlowContent<ARTICLE_c<PC>> {
 
-	ARTICLE_c(ARTICLE<PC> element) {
-		super(element);
-	}
+  ARTICLE_c(ARTICLE<PC> element) {
+    super(element);
+  }
 }

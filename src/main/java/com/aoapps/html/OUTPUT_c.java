@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyOUTPUT_c;
  * @author  AO Industries, Inc.
  */
 public final class OUTPUT_c<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyOUTPUT_c<Document, PC, OUTPUT_c<PC>>
-	implements PhrasingContent<OUTPUT_c<PC>> {
+  extends AnyOUTPUT_c<Document, PC, OUTPUT_c<PC>>
+  implements PhrasingContent<OUTPUT_c<PC>> {
 
-	OUTPUT_c(OUTPUT<PC> element) {
-		super(element);
-	}
+  OUTPUT_c(OUTPUT<PC> element) {
+    super(element);
+  }
 }

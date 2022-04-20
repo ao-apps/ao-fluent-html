@@ -37,27 +37,27 @@ import com.aoapps.html.any.AnyDL_content;
  * @author  AO Industries, Inc.
  */
 public interface DL_content<
-	__ extends DL_content<__>
+  __ extends DL_content<__>
 > extends AnyDL_content<Document, __>,
-	//
-	// Unions:
-	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	Union_DIV_DL<__>,
-	Union_DL_Palpable<__>,
+  //
+  // Unions:
+  //
+  // Inherited: Union_COLGROUP_ScriptSupporting<__>
+  Union_DIV_DL<__>,
+  Union_DL_Palpable<__>,
 
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+  ScriptSupportingContent<__>
 {
-	//
-	// Factories:
-	//
-	// Inherited: DD
-	// Inherited: DIV
-	// Inherited: DT
-	// Inherited: SCRIPT
-	// Inherited: TEMPLATE
+  //
+  // Factories:
+  //
+  // Inherited: DD
+  // Inherited: DIV
+  // Inherited: DT
+  // Inherited: SCRIPT
+  // Inherited: TEMPLATE
 }

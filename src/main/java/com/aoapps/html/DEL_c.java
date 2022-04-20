@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyDEL_c;
  * @author  AO Industries, Inc.
  */
 public final class DEL_c<
-	PC extends PhrasingContent<PC>
+  PC extends PhrasingContent<PC>
 >
-	extends AnyDEL_c<Document, PC, DEL_c<PC>>
-	implements PhrasingContent<DEL_c<PC>> {
+  extends AnyDEL_c<Document, PC, DEL_c<PC>>
+  implements PhrasingContent<DEL_c<PC>> {
 
-	DEL_c(DEL<PC> element) {
-		super(element);
-	}
+  DEL_c(DEL<PC> element) {
+    super(element);
+  }
 }

@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class LI<
-	PC extends ListContent<PC>
+  PC extends ListContent<PC>
 > extends AnyLI<Document, PC, LI<PC>, LI__<PC>, LI_c<PC>> {
 
-	LI(Document document, PC pc) {
-		super(document, pc);
-	}
+  LI(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected LI<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected LI<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected LI__<PC> new__() {
-		return new LI__<>(this);
-	}
+  @Override
+  protected LI__<PC> new__() {
+    return new LI__<>(this);
+  }
 
-	@Override
-	protected LI_c<PC> new_c() {
-		return new LI_c<>(this);
-	}
+  @Override
+  protected LI_c<PC> new_c() {
+    return new LI_c<>(this);
+  }
 }

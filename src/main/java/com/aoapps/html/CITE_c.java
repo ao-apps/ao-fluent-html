@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyCITE_c;
  * @author  AO Industries, Inc.
  */
 public final class CITE_c<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyCITE_c<Document, PC, CITE_c<PC>>
-	implements PhrasingContent<CITE_c<PC>> {
+  extends AnyCITE_c<Document, PC, CITE_c<PC>>
+  implements PhrasingContent<CITE_c<PC>> {
 
-	CITE_c(CITE<PC> element) {
-		super(element);
-	}
+  CITE_c(CITE<PC> element) {
+    super(element);
+  }
 }

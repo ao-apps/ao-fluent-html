@@ -55,73 +55,73 @@ import org.junit.Test;
  */
 public class DIV_contentTest extends AnyDIV_contentTest {
 
-	public DIV_contentTest() {
-		super(DIV_content.class);
-	}
+  public DIV_contentTest() {
+    super(DIV_content.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			DIV_content.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class,
-			Union_DIV_DL.class,
-			Union_DL_Palpable.class,
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class,
-			Union_Metadata_Phrasing.class,
-			Union_Palpable_Phrasing.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      DIV_content.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class,
+      Union_DIV_DL.class,
+      Union_DL_Palpable.class,
+      Union_Embedded_Interactive.class,
+      Union_Embedded_Palpable_Phrasing.class,
+      Union_Interactive_Phrasing.class,
+      Union_Metadata_Phrasing.class,
+      Union_Palpable_Phrasing.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			DIV_content.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			EmbeddedContent.class,
-			FlowContent.class,
-			HeadingContent.class,
-			InteractiveContent.class,
-			PalpableContent.class,
-			PhrasingContent.class,
-			ScriptSupportingContent.class,
-			SectioningContent.class,
-			TextContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      DIV_content.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      EmbeddedContent.class,
+      FlowContent.class,
+      HeadingContent.class,
+      InteractiveContent.class,
+      PalpableContent.class,
+      PhrasingContent.class,
+      ScriptSupportingContent.class,
+      SectioningContent.class,
+      TextContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			DIV_content.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      DIV_content.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-			-1,
-			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DIV_content.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, DIV_content.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+      -1,
+      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DIV_content.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, DIV_content.class);
+  }
 }

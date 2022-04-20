@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyNAV__;
  * @author  AO Industries, Inc.
  */
 public final class NAV__<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 >
-	extends AnyNAV__<Document, PC, NAV__<PC>>
-	implements FlowContent<NAV__<PC>> {
+  extends AnyNAV__<Document, PC, NAV__<PC>>
+  implements FlowContent<NAV__<PC>> {
 
-	NAV__(NAV<PC> element) {
-		super(element);
-	}
+  NAV__(NAV<PC> element) {
+    super(element);
+  }
 }

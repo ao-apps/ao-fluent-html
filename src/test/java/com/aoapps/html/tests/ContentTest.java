@@ -36,57 +36,57 @@ import org.junit.Test;
  */
 public class ContentTest extends com.aoapps.html.any.tests.ContentTest {
 
-	public ContentTest() {
-		super(Content.class);
-	}
+  public ContentTest() {
+    super(Content.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			Content.class
-			//
-			// Unions:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      Content.class
+      //
+      // Unions:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			Content.class
-			//
-			// Content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      Content.class
+      //
+      // Content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			Content.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      Content.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-			-1,
-			AoArrays.indexOf(ContentModelTest.getAllContentModels(), Content.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, Content.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+      -1,
+      AoArrays.indexOf(ContentModelTest.getAllContentModels(), Content.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, Content.class);
+  }
 }

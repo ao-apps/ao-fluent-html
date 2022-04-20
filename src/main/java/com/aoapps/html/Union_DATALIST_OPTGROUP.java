@@ -35,45 +35,45 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_DATALIST_OPTGROUP<
-	__ extends Union_DATALIST_OPTGROUP<__>
+  __ extends Union_DATALIST_OPTGROUP<__>
 > extends AnyUnion_DATALIST_OPTGROUP<Document, __>,
-	//
-	// Content models:
-	//
-	Content<__>
+  //
+  // Content models:
+  //
+  Content<__>
 {
-	//
-	// Factories:
-	//
-	// <editor-fold defaultstate="collapsed" desc="OPTION">
-	@Override
-	@SuppressWarnings("deprecation")
-	default OPTION<__> option() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new OPTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  //
+  // Factories:
+  //
+  // <editor-fold defaultstate="collapsed" desc="OPTION">
+  @Override
+  @SuppressWarnings("deprecation")
+  default OPTION<__> option() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new OPTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an option element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option">&lt;option&gt;: The HTML Option element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ option__(IOConsumerE<? super OPTION__<__>, Ex> option) throws IOException, Ex {
-		return option().__(option);
-	}
+  /**
+   * Creates an option element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">4.10.10 The option element</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option">&lt;option&gt;: The HTML Option element</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_option.asp">HTML option tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ option__(IOConsumerE<? super OPTION__<__>, Ex> option) throws IOException, Ex {
+    return option().__(option);
+  }
 
-	@Override
-	default OPTION_c<__> option_c() throws IOException {
-		return option()._c();
-	}
-	// </editor-fold>
+  @Override
+  default OPTION_c<__> option_c() throws IOException {
+    return option()._c();
+  }
+  // </editor-fold>
 }

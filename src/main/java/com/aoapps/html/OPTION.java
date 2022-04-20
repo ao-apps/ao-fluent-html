@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class OPTION<
-	PC extends Union_DATALIST_OPTGROUP<PC>
+  PC extends Union_DATALIST_OPTGROUP<PC>
 > extends AnyOPTION<Document, PC, OPTION<PC>, OPTION__<PC>, OPTION_c<PC>> {
 
-	OPTION(Document document, PC pc) {
-		super(document, pc);
-	}
+  OPTION(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected OPTION<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected OPTION<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected OPTION__<PC> new__() {
-		return new OPTION__<>(this);
-	}
+  @Override
+  protected OPTION__<PC> new__() {
+    return new OPTION__<>(this);
+  }
 
-	@Override
-	protected OPTION_c<PC> new_c() {
-		return new OPTION_c<>(this);
-	}
+  @Override
+  protected OPTION_c<PC> new_c() {
+    return new OPTION_c<>(this);
+  }
 }

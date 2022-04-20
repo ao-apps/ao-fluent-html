@@ -38,30 +38,30 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface COLGROUP_content<
-	__ extends COLGROUP_content<__>
+  __ extends COLGROUP_content<__>
 > extends AnyCOLGROUP_content<Document, __>,
-	//
-	// Unions:
-	//
-	Union_COLGROUP_ScriptSupporting<__>
+  //
+  // Unions:
+  //
+  Union_COLGROUP_ScriptSupporting<__>
 
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
 {
-	//
-	// Factories:
-	//
-	// <editor-fold defaultstate="collapsed" desc="COL">
-	@Override
-	@SuppressWarnings("deprecation")
-	default COL<__> col() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new COL<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
-	// </editor-fold>
-	// Inherited: TEMPLATE
+  //
+  // Factories:
+  //
+  // <editor-fold defaultstate="collapsed" desc="COL">
+  @Override
+  @SuppressWarnings("deprecation")
+  default COL<__> col() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new COL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
+  // </editor-fold>
+  // Inherited: TEMPLATE
 }

@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class UL<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyUL<Document, PC, UL<PC>, UL__<PC>, UL_c<PC>> {
 
-	UL(Document document, PC pc) {
-		super(document, pc);
-	}
+  UL(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected UL<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected UL<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected UL__<PC> new__() {
-		return new UL__<>(this);
-	}
+  @Override
+  protected UL__<PC> new__() {
+    return new UL__<>(this);
+  }
 
-	@Override
-	protected UL_c<PC> new_c() {
-		return new UL_c<>(this);
-	}
+  @Override
+  protected UL_c<PC> new_c() {
+    return new UL_c<>(this);
+  }
 }

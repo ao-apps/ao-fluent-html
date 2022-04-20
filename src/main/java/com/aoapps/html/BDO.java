@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class BDO<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyBDO<Document, PC, BDO<PC>, BDO__<PC>, BDO_c<PC>> {
 
-	BDO(Document document, PC pc) {
-		super(document, pc);
-	}
+  BDO(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected BDO<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected BDO<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected BDO__<PC> new__() {
-		return new BDO__<>(this);
-	}
+  @Override
+  protected BDO__<PC> new__() {
+    return new BDO__<>(this);
+  }
 
-	@Override
-	protected BDO_c<PC> new_c() {
-		return new BDO_c<>(this);
-	}
+  @Override
+  protected BDO_c<PC> new_c() {
+    return new BDO_c<>(this);
+  }
 }

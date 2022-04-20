@@ -45,72 +45,72 @@ import java.nio.charset.Charset;
  */
 public final class Document extends AnyDocument<Document> implements AnyContent<Document> {
 
-	/**
-	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
-	 *              Not doing so may result in {@link IllegalStateException}.
-	 *              <p>
-	 *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-	 *              with {@code encoder = null}.
-	 *              </p>
-	 *
-	 * @see  #setOut(java.io.Writer)
-	 */
-	public Document(EncodingContext encodingContext, Writer out) {
-		super(encodingContext, out);
-	}
+  /**
+   * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+   *              Not doing so may result in {@link IllegalStateException}.
+   *              <p>
+   *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.
+   *              </p>
+   *
+   * @see  #setOut(java.io.Writer)
+   */
+  public Document(EncodingContext encodingContext, Writer out) {
+    super(encodingContext, out);
+  }
 
-	/**
-	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
-	 *              Not doing so may result in {@link IllegalStateException}.
-	 *              <p>
-	 *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-	 *              with {@code encoder = null}.
-	 *              </p>
-	 *
-	 * @see  #setOut(java.io.Writer)
-	 */
-	public Document(Serialization serialization, Doctype doctype, Charset characterEncoding, Writer out) {
-		this(
-			new EncodingContext() {
-				@Override
-				public Serialization getSerialization() {
-					return serialization;
-				}
-				@Override
-				public Doctype getDoctype() {
-					return doctype;
-				}
-				@Override
-				public Charset getCharacterEncoding() {
-					return characterEncoding;
-				}
-			},
-			out
-		);
-	}
+  /**
+   * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+   *              Not doing so may result in {@link IllegalStateException}.
+   *              <p>
+   *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.
+   *              </p>
+   *
+   * @see  #setOut(java.io.Writer)
+   */
+  public Document(Serialization serialization, Doctype doctype, Charset characterEncoding, Writer out) {
+    this(
+      new EncodingContext() {
+        @Override
+        public Serialization getSerialization() {
+          return serialization;
+        }
+        @Override
+        public Doctype getDoctype() {
+          return doctype;
+        }
+        @Override
+        public Charset getCharacterEncoding() {
+          return characterEncoding;
+        }
+      },
+      out
+    );
+  }
 
-	/**
-	 * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
-	 *              Not doing so may result in {@link IllegalStateException}.
-	 *              <p>
-	 *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-	 *              with {@code encoder = null}.
-	 *              </p>
-	 *
-	 * @see  #setOut(java.io.Writer)
-	 * @see  EncodingContext#DEFAULT
-	 */
-	public Document(Writer out) {
-		this(EncodingContext.DEFAULT, out);
-	}
+  /**
+   * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
+   *              Not doing so may result in {@link IllegalStateException}.
+   *              <p>
+   *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.
+   *              </p>
+   *
+   * @see  #setOut(java.io.Writer)
+   * @see  EncodingContext#DEFAULT
+   */
+  public Document(Writer out) {
+    this(EncodingContext.DEFAULT, out);
+  }
 
-	/**
-	 * Unwraps the given chain writer.
-	 *
-	 * @param  out  After being unwrapped, will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-	 *              with {@code encoder = null}.
-	 */
-	public Document(ChainWriter out) {
-		this(out.getEncodingContext(), out.getPrintWriter());
-	}
+  /**
+   * Unwraps the given chain writer.
+   *
+   * @param  out  After being unwrapped, will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.
+   */
+  public Document(ChainWriter out) {
+    this(out.getEncodingContext(), out.getPrintWriter());
+  }
 }

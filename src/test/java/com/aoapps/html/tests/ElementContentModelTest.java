@@ -46,38 +46,38 @@ import org.junit.Test;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class ElementContentModelTest {
 
-	/**
-	 * Gets the set of all <code>*_content</code> per-element content model interfaces.
-	 */
-	static Class<? extends Content>[] getAllElementContentModels() {
-		return new Class[] {
-			COLGROUP_content.class,
-			DATALIST_content.class,
-			DIV_content.class,
-			DL_content.class,
-			HTML_content.class,
-			OBJECT_content.class,
-			OPTGROUP_content.class,
-			SELECT_content.class,
-			TABLE_content.class,
-			TR_content.class
-		};
-	}
+  /**
+   * Gets the set of all <code>*_content</code> per-element content model interfaces.
+   */
+  static Class<? extends Content>[] getAllElementContentModels() {
+    return new Class[] {
+      COLGROUP_content.class,
+      DATALIST_content.class,
+      DIV_content.class,
+      DL_content.class,
+      HTML_content.class,
+      OBJECT_content.class,
+      OPTGROUP_content.class,
+      SELECT_content.class,
+      TABLE_content.class,
+      TR_content.class
+    };
+  }
 
-	static void testElementContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		InheritanceTestHelper.testInterfaces(
-			Content.class,
-			iface -> iface.getSimpleName().endsWith("_content"),
-			getAllElementContentModels(),
-			clazz,
-			expected
-		);
-	}
+  static void testElementContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
+    InheritanceTestHelper.testInterfaces(
+      Content.class,
+      iface -> iface.getSimpleName().endsWith("_content"),
+      getAllElementContentModels(),
+      clazz,
+      expected
+    );
+  }
 
-	@Test
-	public void testNoImplementInherited() {
-		for(Class<? extends Content> iface : getAllElementContentModels()) {
-			InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
-		}
-	}
+  @Test
+  public void testNoImplementInherited() {
+    for (Class<? extends Content> iface : getAllElementContentModels()) {
+      InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
+    }
+  }
 }

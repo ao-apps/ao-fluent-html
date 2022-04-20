@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class PROGRESS<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyPROGRESS<Document, PC, PROGRESS<PC>, PROGRESS__<PC>, PROGRESS_c<PC>> {
 
-	PROGRESS(Document document, PC pc) {
-		super(document, pc);
-	}
+  PROGRESS(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected PROGRESS<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected PROGRESS<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected PROGRESS__<PC> new__() {
-		return new PROGRESS__<>(this);
-	}
+  @Override
+  protected PROGRESS__<PC> new__() {
+    return new PROGRESS__<>(this);
+  }
 
-	@Override
-	protected PROGRESS_c<PC> new_c() {
-		return new PROGRESS_c<>(this);
-	}
+  @Override
+  protected PROGRESS_c<PC> new_c() {
+    return new PROGRESS_c<>(this);
+  }
 }

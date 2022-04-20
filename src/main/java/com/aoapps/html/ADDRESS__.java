@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyADDRESS__;
  * @author  AO Industries, Inc.
  */
 public final class ADDRESS__<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 >
-	extends AnyADDRESS__<Document, PC, ADDRESS__<PC>>
-	implements FlowContent<ADDRESS__<PC>> {
+  extends AnyADDRESS__<Document, PC, ADDRESS__<PC>>
+  implements FlowContent<ADDRESS__<PC>> {
 
-	ADDRESS__(ADDRESS<PC> element) {
-		super(element);
-	}
+  ADDRESS__(ADDRESS<PC> element) {
+    super(element);
+  }
 }

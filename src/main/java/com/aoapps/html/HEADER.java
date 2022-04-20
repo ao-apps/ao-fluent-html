@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class HEADER<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyHEADER<Document, PC, HEADER<PC>, HEADER__<PC>, HEADER_c<PC>> {
 
-	HEADER(Document document, PC pc) {
-		super(document, pc);
-	}
+  HEADER(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected HEADER<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected HEADER<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected HEADER__<PC> new__() {
-		return new HEADER__<>(this);
-	}
+  @Override
+  protected HEADER__<PC> new__() {
+    return new HEADER__<>(this);
+  }
 
-	@Override
-	protected HEADER_c<PC> new_c() {
-		return new HEADER_c<>(this);
-	}
+  @Override
+  protected HEADER_c<PC> new_c() {
+    return new HEADER_c<>(this);
+  }
 }

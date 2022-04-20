@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class OUTPUT<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyOUTPUT<Document, PC, OUTPUT<PC>, OUTPUT__<PC>, OUTPUT_c<PC>> {
 
-	OUTPUT(Document document, PC pc) {
-		super(document, pc);
-	}
+  OUTPUT(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected OUTPUT<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected OUTPUT<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected OUTPUT__<PC> new__() {
-		return new OUTPUT__<>(this);
-	}
+  @Override
+  protected OUTPUT__<PC> new__() {
+    return new OUTPUT__<>(this);
+  }
 
-	@Override
-	protected OUTPUT_c<PC> new_c() {
-		return new OUTPUT_c<>(this);
-	}
+  @Override
+  protected OUTPUT_c<PC> new_c() {
+    return new OUTPUT_c<>(this);
+  }
 }

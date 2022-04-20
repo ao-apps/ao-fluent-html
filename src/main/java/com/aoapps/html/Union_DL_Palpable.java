@@ -35,45 +35,45 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_DL_Palpable<
-	__ extends Union_DL_Palpable<__>
+  __ extends Union_DL_Palpable<__>
 > extends AnyUnion_DL_Palpable<Document, __>,
-	//
-	// Content models:
-	//
-	Content<__>
+  //
+  // Content models:
+  //
+  Content<__>
 {
-	//
-	// Factories:
-	//
-	// <editor-fold defaultstate="collapsed" desc="DIV">
-	@Override
-	@SuppressWarnings("deprecation")
-	default DIV<__> div() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new DIV<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  //
+  // Factories:
+  //
+  // <editor-fold defaultstate="collapsed" desc="DIV">
+  @Override
+  @SuppressWarnings("deprecation")
+  default DIV<__> div() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new DIV<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates a div element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">&lt;div&gt;: The Content Division element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_div.asp">HTML div tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<__>, Ex> div) throws IOException, Ex {
-		return div().__(div);
-	}
+  /**
+   * Creates a div element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">4.4.15 The div element</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">&lt;div&gt;: The Content Division element</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_div.asp">HTML div tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ div__(IOConsumerE<? super DIV__<__>, Ex> div) throws IOException, Ex {
+    return div().__(div);
+  }
 
-	@Override
-	default DIV_c<__> div_c() throws IOException {
-		return div()._c();
-	}
-	// </editor-fold>
+  @Override
+  default DIV_c<__> div_c() throws IOException {
+    return div()._c();
+  }
+  // </editor-fold>
 }

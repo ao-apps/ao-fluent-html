@@ -39,16 +39,16 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class LINK<
-	PC extends Union_Metadata_Phrasing<PC>
+  PC extends Union_Metadata_Phrasing<PC>
 > extends AnyLINK<Document, PC, LINK<PC>> {
 
-	LINK(Document document, PC pc) {
-		super(document, pc);
-	}
+  LINK(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected LINK<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected LINK<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 }

@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TR<
-	PC extends Union_TBODY_THEAD_TFOOT<PC>
+  PC extends Union_TBODY_THEAD_TFOOT<PC>
 > extends AnyTR<Document, PC, TR<PC>, TR__<PC>, TR_c<PC>> {
 
-	TR(Document document, PC pc) {
-		super(document, pc);
-	}
+  TR(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TR<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TR<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TR__<PC> new__() {
-		return new TR__<>(this);
-	}
+  @Override
+  protected TR__<PC> new__() {
+    return new TR__<>(this);
+  }
 
-	@Override
-	protected TR_c<PC> new_c() {
-		return new TR_c<>(this);
-	}
+  @Override
+  protected TR_c<PC> new_c() {
+    return new TR_c<>(this);
+  }
 }

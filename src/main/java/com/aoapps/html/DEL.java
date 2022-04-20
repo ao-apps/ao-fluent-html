@@ -39,21 +39,21 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class DEL<
-	PC extends PhrasingContent<PC>
+  PC extends PhrasingContent<PC>
 > extends AnyDEL<Document, PC, DEL<PC>, DEL_c<PC>> {
 
-	DEL(Document document, PC pc) {
-		super(document, pc);
-	}
+  DEL(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected DEL<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected DEL<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected DEL_c<PC> new_c() {
-		return new DEL_c<>(this);
-	}
+  @Override
+  protected DEL_c<PC> new_c() {
+    return new DEL_c<>(this);
+  }
 }

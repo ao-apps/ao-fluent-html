@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyH4_c;
  * @author  AO Industries, Inc.
  */
 public final class H4_c<
-	PC extends HeadingContent<PC>
+  PC extends HeadingContent<PC>
 >
-	extends AnyH4_c<Document, PC, H4_c<PC>>
-	implements PhrasingContent<H4_c<PC>> {
+  extends AnyH4_c<Document, PC, H4_c<PC>>
+  implements PhrasingContent<H4_c<PC>> {
 
-	H4_c(H4<PC> element) {
-		super(element);
-	}
+  H4_c(H4<PC> element) {
+    super(element);
+  }
 }

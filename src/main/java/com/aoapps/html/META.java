@@ -39,16 +39,16 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class META<
-	PC extends Union_Metadata_Phrasing<PC>
+  PC extends Union_Metadata_Phrasing<PC>
 > extends AnyMETA<Document, PC, META<PC>> {
 
-	META(Document document, PC pc) {
-		super(document, pc);
-	}
+  META(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected META<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected META<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 }

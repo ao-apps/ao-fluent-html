@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class ADDRESS<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyADDRESS<Document, PC, ADDRESS<PC>, ADDRESS__<PC>, ADDRESS_c<PC>> {
 
-	ADDRESS(Document document, PC pc) {
-		super(document, pc);
-	}
+  ADDRESS(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected ADDRESS<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected ADDRESS<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected ADDRESS__<PC> new__() {
-		return new ADDRESS__<>(this);
-	}
+  @Override
+  protected ADDRESS__<PC> new__() {
+    return new ADDRESS__<>(this);
+  }
 
-	@Override
-	protected ADDRESS_c<PC> new_c() {
-		return new ADDRESS_c<>(this);
-	}
+  @Override
+  protected ADDRESS_c<PC> new_c() {
+    return new ADDRESS_c<>(this);
+  }
 }

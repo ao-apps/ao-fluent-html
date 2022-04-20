@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyBLOCKQUOTE__;
  * @author  AO Industries, Inc.
  */
 public final class BLOCKQUOTE__<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 >
-	extends AnyBLOCKQUOTE__<Document, PC, BLOCKQUOTE__<PC>>
-	implements FlowContent<BLOCKQUOTE__<PC>> {
+  extends AnyBLOCKQUOTE__<Document, PC, BLOCKQUOTE__<PC>>
+  implements FlowContent<BLOCKQUOTE__<PC>> {
 
-	BLOCKQUOTE__(BLOCKQUOTE<PC> element) {
-		super(element);
-	}
+  BLOCKQUOTE__(BLOCKQUOTE<PC> element) {
+    super(element);
+  }
 }

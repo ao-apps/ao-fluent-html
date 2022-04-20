@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class ARTICLE<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 > extends AnyARTICLE<Document, PC, ARTICLE<PC>, ARTICLE__<PC>, ARTICLE_c<PC>> {
 
-	ARTICLE(Document document, PC pc) {
-		super(document, pc);
-	}
+  ARTICLE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected ARTICLE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected ARTICLE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected ARTICLE__<PC> new__() {
-		return new ARTICLE__<>(this);
-	}
+  @Override
+  protected ARTICLE__<PC> new__() {
+    return new ARTICLE__<>(this);
+  }
 
-	@Override
-	protected ARTICLE_c<PC> new_c() {
-		return new ARTICLE_c<>(this);
-	}
+  @Override
+  protected ARTICLE_c<PC> new_c() {
+    return new ARTICLE_c<>(this);
+  }
 }

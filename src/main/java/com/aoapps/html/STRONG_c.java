@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnySTRONG_c;
  * @author  AO Industries, Inc.
  */
 public final class STRONG_c<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnySTRONG_c<Document, PC, STRONG_c<PC>>
-	implements PhrasingContent<STRONG_c<PC>> {
+  extends AnySTRONG_c<Document, PC, STRONG_c<PC>>
+  implements PhrasingContent<STRONG_c<PC>> {
 
-	STRONG_c(STRONG<PC> element) {
-		super(element);
-	}
+  STRONG_c(STRONG<PC> element) {
+    super(element);
+  }
 }

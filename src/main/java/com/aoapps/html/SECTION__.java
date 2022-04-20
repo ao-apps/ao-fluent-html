@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnySECTION__;
  * @author  AO Industries, Inc.
  */
 public final class SECTION__<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 >
-	extends AnySECTION__<Document, PC, SECTION__<PC>>
-	implements FlowContent<SECTION__<PC>> {
+  extends AnySECTION__<Document, PC, SECTION__<PC>>
+  implements FlowContent<SECTION__<PC>> {
 
-	SECTION__(SECTION<PC> element) {
-		super(element);
-	}
+  SECTION__(SECTION<PC> element) {
+    super(element);
+  }
 }

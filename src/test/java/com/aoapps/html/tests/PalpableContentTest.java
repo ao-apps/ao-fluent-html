@@ -47,65 +47,65 @@ import org.junit.Test;
  */
 public class PalpableContentTest extends AnyPalpableContentTest {
 
-	public PalpableContentTest() {
-		super(PalpableContent.class);
-	}
+  public PalpableContentTest() {
+    super(PalpableContent.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			PalpableContent.class,
-			//
-			// Unions:
-			//
-			Union_DL_Palpable.class,
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class,
-			Union_Palpable_Phrasing.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      PalpableContent.class,
+      //
+      // Unions:
+      //
+      Union_DL_Palpable.class,
+      Union_Embedded_Interactive.class,
+      Union_Embedded_Palpable_Phrasing.class,
+      Union_Interactive_Phrasing.class,
+      Union_Palpable_Phrasing.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			PalpableContent.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			SectioningContent.class,
-			HeadingContent.class,
-			InteractiveContent.class,
-			TextContent.class // that is not inter-element whitespace
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      PalpableContent.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      SectioningContent.class,
+      HeadingContent.class,
+      InteractiveContent.class,
+      TextContent.class // that is not inter-element whitespace
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			PalpableContent.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      PalpableContent.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-			-1,
-			AoArrays.indexOf(ContentModelTest.getAllContentModels(), PalpableContent.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, PalpableContent.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+      -1,
+      AoArrays.indexOf(ContentModelTest.getAllContentModels(), PalpableContent.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, PalpableContent.class);
+  }
 }

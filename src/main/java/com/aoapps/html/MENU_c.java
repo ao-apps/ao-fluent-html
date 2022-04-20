@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyMENU_c;
  * @author  AO Industries, Inc.
  */
 public final class MENU_c<
-	PC extends InteractiveContent<PC>
+  PC extends InteractiveContent<PC>
 >
-	extends AnyMENU_c<Document, PC, MENU_c<PC>>
-	implements ListContent<MENU_c<PC>> {
+  extends AnyMENU_c<Document, PC, MENU_c<PC>>
+  implements ListContent<MENU_c<PC>> {
 
-	MENU_c(MENU<PC> element) {
-		super(element);
-	}
+  MENU_c(MENU<PC> element) {
+    super(element);
+  }
 }

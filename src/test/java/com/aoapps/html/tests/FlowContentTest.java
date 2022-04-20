@@ -53,71 +53,71 @@ import org.junit.Test;
  */
 public class FlowContentTest extends AnyFlowContentTest {
 
-	public FlowContentTest() {
-		super(FlowContent.class);
-	}
+  public FlowContentTest() {
+    super(FlowContent.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			FlowContent.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class,
-			Union_DL_Palpable.class,
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class,
-			Union_Metadata_Phrasing.class,
-			Union_Palpable_Phrasing.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      FlowContent.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class,
+      Union_DL_Palpable.class,
+      Union_Embedded_Interactive.class,
+      Union_Embedded_Palpable_Phrasing.class,
+      Union_Interactive_Phrasing.class,
+      Union_Metadata_Phrasing.class,
+      Union_Palpable_Phrasing.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			FlowContent.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			EmbeddedContent.class,
-			HeadingContent.class,
-			InteractiveContent.class,
-			PalpableContent.class,
-			PhrasingContent.class,
-			ScriptSupportingContent.class,
-			SectioningContent.class,
-			TextContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      FlowContent.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      EmbeddedContent.class,
+      HeadingContent.class,
+      InteractiveContent.class,
+      PalpableContent.class,
+      PhrasingContent.class,
+      ScriptSupportingContent.class,
+      SectioningContent.class,
+      TextContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			FlowContent.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      FlowContent.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-			-1,
-			AoArrays.indexOf(ContentModelTest.getAllContentModels(), FlowContent.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, FlowContent.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+      -1,
+      AoArrays.indexOf(ContentModelTest.getAllContentModels(), FlowContent.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, FlowContent.class);
+  }
 }

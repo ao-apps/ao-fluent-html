@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyTBODY__;
  * @author  AO Industries, Inc.
  */
 public final class TBODY__<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 >
-	extends AnyTBODY__<Document, PC, TBODY__<PC>>
-	implements Union_TBODY_THEAD_TFOOT<TBODY__<PC>> {
+  extends AnyTBODY__<Document, PC, TBODY__<PC>>
+  implements Union_TBODY_THEAD_TFOOT<TBODY__<PC>> {
 
-	TBODY__(TBODY<PC> element) {
-		super(element);
-	}
+  TBODY__(TBODY<PC> element) {
+    super(element);
+  }
 }

@@ -40,16 +40,16 @@ import java.io.Writer;
  */
 @SuppressWarnings("deprecation")
 public final class IMG<
-	PC extends Union_Embedded_Interactive<PC>
+  PC extends Union_Embedded_Interactive<PC>
 > extends AnyIMG<Document, PC, IMG<PC>> {
 
-	IMG(Document document, PC pc) {
-		super(document, pc);
-	}
+  IMG(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected IMG<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected IMG<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 }

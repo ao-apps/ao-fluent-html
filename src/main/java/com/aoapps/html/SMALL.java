@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SMALL<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnySMALL<Document, PC, SMALL<PC>, SMALL__<PC>, SMALL_c<PC>> {
 
-	SMALL(Document document, PC pc) {
-		super(document, pc);
-	}
+  SMALL(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected SMALL<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected SMALL<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected SMALL__<PC> new__() {
-		return new SMALL__<>(this);
-	}
+  @Override
+  protected SMALL__<PC> new__() {
+    return new SMALL__<>(this);
+  }
 
-	@Override
-	protected SMALL_c<PC> new_c() {
-		return new SMALL_c<>(this);
-	}
+  @Override
+  protected SMALL_c<PC> new_c() {
+    return new SMALL_c<>(this);
+  }
 }

@@ -37,24 +37,24 @@ import com.aoapps.html.any.AnyOPTGROUP_content;
  * @author  AO Industries, Inc.
  */
 public interface OPTGROUP_content<
-	__ extends OPTGROUP_content<__>
+  __ extends OPTGROUP_content<__>
 > extends AnyOPTGROUP_content<Document, __>,
-	//
-	// Unions:
-	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	Union_DATALIST_OPTGROUP<__>,
+  //
+  // Unions:
+  //
+  // Inherited: Union_COLGROUP_ScriptSupporting<__>
+  Union_DATALIST_OPTGROUP<__>,
 
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+  ScriptSupportingContent<__>
 {
-	//
-	// Factories:
-	//
-	// Inherited: OPTION
-	// Inherited: SCRIPT
-	// Inherited: TEMPLATE
+  //
+  // Factories:
+  //
+  // Inherited: OPTION
+  // Inherited: SCRIPT
+  // Inherited: TEMPLATE
 }

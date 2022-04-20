@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyASIDE_c;
  * @author  AO Industries, Inc.
  */
 public final class ASIDE_c<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 >
-	extends AnyASIDE_c<Document, PC, ASIDE_c<PC>>
-	implements FlowContent<ASIDE_c<PC>> {
+  extends AnyASIDE_c<Document, PC, ASIDE_c<PC>>
+  implements FlowContent<ASIDE_c<PC>> {
 
-	ASIDE_c(ASIDE<PC> element) {
-		super(element);
-	}
+  ASIDE_c(ASIDE<PC> element) {
+    super(element);
+  }
 }

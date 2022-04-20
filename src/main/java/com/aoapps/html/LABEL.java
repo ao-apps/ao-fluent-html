@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class LABEL<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 > extends AnyLABEL<Document, PC, LABEL<PC>, LABEL__<PC>, LABEL_c<PC>> {
 
-	LABEL(Document document, PC pc) {
-		super(document, pc);
-	}
+  LABEL(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected LABEL<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected LABEL<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected LABEL__<PC> new__() {
-		return new LABEL__<>(this);
-	}
+  @Override
+  protected LABEL__<PC> new__() {
+    return new LABEL__<>(this);
+  }
 
-	@Override
-	protected LABEL_c<PC> new_c() {
-		return new LABEL_c<>(this);
-	}
+  @Override
+  protected LABEL_c<PC> new_c() {
+    return new LABEL_c<>(this);
+  }
 }

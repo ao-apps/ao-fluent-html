@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyMARK__;
  * @author  AO Industries, Inc.
  */
 public final class MARK__<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyMARK__<Document, PC, MARK__<PC>>
-	implements PhrasingContent<MARK__<PC>> {
+  extends AnyMARK__<Document, PC, MARK__<PC>>
+  implements PhrasingContent<MARK__<PC>> {
 
-	MARK__(MARK<PC> element) {
-		super(element);
-	}
+  MARK__(MARK<PC> element) {
+    super(element);
+  }
 }

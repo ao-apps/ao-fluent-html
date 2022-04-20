@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnySPAN__;
  * @author  AO Industries, Inc.
  */
 public final class SPAN__<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnySPAN__<Document, PC, SPAN__<PC>>
-	implements PhrasingContent<SPAN__<PC>> {
+  extends AnySPAN__<Document, PC, SPAN__<PC>>
+  implements PhrasingContent<SPAN__<PC>> {
 
-	SPAN__(SPAN<PC> element) {
-		super(element);
-	}
+  SPAN__(SPAN<PC> element) {
+    super(element);
+  }
 }

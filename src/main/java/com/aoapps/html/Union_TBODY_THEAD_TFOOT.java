@@ -46,53 +46,53 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_TBODY_THEAD_TFOOT<
-	__ extends Union_TBODY_THEAD_TFOOT<__>
+  __ extends Union_TBODY_THEAD_TFOOT<__>
 > extends AnyUnion_TBODY_THEAD_TFOOT<Document, __>,
-	//
-	// Unions:
-	//
-	// Inherited: COLGROUP_ScriptSupporting<__>
+  //
+  // Unions:
+  //
+  // Inherited: COLGROUP_ScriptSupporting<__>
 
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-	ScriptSupportingContent<__>
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+  ScriptSupportingContent<__>
 {
-	//
-	// Factories:
-	//
-	// <editor-fold defaultstate="collapsed" desc="TR">
-	@Override
-	@SuppressWarnings("deprecation")
-	default TR<__> tr() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new TR<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  //
+  // Factories:
+  //
+  // <editor-fold defaultstate="collapsed" desc="TR">
+  @Override
+  @SuppressWarnings("deprecation")
+  default TR<__> tr() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new TR<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates a tr element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr">&lt;tr&gt;: The Table Row element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_tr.asp">HTML tr tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
-		return tr().__(tr);
-	}
+  /**
+   * Creates a tr element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">4.9.8 The tr element</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr">&lt;tr&gt;: The Table Row element</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_tr.asp">HTML tr tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ tr__(IOConsumerE<? super TR__<__>, Ex> tr) throws IOException, Ex {
+    return tr().__(tr);
+  }
 
-	@Override
-	default TR_c<__> tr_c() throws IOException {
-		return tr()._c();
-	}
-	// </editor-fold>
-	// Inherited: SCRIPT
-	// Inherited: TEMPLATE
+  @Override
+  default TR_c<__> tr_c() throws IOException {
+    return tr()._c();
+  }
+  // </editor-fold>
+  // Inherited: SCRIPT
+  // Inherited: TEMPLATE
 }

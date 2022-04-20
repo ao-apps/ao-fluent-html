@@ -39,87 +39,87 @@ import com.aoapps.html.any.AnyDATALIST_content;
  * @author  AO Industries, Inc.
  */
 public interface DATALIST_content<
-	__ extends DATALIST_content<__>
+  __ extends DATALIST_content<__>
 > extends AnyDATALIST_content<Document, __>,
-	//
-	// Unions:
-	//
-	// Inherited: Union_COLGROUP_ScriptSupporting<__>
-	Union_DATALIST_OPTGROUP<__>,
-	// Inherited: Union_Embedded_Interactive<__>
-	// Inherited: Union_Embedded_Palpable_Phrasing<__>
-	// Inherited: Union_Interactive_Phrasing<__>
-	// Inherited: Union_Metadata_Phrasing<__>
-	// Inherited: Union_Palpable_Phrasing<__>
+  //
+  // Unions:
+  //
+  // Inherited: Union_COLGROUP_ScriptSupporting<__>
+  Union_DATALIST_OPTGROUP<__>,
+  // Inherited: Union_Embedded_Interactive<__>
+  // Inherited: Union_Embedded_Palpable_Phrasing<__>
+  // Inherited: Union_Interactive_Phrasing<__>
+  // Inherited: Union_Metadata_Phrasing<__>
+  // Inherited: Union_Palpable_Phrasing<__>
 
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
-	// Inherited: EmbeddedContent<__>
-	PhrasingContent<__>
-	// Inherited: ScriptSupportingContent<__>
-	// Inherited: TextContent<__>
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+  // Inherited: EmbeddedContent<__>
+  PhrasingContent<__>
+  // Inherited: ScriptSupportingContent<__>
+  // Inherited: TextContent<__>
 {
-	//
-	// Factories:
-	//
-	// Inherited: A
-	// Inherited: ABBR
-	// Inherited: AREA - if a descendent of map
-	// Inherited: AUDIO
-	// Inherited: B
-	// Inherited: BDI
-	// Inherited: BDO
-	// Inherited: BR
-	// Inherited: BUTTON
-	// Inherited: CANVAS
-	// Inherited: CITE
-	// Inherited: CODE
-	// Inherited: DATA
-	// Inherited: DATALIST
-	// Inherited: DEL
-	// Inherited: DFN
-	// Inherited: EM
-	// Inherited: EMBED
-	// Inherited: I
-	// Inherited: IFRAME
-	// Inherited: IMG
-	// Inherited: INPUT
-	// Inherited: INS
-	// Inherited: KBD
-	// Inherited: LABEL
-	// Inherited: LINK - if it is allowed in body
-	// Inherited: MAP
-	// Inherited: MARK
-	// Inherited: MathML math
-	// Inherited: META - if the itemprop attribute is present
-	// Inherited: METER
-	// Inherited: NOSCRIPT
-	// Inherited: OBJECT
-	// Inherited: OPTION
-	// Inherited: OUTPUT
-	// Inherited: PICTURE
-	// Inherited: PROGRESS
-	// Inherited: Q
-	// Inherited: RUBY
-	// Inherited: S
-	// Inherited: SAMP
-	// Inherited: SCRIPT
-	// Inherited: SELECT
-	// Inherited: SLOT
-	// Inherited: SMALL
-	// Inherited: SPAN
-	// Inherited: STRONG
-	// Inherited: SUB
-	// Inherited: SUP
-	// Inherited: SVG svg
-	// Inherited: TEMPLATE
-	// Inherited: TEXTAREA
-	// Inherited: TIME
-	// Inherited: U
-	// Inherited: VAR
-	// Inherited: VIDEO
-	// Inherited: WBR
-	// Inherited: autonomous custom elements
+  //
+  // Factories:
+  //
+  // Inherited: A
+  // Inherited: ABBR
+  // Inherited: AREA - if a descendent of map
+  // Inherited: AUDIO
+  // Inherited: B
+  // Inherited: BDI
+  // Inherited: BDO
+  // Inherited: BR
+  // Inherited: BUTTON
+  // Inherited: CANVAS
+  // Inherited: CITE
+  // Inherited: CODE
+  // Inherited: DATA
+  // Inherited: DATALIST
+  // Inherited: DEL
+  // Inherited: DFN
+  // Inherited: EM
+  // Inherited: EMBED
+  // Inherited: I
+  // Inherited: IFRAME
+  // Inherited: IMG
+  // Inherited: INPUT
+  // Inherited: INS
+  // Inherited: KBD
+  // Inherited: LABEL
+  // Inherited: LINK - if it is allowed in body
+  // Inherited: MAP
+  // Inherited: MARK
+  // Inherited: MathML math
+  // Inherited: META - if the itemprop attribute is present
+  // Inherited: METER
+  // Inherited: NOSCRIPT
+  // Inherited: OBJECT
+  // Inherited: OPTION
+  // Inherited: OUTPUT
+  // Inherited: PICTURE
+  // Inherited: PROGRESS
+  // Inherited: Q
+  // Inherited: RUBY
+  // Inherited: S
+  // Inherited: SAMP
+  // Inherited: SCRIPT
+  // Inherited: SELECT
+  // Inherited: SLOT
+  // Inherited: SMALL
+  // Inherited: SPAN
+  // Inherited: STRONG
+  // Inherited: SUB
+  // Inherited: SUP
+  // Inherited: SVG svg
+  // Inherited: TEMPLATE
+  // Inherited: TEXTAREA
+  // Inherited: TIME
+  // Inherited: U
+  // Inherited: VAR
+  // Inherited: VIDEO
+  // Inherited: WBR
+  // Inherited: autonomous custom elements
 }

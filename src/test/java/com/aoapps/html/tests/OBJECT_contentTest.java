@@ -39,57 +39,57 @@ import org.junit.Test;
  */
 public class OBJECT_contentTest extends AnyOBJECT_contentTest {
 
-	public OBJECT_contentTest() {
-		super(OBJECT_content.class);
-	}
+  public OBJECT_contentTest() {
+    super(OBJECT_content.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			OBJECT_content.class,
-			//
-			// Unions:
-			//
-			Union_Embedded_Interactive.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      OBJECT_content.class,
+      //
+      // Unions:
+      //
+      Union_Embedded_Interactive.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			OBJECT_content.class,
-			//
-			// Content models:
-			//
-			Content.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      OBJECT_content.class,
+      //
+      // Content models:
+      //
+      Content.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			OBJECT_content.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      OBJECT_content.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-			-1,
-			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OBJECT_content.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, OBJECT_content.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+      -1,
+      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OBJECT_content.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, OBJECT_content.class);
+  }
 }

@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class FORM<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyFORM<Document, PC, FORM<PC>, FORM__<PC>, FORM_c<PC>> {
 
-	FORM(Document document, PC pc) {
-		super(document, pc);
-	}
+  FORM(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected FORM<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected FORM<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected FORM__<PC> new__() {
-		return new FORM__<>(this);
-	}
+  @Override
+  protected FORM__<PC> new__() {
+    return new FORM__<>(this);
+  }
 
-	@Override
-	protected FORM_c<PC> new_c() {
-		return new FORM_c<>(this);
-	}
+  @Override
+  protected FORM_c<PC> new_c() {
+    return new FORM_c<>(this);
+  }
 }

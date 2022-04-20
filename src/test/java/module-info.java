@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -21,17 +21,17 @@
  * along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
  */
 open module com.aoapps.html.tests {
-	exports com.aoapps.html.tests;
-	requires com.aoapps.html;
-	// Direct
-	requires com.aoapps.collections; // <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId>
-	requires com.aoapps.encoding; // <groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId>
-	requires com.aoapps.html.any; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId>
-	requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
-	// Java SE
-	requires java.desktop;
-	// Test Direct
-	requires com.aoapps.html.any.tests; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><classifier>tests</classifier>
-	requires org.apache.bcel; // <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId>
-	requires junit; // <groupId>junit</groupId><artifactId>junit</artifactId>
+  exports com.aoapps.html.tests;
+  requires com.aoapps.html;
+  // Direct
+  requires com.aoapps.collections; // <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId>
+  requires com.aoapps.encoding; // <groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId>
+  requires com.aoapps.html.any; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId>
+  requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
+  // Java SE
+  requires java.desktop;
+  // Test Direct
+  requires com.aoapps.html.any.tests; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><classifier>tests</classifier>
+  requires org.apache.bcel; // <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId>
+  requires junit; // <groupId>junit</groupId><artifactId>junit</artifactId>
 }

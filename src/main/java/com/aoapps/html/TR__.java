@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyTR__;
  * @author  AO Industries, Inc.
  */
 public final class TR__<
-	PC extends Union_TBODY_THEAD_TFOOT<PC>
+  PC extends Union_TBODY_THEAD_TFOOT<PC>
 >
-	extends AnyTR__<Document, PC, TR__<PC>>
-	implements TR_content<TR__<PC>> {
+  extends AnyTR__<Document, PC, TR__<PC>>
+  implements TR_content<TR__<PC>> {
 
-	TR__(TR<PC> element) {
-		super(element);
-	}
+  TR__(TR<PC> element) {
+    super(element);
+  }
 }

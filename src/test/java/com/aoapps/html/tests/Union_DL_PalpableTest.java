@@ -39,56 +39,56 @@ import org.junit.Test;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Union_DL_PalpableTest extends AnyUnion_DL_PalpableTest {
 
-	public Union_DL_PalpableTest() {
-		super(Union_DL_Palpable.class);
-	}
+  public Union_DL_PalpableTest() {
+    super(Union_DL_Palpable.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			Union_DL_Palpable.class
-			//
-			// Unions:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      Union_DL_Palpable.class
+      //
+      // Unions:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			Union_DL_Palpable.class,
-			//
-			// Content models:
-			//
-			Content.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      Union_DL_Palpable.class,
+      //
+      // Content models:
+      //
+      Content.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			Union_DL_Palpable.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      Union_DL_Palpable.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DL_Palpable.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_DL_Palpable.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
+      -1,
+      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DL_Palpable.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, Union_DL_Palpable.class);
+  }
 }

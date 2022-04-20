@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class EM<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyEM<Document, PC, EM<PC>, EM__<PC>, EM_c<PC>> {
 
-	EM(Document document, PC pc) {
-		super(document, pc);
-	}
+  EM(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected EM<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected EM<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected EM__<PC> new__() {
-		return new EM__<>(this);
-	}
+  @Override
+  protected EM__<PC> new__() {
+    return new EM__<>(this);
+  }
 
-	@Override
-	protected EM_c<PC> new_c() {
-		return new EM_c<>(this);
-	}
+  @Override
+  protected EM_c<PC> new_c() {
+    return new EM_c<>(this);
+  }
 }

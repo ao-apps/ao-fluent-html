@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class KBD<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyKBD<Document, PC, KBD<PC>, KBD__<PC>, KBD_c<PC>> {
 
-	KBD(Document document, PC pc) {
-		super(document, pc);
-	}
+  KBD(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected KBD<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected KBD<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected KBD__<PC> new__() {
-		return new KBD__<>(this);
-	}
+  @Override
+  protected KBD__<PC> new__() {
+    return new KBD__<>(this);
+  }
 
-	@Override
-	protected KBD_c<PC> new_c() {
-		return new KBD_c<>(this);
-	}
+  @Override
+  protected KBD_c<PC> new_c() {
+    return new KBD_c<>(this);
+  }
 }

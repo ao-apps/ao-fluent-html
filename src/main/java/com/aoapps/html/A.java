@@ -39,21 +39,21 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class A<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 > extends AnyA<Document, PC, A<PC>, A_c<PC>> {
 
-	A(Document document, PC pc) {
-		super(document, pc);
-	}
+  A(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected A<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected A<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected A_c<PC> new_c() {
-		return new A_c<>(this);
-	}
+  @Override
+  protected A_c<PC> new_c() {
+    return new A_c<>(this);
+  }
 }

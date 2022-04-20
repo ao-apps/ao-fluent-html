@@ -38,211 +38,211 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface HeadingContent<
-	__ extends HeadingContent<__>
+  __ extends HeadingContent<__>
 > extends AnyHeadingContent<Document, __>,
-	//
-	// Content models:
-	//
-	Content<__>
+  //
+  // Content models:
+  //
+  Content<__>
 {
-	//
-	// Factories:
-	//
-	// <editor-fold defaultstate="collapsed" desc="H1">
-	/**
-	 * Opens a new h1 element.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 */
-	@Override
-	@SuppressWarnings("deprecation")
-	default H1<__> h1() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new H1<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  //
+  // Factories:
+  //
+  // <editor-fold defaultstate="collapsed" desc="H1">
+  /**
+   * Opens a new h1 element.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   */
+  @Override
+  @SuppressWarnings("deprecation")
+  default H1<__> h1() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new H1<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an h1 element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ h1__(IOConsumerE<? super H1__<__>, Ex> h1) throws IOException, Ex {
-		return h1().__(h1);
-	}
+  /**
+   * Creates an h1 element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ h1__(IOConsumerE<? super H1__<__>, Ex> h1) throws IOException, Ex {
+    return h1().__(h1);
+  }
 
-	@Override
-	default H1_c<__> h1_c() throws IOException {
-		return h1()._c();
-	}
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="H2">
-	@Override
-	@SuppressWarnings("deprecation")
-	default H2<__> h2() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new H2<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  @Override
+  default H1_c<__> h1_c() throws IOException {
+    return h1()._c();
+  }
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="H2">
+  @Override
+  @SuppressWarnings("deprecation")
+  default H2<__> h2() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new H2<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an h2 element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ h2__(IOConsumerE<? super H2__<__>, Ex> h2) throws IOException, Ex {
-		return h2().__(h2);
-	}
+  /**
+   * Creates an h2 element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ h2__(IOConsumerE<? super H2__<__>, Ex> h2) throws IOException, Ex {
+    return h2().__(h2);
+  }
 
-	@Override
-	default H2_c<__> h2_c() throws IOException {
-		return h2()._c();
-	}
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="H3">
-	@Override
-	@SuppressWarnings("deprecation")
-	default H3<__> h3() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new H3<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  @Override
+  default H2_c<__> h2_c() throws IOException {
+    return h2()._c();
+  }
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="H3">
+  @Override
+  @SuppressWarnings("deprecation")
+  default H3<__> h3() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new H3<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an h3 element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ h3__(IOConsumerE<? super H3__<__>, Ex> h3) throws IOException, Ex {
-		return h3().__(h3);
-	}
+  /**
+   * Creates an h3 element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ h3__(IOConsumerE<? super H3__<__>, Ex> h3) throws IOException, Ex {
+    return h3().__(h3);
+  }
 
-	@Override
-	default H3_c<__> h3_c() throws IOException {
-		return h3()._c();
-	}
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="H4">
-	@Override
-	@SuppressWarnings("deprecation")
-	default H4<__> h4() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new H4<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  @Override
+  default H3_c<__> h3_c() throws IOException {
+    return h3()._c();
+  }
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="H4">
+  @Override
+  @SuppressWarnings("deprecation")
+  default H4<__> h4() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new H4<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an h4 element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ h4__(IOConsumerE<? super H4__<__>, Ex> h4) throws IOException, Ex {
-		return h4().__(h4);
-	}
+  /**
+   * Creates an h4 element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ h4__(IOConsumerE<? super H4__<__>, Ex> h4) throws IOException, Ex {
+    return h4().__(h4);
+  }
 
-	@Override
-	default H4_c<__> h4_c() throws IOException {
-		return h4()._c();
-	}
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="H5">
-	@Override
-	@SuppressWarnings("deprecation")
-	default H5<__> h5() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new H5<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  @Override
+  default H4_c<__> h4_c() throws IOException {
+    return h4()._c();
+  }
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="H5">
+  @Override
+  @SuppressWarnings("deprecation")
+  default H5<__> h5() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new H5<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an h5 element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ h5__(IOConsumerE<? super H5__<__>, Ex> h5) throws IOException, Ex {
-		return h5().__(h5);
-	}
+  /**
+   * Creates an h5 element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ h5__(IOConsumerE<? super H5__<__>, Ex> h5) throws IOException, Ex {
+    return h5().__(h5);
+  }
 
-	@Override
-	default H5_c<__> h5_c() throws IOException {
-		return h5()._c();
-	}
-	// </editor-fold>
-	// <editor-fold defaultstate="collapsed" desc="H6">
-	@Override
-	@SuppressWarnings("deprecation")
-	default H6<__> h6() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new H6<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  @Override
+  default H5_c<__> h5_c() throws IOException {
+    return h5()._c();
+  }
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc="H6">
+  @Override
+  @SuppressWarnings("deprecation")
+  default H6<__> h6() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new H6<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates an h6 element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ h6__(IOConsumerE<? super H6__<__>, Ex> h6) throws IOException, Ex {
-		return h6().__(h6);
-	}
+  /**
+   * Creates an h6 element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">4.3.6 The h1, h2, h3, h4, h5, and h6 elements</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt;-&lt;h6&gt;: The HTML Section Heading elements</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_hn.asp">HTML h1 to h6 tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ h6__(IOConsumerE<? super H6__<__>, Ex> h6) throws IOException, Ex {
+    return h6().__(h6);
+  }
 
-	@Override
-	default H6_c<__> h6_c() throws IOException {
-		return h6()._c();
-	}
-	// </editor-fold>
-	// Inherited: H#
-	// <editor-fold defaultstate="collapsed" desc="TODO: HGROUP">
-	// </editor-fold>
+  @Override
+  default H6_c<__> h6_c() throws IOException {
+    return h6()._c();
+  }
+  // </editor-fold>
+  // Inherited: H#
+  // <editor-fold defaultstate="collapsed" desc="TODO: HGROUP">
+  // </editor-fold>
 }

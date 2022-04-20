@@ -41,57 +41,57 @@ import org.junit.Test;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Union_TBODY_THEAD_TFOOTTest extends AnyUnion_TBODY_THEAD_TFOOTTest {
 
-	public Union_TBODY_THEAD_TFOOTTest() {
-		super(Union_TBODY_THEAD_TFOOT.class);
-	}
+  public Union_TBODY_THEAD_TFOOTTest() {
+    super(Union_TBODY_THEAD_TFOOT.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			Union_TBODY_THEAD_TFOOT.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      Union_TBODY_THEAD_TFOOT.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			Union_TBODY_THEAD_TFOOT.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			ScriptSupportingContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      Union_TBODY_THEAD_TFOOT.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      ScriptSupportingContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			Union_TBODY_THEAD_TFOOT.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      Union_TBODY_THEAD_TFOOT.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-			-1,
-			AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_TBODY_THEAD_TFOOT.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, Union_TBODY_THEAD_TFOOT.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
+      -1,
+      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_TBODY_THEAD_TFOOT.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, Union_TBODY_THEAD_TFOOT.class);
+  }
 }

@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TFOOT<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 > extends AnyTFOOT<Document, PC, TFOOT<PC>, TFOOT__<PC>, TFOOT_c<PC>> {
 
-	TFOOT(Document document, PC pc) {
-		super(document, pc);
-	}
+  TFOOT(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TFOOT<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TFOOT<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TFOOT__<PC> new__() {
-		return new TFOOT__<>(this);
-	}
+  @Override
+  protected TFOOT__<PC> new__() {
+    return new TFOOT__<>(this);
+  }
 
-	@Override
-	protected TFOOT_c<PC> new_c() {
-		return new TFOOT_c<>(this);
-	}
+  @Override
+  protected TFOOT_c<PC> new_c() {
+    return new TFOOT_c<>(this);
+  }
 }

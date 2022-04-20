@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TITLE<
-	PC extends MetadataContent<PC>
+  PC extends MetadataContent<PC>
 > extends AnyTITLE<Document, PC, TITLE<PC>, TITLE__<PC>, TITLE_c<PC>> {
 
-	TITLE(Document document, PC pc) {
-		super(document, pc);
-	}
+  TITLE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TITLE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TITLE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TITLE__<PC> new__() {
-		return new TITLE__<>(this);
-	}
+  @Override
+  protected TITLE__<PC> new__() {
+    return new TITLE__<>(this);
+  }
 
-	@Override
-	protected TITLE_c<PC> new_c() {
-		return new TITLE_c<>(this);
-	}
+  @Override
+  protected TITLE_c<PC> new_c() {
+    return new TITLE_c<>(this);
+  }
 }

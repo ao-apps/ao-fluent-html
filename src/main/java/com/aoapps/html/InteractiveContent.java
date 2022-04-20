@@ -38,65 +38,65 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface InteractiveContent<
-	__ extends InteractiveContent<__>
+  __ extends InteractiveContent<__>
 > extends AnyInteractiveContent<Document, __>,
-	//
-	// Unions:
-	//
-	// Inherited: Union_Embedded_Interactive<__>
-	Union_Interactive_Phrasing<__>
+  //
+  // Unions:
+  //
+  // Inherited: Union_Embedded_Interactive<__>
+  Union_Interactive_Phrasing<__>
 
-	//
-	// Content models:
-	//
-	// Inherited: Content<__>
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
 {
-	//
-	// Factories:
-	//
-	// Inherited: A - if the href attribute is present
-	// Inherited: AUDIO - if the controls attribute is present
-	// Inherited: BUTTON
-	// <editor-fold defaultstate="collapsed" desc="TODO: DETAILS">
-	// </editor-fold>
-	// Inherited: EMBED
-	// Inherited: IFRAME
-	// Inherited: IMG - if the usemap attribute is present
-	// Inherited: INPUT - if type attribute is not in the hidden state
-	// Inherited: LABEL
-	// <editor-fold defaultstate="collapsed" desc="MENU - (MDN only) if the type attribute is in the toolbar state">
-	@Override
-	@SuppressWarnings("deprecation")
-	default MENU<__> menu() throws IOException {
-		@SuppressWarnings("unchecked")
-		__ pc = (__)this;
-		Document document = getDocument();
-		return new MENU<>(document, pc).writeOpen(document.getRawUnsafe(null));
-	}
+  //
+  // Factories:
+  //
+  // Inherited: A - if the href attribute is present
+  // Inherited: AUDIO - if the controls attribute is present
+  // Inherited: BUTTON
+  // <editor-fold defaultstate="collapsed" desc="TODO: DETAILS">
+  // </editor-fold>
+  // Inherited: EMBED
+  // Inherited: IFRAME
+  // Inherited: IMG - if the usemap attribute is present
+  // Inherited: INPUT - if type attribute is not in the hidden state
+  // Inherited: LABEL
+  // <editor-fold defaultstate="collapsed" desc="MENU - (MDN only) if the type attribute is in the toolbar state">
+  @Override
+  @SuppressWarnings("deprecation")
+  default MENU<__> menu() throws IOException {
+    @SuppressWarnings("unchecked")
+    __ pc = (__)this;
+    Document document = getDocument();
+    return new MENU<>(document, pc).writeOpen(document.getRawUnsafe(null));
+  }
 
-	/**
-	 * Creates a menu element with no attributes and the given body.
-	 * <ul>
-	 * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.</li>
-	 * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu">&lt;menu&gt;: The Menu element</a>.</li>
-	 * <li>See <a href="https://www.w3schools.com/tags/tag_menu.asp">HTML menu Tag</a>.</li>
-	 * </ul>
-	 *
-	 * @param  <Ex>  An arbitrary exception type that may be thrown
-	 *
-	 * @return  This content model, which will be the parent content model of child elements
-	 */
-	default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<__>, Ex> menu) throws IOException, Ex {
-		return menu().__(menu);
-	}
+  /**
+   * Creates a menu element with no attributes and the given body.
+   * <ul>
+   * <li>See <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element">4.4.7 The menu element</a>.</li>
+   * <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu">&lt;menu&gt;: The Menu element</a>.</li>
+   * <li>See <a href="https://www.w3schools.com/tags/tag_menu.asp">HTML menu Tag</a>.</li>
+   * </ul>
+   *
+   * @param  <Ex>  An arbitrary exception type that may be thrown
+   *
+   * @return  This content model, which will be the parent content model of child elements
+   */
+  default <Ex extends Throwable> __ menu__(IOConsumerE<? super MENU__<__>, Ex> menu) throws IOException, Ex {
+    return menu().__(menu);
+  }
 
-	@Override
-	default MENU_c<__> menu_c() throws IOException {
-		return menu()._c();
-	}
-	// </editor-fold>
-	// Inherited: OBJECT - if the usemap attribute is present
-	// Inherited: SELECT
-	// Inherited: TEXTAREA
-	// Inherited: VIDEO - if the controls attribute is present
+  @Override
+  default MENU_c<__> menu_c() throws IOException {
+    return menu()._c();
+  }
+  // </editor-fold>
+  // Inherited: OBJECT - if the usemap attribute is present
+  // Inherited: SELECT
+  // Inherited: TEXTAREA
+  // Inherited: VIDEO - if the controls attribute is present
 }

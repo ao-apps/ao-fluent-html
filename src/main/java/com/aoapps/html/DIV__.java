@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyDIV__;
  * @author  AO Industries, Inc.
  */
 public final class DIV__<
-	PC extends Union_DL_Palpable<PC>
+  PC extends Union_DL_Palpable<PC>
 >
-	extends AnyDIV__<Document, PC, DIV__<PC>>
-	implements DIV_content<DIV__<PC>> {
+  extends AnyDIV__<Document, PC, DIV__<PC>>
+  implements DIV_content<DIV__<PC>> {
 
-	DIV__(DIV<PC> element) {
-		super(element);
-	}
+  DIV__(DIV<PC> element) {
+    super(element);
+  }
 }

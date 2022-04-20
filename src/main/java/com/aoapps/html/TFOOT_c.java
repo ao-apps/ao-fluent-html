@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyTFOOT_c;
  * @author  AO Industries, Inc.
  */
 public final class TFOOT_c<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 >
-	extends AnyTFOOT_c<Document, PC, TFOOT_c<PC>>
-	implements Union_TBODY_THEAD_TFOOT<TFOOT_c<PC>> {
+  extends AnyTFOOT_c<Document, PC, TFOOT_c<PC>>
+  implements Union_TBODY_THEAD_TFOOT<TFOOT_c<PC>> {
 
-	TFOOT_c(TFOOT<PC> element) {
-		super(element);
-	}
+  TFOOT_c(TFOOT<PC> element) {
+    super(element);
+  }
 }

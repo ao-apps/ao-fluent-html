@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class CITE<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyCITE<Document, PC, CITE<PC>, CITE__<PC>, CITE_c<PC>> {
 
-	CITE(Document document, PC pc) {
-		super(document, pc);
-	}
+  CITE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected CITE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected CITE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected CITE__<PC> new__() {
-		return new CITE__<>(this);
-	}
+  @Override
+  protected CITE__<PC> new__() {
+    return new CITE__<>(this);
+  }
 
-	@Override
-	protected CITE_c<PC> new_c() {
-		return new CITE_c<>(this);
-	}
+  @Override
+  protected CITE_c<PC> new_c() {
+    return new CITE_c<>(this);
+  }
 }

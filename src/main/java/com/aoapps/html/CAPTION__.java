@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyCAPTION__;
  * @author  AO Industries, Inc.
  */
 public final class CAPTION__<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 >
-	extends AnyCAPTION__<Document, PC, CAPTION__<PC>>
-	implements FlowContent<CAPTION__<PC>> {
+  extends AnyCAPTION__<Document, PC, CAPTION__<PC>>
+  implements FlowContent<CAPTION__<PC>> {
 
-	CAPTION__(CAPTION<PC> element) {
-		super(element);
-	}
+  CAPTION__(CAPTION<PC> element) {
+    super(element);
+  }
 }

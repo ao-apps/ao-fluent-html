@@ -40,58 +40,58 @@ import org.junit.Test;
  */
 public class InteractiveContentTest extends AnyInteractiveContentTest {
 
-	public InteractiveContentTest() {
-		super(InteractiveContent.class);
-	}
+  public InteractiveContentTest() {
+    super(InteractiveContent.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			InteractiveContent.class,
-			//
-			// Unions:
-			//
-			Union_Embedded_Interactive.class,
-			Union_Interactive_Phrasing.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      InteractiveContent.class,
+      //
+      // Unions:
+      //
+      Union_Embedded_Interactive.class,
+      Union_Interactive_Phrasing.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			InteractiveContent.class,
-			//
-			// Content models:
-			//
-			Content.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      InteractiveContent.class,
+      //
+      // Content models:
+      //
+      Content.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			InteractiveContent.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      InteractiveContent.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-			-1,
-			AoArrays.indexOf(ContentModelTest.getAllContentModels(), InteractiveContent.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, InteractiveContent.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+      -1,
+      AoArrays.indexOf(ContentModelTest.getAllContentModels(), InteractiveContent.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, InteractiveContent.class);
+  }
 }

@@ -41,59 +41,59 @@ import org.junit.Test;
  */
 public class OPTGROUP_contentTest extends AnyOPTGROUP_contentTest {
 
-	public OPTGROUP_contentTest() {
-		super(OPTGROUP_content.class);
-	}
+  public OPTGROUP_contentTest() {
+    super(OPTGROUP_content.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			OPTGROUP_content.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class,
-			Union_DATALIST_OPTGROUP.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      OPTGROUP_content.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class,
+      Union_DATALIST_OPTGROUP.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			OPTGROUP_content.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			ScriptSupportingContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      OPTGROUP_content.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      ScriptSupportingContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			OPTGROUP_content.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      OPTGROUP_content.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-			-1,
-			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OPTGROUP_content.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, OPTGROUP_content.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+      -1,
+      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OPTGROUP_content.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, OPTGROUP_content.class);
+  }
 }

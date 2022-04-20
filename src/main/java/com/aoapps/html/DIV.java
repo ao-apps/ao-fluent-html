@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class DIV<
-	PC extends Union_DL_Palpable<PC>
+  PC extends Union_DL_Palpable<PC>
 > extends AnyDIV<Document, PC, DIV<PC>, DIV__<PC>, DIV_c<PC>> {
 
-	DIV(Document document, PC pc) {
-		super(document, pc);
-	}
+  DIV(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected DIV<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected DIV<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected DIV__<PC> new__() {
-		return new DIV__<>(this);
-	}
+  @Override
+  protected DIV__<PC> new__() {
+    return new DIV__<>(this);
+  }
 
-	@Override
-	protected DIV_c<PC> new_c() {
-		return new DIV_c<>(this);
-	}
+  @Override
+  protected DIV_c<PC> new_c() {
+    return new DIV_c<>(this);
+  }
 }

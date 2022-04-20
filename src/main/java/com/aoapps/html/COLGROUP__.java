@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyCOLGROUP__;
  * @author  AO Industries, Inc.
  */
 public final class COLGROUP__<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 >
-	extends AnyCOLGROUP__<Document, PC, COLGROUP__<PC>>
-	implements COLGROUP_content<COLGROUP__<PC>> {
+  extends AnyCOLGROUP__<Document, PC, COLGROUP__<PC>>
+  implements COLGROUP_content<COLGROUP__<PC>> {
 
-	COLGROUP__(COLGROUP<PC> element) {
-		super(element);
-	}
+  COLGROUP__(COLGROUP<PC> element) {
+    super(element);
+  }
 }

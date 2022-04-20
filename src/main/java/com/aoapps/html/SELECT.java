@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SELECT<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 > extends AnySELECT<Document, PC, SELECT<PC>, SELECT__<PC>, SELECT_c<PC>> {
 
-	SELECT(Document document, PC pc) {
-		super(document, pc);
-	}
+  SELECT(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected SELECT<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected SELECT<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected SELECT__<PC> new__() {
-		return new SELECT__<>(this);
-	}
+  @Override
+  protected SELECT__<PC> new__() {
+    return new SELECT__<>(this);
+  }
 
-	@Override
-	protected SELECT_c<PC> new_c() {
-		return new SELECT_c<>(this);
-	}
+  @Override
+  protected SELECT_c<PC> new_c() {
+    return new SELECT_c<>(this);
+  }
 }

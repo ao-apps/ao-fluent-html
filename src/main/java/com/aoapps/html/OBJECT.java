@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class OBJECT<
-	PC extends Union_Embedded_Interactive<PC>
+  PC extends Union_Embedded_Interactive<PC>
 > extends AnyOBJECT<Document, PC, OBJECT<PC>, OBJECT__<PC>, OBJECT_c<PC>> {
 
-	OBJECT(Document document, PC pc) {
-		super(document, pc);
-	}
+  OBJECT(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected OBJECT<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected OBJECT<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected OBJECT__<PC> new__() {
-		return new OBJECT__<>(this);
-	}
+  @Override
+  protected OBJECT__<PC> new__() {
+    return new OBJECT__<>(this);
+  }
 
-	@Override
-	protected OBJECT_c<PC> new_c() {
-		return new OBJECT_c<>(this);
-	}
+  @Override
+  protected OBJECT_c<PC> new_c() {
+    return new OBJECT_c<>(this);
+  }
 }

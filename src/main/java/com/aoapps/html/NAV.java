@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class NAV<
-	PC extends SectioningContent<PC>
+  PC extends SectioningContent<PC>
 > extends AnyNAV<Document, PC, NAV<PC>, NAV__<PC>, NAV_c<PC>> {
 
-	NAV(Document document, PC pc) {
-		super(document, pc);
-	}
+  NAV(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected NAV<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected NAV<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected NAV__<PC> new__() {
-		return new NAV__<>(this);
-	}
+  @Override
+  protected NAV__<PC> new__() {
+    return new NAV__<>(this);
+  }
 
-	@Override
-	protected NAV_c<PC> new_c() {
-		return new NAV_c<>(this);
-	}
+  @Override
+  protected NAV_c<PC> new_c() {
+    return new NAV_c<>(this);
+  }
 }

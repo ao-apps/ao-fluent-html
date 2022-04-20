@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyEM_c;
  * @author  AO Industries, Inc.
  */
 public final class EM_c<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyEM_c<Document, PC, EM_c<PC>>
-	implements PhrasingContent<EM_c<PC>> {
+  extends AnyEM_c<Document, PC, EM_c<PC>>
+  implements PhrasingContent<EM_c<PC>> {
 
-	EM_c(EM<PC> element) {
-		super(element);
-	}
+  EM_c(EM<PC> element) {
+    super(element);
+  }
 }

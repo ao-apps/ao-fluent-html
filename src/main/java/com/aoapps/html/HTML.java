@@ -39,27 +39,27 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class HTML<
-	PC extends Content<PC>
+  PC extends Content<PC>
 > extends AnyHTML<Document, PC, HTML<PC>, HTML__<PC>, HTML_c<PC>>
 {
 
-	HTML(Document document, PC pc) {
-		super(document, pc);
-	}
+  HTML(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected HTML<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected HTML<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected HTML__<PC> new__() {
-		return new HTML__<>(this);
-	}
+  @Override
+  protected HTML__<PC> new__() {
+    return new HTML__<>(this);
+  }
 
-	@Override
-	protected HTML_c<PC> new_c() {
-		return new HTML_c<>(this);
-	}
+  @Override
+  protected HTML_c<PC> new_c() {
+    return new HTML_c<>(this);
+  }
 }

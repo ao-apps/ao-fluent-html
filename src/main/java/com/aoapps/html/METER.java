@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class METER<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
 
-	METER(Document document, PC pc) {
-		super(document, pc);
-	}
+  METER(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected METER<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected METER<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected METER__<PC> new__() {
-		return new METER__<>(this);
-	}
+  @Override
+  protected METER__<PC> new__() {
+    return new METER__<>(this);
+  }
 
-	@Override
-	protected METER_c<PC> new_c() {
-		return new METER_c<>(this);
-	}
+  @Override
+  protected METER_c<PC> new_c() {
+    return new METER_c<>(this);
+  }
 }

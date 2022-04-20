@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class FOOTER<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
 
-	FOOTER(Document document, PC pc) {
-		super(document, pc);
-	}
+  FOOTER(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected FOOTER<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected FOOTER<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected FOOTER__<PC> new__() {
-		return new FOOTER__<>(this);
-	}
+  @Override
+  protected FOOTER__<PC> new__() {
+    return new FOOTER__<>(this);
+  }
 
-	@Override
-	protected FOOTER_c<PC> new_c() {
-		return new FOOTER_c<>(this);
-	}
+  @Override
+  protected FOOTER_c<PC> new_c() {
+    return new FOOTER_c<>(this);
+  }
 }

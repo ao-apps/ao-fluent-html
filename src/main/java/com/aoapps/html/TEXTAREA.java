@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TEXTAREA<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 > extends AnyTEXTAREA<Document, PC, TEXTAREA<PC>, TEXTAREA__<PC>, TEXTAREA_c<PC>> {
 
-	TEXTAREA(Document document, PC pc) {
-		super(document, pc);
-	}
+  TEXTAREA(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TEXTAREA<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TEXTAREA<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TEXTAREA__<PC> new__() {
-		return new TEXTAREA__<>(this);
-	}
+  @Override
+  protected TEXTAREA__<PC> new__() {
+    return new TEXTAREA__<>(this);
+  }
 
-	@Override
-	protected TEXTAREA_c<PC> new_c() {
-		return new TEXTAREA_c<>(this);
-	}
+  @Override
+  protected TEXTAREA_c<PC> new_c() {
+    return new TEXTAREA_c<>(this);
+  }
 }

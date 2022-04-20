@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MARK<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyMARK<Document, PC, MARK<PC>, MARK__<PC>, MARK_c<PC>> {
 
-	MARK(Document document, PC pc) {
-		super(document, pc);
-	}
+  MARK(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected MARK<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected MARK<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected MARK__<PC> new__() {
-		return new MARK__<>(this);
-	}
+  @Override
+  protected MARK__<PC> new__() {
+    return new MARK__<>(this);
+  }
 
-	@Override
-	protected MARK_c<PC> new_c() {
-		return new MARK_c<>(this);
-	}
+  @Override
+  protected MARK_c<PC> new_c() {
+    return new MARK_c<>(this);
+  }
 }

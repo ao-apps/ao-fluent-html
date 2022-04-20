@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyMAIN_c;
  * @author  AO Industries, Inc.
  */
 public final class MAIN_c<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 >
-	extends AnyMAIN_c<Document, PC, MAIN_c<PC>>
-	implements FlowContent<MAIN_c<PC>> {
+  extends AnyMAIN_c<Document, PC, MAIN_c<PC>>
+  implements FlowContent<MAIN_c<PC>> {
 
-	MAIN_c(MAIN<PC> element) {
-		super(element);
-	}
+  MAIN_c(MAIN<PC> element) {
+    super(element);
+  }
 }

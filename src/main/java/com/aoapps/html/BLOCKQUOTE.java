@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class BLOCKQUOTE<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyBLOCKQUOTE<Document, PC, BLOCKQUOTE<PC>, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> {
 
-	BLOCKQUOTE(Document document, PC pc) {
-		super(document, pc);
-	}
+  BLOCKQUOTE(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected BLOCKQUOTE<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected BLOCKQUOTE<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected BLOCKQUOTE__<PC> new__() {
-		return new BLOCKQUOTE__<>(this);
-	}
+  @Override
+  protected BLOCKQUOTE__<PC> new__() {
+    return new BLOCKQUOTE__<>(this);
+  }
 
-	@Override
-	protected BLOCKQUOTE_c<PC> new_c() {
-		return new BLOCKQUOTE_c<>(this);
-	}
+  @Override
+  protected BLOCKQUOTE_c<PC> new_c() {
+    return new BLOCKQUOTE_c<>(this);
+  }
 }

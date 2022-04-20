@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyTHEAD__;
  * @author  AO Industries, Inc.
  */
 public final class THEAD__<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 >
-	extends AnyTHEAD__<Document, PC, THEAD__<PC>>
-	implements Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
+  extends AnyTHEAD__<Document, PC, THEAD__<PC>>
+  implements Union_TBODY_THEAD_TFOOT<THEAD__<PC>> {
 
-	THEAD__(THEAD<PC> element) {
-		super(element);
-	}
+  THEAD__(THEAD<PC> element) {
+    super(element);
+  }
 }

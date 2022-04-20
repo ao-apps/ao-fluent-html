@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class THEAD<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 > extends AnyTHEAD<Document, PC, THEAD<PC>, THEAD__<PC>, THEAD_c<PC>> {
 
-	THEAD(Document document, PC pc) {
-		super(document, pc);
-	}
+  THEAD(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected THEAD<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected THEAD<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected THEAD__<PC> new__() {
-		return new THEAD__<>(this);
-	}
+  @Override
+  protected THEAD__<PC> new__() {
+    return new THEAD__<>(this);
+  }
 
-	@Override
-	protected THEAD_c<PC> new_c() {
-		return new THEAD_c<>(this);
-	}
+  @Override
+  protected THEAD_c<PC> new_c() {
+    return new THEAD_c<>(this);
+  }
 }

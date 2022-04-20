@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyTABLE__;
  * @author  AO Industries, Inc.
  */
 public final class TABLE__<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 >
-	extends AnyTABLE__<Document, PC, TABLE__<PC>>
-	implements TABLE_content<TABLE__<PC>> {
+  extends AnyTABLE__<Document, PC, TABLE__<PC>>
+  implements TABLE_content<TABLE__<PC>> {
 
-	TABLE__(TABLE<PC> element) {
-		super(element);
-	}
+  TABLE__(TABLE<PC> element) {
+    super(element);
+  }
 }

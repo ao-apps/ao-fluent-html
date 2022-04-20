@@ -47,65 +47,65 @@ import org.junit.Test;
  */
 public class PhrasingContentTest extends AnyPhrasingContentTest {
 
-	public PhrasingContentTest() {
-		super(PhrasingContent.class);
-	}
+  public PhrasingContentTest() {
+    super(PhrasingContent.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			PhrasingContent.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class,
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class,
-			Union_Metadata_Phrasing.class,
-			Union_Palpable_Phrasing.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      PhrasingContent.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class,
+      Union_Embedded_Interactive.class,
+      Union_Embedded_Palpable_Phrasing.class,
+      Union_Interactive_Phrasing.class,
+      Union_Metadata_Phrasing.class,
+      Union_Palpable_Phrasing.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			PhrasingContent.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			EmbeddedContent.class,
-			ScriptSupportingContent.class,
-			TextContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      PhrasingContent.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      EmbeddedContent.class,
+      ScriptSupportingContent.class,
+      TextContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			PhrasingContent.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      PhrasingContent.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-			-1,
-			AoArrays.indexOf(ContentModelTest.getAllContentModels(), PhrasingContent.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, PhrasingContent.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+      -1,
+      AoArrays.indexOf(ContentModelTest.getAllContentModels(), PhrasingContent.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, PhrasingContent.class);
+  }
 }

@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class ABBR<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyABBR<Document, PC, ABBR<PC>, ABBR__<PC>, ABBR_c<PC>> {
 
-	ABBR(Document document, PC pc) {
-		super(document, pc);
-	}
+  ABBR(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected ABBR<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected ABBR<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected ABBR__<PC> new__() {
-		return new ABBR__<>(this);
-	}
+  @Override
+  protected ABBR__<PC> new__() {
+    return new ABBR__<>(this);
+  }
 
-	@Override
-	protected ABBR_c<PC> new_c() {
-		return new ABBR_c<>(this);
-	}
+  @Override
+  protected ABBR_c<PC> new_c() {
+    return new ABBR_c<>(this);
+  }
 }

@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyOL__;
  * @author  AO Industries, Inc.
  */
 public final class OL__<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 >
-	extends AnyOL__<Document, PC, OL__<PC>>
-	implements ListContent<OL__<PC>> {
+  extends AnyOL__<Document, PC, OL__<PC>>
+  implements ListContent<OL__<PC>> {
 
-	OL__(OL<PC> element) {
-		super(element);
-	}
+  OL__(OL<PC> element) {
+    super(element);
+  }
 }

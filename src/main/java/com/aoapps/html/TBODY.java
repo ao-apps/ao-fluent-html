@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TBODY<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 > extends AnyTBODY<Document, PC, TBODY<PC>, TBODY__<PC>, TBODY_c<PC>> {
 
-	TBODY(Document document, PC pc) {
-		super(document, pc);
-	}
+  TBODY(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TBODY<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TBODY<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TBODY__<PC> new__() {
-		return new TBODY__<>(this);
-	}
+  @Override
+  protected TBODY__<PC> new__() {
+    return new TBODY__<>(this);
+  }
 
-	@Override
-	protected TBODY_c<PC> new_c() {
-		return new TBODY_c<>(this);
-	}
+  @Override
+  protected TBODY_c<PC> new_c() {
+    return new TBODY_c<>(this);
+  }
 }

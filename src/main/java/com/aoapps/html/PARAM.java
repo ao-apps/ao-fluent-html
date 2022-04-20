@@ -39,16 +39,16 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class PARAM<
-	PC extends OBJECT_content<PC>
+  PC extends OBJECT_content<PC>
 > extends AnyPARAM<Document, PC, PARAM<PC>> {
 
-	PARAM(Document document, PC pc) {
-		super(document, pc);
-	}
+  PARAM(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected PARAM<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected PARAM<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 }

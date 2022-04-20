@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyP_c;
  * @author  AO Industries, Inc.
  */
 public final class P_c<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 >
-	extends AnyP_c<Document, PC, P_c<PC>>
-	implements PhrasingContent<P_c<PC>> {
+  extends AnyP_c<Document, PC, P_c<PC>>
+  implements PhrasingContent<P_c<PC>> {
 
-	P_c(P<PC> element) {
-		super(element);
-	}
+  P_c(P<PC> element) {
+    super(element);
+  }
 }

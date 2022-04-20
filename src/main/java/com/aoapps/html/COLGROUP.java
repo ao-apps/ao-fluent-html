@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class COLGROUP<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 > extends AnyCOLGROUP<Document, PC, COLGROUP<PC>, COLGROUP__<PC>, COLGROUP_c<PC>> {
 
-	COLGROUP(Document document, PC pc) {
-		super(document, pc);
-	}
+  COLGROUP(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected COLGROUP<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected COLGROUP<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected COLGROUP__<PC> new__() {
-		return new COLGROUP__<>(this);
-	}
+  @Override
+  protected COLGROUP__<PC> new__() {
+    return new COLGROUP__<>(this);
+  }
 
-	@Override
-	protected COLGROUP_c<PC> new_c() {
-		return new COLGROUP_c<>(this);
-	}
+  @Override
+  protected COLGROUP_c<PC> new_c() {
+    return new COLGROUP_c<>(this);
+  }
 }

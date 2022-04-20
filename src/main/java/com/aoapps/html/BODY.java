@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class BODY<
-	PC extends HTML_content<PC>
+  PC extends HTML_content<PC>
 > extends AnyBODY<Document, PC, BODY<PC>, BODY__<PC>, BODY_c<PC>> {
 
-	BODY(Document document, PC pc) {
-		super(document, pc);
-	}
+  BODY(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected BODY<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected BODY<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected BODY__<PC> new__() {
-		return new BODY__<>(this);
-	}
+  @Override
+  protected BODY__<PC> new__() {
+    return new BODY__<>(this);
+  }
 
-	@Override
-	protected BODY_c<PC> new_c() {
-		return new BODY_c<>(this);
-	}
+  @Override
+  protected BODY_c<PC> new_c() {
+    return new BODY_c<>(this);
+  }
 }

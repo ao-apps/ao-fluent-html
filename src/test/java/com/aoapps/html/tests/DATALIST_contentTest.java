@@ -49,67 +49,67 @@ import org.junit.Test;
  */
 public class DATALIST_contentTest extends AnyDATALIST_contentTest {
 
-	public DATALIST_contentTest() {
-		super(DATALIST_content.class);
-	}
+  public DATALIST_contentTest() {
+    super(DATALIST_content.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			DATALIST_content.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class,
-			Union_DATALIST_OPTGROUP.class,
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class,
-			Union_Metadata_Phrasing.class,
-			Union_Palpable_Phrasing.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      DATALIST_content.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class,
+      Union_DATALIST_OPTGROUP.class,
+      Union_Embedded_Interactive.class,
+      Union_Embedded_Palpable_Phrasing.class,
+      Union_Interactive_Phrasing.class,
+      Union_Metadata_Phrasing.class,
+      Union_Palpable_Phrasing.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			DATALIST_content.class,
-			//
-			// Content models:
-			//
-			Content.class,
-			EmbeddedContent.class,
-			PhrasingContent.class,
-			ScriptSupportingContent.class,
-			TextContent.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      DATALIST_content.class,
+      //
+      // Content models:
+      //
+      Content.class,
+      EmbeddedContent.class,
+      PhrasingContent.class,
+      ScriptSupportingContent.class,
+      TextContent.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			DATALIST_content.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      DATALIST_content.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-			-1,
-			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DATALIST_content.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, DATALIST_content.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+      -1,
+      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DATALIST_content.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, DATALIST_content.class);
+  }
 }

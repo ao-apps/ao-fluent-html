@@ -39,21 +39,21 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MAP<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyMAP<Document, PC, MAP<PC>, MAP_c<PC>> {
 
-	MAP(Document document, PC pc) {
-		super(document, pc);
-	}
+  MAP(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected MAP<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected MAP<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected MAP_c<PC> new_c() {
-		return new MAP_c<>(this);
-	}
+  @Override
+  protected MAP_c<PC> new_c() {
+    return new MAP_c<>(this);
+  }
 }

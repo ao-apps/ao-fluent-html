@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TD<
-	PC extends TR_content<PC>
+  PC extends TR_content<PC>
 > extends AnyTD<Document, PC, TD<PC>, TD__<PC>, TD_c<PC>> {
 
-	TD(Document document, PC pc) {
-		super(document, pc);
-	}
+  TD(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TD<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TD<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TD__<PC> new__() {
-		return new TD__<>(this);
-	}
+  @Override
+  protected TD__<PC> new__() {
+    return new TD__<>(this);
+  }
 
-	@Override
-	protected TD_c<PC> new_c() {
-		return new TD_c<>(this);
-	}
+  @Override
+  protected TD_c<PC> new_c() {
+    return new TD_c<>(this);
+  }
 }

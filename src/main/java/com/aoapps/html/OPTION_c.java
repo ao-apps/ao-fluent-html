@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyOPTION_c;
  * @author  AO Industries, Inc.
  */
 public final class OPTION_c<
-	PC extends Union_DATALIST_OPTGROUP<PC>
+  PC extends Union_DATALIST_OPTGROUP<PC>
 >
-	extends AnyOPTION_c<Document, PC, OPTION_c<PC>>
-	implements TextContent<OPTION_c<PC>> {
+  extends AnyOPTION_c<Document, PC, OPTION_c<PC>>
+  implements TextContent<OPTION_c<PC>> {
 
-	OPTION_c(OPTION<PC> element) {
-		super(element);
-	}
+  OPTION_c(OPTION<PC> element) {
+    super(element);
+  }
 }

@@ -39,57 +39,57 @@ import org.junit.Test;
  */
 public class COLGROUP_contentTest extends AnyCOLGROUP_contentTest {
 
-	public COLGROUP_contentTest() {
-		super(COLGROUP_content.class);
-	}
+  public COLGROUP_contentTest() {
+    super(COLGROUP_content.class);
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testUnions() {
-		UnionContentTest.testUnions(
-			COLGROUP_content.class,
-			//
-			// Unions:
-			//
-			Union_COLGROUP_ScriptSupporting.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testUnions() {
+    UnionContentTest.testUnions(
+      COLGROUP_content.class,
+      //
+      // Unions:
+      //
+      Union_COLGROUP_ScriptSupporting.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testContentModels() {
-		ContentModelTest.testContentModels(
-			COLGROUP_content.class,
-			//
-			// Content models:
-			//
-			Content.class
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testContentModels() {
+    ContentModelTest.testContentModels(
+      COLGROUP_content.class,
+      //
+      // Content models:
+      //
+      Content.class
+    );
+  }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	@Override
-	public void testElementContentModels() {
-		ElementContentModelTest.testElementContentModels(
-			COLGROUP_content.class
-			//
-			// Per-element content models:
-			//
-			// None
-		);
-	}
+  @Test
+  @SuppressWarnings("unchecked")
+  @Override
+  public void testElementContentModels() {
+    ElementContentModelTest.testElementContentModels(
+      COLGROUP_content.class
+      //
+      // Per-element content models:
+      //
+      // None
+    );
+  }
 
-	@Test
-	@Override
-	public void testNoImplementInherited() {
-		Assert.assertNotEquals(
-			"Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-			-1,
-			AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), COLGROUP_content.class)
-		);
-		InheritanceTestHelper.testNoImplementInherited(Content.class, COLGROUP_content.class);
-	}
+  @Test
+  @Override
+  public void testNoImplementInherited() {
+    Assert.assertNotEquals(
+      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+      -1,
+      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), COLGROUP_content.class)
+    );
+    InheritanceTestHelper.testNoImplementInherited(Content.class, COLGROUP_content.class);
+  }
 }

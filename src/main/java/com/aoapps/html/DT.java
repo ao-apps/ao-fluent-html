@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class DT<
-	PC extends Union_DIV_DL<PC>
+  PC extends Union_DIV_DL<PC>
 > extends AnyDT<Document, PC, DT<PC>, DT__<PC>, DT_c<PC>> {
 
-	DT(Document document, PC pc) {
-		super(document, pc);
-	}
+  DT(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected DT<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected DT<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected DT__<PC> new__() {
-		return new DT__<>(this);
-	}
+  @Override
+  protected DT__<PC> new__() {
+    return new DT__<>(this);
+  }
 
-	@Override
-	protected DT_c<PC> new_c() {
-		return new DT_c<>(this);
-	}
+  @Override
+  protected DT_c<PC> new_c() {
+    return new DT_c<>(this);
+  }
 }

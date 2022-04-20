@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyB__;
  * @author  AO Industries, Inc.
  */
 public final class B__<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyB__<Document, PC, B__<PC>>
-	implements PhrasingContent<B__<PC>> {
+  extends AnyB__<Document, PC, B__<PC>>
+  implements PhrasingContent<B__<PC>> {
 
-	B__(B<PC> element) {
-		super(element);
-	}
+  B__(B<PC> element) {
+    super(element);
+  }
 }

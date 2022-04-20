@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class CAPTION<
-	PC extends TABLE_content<PC>
+  PC extends TABLE_content<PC>
 > extends AnyCAPTION<Document, PC, CAPTION<PC>, CAPTION__<PC>, CAPTION_c<PC>> {
 
-	CAPTION(Document document, PC pc) {
-		super(document, pc);
-	}
+  CAPTION(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected CAPTION<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected CAPTION<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected CAPTION__<PC> new__() {
-		return new CAPTION__<>(this);
-	}
+  @Override
+  protected CAPTION__<PC> new__() {
+    return new CAPTION__<>(this);
+  }
 
-	@Override
-	protected CAPTION_c<PC> new_c() {
-		return new CAPTION_c<>(this);
-	}
+  @Override
+  protected CAPTION_c<PC> new_c() {
+    return new CAPTION_c<>(this);
+  }
 }

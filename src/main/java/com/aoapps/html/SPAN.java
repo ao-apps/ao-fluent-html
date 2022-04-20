@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SPAN<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnySPAN<Document, PC, SPAN<PC>, SPAN__<PC>, SPAN_c<PC>> {
 
-	SPAN(Document document, PC pc) {
-		super(document, pc);
-	}
+  SPAN(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected SPAN<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected SPAN<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected SPAN__<PC> new__() {
-		return new SPAN__<>(this);
-	}
+  @Override
+  protected SPAN__<PC> new__() {
+    return new SPAN__<>(this);
+  }
 
-	@Override
-	protected SPAN_c<PC> new_c() {
-		return new SPAN_c<>(this);
-	}
+  @Override
+  protected SPAN_c<PC> new_c() {
+    return new SPAN_c<>(this);
+  }
 }

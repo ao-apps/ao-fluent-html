@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnySELECT_c;
  * @author  AO Industries, Inc.
  */
 public final class SELECT_c<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 >
-	extends AnySELECT_c<Document, PC, SELECT_c<PC>>
-	implements SELECT_content<SELECT_c<PC>> {
+  extends AnySELECT_c<Document, PC, SELECT_c<PC>>
+  implements SELECT_content<SELECT_c<PC>> {
 
-	SELECT_c(SELECT<PC> element) {
-		super(element);
-	}
+  SELECT_c(SELECT<PC> element) {
+    super(element);
+  }
 }

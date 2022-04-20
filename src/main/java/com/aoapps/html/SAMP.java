@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SAMP<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnySAMP<Document, PC, SAMP<PC>, SAMP__<PC>, SAMP_c<PC>> {
 
-	SAMP(Document document, PC pc) {
-		super(document, pc);
-	}
+  SAMP(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected SAMP<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected SAMP<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected SAMP__<PC> new__() {
-		return new SAMP__<>(this);
-	}
+  @Override
+  protected SAMP__<PC> new__() {
+    return new SAMP__<>(this);
+  }
 
-	@Override
-	protected SAMP_c<PC> new_c() {
-		return new SAMP_c<>(this);
-	}
+  @Override
+  protected SAMP_c<PC> new_c() {
+    return new SAMP_c<>(this);
+  }
 }

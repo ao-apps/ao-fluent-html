@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class STRONG<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
 
-	STRONG(Document document, PC pc) {
-		super(document, pc);
-	}
+  STRONG(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected STRONG<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected STRONG<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected STRONG__<PC> new__() {
-		return new STRONG__<>(this);
-	}
+  @Override
+  protected STRONG__<PC> new__() {
+    return new STRONG__<>(this);
+  }
 
-	@Override
-	protected STRONG_c<PC> new_c() {
-		return new STRONG_c<>(this);
-	}
+  @Override
+  protected STRONG_c<PC> new_c() {
+    return new STRONG_c<>(this);
+  }
 }

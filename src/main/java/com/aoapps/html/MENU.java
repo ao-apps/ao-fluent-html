@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MENU<
-	PC extends InteractiveContent<PC>
+  PC extends InteractiveContent<PC>
 > extends AnyMENU<Document, PC, MENU<PC>, MENU__<PC>, MENU_c<PC>> {
 
-	MENU(Document document, PC pc) {
-		super(document, pc);
-	}
+  MENU(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected MENU<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected MENU<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected MENU__<PC> new__() {
-		return new MENU__<>(this);
-	}
+  @Override
+  protected MENU__<PC> new__() {
+    return new MENU__<>(this);
+  }
 
-	@Override
-	protected MENU_c<PC> new_c() {
-		return new MENU_c<>(this);
-	}
+  @Override
+  protected MENU_c<PC> new_c() {
+    return new MENU_c<>(this);
+  }
 }

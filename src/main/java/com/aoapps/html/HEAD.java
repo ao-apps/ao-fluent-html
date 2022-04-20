@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class HEAD<
-	PC extends HTML_content<PC>
+  PC extends HTML_content<PC>
 > extends AnyHEAD<Document, PC, HEAD<PC>, HEAD__<PC>, HEAD_c<PC>> {
 
-	HEAD(Document document, PC pc) {
-		super(document, pc);
-	}
+  HEAD(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected HEAD<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected HEAD<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected HEAD__<PC> new__() {
-		return new HEAD__<>(this);
-	}
+  @Override
+  protected HEAD__<PC> new__() {
+    return new HEAD__<>(this);
+  }
 
-	@Override
-	protected HEAD_c<PC> new_c() {
-		return new HEAD_c<>(this);
-	}
+  @Override
+  protected HEAD_c<PC> new_c() {
+    return new HEAD_c<>(this);
+  }
 }

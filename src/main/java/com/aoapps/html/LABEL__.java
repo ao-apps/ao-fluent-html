@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyLABEL__;
  * @author  AO Industries, Inc.
  */
 public final class LABEL__<
-	PC extends Union_Interactive_Phrasing<PC>
+  PC extends Union_Interactive_Phrasing<PC>
 >
-	extends AnyLABEL__<Document, PC, LABEL__<PC>>
-	implements PhrasingContent<LABEL__<PC>> {
+  extends AnyLABEL__<Document, PC, LABEL__<PC>>
+  implements PhrasingContent<LABEL__<PC>> {
 
-	LABEL__(LABEL<PC> element) {
-		super(element);
-	}
+  LABEL__(LABEL<PC> element) {
+    super(element);
+  }
 }

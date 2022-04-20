@@ -37,12 +37,12 @@ import com.aoapps.html.any.AnyDFN__;
  * @author  AO Industries, Inc.
  */
 public final class DFN__<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyDFN__<Document, PC, DFN__<PC>>
-	implements PhrasingContent<DFN__<PC>> {
+  extends AnyDFN__<Document, PC, DFN__<PC>>
+  implements PhrasingContent<DFN__<PC>> {
 
-	DFN__(DFN<PC> element) {
-		super(element);
-	}
+  DFN__(DFN<PC> element) {
+    super(element);
+  }
 }

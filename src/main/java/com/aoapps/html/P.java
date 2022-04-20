@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class P<
-	PC extends PalpableContent<PC>
+  PC extends PalpableContent<PC>
 > extends AnyP<Document, PC, P<PC>, P__<PC>, P_c<PC>> {
 
-	P(Document document, PC pc) {
-		super(document, pc);
-	}
+  P(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected P<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected P<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected P__<PC> new__() {
-		return new P__<>(this);
-	}
+  @Override
+  protected P__<PC> new__() {
+    return new P__<>(this);
+  }
 
-	@Override
-	protected P_c<PC> new_c() {
-		return new P_c<>(this);
-	}
+  @Override
+  protected P_c<PC> new_c() {
+    return new P_c<>(this);
+  }
 }

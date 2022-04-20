@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyMETER_c;
  * @author  AO Industries, Inc.
  */
 public final class METER_c<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 >
-	extends AnyMETER_c<Document, PC, METER_c<PC>>
-	implements PhrasingContent<METER_c<PC>> {
+  extends AnyMETER_c<Document, PC, METER_c<PC>>
+  implements PhrasingContent<METER_c<PC>> {
 
-	METER_c(METER<PC> element) {
-		super(element);
-	}
+  METER_c(METER<PC> element) {
+    super(element);
+  }
 }

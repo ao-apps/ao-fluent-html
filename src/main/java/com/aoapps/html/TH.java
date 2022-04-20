@@ -39,26 +39,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TH<
-	PC extends TR_content<PC>
+  PC extends TR_content<PC>
 > extends AnyTH<Document, PC, TH<PC>, TH__<PC>, TH_c<PC>> {
 
-	TH(Document document, PC pc) {
-		super(document, pc);
-	}
+  TH(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected TH<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected TH<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected TH__<PC> new__() {
-		return new TH__<>(this);
-	}
+  @Override
+  protected TH__<PC> new__() {
+    return new TH__<>(this);
+  }
 
-	@Override
-	protected TH_c<PC> new_c() {
-		return new TH_c<>(this);
-	}
+  @Override
+  protected TH_c<PC> new_c() {
+    return new TH_c<>(this);
+  }
 }

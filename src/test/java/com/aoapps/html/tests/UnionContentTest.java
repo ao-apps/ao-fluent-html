@@ -46,38 +46,38 @@ import org.junit.Test;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class UnionContentTest {
 
-	/**
-	 * Gets the set of all <code>Union_*</code> interfaces.
-	 */
-	static Class<? extends Content>[] getAllUnions() {
-		return new Class[] {
-			Union_COLGROUP_ScriptSupporting.class,
-			Union_DATALIST_OPTGROUP.class,
-			Union_DIV_DL.class,
-			Union_DL_Palpable.class,
-			Union_Embedded_Interactive.class,
-			Union_Embedded_Palpable_Phrasing.class,
-			Union_Interactive_Phrasing.class,
-			Union_Metadata_Phrasing.class,
-			Union_Palpable_Phrasing.class,
-			Union_TBODY_THEAD_TFOOT.class
-		};
-	}
+  /**
+   * Gets the set of all <code>Union_*</code> interfaces.
+   */
+  static Class<? extends Content>[] getAllUnions() {
+    return new Class[] {
+      Union_COLGROUP_ScriptSupporting.class,
+      Union_DATALIST_OPTGROUP.class,
+      Union_DIV_DL.class,
+      Union_DL_Palpable.class,
+      Union_Embedded_Interactive.class,
+      Union_Embedded_Palpable_Phrasing.class,
+      Union_Interactive_Phrasing.class,
+      Union_Metadata_Phrasing.class,
+      Union_Palpable_Phrasing.class,
+      Union_TBODY_THEAD_TFOOT.class
+    };
+  }
 
-	static void testUnions(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
-		InheritanceTestHelper.testInterfaces(
-			Content.class,
-			iface -> iface.getSimpleName().startsWith("Union_"),
-			getAllUnions(),
-			clazz,
-			expected
-		);
-	}
+  static void testUnions(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
+    InheritanceTestHelper.testInterfaces(
+      Content.class,
+      iface -> iface.getSimpleName().startsWith("Union_"),
+      getAllUnions(),
+      clazz,
+      expected
+    );
+  }
 
-	@Test
-	public void testNoImplementInherited() {
-		for(Class<? extends Content> iface : getAllUnions()) {
-			InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
-		}
-	}
+  @Test
+  public void testNoImplementInherited() {
+    for (Class<? extends Content> iface : getAllUnions()) {
+      InheritanceTestHelper.testNoImplementInherited(Content.class, iface);
+    }
+  }
 }

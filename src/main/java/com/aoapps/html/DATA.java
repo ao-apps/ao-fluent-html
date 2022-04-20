@@ -41,26 +41,26 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class DATA<
-	PC extends Union_Palpable_Phrasing<PC>
+  PC extends Union_Palpable_Phrasing<PC>
 > extends AnyDATA<Document, PC, DATA<PC>, DATA__<PC>, DATA_c<PC>> {
 
-	DATA(Document document, PC pc) {
-		super(document, pc);
-	}
+  DATA(Document document, PC pc) {
+    super(document, pc);
+  }
 
-	// Expose to this package, avoiding public to keep a clean API for optimal code assist
-	@Override
-	protected DATA<PC> writeOpen(Writer unsafe) throws IOException {
-		return super.writeOpen(unsafe);
-	}
+  // Expose to this package, avoiding public to keep a clean API for optimal code assist
+  @Override
+  protected DATA<PC> writeOpen(Writer unsafe) throws IOException {
+    return super.writeOpen(unsafe);
+  }
 
-	@Override
-	protected DATA__<PC> new__() {
-		return new DATA__<>(this);
-	}
+  @Override
+  protected DATA__<PC> new__() {
+    return new DATA__<>(this);
+  }
 
-	@Override
-	protected DATA_c<PC> new_c() {
-		return new DATA_c<>(this);
-	}
+  @Override
+  protected DATA_c<PC> new_c() {
+    return new DATA_c<>(this);
+  }
 }

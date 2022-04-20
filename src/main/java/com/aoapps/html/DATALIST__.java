@@ -39,12 +39,12 @@ import com.aoapps.html.any.AnyDATALIST__;
  * @author  AO Industries, Inc.
  */
 public final class DATALIST__<
-	PC extends PhrasingContent<PC>
+  PC extends PhrasingContent<PC>
 >
-	extends AnyDATALIST__<Document, PC, DATALIST__<PC>>
-	implements DATALIST_content<DATALIST__<PC>> {
+  extends AnyDATALIST__<Document, PC, DATALIST__<PC>>
+  implements DATALIST_content<DATALIST__<PC>> {
 
-	DATALIST__(DATALIST<PC> element) {
-		super(element);
-	}
+  DATALIST__(DATALIST<PC> element) {
+    super(element);
+  }
 }

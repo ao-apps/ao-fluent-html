@@ -41,7 +41,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SECTION<
-  PC extends SectioningContent<PC>
+    PC extends SectioningContent<PC>
 > extends AnySECTION<Document, PC, SECTION<PC>, SECTION__<PC>, SECTION_c<PC>> {
 
   SECTION(Document document, PC pc) {

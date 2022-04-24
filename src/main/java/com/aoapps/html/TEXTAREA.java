@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class TEXTAREA<
-  PC extends Union_Interactive_Phrasing<PC>
+    PC extends Union_Interactive_Phrasing<PC>
 > extends AnyTEXTAREA<Document, PC, TEXTAREA<PC>, TEXTAREA__<PC>, TEXTAREA_c<PC>> {
 
   TEXTAREA(Document document, PC pc) {

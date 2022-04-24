@@ -35,12 +35,12 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_DIV_DL<
-  __ extends Union_DIV_DL<__>
+    __ extends Union_DIV_DL<__>
 > extends AnyUnion_DIV_DL<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:
@@ -50,7 +50,7 @@ public interface Union_DIV_DL<
   @SuppressWarnings("deprecation")
   default DD<__> dd() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DD<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -75,13 +75,14 @@ public interface Union_DIV_DL<
   default DD_c<__> dd_c() throws IOException {
     return dd()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="DT">
   @Override
   @SuppressWarnings("deprecation")
   default DT<__> dt() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DT<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

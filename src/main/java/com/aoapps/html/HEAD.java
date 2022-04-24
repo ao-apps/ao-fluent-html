@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class HEAD<
-  PC extends HTML_content<PC>
+    PC extends HTML_content<PC>
 > extends AnyHEAD<Document, PC, HEAD<PC>, HEAD__<PC>, HEAD_c<PC>> {
 
   HEAD(Document document, PC pc) {

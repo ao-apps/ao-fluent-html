@@ -37,12 +37,12 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_Embedded_Interactive<
-  __ extends Union_Embedded_Interactive<__>
+    __ extends Union_Embedded_Interactive<__>
 > extends AnyUnion_Embedded_Interactive<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:
@@ -58,7 +58,7 @@ public interface Union_Embedded_Interactive<
   @SuppressWarnings("deprecation")
   default IMG<__> img() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new IMG<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -75,13 +75,14 @@ public interface Union_Embedded_Interactive<
   default <Ex extends Throwable> IMG<__> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
     return img().src(src);
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="OBJECT">
   @Override
   @SuppressWarnings("deprecation")
   default OBJECT<__> object() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new OBJECT<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

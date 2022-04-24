@@ -45,11 +45,11 @@ public class ContentTest extends com.aoapps.html.any.tests.ContentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      Content.class
-      //
-      // Unions:
-      //
-      // None
+        Content.class
+    //
+    // Unions:
+    //
+    // None
     );
   }
 
@@ -58,11 +58,11 @@ public class ContentTest extends com.aoapps.html.any.tests.ContentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      Content.class
-      //
-      // Content models:
-      //
-      // None
+        Content.class
+    //
+    // Content models:
+    //
+    // None
     );
   }
 
@@ -71,11 +71,11 @@ public class ContentTest extends com.aoapps.html.any.tests.ContentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      Content.class
-      //
-      // Per-element content models:
-      //
-      // None
+        Content.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -83,9 +83,9 @@ public class ContentTest extends com.aoapps.html.any.tests.ContentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-      -1,
-      AoArrays.indexOf(ContentModelTest.getAllContentModels(), Content.class)
+        "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+        -1,
+        AoArrays.indexOf(ContentModelTest.getAllContentModels(), Content.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, Content.class);
   }

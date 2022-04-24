@@ -38,18 +38,18 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface InteractiveContent<
-  __ extends InteractiveContent<__>
+    __ extends InteractiveContent<__>
 > extends AnyInteractiveContent<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_Embedded_Interactive<__>
-  Union_Interactive_Phrasing<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_Embedded_Interactive<__>
+    Union_Interactive_Phrasing<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
+//
+// Content models:
+//
+// Inherited: Content<__>
 {
   //
   // Factories:
@@ -69,7 +69,7 @@ public interface InteractiveContent<
   @SuppressWarnings("deprecation")
   default MENU<__> menu() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new MENU<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyTH_c;
  * @author  AO Industries, Inc.
  */
 public final class TH_c<
-  PC extends TR_content<PC>
+    PC extends TR_content<PC>
 >
-  extends AnyTH_c<Document, PC, TH_c<PC>>
-  implements FlowContent<TH_c<PC>> {
+    extends AnyTH_c<Document, PC, TH_c<PC>>
+    implements FlowContent<TH_c<PC>> {
 
   TH_c(TH<PC> element) {
     super(element);

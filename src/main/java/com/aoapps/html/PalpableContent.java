@@ -39,25 +39,25 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface PalpableContent<
-  __ extends PalpableContent<__>
+    __ extends PalpableContent<__>
 > extends AnyPalpableContent<Document, __>,
-  //
-  // Unions:
-  //
-  Union_DL_Palpable<__>,
-  // Inherited: Union_Embedded_Interactive<__>
-  // Inherited: Union_Embedded_Palpable_Phrasing<__>
-  // Inherited: Union_Interactive_Phrasing<__>
-  Union_Palpable_Phrasing<__>,
+    //
+    // Unions:
+    //
+    Union_DL_Palpable<__>,
+    // Inherited: Union_Embedded_Interactive<__>
+    // Inherited: Union_Embedded_Palpable_Phrasing<__>
+    // Inherited: Union_Interactive_Phrasing<__>
+    Union_Palpable_Phrasing<__>,
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  SectioningContent<__>,
-  HeadingContent<__>,
-  InteractiveContent<__>
-  // Inherited: TextContent<__> // that is not inter-element whitespace
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    SectioningContent<__>,
+    HeadingContent<__>,
+    InteractiveContent<__>
+// Inherited: TextContent<__> // that is not inter-element whitespace
 {
   //
   // Factories:
@@ -69,7 +69,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default ADDRESS<__> address() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new ADDRESS<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -94,6 +94,7 @@ public interface PalpableContent<
   default ADDRESS_c<__> address_c() throws IOException {
     return address()._c();
   }
+
   // </editor-fold>
   // Inherited: ARTICLE
   // Inherited: ASIDE
@@ -106,7 +107,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default BLOCKQUOTE<__> blockquote() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new BLOCKQUOTE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -131,6 +132,7 @@ public interface PalpableContent<
   default BLOCKQUOTE_c<__> blockquote_c() throws IOException {
     return blockquote()._c();
   }
+
   // </editor-fold>
   // Inherited: BUTTON
   // Inherited: CANVAS
@@ -145,7 +147,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default DL<__> dl() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DL<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -170,6 +172,7 @@ public interface PalpableContent<
   default DL_c<__> dl_c() throws IOException {
     return dl()._c();
   }
+
   // </editor-fold>
   // Inherited: EM
   // Inherited: EMBED
@@ -182,7 +185,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default FOOTER<__> footer() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new FOOTER<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -209,13 +212,14 @@ public interface PalpableContent<
   default FOOTER_c<__> footer_c() throws IOException {
     return footer()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="FORM">
   @Override
   @SuppressWarnings("deprecation")
   default FORM<__> form() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new FORM<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -253,6 +257,7 @@ public interface PalpableContent<
   default FORM_c<__> form_c() throws IOException {
     return form()._c();
   }
+
   // </editor-fold>
   // Inherited: H1
   // Inherited: H2
@@ -265,7 +270,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default HEADER<__> header() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new HEADER<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -292,6 +297,7 @@ public interface PalpableContent<
   default HEADER_c<__> header_c() throws IOException {
     return header()._c();
   }
+
   // </editor-fold>
   // Inherited: HGROUP
   // Inherited: I
@@ -306,7 +312,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default MAIN<__> main() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new MAIN<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -333,6 +339,7 @@ public interface PalpableContent<
   default MAIN_c<__> main_c() throws IOException {
     return main()._c();
   }
+
   // </editor-fold>
   // Inherited: MAP
   // Inherited: MARK
@@ -346,7 +353,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default OL<__> ol() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new OL<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -371,6 +378,7 @@ public interface PalpableContent<
   default OL_c<__> ol_c() throws IOException {
     return ol()._c();
   }
+
   // </editor-fold>
   // Inherited: OUTPUT
   // <editor-fold defaultstate="collapsed" desc="P">
@@ -378,7 +386,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default P<__> p() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new P<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -403,13 +411,14 @@ public interface PalpableContent<
   default P_c<__> p_c() throws IOException {
     return p()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="PRE">
   @Override
   @SuppressWarnings("deprecation")
   default PRE<__> pre() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new PRE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -434,6 +443,7 @@ public interface PalpableContent<
   default PRE_c<__> pre_c() throws IOException {
     return pre()._c();
   }
+
   // </editor-fold>
   // Inherited: PROGRESS
   // Inherited: Q
@@ -453,7 +463,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default TABLE<__> table() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TABLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -478,6 +488,7 @@ public interface PalpableContent<
   default TABLE_c<__> table_c() throws IOException {
     return table()._c();
   }
+
   // </editor-fold>
   // Inherited: TEXTAREA
   // Inherited: TIME
@@ -487,7 +498,7 @@ public interface PalpableContent<
   @SuppressWarnings("deprecation")
   default UL<__> ul() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new UL<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

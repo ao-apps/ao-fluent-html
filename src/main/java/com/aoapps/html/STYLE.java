@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class STYLE<
-  PC extends MetadataContent<PC>
+    PC extends MetadataContent<PC>
 > extends AnySTYLE<Document, PC, STYLE<PC>> {
 
   STYLE(Document document, PC pc) {

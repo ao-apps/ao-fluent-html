@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyTR_c;
  * @author  AO Industries, Inc.
  */
 public final class TR_c<
-  PC extends Union_TBODY_THEAD_TFOOT<PC>
+    PC extends Union_TBODY_THEAD_TFOOT<PC>
 >
-  extends AnyTR_c<Document, PC, TR_c<PC>>
-  implements TR_content<TR_c<PC>> {
+    extends AnyTR_c<Document, PC, TR_c<PC>>
+    implements TR_content<TR_c<PC>> {
 
   TR_c(TR<PC> element) {
     super(element);

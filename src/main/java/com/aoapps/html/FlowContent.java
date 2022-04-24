@@ -37,31 +37,31 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface FlowContent<
-  __ extends FlowContent<__>
+    __ extends FlowContent<__>
 > extends AnyFlowContent<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  // Inherited: Union_DL_Palpable<__>
-  // Inherited: Union_Embedded_Interactive<__>
-  // Inherited: Union_Embedded_Palpable_Phrasing<__>
-  // Inherited: Union_Interactive_Phrasing<__>
-  // Inherited: Union_Metadata_Phrasing<__>
-  // Inherited: Union_Palpable_Phrasing<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    // Inherited: Union_DL_Palpable<__>
+    // Inherited: Union_Embedded_Interactive<__>
+    // Inherited: Union_Embedded_Palpable_Phrasing<__>
+    // Inherited: Union_Interactive_Phrasing<__>
+    // Inherited: Union_Metadata_Phrasing<__>
+    // Inherited: Union_Palpable_Phrasing<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: EmbeddedContent<__>
-  // Inherited: HeadingContent<__>
-  // Inherited: InteractiveContent<__>
-  PalpableContent<__>,
-  PhrasingContent<__>
-  // Inherited: ScriptSupportingContent<__>
-  // Inherited: SectioningContent<__>
-  // Inherited: TextContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    // Inherited: EmbeddedContent<__>
+    // Inherited: HeadingContent<__>
+    // Inherited: InteractiveContent<__>
+    PalpableContent<__>,
+    PhrasingContent<__>
+// Inherited: ScriptSupportingContent<__>
+// Inherited: SectioningContent<__>
+// Inherited: TextContent<__>
 {
   //
   // Factories:
@@ -110,7 +110,7 @@ public interface FlowContent<
   @SuppressWarnings("deprecation")
   default HR<__> hr() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new HR<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

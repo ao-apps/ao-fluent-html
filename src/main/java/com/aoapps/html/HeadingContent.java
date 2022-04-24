@@ -38,12 +38,12 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface HeadingContent<
-  __ extends HeadingContent<__>
+    __ extends HeadingContent<__>
 > extends AnyHeadingContent<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:
@@ -61,7 +61,7 @@ public interface HeadingContent<
   @SuppressWarnings("deprecation")
   default H1<__> h1() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new H1<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -86,13 +86,14 @@ public interface HeadingContent<
   default H1_c<__> h1_c() throws IOException {
     return h1()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="H2">
   @Override
   @SuppressWarnings("deprecation")
   default H2<__> h2() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new H2<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -117,13 +118,14 @@ public interface HeadingContent<
   default H2_c<__> h2_c() throws IOException {
     return h2()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="H3">
   @Override
   @SuppressWarnings("deprecation")
   default H3<__> h3() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new H3<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -148,13 +150,14 @@ public interface HeadingContent<
   default H3_c<__> h3_c() throws IOException {
     return h3()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="H4">
   @Override
   @SuppressWarnings("deprecation")
   default H4<__> h4() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new H4<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -179,13 +182,14 @@ public interface HeadingContent<
   default H4_c<__> h4_c() throws IOException {
     return h4()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="H5">
   @Override
   @SuppressWarnings("deprecation")
   default H5<__> h5() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new H5<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -210,13 +214,14 @@ public interface HeadingContent<
   default H5_c<__> h5_c() throws IOException {
     return h5()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="H6">
   @Override
   @SuppressWarnings("deprecation")
   default H6<__> h6() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new H6<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

@@ -35,12 +35,12 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_DL_Palpable<
-  __ extends Union_DL_Palpable<__>
+    __ extends Union_DL_Palpable<__>
 > extends AnyUnion_DL_Palpable<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:
@@ -50,7 +50,7 @@ public interface Union_DL_Palpable<
   @SuppressWarnings("deprecation")
   default DIV<__> div() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DIV<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class PARAM<
-  PC extends OBJECT_content<PC>
+    PC extends OBJECT_content<PC>
 > extends AnyPARAM<Document, PC, PARAM<PC>> {
 
   PARAM(Document document, PC pc) {

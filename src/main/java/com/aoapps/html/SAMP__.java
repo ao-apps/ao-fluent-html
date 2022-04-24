@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnySAMP__;
  * @author  AO Industries, Inc.
  */
 public final class SAMP__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnySAMP__<Document, PC, SAMP__<PC>>
-  implements PhrasingContent<SAMP__<PC>> {
+    extends AnySAMP__<Document, PC, SAMP__<PC>>
+    implements PhrasingContent<SAMP__<PC>> {
 
   SAMP__(SAMP<PC> element) {
     super(element);

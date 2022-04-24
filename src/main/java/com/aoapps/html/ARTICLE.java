@@ -41,7 +41,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class ARTICLE<
-  PC extends SectioningContent<PC>
+    PC extends SectioningContent<PC>
 > extends AnyARTICLE<Document, PC, ARTICLE<PC>, ARTICLE__<PC>, ARTICLE_c<PC>> {
 
   ARTICLE(Document document, PC pc) {

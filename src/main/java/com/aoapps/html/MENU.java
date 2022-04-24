@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MENU<
-  PC extends InteractiveContent<PC>
+    PC extends InteractiveContent<PC>
 > extends AnyMENU<Document, PC, MENU<PC>, MENU__<PC>, MENU_c<PC>> {
 
   MENU(Document document, PC pc) {

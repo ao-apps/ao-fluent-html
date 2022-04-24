@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyH3_c;
  * @author  AO Industries, Inc.
  */
 public final class H3_c<
-  PC extends HeadingContent<PC>
+    PC extends HeadingContent<PC>
 >
-  extends AnyH3_c<Document, PC, H3_c<PC>>
-  implements PhrasingContent<H3_c<PC>> {
+    extends AnyH3_c<Document, PC, H3_c<PC>>
+    implements PhrasingContent<H3_c<PC>> {
 
   H3_c(H3<PC> element) {
     super(element);

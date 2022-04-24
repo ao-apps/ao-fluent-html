@@ -39,18 +39,18 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface TR_content<
-  __ extends TR_content<__>
+    __ extends TR_content<__>
 > extends AnyTR_content<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  ScriptSupportingContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    ScriptSupportingContent<__>
 {
   //
   // Factories:
@@ -60,7 +60,7 @@ public interface TR_content<
   @SuppressWarnings("deprecation")
   default TD<__> td() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TD<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -85,13 +85,14 @@ public interface TR_content<
   default TD_c<__> td_c() throws IOException {
     return td()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="TH">
   @Override
   @SuppressWarnings("deprecation")
   default TH<__> th() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TH<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

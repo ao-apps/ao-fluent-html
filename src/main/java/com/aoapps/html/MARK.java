@@ -41,7 +41,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MARK<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 > extends AnyMARK<Document, PC, MARK<PC>, MARK__<PC>, MARK_c<PC>> {
 
   MARK(Document document, PC pc) {

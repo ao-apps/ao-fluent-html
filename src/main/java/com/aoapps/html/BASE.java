@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class BASE<
-  PC extends MetadataContent<PC>
+    PC extends MetadataContent<PC>
 > extends AnyBASE<Document, PC, BASE<PC>> {
 
   BASE(Document document, PC pc) {

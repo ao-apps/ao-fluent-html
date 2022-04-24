@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class STRONG<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 > extends AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
 
   STRONG(Document document, PC pc) {

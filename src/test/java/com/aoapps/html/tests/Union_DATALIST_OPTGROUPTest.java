@@ -48,11 +48,11 @@ public class Union_DATALIST_OPTGROUPTest extends AnyUnion_DATALIST_OPTGROUPTest 
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      Union_DATALIST_OPTGROUP.class
-      //
-      // Unions:
-      //
-      // NOne
+        Union_DATALIST_OPTGROUP.class
+    //
+    // Unions:
+    //
+    // NOne
     );
   }
 
@@ -61,11 +61,11 @@ public class Union_DATALIST_OPTGROUPTest extends AnyUnion_DATALIST_OPTGROUPTest 
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      Union_DATALIST_OPTGROUP.class,
-      //
-      // Content models:
-      //
-      Content.class
+        Union_DATALIST_OPTGROUP.class,
+        //
+        // Content models:
+        //
+        Content.class
     );
   }
 
@@ -74,11 +74,11 @@ public class Union_DATALIST_OPTGROUPTest extends AnyUnion_DATALIST_OPTGROUPTest 
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      Union_DATALIST_OPTGROUP.class
-      //
-      // Per-element content models:
-      //
-      // None
+        Union_DATALIST_OPTGROUP.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -86,8 +86,8 @@ public class Union_DATALIST_OPTGROUPTest extends AnyUnion_DATALIST_OPTGROUPTest 
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-      -1,
-      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DATALIST_OPTGROUP.class)
+        -1,
+        AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_DATALIST_OPTGROUP.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, Union_DATALIST_OPTGROUP.class);
   }

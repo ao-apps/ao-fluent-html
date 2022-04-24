@@ -36,18 +36,18 @@ import com.aoapps.html.any.AnyEmbeddedContent;
  * @author  AO Industries, Inc.
  */
 public interface EmbeddedContent<
-  __ extends EmbeddedContent<__>
+    __ extends EmbeddedContent<__>
 > extends AnyEmbeddedContent<Document, __>,
-  //
-  // Unions:
-  //
-  Union_Embedded_Interactive<__>,
-  Union_Embedded_Palpable_Phrasing<__>
+    //
+    // Unions:
+    //
+    Union_Embedded_Interactive<__>,
+    Union_Embedded_Palpable_Phrasing<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
+//
+// Content models:
+//
+// Inherited: Content<__>
 {
   //
   // Factories:

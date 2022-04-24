@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyABBR_c;
  * @author  AO Industries, Inc.
  */
 public final class ABBR_c<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyABBR_c<Document, PC, ABBR_c<PC>>
-  implements PhrasingContent<ABBR_c<PC>> {
+    extends AnyABBR_c<Document, PC, ABBR_c<PC>>
+    implements PhrasingContent<ABBR_c<PC>> {
 
   ABBR_c(ABBR<PC> element) {
     super(element);

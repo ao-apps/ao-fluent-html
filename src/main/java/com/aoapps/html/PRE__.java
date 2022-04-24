@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyPRE__;
  * @author  AO Industries, Inc.
  */
 public final class PRE__<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 >
-  extends AnyPRE__<Document, PC, PRE__<PC>>
-  implements PhrasingContent<PRE__<PC>> {
+    extends AnyPRE__<Document, PC, PRE__<PC>>
+    implements PhrasingContent<PRE__<PC>> {
 
   PRE__(PRE<PC> element) {
     super(element);

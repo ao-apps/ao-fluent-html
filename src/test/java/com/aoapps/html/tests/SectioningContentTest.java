@@ -47,11 +47,11 @@ public class SectioningContentTest extends AnySectioningContentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      SectioningContent.class
-      //
-      // Unions:
-      //
-      // None
+        SectioningContent.class
+    //
+    // Unions:
+    //
+    // None
     );
   }
 
@@ -60,11 +60,11 @@ public class SectioningContentTest extends AnySectioningContentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      SectioningContent.class,
-      //
-      // Content models:
-      //
-      Content.class
+        SectioningContent.class,
+        //
+        // Content models:
+        //
+        Content.class
     );
   }
 
@@ -73,11 +73,11 @@ public class SectioningContentTest extends AnySectioningContentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      SectioningContent.class
-      //
-      // Per-element content models:
-      //
-      // None
+        SectioningContent.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -85,9 +85,9 @@ public class SectioningContentTest extends AnySectioningContentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-      -1,
-      AoArrays.indexOf(ContentModelTest.getAllContentModels(), SectioningContent.class)
+        "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+        -1,
+        AoArrays.indexOf(ContentModelTest.getAllContentModels(), SectioningContent.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, SectioningContent.class);
   }

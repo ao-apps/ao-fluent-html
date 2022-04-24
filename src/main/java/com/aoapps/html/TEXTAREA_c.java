@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyTEXTAREA_c;
  * @author  AO Industries, Inc.
  */
 public final class TEXTAREA_c<
-  PC extends Union_Interactive_Phrasing<PC>
+    PC extends Union_Interactive_Phrasing<PC>
 >
-  extends AnyTEXTAREA_c<Document, PC, TEXTAREA_c<PC>>
-  implements TextContent<TEXTAREA_c<PC>> {
+    extends AnyTEXTAREA_c<Document, PC, TEXTAREA_c<PC>>
+    implements TextContent<TEXTAREA_c<PC>> {
 
   TEXTAREA_c(TEXTAREA<PC> element) {
     super(element);

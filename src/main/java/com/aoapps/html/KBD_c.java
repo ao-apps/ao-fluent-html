@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyKBD_c;
  * @author  AO Industries, Inc.
  */
 public final class KBD_c<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyKBD_c<Document, PC, KBD_c<PC>>
-  implements PhrasingContent<KBD_c<PC>> {
+    extends AnyKBD_c<Document, PC, KBD_c<PC>>
+    implements PhrasingContent<KBD_c<PC>> {
 
   KBD_c(KBD<PC> element) {
     super(element);

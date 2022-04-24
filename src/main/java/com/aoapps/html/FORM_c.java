@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyFORM_c;
  * @author  AO Industries, Inc.
  */
 public final class FORM_c<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 >
-  extends AnyFORM_c<Document, PC, FORM_c<PC>>
-  implements FlowContent<FORM_c<PC>> {
+    extends AnyFORM_c<Document, PC, FORM_c<PC>>
+    implements FlowContent<FORM_c<PC>> {
 
   FORM_c(FORM<PC> element) {
     super(element);

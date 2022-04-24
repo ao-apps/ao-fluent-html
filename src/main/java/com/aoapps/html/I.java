@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class I<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 > extends AnyI<Document, PC, I<PC>, I__<PC>, I_c<PC>> {
 
   I(Document document, PC pc) {
@@ -52,6 +52,7 @@ public final class I<
   protected I<PC> writeOpen(Writer unsafe) throws IOException {
     return super.writeOpen(unsafe);
   }
+
   @Override
   protected I__<PC> new__() {
     return new I__<>(this);

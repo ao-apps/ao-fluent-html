@@ -35,18 +35,18 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_Metadata_Phrasing<
-  __ extends Union_Metadata_Phrasing<__>
+    __ extends Union_Metadata_Phrasing<__>
 > extends AnyUnion_Metadata_Phrasing<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: COLGROUP_ScriptSupporting<__>
+    //
+    // Unions:
+    //
+    // Inherited: COLGROUP_ScriptSupporting<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  ScriptSupportingContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    ScriptSupportingContent<__>
 {
   //
   // Factories:
@@ -56,7 +56,7 @@ public interface Union_Metadata_Phrasing<
   @SuppressWarnings("deprecation")
   default LINK<__> link() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new LINK<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -65,6 +65,7 @@ public interface Union_Metadata_Phrasing<
   default LINK<__> link(AnyLINK.Rel rel) throws IOException {
     return link().rel(rel);
   }
+
   // No link__(), since either rel or itemprop is required
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="META">
@@ -72,7 +73,7 @@ public interface Union_Metadata_Phrasing<
   @SuppressWarnings("deprecation")
   default META<__> meta() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new META<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

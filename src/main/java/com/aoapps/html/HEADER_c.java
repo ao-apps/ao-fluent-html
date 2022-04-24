@@ -39,10 +39,10 @@ import com.aoapps.html.any.AnyHEADER_c;
  * @author  AO Industries, Inc.
  */
 public final class HEADER_c<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 >
-  extends AnyHEADER_c<Document, PC, HEADER_c<PC>>
-  implements FlowContent<HEADER_c<PC>> {
+    extends AnyHEADER_c<Document, PC, HEADER_c<PC>>
+    implements FlowContent<HEADER_c<PC>> {
 
   HEADER_c(HEADER<PC> element) {
     super(element);

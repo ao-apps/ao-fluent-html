@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyA_c;
  * @author  AO Industries, Inc.
  */
 public final class A_c<
-  PC extends Union_Interactive_Phrasing<PC>
+    PC extends Union_Interactive_Phrasing<PC>
 >
-  extends AnyA_c<Document, PC, A_c<PC>>
-  implements Union_Interactive_Phrasing<A_c<PC>> {
+    extends AnyA_c<Document, PC, A_c<PC>>
+    implements Union_Interactive_Phrasing<A_c<PC>> {
 
   A_c(A<PC> element) {
     super(element);

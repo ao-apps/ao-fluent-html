@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class PRE<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 > extends AnyPRE<Document, PC, PRE<PC>, PRE__<PC>, PRE_c<PC>> {
 
   PRE(Document document, PC pc) {

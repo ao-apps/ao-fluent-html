@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyHTML__;
  * @author  AO Industries, Inc.
  */
 public final class HTML__<
-  PC extends Content<PC>
+    PC extends Content<PC>
 >
-  extends AnyHTML__<Document, PC, HTML__<PC>>
-  implements HTML_content<HTML__<PC>> {
+    extends AnyHTML__<Document, PC, HTML__<PC>>
+    implements HTML_content<HTML__<PC>> {
 
   HTML__(HTML<PC> element) {
     super(element);

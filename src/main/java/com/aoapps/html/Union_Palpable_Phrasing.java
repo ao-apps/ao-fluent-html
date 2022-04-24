@@ -38,20 +38,20 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_Palpable_Phrasing<
-  __ extends Union_Palpable_Phrasing<__>
+    __ extends Union_Palpable_Phrasing<__>
 > extends AnyUnion_Palpable_Phrasing<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Embedded_Interactive<__>
-  Union_Embedded_Palpable_Phrasing<__>,
-  Union_Interactive_Phrasing<__>,
+    //
+    // Unions:
+    //
+    // Inherited: Embedded_Interactive<__>
+    Union_Embedded_Palpable_Phrasing<__>,
+    Union_Interactive_Phrasing<__>,
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  TextContent<__> // that is not inter-element whitespace
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    TextContent<__> // that is not inter-element whitespace
 {
   //
   // Factories:
@@ -62,7 +62,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default ABBR<__> abbr() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new ABBR<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -87,6 +87,7 @@ public interface Union_Palpable_Phrasing<
   default ABBR_c<__> abbr_c() throws IOException {
     return abbr()._c();
   }
+
   // </editor-fold>
   // Inherited: AUDIO
   // <editor-fold defaultstate="collapsed" desc="B">
@@ -94,7 +95,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default B<__> b() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new B<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -119,13 +120,14 @@ public interface Union_Palpable_Phrasing<
   default B_c<__> b_c() throws IOException {
     return b()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="BDI">
   @Override
   @SuppressWarnings("deprecation")
   default BDI<__> bdi() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new BDI<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -152,13 +154,14 @@ public interface Union_Palpable_Phrasing<
   default BDI_c<__> bdi_c() throws IOException {
     return bdi()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="BDO">
   @Override
   @SuppressWarnings("deprecation")
   default BDO<__> bdo() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new BDO<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -210,6 +213,7 @@ public interface Union_Palpable_Phrasing<
   default BDO_c<__> bdo_c(Dir.Value dir) throws IOException {
     return bdo(dir)._c();
   }
+
   // </editor-fold>
   // Inherited: BUTTON
   // Inherited: CANVAS
@@ -218,7 +222,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default CITE<__> cite() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new CITE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -243,13 +247,14 @@ public interface Union_Palpable_Phrasing<
   default CITE_c<__> cite_c() throws IOException {
     return cite()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="CODE">
   @Override
   @SuppressWarnings("deprecation")
   default CODE<__> code() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new CODE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -274,13 +279,14 @@ public interface Union_Palpable_Phrasing<
   default CODE_c<__> code_c() throws IOException {
     return code()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="DATA">
   @Override
   @SuppressWarnings("deprecation")
   default DATA<__> data() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DATA<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -322,13 +328,14 @@ public interface Union_Palpable_Phrasing<
   default DATA_c<__> data_c(Object value) throws IOException {
     return data(value)._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="DFN">
   @Override
   @SuppressWarnings("deprecation")
   default DFN<__> dfn() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DFN<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -353,13 +360,14 @@ public interface Union_Palpable_Phrasing<
   default DFN_c<__> dfn_c() throws IOException {
     return dfn()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="EM">
   @Override
   @SuppressWarnings("deprecation")
   default EM<__> em() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new EM<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -384,6 +392,7 @@ public interface Union_Palpable_Phrasing<
   default EM_c<__> em_c() throws IOException {
     return em()._c();
   }
+
   // </editor-fold>
   // Inherited: EMBED
   // <editor-fold defaultstate="collapsed" desc="I">
@@ -391,7 +400,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default I<__> i() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new I<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -416,6 +425,7 @@ public interface Union_Palpable_Phrasing<
   default I_c<__> i_c() throws IOException {
     return i()._c();
   }
+
   // </editor-fold>
   // Inherited: IFRAME
   // Inherited: IMG
@@ -425,7 +435,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default INS<__> ins() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new INS<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -434,13 +444,14 @@ public interface Union_Palpable_Phrasing<
   default INS_c<__> ins_c() throws IOException {
     return ins()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="KBD">
   @Override
   @SuppressWarnings("deprecation")
   default KBD<__> kbd() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new KBD<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -465,6 +476,7 @@ public interface Union_Palpable_Phrasing<
   default KBD_c<__> kbd_c() throws IOException {
     return kbd()._c();
   }
+
   // </editor-fold>
   // Inherited: LABEL
   // <editor-fold defaultstate="collapsed" desc="MAP">
@@ -472,7 +484,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default MAP<__> map() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new MAP<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -494,13 +506,14 @@ public interface Union_Palpable_Phrasing<
   default MAP_c<__> map_c(String name) throws IOException {
     return map(name)._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="MARK">
   @Override
   @SuppressWarnings("deprecation")
   default MARK<__> mark() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new MARK<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -527,6 +540,7 @@ public interface Union_Palpable_Phrasing<
   default MARK_c<__> mark_c() throws IOException {
     return mark()._c();
   }
+
   // </editor-fold>
   // Inherited: MathML math
   // <editor-fold defaultstate="collapsed" desc="METER">
@@ -534,7 +548,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default METER<__> meter() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new METER<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -561,6 +575,7 @@ public interface Union_Palpable_Phrasing<
   default METER_c<__> meter_c() throws IOException {
     return meter()._c();
   }
+
   // </editor-fold>
   // Inherited: OBJECT
   // <editor-fold defaultstate="collapsed" desc="OUTPUT">
@@ -568,7 +583,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default OUTPUT<__> output() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new OUTPUT<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -595,13 +610,14 @@ public interface Union_Palpable_Phrasing<
   default OUTPUT_c<__> output_c() throws IOException {
     return output()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="PROGRESS">
   @Override
   @SuppressWarnings("deprecation")
   default PROGRESS<__> progress() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new PROGRESS<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -628,13 +644,14 @@ public interface Union_Palpable_Phrasing<
   default PROGRESS_c<__> progress_c() throws IOException {
     return progress()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="Q">
   @Override
   @SuppressWarnings("deprecation")
   default Q<__> q() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new Q<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -659,6 +676,7 @@ public interface Union_Palpable_Phrasing<
   default Q_c<__> q_c() throws IOException {
     return q()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="TODO: RUBY">
   // </editor-fold>
@@ -667,7 +685,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default S<__> s() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new S<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -692,13 +710,14 @@ public interface Union_Palpable_Phrasing<
   default S_c<__> s_c() throws IOException {
     return s()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="SAMP">
   @Override
   @SuppressWarnings("deprecation")
   default SAMP<__> samp() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SAMP<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -723,6 +742,7 @@ public interface Union_Palpable_Phrasing<
   default SAMP_c<__> samp_c() throws IOException {
     return samp()._c();
   }
+
   // </editor-fold>
   // Inherited: SELECT
   // <editor-fold defaultstate="collapsed" desc="SMALL">
@@ -730,7 +750,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default SMALL<__> small() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SMALL<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -755,13 +775,14 @@ public interface Union_Palpable_Phrasing<
   default SMALL_c<__> small_c() throws IOException {
     return small()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="SPAN">
   @Override
   @SuppressWarnings("deprecation")
   default SPAN<__> span() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SPAN<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -786,13 +807,14 @@ public interface Union_Palpable_Phrasing<
   default SPAN_c<__> span_c() throws IOException {
     return span()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="STRONG">
   @Override
   @SuppressWarnings("deprecation")
   default STRONG<__> strong() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new STRONG<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -817,13 +839,14 @@ public interface Union_Palpable_Phrasing<
   default STRONG_c<__> strong_c() throws IOException {
     return strong()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="SUB">
   @Override
   @SuppressWarnings("deprecation")
   default SUB<__> sub() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SUB<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -848,13 +871,14 @@ public interface Union_Palpable_Phrasing<
   default SUB_c<__> sub_c() throws IOException {
     return sub()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="SUP">
   @Override
   @SuppressWarnings("deprecation")
   default SUP<__> sup() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -879,6 +903,7 @@ public interface Union_Palpable_Phrasing<
   default SUP_c<__> sup_c() throws IOException {
     return sup()._c();
   }
+
   // </editor-fold>
   // Inherited: SVG svg
   // Inherited: TEXTAREA
@@ -889,7 +914,7 @@ public interface Union_Palpable_Phrasing<
   @SuppressWarnings("deprecation")
   default U<__> u() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new U<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -914,13 +939,14 @@ public interface Union_Palpable_Phrasing<
   default U_c<__> u_c() throws IOException {
     return u()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="VAR">
   @Override
   @SuppressWarnings("deprecation")
   default VAR<__> var() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new VAR<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

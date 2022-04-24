@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class H5<
-  PC extends HeadingContent<PC>
+    PC extends HeadingContent<PC>
 > extends AnyH5<Document, PC, H5<PC>, H5__<PC>, H5_c<PC>> {
 
   H5(Document document, PC pc) {

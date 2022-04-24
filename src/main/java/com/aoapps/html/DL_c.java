@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyDL_c;
  * @author  AO Industries, Inc.
  */
 public final class DL_c<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 >
-  extends AnyDL_c<Document, PC, DL_c<PC>>
-  implements DL_content<DL_c<PC>> {
+    extends AnyDL_c<Document, PC, DL_c<PC>>
+    implements DL_content<DL_c<PC>> {
 
   DL_c(DL<PC> element) {
     super(element);

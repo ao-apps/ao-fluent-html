@@ -37,33 +37,33 @@ import com.aoapps.html.any.AnyDIV_content;
  * @author  AO Industries, Inc.
  */
 public interface DIV_content<
-  __ extends DIV_content<__>
+    __ extends DIV_content<__>
 > extends AnyDIV_content<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  Union_DIV_DL<__>,
-  // Inherited: Union_DL_Palpable<__>
-  // Inherited: Union_Embedded_Interactive<__>
-  // Inherited: Union_Embedded_Palpable_Phrasing<__>
-  // Inherited: Union_Interactive_Phrasing<__>
-  // Inherited: Union_Metadata_Phrasing<__>
-  // Inherited: Union_Palpable_Phrasing<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    Union_DIV_DL<__>,
+    // Inherited: Union_DL_Palpable<__>
+    // Inherited: Union_Embedded_Interactive<__>
+    // Inherited: Union_Embedded_Palpable_Phrasing<__>
+    // Inherited: Union_Interactive_Phrasing<__>
+    // Inherited: Union_Metadata_Phrasing<__>
+    // Inherited: Union_Palpable_Phrasing<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: EmbeddedContent<__>
-  FlowContent<__>
-  // Inherited: HeadingContent<__>
-  // Inherited: InteractiveContent<__>
-  // Inherited: PalpableContent<__>
-  // Inherited: PhrasingContent<__>
-  // Inherited: ScriptSupportingContent<__>
-  // Inherited: SectioningContent<__>
-  // Inherited: TextContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    // Inherited: EmbeddedContent<__>
+    FlowContent<__>
+// Inherited: HeadingContent<__>
+// Inherited: InteractiveContent<__>
+// Inherited: PalpableContent<__>
+// Inherited: PhrasingContent<__>
+// Inherited: ScriptSupportingContent<__>
+// Inherited: SectioningContent<__>
+// Inherited: TextContent<__>
 {
   //
   // Factories:

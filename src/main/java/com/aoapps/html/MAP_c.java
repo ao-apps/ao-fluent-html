@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyMAP_c;
  * @author  AO Industries, Inc.
  */
 public final class MAP_c<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyMAP_c<Document, PC, MAP_c<PC>>
-  implements Union_Palpable_Phrasing<MAP_c<PC>> {
+    extends AnyMAP_c<Document, PC, MAP_c<PC>>
+    implements Union_Palpable_Phrasing<MAP_c<PC>> {
 
   MAP_c(MAP<PC> element) {
     super(element);

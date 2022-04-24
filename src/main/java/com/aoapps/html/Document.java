@@ -71,21 +71,21 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
    */
   public Document(Serialization serialization, Doctype doctype, Charset characterEncoding, Writer out) {
     this(
-      new EncodingContext() {
-        @Override
-        public Serialization getSerialization() {
-          return serialization;
-        }
-        @Override
-        public Doctype getDoctype() {
-          return doctype;
-        }
-        @Override
-        public Charset getCharacterEncoding() {
-          return characterEncoding;
-        }
-      },
-      out
+        new EncodingContext() {
+          @Override
+          public Serialization getSerialization() {
+            return serialization;
+          }
+          @Override
+          public Doctype getDoctype() {
+            return doctype;
+          }
+          @Override
+          public Charset getCharacterEncoding() {
+            return characterEncoding;
+          }
+        },
+        out
     );
   }
 

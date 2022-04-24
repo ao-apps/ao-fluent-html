@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyH2__;
  * @author  AO Industries, Inc.
  */
 public final class H2__<
-  PC extends HeadingContent<PC>
+    PC extends HeadingContent<PC>
 >
-  extends AnyH2__<Document, PC, H2__<PC>>
-  implements PhrasingContent<H2__<PC>> {
+    extends AnyH2__<Document, PC, H2__<PC>>
+    implements PhrasingContent<H2__<PC>> {
 
   H2__(H2<PC> element) {
     super(element);

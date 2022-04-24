@@ -48,11 +48,11 @@ public class OBJECT_contentTest extends AnyOBJECT_contentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      OBJECT_content.class,
-      //
-      // Unions:
-      //
-      Union_Embedded_Interactive.class
+        OBJECT_content.class,
+        //
+        // Unions:
+        //
+        Union_Embedded_Interactive.class
     );
   }
 
@@ -61,11 +61,11 @@ public class OBJECT_contentTest extends AnyOBJECT_contentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      OBJECT_content.class,
-      //
-      // Content models:
-      //
-      Content.class
+        OBJECT_content.class,
+        //
+        // Content models:
+        //
+        Content.class
     );
   }
 
@@ -74,11 +74,11 @@ public class OBJECT_contentTest extends AnyOBJECT_contentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      OBJECT_content.class
-      //
-      // Per-element content models:
-      //
-      // None
+        OBJECT_content.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -86,9 +86,9 @@ public class OBJECT_contentTest extends AnyOBJECT_contentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-      -1,
-      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OBJECT_content.class)
+        "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+        -1,
+        AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), OBJECT_content.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, OBJECT_content.class);
   }

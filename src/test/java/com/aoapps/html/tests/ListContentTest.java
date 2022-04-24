@@ -49,11 +49,11 @@ public class ListContentTest extends AnyListContentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      ListContent.class,
-      //
-      // Unions:
-      //
-      Union_COLGROUP_ScriptSupporting.class
+        ListContent.class,
+        //
+        // Unions:
+        //
+        Union_COLGROUP_ScriptSupporting.class
     );
   }
 
@@ -62,12 +62,12 @@ public class ListContentTest extends AnyListContentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      ListContent.class,
-      //
-      // Content models:
-      //
-      Content.class,
-      ScriptSupportingContent.class
+        ListContent.class,
+        //
+        // Content models:
+        //
+        Content.class,
+        ScriptSupportingContent.class
     );
   }
 
@@ -76,11 +76,11 @@ public class ListContentTest extends AnyListContentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      ListContent.class
-      //
-      // Per-element content models:
-      //
-      // None
+        ListContent.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -88,9 +88,9 @@ public class ListContentTest extends AnyListContentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-      -1,
-      AoArrays.indexOf(ContentModelTest.getAllContentModels(), ListContent.class)
+        "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+        -1,
+        AoArrays.indexOf(ContentModelTest.getAllContentModels(), ListContent.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, ListContent.class);
   }

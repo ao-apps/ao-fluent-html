@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyINS_c;
  * @author  AO Industries, Inc.
  */
 public final class INS_c<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyINS_c<Document, PC, INS_c<PC>>
-  implements Union_Palpable_Phrasing<INS_c<PC>> {
+    extends AnyINS_c<Document, PC, INS_c<PC>>
+    implements Union_Palpable_Phrasing<INS_c<PC>> {
 
   INS_c(INS<PC> element) {
     super(element);

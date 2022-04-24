@@ -39,10 +39,10 @@ import com.aoapps.html.any.AnyPROGRESS__;
  * @author  AO Industries, Inc.
  */
 public final class PROGRESS__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyPROGRESS__<Document, PC, PROGRESS__<PC>>
-  implements PhrasingContent<PROGRESS__<PC>> {
+    extends AnyPROGRESS__<Document, PC, PROGRESS__<PC>>
+    implements PhrasingContent<PROGRESS__<PC>> {
 
   PROGRESS__(PROGRESS<PC> element) {
     super(element);

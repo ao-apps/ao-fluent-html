@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyU_c;
  * @author  AO Industries, Inc.
  */
 public final class U_c<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyU_c<Document, PC, U_c<PC>>
-  implements PhrasingContent<U_c<PC>> {
+    extends AnyU_c<Document, PC, U_c<PC>>
+    implements PhrasingContent<U_c<PC>> {
 
   U_c(U<PC> element) {
     super(element);

@@ -38,17 +38,17 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface Union_Interactive_Phrasing<
-  __ extends Union_Interactive_Phrasing<__>
+    __ extends Union_Interactive_Phrasing<__>
 > extends AnyUnion_Interactive_Phrasing<Document, __>,
-  //
-  // Unions:
-  //
-  Union_Embedded_Interactive<__>
+    //
+    // Unions:
+    //
+    Union_Embedded_Interactive<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
+//
+// Content models:
+//
+// Inherited: Content<__>
 {
   //
   // Factories:
@@ -58,7 +58,7 @@ public interface Union_Interactive_Phrasing<
   @SuppressWarnings("deprecation")
   default A<__> a() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new A<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -80,6 +80,7 @@ public interface Union_Interactive_Phrasing<
   default A_c<__> a_c() throws IOException {
     return a()._c();
   }
+
   // </editor-fold>
   // Inherited: AUDIO
   // <editor-fold defaultstate="collapsed" desc="TODO: BUTTON">
@@ -97,7 +98,7 @@ public interface Union_Interactive_Phrasing<
    * @param  <__>  This content model, which will be the parent content model of child elements
    */
   public static final class InputFactory<
-    __ extends Union_Interactive_Phrasing<__>
+      __ extends Union_Interactive_Phrasing<__>
   > extends AnyUnion_Interactive_Phrasing.InputFactory<Document, __> {
 
     InputFactory(Document document, __ pc) {
@@ -274,9 +275,10 @@ public interface Union_Interactive_Phrasing<
   @Override
   default InputFactory<__> input() {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     return new InputFactory<>(getDocument(), pc);
   }
+
   // </editor-fold>
   // Inherited: IFRAME
   // Inherited: IMG
@@ -285,7 +287,7 @@ public interface Union_Interactive_Phrasing<
   @SuppressWarnings("deprecation")
   default LABEL<__> label() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new LABEL<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -310,6 +312,7 @@ public interface Union_Interactive_Phrasing<
   default LABEL_c<__> label_c() throws IOException {
     return label()._c();
   }
+
   // </editor-fold>
   // Inherited: OBJECT
   // <editor-fold defaultstate="collapsed" desc="SELECT">
@@ -317,7 +320,7 @@ public interface Union_Interactive_Phrasing<
   @SuppressWarnings("deprecation")
   default SELECT<__> select() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SELECT<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -342,13 +345,14 @@ public interface Union_Interactive_Phrasing<
   default SELECT_c<__> select_c() throws IOException {
     return select()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="TEXTAREA">
   @Override
   @SuppressWarnings("deprecation")
   default TEXTAREA<__> textarea() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TEXTAREA<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

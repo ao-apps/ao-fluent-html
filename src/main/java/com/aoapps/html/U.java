@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class U<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 > extends AnyU<Document, PC, U<PC>, U__<PC>, U_c<PC>> {
 
   U(Document document, PC pc) {

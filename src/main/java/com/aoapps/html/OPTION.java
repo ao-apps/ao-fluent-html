@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class OPTION<
-  PC extends Union_DATALIST_OPTGROUP<PC>
+    PC extends Union_DATALIST_OPTGROUP<PC>
 > extends AnyOPTION<Document, PC, OPTION<PC>, OPTION__<PC>, OPTION_c<PC>> {
 
   OPTION(Document document, PC pc) {

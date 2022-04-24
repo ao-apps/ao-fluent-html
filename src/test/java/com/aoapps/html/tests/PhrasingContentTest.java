@@ -56,16 +56,16 @@ public class PhrasingContentTest extends AnyPhrasingContentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      PhrasingContent.class,
-      //
-      // Unions:
-      //
-      Union_COLGROUP_ScriptSupporting.class,
-      Union_Embedded_Interactive.class,
-      Union_Embedded_Palpable_Phrasing.class,
-      Union_Interactive_Phrasing.class,
-      Union_Metadata_Phrasing.class,
-      Union_Palpable_Phrasing.class
+        PhrasingContent.class,
+        //
+        // Unions:
+        //
+        Union_COLGROUP_ScriptSupporting.class,
+        Union_Embedded_Interactive.class,
+        Union_Embedded_Palpable_Phrasing.class,
+        Union_Interactive_Phrasing.class,
+        Union_Metadata_Phrasing.class,
+        Union_Palpable_Phrasing.class
     );
   }
 
@@ -74,14 +74,14 @@ public class PhrasingContentTest extends AnyPhrasingContentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      PhrasingContent.class,
-      //
-      // Content models:
-      //
-      Content.class,
-      EmbeddedContent.class,
-      ScriptSupportingContent.class,
-      TextContent.class
+        PhrasingContent.class,
+        //
+        // Content models:
+        //
+        Content.class,
+        EmbeddedContent.class,
+        ScriptSupportingContent.class,
+        TextContent.class
     );
   }
 
@@ -90,11 +90,11 @@ public class PhrasingContentTest extends AnyPhrasingContentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      PhrasingContent.class
-      //
-      // Per-element content models:
-      //
-      // None
+        PhrasingContent.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -102,9 +102,9 @@ public class PhrasingContentTest extends AnyPhrasingContentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-      -1,
-      AoArrays.indexOf(ContentModelTest.getAllContentModels(), PhrasingContent.class)
+        "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+        -1,
+        AoArrays.indexOf(ContentModelTest.getAllContentModels(), PhrasingContent.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, PhrasingContent.class);
   }

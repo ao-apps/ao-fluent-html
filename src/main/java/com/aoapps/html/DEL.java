@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class DEL<
-  PC extends PhrasingContent<PC>
+    PC extends PhrasingContent<PC>
 > extends AnyDEL<Document, PC, DEL<PC>, DEL_c<PC>> {
 
   DEL(Document document, PC pc) {

@@ -50,11 +50,11 @@ public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest 
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      Union_Metadata_Phrasing.class,
-      //
-      // Unions:
-      //
-      Union_COLGROUP_ScriptSupporting.class
+        Union_Metadata_Phrasing.class,
+        //
+        // Unions:
+        //
+        Union_COLGROUP_ScriptSupporting.class
     );
   }
 
@@ -63,12 +63,12 @@ public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest 
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      Union_Metadata_Phrasing.class,
-      //
-      // Content models:
-      //
-      Content.class,
-      ScriptSupportingContent.class
+        Union_Metadata_Phrasing.class,
+        //
+        // Content models:
+        //
+        Content.class,
+        ScriptSupportingContent.class
     );
   }
 
@@ -77,11 +77,11 @@ public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest 
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      Union_Metadata_Phrasing.class
-      //
-      // Per-element content models:
-      //
-      // None
+        Union_Metadata_Phrasing.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -89,8 +89,8 @@ public class Union_Metadata_PhrasingTest extends AnyUnion_Metadata_PhrasingTest 
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-      -1,
-      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
+        -1,
+        AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Metadata_Phrasing.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Metadata_Phrasing.class);
   }

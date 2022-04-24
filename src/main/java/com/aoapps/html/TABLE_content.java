@@ -40,19 +40,19 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface TABLE_content<
-  __ extends TABLE_content<__>
+    __ extends TABLE_content<__>
 > extends AnyTABLE_content<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  Union_TBODY_THEAD_TFOOT<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    Union_TBODY_THEAD_TFOOT<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: ScriptSupportingContent<__>
+//
+// Content models:
+//
+// Inherited: Content<__>
+// Inherited: ScriptSupportingContent<__>
 {
   //
   // Factories:
@@ -62,7 +62,7 @@ public interface TABLE_content<
   @SuppressWarnings("deprecation")
   default CAPTION<__> caption() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new CAPTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -87,13 +87,14 @@ public interface TABLE_content<
   default CAPTION_c<__> caption_c() throws IOException {
     return caption()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="COLGROUP">
   @Override
   @SuppressWarnings("deprecation")
   default COLGROUP<__> colgroup() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new COLGROUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -118,13 +119,14 @@ public interface TABLE_content<
   default COLGROUP_c<__> colgroup_c() throws IOException {
     return colgroup()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="THEAD">
   @Override
   @SuppressWarnings("deprecation")
   default THEAD<__> thead() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new THEAD<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -149,13 +151,14 @@ public interface TABLE_content<
   default THEAD_c<__> thead_c() throws IOException {
     return thead()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="TBODY">
   @Override
   @SuppressWarnings("deprecation")
   default TBODY<__> tbody() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TBODY<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -180,6 +183,7 @@ public interface TABLE_content<
   default TBODY_c<__> tbody_c() throws IOException {
     return tbody()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="Inherited: TR (deprecated to encourage use of <tbody> for SGML/XML consistency)">
   /**
@@ -219,13 +223,14 @@ public interface TABLE_content<
   default TR_c<__> tr_c() throws IOException {
     return Union_TBODY_THEAD_TFOOT.super.tr_c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="TFOOT">
   @Override
   @SuppressWarnings("deprecation")
   default TFOOT<__> tfoot() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TFOOT<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

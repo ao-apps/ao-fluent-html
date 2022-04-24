@@ -39,12 +39,12 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface HTML_content<
-  __ extends HTML_content<__>
+    __ extends HTML_content<__>
 > extends AnyHTML_content<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:
@@ -54,7 +54,7 @@ public interface HTML_content<
   @SuppressWarnings("deprecation")
   default HEAD<__> head() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new HEAD<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -79,13 +79,14 @@ public interface HTML_content<
   default HEAD_c<__> head_c() throws IOException {
     return head()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="BODY">
   @Override
   @SuppressWarnings("deprecation")
   default BODY<__> body() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new BODY<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

@@ -50,12 +50,12 @@ public class MetadataContentTest extends AnyMetadataContentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      MetadataContent.class,
-      //
-      // Unions:
-      //
-      Union_COLGROUP_ScriptSupporting.class,
-      Union_Metadata_Phrasing.class
+        MetadataContent.class,
+        //
+        // Unions:
+        //
+        Union_COLGROUP_ScriptSupporting.class,
+        Union_Metadata_Phrasing.class
     );
   }
 
@@ -64,12 +64,12 @@ public class MetadataContentTest extends AnyMetadataContentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      MetadataContent.class,
-      //
-      // Content models:
-      //
-      Content.class,
-      ScriptSupportingContent.class
+        MetadataContent.class,
+        //
+        // Content models:
+        //
+        Content.class,
+        ScriptSupportingContent.class
     );
   }
 
@@ -78,11 +78,11 @@ public class MetadataContentTest extends AnyMetadataContentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      MetadataContent.class
-      //
-      // Per-element content models:
-      //
-      // None
+        MetadataContent.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -90,9 +90,9 @@ public class MetadataContentTest extends AnyMetadataContentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-      -1,
-      AoArrays.indexOf(ContentModelTest.getAllContentModels(), MetadataContent.class)
+        "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+        -1,
+        AoArrays.indexOf(ContentModelTest.getAllContentModels(), MetadataContent.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, MetadataContent.class);
   }

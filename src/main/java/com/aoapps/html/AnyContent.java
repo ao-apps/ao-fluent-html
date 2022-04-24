@@ -34,56 +34,56 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface AnyContent<
-  __ extends AnyContent<__>
+    __ extends AnyContent<__>
 > extends com.aoapps.html.any.AnyContent<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  // Inherited: Union_DATALIST_OPTGROUP<__>
-  // Inherited: Union_DIV_DL<__>
-  // Inherited: Union_DL_Palpable<__>
-  // Inherited: Union_Embedded_Interactive<__>
-  // Inherited: Union_Embedded_Palpable_Phrasing<__>
-  // Inherited: Union_Interactive_Phrasing<__>
-  // Inherited: Union_Metadata_Phrasing<__>
-  // Inherited: Union_Palpable_Phrasing<__>
-  // Inherited: Union_TBODY_THEAD_TFOOT<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    // Inherited: Union_DATALIST_OPTGROUP<__>
+    // Inherited: Union_DIV_DL<__>
+    // Inherited: Union_DL_Palpable<__>
+    // Inherited: Union_Embedded_Interactive<__>
+    // Inherited: Union_Embedded_Palpable_Phrasing<__>
+    // Inherited: Union_Interactive_Phrasing<__>
+    // Inherited: Union_Metadata_Phrasing<__>
+    // Inherited: Union_Palpable_Phrasing<__>
+    // Inherited: Union_TBODY_THEAD_TFOOT<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: EmbeddedContent<__>
-  // Inherited: FlowContent<__>
-  // Inherited: HeadingContent<__>
-  // Inherited: InteractiveContent<__>
-  ListContent<__>,
-  MetadataContent<__>,
-  // Inherited: PalpableContent<__>
-  // Inherited: PhrasingContent<__>
-  // Inherited: ScriptSupportingContent<__>
-  // Inherited: SectioningContent<__>
-  // Inherited: TextContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    // Inherited: EmbeddedContent<__>
+    // Inherited: FlowContent<__>
+    // Inherited: HeadingContent<__>
+    // Inherited: InteractiveContent<__>
+    ListContent<__>,
+    MetadataContent<__>,
+    // Inherited: PalpableContent<__>
+    // Inherited: PhrasingContent<__>
+    // Inherited: ScriptSupportingContent<__>
+    // Inherited: SectioningContent<__>
+    // Inherited: TextContent<__>
 
-  //
-  // Per-element content models:
-  //
-  COLGROUP_content<__>,
-  DATALIST_content<__>,
-  DIV_content<__>,
-  DL_content<__>,
-  HTML_content<__>,
-  OBJECT_content<__>,
-  // Inherited: OPTGROUP_content<__>
-  SELECT_content<__>,
-  TABLE_content<__>,
-  TR_content<__>
+    //
+    // Per-element content models:
+    //
+    COLGROUP_content<__>,
+    DATALIST_content<__>,
+    DIV_content<__>,
+    DL_content<__>,
+    HTML_content<__>,
+    OBJECT_content<__>,
+    // Inherited: OPTGROUP_content<__>
+    SELECT_content<__>,
+    TABLE_content<__>,
+    TR_content<__>
 
-  //
-  // Others:
-  //
-  // Inherited: Whitespace
+//
+// Others:
+//
+// Inherited: Whitespace
 {
   //
   // Factories:
@@ -93,7 +93,7 @@ public interface AnyContent<
   @SuppressWarnings("deprecation")
   default HTML<__> html() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new HTML<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -118,6 +118,7 @@ public interface AnyContent<
   default HTML_c<__> html_c() throws IOException {
     return html()._c();
   }
+
   // </editor-fold>
   // Inherited: HEAD
   // Inherited: TITLE

@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class SAMP<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 > extends AnySAMP<Document, PC, SAMP<PC>, SAMP__<PC>, SAMP_c<PC>> {
 
   SAMP(Document document, PC pc) {

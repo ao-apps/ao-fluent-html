@@ -41,19 +41,19 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface MetadataContent<
-  __ extends MetadataContent<__>
+    __ extends MetadataContent<__>
 > extends AnyMetadataContent<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  Union_Metadata_Phrasing<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    Union_Metadata_Phrasing<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: ScriptSupportingContent<__>
+//
+// Content models:
+//
+// Inherited: Content<__>
+// Inherited: ScriptSupportingContent<__>
 {
   //
   // Factories:
@@ -63,10 +63,11 @@ public interface MetadataContent<
   @SuppressWarnings("deprecation")
   default BASE<__> base() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new BASE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
+
   // </editor-fold>
   // Inherited: LINK
   // Inherited: META
@@ -77,7 +78,7 @@ public interface MetadataContent<
   @SuppressWarnings("deprecation")
   default STYLE<__> style() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new STYLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -86,7 +87,7 @@ public interface MetadataContent<
   @SuppressWarnings("deprecation")
   default STYLE<__> style(String type) throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new STYLE<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
   }
@@ -103,7 +104,7 @@ public interface MetadataContent<
   @SuppressWarnings("deprecation")
   default STYLE<__> style(AnySTYLE.Type type) throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new STYLE<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
   }
@@ -115,6 +116,7 @@ public interface MetadataContent<
   default <Ex extends Throwable> STYLE<__> style(IOSupplierE<? extends AnySTYLE.Type, Ex> type) throws IOException, Ex {
     return style((type == null) ? null : type.get());
   }
+
   // </editor-fold>
   // Inherited: TEMPLATE - WHATWG only
   // <editor-fold defaultstate="collapsed" desc="TITLE">
@@ -122,7 +124,7 @@ public interface MetadataContent<
   @SuppressWarnings("deprecation")
   default TITLE<__> title() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new TITLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

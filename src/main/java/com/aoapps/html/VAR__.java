@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyVAR__;
  * @author  AO Industries, Inc.
  */
 public final class VAR__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyVAR__<Document, PC, VAR__<PC>>
-  implements PhrasingContent<VAR__<PC>> {
+    extends AnyVAR__<Document, PC, VAR__<PC>>
+    implements PhrasingContent<VAR__<PC>> {
 
   VAR__(VAR<PC> element) {
     super(element);

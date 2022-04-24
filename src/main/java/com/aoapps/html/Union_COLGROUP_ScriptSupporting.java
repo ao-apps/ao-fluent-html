@@ -33,12 +33,12 @@ import com.aoapps.html.any.AnyUnion_COLGROUP_ScriptSupporting;
  * @author  AO Industries, Inc.
  */
 public interface Union_COLGROUP_ScriptSupporting<
-  __ extends Union_COLGROUP_ScriptSupporting<__>
+    __ extends Union_COLGROUP_ScriptSupporting<__>
 > extends AnyUnion_COLGROUP_ScriptSupporting<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:

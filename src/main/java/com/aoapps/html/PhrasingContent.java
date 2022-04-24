@@ -44,25 +44,25 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface PhrasingContent<
-  __ extends PhrasingContent<__>
+    __ extends PhrasingContent<__>
 > extends AnyPhrasingContent<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  // Inherited: Union_Embedded_Interactive<__>
-  // Inherited: Union_Embedded_Palpable_Phrasing<__>
-  // Inherited: Union_Interactive_Phrasing<__>
-  Union_Metadata_Phrasing<__>,
-  Union_Palpable_Phrasing<__>,
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    // Inherited: Union_Embedded_Interactive<__>
+    // Inherited: Union_Embedded_Palpable_Phrasing<__>
+    // Inherited: Union_Interactive_Phrasing<__>
+    Union_Metadata_Phrasing<__>,
+    Union_Palpable_Phrasing<__>,
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  EmbeddedContent<__>
-  // Inherited: ScriptSupportingContent<__>
-  // Inherited: TextContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    EmbeddedContent<__>
+// Inherited: ScriptSupportingContent<__>
+// Inherited: TextContent<__>
 {
   //
   // Factories:
@@ -74,7 +74,7 @@ public interface PhrasingContent<
   @SuppressWarnings("deprecation")
   default AREA<__> area() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new AREA<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -144,6 +144,7 @@ public interface PhrasingContent<
   default <Ex extends Throwable> AREA<__> area(Suppliers.Shape<Ex> shape) throws IOException, Ex {
     return area(shape == null ? null : shape.get());
   }
+
   // </editor-fold>
   // Inherited: AUDIO
   // Inherited: B
@@ -154,10 +155,11 @@ public interface PhrasingContent<
   @SuppressWarnings("deprecation")
   default BR<__> br() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new BR<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
+
   // </editor-fold>
   // Inherited: BUTTON
   // Inherited: CANVAS
@@ -169,7 +171,7 @@ public interface PhrasingContent<
   @SuppressWarnings("deprecation")
   default DATALIST<__> datalist() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DATALIST<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -196,13 +198,14 @@ public interface PhrasingContent<
   default DATALIST_c<__> datalist_c() throws IOException {
     return datalist()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="DEL">
   @Override
   @SuppressWarnings("deprecation")
   default DEL<__> del() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new DEL<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -211,6 +214,7 @@ public interface PhrasingContent<
   default DEL_c<__> del_c() throws IOException {
     return del()._c();
   }
+
   // </editor-fold>
   // Inherited: DFN
   // Inherited: EM
@@ -258,7 +262,7 @@ public interface PhrasingContent<
   @SuppressWarnings("deprecation")
   default WBR<__> wbr() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new WBR<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

@@ -39,24 +39,24 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface SELECT_content<
-  __ extends SELECT_content<__>
+    __ extends SELECT_content<__>
 > extends AnySELECT_content<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  // Inherited: Union_DATALIST_OPTGROUP<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    // Inherited: Union_DATALIST_OPTGROUP<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: ScriptSupportingContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    // Inherited: ScriptSupportingContent<__>
 
-  //
-  // Per-element content models:
-  //
-  OPTGROUP_content<__>
+    //
+    // Per-element content models:
+    //
+    OPTGROUP_content<__>
 {
   //
   // Factories:
@@ -66,7 +66,7 @@ public interface SELECT_content<
   @SuppressWarnings("deprecation")
   default OPTGROUP<__> optgroup() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new OPTGROUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

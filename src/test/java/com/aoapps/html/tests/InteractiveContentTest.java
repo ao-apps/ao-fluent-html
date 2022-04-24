@@ -49,12 +49,12 @@ public class InteractiveContentTest extends AnyInteractiveContentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      InteractiveContent.class,
-      //
-      // Unions:
-      //
-      Union_Embedded_Interactive.class,
-      Union_Interactive_Phrasing.class
+        InteractiveContent.class,
+        //
+        // Unions:
+        //
+        Union_Embedded_Interactive.class,
+        Union_Interactive_Phrasing.class
     );
   }
 
@@ -63,11 +63,11 @@ public class InteractiveContentTest extends AnyInteractiveContentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      InteractiveContent.class,
-      //
-      // Content models:
-      //
-      Content.class
+        InteractiveContent.class,
+        //
+        // Content models:
+        //
+        Content.class
     );
   }
 
@@ -76,11 +76,11 @@ public class InteractiveContentTest extends AnyInteractiveContentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      InteractiveContent.class
-      //
-      // Per-element content models:
-      //
-      // None
+        InteractiveContent.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -88,9 +88,9 @@ public class InteractiveContentTest extends AnyInteractiveContentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
-      -1,
-      AoArrays.indexOf(ContentModelTest.getAllContentModels(), InteractiveContent.class)
+        "Must be included in " + ContentModelTest.class.getSimpleName() + ".getAllContentModels()",
+        -1,
+        AoArrays.indexOf(ContentModelTest.getAllContentModels(), InteractiveContent.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, InteractiveContent.class);
   }

@@ -39,10 +39,10 @@ import com.aoapps.html.any.AnyDATA__;
  * @author  AO Industries, Inc.
  */
 public final class DATA__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyDATA__<Document, PC, DATA__<PC>>
-  implements PhrasingContent<DATA__<PC>> {
+    extends AnyDATA__<Document, PC, DATA__<PC>>
+    implements PhrasingContent<DATA__<PC>> {
 
   DATA__(DATA<PC> element) {
     super(element);

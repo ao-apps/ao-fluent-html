@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyTITLE_c;
  * @author  AO Industries, Inc.
  */
 public final class TITLE_c<
-  PC extends MetadataContent<PC>
+    PC extends MetadataContent<PC>
 >
-  extends AnyTITLE_c<Document, PC, TITLE_c<PC>>
-  implements TextContent<TITLE_c<PC>> {
+    extends AnyTITLE_c<Document, PC, TITLE_c<PC>>
+    implements TextContent<TITLE_c<PC>> {
 
   TITLE_c(TITLE<PC> element) {
     super(element);

@@ -48,11 +48,11 @@ public class Union_COLGROUP_ScriptSupportingTest extends AnyUnion_COLGROUP_Scrip
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      Union_COLGROUP_ScriptSupporting.class
-      //
-      // Unions:
-      //
-      // None
+        Union_COLGROUP_ScriptSupporting.class
+    //
+    // Unions:
+    //
+    // None
     );
   }
 
@@ -61,11 +61,11 @@ public class Union_COLGROUP_ScriptSupportingTest extends AnyUnion_COLGROUP_Scrip
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      Union_COLGROUP_ScriptSupporting.class,
-      //
-      // Content models:
-      //
-      Content.class
+        Union_COLGROUP_ScriptSupporting.class,
+        //
+        // Content models:
+        //
+        Content.class
     );
   }
 
@@ -74,11 +74,11 @@ public class Union_COLGROUP_ScriptSupportingTest extends AnyUnion_COLGROUP_Scrip
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      Union_COLGROUP_ScriptSupporting.class
-      //
-      // Per-element content models:
-      //
-      // None
+        Union_COLGROUP_ScriptSupporting.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -86,8 +86,8 @@ public class Union_COLGROUP_ScriptSupportingTest extends AnyUnion_COLGROUP_Scrip
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-      -1,
-      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_COLGROUP_ScriptSupporting.class)
+        -1,
+        AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_COLGROUP_ScriptSupporting.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, Union_COLGROUP_ScriptSupporting.class);
   }

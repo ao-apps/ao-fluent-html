@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyI__;
  * @author  AO Industries, Inc.
  */
 public final class I__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyI__<Document, PC, I__<PC>>
-  implements PhrasingContent<I__<PC>> {
+    extends AnyI__<Document, PC, I__<PC>>
+    implements PhrasingContent<I__<PC>> {
 
   I__(I<PC> element) {
     super(element);

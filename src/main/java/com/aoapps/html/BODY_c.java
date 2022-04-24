@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyBODY_c;
  * @author  AO Industries, Inc.
  */
 public final class BODY_c<
-  PC extends HTML_content<PC>
+    PC extends HTML_content<PC>
 >
-  extends AnyBODY_c<Document, PC, BODY_c<PC>>
-  implements FlowContent<BODY_c<PC>> {
+    extends AnyBODY_c<Document, PC, BODY_c<PC>>
+    implements FlowContent<BODY_c<PC>> {
 
   BODY_c(BODY<PC> element) {
     super(element);

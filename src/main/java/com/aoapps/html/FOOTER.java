@@ -41,7 +41,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class FOOTER<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 > extends AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
 
   FOOTER(Document document, PC pc) {

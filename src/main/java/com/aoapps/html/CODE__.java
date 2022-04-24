@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyCODE__;
  * @author  AO Industries, Inc.
  */
 public final class CODE__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyCODE__<Document, PC, CODE__<PC>>
-  implements PhrasingContent<CODE__<PC>> {
+    extends AnyCODE__<Document, PC, CODE__<PC>>
+    implements PhrasingContent<CODE__<PC>> {
 
   CODE__(CODE<PC> element) {
     super(element);

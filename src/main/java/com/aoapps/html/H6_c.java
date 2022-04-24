@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyH6_c;
  * @author  AO Industries, Inc.
  */
 public final class H6_c<
-  PC extends HeadingContent<PC>
+    PC extends HeadingContent<PC>
 >
-  extends AnyH6_c<Document, PC, H6_c<PC>>
-  implements PhrasingContent<H6_c<PC>> {
+    extends AnyH6_c<Document, PC, H6_c<PC>>
+    implements PhrasingContent<H6_c<PC>> {
 
   H6_c(H6<PC> element) {
     super(element);

@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class OL<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 > extends AnyOL<Document, PC, OL<PC>, OL__<PC>, OL_c<PC>> {
 
   OL(Document document, PC pc) {

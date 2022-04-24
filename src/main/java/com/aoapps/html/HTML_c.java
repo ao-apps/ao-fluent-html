@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyHTML_c;
  * @author  AO Industries, Inc.
  */
 public final class HTML_c<
-  PC extends Content<PC>
+    PC extends Content<PC>
 >
-  extends AnyHTML_c<Document, PC, HTML_c<PC>>
-  implements HTML_content<HTML_c<PC>> {
+    extends AnyHTML_c<Document, PC, HTML_c<PC>>
+    implements HTML_content<HTML_c<PC>> {
 
   HTML_c(HTML<PC> element) {
     super(element);

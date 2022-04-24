@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class CAPTION<
-  PC extends TABLE_content<PC>
+    PC extends TABLE_content<PC>
 > extends AnyCAPTION<Document, PC, CAPTION<PC>, CAPTION__<PC>, CAPTION_c<PC>> {
 
   CAPTION(Document document, PC pc) {

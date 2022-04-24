@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnySUP__;
  * @author  AO Industries, Inc.
  */
 public final class SUP__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnySUP__<Document, PC, SUP__<PC>>
-  implements PhrasingContent<SUP__<PC>> {
+    extends AnySUP__<Document, PC, SUP__<PC>>
+    implements PhrasingContent<SUP__<PC>> {
 
   SUP__(SUP<PC> element) {
     super(element);

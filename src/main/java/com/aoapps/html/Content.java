@@ -36,6 +36,6 @@ package com.aoapps.html;
  */
 @SuppressWarnings("MarkerInterface")
 public interface Content<
-  __ extends Content<__>
+    __ extends Content<__>
 > extends com.aoapps.html.any.Content<Document, __> {
 }

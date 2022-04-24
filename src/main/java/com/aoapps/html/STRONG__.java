@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnySTRONG__;
  * @author  AO Industries, Inc.
  */
 public final class STRONG__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnySTRONG__<Document, PC, STRONG__<PC>>
-  implements PhrasingContent<STRONG__<PC>> {
+    extends AnySTRONG__<Document, PC, STRONG__<PC>>
+    implements PhrasingContent<STRONG__<PC>> {
 
   STRONG__(STRONG<PC> element) {
     super(element);

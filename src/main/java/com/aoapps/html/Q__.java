@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyQ__;
  * @author  AO Industries, Inc.
  */
 public final class Q__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyQ__<Document, PC, Q__<PC>>
-  implements PhrasingContent<Q__<PC>> {
+    extends AnyQ__<Document, PC, Q__<PC>>
+    implements PhrasingContent<Q__<PC>> {
 
   Q__(Q<PC> element) {
     super(element);

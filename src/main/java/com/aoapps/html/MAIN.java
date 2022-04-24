@@ -41,7 +41,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class MAIN<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 > extends AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {
 
   MAIN(Document document, PC pc) {

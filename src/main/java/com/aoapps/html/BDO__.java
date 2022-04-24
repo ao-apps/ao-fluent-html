@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyBDO__;
  * @author  AO Industries, Inc.
  */
 public final class BDO__<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyBDO__<Document, PC, BDO__<PC>>
-  implements PhrasingContent<BDO__<PC>> {
+    extends AnyBDO__<Document, PC, BDO__<PC>>
+    implements PhrasingContent<BDO__<PC>> {
 
   BDO__(BDO<PC> element) {
     super(element);

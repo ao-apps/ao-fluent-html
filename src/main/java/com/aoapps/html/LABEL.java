@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class LABEL<
-  PC extends Union_Interactive_Phrasing<PC>
+    PC extends Union_Interactive_Phrasing<PC>
 > extends AnyLABEL<Document, PC, LABEL<PC>, LABEL__<PC>, LABEL_c<PC>> {
 
   LABEL(Document document, PC pc) {

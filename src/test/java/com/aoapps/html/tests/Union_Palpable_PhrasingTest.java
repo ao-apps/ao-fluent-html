@@ -52,13 +52,13 @@ public class Union_Palpable_PhrasingTest extends AnyUnion_Palpable_PhrasingTest 
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      Union_Palpable_Phrasing.class,
-      //
-      // Unions:
-      //
-      Union_Embedded_Interactive.class,
-      Union_Embedded_Palpable_Phrasing.class,
-      Union_Interactive_Phrasing.class
+        Union_Palpable_Phrasing.class,
+        //
+        // Unions:
+        //
+        Union_Embedded_Interactive.class,
+        Union_Embedded_Palpable_Phrasing.class,
+        Union_Interactive_Phrasing.class
     );
   }
 
@@ -67,12 +67,12 @@ public class Union_Palpable_PhrasingTest extends AnyUnion_Palpable_PhrasingTest 
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      Union_Palpable_Phrasing.class,
-      //
-      // Content models:
-      //
-      Content.class,
-      TextContent.class
+        Union_Palpable_Phrasing.class,
+        //
+        // Content models:
+        //
+        Content.class,
+        TextContent.class
     );
   }
 
@@ -81,11 +81,11 @@ public class Union_Palpable_PhrasingTest extends AnyUnion_Palpable_PhrasingTest 
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      Union_Palpable_Phrasing.class
-      //
-      // Per-element content models:
-      //
-      // None
+        Union_Palpable_Phrasing.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -93,8 +93,8 @@ public class Union_Palpable_PhrasingTest extends AnyUnion_Palpable_PhrasingTest 
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals("Must be included in " + UnionContentTest.class.getSimpleName() + ".getAllUnions()",
-      -1,
-      AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Palpable_Phrasing.class)
+        -1,
+        AoArrays.indexOf(UnionContentTest.getAllUnions(), Union_Palpable_Phrasing.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, Union_Palpable_Phrasing.class);
   }

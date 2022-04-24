@@ -37,10 +37,10 @@ import com.aoapps.html.any.AnyCODE_c;
  * @author  AO Industries, Inc.
  */
 public final class CODE_c<
-  PC extends Union_Palpable_Phrasing<PC>
+    PC extends Union_Palpable_Phrasing<PC>
 >
-  extends AnyCODE_c<Document, PC, CODE_c<PC>>
-  implements PhrasingContent<CODE_c<PC>> {
+    extends AnyCODE_c<Document, PC, CODE_c<PC>>
+    implements PhrasingContent<CODE_c<PC>> {
 
   CODE_c(CODE<PC> element) {
     super(element);

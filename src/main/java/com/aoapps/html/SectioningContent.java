@@ -40,12 +40,12 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface SectioningContent<
-  __ extends SectioningContent<__>
+    __ extends SectioningContent<__>
 > extends AnySectioningContent<Document, __>,
-  //
-  // Content models:
-  //
-  Content<__>
+    //
+    // Content models:
+    //
+    Content<__>
 {
   //
   // Factories:
@@ -55,7 +55,7 @@ public interface SectioningContent<
   @SuppressWarnings("deprecation")
   default ARTICLE<__> article() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new ARTICLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -82,13 +82,14 @@ public interface SectioningContent<
   default ARTICLE_c<__> article_c() throws IOException {
     return article()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="ASIDE">
   @Override
   @SuppressWarnings("deprecation")
   default ASIDE<__> aside() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new ASIDE<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -115,13 +116,14 @@ public interface SectioningContent<
   default ASIDE_c<__> aside_c() throws IOException {
     return aside()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="NAV">
   @Override
   @SuppressWarnings("deprecation")
   default NAV<__> nav() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new NAV<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }
@@ -148,13 +150,14 @@ public interface SectioningContent<
   default NAV_c<__> nav_c() throws IOException {
     return nav()._c();
   }
+
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="SECTION">
   @Override
   @SuppressWarnings("deprecation")
   default SECTION<__> section() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new SECTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

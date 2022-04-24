@@ -39,18 +39,18 @@ import java.io.IOException;
  * @author  AO Industries, Inc.
  */
 public interface ListContent<
-  __ extends ListContent<__>
+    __ extends ListContent<__>
 > extends AnyListContent<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  ScriptSupportingContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    ScriptSupportingContent<__>
 {
   //
   // Factories:
@@ -60,7 +60,7 @@ public interface ListContent<
   @SuppressWarnings("deprecation")
   default LI<__> li() throws IOException {
     @SuppressWarnings("unchecked")
-    __ pc = (__)this;
+    __ pc = (__) this;
     Document document = getDocument();
     return new LI<>(document, pc).writeOpen(document.getRawUnsafe(null));
   }

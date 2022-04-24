@@ -39,27 +39,27 @@ import com.aoapps.html.any.AnyDATALIST_content;
  * @author  AO Industries, Inc.
  */
 public interface DATALIST_content<
-  __ extends DATALIST_content<__>
+    __ extends DATALIST_content<__>
 > extends AnyDATALIST_content<Document, __>,
-  //
-  // Unions:
-  //
-  // Inherited: Union_COLGROUP_ScriptSupporting<__>
-  Union_DATALIST_OPTGROUP<__>,
-  // Inherited: Union_Embedded_Interactive<__>
-  // Inherited: Union_Embedded_Palpable_Phrasing<__>
-  // Inherited: Union_Interactive_Phrasing<__>
-  // Inherited: Union_Metadata_Phrasing<__>
-  // Inherited: Union_Palpable_Phrasing<__>
+    //
+    // Unions:
+    //
+    // Inherited: Union_COLGROUP_ScriptSupporting<__>
+    Union_DATALIST_OPTGROUP<__>,
+    // Inherited: Union_Embedded_Interactive<__>
+    // Inherited: Union_Embedded_Palpable_Phrasing<__>
+    // Inherited: Union_Interactive_Phrasing<__>
+    // Inherited: Union_Metadata_Phrasing<__>
+    // Inherited: Union_Palpable_Phrasing<__>
 
-  //
-  // Content models:
-  //
-  // Inherited: Content<__>
-  // Inherited: EmbeddedContent<__>
-  PhrasingContent<__>
-  // Inherited: ScriptSupportingContent<__>
-  // Inherited: TextContent<__>
+    //
+    // Content models:
+    //
+    // Inherited: Content<__>
+    // Inherited: EmbeddedContent<__>
+    PhrasingContent<__>
+// Inherited: ScriptSupportingContent<__>
+// Inherited: TextContent<__>
 {
   //
   // Factories:

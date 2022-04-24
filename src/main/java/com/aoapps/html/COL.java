@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 @SuppressWarnings("deprecation")
 public final class COL<
-  PC extends COLGROUP_content<PC>
+    PC extends COLGROUP_content<PC>
 > extends AnyCOL<Document, PC, COL<PC>> {
 
   COL(Document document, PC pc) {

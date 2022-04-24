@@ -58,17 +58,17 @@ public class DATALIST_contentTest extends AnyDATALIST_contentTest {
   @Override
   public void testUnions() {
     UnionContentTest.testUnions(
-      DATALIST_content.class,
-      //
-      // Unions:
-      //
-      Union_COLGROUP_ScriptSupporting.class,
-      Union_DATALIST_OPTGROUP.class,
-      Union_Embedded_Interactive.class,
-      Union_Embedded_Palpable_Phrasing.class,
-      Union_Interactive_Phrasing.class,
-      Union_Metadata_Phrasing.class,
-      Union_Palpable_Phrasing.class
+        DATALIST_content.class,
+        //
+        // Unions:
+        //
+        Union_COLGROUP_ScriptSupporting.class,
+        Union_DATALIST_OPTGROUP.class,
+        Union_Embedded_Interactive.class,
+        Union_Embedded_Palpable_Phrasing.class,
+        Union_Interactive_Phrasing.class,
+        Union_Metadata_Phrasing.class,
+        Union_Palpable_Phrasing.class
     );
   }
 
@@ -77,15 +77,15 @@ public class DATALIST_contentTest extends AnyDATALIST_contentTest {
   @Override
   public void testContentModels() {
     ContentModelTest.testContentModels(
-      DATALIST_content.class,
-      //
-      // Content models:
-      //
-      Content.class,
-      EmbeddedContent.class,
-      PhrasingContent.class,
-      ScriptSupportingContent.class,
-      TextContent.class
+        DATALIST_content.class,
+        //
+        // Content models:
+        //
+        Content.class,
+        EmbeddedContent.class,
+        PhrasingContent.class,
+        ScriptSupportingContent.class,
+        TextContent.class
     );
   }
 
@@ -94,11 +94,11 @@ public class DATALIST_contentTest extends AnyDATALIST_contentTest {
   @Override
   public void testElementContentModels() {
     ElementContentModelTest.testElementContentModels(
-      DATALIST_content.class
-      //
-      // Per-element content models:
-      //
-      // None
+        DATALIST_content.class
+    //
+    // Per-element content models:
+    //
+    // None
     );
   }
 
@@ -106,9 +106,9 @@ public class DATALIST_contentTest extends AnyDATALIST_contentTest {
   @Override
   public void testNoImplementInherited() {
     Assert.assertNotEquals(
-      "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
-      -1,
-      AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DATALIST_content.class)
+        "Must be included in " + ElementContentModelTest.class.getSimpleName() + ".getAllElementContentModels()",
+        -1,
+        AoArrays.indexOf(ElementContentModelTest.getAllElementContentModels(), DATALIST_content.class)
     );
     InheritanceTestHelper.testNoImplementInherited(Content.class, DATALIST_content.class);
   }

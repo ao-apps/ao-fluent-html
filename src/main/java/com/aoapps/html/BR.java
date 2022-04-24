@@ -39,7 +39,7 @@ import java.io.Writer;
  * @author  AO Industries, Inc.
  */
 public final class BR<
-  PC extends PhrasingContent<PC>
+    PC extends PhrasingContent<PC>
 > extends AnyBR<Document, PC, BR<PC>> {
 
   BR(Document document, PC pc) {

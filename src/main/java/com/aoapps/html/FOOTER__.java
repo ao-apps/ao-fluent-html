@@ -39,10 +39,10 @@ import com.aoapps.html.any.AnyFOOTER__;
  * @author  AO Industries, Inc.
  */
 public final class FOOTER__<
-  PC extends PalpableContent<PC>
+    PC extends PalpableContent<PC>
 >
-  extends AnyFOOTER__<Document, PC, FOOTER__<PC>>
-  implements FlowContent<FOOTER__<PC>> {
+    extends AnyFOOTER__<Document, PC, FOOTER__<PC>>
+    implements FlowContent<FOOTER__<PC>> {
 
   FOOTER__(FOOTER<PC> element) {
     super(element);

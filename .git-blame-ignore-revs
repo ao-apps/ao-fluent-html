@@ -19,3 +19,6 @@
 
 # Tab indent
 30f11fbdb4c2a5b622f9fe1c4a372b2111cc3a58
+
+# Performed automatic source code clean-up with rewrite-maven-plugin
+6645901a49447dca84e53f38ed126f1fc9bdd48e

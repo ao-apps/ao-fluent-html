@@ -34,4 +34,4 @@ open module com.aoapps.html.tests {
   requires com.aoapps.html.any.tests; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId><classifier>tests</classifier>
   requires org.apache.bcel; // <groupId>org.apache.bcel</groupId><artifactId>bcel</artifactId>
   requires junit; // <groupId>junit</groupId><artifactId>junit</artifactId>
-}
+} // TODO: Avoiding rewrite-maven-plugin-4.22.2 truncation

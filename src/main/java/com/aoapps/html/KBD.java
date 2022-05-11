@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class KBD<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyKBD<Document, PC, KBD<PC>, KBD__<PC>, KBD_c<PC>> {
+    > extends AnyKBD<Document, PC, KBD<PC>, KBD__<PC>, KBD_c<PC>> {
 
   KBD(Document document, PC pc) {
     super(document, pc);

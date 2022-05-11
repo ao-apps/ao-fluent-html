@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class DT<
     PC extends Union_DIV_DL<PC>
-> extends AnyDT<Document, PC, DT<PC>, DT__<PC>, DT_c<PC>> {
+    > extends AnyDT<Document, PC, DT<PC>, DT__<PC>, DT_c<PC>> {
 
   DT(Document document, PC pc) {
     super(document, pc);

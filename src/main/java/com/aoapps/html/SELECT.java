@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class SELECT<
     PC extends Union_Interactive_Phrasing<PC>
-> extends AnySELECT<Document, PC, SELECT<PC>, SELECT__<PC>, SELECT_c<PC>> {
+    > extends AnySELECT<Document, PC, SELECT<PC>, SELECT__<PC>, SELECT_c<PC>> {
 
   SELECT(Document document, PC pc) {
     super(document, pc);

@@ -40,7 +40,7 @@ import java.io.IOException;
  */
 public interface SELECT_content<
     __ extends SELECT_content<__>
-> extends AnySELECT_content<Document, __>,
+    > extends AnySELECT_content<Document, __>,
     //
     // Unions:
     //
@@ -56,8 +56,7 @@ public interface SELECT_content<
     //
     // Per-element content models:
     //
-    OPTGROUP_content<__>
-{
+    OPTGROUP_content<__> {
   //
   // Factories:
   //

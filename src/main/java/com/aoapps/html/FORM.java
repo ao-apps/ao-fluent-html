@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class FORM<
     PC extends PalpableContent<PC>
-> extends AnyFORM<Document, PC, FORM<PC>, FORM__<PC>, FORM_c<PC>> {
+    > extends AnyFORM<Document, PC, FORM<PC>, FORM__<PC>, FORM_c<PC>> {
 
   FORM(Document document, PC pc) {
     super(document, pc);

@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class DFN<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyDFN<Document, PC, DFN<PC>, DFN__<PC>, DFN_c<PC>> {
+    > extends AnyDFN<Document, PC, DFN<PC>, DFN__<PC>, DFN_c<PC>> {
 
   DFN(Document document, PC pc) {
     super(document, pc);

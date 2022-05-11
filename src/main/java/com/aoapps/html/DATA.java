@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class DATA<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyDATA<Document, PC, DATA<PC>, DATA__<PC>, DATA_c<PC>> {
+    > extends AnyDATA<Document, PC, DATA<PC>, DATA__<PC>, DATA_c<PC>> {
 
   DATA(Document document, PC pc) {
     super(document, pc);

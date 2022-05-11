@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class UL<
     PC extends PalpableContent<PC>
-> extends AnyUL<Document, PC, UL<PC>, UL__<PC>, UL_c<PC>> {
+    > extends AnyUL<Document, PC, UL<PC>, UL__<PC>, UL_c<PC>> {
 
   UL(Document document, PC pc) {
     super(document, pc);

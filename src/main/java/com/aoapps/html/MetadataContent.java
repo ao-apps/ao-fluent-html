@@ -42,19 +42,19 @@ import java.io.IOException;
  */
 public interface MetadataContent<
     __ extends MetadataContent<__>
-> extends AnyMetadataContent<Document, __>,
+    > extends AnyMetadataContent<Document, __>,
     //
     // Unions:
     //
     // Inherited: Union_COLGROUP_ScriptSupporting<__>
-    Union_Metadata_Phrasing<__>
+    Union_Metadata_Phrasing<__> {
 
-//
-// Content models:
-//
-// Inherited: Content<__>
-// Inherited: ScriptSupportingContent<__>
-{
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+  // Inherited: ScriptSupportingContent<__>
+
   //
   // Factories:
   //
@@ -93,6 +93,8 @@ public interface MetadataContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -110,6 +112,8 @@ public interface MetadataContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override

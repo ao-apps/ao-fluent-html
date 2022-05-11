@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class DIV<
     PC extends Union_DL_Palpable<PC>
-> extends AnyDIV<Document, PC, DIV<PC>, DIV__<PC>, DIV_c<PC>> {
+    > extends AnyDIV<Document, PC, DIV<PC>, DIV__<PC>, DIV_c<PC>> {
 
   DIV(Document document, PC pc) {
     super(document, pc);

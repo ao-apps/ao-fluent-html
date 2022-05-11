@@ -39,17 +39,17 @@ import java.io.IOException;
  */
 public interface OBJECT_content<
     __ extends OBJECT_content<__>
-> extends AnyOBJECT_content<Document, __>,
+    > extends AnyOBJECT_content<Document, __>,
     //
     // Unions:
     //
-    Union_Embedded_Interactive<__>
+    Union_Embedded_Interactive<__> {
 
-//
-// Content models:
-//
-// Inherited: Content<__>
-{
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+
   //
   // Factories:
   //

@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyMAP_c;
  */
 public final class MAP_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyMAP_c<Document, PC, MAP_c<PC>>
     implements Union_Palpable_Phrasing<MAP_c<PC>> {
 

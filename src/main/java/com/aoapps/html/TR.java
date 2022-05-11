@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class TR<
     PC extends Union_TBODY_THEAD_TFOOT<PC>
-> extends AnyTR<Document, PC, TR<PC>, TR__<PC>, TR_c<PC>> {
+    > extends AnyTR<Document, PC, TR<PC>, TR__<PC>, TR_c<PC>> {
 
   TR(Document document, PC pc) {
     super(document, pc);

@@ -40,7 +40,7 @@ import java.io.IOException;
  */
 public interface PalpableContent<
     __ extends PalpableContent<__>
-> extends AnyPalpableContent<Document, __>,
+    > extends AnyPalpableContent<Document, __>,
     //
     // Unions:
     //
@@ -56,9 +56,9 @@ public interface PalpableContent<
     // Inherited: Content<__>
     SectioningContent<__>,
     HeadingContent<__>,
-    InteractiveContent<__>
-// Inherited: TextContent<__> // that is not inter-element whitespace
-{
+    InteractiveContent<__> {
+  // Inherited: TextContent<__> // that is not inter-element whitespace
+
   //
   // Factories:
   //
@@ -230,6 +230,8 @@ public interface PalpableContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override

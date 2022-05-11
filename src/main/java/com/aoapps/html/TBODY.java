@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class TBODY<
     PC extends TABLE_content<PC>
-> extends AnyTBODY<Document, PC, TBODY<PC>, TBODY__<PC>, TBODY_c<PC>> {
+    > extends AnyTBODY<Document, PC, TBODY<PC>, TBODY__<PC>, TBODY_c<PC>> {
 
   TBODY(Document document, PC pc) {
     super(document, pc);

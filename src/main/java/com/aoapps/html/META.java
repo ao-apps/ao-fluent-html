@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class META<
     PC extends Union_Metadata_Phrasing<PC>
-> extends AnyMETA<Document, PC, META<PC>> {
+    > extends AnyMETA<Document, PC, META<PC>> {
 
   META(Document document, PC pc) {
     super(document, pc);

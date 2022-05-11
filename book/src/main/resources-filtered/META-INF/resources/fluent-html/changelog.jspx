@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2019-10-27T16:59:13-05:00"
-    dateModified="2022-04-19T20:58:39-05:00"
+    dateModified="2022-05-04T04:08:06-05:00"
   >
     <c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
       <changelog:release
@@ -85,6 +85,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
             <core:link book="/checkstyle-config" page="/index.jspx" /> project, which itself is based on
             <ao:a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</ao:a>.
           </li>
+          <li>Performed <ao:a href="https://checkstyle.org/">Checkstyle</ao:a> clean-up.</li>
         </ul>
       </changelog:release>
     </c:if>

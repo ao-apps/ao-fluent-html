@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyOUTPUT__;
  */
 public final class OUTPUT__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyOUTPUT__<Document, PC, OUTPUT__<PC>>
     implements PhrasingContent<OUTPUT__<PC>> {
 

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
+Copyright (C) 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of ao-fluent-html.
+
+ao-fluent-html is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ao-fluent-html is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE suppressions PUBLIC
+  "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+
+  <!-- TODO: Complete Javadocs -->
+  <suppress checks="SummaryJavadoc" />
+
+  <!-- Using "Ex" for generic exceptions, since "E" if often "Element" -->
+  <suppress
+    checks="MethodTypeParameterName"
+    message="'Ex'"
+  />
+
+  <!-- Special Union_* types -->
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\](tests[/\\])?Union_[A-Za-z_]+\.java$"
+    message="'Union_[A-Za-z_]+'"
+  />
+
+  <!-- All-caps HTML tag types -->
+  <suppress
+    checks="AbbreviationAsWordInName"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\][A-Z]+\.java$"
+    message="'[A-Z]+'"
+  />
+
+  <!-- *__ and *_c types -->
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\][A-Z]+[0-9]?(__|_c)\.java$"
+    message="'[A-Z]+[0-9]?(__|_c)'"
+  />
+
+  <!-- *_content and *_contentTest types -->
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\][A-Z]+_content\.java$"
+    message="'[A-Z]+_content?'"
+  />
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\]tests[/\\][A-Z]+_contentTest\.java$"
+    message="'[A-Z]+_contentTest'"
+  />
+
+  <!-- elem__() element methods -->
+  <suppress
+    checks="MethodName"
+    message="'[a-z]+__'"
+  />
+
+  <!-- @param  <PC>  The parent content model this element is within -->
+  <suppress
+    checks="ClassTypeParameterName"
+    message="'PC'"
+  />
+
+  <!-- @param  <__>  This content model, which will be the parent content model of child elements -->
+  <suppress
+    checks="(ClassTypeParameterName|InterfaceTypeParameterName)"
+    message="'__'"
+  />
+
+</suppressions>

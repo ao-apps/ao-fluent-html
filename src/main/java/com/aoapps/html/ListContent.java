@@ -40,7 +40,7 @@ import java.io.IOException;
  */
 public interface ListContent<
     __ extends ListContent<__>
-> extends AnyListContent<Document, __>,
+    > extends AnyListContent<Document, __>,
     //
     // Unions:
     //
@@ -50,8 +50,7 @@ public interface ListContent<
     // Content models:
     //
     // Inherited: Content<__>
-    ScriptSupportingContent<__>
-{
+    ScriptSupportingContent<__> {
   //
   // Factories:
   //

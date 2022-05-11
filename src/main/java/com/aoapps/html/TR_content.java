@@ -40,7 +40,7 @@ import java.io.IOException;
  */
 public interface TR_content<
     __ extends TR_content<__>
-> extends AnyTR_content<Document, __>,
+    > extends AnyTR_content<Document, __>,
     //
     // Unions:
     //
@@ -50,8 +50,7 @@ public interface TR_content<
     // Content models:
     //
     // Inherited: Content<__>
-    ScriptSupportingContent<__>
-{
+    ScriptSupportingContent<__> {
   //
   // Factories:
   //

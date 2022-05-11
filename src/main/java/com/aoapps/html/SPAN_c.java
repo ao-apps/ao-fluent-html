@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnySPAN_c;
  */
 public final class SPAN_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnySPAN_c<Document, PC, SPAN_c<PC>>
     implements PhrasingContent<SPAN_c<PC>> {
 

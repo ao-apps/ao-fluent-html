@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnySAMP_c;
  */
 public final class SAMP_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnySAMP_c<Document, PC, SAMP_c<PC>>
     implements PhrasingContent<SAMP_c<PC>> {
 

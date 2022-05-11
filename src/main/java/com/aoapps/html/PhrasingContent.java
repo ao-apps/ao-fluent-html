@@ -45,7 +45,7 @@ import java.io.IOException;
  */
 public interface PhrasingContent<
     __ extends PhrasingContent<__>
-> extends AnyPhrasingContent<Document, __>,
+    > extends AnyPhrasingContent<Document, __>,
     //
     // Unions:
     //
@@ -60,10 +60,10 @@ public interface PhrasingContent<
     // Content models:
     //
     // Inherited: Content<__>
-    EmbeddedContent<__>
-// Inherited: ScriptSupportingContent<__>
-// Inherited: TextContent<__>
-{
+    EmbeddedContent<__> {
+  // Inherited: ScriptSupportingContent<__>
+  // Inherited: TextContent<__>
+
   //
   // Factories:
   //
@@ -85,6 +85,8 @@ public interface PhrasingContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -98,6 +100,8 @@ public interface PhrasingContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -111,6 +115,8 @@ public interface PhrasingContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -138,6 +144,8 @@ public interface PhrasingContent<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override

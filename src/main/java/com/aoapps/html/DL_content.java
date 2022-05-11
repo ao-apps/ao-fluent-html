@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyDL_content;
  */
 public interface DL_content<
     __ extends DL_content<__>
-> extends AnyDL_content<Document, __>,
+    > extends AnyDL_content<Document, __>,
     //
     // Unions:
     //
@@ -50,8 +50,7 @@ public interface DL_content<
     // Content models:
     //
     // Inherited: Content<__>
-    ScriptSupportingContent<__>
-{
+    ScriptSupportingContent<__> {
   //
   // Factories:
   //

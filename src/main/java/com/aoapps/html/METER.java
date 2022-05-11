@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class METER<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
+    > extends AnyMETER<Document, PC, METER<PC>, METER__<PC>, METER_c<PC>> {
 
   METER(Document document, PC pc) {
     super(document, pc);

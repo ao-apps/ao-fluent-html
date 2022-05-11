@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyINS_c;
  */
 public final class INS_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyINS_c<Document, PC, INS_c<PC>>
     implements Union_Palpable_Phrasing<INS_c<PC>> {
 

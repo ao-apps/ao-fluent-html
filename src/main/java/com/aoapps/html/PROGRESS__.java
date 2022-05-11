@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyPROGRESS__;
  */
 public final class PROGRESS__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyPROGRESS__<Document, PC, PROGRESS__<PC>>
     implements PhrasingContent<PROGRESS__<PC>> {
 

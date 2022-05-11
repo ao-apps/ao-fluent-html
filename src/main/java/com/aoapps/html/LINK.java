@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class LINK<
     PC extends Union_Metadata_Phrasing<PC>
-> extends AnyLINK<Document, PC, LINK<PC>> {
+    > extends AnyLINK<Document, PC, LINK<PC>> {
 
   LINK(Document document, PC pc) {
     super(document, pc);

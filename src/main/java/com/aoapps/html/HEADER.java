@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class HEADER<
     PC extends PalpableContent<PC>
-> extends AnyHEADER<Document, PC, HEADER<PC>, HEADER__<PC>, HEADER_c<PC>> {
+    > extends AnyHEADER<Document, PC, HEADER<PC>, HEADER__<PC>, HEADER_c<PC>> {
 
   HEADER(Document document, PC pc) {
     super(document, pc);

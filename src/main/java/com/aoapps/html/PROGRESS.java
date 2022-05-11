@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class PROGRESS<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyPROGRESS<Document, PC, PROGRESS<PC>, PROGRESS__<PC>, PROGRESS_c<PC>> {
+    > extends AnyPROGRESS<Document, PC, PROGRESS<PC>, PROGRESS__<PC>, PROGRESS_c<PC>> {
 
   PROGRESS(Document document, PC pc) {
     super(document, pc);

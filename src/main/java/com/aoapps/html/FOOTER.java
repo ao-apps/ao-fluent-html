@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class FOOTER<
     PC extends PalpableContent<PC>
-> extends AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
+    > extends AnyFOOTER<Document, PC, FOOTER<PC>, FOOTER__<PC>, FOOTER_c<PC>> {
 
   FOOTER(Document document, PC pc) {
     super(document, pc);

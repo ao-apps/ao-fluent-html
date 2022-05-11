@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class OPTION<
     PC extends Union_DATALIST_OPTGROUP<PC>
-> extends AnyOPTION<Document, PC, OPTION<PC>, OPTION__<PC>, OPTION_c<PC>> {
+    > extends AnyOPTION<Document, PC, OPTION<PC>, OPTION__<PC>, OPTION_c<PC>> {
 
   OPTION(Document document, PC pc) {
     super(document, pc);

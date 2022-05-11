@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyBLOCKQUOTE_c;
  */
 public final class BLOCKQUOTE_c<
     PC extends PalpableContent<PC>
->
+    >
     extends AnyBLOCKQUOTE_c<Document, PC, BLOCKQUOTE_c<PC>>
     implements FlowContent<BLOCKQUOTE_c<PC>> {
 

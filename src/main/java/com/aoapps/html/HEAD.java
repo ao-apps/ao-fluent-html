@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class HEAD<
     PC extends HTML_content<PC>
-> extends AnyHEAD<Document, PC, HEAD<PC>, HEAD__<PC>, HEAD_c<PC>> {
+    > extends AnyHEAD<Document, PC, HEAD<PC>, HEAD__<PC>, HEAD_c<PC>> {
 
   HEAD(Document document, PC pc) {
     super(document, pc);

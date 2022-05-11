@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnySUB__;
  */
 public final class SUB__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnySUB__<Document, PC, SUB__<PC>>
     implements PhrasingContent<SUB__<PC>> {
 

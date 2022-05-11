@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyDL_c;
  */
 public final class DL_c<
     PC extends PalpableContent<PC>
->
+    >
     extends AnyDL_c<Document, PC, DL_c<PC>>
     implements DL_content<DL_c<PC>> {
 

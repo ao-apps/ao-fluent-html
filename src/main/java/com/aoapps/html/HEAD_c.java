@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyHEAD_c;
  */
 public final class HEAD_c<
     PC extends HTML_content<PC>
->
+    >
     extends AnyHEAD_c<Document, PC, HEAD_c<PC>>
     implements MetadataContent<HEAD_c<PC>> {
 

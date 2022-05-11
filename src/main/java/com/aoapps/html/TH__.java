@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyTH__;
  */
 public final class TH__<
     PC extends TR_content<PC>
->
+    >
     extends AnyTH__<Document, PC, TH__<PC>>
     implements FlowContent<TH__<PC>> {
 

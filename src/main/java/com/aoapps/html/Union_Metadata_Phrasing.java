@@ -36,7 +36,7 @@ import java.io.IOException;
  */
 public interface Union_Metadata_Phrasing<
     __ extends Union_Metadata_Phrasing<__>
-> extends AnyUnion_Metadata_Phrasing<Document, __>,
+    > extends AnyUnion_Metadata_Phrasing<Document, __>,
     //
     // Unions:
     //
@@ -46,8 +46,7 @@ public interface Union_Metadata_Phrasing<
     // Content models:
     //
     // Inherited: Content<__>
-    ScriptSupportingContent<__>
-{
+    ScriptSupportingContent<__> {
   //
   // Factories:
   //

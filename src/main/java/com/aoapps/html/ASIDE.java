@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class ASIDE<
     PC extends SectioningContent<PC>
-> extends AnyASIDE<Document, PC, ASIDE<PC>, ASIDE__<PC>, ASIDE_c<PC>> {
+    > extends AnyASIDE<Document, PC, ASIDE<PC>, ASIDE__<PC>, ASIDE_c<PC>> {
 
   ASIDE(Document document, PC pc) {
     super(document, pc);

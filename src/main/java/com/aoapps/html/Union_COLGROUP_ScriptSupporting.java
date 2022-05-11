@@ -34,12 +34,11 @@ import com.aoapps.html.any.AnyUnion_COLGROUP_ScriptSupporting;
  */
 public interface Union_COLGROUP_ScriptSupporting<
     __ extends Union_COLGROUP_ScriptSupporting<__>
-> extends AnyUnion_COLGROUP_ScriptSupporting<Document, __>,
+    > extends AnyUnion_COLGROUP_ScriptSupporting<Document, __>,
     //
     // Content models:
     //
-    Content<__>
-{
+    Content<__> {
   //
   // Factories:
   //

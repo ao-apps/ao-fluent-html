@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyCAPTION__;
  */
 public final class CAPTION__<
     PC extends TABLE_content<PC>
->
+    >
     extends AnyCAPTION__<Document, PC, CAPTION__<PC>>
     implements FlowContent<CAPTION__<PC>> {
 

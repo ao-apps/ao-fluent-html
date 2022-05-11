@@ -39,12 +39,11 @@ import java.io.IOException;
  */
 public interface HeadingContent<
     __ extends HeadingContent<__>
-> extends AnyHeadingContent<Document, __>,
+    > extends AnyHeadingContent<Document, __>,
     //
     // Content models:
     //
-    Content<__>
-{
+    Content<__> {
   //
   // Factories:
   //

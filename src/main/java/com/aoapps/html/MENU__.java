@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyMENU__;
  */
 public final class MENU__<
     PC extends InteractiveContent<PC>
->
+    >
     extends AnyMENU__<Document, PC, MENU__<PC>>
     implements ListContent<MENU__<PC>> {
 

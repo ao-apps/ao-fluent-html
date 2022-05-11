@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyMETER_c;
  */
 public final class METER_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyMETER_c<Document, PC, METER_c<PC>>
     implements PhrasingContent<METER_c<PC>> {
 

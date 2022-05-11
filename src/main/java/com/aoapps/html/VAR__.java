@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyVAR__;
  */
 public final class VAR__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyVAR__<Document, PC, VAR__<PC>>
     implements PhrasingContent<VAR__<PC>> {
 

@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class STRONG<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
+    > extends AnySTRONG<Document, PC, STRONG<PC>, STRONG__<PC>, STRONG_c<PC>> {
 
   STRONG(Document document, PC pc) {
     super(document, pc);

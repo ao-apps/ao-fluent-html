@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class BR<
     PC extends PhrasingContent<PC>
-> extends AnyBR<Document, PC, BR<PC>> {
+    > extends AnyBR<Document, PC, BR<PC>> {
 
   BR(Document document, PC pc) {
     super(document, pc);

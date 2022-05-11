@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class STYLE<
     PC extends MetadataContent<PC>
-> extends AnySTYLE<Document, PC, STYLE<PC>> {
+    > extends AnySTYLE<Document, PC, STYLE<PC>> {
 
   STYLE(Document document, PC pc) {
     super(document, pc);

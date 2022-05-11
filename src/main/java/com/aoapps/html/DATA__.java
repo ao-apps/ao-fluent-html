@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyDATA__;
  */
 public final class DATA__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyDATA__<Document, PC, DATA__<PC>>
     implements PhrasingContent<DATA__<PC>> {
 

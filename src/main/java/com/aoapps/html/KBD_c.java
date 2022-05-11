@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyKBD_c;
  */
 public final class KBD_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyKBD_c<Document, PC, KBD_c<PC>>
     implements PhrasingContent<KBD_c<PC>> {
 

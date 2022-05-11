@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyTFOOT__;
  */
 public final class TFOOT__<
     PC extends TABLE_content<PC>
->
+    >
     extends AnyTFOOT__<Document, PC, TFOOT__<PC>>
     implements Union_TBODY_THEAD_TFOOT<TFOOT__<PC>> {
 

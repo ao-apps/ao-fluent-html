@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class BLOCKQUOTE<
     PC extends PalpableContent<PC>
-> extends AnyBLOCKQUOTE<Document, PC, BLOCKQUOTE<PC>, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> {
+    > extends AnyBLOCKQUOTE<Document, PC, BLOCKQUOTE<PC>, BLOCKQUOTE__<PC>, BLOCKQUOTE_c<PC>> {
 
   BLOCKQUOTE(Document document, PC pc) {
     super(document, pc);

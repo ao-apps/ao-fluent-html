@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyQ__;
  */
 public final class Q__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyQ__<Document, PC, Q__<PC>>
     implements PhrasingContent<Q__<PC>> {
 

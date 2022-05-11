@@ -76,10 +76,12 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
           public Serialization getSerialization() {
             return serialization;
           }
+
           @Override
           public Doctype getDoctype() {
             return doctype;
           }
+
           @Override
           public Charset getCharacterEncoding() {
             return characterEncoding;

@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyP_c;
  */
 public final class P_c<
     PC extends PalpableContent<PC>
->
+    >
     extends AnyP_c<Document, PC, P_c<PC>>
     implements PhrasingContent<P_c<PC>> {
 

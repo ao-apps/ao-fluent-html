@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyABBR_c;
  */
 public final class ABBR_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyABBR_c<Document, PC, ABBR_c<PC>>
     implements PhrasingContent<ABBR_c<PC>> {
 

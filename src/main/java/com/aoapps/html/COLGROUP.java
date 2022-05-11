@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class COLGROUP<
     PC extends TABLE_content<PC>
-> extends AnyCOLGROUP<Document, PC, COLGROUP<PC>, COLGROUP__<PC>, COLGROUP_c<PC>> {
+    > extends AnyCOLGROUP<Document, PC, COLGROUP<PC>, COLGROUP__<PC>, COLGROUP_c<PC>> {
 
   COLGROUP(Document document, PC pc) {
     super(document, pc);

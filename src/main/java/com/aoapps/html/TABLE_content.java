@@ -41,19 +41,19 @@ import java.io.IOException;
  */
 public interface TABLE_content<
     __ extends TABLE_content<__>
-> extends AnyTABLE_content<Document, __>,
+    > extends AnyTABLE_content<Document, __>,
     //
     // Unions:
     //
     // Inherited: Union_COLGROUP_ScriptSupporting<__>
-    Union_TBODY_THEAD_TFOOT<__>
+    Union_TBODY_THEAD_TFOOT<__> {
 
-//
-// Content models:
-//
-// Inherited: Content<__>
-// Inherited: ScriptSupportingContent<__>
-{
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+  // Inherited: ScriptSupportingContent<__>
+
   //
   // Factories:
   //

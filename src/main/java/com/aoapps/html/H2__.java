@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyH2__;
  */
 public final class H2__<
     PC extends HeadingContent<PC>
->
+    >
     extends AnyH2__<Document, PC, H2__<PC>>
     implements PhrasingContent<H2__<PC>> {
 

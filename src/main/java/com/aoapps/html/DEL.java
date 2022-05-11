@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class DEL<
     PC extends PhrasingContent<PC>
-> extends AnyDEL<Document, PC, DEL<PC>, DEL_c<PC>> {
+    > extends AnyDEL<Document, PC, DEL<PC>, DEL_c<PC>> {
 
   DEL(Document document, PC pc) {
     super(document, pc);

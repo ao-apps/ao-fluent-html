@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class CITE<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyCITE<Document, PC, CITE<PC>, CITE__<PC>, CITE_c<PC>> {
+    > extends AnyCITE<Document, PC, CITE<PC>, CITE__<PC>, CITE_c<PC>> {
 
   CITE(Document document, PC pc) {
     super(document, pc);

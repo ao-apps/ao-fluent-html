@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class THEAD<
     PC extends TABLE_content<PC>
-> extends AnyTHEAD<Document, PC, THEAD<PC>, THEAD__<PC>, THEAD_c<PC>> {
+    > extends AnyTHEAD<Document, PC, THEAD<PC>, THEAD__<PC>, THEAD_c<PC>> {
 
   THEAD(Document document, PC pc) {
     super(document, pc);

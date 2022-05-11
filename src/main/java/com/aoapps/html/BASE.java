@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class BASE<
     PC extends MetadataContent<PC>
-> extends AnyBASE<Document, PC, BASE<PC>> {
+    > extends AnyBASE<Document, PC, BASE<PC>> {
 
   BASE(Document document, PC pc) {
     super(document, pc);

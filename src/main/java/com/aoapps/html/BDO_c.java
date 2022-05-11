@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyBDO_c;
  */
 public final class BDO_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyBDO_c<Document, PC, BDO_c<PC>>
     implements PhrasingContent<BDO_c<PC>> {
 

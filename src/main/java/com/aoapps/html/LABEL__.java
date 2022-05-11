@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyLABEL__;
  */
 public final class LABEL__<
     PC extends Union_Interactive_Phrasing<PC>
->
+    >
     extends AnyLABEL__<Document, PC, LABEL__<PC>>
     implements PhrasingContent<LABEL__<PC>> {
 

@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyH6__;
  */
 public final class H6__<
     PC extends HeadingContent<PC>
->
+    >
     extends AnyH6__<Document, PC, H6__<PC>>
     implements PhrasingContent<H6__<PC>> {
 

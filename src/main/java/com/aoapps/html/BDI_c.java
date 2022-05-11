@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyBDI_c;
  */
 public final class BDI_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyBDI_c<Document, PC, BDI_c<PC>>
     implements PhrasingContent<BDI_c<PC>> {
 

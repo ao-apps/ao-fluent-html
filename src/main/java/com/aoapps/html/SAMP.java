@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class SAMP<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnySAMP<Document, PC, SAMP<PC>, SAMP__<PC>, SAMP_c<PC>> {
+    > extends AnySAMP<Document, PC, SAMP<PC>, SAMP__<PC>, SAMP_c<PC>> {
 
   SAMP(Document document, PC pc) {
     super(document, pc);

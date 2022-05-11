@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyCOLGROUP__;
  */
 public final class COLGROUP__<
     PC extends TABLE_content<PC>
->
+    >
     extends AnyCOLGROUP__<Document, PC, COLGROUP__<PC>>
     implements COLGROUP_content<COLGROUP__<PC>> {
 

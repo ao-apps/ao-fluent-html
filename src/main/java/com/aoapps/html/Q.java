@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class Q<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyQ<Document, PC, Q<PC>, Q__<PC>, Q_c<PC>> {
+    > extends AnyQ<Document, PC, Q<PC>, Q__<PC>, Q_c<PC>> {
 
   Q(Document document, PC pc) {
     super(document, pc);

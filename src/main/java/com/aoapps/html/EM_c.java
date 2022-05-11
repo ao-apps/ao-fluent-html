@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyEM_c;
  */
 public final class EM_c<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyEM_c<Document, PC, EM_c<PC>>
     implements PhrasingContent<EM_c<PC>> {
 

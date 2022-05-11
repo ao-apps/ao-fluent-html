@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnySTRONG__;
  */
 public final class STRONG__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnySTRONG__<Document, PC, STRONG__<PC>>
     implements PhrasingContent<STRONG__<PC>> {
 

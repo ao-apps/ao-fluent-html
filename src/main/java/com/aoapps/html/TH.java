@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class TH<
     PC extends TR_content<PC>
-> extends AnyTH<Document, PC, TH<PC>, TH__<PC>, TH_c<PC>> {
+    > extends AnyTH<Document, PC, TH<PC>, TH__<PC>, TH_c<PC>> {
 
   TH(Document document, PC pc) {
     super(document, pc);

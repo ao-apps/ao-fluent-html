@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class BDO<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyBDO<Document, PC, BDO<PC>, BDO__<PC>, BDO_c<PC>> {
+    > extends AnyBDO<Document, PC, BDO<PC>, BDO__<PC>, BDO_c<PC>> {
 
   BDO(Document document, PC pc) {
     super(document, pc);

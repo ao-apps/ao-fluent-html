@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyOBJECT_c;
  */
 public final class OBJECT_c<
     PC extends Union_Embedded_Interactive<PC>
->
+    >
     extends AnyOBJECT_c<Document, PC, OBJECT_c<PC>>
     implements OBJECT_content<OBJECT_c<PC>> {
 

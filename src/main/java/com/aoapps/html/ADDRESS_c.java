@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyADDRESS_c;
  */
 public final class ADDRESS_c<
     PC extends PalpableContent<PC>
->
+    >
     extends AnyADDRESS_c<Document, PC, ADDRESS_c<PC>>
     implements FlowContent<ADDRESS_c<PC>> {
 

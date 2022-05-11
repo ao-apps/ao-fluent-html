@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class DATALIST<
     PC extends PhrasingContent<PC>
-> extends AnyDATALIST<Document, PC, DATALIST<PC>, DATALIST__<PC>, DATALIST_c<PC>> {
+    > extends AnyDATALIST<Document, PC, DATALIST<PC>, DATALIST__<PC>, DATALIST_c<PC>> {
 
   DATALIST(Document document, PC pc) {
     super(document, pc);

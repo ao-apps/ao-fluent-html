@@ -36,12 +36,11 @@ import java.io.IOException;
  */
 public interface Union_DL_Palpable<
     __ extends Union_DL_Palpable<__>
-> extends AnyUnion_DL_Palpable<Document, __>,
+    > extends AnyUnion_DL_Palpable<Document, __>,
     //
     // Content models:
     //
-    Content<__>
-{
+    Content<__> {
   //
   // Factories:
   //

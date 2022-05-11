@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyA_c;
  */
 public final class A_c<
     PC extends Union_Interactive_Phrasing<PC>
->
+    >
     extends AnyA_c<Document, PC, A_c<PC>>
     implements Union_Interactive_Phrasing<A_c<PC>> {
 

@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyOPTGROUP_content;
  */
 public interface OPTGROUP_content<
     __ extends OPTGROUP_content<__>
-> extends AnyOPTGROUP_content<Document, __>,
+    > extends AnyOPTGROUP_content<Document, __>,
     //
     // Unions:
     //
@@ -49,8 +49,7 @@ public interface OPTGROUP_content<
     // Content models:
     //
     // Inherited: Content<__>
-    ScriptSupportingContent<__>
-{
+    ScriptSupportingContent<__> {
   //
   // Factories:
   //

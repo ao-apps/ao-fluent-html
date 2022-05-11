@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyTITLE__;
  */
 public final class TITLE__<
     PC extends MetadataContent<PC>
->
+    >
     extends AnyTITLE__<Document, PC, TITLE__<PC>>
     implements TextContent<TITLE__<PC>> {
 

@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class MAIN<
     PC extends PalpableContent<PC>
-> extends AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {
+    > extends AnyMAIN<Document, PC, MAIN<PC>, MAIN__<PC>, MAIN_c<PC>> {
 
   MAIN(Document document, PC pc) {
     super(document, pc);

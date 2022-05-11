@@ -25,7 +25,7 @@ package com.aoapps.html;
 
 import com.aoapps.html.any.AnyUnion_Palpable_Phrasing;
 import com.aoapps.html.any.Suppliers;
-import com.aoapps.html.any.attributes.Enum.Dir;
+import com.aoapps.html.any.attributes.enumeration.Dir;
 import com.aoapps.lang.io.function.IOConsumerE;
 import com.aoapps.lang.io.function.IOSupplierE;
 import java.io.IOException;
@@ -39,7 +39,7 @@ import java.io.IOException;
  */
 public interface Union_Palpable_Phrasing<
     __ extends Union_Palpable_Phrasing<__>
-> extends AnyUnion_Palpable_Phrasing<Document, __>,
+    > extends AnyUnion_Palpable_Phrasing<Document, __>,
     //
     // Unions:
     //
@@ -51,8 +51,8 @@ public interface Union_Palpable_Phrasing<
     // Content models:
     //
     // Inherited: Content<__>
-    TextContent<__> // that is not inter-element whitespace
-{
+    // that is not inter-element whitespace
+    TextContent<__> {
   //
   // Factories:
   //
@@ -172,6 +172,8 @@ public interface Union_Palpable_Phrasing<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -185,6 +187,8 @@ public interface Union_Palpable_Phrasing<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -297,6 +301,8 @@ public interface Union_Palpable_Phrasing<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    *
    * @since HTML 5
@@ -495,6 +501,8 @@ public interface Union_Palpable_Phrasing<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override

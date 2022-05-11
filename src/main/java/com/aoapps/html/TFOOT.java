@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class TFOOT<
     PC extends TABLE_content<PC>
-> extends AnyTFOOT<Document, PC, TFOOT<PC>, TFOOT__<PC>, TFOOT_c<PC>> {
+    > extends AnyTFOOT<Document, PC, TFOOT<PC>, TFOOT__<PC>, TFOOT_c<PC>> {
 
   TFOOT(Document document, PC pc) {
     super(document, pc);

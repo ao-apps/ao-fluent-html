@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class DL<
     PC extends PalpableContent<PC>
-> extends AnyDL<Document, PC, DL<PC>, DL__<PC>, DL_c<PC>> {
+    > extends AnyDL<Document, PC, DL<PC>, DL__<PC>, DL_c<PC>> {
 
   DL(Document document, PC pc) {
     super(document, pc);

@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class MENU<
     PC extends InteractiveContent<PC>
-> extends AnyMENU<Document, PC, MENU<PC>, MENU__<PC>, MENU_c<PC>> {
+    > extends AnyMENU<Document, PC, MENU<PC>, MENU__<PC>, MENU_c<PC>> {
 
   MENU(Document document, PC pc) {
     super(document, pc);

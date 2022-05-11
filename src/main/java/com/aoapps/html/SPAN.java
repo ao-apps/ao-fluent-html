@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class SPAN<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnySPAN<Document, PC, SPAN<PC>, SPAN__<PC>, SPAN_c<PC>> {
+    > extends AnySPAN<Document, PC, SPAN<PC>, SPAN__<PC>, SPAN_c<PC>> {
 
   SPAN(Document document, PC pc) {
     super(document, pc);

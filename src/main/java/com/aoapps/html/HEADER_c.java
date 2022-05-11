@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyHEADER_c;
  */
 public final class HEADER_c<
     PC extends PalpableContent<PC>
->
+    >
     extends AnyHEADER_c<Document, PC, HEADER_c<PC>>
     implements FlowContent<HEADER_c<PC>> {
 

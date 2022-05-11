@@ -40,7 +40,7 @@ import java.io.Writer;
  */
 public final class CODE<
     PC extends Union_Palpable_Phrasing<PC>
-> extends AnyCODE<Document, PC, CODE<PC>, CODE__<PC>, CODE_c<PC>> {
+    > extends AnyCODE<Document, PC, CODE<PC>, CODE__<PC>, CODE_c<PC>> {
 
   CODE(Document document, PC pc) {
     super(document, pc);

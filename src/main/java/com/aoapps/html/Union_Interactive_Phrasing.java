@@ -39,17 +39,17 @@ import java.io.IOException;
  */
 public interface Union_Interactive_Phrasing<
     __ extends Union_Interactive_Phrasing<__>
-> extends AnyUnion_Interactive_Phrasing<Document, __>,
+    > extends AnyUnion_Interactive_Phrasing<Document, __>,
     //
     // Unions:
     //
-    Union_Embedded_Interactive<__>
+    Union_Embedded_Interactive<__> {
 
-//
-// Content models:
-//
-// Inherited: Content<__>
-{
+  //
+  // Content models:
+  //
+  // Inherited: Content<__>
+
   //
   // Factories:
   //
@@ -69,6 +69,8 @@ public interface Union_Interactive_Phrasing<
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
@@ -99,7 +101,7 @@ public interface Union_Interactive_Phrasing<
    */
   public static final class InputFactory<
       __ extends Union_Interactive_Phrasing<__>
-  > extends AnyUnion_Interactive_Phrasing.InputFactory<Document, __> {
+      > extends AnyUnion_Interactive_Phrasing.InputFactory<Document, __> {
 
     InputFactory(Document document, __ pc) {
       super(document, pc);
@@ -118,6 +120,8 @@ public interface Union_Interactive_Phrasing<
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @param  <Ex>  An arbitrary exception type that may be thrown
      */
     @Override
@@ -132,6 +136,8 @@ public interface Union_Interactive_Phrasing<
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @param  <Ex>  An arbitrary exception type that may be thrown
      */
     @Override

@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyTHEAD_c;
  */
 public final class THEAD_c<
     PC extends TABLE_content<PC>
->
+    >
     extends AnyTHEAD_c<Document, PC, THEAD_c<PC>>
     implements Union_TBODY_THEAD_TFOOT<THEAD_c<PC>> {
 

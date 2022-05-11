@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyDEL_c;
  */
 public final class DEL_c<
     PC extends PhrasingContent<PC>
->
+    >
     extends AnyDEL_c<Document, PC, DEL_c<PC>>
     implements PhrasingContent<DEL_c<PC>> {
 

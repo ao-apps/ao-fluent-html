@@ -36,12 +36,11 @@ import java.io.IOException;
  */
 public interface Union_DATALIST_OPTGROUP<
     __ extends Union_DATALIST_OPTGROUP<__>
-> extends AnyUnion_DATALIST_OPTGROUP<Document, __>,
+    > extends AnyUnion_DATALIST_OPTGROUP<Document, __>,
     //
     // Content models:
     //
-    Content<__>
-{
+    Content<__> {
   //
   // Factories:
   //

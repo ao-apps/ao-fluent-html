@@ -42,7 +42,7 @@ import java.io.Writer;
  */
 public final class SECTION<
     PC extends SectioningContent<PC>
-> extends AnySECTION<Document, PC, SECTION<PC>, SECTION__<PC>, SECTION_c<PC>> {
+    > extends AnySECTION<Document, PC, SECTION<PC>, SECTION__<PC>, SECTION_c<PC>> {
 
   SECTION(Document document, PC pc) {
     super(document, pc);

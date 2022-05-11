@@ -35,7 +35,7 @@ import java.io.IOException;
  */
 public interface AnyContent<
     __ extends AnyContent<__>
-> extends com.aoapps.html.any.AnyContent<Document, __>,
+    > extends com.aoapps.html.any.AnyContent<Document, __>,
     //
     // Unions:
     //
@@ -78,13 +78,13 @@ public interface AnyContent<
     // Inherited: OPTGROUP_content<__>
     SELECT_content<__>,
     TABLE_content<__>,
-    TR_content<__>
+    TR_content<__> {
 
-//
-// Others:
-//
-// Inherited: Whitespace
-{
+  //
+  // Others:
+  //
+  // Inherited: Whitespace
+
   //
   // Factories:
   //

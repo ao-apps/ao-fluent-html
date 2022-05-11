@@ -38,7 +38,7 @@ import java.io.IOException;
  */
 public interface FlowContent<
     __ extends FlowContent<__>
-> extends AnyFlowContent<Document, __>,
+    > extends AnyFlowContent<Document, __>,
     //
     // Unions:
     //
@@ -58,11 +58,11 @@ public interface FlowContent<
     // Inherited: HeadingContent<__>
     // Inherited: InteractiveContent<__>
     PalpableContent<__>,
-    PhrasingContent<__>
-// Inherited: ScriptSupportingContent<__>
-// Inherited: SectioningContent<__>
-// Inherited: TextContent<__>
-{
+    PhrasingContent<__> {
+  // Inherited: ScriptSupportingContent<__>
+  // Inherited: SectioningContent<__>
+  // Inherited: TextContent<__>
+
   //
   // Factories:
   //

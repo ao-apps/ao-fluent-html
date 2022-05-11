@@ -38,7 +38,7 @@ import com.aoapps.html.any.AnyCITE__;
  */
 public final class CITE__<
     PC extends Union_Palpable_Phrasing<PC>
->
+    >
     extends AnyCITE__<Document, PC, CITE__<PC>>
     implements PhrasingContent<CITE__<PC>> {
 

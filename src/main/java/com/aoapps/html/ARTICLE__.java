@@ -40,7 +40,7 @@ import com.aoapps.html.any.AnyARTICLE__;
  */
 public final class ARTICLE__<
     PC extends SectioningContent<PC>
->
+    >
     extends AnyARTICLE__<Document, PC, ARTICLE__<PC>>
     implements FlowContent<ARTICLE__<PC>> {
 

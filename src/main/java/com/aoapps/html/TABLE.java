@@ -41,7 +41,7 @@ import java.io.Writer;
 @SuppressWarnings("deprecation")
 public final class TABLE<
     PC extends PalpableContent<PC>
-> extends AnyTABLE<Document, PC, TABLE<PC>, TABLE__<PC>, TABLE_c<PC>> {
+    > extends AnyTABLE<Document, PC, TABLE<PC>, TABLE__<PC>, TABLE_c<PC>> {
 
   TABLE(Document document, PC pc) {
     super(document, pc);

@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2019-10-27T16:59:13-05:00"
-    dateModified="2022-05-14T00:29:53-05:00"
+    dateModified="2022-05-14T16:17:29-05:00"
   >
     <c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
       <changelog:release
@@ -75,7 +75,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
         <li>Annotated javadocs <code>@since HTML 5</code> for all HTML 5 elements and attributes.</li>
         <li>
           Moved all attributes from <code>com.aoapps.html.any.attributes.String</code> to
-          <code>com.aoapps.html.any.attributes.Text</code>, making them now streamable.
+          <code>com.aoapps.html.any.attributes.text</code>, making them now streamable.
         </li>
         <li>Implemented more <ao:a href="https://html.spec.whatwg.org/multipage/#toc-semantics">elements</ao:a>.</li>
         <li>Added support for <code>java.nio.charset.Charset</code>.</li>

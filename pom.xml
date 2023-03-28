@@ -45,10 +45,6 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
         <li><a target="${javadoc.target}" href="https://oss.aoapps.com/fluent-html/util/">AO Fluent HTML Util</a></li>
       </ul>
     </div>]]></javadoc.modules>
-    <!-- SonarQube -->
-    <sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
-    <sonar.organization>ao-apps</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <!-- TODO: Code Coverage broken with useModulePath=false -->
     <sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
   </properties>

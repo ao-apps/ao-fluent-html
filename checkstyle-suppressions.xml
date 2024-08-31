@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
-Copyright (C) 2022, 2023  AO Industries, Inc.
+Copyright (C) 2022, 2023, 2024  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -72,7 +72,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
   <!-- elem__() element methods -->
   <suppress
     checks="MethodName"
-    message="'[a-z]+__'"
+    message="'[a-z]+[0-9]*__'"
   />
 
   <!-- @param  <PC>  The parent content model this element is within -->

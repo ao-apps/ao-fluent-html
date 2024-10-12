@@ -28,7 +28,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 <suppressions>
 
   <!-- TODO: Complete Javadocs -->
-  <suppress checks="SummaryJavadoc" />
+  <suppress checks="(MissingJavadocMethod|SummaryJavadoc)" />
 
   <!-- Using "Ex" for generic exceptions, since "E" is often "Element" -->
   <suppress

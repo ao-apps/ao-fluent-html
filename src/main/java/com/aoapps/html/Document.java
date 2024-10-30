@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,12 +34,10 @@ import java.nio.charset.Charset;
 
 /**
  * Fluent Java DSL for high-performance HTML generation.
- * <p>
- * This class implements all content interfaces and supports all element types.
- * </p>
- * <p>
- * See also <a href="https://github.com/xmlet/HtmlFlow">HtmlFlow</a>.
- * </p>
+ *
+ * <p>This class implements all content interfaces and supports all element types.</p>
+ *
+ * <p>See also <a href="https://github.com/xmlet/HtmlFlow">HtmlFlow</a>.</p>
  *
  * @author  AO Industries, Inc.
  */
@@ -48,10 +46,9 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
   /**
    * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
    *              Not doing so may result in {@link IllegalStateException}.
-   *              <p>
-   *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-   *              with {@code encoder = null}.
-   *              </p>
+   *
+   *              <p>Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.</p>
    *
    * @see  #setOut(java.io.Writer)
    */
@@ -62,10 +59,9 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
   /**
    * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
    *              Not doing so may result in {@link IllegalStateException}.
-   *              <p>
-   *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-   *              with {@code encoder = null}.
-   *              </p>
+   *
+   *              <p>Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.</p>
    *
    * @see  #setOut(java.io.Writer)
    */
@@ -94,10 +90,9 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
   /**
    * @param  out  May be {@code null}, but must be set to a non-null value again before any additional writes.
    *              Not doing so may result in {@link IllegalStateException}.
-   *              <p>
-   *              Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
-   *              with {@code encoder = null}.
-   *              </p>
+   *
+   *              <p>Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
+   *              with {@code encoder = null}.</p>
    *
    * @see  #setOut(java.io.Writer)
    * @see  EncodingContext#DEFAULT

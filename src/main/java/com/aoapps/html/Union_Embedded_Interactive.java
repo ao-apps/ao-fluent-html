@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -98,15 +98,13 @@ public interface Union_Embedded_Interactive<
    *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    * @param  object  The content model of this element, which will be the parent content model of child elements.
-   *                 <p>
-   *                 Due to limitations in Java generics, this content model does not directly reflect the parent content
+   *
+   *                 <p>Due to limitations in Java generics, this content model does not directly reflect the parent content
    *                 model, despite this being a transparent content model.  Rather, it includes only the content model that
-   *                 always applies to this element type.
-   *                 </p>
-   *                 <p><em>
-   *                 For the full, context-aware content model, which will likely include more elements,
-   *                 {@linkplain AnyOBJECT__#pc() use the parent content model directly}.
-   *                 </em></p>
+   *                 always applies to this element type.</p>
+   *
+   *                 <p><em>For the full, context-aware content model, which will likely include more elements,
+   *                 {@linkplain AnyOBJECT__#pc() use the parent content model directly}.</em></p>
    *
    * @return  This content model, which will be the parent content model of child elements
    *

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -42,16 +42,14 @@ public final class INPUT {
 
   /**
    * See <a href="https://www.w3schools.com/tags/tag_input.asp">HTML input tag</a>.
-   * <p>
-   * This implementation has all the input attributes,
-   * supporting unanticipated or more dynamic configurations.
-   * </p>
-   * <p>
-   * This does not limit attributes by type, and would allow mismatches where
+   *
+   * <p>This implementation has all the input attributes,
+   * supporting unanticipated or more dynamic configurations.</p>
+   *
+   * <p>This does not limit attributes by type, and would allow mismatches where
    * type-specific implementations may constrain the attributes and values.
    * Although there is less validation, doctype-specific checks are expected
-   * to remain, such as only allowing type="color" in {@link Doctype#HTML5}.
-   * </p>
+   * to remain, such as only allowing type="color" in {@link Doctype#HTML5}.</p>
    *
    * @param  <PC>  The parent content model this element is within
    */

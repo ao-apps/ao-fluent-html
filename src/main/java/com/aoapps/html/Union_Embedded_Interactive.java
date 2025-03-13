@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2024  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2024, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -59,7 +59,9 @@ public interface Union_Embedded_Interactive<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new IMG<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    IMG<__> e = new IMG<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -85,7 +87,9 @@ public interface Union_Embedded_Interactive<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new OBJECT<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    OBJECT<__> e = new OBJECT<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

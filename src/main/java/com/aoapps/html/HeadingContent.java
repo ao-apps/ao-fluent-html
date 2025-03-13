@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -62,7 +62,9 @@ public interface HeadingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new H1<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    H1<__> e = new H1<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -94,7 +96,9 @@ public interface HeadingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new H2<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    H2<__> e = new H2<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -126,7 +130,9 @@ public interface HeadingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new H3<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    H3<__> e = new H3<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -158,7 +164,9 @@ public interface HeadingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new H4<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    H4<__> e = new H4<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -190,7 +198,9 @@ public interface HeadingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new H5<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    H5<__> e = new H5<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -222,7 +232,9 @@ public interface HeadingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new H6<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    H6<__> e = new H6<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

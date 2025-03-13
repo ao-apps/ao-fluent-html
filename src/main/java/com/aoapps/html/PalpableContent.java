@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -71,7 +71,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new ADDRESS<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    ADDRESS<__> e = new ADDRESS<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -109,7 +111,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new BLOCKQUOTE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    BLOCKQUOTE<__> e = new BLOCKQUOTE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -149,7 +153,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new DL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    DL<__> e = new DL<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -187,7 +193,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new FOOTER<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    FOOTER<__> e = new FOOTER<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -221,7 +229,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new FORM<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    FORM<__> e = new FORM<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -274,7 +284,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new HEADER<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    HEADER<__> e = new HEADER<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -316,7 +328,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new MAIN<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    MAIN<__> e = new MAIN<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -357,7 +371,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new OL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    OL<__> e = new OL<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -390,7 +406,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new P<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    P<__> e = new P<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -422,7 +440,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new PRE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    PRE<__> e = new PRE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -467,7 +487,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new TABLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    TABLE<__> e = new TABLE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -502,7 +524,9 @@ public interface PalpableContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new UL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    UL<__> e = new UL<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -57,7 +57,9 @@ public interface Union_Metadata_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new LINK<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    LINK<__> e = new LINK<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -74,7 +76,9 @@ public interface Union_Metadata_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new META<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    META<__> e = new META<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   // No meta__(), since either name, http-equiv, or itemprop is required

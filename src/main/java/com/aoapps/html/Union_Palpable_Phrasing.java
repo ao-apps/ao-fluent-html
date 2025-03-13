@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -64,7 +64,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new ABBR<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    ABBR<__> e = new ABBR<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -97,7 +99,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new B<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    B<__> e = new B<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -129,7 +133,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new BDI<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    BDI<__> e = new BDI<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -163,7 +169,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new BDO<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    BDO<__> e = new BDO<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -228,7 +236,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new CITE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    CITE<__> e = new CITE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -260,7 +270,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new CODE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    CODE<__> e = new CODE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -292,7 +304,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new DATA<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    DATA<__> e = new DATA<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -343,7 +357,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new DFN<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    DFN<__> e = new DFN<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -375,7 +391,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new EM<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    EM<__> e = new EM<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -408,7 +426,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new I<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    I<__> e = new I<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -443,7 +463,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new INS<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    INS<__> e = new INS<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -459,7 +481,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new KBD<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    KBD<__> e = new KBD<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -492,7 +516,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new MAP<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    MAP<__> e = new MAP<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -523,7 +549,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new MARK<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    MARK<__> e = new MARK<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -558,7 +586,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new METER<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    METER<__> e = new METER<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -593,7 +623,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new OUTPUT<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    OUTPUT<__> e = new OUTPUT<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -627,7 +659,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new PROGRESS<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    PROGRESS<__> e = new PROGRESS<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -661,7 +695,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new Q<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    Q<__> e = new Q<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -695,7 +731,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new S<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    S<__> e = new S<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -727,7 +765,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SAMP<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SAMP<__> e = new SAMP<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -760,7 +800,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SMALL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SMALL<__> e = new SMALL<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -792,7 +834,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SPAN<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SPAN<__> e = new SPAN<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -824,7 +868,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new STRONG<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    STRONG<__> e = new STRONG<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -856,7 +902,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SUB<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SUB<__> e = new SUB<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -888,7 +936,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SUP<__> e = new SUP<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -924,7 +974,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new U<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    U<__> e = new U<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -956,7 +1008,9 @@ public interface Union_Palpable_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new VAR<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    VAR<__> e = new VAR<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

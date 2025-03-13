@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -76,7 +76,9 @@ public interface PhrasingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new AREA<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    AREA<__> e = new AREA<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -165,7 +167,9 @@ public interface PhrasingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new BR<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    BR<__> e = new BR<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   // </editor-fold>
@@ -181,7 +185,9 @@ public interface PhrasingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new DATALIST<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    DATALIST<__> e = new DATALIST<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -215,7 +221,9 @@ public interface PhrasingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new DEL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    DEL<__> e = new DEL<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -272,7 +280,9 @@ public interface PhrasingContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new WBR<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    WBR<__> e = new WBR<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
   // </editor-fold>
   // Inherited: autonomous custom elements

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -64,7 +64,9 @@ public interface TABLE_content<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new CAPTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    CAPTION<__> e = new CAPTION<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -96,7 +98,9 @@ public interface TABLE_content<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new COLGROUP<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    COLGROUP<__> e = new COLGROUP<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -128,7 +132,9 @@ public interface TABLE_content<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new THEAD<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    THEAD<__> e = new THEAD<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -160,7 +166,9 @@ public interface TABLE_content<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new TBODY<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    TBODY<__> e = new TBODY<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -232,7 +240,9 @@ public interface TABLE_content<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new TFOOT<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    TFOOT<__> e = new TFOOT<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

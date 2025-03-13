@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -60,7 +60,9 @@ public interface Union_Interactive_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new A<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    A<__> e = new A<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   @Override
@@ -110,13 +112,17 @@ public interface Union_Interactive_Phrasing<
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Dynamic<__> dynamic() throws IOException {
-      return new INPUT.Dynamic<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Dynamic<__> e = new INPUT.Dynamic<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Dynamic<__> dynamic(String type) throws IOException {
-      return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
+      INPUT.Dynamic<__> e = new INPUT.Dynamic<>(document, pc, type);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     /**
@@ -132,7 +138,9 @@ public interface Union_Interactive_Phrasing<
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Dynamic<__> dynamic(AnyINPUT.Dynamic.Type type) throws IOException {
-      return new INPUT.Dynamic<>(document, pc, type).writeOpen(document.getRawUnsafe(null));
+      INPUT.Dynamic<__> e = new INPUT.Dynamic<>(document, pc, type);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     /**
@@ -148,133 +156,177 @@ public interface Union_Interactive_Phrasing<
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Button<__> button() throws IOException {
-      return new INPUT.Button<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Button<__> e = new INPUT.Button<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Checkbox<__> checkbox() throws IOException {
-      return new INPUT.Checkbox<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Checkbox<__> e = new INPUT.Checkbox<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Color<__> color() throws IOException {
-      return new INPUT.Color<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Color<__> e = new INPUT.Color<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Date<__> date() throws IOException {
-      return new INPUT.Date<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Date<__> e = new INPUT.Date<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.DatetimeLocal<__> datetimeLocal() throws IOException {
-      return new INPUT.DatetimeLocal<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.DatetimeLocal<__> e = new INPUT.DatetimeLocal<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Email<__> email() throws IOException {
-      return new INPUT.Email<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Email<__> e = new INPUT.Email<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.File<__> file() throws IOException {
-      return new INPUT.File<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.File<__> e = new INPUT.File<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Hidden<__> hidden() throws IOException {
-      return new INPUT.Hidden<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Hidden<__> e = new INPUT.Hidden<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Image<__> image() throws IOException {
-      return new INPUT.Image<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Image<__> e = new INPUT.Image<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Month<__> month() throws IOException {
-      return new INPUT.Month<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Month<__> e = new INPUT.Month<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Number<__> number() throws IOException {
-      return new INPUT.Number<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Number<__> e = new INPUT.Number<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Password<__> password() throws IOException {
-      return new INPUT.Password<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Password<__> e = new INPUT.Password<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Radio<__> radio() throws IOException {
-      return new INPUT.Radio<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Radio<__> e = new INPUT.Radio<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Range<__> range() throws IOException {
-      return new INPUT.Range<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Range<__> e = new INPUT.Range<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Reset<__> reset() throws IOException {
-      return new INPUT.Reset<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Reset<__> e = new INPUT.Reset<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Search<__> search() throws IOException {
-      return new INPUT.Search<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Search<__> e = new INPUT.Search<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Submit<__> submit() throws IOException {
-      return new INPUT.Submit<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Submit<__> e = new INPUT.Submit<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Tel<__> tel() throws IOException {
-      return new INPUT.Tel<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Tel<__> e = new INPUT.Tel<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Text<__> text() throws IOException {
-      return new INPUT.Text<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Text<__> e = new INPUT.Text<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Time<__> time() throws IOException {
-      return new INPUT.Time<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Time<__> e = new INPUT.Time<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Url<__> url() throws IOException {
-      return new INPUT.Url<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Url<__> e = new INPUT.Url<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public INPUT.Week<__> week() throws IOException {
-      return new INPUT.Week<>(document, pc).writeOpen(document.getRawUnsafe(null));
+      INPUT.Week<__> e = new INPUT.Week<>(document, pc);
+      e.writeOpen(document.getRawUnsafe(null));
+      return e;
     }
   }
 
@@ -295,7 +347,9 @@ public interface Union_Interactive_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new LABEL<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    LABEL<__> e = new LABEL<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -328,7 +382,9 @@ public interface Union_Interactive_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SELECT<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SELECT<__> e = new SELECT<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -360,7 +416,9 @@ public interface Union_Interactive_Phrasing<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new TEXTAREA<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    TEXTAREA<__> e = new TEXTAREA<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

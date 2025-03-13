@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -56,7 +56,9 @@ public interface SectioningContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new ARTICLE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    ARTICLE<__> e = new ARTICLE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -90,7 +92,9 @@ public interface SectioningContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new ASIDE<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    ASIDE<__> e = new ASIDE<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -124,7 +128,9 @@ public interface SectioningContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new NAV<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    NAV<__> e = new NAV<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**
@@ -158,7 +164,9 @@ public interface SectioningContent<
     @SuppressWarnings("unchecked")
     __ pc = (__) this;
     Document document = getDocument();
-    return new SECTION<>(document, pc).writeOpen(document.getRawUnsafe(null));
+    SECTION<__> e = new SECTION<>(document, pc);
+    e.writeOpen(document.getRawUnsafe(null));
+    return e;
   }
 
   /**

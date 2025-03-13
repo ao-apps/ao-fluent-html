@@ -200,7 +200,7 @@ public interface Union_Palpable_Phrasing<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> BDO<__> bdo(IOSupplierE<? extends Dir.Value, Ex> dir) throws IOException, Ex {
+  default <Ex extends Throwable> BDO<__> bdo(IOSupplierE<Dir.Value, Ex> dir) throws IOException, Ex {
     return bdo().dir(dir);
   }
 
@@ -532,7 +532,7 @@ public interface Union_Palpable_Phrasing<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> MAP<__> map(IOSupplierE<? extends String, Ex> name) throws IOException, Ex {
+  default <Ex extends Throwable> MAP<__> map(IOSupplierE<String, Ex> name) throws IOException, Ex {
     return map().name(name);
   }
 

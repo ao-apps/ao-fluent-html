@@ -75,7 +75,7 @@ public interface Union_Embedded_Interactive<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> IMG<__> img(IOSupplierE<? extends String, Ex> src) throws IOException, Ex {
+  default <Ex extends Throwable> IMG<__> img(IOSupplierE<String, Ex> src) throws IOException, Ex {
     return img().src(src);
   }
 

@@ -125,7 +125,7 @@ public interface MetadataContent<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> STYLE<__> style(IOSupplierE<? extends AnySTYLE.Type, Ex> type) throws IOException, Ex {
+  default <Ex extends Throwable> STYLE<__> style(IOSupplierE<AnySTYLE.Type, Ex> type) throws IOException, Ex {
     return style((type == null) ? null : type.get());
   }
 

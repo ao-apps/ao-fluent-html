@@ -76,7 +76,7 @@ public interface Union_Interactive_Phrasing<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> A<__> a(IOSupplierE<? extends String, Ex> href) throws IOException, Ex {
+  default <Ex extends Throwable> A<__> a(IOSupplierE<String, Ex> href) throws IOException, Ex {
     return a().href(href);
   }
 
@@ -149,7 +149,7 @@ public interface Union_Interactive_Phrasing<
      * @param  <Ex>  An arbitrary exception type that may be thrown
      */
     @Override
-    public <Ex extends Throwable> INPUT.Dynamic<__> dynamic(IOSupplierE<? extends AnyINPUT.Dynamic.Type, Ex> type) throws IOException, Ex {
+    public <Ex extends Throwable> INPUT.Dynamic<__> dynamic(IOSupplierE<AnyINPUT.Dynamic.Type, Ex> type) throws IOException, Ex {
       return dynamic((type == null) ? null : type.get());
     }
 

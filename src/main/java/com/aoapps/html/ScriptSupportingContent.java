@@ -102,7 +102,7 @@ public interface ScriptSupportingContent<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> SCRIPT<__> script(IOSupplierE<? extends AnySCRIPT.Type, Ex> type) throws IOException, Ex {
+  default <Ex extends Throwable> SCRIPT<__> script(IOSupplierE<AnySCRIPT.Type, Ex> type) throws IOException, Ex {
     return script((type == null) ? null : type.get());
   }
   // </editor-fold>

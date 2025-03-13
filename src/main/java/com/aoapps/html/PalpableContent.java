@@ -245,7 +245,7 @@ public interface PalpableContent<
    * @param  <Ex>  An arbitrary exception type that may be thrown
    */
   @Override
-  default <Ex extends Throwable> FORM<__> form(IOSupplierE<? extends String, Ex> action) throws IOException, Ex {
+  default <Ex extends Throwable> FORM<__> form(IOSupplierE<String, Ex> action) throws IOException, Ex {
     return form().action(action);
   }
 

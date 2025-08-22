@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -64,7 +64,7 @@ public class ElementContentModelTest {
     };
   }
 
-  static void testElementContentModels(Class<? extends Content> clazz, Class<? extends Content> ... expected) {
+  static void testElementContentModels(Class<? extends Content> clazz, Class<? extends Content>... expected) {
     InheritanceTestHelper.testInterfaces(
         Content.class,
         iface -> iface.getSimpleName().endsWith("_content"),

@@ -284,7 +284,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
       </dependency>
       <!-- Test Transitive -->
       <dependency>
-        <groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>3.19.0</version>
+        <groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>3.20.0</version>
       </dependency>
       <dependency>
         <groupId>org.hamcrest</groupId><artifactId>hamcrest</artifactId><version>3.0</version>

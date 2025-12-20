@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
+Copyright (C) 2019, 2020, 2021, 2022, 2023, 2025  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of ao-fluent-html.
+
+ao-fluent-html is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ao-fluent-html is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<jsp:root
+  xmlns:ao="https://oss.aoapps.com/taglib/"
+  xmlns:core="https://semanticcms.com/core/taglib/"
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  xmlns:section="https://semanticcms.com/section/taglib/"
+  version="2.1"
+>
+  <jsp:directive.page language="java" pageEncoding="UTF-8" />
+  <jsp:directive.page session="false" />
+  <core:page
+    title="@{documented.name}"
+    description="@{documented.description}"
+    datePublished="2019-10-27T16:59:13-05:00"
+    dateModified="2025-07-02T23:05:45Z"
+  >
+    <core:child page="changelog.jspx" />
+    <core:child page="apidocs/index.jspx" />
+    <core:child book="/fluent-html/any" page="/index.jspx" />
+    <core:child book="/fluent-html/servlet" page="/index.jspx" />
+    <core:child book="/fluent-html/util" page="/index.jspx" />
+    <header>
+      <ao:include
+        page="/ao-badges/badges.inc.jspx"
+        arg.projectStatus="alpha"
+        arg.managementStatus="preview"
+        arg.packagingStatus="developmental"
+        arg.javaseVersion="@{documented.javase.version}"
+        arg.semanticVersioning="2.0.0"
+        arg.license="lgpl-3.0"
+        arg.scmUrl="@{project.scm.url}"
+        arg.githubBuildWorkflow="Build"
+        arg.githubBuildFile="build.yml"
+        arg.mavenBadge="maven-central"
+        arg.groupId="@{project.groupId}"
+        arg.artifactId="@{documented.artifactId}"
+        arg.sonarQualityGate="true"
+        arg.sonarLinesOfCode="true"
+        arg.sonarReliability="true"
+        arg.sonarSecurity="true"
+        arg.sonarMaintainability="true"
+        arg.sonarCoverage="true"
+      />
+    </header>
+    <p>
+      @{documented.description}
+    </p>
+    <section:nav label="Project Links">
+      <ul>
+        <li><core:link page="index.jspx">Project Home</core:link></li>
+        <li><core:link page="changelog.jspx">Changelog</core:link></li>
+        <li><core:link page="apidocs/index.jspx">API Docs</core:link></li>
+        <li><ao:a href="https://central.sonatype.com/artifact/${ao:encodeURIComponent('@{project.groupId}')}/${ao:encodeURIComponent('@{documented.artifactId}')}">Central Repository</ao:a></li>
+        <li><ao:a href="@{project.scm.url}">GitHub</ao:a></li>
+      </ul>
+    </section:nav>
+    <section:section label="Modules">
+      <ul>
+        <li><core:link book="/fluent-html/any" page="/index.jspx" /></li>
+        <li><core:link book="/fluent-html/servlet" page="/index.jspx" /></li>
+        <li><core:link book="/fluent-html/util" page="/index.jspx" /></li>
+      </ul>
+    </section:section>
+    <section:section label="Motivation">
+      We have a lot of legacy servlet-based code that directly writes HTML as strings.
+      This technique is both tedious and error-prone.  We've been refactoring code to
+      support HTML 5, and now is a good time to clean this up without radically
+      rewriting everything.
+    </section:section>
+    <section:section label="Features">
+      <ul>
+        <li>Supports HTML 4.01, XHTML 1.0, HTML 5 and XHTML 5.</li>
+        <li>Supports both SGML and XML serializations.</li>
+        <li>Fluent API.</li>
+        <li>Also supports lambda element content, which makes it easier to code and debug than a strict fluent-only approach.</li>
+        <li>Context-aware compiler and code assistance through extensive use of the interface hierachy along with bounded self-referential generics.</li>
+        <li>Optimized code assistance through method deprecation, such as global attributes only being activated on expected elements.</li>
+        <li>Everything is <core:link book="/encoding" page="/index.jspx">encoded and safe by default</core:link>, with <code>unsafe(…)</code> methods allowing raw output.</li>
+        <li>Optional automatic newline and tab indentation.</li>
+        <li>Optimized streaming implementation, including attributes.</li>
+        <li>Integrates with AO in-context translation tools.</li>
+        <li>Stupid fast (TODO: benchmark).</li>
+        <li>Separate module for use in a Servlet environment.</li>
+      </ul>
+    </section:section>
+    <section:section label="Limitations">
+      Not all tags and attributes are implemented.  We are implementing
+      as we go.  A full implementation of all tags and attributes would
+      probably be best achieved with code generation.  This project will
+      remain below version <code>1.0.0</code> until it has a reasonably
+      complete implementation.
+    </section:section>
+    <section:section label="Evaluated Alternatives">
+      <section:section label="HtmlFlow">
+        <ao:a href="https://github.com/xmlet/HtmlFlow">HtmlFlow</ao:a> is a Java DSL to write typesafe
+        HTML documents in a fluent style.  It is very close to what we want.  We
+        may look into integrating our unique needs with their implementation.  At this
+        time, however, we still require support for XHTML 1.0, HTML 4, and XHTML 5.
+        This, along with interoperability with our other projects, is steering us toward
+        our own implementation.
+      </section:section>
+    </section:section>
+  </core:page>
+</jsp:root>

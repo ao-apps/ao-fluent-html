@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -42,7 +42,7 @@ public final class HEADER_c<
     PC extends PalpableContent<PC>
     >
     extends AnyHEADER_c<Document, PC, HEADER_c<PC>>
-    implements FlowContent_c<PC, HEADER_c<PC>> {
+    implements FlowContent<HEADER_c<PC>> {
 
   HEADER_c(HEADER<PC> element) {
     super(element);

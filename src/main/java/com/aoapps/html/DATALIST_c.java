@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -42,7 +42,7 @@ public final class DATALIST_c<
     PC extends PhrasingContent<PC>
     >
     extends AnyDATALIST_c<Document, PC, DATALIST_c<PC>>
-    implements DATALIST_content_c<PC, DATALIST_c<PC>> {
+    implements DATALIST_content<DATALIST_c<PC>> {
 
   DATALIST_c(DATALIST<PC> element) {
     super(element);

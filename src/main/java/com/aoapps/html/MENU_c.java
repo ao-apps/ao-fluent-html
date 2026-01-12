@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class MENU_c<
     PC extends InteractiveContent<PC>
     >
     extends AnyMENU_c<Document, PC, MENU_c<PC>>
-    implements ListContent_c<PC, MENU_c<PC>> {
+    implements ListContent<MENU_c<PC>> {
 
   MENU_c(MENU<PC> element) {
     super(element);

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class OPTGROUP_c<
     PC extends SELECT_content<PC>
     >
     extends AnyOPTGROUP_c<Document, PC, OPTGROUP_c<PC>>
-    implements OPTGROUP_content_c<PC, OPTGROUP_c<PC>> {
+    implements OPTGROUP_content<OPTGROUP_c<PC>> {
 
   OPTGROUP_c(OPTGROUP<PC> element) {
     super(element);

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class BDO_c<
     PC extends Union_Palpable_Phrasing<PC>
     >
     extends AnyBDO_c<Document, PC, BDO_c<PC>>
-    implements PhrasingContent_c<PC, BDO_c<PC>> {
+    implements PhrasingContent<BDO_c<PC>> {
 
   BDO_c(BDO<PC> element) {
     super(element);

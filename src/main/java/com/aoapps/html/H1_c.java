@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class H1_c<
     PC extends HeadingContent<PC>
     >
     extends AnyH1_c<Document, PC, H1_c<PC>>
-    implements PhrasingContent<H1_c<PC>> {
+    implements PhrasingContent_c<PC, H1_c<PC>> {
 
   H1_c(H1<PC> element) {
     super(element);

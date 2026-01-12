@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class DL_c<
     PC extends PalpableContent<PC>
     >
     extends AnyDL_c<Document, PC, DL_c<PC>>
-    implements DL_content<DL_c<PC>> {
+    implements DL_content_c<PC, DL_c<PC>> {
 
   DL_c(DL<PC> element) {
     super(element);

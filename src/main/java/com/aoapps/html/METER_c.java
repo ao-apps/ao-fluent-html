@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -42,7 +42,7 @@ public final class METER_c<
     PC extends Union_Palpable_Phrasing<PC>
     >
     extends AnyMETER_c<Document, PC, METER_c<PC>>
-    implements PhrasingContent<METER_c<PC>> {
+    implements PhrasingContent_c<PC, METER_c<PC>> {
 
   METER_c(METER<PC> element) {
     super(element);

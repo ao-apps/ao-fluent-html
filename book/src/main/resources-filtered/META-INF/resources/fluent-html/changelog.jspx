@@ -37,7 +37,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2019-10-27T16:59:13-05:00"
-    dateModified="2025-07-02T23:05:45Z"
+    dateModified="2026-01-12T01:51:07Z"
   >
     <c:set var="latestRelease" value="0.7.0" />
     <c:if test="${
@@ -55,6 +55,10 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
         <ul>
           <li>Updated to <ao:a href="https://checkstyle.org/releasenotes.html#Release_10.21.1">Checkstyle 10.21.1</ao:a>.</li>
           <li>Internal implementation changes to reduce the number of casts.</li>
+          <li>
+            New set of <code>*_c</code> content types that are <code>Closeable</code>.
+            These extend the non-closeable interfaces and precisely match their interface hierarchy.
+          </li>
         </ul>
       </changelog:release>
     </c:if>

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class TR_c<
     PC extends Union_TBODY_THEAD_TFOOT<PC>
     >
     extends AnyTR_c<Document, PC, TR_c<PC>>
-    implements TR_content<TR_c<PC>> {
+    implements TR_content_c<PC, TR_c<PC>> {
 
   TR_c(TR<PC> element) {
     super(element);

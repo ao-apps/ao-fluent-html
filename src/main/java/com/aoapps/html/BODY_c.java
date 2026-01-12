@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class BODY_c<
     PC extends HTML_content<PC>
     >
     extends AnyBODY_c<Document, PC, BODY_c<PC>>
-    implements FlowContent<BODY_c<PC>> {
+    implements FlowContent_c<PC, BODY_c<PC>> {
 
   BODY_c(BODY<PC> element) {
     super(element);

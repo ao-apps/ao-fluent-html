@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class P_c<
     PC extends PalpableContent<PC>
     >
     extends AnyP_c<Document, PC, P_c<PC>>
-    implements PhrasingContent<P_c<PC>> {
+    implements PhrasingContent_c<PC, P_c<PC>> {
 
   P_c(P<PC> element) {
     super(element);

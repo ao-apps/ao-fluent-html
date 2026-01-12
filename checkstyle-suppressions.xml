@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
-Copyright (C) 2022, 2023, 2024  AO Industries, Inc.
+Copyright (C) 2022, 2023, 2024, 2026  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -63,20 +63,39 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
   <!-- *__ and *_c types -->
   <suppress
     checks="(AbbreviationAsWordInName|TypeName)"
-    files="[/\\]com[/\\]aoapps[/\\]html[/\\][A-Z]+[0-9]?(__|_c)\.java$"
-    message="'[A-Z]+[0-9]?(__|_c)'"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\]([A-Za-z]*Content|[A-Z]+[0-9]?)(__|_c)\.java$"
+    message="'([A-Za-z]*Content|[A-Z]+[0-9]?)(__|_c)'"
   />
 
-  <!-- *_content and *_contentTest types -->
+  <!-- *_content types -->
   <suppress
     checks="(AbbreviationAsWordInName|TypeName)"
     files="[/\\]com[/\\]aoapps[/\\]html[/\\][A-Z]+_content\.java$"
-    message="'[A-Z]+_content?'"
+    message="'[A-Z]+_content'"
   />
+  <!-- *content_c types -->
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\][A-Z]+_content_c\.java$"
+    message="'[A-Z]+_content_c'"
+  />
+  <!-- *_contentTest types -->
   <suppress
     checks="(AbbreviationAsWordInName|TypeName)"
     files="[/\\]com[/\\]aoapps[/\\]html[/\\]tests[/\\][A-Z]+_contentTest\.java$"
     message="'[A-Z]+_contentTest'"
+  />
+  <!-- *_content_cTest types -->
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\]tests[/\\][A-Z]+_content_cTest\.java$"
+    message="'[A-Z]+_content_cTest'"
+  />
+  <!-- *Content(Model)?_cTest types -->
+  <suppress
+    checks="(AbbreviationAsWordInName|TypeName)"
+    files="[/\\]com[/\\]aoapps[/\\]html[/\\]tests[/\\]([A-Z][A-Za-z]+)?Content(Model)?_cTest\.java$"
+    message="'([A-Z][A-Za-z]+)?Content(Model)?_cTest'"
   />
 
   <!-- elem__() element methods -->
@@ -87,7 +106,7 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
 
   <!-- @param  <PC>  The parent content model this element is within -->
   <suppress
-    checks="ClassTypeParameterName"
+    checks="(ClassTypeParameterName|InterfaceTypeParameterName)"
     message="'PC'"
   />
 
@@ -95,6 +114,12 @@ along with ao-fluent-html.  If not, see <https://www.gnu.org/licenses/>.
   <suppress
     checks="(ClassTypeParameterName|InterfaceTypeParameterName)"
     message="'__'"
+  />
+
+  <!-- @param  <_c>  This content model as {@link Closeable}, which will be the parent content model of child elements -->
+  <suppress
+    checks="(ClassTypeParameterName|InterfaceTypeParameterName)"
+    message="'_c'"
   />
 
 </suppressions>

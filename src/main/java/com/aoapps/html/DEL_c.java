@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class DEL_c<
     PC extends PhrasingContent<PC>
     >
     extends AnyDEL_c<Document, PC, DEL_c<PC>>
-    implements PhrasingContent<DEL_c<PC>> {
+    implements PhrasingContent_c<PC, DEL_c<PC>> {
 
   DEL_c(DEL<PC> element) {
     super(element);

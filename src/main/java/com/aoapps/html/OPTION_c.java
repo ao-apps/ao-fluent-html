@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2022  AO Industries, Inc.
+ * Copyright (C) 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class OPTION_c<
     PC extends Union_DATALIST_OPTGROUP<PC>
     >
     extends AnyOPTION_c<Document, PC, OPTION_c<PC>>
-    implements TextContent<OPTION_c<PC>> {
+    implements TextContent_c<PC, OPTION_c<PC>> {
 
   OPTION_c(OPTION<PC> element) {
     super(element);

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class EM_c<
     PC extends Union_Palpable_Phrasing<PC>
     >
     extends AnyEM_c<Document, PC, EM_c<PC>>
-    implements PhrasingContent<EM_c<PC>> {
+    implements PhrasingContent_c<PC, EM_c<PC>> {
 
   EM_c(EM<PC> element) {
     super(element);

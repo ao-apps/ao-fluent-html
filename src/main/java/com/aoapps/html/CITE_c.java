@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class CITE_c<
     PC extends Union_Palpable_Phrasing<PC>
     >
     extends AnyCITE_c<Document, PC, CITE_c<PC>>
-    implements PhrasingContent<CITE_c<PC>> {
+    implements PhrasingContent_c<PC, CITE_c<PC>> {
 
   CITE_c(CITE<PC> element) {
     super(element);

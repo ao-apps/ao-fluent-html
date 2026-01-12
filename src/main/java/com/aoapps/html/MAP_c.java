@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class MAP_c<
     PC extends Union_Palpable_Phrasing<PC>
     >
     extends AnyMAP_c<Document, PC, MAP_c<PC>>
-    implements Union_Palpable_Phrasing<MAP_c<PC>> {
+    implements Union_Palpable_Phrasing_c<PC, MAP_c<PC>> {
 
   MAP_c(MAP<PC> element) {
     super(element);

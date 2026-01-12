@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class TD_c<
     PC extends TR_content<PC>
     >
     extends AnyTD_c<Document, PC, TD_c<PC>>
-    implements FlowContent<TD_c<PC>> {
+    implements FlowContent_c<PC, TD_c<PC>> {
 
   TD_c(TD<PC> element) {
     super(element);

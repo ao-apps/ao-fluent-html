@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class OBJECT_c<
     PC extends Union_Embedded_Interactive<PC>
     >
     extends AnyOBJECT_c<Document, PC, OBJECT_c<PC>>
-    implements OBJECT_content<OBJECT_c<PC>> {
+    implements OBJECT_content_c<PC, OBJECT_c<PC>> {
 
   OBJECT_c(OBJECT<PC> element) {
     super(element);

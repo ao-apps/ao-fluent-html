@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class THEAD_c<
     PC extends TABLE_content<PC>
     >
     extends AnyTHEAD_c<Document, PC, THEAD_c<PC>>
-    implements Union_TBODY_THEAD_TFOOT<THEAD_c<PC>> {
+    implements Union_TBODY_THEAD_TFOOT_c<PC, THEAD_c<PC>> {
 
   THEAD_c(THEAD<PC> element) {
     super(element);

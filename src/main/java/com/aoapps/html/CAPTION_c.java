@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class CAPTION_c<
     PC extends TABLE_content<PC>
     >
     extends AnyCAPTION_c<Document, PC, CAPTION_c<PC>>
-    implements FlowContent<CAPTION_c<PC>> {
+    implements FlowContent_c<PC, CAPTION_c<PC>> {
 
   CAPTION_c(CAPTION<PC> element) {
     super(element);

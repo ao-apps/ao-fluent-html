@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,7 +40,7 @@ public final class DD_c<
     PC extends Union_DIV_DL<PC>
     >
     extends AnyDD_c<Document, PC, DD_c<PC>>
-    implements FlowContent<DD_c<PC>> {
+    implements FlowContent_c<PC, DD_c<PC>> {
 
   DD_c(DD<PC> element) {
     super(element);

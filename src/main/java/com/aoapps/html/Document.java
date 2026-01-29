@@ -50,7 +50,7 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
    *              <p>Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
    *              with {@code encoder = null}.</p>
    *
-   * @see  #setOut(java.io.Writer)
+   * @see  Document#setOut(java.io.Writer)
    */
   public Document(EncodingContext encodingContext, Writer out) {
     super(encodingContext, out);
@@ -63,7 +63,7 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
    *              <p>Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
    *              with {@code encoder = null}.</p>
    *
-   * @see  #setOut(java.io.Writer)
+   * @see  Document#setOut(java.io.Writer)
    */
   public Document(Serialization serialization, Doctype doctype, Charset characterEncoding, Writer out) {
     this(
@@ -94,7 +94,7 @@ public final class Document extends AnyDocument<Document> implements AnyContent<
    *              <p>Will be through {@link Coercion#optimize(java.io.Writer, com.aoapps.lang.io.Encoder)}
    *              with {@code encoder = null}.</p>
    *
-   * @see  #setOut(java.io.Writer)
+   * @see  Document#setOut(java.io.Writer)
    * @see  EncodingContext#DEFAULT
    */
   public Document(Writer out) {

@@ -1,6 +1,6 @@
 /*
  * ao-fluent-html - Fluent Java DSL for high-performance HTML generation.
- * Copyright (C) 2021, 2022, 2025  AO Industries, Inc.
+ * Copyright (C) 2021, 2022, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -52,7 +52,7 @@ public class ContentModelTest {
    * Gets the set of all <code>*Content</code> content model interfaces.
    */
   static Class<? extends Content>[] getAllContentModels() {
-    return new Class[]{
+    return new Class[] {
         AnyContent.class,
         Content.class,
         EmbeddedContent.class,
